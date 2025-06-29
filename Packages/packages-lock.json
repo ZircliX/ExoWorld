@@ -1,5 +1,15 @@
 {
   "dependencies": {
+    "com.ltx.channeled-properties": {
+      "version": "2.0.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.ltx.tools": "1.1.3",
+        "com.unity.burst": "1.8.18"
+      },
+      "url": "https://helteix-verdaccio.euvtgm.easypanel.host"
+    },
     "com.ltx.singletons": {
       "version": "1.2.0",
       "depth": 0,
@@ -25,7 +35,7 @@
     },
     "com.unity.burst": {
       "version": "1.8.21",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.mathematics": "1.2.1",
