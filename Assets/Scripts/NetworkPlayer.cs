@@ -2,7 +2,7 @@ using System;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace Network
 {
     public class NetworkPlayer : NetworkBehaviour
     {
