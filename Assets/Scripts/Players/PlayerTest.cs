@@ -1,6 +1,4 @@
 using Health.Core;
-using Health.Implementations;
-using Health.Structs;
 using UnityEngine;
 
 namespace Health.Players
@@ -13,12 +11,23 @@ namespace Health.Players
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                HealingData healingData = new HealingData(10f, 1f);
-                healthComponent.Heal(HealingMetrics.HealthPercentage, healingData);
+                EffectData effectData = new EffectData.Builder()
+                                        .SetAmount(30)
+                                        .SetDuration(10)
+                                        .SetSteps(3)
+                                        .Build();
+                
+                healthComponent.ApplyEffect(effectData);
             }
+            
             if (Input.GetKeyDown(KeyCode.R))
             {
-                healthComponent.Damage(50);
+                EffectData effectData = new EffectData.Builder()
+                                        .SetAmount(-5)
+                                        .SetDuration(5)
+                                        .Build();
+                
+                healthComponent.ApplyEffect(effectData);
             }
         }
     }

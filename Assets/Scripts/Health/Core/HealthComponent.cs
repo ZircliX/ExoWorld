@@ -1,38 +1,43 @@
 using System;
-using Health.Structs;
 using LTX.ChanneledProperties.Priorities;
 using UnityEngine;
 
 namespace Health.Core
 {
-    public class HealthComponent : MonoBehaviour
+    public class HealthComponent : MonoBehaviour, IEffectContext
     {
-        public float Health => health;
         protected float health;
-        public int HealthBarCount => healthBarCount;
-        protected int healthBarCount;
         
-        public Priority<float> MaxHealth { get; protected set; }
-        public Priority<int> MaxHealthBarCount { get; protected set; }
+        public Priority<float> MaxHealthPriority { get; protected set; }
         
-        public event Action<float, float> OnHealthChanged;
-        protected void InvokeOnHealthChanged() => OnHealthChanged?.Invoke(health, healthBarCount);
-
-        protected HealthPointCommand healthPointCommand;
-        protected HealthPercentageCommand healthPercentageCommand;
-        protected HealthBarCommand healthBarCommand;
-
-        protected virtual void Awake()
+        public event Action<float> OnHealthChanged;
+        protected void InvokeOnHealthChanged()
         {
-            MaxHealth = new Priority<float>(100f);
-            MaxHealthBarCount = new Priority<int>(1);
-            
-            healthPointCommand = new HealthPointCommand();
-            healthPercentageCommand = new HealthPercentageCommand();
-            healthBarCommand = new HealthBarCommand();
+            CheckForDeath();
+            OnHealthChanged?.Invoke(health);
         }
 
-        private void Start()
+        #region IEffectContexts
+
+        public float CurrentValue => health;
+        public float MaxValue => MaxHealthPriority.Value;
+        
+        public void ApplyEffectTick(IEffectCommand sender, float effectValue)
+        {
+            health += effectValue;
+            health = Mathf.Clamp(health, 0f, MaxHealthPriority.Value);
+            InvokeOnHealthChanged();
+        }
+        
+        public void SetValue(IEffectCommand sender, float value)
+        {
+            health = Mathf.Min(value, MaxHealthPriority.Value);
+            InvokeOnHealthChanged();
+        }
+
+        #endregion
+
+        private void Awake()
         {
             Initialize();
             InvokeOnHealthChanged();
@@ -40,78 +45,47 @@ namespace Health.Core
         
         protected void Initialize()
         {
-            health = MaxHealth.Value;
-            healthBarCount = MaxHealthBarCount.Value;
+            MaxHealthPriority = new Priority<float>(100f);
+            
+            health = MaxHealthPriority.Value;
         }
         
-        public virtual bool Damage(float damage)
+        public virtual void ApplyEffect(EffectData effectData)
         {
-            if (health <= 0 && healthBarCount <= 0)
+            if (health <= 0f)
             {
-                Debug.LogWarning("Cannot damage, health is already zero.");
-                return true;
-            }
-            
-            health -= damage;
-            float remainingDamage = health < 0f ? -health : 0;
-
-            // If health is below zero, we need to check if we have health bars left
-            if (remainingDamage > 0)
-            {
-                healthBarCount--;
-                
-                if (healthBarCount > 0)
-                {
-                    health = MaxHealth.Value;
-                    Damage(remainingDamage);
-                }
-            }
-            
-            // Death condition
-            if (health <= 0f && healthBarCount <= 0)
-            {
-                health = 0f;
-                healthBarCount = 0;
-                
-                InvokeOnHealthChanged();
-                return true;
+                Debug.LogWarning("Cannot apply effect to a dead entity.");
+                return;
             }
 
-            InvokeOnHealthChanged();
-            return false;
+            EffectCommand command = GetEffectCommand(effectData.EffectType);
+
+            if (command == null)
+            {
+                Debug.LogWarning($"No command found for effect type: {effectData.EffectType}");
+                return;
+            }
+
+            StartCoroutine(command.Execute(this, effectData));
         }
         
-        public virtual void Heal(HealingMetrics healingMetrics, HealingData healingData)
+        protected virtual EffectCommand GetEffectCommand(EffectTypes effectType)
         {
-            HealingCommandArgs args = new HealingCommandArgs(
-                () => health,
-                newHealth => health = newHealth,
-                () => healthBarCount,
-                newCount => healthBarCount = newCount,
-                OnHealthTick
-            );
-            
-            HealingCommand command;
-            switch (healingMetrics)
+            switch (effectType)
             {
-                case HealingMetrics.HealthPoint:
-                    command = healthPointCommand;
-                    break;
-                case HealingMetrics.HealthPercentage:
-                    command = healthPercentageCommand;
-                    break;
-                case HealingMetrics.HealthBar:
-                    command = healthBarCommand;
-                    break;
-                case HealingMetrics.None:
+                case EffectTypes.Points:
+                    return new PointsCommand();
+                case EffectTypes.Percentage:
+                    return new PercentageCommand();
                 default:
-                    Debug.LogWarning($"Healing command for {healingMetrics} not found.");
-                    return;
+                    Debug.LogWarning($"Effect type {effectType} not implemented.");
+                    return null;
             }
-
-            StartCoroutine(command.Execute(this, healingData, args));
         }
-
-        protected virtual void OnHealthTick() => InvokeOnHealthChanged();
+        
+        private bool CheckForDeath()
+        {
+            return health <= 0f;
+        }
     }
 }

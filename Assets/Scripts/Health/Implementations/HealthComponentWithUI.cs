@@ -1,3 +1,4 @@
+using System;
 using Health.Core;
 using TMPro;
 using UnityEngine;
@@ -18,9 +19,15 @@ namespace Health.Implementations
             OnHealthChanged -= RefreshHealthText;
         }
 
-        protected void RefreshHealthText(float _health, float _healthBar)
+        private void Start()
         {
-            healthText.text = $"{Mathf.FloorToInt(health)} / {MaxHealth.Value}";
+            RefreshHealthText(health);
+        }
+
+        protected void RefreshHealthText(float _health)
+        {
+            //Debug.Log(health);
+            healthText.text = $"{Mathf.RoundToInt(health)} / {MaxHealthPriority.Value}";
         }
     }
 }
