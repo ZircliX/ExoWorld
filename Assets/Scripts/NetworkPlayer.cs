@@ -2,7 +2,7 @@ using System;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace Network
+namespace Health
 {
     public class NetworkPlayer : NetworkBehaviour
     {
