@@ -13,7 +13,7 @@ namespace Health.Core
             PercentageAmount != 0 ? EffectTypes.Percentage : 
             EffectTypes.None;
         
-        public EffectData(float amount, float percentageAmount, float delay, float duration, float steps)
+        private EffectData(float amount, float percentageAmount, float delay, float duration, float steps)
         {
             Amount = amount;
             PercentageAmount = percentageAmount;

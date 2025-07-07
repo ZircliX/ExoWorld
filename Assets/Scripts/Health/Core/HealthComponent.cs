@@ -31,7 +31,8 @@ namespace Health.Core
         
         public void SetValue(IEffectCommand sender, float value)
         {
-            health = Mathf.Min(value, MaxHealthPriority.Value);
+            health = value;
+            health = Mathf.Clamp(value, 0f, MaxHealthPriority.Value);
             InvokeOnHealthChanged();
         }
 

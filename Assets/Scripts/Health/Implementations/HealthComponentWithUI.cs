@@ -27,7 +27,7 @@ namespace Health.Implementations
         protected void RefreshHealthText(float _health)
         {
             //Debug.Log(health);
-            healthText.text = $"{Mathf.RoundToInt(health)} / {MaxHealthPriority.Value}";
+            healthText.text = $"{Mathf.CeilToInt(health)} / {MaxHealthPriority.Value}";
         }
     }
 }

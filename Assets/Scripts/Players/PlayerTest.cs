@@ -13,8 +13,8 @@ namespace Health.Players
             {
                 EffectData effectData = new EffectData.Builder()
                                         .SetAmount(30)
-                                        .SetDuration(10)
-                                        .SetSteps(3)
+                                        .SetDuration(3)
+                                        .SetSteps(30)
                                         .Build();
                 
                 healthComponent.ApplyEffect(effectData);
@@ -24,7 +24,7 @@ namespace Health.Players
             {
                 EffectData effectData = new EffectData.Builder()
                                         .SetAmount(-5)
-                                        .SetDuration(5)
+                                        .SetDuration(1)
                                         .Build();
                 
                 healthComponent.ApplyEffect(effectData);
