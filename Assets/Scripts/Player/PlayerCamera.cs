@@ -1,9 +1,10 @@
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace RogueLike.Player
 {
-    public class PlayerCamera : MonoBehaviour
+    public class PlayerCamera : NetworkBehaviour
     {
         private Vector2 targetCamVelocity;
         private Vector2 camRotation;
@@ -21,7 +22,6 @@ namespace RogueLike.Player
         
         private void Update()
         {
-            
             camRotation.x -= targetCamVelocity.x * speed * Time.deltaTime * sens;
             camRotation.y += targetCamVelocity.y * speed * Time.deltaTime * sens;
             camRotation.x = Mathf.Clamp(camRotation.x, -yRange, yRange);

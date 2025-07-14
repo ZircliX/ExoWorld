@@ -4,11 +4,11 @@ using LTX.ChanneledProperties;
 using LTX.ChanneledProperties.Formulas;
 using LTX.ChanneledProperties.Priorities;
 using RogueLike.Player;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace DeadLink.Entities.Movement
 {
-    [RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
     public class EntityMovement : MonoBehaviour
     {
         #region Public Properties
