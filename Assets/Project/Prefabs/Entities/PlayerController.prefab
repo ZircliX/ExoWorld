@@ -1007,6 +1007,7 @@ GameObject:
   - component: {fileID: 8898322675338463948}
   - component: {fileID: 5946190847953547969}
   - component: {fileID: 8333489344872782253}
+  - component: {fileID: 236997061220724331}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Player
@@ -1358,6 +1359,21 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   serverAuth: 0
   pc: {fileID: 5946190847953547969}
+--- !u!114 &236997061220724331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7771178899970783667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95b2babaefa44f6d8944a11b02d66f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  weapon: {fileID: 6223802536343331573}
+  orientation: {fileID: 8676647657924908099}
 --- !u!1 &7951095932090443510
 GameObject:
   m_ObjectHideFlags: 0
@@ -1571,7 +1587,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5098753022560239956}
-  - component: {fileID: 4057189227819017665}
   - component: {fileID: 6223802536343331573}
   m_Layer: 0
   m_Name: WeaponTest
@@ -1595,20 +1610,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8676647657924908099}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4057189227819017665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8750706335124736540}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95b2babaefa44f6d8944a11b02d66f45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon: {fileID: 6223802536343331573}
-  orientation: {fileID: 8676647657924908099}
 --- !u!114 &6223802536343331573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1621,7 +1622,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25c6f9edc89f4ccab9bd3d9049e30195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
   bullet: {fileID: 32712809209801333, guid: 4ea0d9975a6718e46b08230e4b40606b, type: 3}
   bulletSpawnPoint: {fileID: 4802033896124536546}
 --- !u!1 &8831171802724599823
