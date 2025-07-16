@@ -53,7 +53,10 @@ namespace TemaLeMultiLupeni.MainMenu
                 Debug.Log(e);
             }
             
-            menuCanvas.DOFade(0, 0.25f);
+            menuCanvas.DOFade(0, 0.25f).OnComplete(() =>
+            {
+                menuCanvas.interactable = false;
+            });
         }
         
         public async void JoinRelay()
@@ -79,7 +82,10 @@ namespace TemaLeMultiLupeni.MainMenu
                 Debug.Log(e);
             }
             
-            menuCanvas.DOFade(0, 0.25f);
+            menuCanvas.DOFade(0, 0.25f).OnComplete(() =>
+            {
+                menuCanvas.interactable = false;
+            });
         }
     }
 }
