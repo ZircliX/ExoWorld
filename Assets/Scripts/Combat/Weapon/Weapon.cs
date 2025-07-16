@@ -1,9 +1,8 @@
-using Unity.Netcode;
 using UnityEngine;
 
 namespace Combat.Weapon
 {
-    public class Weapon : NetworkBehaviour
+    public class Weapon : MonoBehaviour
     {
 
         [SerializeField] private Rigidbody bullet;
@@ -11,7 +10,6 @@ namespace Combat.Weapon
         
         public void Shoot(Vector3 direction)
         {
-            RequestFireServerRpc(direction);
             Rigidbody rb = Instantiate(bullet, bulletSpawnPoint.position, Quaternion.identity);
             rb.AddForce(direction * 100, ForceMode.Impulse);
             Destroy(rb.gameObject, 2f);
@@ -22,32 +20,9 @@ namespace Combat.Weapon
                 
                 if (hit.collider.CompareTag("Enemy"))
                 {
-                    OnBulletHitRpc(hit.collider.name);
+                    //OnBulletHitRpc(hit.collider.name);
                 }
             }
-        }
-
-        [Rpc(SendTo.Everyone)]
-        private void OnBulletHitRpc(string hit)
-        {
-            /*
-            Debug.Log($"Name : {hit}");
-            Debug.Log("Lois est trop beau whallah");
-            */
-        }
-
-        [Rpc(SendTo.Server)]
-        private void RequestFireServerRpc(Vector3 direction)
-        {
-            FireClientRpc(direction);
-        }
-        
-        [Rpc(SendTo.ClientsAndHost)]
-        private void FireClientRpc(Vector3 direction)
-        {
-            if (IsOwner) return;
-            Shoot(direction);
-            
         }
     }
 }
