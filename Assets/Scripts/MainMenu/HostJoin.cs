@@ -1,3 +1,4 @@
+using DG.Tweening;
 using TMPro;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
@@ -7,10 +8,11 @@ using Unity.Services.Relay;
 using Unity.Services.Relay.Models;
 using UnityEngine;
 
-namespace MyNamespace
+namespace TemaLeMultiLupeni.MainMenu
 {
     public class HostJoin : MonoBehaviour
     {
+        [SerializeField] private CanvasGroup menuCanvas;
         [SerializeField] private TMP_InputField inputField;
         
         private async void Start()
@@ -34,7 +36,7 @@ namespace MyNamespace
                 
                 string joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
                 Debug.Log($"Join code: {joinCode}");
-                Debug.Log($"allocation.AllocationId: {allocation.AllocationId}");
+                //Debug.Log($"allocation.AllocationId: {allocation.AllocationId}");
                 
                 NetworkManager.Singleton.GetComponent<UnityTransport>().SetHostRelayData(
                     allocation.RelayServer.IpV4,
@@ -50,6 +52,8 @@ namespace MyNamespace
             {
                 Debug.Log(e);
             }
+            
+            menuCanvas.DOFade(0, 0.25f);
         }
         
         public async void JoinRelay()
@@ -74,6 +78,8 @@ namespace MyNamespace
             {
                 Debug.Log(e);
             }
+            
+            menuCanvas.DOFade(0, 0.25f);
         }
     }
 }
