@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Health.Players
 {
-    public class PlayerTest : MonoBehaviour
+    public class HealthPlayerSample : MonoBehaviour
     {
         [SerializeField] private HealthComponent healthComponent;
         
