@@ -1,3 +1,4 @@
+using Combat.Weapon;
 using DeadLink.Player;
 using KBCore.Refs;
 using Network;
@@ -6,13 +7,16 @@ using UnityEngine;
 
 namespace Health.Network
 {
-    public class PlayerNetwork : NetworkBehaviour
+    public class PlayerControllerNetwork : NetworkBehaviour
     {
         [SerializeField] private bool serverAuth;
         
         [SerializeField, Self] private PlayerController pc;
 
         private NetworkVariable<PlayerNetworkState> playerState;
+        
+        [SerializeField] private Weapon weapon;
+        [SerializeField] private Transform orientation;
 
         private void OnValidate()
         {
@@ -41,8 +45,42 @@ namespace Health.Network
             {
                 ReadState();
             }
+            
+            if(!IsOwner) return;
+            if (Input.GetMouseButtonDown(0))
+            {
+                weapon.Shoot(orientation.forward);
+                RequestFireServerRpc(orientation.forward);
+
+            }
+        }
+        
+        #region Shoot
+        [Rpc(SendTo.Everyone)]
+        private void OnBulletHitRpc(string hit)
+        {
+            /*
+            Debug.Log($"Name : {hit}");
+            Debug.Log("Lois est trop beau whallah");
+            */
         }
 
+        [Rpc(SendTo.Server)]
+        private void RequestFireServerRpc(Vector3 direction)
+        {
+            FireClientRpc(direction);
+        }
+        
+        [Rpc(SendTo.ClientsAndHost)]
+        private void FireClientRpc(Vector3 direction)
+        {
+            if (IsOwner) return;
+            weapon.Shoot(direction);
+            
+        }
+        #endregion
+        
+        #region States
         private void WriteState()
         {
             Vector3 position = pc.PlayerMovement.Position;
@@ -79,5 +117,6 @@ namespace Health.Network
             Quaternion rotation = playerState.Value.Rotation;
             transform.rotation = rotation;
         }
+        #endregion
     }
 }
