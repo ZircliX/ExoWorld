@@ -54,6 +54,7 @@ namespace Health.Network
                 Rotation = rotation
             };
 
+            // Soit HOST soit SERVER
             if (!serverAuth || IsServer)
             {
                 playerState.Value = state;

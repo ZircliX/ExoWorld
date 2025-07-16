@@ -36,7 +36,7 @@ namespace TemaLeMultiLupeni.MainMenu
                 
                 string joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
                 Debug.Log($"Join code: {joinCode}");
-                Debug.Log($"allocation.AllocationId: {allocation.AllocationId}");
+                //Debug.Log($"allocation.AllocationId: {allocation.AllocationId}");
                 
                 NetworkManager.Singleton.GetComponent<UnityTransport>().SetHostRelayData(
                     allocation.RelayServer.IpV4,
