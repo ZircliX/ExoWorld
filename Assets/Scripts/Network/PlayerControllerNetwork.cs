@@ -56,14 +56,6 @@ namespace Health.Network
         }
         
         #region Shoot
-        [Rpc(SendTo.Everyone)]
-        private void OnBulletHitRpc(string hit)
-        {
-            /*
-            Debug.Log($"Name : {hit}");
-            Debug.Log("Lois est trop beau whallah");
-            */
-        }
 
         [Rpc(SendTo.Server)]
         private void RequestFireServerRpc(Vector3 direction)
@@ -78,6 +70,7 @@ namespace Health.Network
             weapon.Shoot(direction);
             
         }
+        
         #endregion
         
         #region States
