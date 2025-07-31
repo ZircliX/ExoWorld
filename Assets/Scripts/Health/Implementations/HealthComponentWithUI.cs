@@ -21,12 +21,11 @@ namespace Health.Implementations
 
         private void Start()
         {
-            RefreshHealthText(Mathf.RoundToInt(health));
+            RefreshHealthText(Mathf.RoundToInt(Health));
         }
 
         protected void RefreshHealthText(int _health)
         {
-            //Debug.Log(health);
             healthText.text = $"{_health} / {MaxHealthPriority.Value}";
         }
     }

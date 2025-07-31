@@ -10,7 +10,7 @@ namespace Health.Core
         public List<EffectCommand> EffectCommands { get; protected set; }
         public float MaxValue => MaxHealthPriority.Value;
         
-        protected float health;
+        public float Health { get; private set; }
         public Priority<float> MaxHealthPriority { get; protected set; }
         
         public event Action<int> OnHealthChanged;
@@ -22,7 +22,7 @@ namespace Health.Core
                 totalCommandValues += command.CurrentValue;
             }
             
-            float currentHealth = Mathf.Clamp(health + totalCommandValues, 0f, MaxHealthPriority.Value);
+            float currentHealth = Mathf.Clamp(Health + totalCommandValues, 0f, MaxHealthPriority.Value);
             
             //CheckForDeath();
             OnHealthChanged?.Invoke(Mathf.RoundToInt(currentHealth));
@@ -37,13 +37,13 @@ namespace Health.Core
         protected void Initialize()
         {
             MaxHealthPriority = new Priority<float>(100f);
-            health = MaxHealthPriority.Value;
+            Health = MaxHealthPriority.Value;
             EffectCommands = new List<EffectCommand>(8);
         }
 
         public virtual void RegisterEffectCommand(EffectData effectData)
         {
-            if (health <= 0f)
+            if (Health <= 0f)
             {
                 Debug.LogWarning("Cannot apply effect to a dead entity.");
                 return;
@@ -51,7 +51,7 @@ namespace Health.Core
 
             EffectCommand command = GetEffectCommand(effectData.EffectType);
 
-            if (command == null)
+            if (command.Equals(default))
             {
                 Debug.LogWarning($"No command found for effect type: {effectData.EffectType}");
                 return;
@@ -67,7 +67,7 @@ namespace Health.Core
             {
                 EffectCommands.Remove(command);
                 
-                health += Mathf.Clamp(health + command.CurrentValue, 0, MaxHealthPriority.Value);
+                Health += Mathf.Clamp(Health + command.CurrentValue, 0, MaxHealthPriority.Value);
                 InvokeOnHealthChanged();
             }
         }
@@ -82,18 +82,18 @@ namespace Health.Core
             switch (effectType)
             {
                 case EffectTypes.Points:
-                    return new PointsCommand();
+                    return new EffectCommand(new PointsMetricResolver());
                 case EffectTypes.Percentage:
-                    return new PercentageCommand();
+                    return new EffectCommand(new PercentageMetricResolver());
                 default:
                     Debug.LogWarning($"Effect type {effectType} not implemented.");
-                    return null;
+                    return default;
             }
         }
         
         private bool CheckForDeath()
         {
-            return health <= 0f;
+            return Health <= 0f;
         }
     }
 }
