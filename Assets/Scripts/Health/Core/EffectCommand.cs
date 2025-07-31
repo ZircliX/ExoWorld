@@ -1,10 +1,9 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
 namespace Health.Core
 {
-    public struct EffectCommand : IEquatable<EffectCommand>
+    public class EffectCommand
     {
         private readonly IEffectMetricResolver metricResolver;
         public float CurrentValue { get; private set; }
@@ -18,7 +17,7 @@ namespace Health.Core
         public IEnumerator Execute(IEffectReceiver effectReceiver, EffectData effectData)
         {
             float targetValue = metricResolver.ResolveAmount(effectReceiver, effectData);
-    
+            
             if (effectData.Delay > 0)
             {
                 yield return new WaitForSeconds(effectData.Delay);
@@ -63,21 +62,6 @@ namespace Health.Core
             
             CurrentValue = targetValue;
             effectReceiver.UnregisterEffectCommand(this);
-        }
-
-        public bool Equals(EffectCommand other)
-        {
-            return Equals(metricResolver, other.metricResolver) && CurrentValue.Equals(other.CurrentValue);
-        }
-
-        public override bool Equals(object obj)
-        {
-            return obj is EffectCommand other && Equals(other);
-        }
-
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(metricResolver, CurrentValue);
         }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using LTX.ChanneledProperties.Priorities;
+using LTX.Tools;
 using UnityEngine;
 
 namespace Health.Core
@@ -8,6 +9,7 @@ namespace Health.Core
     public class HealthComponent : MonoBehaviour, IEffectReceiver
     {
         public List<EffectCommand> EffectCommands { get; protected set; }
+        private DynamicBuffer<EffectCommand> _effectCommandsBuffer;
         public float MaxValue => MaxHealthPriority.Value;
         
         public float Health { get; private set; }
@@ -17,11 +19,25 @@ namespace Health.Core
         protected void InvokeOnHealthChanged()
         {
             float totalCommandValues = 0f;
-            foreach (EffectCommand command in EffectCommands)
+            _effectCommandsBuffer.Clear();
+            _effectCommandsBuffer.CopyFrom(EffectCommands);
+
+            for (int index = 0; index < _effectCommandsBuffer.Length; index++)
             {
+                EffectCommand command = EffectCommands[index];
+
+                bool isOver = Health + totalCommandValues + command.CurrentValue > MaxHealthPriority.Value;
+                bool isUnder = Health + totalCommandValues + command.CurrentValue < 0f;
+                
+                if (isOver || isUnder)
+                {
+                    Debug.Log($"isOver: {isOver}, isUnder: {isUnder}, Health: {Health}, TotalCommandValues: {totalCommandValues}, CommandValue: {command.CurrentValue}");
+                    UnregisterEffectCommand(command);
+                }
+
                 totalCommandValues += command.CurrentValue;
             }
-            
+
             float currentHealth = Mathf.Clamp(Health + totalCommandValues, 0f, MaxHealthPriority.Value);
             
             //CheckForDeath();
@@ -39,6 +55,7 @@ namespace Health.Core
             MaxHealthPriority = new Priority<float>(100f);
             Health = MaxHealthPriority.Value;
             EffectCommands = new List<EffectCommand>(8);
+            _effectCommandsBuffer = new DynamicBuffer<EffectCommand>(EffectCommands.Capacity);
         }
 
         public virtual void RegisterEffectCommand(EffectData effectData)
@@ -67,7 +84,7 @@ namespace Health.Core
             {
                 EffectCommands.Remove(command);
                 
-                Health += Mathf.Clamp(Health + command.CurrentValue, 0, MaxHealthPriority.Value);
+                Health = Mathf.Clamp(Health + command.CurrentValue, 0, MaxHealthPriority.Value);
                 InvokeOnHealthChanged();
             }
         }
