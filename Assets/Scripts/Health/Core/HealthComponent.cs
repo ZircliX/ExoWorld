@@ -31,7 +31,7 @@ namespace Health.Core
                 
                 if (isOver || isUnder)
                 {
-                    Debug.Log($"isOver: {isOver}, isUnder: {isUnder}, Health: {Health}, TotalCommandValues: {totalCommandValues}, CommandValue: {command.CurrentValue}");
+                    //Debug.Log($"isOver: {isOver}, isUnder: {isUnder}, Health: {Health}, TotalCommandValues: {totalCommandValues}, CommandValue: {command.CurrentValue}");
                     UnregisterEffectCommand(command);
                 }
 
