@@ -17,7 +17,7 @@ namespace Health.Players
                                         .SetSteps(30)
                                         .Build();
                 
-                healthComponent.ApplyEffect(effectData);
+                healthComponent.RegisterEffectCommand(effectData);
             }
             
             if (Input.GetKeyDown(KeyCode.R))
@@ -27,7 +27,7 @@ namespace Health.Players
                                         .SetDuration(1)
                                         .Build();
                 
-                healthComponent.ApplyEffect(effectData);
+                healthComponent.RegisterEffectCommand(effectData);
             }
         }
     }

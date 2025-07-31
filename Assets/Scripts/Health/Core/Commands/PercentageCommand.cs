@@ -5,11 +5,14 @@ namespace Health.Core
 {
     public class PercentageCommand : EffectCommand
     {
-        public override IEnumerator Execute(IEffectContext effectContext, EffectData effectData)
+        public override float CurrentValue { get; protected set; }
+
+        public override IEnumerator Execute(IEffectReceiver effectReceiver, EffectData effectData)
         {
-            float totalEffectAmount = (effectData.PercentageAmount / 100f) * effectContext.MaxValue;
-            float baseValue = effectContext.CurrentValue;
-            float targetValue = baseValue + totalEffectAmount;
+            CurrentValue = 0;
+            
+            float totalEffectAmount = (effectData.PercentageAmount / 100f) * effectReceiver.MaxValue;
+            float targetValue = totalEffectAmount;
 
             if (effectData.Delay > 0)
             {
@@ -18,7 +21,8 @@ namespace Health.Core
 
             if (effectData.Duration <= 0)
             {
-                effectContext.SetValue(this, targetValue);
+                CurrentValue = targetValue;
+                effectReceiver.OnEffectTick(this);
                 yield break;
             }
 
@@ -30,12 +34,10 @@ namespace Health.Core
 
                 for (int i = 0; i < effectData.Steps; i++)
                 {
-                    effectContext.ApplyEffectTick(this, amountPerStep);
+                    CurrentValue += amountPerStep;
+                    effectReceiver.OnEffectTick(this);
                     
-                    if (i < effectData.Steps - 1)
-                    {
-                        yield return new WaitForSeconds(intervalPerStep);
-                    }
+                    yield return new WaitForSeconds(intervalPerStep);
                 }
             }
             else
@@ -47,14 +49,16 @@ namespace Health.Core
                 while (timer < effectData.Duration)
                 {
                     float amountThisFrame = amountPerSecond * Time.deltaTime;
-                    effectContext.ApplyEffectTick(this, amountThisFrame);
+                    CurrentValue += amountThisFrame;
+                    effectReceiver.OnEffectTick(this);
 
                     timer += Time.deltaTime;
                     yield return null;
                 }
             }
-            
-            //effectContext.SetValue(this, targetValue);
+
+            CurrentValue = targetValue;
+            effectReceiver.UnregisterEffectCommand(this);
         }   
     }
 }

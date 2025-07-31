@@ -1,42 +1,32 @@
 using System;
+using System.Collections.Generic;
 using LTX.ChanneledProperties.Priorities;
 using UnityEngine;
 
 namespace Health.Core
 {
-    public class HealthComponent : MonoBehaviour, IEffectContext
+    public class HealthComponent : MonoBehaviour, IEffectReceiver
     {
-        protected float health;
-        
-        public Priority<float> MaxHealthPriority { get; protected set; }
-        
-        public event Action<float> OnHealthChanged;
-        protected void InvokeOnHealthChanged()
-        {
-            CheckForDeath();
-            OnHealthChanged?.Invoke(health);
-        }
-
-        #region IEffectContexts
-
-        public float CurrentValue => health;
+        public List<EffectCommand> EffectCommands { get; protected set; }
         public float MaxValue => MaxHealthPriority.Value;
         
-        public void ApplyEffectTick(IEffectCommand sender, float effectValue)
-        {
-            health += effectValue;
-            health = Mathf.Clamp(health, 0f, MaxHealthPriority.Value);
-            InvokeOnHealthChanged();
-        }
+        protected float health;
+        public Priority<float> MaxHealthPriority { get; protected set; }
         
-        public void SetValue(IEffectCommand sender, float value)
+        public event Action<int> OnHealthChanged;
+        protected void InvokeOnHealthChanged()
         {
-            health = value;
-            health = Mathf.Clamp(value, 0f, MaxHealthPriority.Value);
-            InvokeOnHealthChanged();
+            float totalCommandValues = 0f;
+            foreach (EffectCommand command in EffectCommands)
+            {
+                totalCommandValues += command.CurrentValue;
+            }
+            
+            float currentHealth = Mathf.Clamp(health + totalCommandValues, 0f, MaxHealthPriority.Value);
+            
+            //CheckForDeath();
+            OnHealthChanged?.Invoke(Mathf.RoundToInt(currentHealth));
         }
-
-        #endregion
 
         private void Awake()
         {
@@ -47,11 +37,11 @@ namespace Health.Core
         protected void Initialize()
         {
             MaxHealthPriority = new Priority<float>(100f);
-            
             health = MaxHealthPriority.Value;
+            EffectCommands = new List<EffectCommand>(8);
         }
-        
-        public virtual void ApplyEffect(EffectData effectData)
+
+        public virtual void RegisterEffectCommand(EffectData effectData)
         {
             if (health <= 0f)
             {
@@ -67,7 +57,24 @@ namespace Health.Core
                 return;
             }
 
+            EffectCommands.Add(command);
             StartCoroutine(command.Execute(this, effectData));
+        }
+
+        public void UnregisterEffectCommand(EffectCommand command)
+        {
+            if (EffectCommands.Contains(command))
+            {
+                EffectCommands.Remove(command);
+                
+                health += Mathf.Clamp(health + command.CurrentValue, 0, MaxHealthPriority.Value);
+                InvokeOnHealthChanged();
+            }
+        }
+
+        public void OnEffectTick(EffectCommand command)
+        {
+            InvokeOnHealthChanged();
         }
         
         protected virtual EffectCommand GetEffectCommand(EffectTypes effectType)

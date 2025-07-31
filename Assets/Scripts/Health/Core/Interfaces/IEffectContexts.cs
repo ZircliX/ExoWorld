@@ -1,12 +1,16 @@
+using System.Collections.Generic;
+
 namespace Health.Core
 {
-    public interface IEffectContext
+    public interface IEffectReceiver
     {
-        void ApplyEffectTick(IEffectCommand sender, float effectValue);
-        void ApplyEffect(EffectData effectData);
-        void SetValue(IEffectCommand sender, float value);
+        List<EffectCommand> EffectCommands { get; }
         
-        float CurrentValue { get; }
+        void RegisterEffectCommand(EffectData effectData);
+        void UnregisterEffectCommand(EffectCommand command);
+        
+        void OnEffectTick(EffectCommand command);
+        
         float MaxValue { get; }
     }
 }
