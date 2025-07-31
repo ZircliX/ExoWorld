@@ -15,9 +15,6 @@ namespace RogueLike.Player
         
         #endregion
 
-        private Coroutine voidEnter;
-        
-
         protected override void Awake()
         {
             base.Awake();

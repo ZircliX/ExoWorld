@@ -14,10 +14,10 @@ namespace Health.Players
                 EffectData effectData = new EffectData.Builder()
                                         .SetAmount(30)
                                         .SetDuration(3)
-                                        .SetSteps(30)
+                                        .SetSteps(10)
                                         .Build();
                 
-                healthComponent.ApplyEffect(effectData);
+                healthComponent.RegisterEffectCommand(effectData);
             }
             
             if (Input.GetKeyDown(KeyCode.R))
@@ -27,7 +27,7 @@ namespace Health.Players
                                         .SetDuration(1)
                                         .Build();
                 
-                healthComponent.ApplyEffect(effectData);
+                healthComponent.RegisterEffectCommand(effectData);
             }
         }
     }

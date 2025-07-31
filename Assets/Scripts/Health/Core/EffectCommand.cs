@@ -3,13 +3,21 @@ using UnityEngine;
 
 namespace Health.Core
 {
-    public class PointsCommand : EffectCommand
+    public class EffectCommand
     {
-        public override IEnumerator Execute(IEffectContext effectContext, EffectData effectData)
+        private readonly IEffectMetricResolver metricResolver;
+        public float CurrentValue { get; private set; }
+        
+        public EffectCommand(IEffectMetricResolver metricResolver)
         {
-            float baseValue = effectContext.CurrentValue;
-            float targetValue = baseValue + effectData.Amount;
-    
+            this.metricResolver = metricResolver;
+            CurrentValue = 0f;
+        }
+
+        public IEnumerator Execute(IEffectReceiver effectReceiver, EffectData effectData)
+        {
+            float targetValue = metricResolver.ResolveAmount(effectReceiver, effectData);
+            
             if (effectData.Delay > 0)
             {
                 yield return new WaitForSeconds(effectData.Delay);
@@ -17,7 +25,8 @@ namespace Health.Core
     
             if (effectData.Duration <= 0)
             {
-                effectContext.SetValue(this, targetValue);
+                CurrentValue = targetValue;
+                effectReceiver.OnEffectTick(this);
                 yield break;
             }
             
@@ -29,9 +38,10 @@ namespace Health.Core
 
                 for (int i = 0; i < effectData.Steps; i++)
                 {
-                    yield return new WaitForSeconds(interval);
+                    CurrentValue += amountPerStep;
+                    effectReceiver.OnEffectTick(this);
                     
-                    effectContext.ApplyEffectTick(this, amountPerStep);
+                    yield return new WaitForSeconds(interval);
                 }
             }
             else
@@ -42,14 +52,16 @@ namespace Health.Core
                 while (timer < effectData.Duration)
                 {
                     float amountThisFrame = healingPerSecond * Time.deltaTime;
-                    effectContext.ApplyEffectTick(this, amountThisFrame);
+                    CurrentValue += amountThisFrame;
+                    effectReceiver.OnEffectTick(this);
             
                     timer += Time.deltaTime;
                     yield return null;
                 }
             }
             
-            //effectContext.SetValue(this, targetValue);
+            CurrentValue = targetValue;
+            effectReceiver.UnregisterEffectCommand(this);
         }
     }
 }

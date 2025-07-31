@@ -1,42 +1,48 @@
 using System;
+using System.Collections.Generic;
 using LTX.ChanneledProperties.Priorities;
+using LTX.Tools;
 using UnityEngine;
 
 namespace Health.Core
 {
-    public class HealthComponent : MonoBehaviour, IEffectContext
+    public class HealthComponent : MonoBehaviour, IEffectReceiver
     {
-        protected float health;
-        
-        public Priority<float> MaxHealthPriority { get; protected set; }
-        
-        public event Action<float> OnHealthChanged;
-        protected void InvokeOnHealthChanged()
-        {
-            CheckForDeath();
-            OnHealthChanged?.Invoke(health);
-        }
-
-        #region IEffectContexts
-
-        public float CurrentValue => health;
+        public List<EffectCommand> EffectCommands { get; protected set; }
+        private DynamicBuffer<EffectCommand> _effectCommandsBuffer;
         public float MaxValue => MaxHealthPriority.Value;
         
-        public void ApplyEffectTick(IEffectCommand sender, float effectValue)
-        {
-            health += effectValue;
-            health = Mathf.Clamp(health, 0f, MaxHealthPriority.Value);
-            InvokeOnHealthChanged();
-        }
+        public float Health { get; private set; }
+        public Priority<float> MaxHealthPriority { get; protected set; }
         
-        public void SetValue(IEffectCommand sender, float value)
+        public event Action<int> OnHealthChanged;
+        protected void InvokeOnHealthChanged()
         {
-            health = value;
-            health = Mathf.Clamp(value, 0f, MaxHealthPriority.Value);
-            InvokeOnHealthChanged();
-        }
+            float totalCommandValues = 0f;
+            _effectCommandsBuffer.Clear();
+            _effectCommandsBuffer.CopyFrom(EffectCommands);
 
-        #endregion
+            for (int index = 0; index < _effectCommandsBuffer.Length; index++)
+            {
+                EffectCommand command = EffectCommands[index];
+
+                bool isOver = Health + totalCommandValues + command.CurrentValue > MaxHealthPriority.Value;
+                bool isUnder = Health + totalCommandValues + command.CurrentValue < 0f;
+                
+                if (isOver || isUnder)
+                {
+                    //Debug.Log($"isOver: {isOver}, isUnder: {isUnder}, Health: {Health}, TotalCommandValues: {totalCommandValues}, CommandValue: {command.CurrentValue}");
+                    UnregisterEffectCommand(command);
+                }
+
+                totalCommandValues += command.CurrentValue;
+            }
+
+            float currentHealth = Mathf.Clamp(Health + totalCommandValues, 0f, MaxHealthPriority.Value);
+            
+            //CheckForDeath();
+            OnHealthChanged?.Invoke(Mathf.RoundToInt(currentHealth));
+        }
 
         private void Awake()
         {
@@ -47,13 +53,14 @@ namespace Health.Core
         protected void Initialize()
         {
             MaxHealthPriority = new Priority<float>(100f);
-            
-            health = MaxHealthPriority.Value;
+            Health = MaxHealthPriority.Value;
+            EffectCommands = new List<EffectCommand>(8);
+            _effectCommandsBuffer = new DynamicBuffer<EffectCommand>(EffectCommands.Capacity);
         }
-        
-        public virtual void ApplyEffect(EffectData effectData)
+
+        public virtual void RegisterEffectCommand(EffectData effectData)
         {
-            if (health <= 0f)
+            if (Health <= 0f)
             {
                 Debug.LogWarning("Cannot apply effect to a dead entity.");
                 return;
@@ -61,13 +68,30 @@ namespace Health.Core
 
             EffectCommand command = GetEffectCommand(effectData.EffectType);
 
-            if (command == null)
+            if (command.Equals(default))
             {
                 Debug.LogWarning($"No command found for effect type: {effectData.EffectType}");
                 return;
             }
 
+            EffectCommands.Add(command);
             StartCoroutine(command.Execute(this, effectData));
+        }
+
+        public void UnregisterEffectCommand(EffectCommand command)
+        {
+            if (EffectCommands.Contains(command))
+            {
+                EffectCommands.Remove(command);
+                
+                Health = Mathf.Clamp(Health + command.CurrentValue, 0, MaxHealthPriority.Value);
+                InvokeOnHealthChanged();
+            }
+        }
+
+        public void OnEffectTick(EffectCommand command)
+        {
+            InvokeOnHealthChanged();
         }
         
         protected virtual EffectCommand GetEffectCommand(EffectTypes effectType)
@@ -75,18 +99,18 @@ namespace Health.Core
             switch (effectType)
             {
                 case EffectTypes.Points:
-                    return new PointsCommand();
+                    return new EffectCommand(new PointsMetricResolver());
                 case EffectTypes.Percentage:
-                    return new PercentageCommand();
+                    return new EffectCommand(new PercentageMetricResolver());
                 default:
                     Debug.LogWarning($"Effect type {effectType} not implemented.");
-                    return null;
+                    return default;
             }
         }
         
         private bool CheckForDeath()
         {
-            return health <= 0f;
+            return Health <= 0f;
         }
     }
 }
