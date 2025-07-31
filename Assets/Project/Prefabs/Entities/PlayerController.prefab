@@ -766,6 +766,7 @@ GameObject:
   - component: {fileID: 8898322675338463948}
   - component: {fileID: 5946190847953547969}
   - component: {fileID: 8333489344872782253}
+  - component: {fileID: -7106069965460917936}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Player
@@ -1119,6 +1120,21 @@ MonoBehaviour:
   pc: {fileID: 5946190847953547969}
   weapon: {fileID: 6223802536343331573}
   orientation: {fileID: 8676647657924908099}
+--- !u!114 &-7106069965460917936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7771178899970783667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63357a09b9214d69bc207c691f022c60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  head: {fileID: 2065021886003205984}
+  playerCamera: {fileID: 818597675296926653}
+  maxDistance: 2
 --- !u!1 &7951095932090443510
 GameObject:
   m_ObjectHideFlags: 0
