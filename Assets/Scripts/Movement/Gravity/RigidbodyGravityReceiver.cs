@@ -1,7 +1,7 @@
 using KBCore.Refs;
 using UnityEngine;
 
-namespace DeadLink.Gravity
+namespace OverBang.GameName.Movement
 {
     [RequireComponent(typeof(Rigidbody))]
     public class RigidbodyGravityReceiver : GravityReceiver

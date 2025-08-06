@@ -1,8 +1,9 @@
+using OverBang.GameName.Movement;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace RogueLike.Player
+namespace OverBang.GameName.Cameras
 {
     public class PlayerCamera : NetworkBehaviour
     {

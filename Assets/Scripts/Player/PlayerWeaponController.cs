@@ -1,15 +1,15 @@
-using Combat.Weapon;
-using Health.Network;
-using Network.Interfaces;
+using OverBang.GameName.Combat;
+using OverBang.GameName.Network;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace DeadLink.Player
+namespace OverBang.GameName.Player
 {
     public class PlayerWeaponController : NetworkChildren
     {
         [SerializeField] private Weapon weapon;
         [SerializeField] private Transform orientation;
+        
         private PlayerNetworkController playerNetwork;
         
         public override void OnNetworkSpawn(PlayerNetworkController network)
@@ -17,11 +17,7 @@ namespace DeadLink.Player
             playerNetwork = network;
         }
 
-        public override void OnNetworkDespawn()
-        {
-        }
-
-        public override void OnNetworkUpdate()
+        public override void OnUpdate()
         {
             if (playerNetwork.IsOwner)
             {

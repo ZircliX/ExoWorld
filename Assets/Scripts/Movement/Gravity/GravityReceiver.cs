@@ -1,7 +1,7 @@
 using LTX.ChanneledProperties.Priorities;
 using UnityEngine;
 
-namespace DeadLink.Gravity
+namespace OverBang.GameName.Movement
 {
     public abstract class GravityReceiver : MonoBehaviour
     {

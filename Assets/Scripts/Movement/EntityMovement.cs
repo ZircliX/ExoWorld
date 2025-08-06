@@ -3,11 +3,9 @@ using KBCore.Refs;
 using LTX.ChanneledProperties;
 using LTX.ChanneledProperties.Formulas;
 using LTX.ChanneledProperties.Priorities;
-using RogueLike.Player;
-using Unity.Netcode;
 using UnityEngine;
 
-namespace DeadLink.Entities.Movement
+namespace OverBang.GameName.Movement
 {
     public class EntityMovement : MonoBehaviour
     {

@@ -1,7 +1,7 @@
-using DeadLink.Entities.Movement;
+
 using UnityEngine;
 
-namespace RogueLike.Player.States
+namespace OverBang.GameName.Movement
 {
     [CreateAssetMenu(menuName = "RogueLike/Movement/Run")]
     public class RunState : WalkState

@@ -1,10 +1,8 @@
-using DeadLink.Entities.Movement;
-using DeadLink.Gravity;
 using KBCore.Refs;
 using LTX.ChanneledProperties.Priorities;
 using UnityEngine;
 
-namespace DeadLink
+namespace OverBang.GameName.Movement
 {
     public class EntityGravity : GravityReceiver
     {

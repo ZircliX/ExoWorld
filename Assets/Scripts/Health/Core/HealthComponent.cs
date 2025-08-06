@@ -4,7 +4,7 @@ using LTX.ChanneledProperties.Priorities;
 using LTX.Tools;
 using UnityEngine;
 
-namespace Health.Core
+namespace OverBang.GameName.Health
 {
     public class HealthComponent : MonoBehaviour, IEffectReceiver
     {

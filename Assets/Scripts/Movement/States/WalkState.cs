@@ -1,9 +1,7 @@
-using DeadLink.Cameras;
-using DeadLink.Cameras.Data;
-using DeadLink.Entities.Movement;
+using OverBang.GameName.Cameras;
 using UnityEngine;
 
-namespace RogueLike.Player.States
+namespace OverBang.GameName.Movement
 {
     [CreateAssetMenu(menuName = "RogueLike/Movement/Walk")]
     public class WalkState : MoveState

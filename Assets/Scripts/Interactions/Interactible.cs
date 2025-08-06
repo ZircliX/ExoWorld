@@ -1,9 +1,8 @@
-using MultiGame.Interaction;
 using UnityEngine;
 
-namespace Interaction
+namespace OverBang.GameName.Interactions
 {
-    public class Interactible : MonoBehaviour, IInteractible
+    public class Interactable : MonoBehaviour, IInteractable
     {
         [SerializeField] private GameObject interactingBubble;
 

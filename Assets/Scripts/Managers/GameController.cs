@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Health.Managers
+namespace OverBang.GameName.Managers
 {
     public static partial class GameController
     {

@@ -1,10 +1,9 @@
-using DeadLink.Cameras;
-using DeadLink.Entities.Movement;
 using LTX.ChanneledProperties.Priorities;
+using OverBang.GameName.Cameras;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace RogueLike.Player
+namespace OverBang.GameName.Movement
 {
     public class PlayerMovement : EntityMovement
     {

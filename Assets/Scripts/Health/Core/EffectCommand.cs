@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Health.Core
+namespace OverBang.GameName.Health
 {
     public class EffectCommand
     {

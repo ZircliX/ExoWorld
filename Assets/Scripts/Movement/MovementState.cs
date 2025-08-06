@@ -1,4 +1,4 @@
-namespace RogueLike.Player
+namespace OverBang.GameName.Movement
 {
     public enum MovementState
     {

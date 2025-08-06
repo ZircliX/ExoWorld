@@ -1,12 +1,11 @@
-using Health.Network;
 using KBCore.Refs;
-using Network;
-using Network.Interfaces;
-using RogueLike.Player;
+using OverBang.GameName.Cameras;
+using OverBang.GameName.Movement;
+using OverBang.GameName.Network;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace DeadLink.Player
+namespace OverBang.GameName.Player
 {
     public class PlayerController : NetworkChildren
     {
@@ -37,12 +36,7 @@ namespace DeadLink.Player
             }
         }
 
-        public override void OnNetworkDespawn()
-        {
-            
-        }
-
-        public override void OnNetworkUpdate()
+        public override void OnUpdate()
         {
             if (playerNetwork.IsOwner)
             {

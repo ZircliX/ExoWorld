@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DeadLink.Gravity.Implementations
+namespace OverBang.GameName.Movement
 {
     [RequireComponent(typeof(BoxCollider)), AddComponentMenu("RogueLike/Gravity/Box")]
     public class BoxGravityZone : GravityZone

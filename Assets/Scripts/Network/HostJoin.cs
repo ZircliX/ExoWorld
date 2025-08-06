@@ -8,7 +8,7 @@ using Unity.Services.Relay;
 using Unity.Services.Relay.Models;
 using UnityEngine;
 
-namespace TemaLeMultiLupeni.MainMenu
+namespace OverBang.GameName.Network
 {
     public class HostJoin : MonoBehaviour
     {

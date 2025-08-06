@@ -1,4 +1,4 @@
-namespace Health.Core
+namespace OverBang.GameName.Health
 {
     public interface IEffectMetricResolver
     {

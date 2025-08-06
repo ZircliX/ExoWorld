@@ -1,7 +1,7 @@
 using KBCore.Refs;
 using UnityEngine;
 
-namespace DeadLink.Gravity.Implementations
+namespace OverBang.GameName.Movement
 {
     [RequireComponent(typeof(SphereCollider)), AddComponentMenu("RogueLike/Gravity/Sphere")]
     public class SphereGravityZone : GravityZone

@@ -1,12 +1,22 @@
-using Health.Network;
 using UnityEngine;
 
-namespace Network.Interfaces
+namespace OverBang.GameName.Network
 {
     public abstract class NetworkChildren : MonoBehaviour
     {
-        public abstract void OnNetworkSpawn(PlayerNetworkController playerNetwork);
-        public abstract void OnNetworkDespawn();
-        public abstract void OnNetworkUpdate();
+        public virtual void OnNetworkSpawn(PlayerNetworkController playerNetwork)
+        {
+            
+        }
+
+        public virtual void OnNetworkDespawn()
+        {
+            
+        }
+
+        public virtual void OnUpdate()
+        {
+            
+        }
     }
 }

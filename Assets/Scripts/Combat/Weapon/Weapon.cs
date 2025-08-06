@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Combat.Weapon
+namespace OverBang.GameName.Combat
 {
     public class Weapon : MonoBehaviour
     {

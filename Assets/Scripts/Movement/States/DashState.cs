@@ -1,11 +1,7 @@
-using System;
-using DeadLink.Cameras;
-using DeadLink.Cameras.Data;
-using DeadLink.Entities.Movement;
-using DeadLink.Player;
+using OverBang.GameName.Cameras;
 using UnityEngine;
 
-namespace RogueLike.Player.States
+namespace OverBang.GameName.Movement
 {
     [CreateAssetMenu(menuName = "RogueLike/Movement/Dash")]
     public class DashState : MovementStateBehavior

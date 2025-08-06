@@ -1,4 +1,4 @@
-namespace Network
+namespace OverBang.GameName.Network
 {
     public struct NetworkAuthority
     {

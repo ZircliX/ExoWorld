@@ -1,9 +1,7 @@
-using Network;
-using Network.Interfaces;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace Health.Network
+namespace OverBang.GameName.Network
 {
     public class PlayerNetworkController : NetworkBehaviour
     {
@@ -27,12 +25,12 @@ namespace Health.Network
                 networkChildren[i].OnNetworkDespawn();
             }
         }
-
+        
         private void Update()
         {
             for (int i = 0; i < networkChildren.Length; i++)
             {
-                networkChildren[i].OnNetworkUpdate();
+                networkChildren[i].OnUpdate();
             }
         }
         

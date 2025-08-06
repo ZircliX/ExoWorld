@@ -2,7 +2,7 @@ using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace DeadLink.Gravity.Implementations
+namespace OverBang.GameName.Movement
 {
     [AddComponentMenu("RogueLike/Gravity/Mesh")]
     public class MeshGravityZone : GravityZone

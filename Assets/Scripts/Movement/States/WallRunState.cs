@@ -1,10 +1,8 @@
-using DeadLink.Cameras;
-using DeadLink.Cameras.Data;
-using DeadLink.Entities.Movement;
+using OverBang.GameName.Cameras;
 using Unity.Cinemachine;
 using UnityEngine;
 
-namespace RogueLike.Player.States
+namespace OverBang.GameName.Movement
 {
     [CreateAssetMenu(menuName = "RogueLike/Movement/WallRun")]
     public class WallRunState : MovementStateBehavior

@@ -1,7 +1,6 @@
-using Health.Core;
 using UnityEngine;
 
-namespace Health.Players
+namespace OverBang.GameName.Health
 {
     public class HealthPlayerSample : MonoBehaviour
     {

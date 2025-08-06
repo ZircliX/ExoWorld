@@ -1,13 +1,13 @@
 using UnityEngine;
 
-namespace Interaction
+namespace OverBang.GameName.Interactions
 {
     public class Interactor : MonoBehaviour
     {
         [SerializeField] private Camera playerCamera;
         [SerializeField] private float maxDistance;
         
-        private Interactible currentInteractable;
+        private Interactable currentInteractable;
         
         private void Update()
         {
@@ -19,7 +19,7 @@ namespace Interaction
             {
                 Debug.Log(hit.collider.gameObject.name);
 
-                if (hit.collider.TryGetComponent(out Interactible interactible))
+                if (hit.collider.TryGetComponent(out Interactable interactible))
                 {
                     currentInteractable = interactible;
                     currentInteractable.BubbleActivation(true);

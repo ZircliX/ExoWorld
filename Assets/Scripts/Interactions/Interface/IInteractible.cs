@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace MultiGame.Interaction
+namespace OverBang.GameName.Interactions
 {
-    public interface IInteractible
+    public interface IInteractable
     {
         public void Interact();
     }

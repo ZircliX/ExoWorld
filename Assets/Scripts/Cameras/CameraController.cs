@@ -1,12 +1,11 @@
 using System.Collections;
-using DeadLink.Cameras.Data;
 using KBCore.Refs;
 using LTX.ChanneledProperties.Priorities;
 using LTX.Singletons;
 using Unity.Cinemachine;
 using UnityEngine;
 
-namespace DeadLink.Cameras
+namespace OverBang.GameName.Cameras
 {
     public class CameraController : SceneSingleton<CameraController>
     {

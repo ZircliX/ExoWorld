@@ -1,4 +1,4 @@
-namespace DeadLink.Cameras.Data
+namespace OverBang.GameName.Cameras
 {
     [System.Serializable]
     public struct CameraEffectComposite
