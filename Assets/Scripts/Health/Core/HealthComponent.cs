@@ -66,11 +66,11 @@ namespace Health.Core
                 return;
             }
 
-            EffectCommand command = GetEffectCommand(effectData.EffectType);
+            EffectCommand command = GetEffectCommand(effectData.EffectMetric);
 
             if (command.Equals(default))
             {
-                Debug.LogWarning($"No command found for effect type: {effectData.EffectType}");
+                Debug.LogWarning($"No command found for effect type: {effectData.EffectMetric}");
                 return;
             }
 
@@ -94,16 +94,16 @@ namespace Health.Core
             InvokeOnHealthChanged();
         }
         
-        protected virtual EffectCommand GetEffectCommand(EffectTypes effectType)
+        protected virtual EffectCommand GetEffectCommand(EffectMetric effectMetric)
         {
-            switch (effectType)
+            switch (effectMetric)
             {
-                case EffectTypes.Points:
+                case EffectMetric.Points:
                     return new EffectCommand(new PointsMetricResolver());
-                case EffectTypes.Percentage:
+                case EffectMetric.Percentage:
                     return new EffectCommand(new PercentageMetricResolver());
                 default:
-                    Debug.LogWarning($"Effect type {effectType} not implemented.");
+                    Debug.LogWarning($"Effect type {effectMetric} not implemented.");
                     return default;
             }
         }

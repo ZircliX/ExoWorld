@@ -16,7 +16,7 @@ namespace Health.Core
 
         public IEnumerator Execute(IEffectReceiver effectReceiver, EffectData effectData)
         {
-            float targetValue = metricResolver.ResolveAmount(effectReceiver, effectData);
+            float targetValue = metricResolver.Resolve(effectReceiver, effectData);
             
             if (effectData.Delay > 0)
             {
@@ -32,7 +32,6 @@ namespace Health.Core
             
             if (effectData.Steps > 0)
             {
-                // --- STEP-BASED LOGIC ---
                 float interval = effectData.Duration / effectData.Steps;
                 float amountPerStep = effectData.Amount / effectData.Steps;
 

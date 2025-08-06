@@ -8,10 +8,10 @@ namespace Health.Core
         public readonly float Duration;
         public readonly float Steps;
         
-        public EffectTypes EffectType => 
-            Amount != 0 ? EffectTypes.Points : 
-            PercentageAmount != 0 ? EffectTypes.Percentage : 
-            EffectTypes.None;
+        public EffectMetric EffectMetric => 
+            Amount != 0 ? EffectMetric.Points : 
+            PercentageAmount != 0 ? EffectMetric.Percentage : 
+            EffectMetric.None;
         
         private EffectData(float amount, float percentageAmount, float delay, float duration, float steps)
         {

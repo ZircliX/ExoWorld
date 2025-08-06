@@ -32,7 +32,7 @@ namespace TemaLeMultiLupeni.MainMenu
         {
             try
             {
-                Allocation allocation = await RelayService.Instance.CreateAllocationAsync(2);
+                Allocation allocation = await RelayService.Instance.CreateAllocationAsync(4);
                 
                 string joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
                 Debug.Log($"Join code: {joinCode}");
@@ -52,13 +52,18 @@ namespace TemaLeMultiLupeni.MainMenu
             {
                 Debug.Log(e);
             }
-            
+
+            CloseMainMenu();
+        }
+
+        private void CloseMainMenu()
+        {
             menuCanvas.DOFade(0, 0.25f).OnComplete(() =>
             {
                 menuCanvas.interactable = false;
             });
         }
-        
+
         public async void JoinRelay()
         {
             try
@@ -82,10 +87,7 @@ namespace TemaLeMultiLupeni.MainMenu
                 Debug.Log(e);
             }
             
-            menuCanvas.DOFade(0, 0.25f).OnComplete(() =>
-            {
-                menuCanvas.interactable = false;
-            });
+            CloseMainMenu();
         }
     }
 }

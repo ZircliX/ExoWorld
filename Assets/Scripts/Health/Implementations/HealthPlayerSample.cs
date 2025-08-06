@@ -15,6 +15,7 @@ namespace Health.Players
                                         .SetAmount(30)
                                         .SetDuration(3)
                                         .SetSteps(10)
+                                        .SetDelay(1)
                                         .Build();
                 
                 healthComponent.RegisterEffectCommand(effectData);

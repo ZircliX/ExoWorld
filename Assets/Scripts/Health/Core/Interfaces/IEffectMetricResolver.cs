@@ -2,6 +2,6 @@ namespace Health.Core
 {
     public interface IEffectMetricResolver
     {
-        float ResolveAmount(IEffectReceiver receiver, EffectData effectData);
+        float Resolve(IEffectReceiver receiver, EffectData effectData);
     }
 }

@@ -1,6 +1,6 @@
 namespace Health.Core
 {
-    public enum EffectTypes
+    public enum EffectMetric
     {
         None,
         Points,

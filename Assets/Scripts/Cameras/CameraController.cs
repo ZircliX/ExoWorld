@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace DeadLink.Cameras
 {
-    public class CameraController : MonoSingleton<CameraController>
+    public class CameraController : SceneSingleton<CameraController>
     {
         [Header("References")]
         [SerializeField, Self] private CinemachineCamera cam;
@@ -27,9 +27,9 @@ namespace DeadLink.Cameras
         
         private void OnValidate() => this.ValidateRefs();
 
-        protected override void Awake()
+        protected override void OnSceneSingletonAwake()
         {
-            base.Awake();
+            base.OnSceneSingletonAwake();
             
             CameraShakeProperty = new Priority<CameraShakeComposite>();
             CameraShakeProperty.AddOnValueChangeCallback(ApplyCameraShake, true);
