@@ -11,19 +11,20 @@ namespace OverBang.GameName.Movement
 
         [field: Header("References")]
         [field: SerializeField] public Camera Camera { get; private set; }
+        [field: SerializeField] public CameraController CameraController { get; private set; }
         
         #endregion
 
         protected override void Awake()
         {
             base.Awake();
-            CameraController.Instance.CameraEffectProperty.AddPriority(stateChannelKey, PriorityTags.High);
+            CameraController.CameraEffectProperty.AddPriority(stateChannelKey, PriorityTags.High);
         }
 
         protected override void FixedUpdate()
         {
             base.FixedUpdate();
-            CameraController.Instance.CameraEffectProperty.Write(stateChannelKey, movementStates[currentStateIndex].GetCameraEffects(this, Time.deltaTime));
+            CameraController.CameraEffectProperty.Write(stateChannelKey, movementStates[currentStateIndex].GetCameraEffects(this, Time.deltaTime));
         }
         
         #region Inputs

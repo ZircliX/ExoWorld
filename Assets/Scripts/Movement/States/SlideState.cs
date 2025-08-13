@@ -21,10 +21,7 @@ namespace OverBang.GameName.Movement
         [SerializeField] private AnimationCurve slopeCurve;
         [SerializeField] private float slopeModifier;
         [SerializeField, Range(0, 1)] private float minSlopeAngle;
-
-        [Header("Sliding")]
-        [SerializeField] private float maxSlideTime = 1.5f;
-
+        
         [Header("Height")]
         [SerializeField] private float crouchCapsuleHeight = 1f;
         [SerializeField] private  float crouchHeadHeight = 0f;

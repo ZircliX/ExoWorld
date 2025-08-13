@@ -703,6 +703,7 @@ MonoBehaviour:
   <CapsuleCollider>k__BackingField: {fileID: 2649105432247018214}
   <rb>k__BackingField: {fileID: 7362595536518079642}
   <Camera>k__BackingField: {fileID: 818597675296926653}
+  <CameraController>k__BackingField: {fileID: 3883945405582393277}
 --- !u!54 &7362595536518079642
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1141,7 +1142,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7771178899970783667}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63357a09b9214d69bc207c691f022c60, type: 3}
   m_Name: 

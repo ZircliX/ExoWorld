@@ -9,7 +9,7 @@ using Random = UnityEngine.Random;
 
 namespace OverBang.GameName.Cameras
 {
-    public class CameraController : SceneSingleton<CameraController>
+    public class CameraController : MonoBehaviour
     {
         [Header("References")]
         [SerializeField, Self] private CinemachineCamera cam;
@@ -28,9 +28,8 @@ namespace OverBang.GameName.Cameras
         
         private void OnValidate() => this.ValidateRefs();
 
-        protected override void OnSceneSingletonAwake()
+        private void Awake()
         {
-            base.OnSceneSingletonAwake();
             
             CameraShakeProperty = new Priority<CameraShakeComposite>();
             CameraShakeProperty.AddOnValueChangeCallback(ApplyCameraShake, true);

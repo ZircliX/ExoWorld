@@ -16,6 +16,7 @@ namespace OverBang.GameName.Player
         [field: SerializeField, Child] public PlayerCamera PlayerCamera { get; private set; }
         [field: SerializeField, Child] public Camera Camera { get; private set; }
 
+        public string Guid { get; private set; }
         public PlayerNetworkController PlayerNetwork { get; private set; }
         
         private void OnValidate()
@@ -38,8 +39,17 @@ namespace OverBang.GameName.Player
             }
             else
             {
+                Guid = System.Guid.NewGuid().ToString();
                 PlayerManager.Instance.RegisterPlayer(this);
                 CameraManager.Instance.SwitchToCamera(CameraID.PlayerView);
+            }
+        }
+
+        public override void OnNetworkDespawn()
+        {
+            if (PlayerNetwork.IsOwner)
+            {
+                PlayerManager.Instance.UnregisterPlayer(this);
             }
         }
 
