@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using KBCore.Refs;
 using LTX.ChanneledProperties.Priorities;
 using LTX.Singletons;
 using Unity.Cinemachine;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace OverBang.GameName.Cameras
 {

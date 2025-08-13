@@ -1,4 +1,8 @@
+using System;
 using DG.Tweening;
+using LTX.ChanneledProperties.Priorities;
+using OverBang.GameName.Cameras;
+using OverBang.GameName.Managers;
 using TMPro;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
@@ -14,7 +18,13 @@ namespace OverBang.GameName.Network
     {
         [SerializeField] private CanvasGroup menuCanvas;
         [SerializeField] private TMP_InputField inputField;
-        
+
+        private void Awake()
+        {
+            GameController.CursorLockModePriority.AddPriority(this, PriorityTags.High);
+            GameController.CursorVisibleStatePriority.AddPriority(this, PriorityTags.High);
+        }
+
         private async void Start()
         {
             await UnityServices.InitializeAsync();
@@ -56,14 +66,6 @@ namespace OverBang.GameName.Network
             CloseMainMenu();
         }
 
-        private void CloseMainMenu()
-        {
-            menuCanvas.DOFade(0, 0.25f).OnComplete(() =>
-            {
-                menuCanvas.interactable = false;
-            });
-        }
-
         public async void JoinRelay()
         {
             try
@@ -88,6 +90,17 @@ namespace OverBang.GameName.Network
             }
             
             CloseMainMenu();
+        }
+        
+        private void CloseMainMenu()
+        {
+            menuCanvas.DOFade(0, 0.25f).OnComplete(() =>
+            {
+                menuCanvas.interactable = false;
+            });
+            
+            GameController.CursorLockModePriority.Write(this, CursorLockMode.Locked);
+            GameController.CursorVisibleStatePriority.Write(this, false);
         }
     }
 }

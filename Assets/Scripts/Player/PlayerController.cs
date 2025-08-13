@@ -1,5 +1,7 @@
 using KBCore.Refs;
 using OverBang.GameName.Cameras;
+using OverBang.GameName.Managers;
+using OverBang.GameName.Metrics;
 using OverBang.GameName.Movement;
 using OverBang.GameName.Network;
 using UnityEngine;
@@ -14,7 +16,7 @@ namespace OverBang.GameName.Player
         [field: SerializeField, Child] public PlayerCamera PlayerCamera { get; private set; }
         [field: SerializeField, Child] public Camera Camera { get; private set; }
 
-        private PlayerNetworkController playerNetwork;
+        public PlayerNetworkController PlayerNetwork { get; private set; }
         
         private void OnValidate()
         {
@@ -23,7 +25,7 @@ namespace OverBang.GameName.Player
 
         public override void OnNetworkSpawn(PlayerNetworkController network)
         {
-            playerNetwork = network;
+            PlayerNetwork = network;
             
             if (!network.IsOwner)
             {
@@ -34,11 +36,16 @@ namespace OverBang.GameName.Player
                 Destroy(PlayerMovement.rb);
                 Destroy(PlayerMovement);
             }
+            else
+            {
+                PlayerManager.Instance.RegisterPlayer(this);
+                CameraManager.Instance.SwitchToCamera(CameraID.PlayerView);
+            }
         }
 
         public override void OnUpdate()
         {
-            if (playerNetwork.IsOwner)
+            if (PlayerNetwork.IsOwner)
             {
                 WriteState();
             }
@@ -59,18 +66,18 @@ namespace OverBang.GameName.Player
                 Rotation = rotation
             };
 
-            if (playerNetwork.IsServer)
+            if (PlayerNetwork.IsServer)
             {
-                playerNetwork.WritePlayerState(state);
+                PlayerNetwork.WritePlayerState(state);
             }
         }
 
         private void ReadState()
         {
-            Vector3 position = playerNetwork.PlayerState.Value.Position;
+            Vector3 position = PlayerNetwork.PlayerState.Value.Position;
             transform.position = position;
 
-            Quaternion rotation = playerNetwork.PlayerState.Value.Rotation;
+            Quaternion rotation = PlayerNetwork.PlayerState.Value.Rotation;
             transform.rotation = rotation;
         }
     }

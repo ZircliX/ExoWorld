@@ -1411,6 +1411,7 @@ GameObject:
   - component: {fileID: 2116268018863381272}
   - component: {fileID: 3883945405582393277}
   - component: {fileID: 4507630780164737054}
+  - component: {fileID: 6007342298875859232}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Player
@@ -1525,3 +1526,17 @@ MonoBehaviour:
   Offset: {x: 0, y: 0, z: 0}
   ApplyAfter: 1
   PreserveComposition: 0
+--- !u!114 &6007342298875859232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8831171802724599823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92642c3e72784bb997cb1d802449d5a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cam: {fileID: 7880227904453035219}
+  ID: {fileID: 11400000, guid: 0651c1f6b95f9974ab7cd342a657f61b, type: 2}
