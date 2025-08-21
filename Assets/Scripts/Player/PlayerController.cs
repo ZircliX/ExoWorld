@@ -27,30 +27,51 @@ namespace OverBang.GameName.Player
         public override void OnNetworkSpawn(PlayerNetworkController network)
         {
             PlayerNetwork = network;
-            
-            if (!network.IsOwner)
+
+            if (PlayerManager.HasInstance && PlayerManager.Instance.IsSpawned)
+            {
+                InitializePlayer();
+            }
+            else
+            {
+                Debug.Log("PlayerController waiting for PlayerManager to be ready...");
+                PlayerManager.OnInstanceCreated += InitializePlayer;
+            }
+        }
+
+        private void InitializePlayer()
+        {
+            if (!PlayerNetwork.IsOwner)
             {
                 Destroy(PlayerInput);
                 Destroy(Camera.gameObject);
                 Destroy(PlayerCamera.gameObject);
-                
-                Destroy(PlayerMovement.rb);
-                Destroy(PlayerMovement);
+
+                // Safer than destroying Rigidbody
+                PlayerMovement.rb.isKinematic = true;
+                PlayerMovement.enabled = false;
             }
             else
             {
-                Guid = System.Guid.NewGuid().ToString();
-                PlayerManager.Instance.RegisterPlayer(this);
+                // Use server-assigned GUID
+                Guid = PlayerNetwork.PlayerGuid.Value.ToString();
+
+                if (PlayerManager.HasInstance && PlayerManager.Instance.IsSpawned)
+                    PlayerManager.Instance.RegisterPlayer(this);
+
                 CameraManager.Instance.SwitchToCamera(CameraID.PlayerView);
             }
         }
 
         public override void OnNetworkDespawn()
         {
-            if (PlayerNetwork.IsOwner)
+            if (PlayerNetwork.IsOwner && PlayerManager.HasInstance)
             {
                 PlayerManager.Instance.UnregisterPlayer(this);
             }
+
+            // Always unsubscribe (covers both owners & non-owners)
+            PlayerManager.OnInstanceCreated -= InitializePlayer;
         }
 
         public override void OnUpdate()
@@ -76,7 +97,7 @@ namespace OverBang.GameName.Player
                 Rotation = rotation
             };
 
-            if (PlayerNetwork.IsServer)
+            if (PlayerNetwork.IsOwner)
             {
                 PlayerNetwork.WritePlayerState(state);
             }

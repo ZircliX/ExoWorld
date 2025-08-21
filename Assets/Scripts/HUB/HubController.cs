@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using OverBang.GameName.Managers;
-using OverBang.GameName.Player;
+using OverBang.GameName.Network.Static;
+using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -15,26 +16,89 @@ namespace OverBang.GameName.HUB
 
         private void OnEnable()
         {
-            PlayerManager.Instance.OnPlayerRegistered += OnPlayerRegisteredRpc;
-            PlayerManager.Instance.OnPlayerUnregistered += OnPlayerUnregisteredRpc;
+            PlayerManager.OnInstanceCreated += SubscribeToPlayerManagerEvents;
         }
         
         private void OnDisable()
         {
-            PlayerManager.Instance.OnPlayerRegistered -= OnPlayerRegisteredRpc;
-            PlayerManager.Instance.OnPlayerUnregistered -= OnPlayerUnregisteredRpc;
+            if (!PlayerManager.HasInstance) return;
+            
+            PlayerManager.Instance.OnPlayerRegistered -= OnPlayerRegistered;
+            PlayerManager.Instance.OnPlayerUnregistered -= OnPlayerUnregistered;
         }
         
-        public override void OnNetworkSpawn()
+        private void SubscribeToPlayerManagerEvents()
+        {
+            PlayerManager.Instance.OnPlayerRegistered += OnPlayerRegistered;
+            PlayerManager.Instance.OnPlayerUnregistered += OnPlayerUnregistered;
+            
+            PlayerManager.OnInstanceCreated -= SubscribeToPlayerManagerEvents;
+        }
+
+        private void Awake()
         {
             playerCards = new Dictionary<string, PlayerCard>(4);
-            
+        }
+
+        public override void OnNetworkSpawn()
+        {
+            if (PlayerManager.HasInstance && PlayerManager.Instance.IsSpawned)
+            {
+                InitializeHub();
+            }
+            else
+            {
+                // Manager not yet ready, subscribe and wait
+                PlayerManager.OnInstanceCreated += InitializeHub;
+            }
+        }
+
+        private void InitializeHub()
+        {
             if (IsClient)
             {
-                foreach (PlayerController player in PlayerManager.Instance.Players)
+                foreach (FixedString64Bytes player in PlayerManager.Instance.Players)
                 {
-                    OnPlayerRegisteredRpc(player.Guid);
+                    OnPlayerRegisteredRpc(player.ToString());
                 }
+                
+                PlayerManager.OnInstanceCreated -= InitializeHub;
+            }
+        }
+        
+        private void OnPlayerRegistered(string guid)
+        {
+            if (this.CanRunNetworkOperation())
+            {
+                OnPlayerRegisteredRpc(guid);
+            }
+            else
+            {
+                Debug.LogWarning($"[HubController] Cannot Register player {guid}. NetworkManager inactive.");
+            }
+        }
+        
+        [Rpc(SendTo.ClientsAndHost)]
+        private void OnPlayerRegisteredRpc(string guid)
+        {
+            if (playerCards.ContainsKey(guid)) return;
+            
+            PlayerCard card = Instantiate(playerCardPrefab, playerCardContainer);
+            playerCards.Add(guid, card);
+
+            card.SetPlayerName($"Player {playerCards.Count}");
+            SetPlayerReadyStatus(guid, false);
+        }
+
+        private void OnPlayerUnregistered(string guid)
+        {
+            if (this.CanRunNetworkOperation())
+            {
+                OnPlayerUnregisteredRpc(guid);
+            }
+            else
+            {
+                Debug.LogWarning($"[HubController] Cannot Unregister player {guid}. NetworkManager inactive.");
             }
         }
 
@@ -50,16 +114,6 @@ namespace OverBang.GameName.HUB
             {
                 Debug.LogWarning($"PlayerCard for {guid} not found in dictionary.");
             }
-        }
-
-        [Rpc(SendTo.ClientsAndHost)]
-        private void OnPlayerRegisteredRpc(string guid)
-        {
-            PlayerCard card = Instantiate(playerCardPrefab, playerCardContainer);
-            playerCards.Add(guid, card);
-
-            card.SetPlayerName($"Player {playerCards.Count}");
-            SetPlayerReadyStatus(guid, false);
         }
 
         private void SetPlayerReadyStatus(string guid, bool isReady)
