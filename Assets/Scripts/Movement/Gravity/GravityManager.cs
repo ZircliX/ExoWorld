@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using LTX.Singletons;
 
-namespace DeadLink.Gravity
+namespace OverBang.GameName.Movement
 {
     public class GravityManager : MonoSingleton<GravityManager>
     {

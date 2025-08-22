@@ -703,6 +703,7 @@ MonoBehaviour:
   <CapsuleCollider>k__BackingField: {fileID: 2649105432247018214}
   <rb>k__BackingField: {fileID: 7362595536518079642}
   <Camera>k__BackingField: {fileID: 818597675296926653}
+  <CameraController>k__BackingField: {fileID: 3883945405582393277}
 --- !u!54 &7362595536518079642
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -765,6 +766,7 @@ GameObject:
   - component: {fileID: 2643648427546800899}
   - component: {fileID: 8898322675338463948}
   - component: {fileID: 5946190847953547969}
+  - component: {fileID: 4351214165636157146}
   - component: {fileID: 8333489344872782253}
   - component: {fileID: -7106069965460917936}
   m_Layer: 0
@@ -1079,7 +1081,7 @@ MonoBehaviour:
   DeferredDespawnTick: 0
   Ownership: 1
   AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
+  SynchronizeTransform: 0
   ActiveSceneSynchronization: 0
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
@@ -1103,6 +1105,20 @@ MonoBehaviour:
   <PlayerMovement>k__BackingField: {fileID: 7673975130547769438}
   <PlayerCamera>k__BackingField: {fileID: 8357952404330784461}
   <Camera>k__BackingField: {fileID: 818597675296926653}
+--- !u!114 &4351214165636157146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7771178899970783667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efae1d6673f64d87905c22ca4a4e7d4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 6223802536343331573}
+  orientation: {fileID: 1853930067422575411}
 --- !u!114 &8333489344872782253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1116,10 +1132,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  serverAuth: 0
-  pc: {fileID: 5946190847953547969}
-  weapon: {fileID: 6223802536343331573}
-  orientation: {fileID: 8676647657924908099}
+  networkChildren:
+  - {fileID: 5946190847953547969}
+  - {fileID: 4351214165636157146}
 --- !u!114 &-7106069965460917936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1127,12 +1142,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7771178899970783667}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63357a09b9214d69bc207c691f022c60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  head: {fileID: 2065021886003205984}
   playerCamera: {fileID: 818597675296926653}
   maxDistance: 2
 --- !u!1 &7951095932090443510
@@ -1398,6 +1412,7 @@ GameObject:
   - component: {fileID: 2116268018863381272}
   - component: {fileID: 3883945405582393277}
   - component: {fileID: 4507630780164737054}
+  - component: {fileID: 6007342298875859232}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Player
@@ -1512,3 +1527,17 @@ MonoBehaviour:
   Offset: {x: 0, y: 0, z: 0}
   ApplyAfter: 1
   PreserveComposition: 0
+--- !u!114 &6007342298875859232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8831171802724599823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92642c3e72784bb997cb1d802449d5a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cam: {fileID: 7880227904453035219}
+  ID: {fileID: 11400000, guid: 0651c1f6b95f9974ab7cd342a657f61b, type: 2}

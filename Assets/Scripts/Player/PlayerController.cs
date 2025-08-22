@@ -1,33 +1,114 @@
 using KBCore.Refs;
-using RogueLike.Player;
+using OverBang.GameName.Cameras;
+using OverBang.GameName.Managers;
+using OverBang.GameName.Metrics;
+using OverBang.GameName.Movement;
+using OverBang.GameName.Network;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace DeadLink.Player
+namespace OverBang.GameName.Player
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : NetworkChildren
     {
         [field: SerializeField, Self] public PlayerInput PlayerInput { get; private set; }
         [field: SerializeField, Child] public PlayerMovement PlayerMovement { get; private set; }
         [field: SerializeField, Child] public PlayerCamera PlayerCamera { get; private set; }
         [field: SerializeField, Child] public Camera Camera { get; private set; }
 
+        public string Guid { get; private set; }
+        public PlayerNetworkController PlayerNetwork { get; private set; }
+        
         private void OnValidate()
         {
             this.ValidateRefs();
         }
 
-        public void InitializeNetworkSpawn(bool isOwner)
+        public override void OnNetworkSpawn(PlayerNetworkController network)
         {
-            if (!isOwner)
+            PlayerNetwork = network;
+
+            if (PlayerManager.HasInstance && PlayerManager.Instance.IsSpawned)
+            {
+                InitializePlayer();
+            }
+            else
+            {
+                Debug.Log("PlayerController waiting for PlayerManager to be ready...");
+                PlayerManager.OnInstanceCreated += InitializePlayer;
+            }
+        }
+
+        private void InitializePlayer()
+        {
+            if (!PlayerNetwork.IsOwner)
             {
                 Destroy(PlayerInput);
                 Destroy(Camera.gameObject);
                 Destroy(PlayerCamera.gameObject);
-                
-                Destroy(PlayerMovement.rb);
-                Destroy(PlayerMovement);
+
+                // Safer than destroying Rigidbody
+                PlayerMovement.rb.isKinematic = true;
+                PlayerMovement.enabled = false;
             }
+            else
+            {
+                // Use server-assigned GUID
+                Guid = PlayerNetwork.PlayerGuid.Value.ToString();
+
+                if (PlayerManager.HasInstance && PlayerManager.Instance.IsSpawned)
+                    PlayerManager.Instance.RegisterPlayer(this);
+
+                CameraManager.Instance.SwitchToCamera(CameraID.PlayerView);
+            }
+            
+            PlayerManager.OnInstanceCreated -= InitializePlayer;
+        }
+
+        public override void OnNetworkDespawn()
+        {
+            if (PlayerNetwork.IsOwner && PlayerManager.HasInstance)
+            {
+                PlayerManager.Instance.UnregisterPlayer(this);
+            }
+        }
+
+        public override void OnUpdate()
+        {
+            if (PlayerNetwork.IsOwner)
+            {
+                WriteState();
+            }
+            else
+            {
+                ReadState();
+            }
+        }
+        
+        private void WriteState()
+        {
+            Vector3 position = PlayerMovement.Position;
+            Quaternion rotation = PlayerMovement.rb.rotation;
+                
+            PlayerNetworkState state = new PlayerNetworkState()
+            {
+                Position = position,
+                Rotation = rotation
+            };
+
+            if (PlayerNetwork.IsOwner)
+            {
+                PlayerNetwork.WritePlayerState(state);
+            }
+        }
+
+        private void ReadState()
+        {
+            Vector3 position = PlayerNetwork.PlayerState.Value.Position;
+            transform.position = position;
+
+            Quaternion rotation = PlayerNetwork.PlayerState.Value.Rotation;
+            transform.rotation = rotation;
         }
     }
 }

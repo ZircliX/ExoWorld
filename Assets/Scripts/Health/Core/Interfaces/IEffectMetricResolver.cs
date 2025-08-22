@@ -1,7 +1,7 @@
-namespace Health.Core
+namespace OverBang.GameName.Health
 {
     public interface IEffectMetricResolver
     {
-        float ResolveAmount(IEffectReceiver receiver, EffectData effectData);
+        float Resolve(IEffectReceiver receiver, EffectData effectData);
     }
 }

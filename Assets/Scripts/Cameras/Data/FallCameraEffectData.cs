@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DeadLink.Cameras.Data
+namespace OverBang.GameName.Cameras
 {
     [CreateAssetMenu(menuName = "RogueLike/Camera/FallCameraEffectData")]
     public class FallCameraEffectData : CameraEffectData

@@ -1,8 +1,8 @@
-using DeadLink.Entities.Movement;
+
 using Unity.Cinemachine;
 using UnityEngine;
 
-namespace RogueLike.Player.States
+namespace OverBang.GameName.Movement
 {
     public abstract class MoveState : MovementStateBehavior
     {

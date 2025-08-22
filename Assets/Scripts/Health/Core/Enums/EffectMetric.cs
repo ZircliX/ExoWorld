@@ -1,6 +1,6 @@
-namespace Health.Core
+namespace OverBang.GameName.Health
 {
-    public enum EffectTypes
+    public enum EffectMetric
     {
         None,
         Points,

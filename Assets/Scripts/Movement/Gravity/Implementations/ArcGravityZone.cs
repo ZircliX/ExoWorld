@@ -1,7 +1,7 @@
 using KBCore.Refs;
 using UnityEngine;
 
-namespace DeadLink.Gravity.Implementations
+namespace OverBang.GameName.Movement
 {
     [RequireComponent(typeof(BoxCollider)), AddComponentMenu("RogueLike/Gravity/Arc")]
     public class ArcGravityZone : GravityZone

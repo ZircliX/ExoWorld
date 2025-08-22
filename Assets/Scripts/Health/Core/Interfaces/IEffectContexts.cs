@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Health.Core
+namespace OverBang.GameName.Health
 {
     public interface IEffectReceiver
     {

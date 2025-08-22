@@ -1,7 +1,6 @@
-using Health.Core;
 using UnityEngine;
 
-namespace Health.Players
+namespace OverBang.GameName.Health
 {
     public class HealthPlayerSample : MonoBehaviour
     {
@@ -15,6 +14,7 @@ namespace Health.Players
                                         .SetAmount(30)
                                         .SetDuration(3)
                                         .SetSteps(10)
+                                        .SetDelay(1)
                                         .Build();
                 
                 healthComponent.RegisterEffectCommand(effectData);

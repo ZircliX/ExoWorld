@@ -1,4 +1,6 @@
 using DG.Tweening;
+using LTX.ChanneledProperties.Priorities;
+using OverBang.GameName.Managers;
 using TMPro;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
@@ -8,13 +10,19 @@ using Unity.Services.Relay;
 using Unity.Services.Relay.Models;
 using UnityEngine;
 
-namespace TemaLeMultiLupeni.MainMenu
+namespace OverBang.GameName.Network
 {
     public class HostJoin : MonoBehaviour
     {
         [SerializeField] private CanvasGroup menuCanvas;
         [SerializeField] private TMP_InputField inputField;
-        
+
+        private void Awake()
+        {
+            GameController.CursorLockModePriority.AddPriority(this, PriorityTags.High);
+            GameController.CursorVisibleStatePriority.AddPriority(this, PriorityTags.High);
+        }
+
         private async void Start()
         {
             await UnityServices.InitializeAsync();
@@ -32,7 +40,7 @@ namespace TemaLeMultiLupeni.MainMenu
         {
             try
             {
-                Allocation allocation = await RelayService.Instance.CreateAllocationAsync(2);
+                Allocation allocation = await RelayService.Instance.CreateAllocationAsync(4);
                 
                 string joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
                 Debug.Log($"Join code: {joinCode}");
@@ -52,13 +60,10 @@ namespace TemaLeMultiLupeni.MainMenu
             {
                 Debug.Log(e);
             }
-            
-            menuCanvas.DOFade(0, 0.25f).OnComplete(() =>
-            {
-                menuCanvas.interactable = false;
-            });
+
+            CloseMainMenu();
         }
-        
+
         public async void JoinRelay()
         {
             try
@@ -82,10 +87,18 @@ namespace TemaLeMultiLupeni.MainMenu
                 Debug.Log(e);
             }
             
+            CloseMainMenu();
+        }
+        
+        private void CloseMainMenu()
+        {
             menuCanvas.DOFade(0, 0.25f).OnComplete(() =>
             {
                 menuCanvas.interactable = false;
             });
+            
+            GameController.CursorLockModePriority.Write(this, CursorLockMode.Locked);
+            GameController.CursorVisibleStatePriority.Write(this, false);
         }
     }
 }

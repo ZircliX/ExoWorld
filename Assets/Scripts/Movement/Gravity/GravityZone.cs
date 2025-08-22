@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
 using KBCore.Refs;
 using UnityEngine;
 
-namespace DeadLink.Gravity
+namespace OverBang.GameName.Movement
 {
     [RequireComponent(typeof(Collider))]
     public abstract class GravityZone : MonoBehaviour

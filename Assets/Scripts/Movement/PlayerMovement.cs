@@ -1,10 +1,9 @@
-using DeadLink.Cameras;
-using DeadLink.Entities.Movement;
 using LTX.ChanneledProperties.Priorities;
+using OverBang.GameName.Cameras;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace RogueLike.Player
+namespace OverBang.GameName.Movement
 {
     public class PlayerMovement : EntityMovement
     {
@@ -12,19 +11,20 @@ namespace RogueLike.Player
 
         [field: Header("References")]
         [field: SerializeField] public Camera Camera { get; private set; }
+        [field: SerializeField] public CameraController CameraController { get; private set; }
         
         #endregion
 
         protected override void Awake()
         {
             base.Awake();
-            CameraController.Instance.CameraEffectProperty.AddPriority(stateChannelKey, PriorityTags.High);
+            CameraController.CameraEffectProperty.AddPriority(stateChannelKey, PriorityTags.High);
         }
 
         protected override void FixedUpdate()
         {
             base.FixedUpdate();
-            CameraController.Instance.CameraEffectProperty.Write(stateChannelKey, movementStates[currentStateIndex].GetCameraEffects(this, Time.deltaTime));
+            CameraController.CameraEffectProperty.Write(stateChannelKey, movementStates[currentStateIndex].GetCameraEffects(this, Time.deltaTime));
         }
         
         #region Inputs

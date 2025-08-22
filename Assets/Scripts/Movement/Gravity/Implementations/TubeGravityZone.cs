@@ -1,7 +1,7 @@
 using KBCore.Refs;
 using UnityEngine;
 
-namespace DeadLink.Gravity.Implementations
+namespace OverBang.GameName.Movement
 {
     [RequireComponent(typeof(MeshCollider)), AddComponentMenu("RogueLike/Gravity/Tube")]
     public class TubeGravityZone : GravityZone

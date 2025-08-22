@@ -1,9 +1,7 @@
-using DeadLink.Cameras;
-using DeadLink.Cameras.Data;
-using DeadLink.Entities.Movement;
+using OverBang.GameName.Cameras;
 using UnityEngine;
 
-namespace RogueLike.Player
+namespace OverBang.GameName.Movement
 {
     public abstract class MovementStateBehavior : ScriptableObject
     {

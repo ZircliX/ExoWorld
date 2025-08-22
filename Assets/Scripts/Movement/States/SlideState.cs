@@ -1,9 +1,7 @@
-using DeadLink.Cameras;
-using DeadLink.Cameras.Data;
-using DeadLink.Entities.Movement;
+using OverBang.GameName.Cameras;
 using UnityEngine;
 
-namespace RogueLike.Player.States
+namespace OverBang.GameName.Movement
 {
     [CreateAssetMenu(menuName = "RogueLike/Movement/Slide")]
     public class SlideState : MovementStateBehavior
@@ -23,10 +21,7 @@ namespace RogueLike.Player.States
         [SerializeField] private AnimationCurve slopeCurve;
         [SerializeField] private float slopeModifier;
         [SerializeField, Range(0, 1)] private float minSlopeAngle;
-
-        [Header("Sliding")]
-        [SerializeField] private float maxSlideTime = 1.5f;
-
+        
         [Header("Height")]
         [SerializeField] private float crouchCapsuleHeight = 1f;
         [SerializeField] private  float crouchHeadHeight = 0f;

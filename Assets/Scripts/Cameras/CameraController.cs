@@ -1,14 +1,15 @@
+using System;
 using System.Collections;
-using DeadLink.Cameras.Data;
 using KBCore.Refs;
 using LTX.ChanneledProperties.Priorities;
 using LTX.Singletons;
 using Unity.Cinemachine;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-namespace DeadLink.Cameras
+namespace OverBang.GameName.Cameras
 {
-    public class CameraController : MonoSingleton<CameraController>
+    public class CameraController : MonoBehaviour
     {
         [Header("References")]
         [SerializeField, Self] private CinemachineCamera cam;
@@ -27,9 +28,8 @@ namespace DeadLink.Cameras
         
         private void OnValidate() => this.ValidateRefs();
 
-        protected override void Awake()
+        private void Awake()
         {
-            base.Awake();
             
             CameraShakeProperty = new Priority<CameraShakeComposite>();
             CameraShakeProperty.AddOnValueChangeCallback(ApplyCameraShake, true);
