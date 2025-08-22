@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using LTX.Singletons;
 using OverBang.GameName.Network.Static;
 using OverBang.GameName.Player;
 using Unity.Collections;
@@ -78,6 +76,7 @@ namespace OverBang.GameName.Managers
         [Rpc(SendTo.Server)]
         private void RegisterPlayerRpc(string playerGuid)
         {
+            Debug.Log($"[Server] Registering player {playerGuid}.");
             // Only runs on the server
             RegisterPlayerInternal(playerGuid);
         }

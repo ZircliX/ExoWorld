@@ -61,6 +61,8 @@ namespace OverBang.GameName.Player
 
                 CameraManager.Instance.SwitchToCamera(CameraID.PlayerView);
             }
+            
+            PlayerManager.OnInstanceCreated -= InitializePlayer;
         }
 
         public override void OnNetworkDespawn()
@@ -69,9 +71,6 @@ namespace OverBang.GameName.Player
             {
                 PlayerManager.Instance.UnregisterPlayer(this);
             }
-
-            // Always unsubscribe (covers both owners & non-owners)
-            PlayerManager.OnInstanceCreated -= InitializePlayer;
         }
 
         public override void OnUpdate()

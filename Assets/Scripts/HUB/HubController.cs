@@ -62,8 +62,9 @@ namespace OverBang.GameName.HUB
                     OnPlayerRegisteredRpc(player.ToString());
                 }
                 
-                PlayerManager.OnInstanceCreated -= InitializeHub;
             }
+            
+            PlayerManager.OnInstanceCreated -= InitializeHub;
         }
         
         private void OnPlayerRegistered(string guid)

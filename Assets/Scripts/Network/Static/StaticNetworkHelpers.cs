@@ -6,7 +6,8 @@ namespace OverBang.GameName.Network.Static
     {
         public static bool CanRunNetworkOperation(this NetworkBehaviour behavior)
         {
-            return (!behavior.IsSpawned || behavior.NetworkManager == null || !behavior.NetworkManager.IsListening);
+            //Debug.LogError($"{behavior.IsSpawned}, {behavior.NetworkManager != null}, {behavior.NetworkManager.IsListening}");
+            return behavior.IsSpawned || behavior.NetworkManager != null || behavior.NetworkManager.IsListening;
         }
     }
 }
