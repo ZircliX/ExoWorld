@@ -25,12 +25,14 @@ namespace OverBang.GameName.HUB
             
             PlayerManager.Instance.OnPlayerRegistered -= OnPlayerRegistered;
             PlayerManager.Instance.OnPlayerUnregistered -= OnPlayerUnregistered;
+            PlayerManager.Instance.OnPlayerReadyStatusChanged -= OnPlayerReadyStatusChanged;
         }
         
         private void SubscribeToPlayerManagerEvents()
         {
             PlayerManager.Instance.OnPlayerRegistered += OnPlayerRegistered;
             PlayerManager.Instance.OnPlayerUnregistered += OnPlayerUnregistered;
+            PlayerManager.Instance.OnPlayerReadyStatusChanged += OnPlayerReadyStatusChanged;
             
             PlayerManager.OnInstanceCreated -= SubscribeToPlayerManagerEvents;
         }
@@ -75,7 +77,7 @@ namespace OverBang.GameName.HUB
             }
             else
             {
-                Debug.LogWarning($"[HubController] Cannot Register player {guid}. NetworkManager inactive.");
+                Debug.LogWarning($"[HubController] Cannot Register player {guid}.");
             }
         }
         
@@ -88,7 +90,7 @@ namespace OverBang.GameName.HUB
             playerCards.Add(guid, card);
 
             card.SetPlayerName($"Player {playerCards.Count}");
-            SetPlayerReadyStatus(guid, false);
+            SetPlayerReadyStatusRpc(guid, false);
         }
 
         private void OnPlayerUnregistered(string guid)
@@ -99,7 +101,7 @@ namespace OverBang.GameName.HUB
             }
             else
             {
-                Debug.LogWarning($"[HubController] Cannot Unregister player {guid}. NetworkManager inactive.");
+                Debug.LogWarning($"[HubController] Cannot Unregister player {guid}.");
             }
         }
 
@@ -117,11 +119,24 @@ namespace OverBang.GameName.HUB
             }
         }
 
-        private void SetPlayerReadyStatus(string guid, bool isReady)
+        private void OnPlayerReadyStatusChanged(string guid, bool readyStatus)
+        {
+            if (this.CanRunNetworkOperation())
+            {
+                SetPlayerReadyStatusRpc(guid, readyStatus);
+            }
+            else
+            {
+                Debug.LogWarning($"[HubController] Cannot change player's ready status {guid}.");
+            }
+        }
+        
+        [Rpc(SendTo.ClientsAndHost)]
+        private void SetPlayerReadyStatusRpc(string guid, bool readyStatus)
         {
             if (playerCards.TryGetValue(guid, out PlayerCard card))
             {
-                card.SetPlayerStatus(isReady ? "Ready" : "Not Ready");
+                card.SetPlayerStatus(readyStatus ? "Ready" : "Not Ready");
             }
             else
             {

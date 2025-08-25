@@ -14,6 +14,7 @@ namespace OverBang.GameName.Managers
         
         public event Action<string> OnPlayerRegistered;
         public event Action<string> OnPlayerUnregistered;
+        public event Action<string, bool> OnPlayerReadyStatusChanged;
 
         public static event Action OnInstanceCreated;
         
@@ -133,6 +134,30 @@ namespace OverBang.GameName.Managers
 
             Players.Remove(guid);
             OnPlayerUnregistered?.Invoke(playerGuid);
+        }
+
+        public void ChangePlayerReadyStatus(PlayerController playerController)
+        {
+            if (IsSpawned)
+            {
+                ChangePlayerReadyStatus(playerController.Guid, playerController.PlayerNetwork.IsReady.Value);
+            }
+            else
+            {
+                Debug.LogError($"Player Manager is not spawned. Cannot unregister player {playerController.Guid}.");
+            }
+        }
+
+        public void ChangePlayerReadyStatus(string playerGuid, bool readyStatus)
+        {
+            if (IsSpawned)
+            {
+                OnPlayerReadyStatusChanged?.Invoke(playerGuid, readyStatus);
+            }
+            else
+            {
+                Debug.LogError($"Player Manager is not spawned. Cannot change player's ready status {playerGuid}.");
+            }
         }
     }
 }

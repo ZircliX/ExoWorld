@@ -78,6 +78,7 @@ namespace OverBang.GameName.Player
             if (PlayerNetwork.IsOwner)
             {
                 WriteState();
+                CheckForReadyStatusChanged();
             }
             else
             {
@@ -90,7 +91,7 @@ namespace OverBang.GameName.Player
             Vector3 position = PlayerMovement.Position;
             Quaternion rotation = PlayerMovement.rb.rotation;
                 
-            PlayerNetworkState state = new PlayerNetworkState()
+            PlayerNetworkTransform playerTransform = new PlayerNetworkTransform()
             {
                 Position = position,
                 Rotation = rotation
@@ -98,7 +99,7 @@ namespace OverBang.GameName.Player
 
             if (PlayerNetwork.IsOwner)
             {
-                PlayerNetwork.WritePlayerState(state);
+                PlayerNetwork.WritePlayerReadyStatus(playerTransform);
             }
         }
 
@@ -109,6 +110,14 @@ namespace OverBang.GameName.Player
 
             Quaternion rotation = PlayerNetwork.PlayerState.Value.Rotation;
             transform.rotation = rotation;
+        }
+
+        private void CheckForReadyStatusChanged()
+        {
+            if (Keyboard.current.spaceKey.wasPressedThisFrame)
+            {
+                PlayerNetwork.WritePlayerReadyStatus(!PlayerNetwork.IsReady.Value);
+            }
         }
     }
 }

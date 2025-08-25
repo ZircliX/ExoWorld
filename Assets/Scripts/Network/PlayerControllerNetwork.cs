@@ -1,3 +1,4 @@
+using OverBang.GameName.Managers;
 using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
@@ -8,11 +9,14 @@ namespace OverBang.GameName.Network
     {
         [SerializeReference] private NetworkChildren[] networkChildren;
         
-        public NetworkVariable<PlayerNetworkState> PlayerState { get; private set; } = 
-            new NetworkVariable<PlayerNetworkState>(writePerm: NetworkVariableWritePermission.Owner);
+        public NetworkVariable<PlayerNetworkTransform> PlayerState { get; private set; } = 
+            new NetworkVariable<PlayerNetworkTransform>(writePerm: NetworkVariableWritePermission.Owner);
         
         public NetworkVariable<FixedString64Bytes> PlayerGuid { get; private set; } = 
             new NetworkVariable<FixedString64Bytes>(writePerm: NetworkVariableWritePermission.Server);
+
+        public NetworkVariable<bool> IsReady { get; private set; } =
+            new NetworkVariable<bool>(writePerm: NetworkVariableWritePermission.Owner);
         
         public override void OnNetworkSpawn()
         {
@@ -45,9 +49,17 @@ namespace OverBang.GameName.Network
             }
         }
         
-        public void WritePlayerState(PlayerNetworkState state)
+        // --- Public Methods ---
+        
+        public void WritePlayerReadyStatus(PlayerNetworkTransform playerTransform)
         {
-            PlayerState.Value = state;
+            PlayerState.Value = playerTransform;
+        }
+
+        public void WritePlayerReadyStatus(bool readyStatus)
+        {
+            IsReady.Value = readyStatus;
+            PlayerManager.Instance.ChangePlayerReadyStatus(PlayerGuid.Value.ToString(), readyStatus);
         }
     }
 }
