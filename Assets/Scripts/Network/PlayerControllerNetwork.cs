@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace OverBang.GameName.Network
 {
-    [DefaultExecutionOrder(10)]
     public class PlayerNetworkController : NetworkBehaviour
     {
         [SerializeReference] private NetworkChildren[] networkChildren;

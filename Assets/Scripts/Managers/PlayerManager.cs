@@ -7,7 +7,6 @@ using UnityEngine;
 
 namespace OverBang.GameName.Managers
 {
-    [DefaultExecutionOrder(-10)]
     public class PlayerManager : NetworkBehaviour
     {
         public NetworkList<FixedString64Bytes> Players { get; private set; }
