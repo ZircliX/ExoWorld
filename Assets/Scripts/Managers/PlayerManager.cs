@@ -1,4 +1,5 @@
 using System;
+using OverBang.GameName.Network;
 using OverBang.GameName.Network.Static;
 using OverBang.GameName.Player;
 using Unity.Collections;
@@ -9,12 +10,12 @@ namespace OverBang.GameName.Managers
 {
     public class PlayerManager : NetworkBehaviour
     {
-        public NetworkList<FixedString64Bytes> Players { get; private set; }
-            = new NetworkList<FixedString64Bytes>(writePerm: NetworkVariableWritePermission.Server);
+        public NetworkList<byte> Players { get; private set; }
+            = new NetworkList<byte>(writePerm: NetworkVariableWritePermission.Server);
         
-        public event Action<string> OnPlayerRegistered;
-        public event Action<string> OnPlayerUnregistered;
-        public event Action<string, bool> OnPlayerReadyStatusChanged;
+        public event Action<byte> OnPlayerRegistered;
+        public event Action<byte> OnPlayerUnregistered;
+        public event Action<byte, bool> OnPlayerReadyStatusChanged;
 
         public static event Action OnInstanceCreated;
         
@@ -45,118 +46,115 @@ namespace OverBang.GameName.Managers
             OnInstanceCreated?.Invoke();
         }
 
-        public void RegisterPlayer(PlayerController playerController)
+        public void RegisterPlayer(PlayerNetworkController playerController)
         {
             if (IsSpawned)
             {
-                RegisterPlayer(playerController.Guid);
+                RegisterPlayer(playerController.PlayerID.Value);
+                playerController.WritePlayerID((byte) Players.Count);
             }
             else
             {
-                Debug.LogError($"Player Manager is not spawned. Cannot register player {playerController.Guid}.");
+                Debug.LogError($"Player Manager is not spawned. Cannot register player {playerController.PlayerID}.");
             }
         }
         
-        public void RegisterPlayer(string playerGuid)
+        public void RegisterPlayer(byte playerID)
         {
             if (!this.CanRunNetworkOperation()) return;
             
             if (IsServer)
             {
                 // Direct server-side cleanup
-                RegisterPlayerInternal(playerGuid);
+                RegisterPlayerInternal(playerID);
             }
             else
             {
                 // Ask the server to do it
-                RegisterPlayerRpc(playerGuid);
+                RegisterPlayerRpc(playerID);
             }
         }
         
-        [Rpc(SendTo.Server)]
-        private void RegisterPlayerRpc(string playerGuid)
+        private void RegisterPlayerInternal(byte playerID)
         {
-            Debug.Log($"[Server] Registering player {playerGuid}.");
-            // Only runs on the server
-            RegisterPlayerInternal(playerGuid);
+            if (Players.Contains(playerID)) return;
+
+            Players.Add(playerID);
+            OnPlayerRegistered?.Invoke(playerID);
         }
-
-        private void RegisterPlayerInternal(string playerGuid)
+        
+        [Rpc(SendTo.Server)]
+        private void RegisterPlayerRpc(byte playerID)
         {
-            FixedString64Bytes fixedGuid = new FixedString64Bytes(playerGuid);
-            
-            if (Players.Contains(fixedGuid)) return;
-
-            Players.Add(fixedGuid);
-            OnPlayerRegistered?.Invoke(playerGuid);
+            Debug.Log($"[Server] Registering player {playerID}.");
+            // Only runs on the server
+            RegisterPlayerInternal(playerID);
         }
         
         public void UnregisterPlayer(PlayerController playerController)
         {
             if (IsSpawned)
             {
-                UnregisterPlayer(playerController.Guid);
+                UnregisterPlayer(playerController.PlayerNetwork.PlayerID.Value);
             }
             else
             {
-                Debug.LogError($"Player Manager is not spawned. Cannot unregister player {playerController.Guid}.");
+                Debug.LogError($"Player Manager is not spawned. Cannot unregister player {playerController.PlayerNetwork.PlayerID}.");
             }
         }
         
-        public void UnregisterPlayer(string playerGuid)
+        public void UnregisterPlayer(byte playerID)
         {
             if (!this.CanRunNetworkOperation()) return;
             
             if (IsServer)
             {
                 // Direct server-side cleanup
-                UnregisterPlayerInternal(playerGuid);
+                UnregisterPlayerInternal(playerID);
             }
             else
             {
                 // Ask the server to do it
-                UnregisterPlayerRpc(playerGuid);
+                UnregisterPlayerRpc(playerID);
             }
         }
         
-        [Rpc(SendTo.Server)]
-        private void UnregisterPlayerRpc(string playerGuid)
+        private void UnregisterPlayerInternal(byte playerID)
         {
-            // Only runs on the server
-            UnregisterPlayerInternal(playerGuid);
+            if (!Players.Contains(playerID)) return;
+
+            Players.Remove(playerID);
+            OnPlayerUnregistered?.Invoke(playerID);
         }
         
-        private void UnregisterPlayerInternal(string playerGuid)
+        [Rpc(SendTo.Server)]
+        private void UnregisterPlayerRpc(byte playerID)
         {
-            FixedString64Bytes guid = new FixedString64Bytes(playerGuid);
-
-            if (!Players.Contains(guid)) return;
-
-            Players.Remove(guid);
-            OnPlayerUnregistered?.Invoke(playerGuid);
+            // Only runs on the server
+            UnregisterPlayerInternal(playerID);
         }
-
+        
         public void ChangePlayerReadyStatus(PlayerController playerController)
         {
             if (IsSpawned)
             {
-                ChangePlayerReadyStatus(playerController.Guid, playerController.PlayerNetwork.IsReady.Value);
+                ChangePlayerReadyStatus(playerController.PlayerNetwork.PlayerID.Value, playerController.PlayerNetwork.IsReady.Value);
             }
             else
             {
-                Debug.LogError($"Player Manager is not spawned. Cannot unregister player {playerController.Guid}.");
+                Debug.LogError($"Player Manager is not spawned. Cannot unregister player {playerController.PlayerNetwork.PlayerID}.");
             }
         }
 
-        public void ChangePlayerReadyStatus(string playerGuid, bool readyStatus)
+        public void ChangePlayerReadyStatus(byte playerID, bool readyStatus)
         {
             if (IsSpawned)
             {
-                OnPlayerReadyStatusChanged?.Invoke(playerGuid, readyStatus);
+                OnPlayerReadyStatusChanged?.Invoke(playerID, readyStatus);
             }
             else
             {
-                Debug.LogError($"Player Manager is not spawned. Cannot change player's ready status {playerGuid}.");
+                Debug.LogError($"Player Manager is not spawned. Cannot change player's ready status {playerID}.");
             }
         }
     }

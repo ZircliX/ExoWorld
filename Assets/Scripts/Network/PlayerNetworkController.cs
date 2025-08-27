@@ -1,5 +1,4 @@
 using OverBang.GameName.Managers;
-using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -12,8 +11,8 @@ namespace OverBang.GameName.Network
         public NetworkVariable<PlayerNetworkTransform> PlayerState { get; private set; } = 
             new NetworkVariable<PlayerNetworkTransform>(writePerm: NetworkVariableWritePermission.Owner);
         
-        public NetworkVariable<FixedString64Bytes> PlayerGuid { get; private set; } = 
-            new NetworkVariable<FixedString64Bytes>(writePerm: NetworkVariableWritePermission.Server);
+        public NetworkVariable<byte> PlayerID { get; private set; } = 
+            new NetworkVariable<byte>(writePerm: NetworkVariableWritePermission.Server);
 
         public NetworkVariable<bool> IsReady { get; private set; } =
             new NetworkVariable<bool>(writePerm: NetworkVariableWritePermission.Owner);
@@ -23,13 +22,23 @@ namespace OverBang.GameName.Network
             // Server assigns a GUID only once at spawn
             if (IsServer)
             {
-                PlayerGuid.Value = new FixedString64Bytes(System.Guid.NewGuid().ToString());
-                Debug.Log($"[Server] Assigned GUID {PlayerGuid.Value} to player {OwnerClientId}");
+                PlayerID.Value = 0x0000;
+                Debug.Log($"[Server] Assigned GUID {PlayerID.Value} to player {OwnerClientId}");
             }
             
             for (int i = 0; i < networkChildren.Length; i++)
             {
                 networkChildren[i].OnNetworkSpawn(this);
+            }
+            
+            if (PlayerManager.HasInstance && PlayerManager.Instance.IsSpawned)
+            {
+                RegisterPlayer();
+            }
+            else
+            {
+                Debug.Log("PlayerNetworkController waiting for PlayerManager to be ready...");
+                PlayerManager.OnInstanceCreated += RegisterPlayer;
             }
         }
         
@@ -49,17 +58,29 @@ namespace OverBang.GameName.Network
             }
         }
         
+        // --- Private Methods ---
+        
+        private void RegisterPlayer()
+        {
+            PlayerManager.Instance.RegisterPlayer(this);
+        }
+        
         // --- Public Methods ---
         
-        public void WritePlayerReadyStatus(PlayerNetworkTransform playerTransform)
+        public void WritePlayerNetworkTransform(PlayerNetworkTransform playerTransform)
         {
             PlayerState.Value = playerTransform;
         }
 
+        public void WritePlayerID(byte playerID)
+        {
+            PlayerID.Value = playerID;
+        }
+        
         public void WritePlayerReadyStatus(bool readyStatus)
         {
             IsReady.Value = readyStatus;
-            PlayerManager.Instance.ChangePlayerReadyStatus(PlayerGuid.Value.ToString(), readyStatus);
+            PlayerManager.Instance.ChangePlayerReadyStatus(PlayerID.Value, readyStatus);
         }
     }
 }
