@@ -55,6 +55,16 @@ namespace OverBang.GameName.Player
                 CameraManager.Instance.SwitchToCamera(CameraID.PlayerView);
             }
             
+            if (PlayerManager.HasInstance && PlayerManager.Instance.IsSpawned)
+            {
+                RegisterPlayer();
+            }
+            else
+            {
+                Debug.Log("PlayerNetworkController waiting for PlayerManager to be ready...");
+                PlayerManager.OnInstanceCreated += RegisterPlayer;
+            }
+            
             PlayerManager.OnInstanceCreated -= InitializePlayer;
         }
 
@@ -94,6 +104,11 @@ namespace OverBang.GameName.Player
             {
                 PlayerNetwork.WritePlayerNetworkTransform(playerTransform);
             }
+        }
+        
+        private void RegisterPlayer()
+        {
+            PlayerManager.Instance.RegisterPlayer(this);
         }
 
         private void ReadState()

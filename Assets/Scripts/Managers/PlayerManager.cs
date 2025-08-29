@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using OverBang.GameName.Network;
 using OverBang.GameName.Network.Static;
 using OverBang.GameName.Player;
@@ -10,6 +11,7 @@ namespace OverBang.GameName.Managers
 {
     public class PlayerManager : NetworkBehaviour
     {
+        public Dictionary<byte, PlayerController> PlayerControllers { get; private set; }
         public NetworkList<byte> Players { get; private set; }
             = new NetworkList<byte>(writePerm: NetworkVariableWritePermission.Server);
         
@@ -21,6 +23,11 @@ namespace OverBang.GameName.Managers
         
         public static PlayerManager Instance { get; private set; }
         public static bool HasInstance => Instance != null;
+
+        private void Awake()
+        {
+            PlayerControllers = new Dictionary<byte, PlayerController>(4);
+        }
 
         public override void OnNetworkSpawn()
         {
@@ -46,17 +53,19 @@ namespace OverBang.GameName.Managers
             OnInstanceCreated?.Invoke();
         }
 
-        public void RegisterPlayer(PlayerNetworkController playerController)
+        public void RegisterPlayer(PlayerController playerController)
         {
-            if (IsSpawned)
+            if (!IsSpawned)
             {
-                RegisterPlayer(playerController.PlayerID.Value);
-                playerController.WritePlayerID((byte) Players.Count);
+                Debug.LogError(
+                    $"Player Manager is not spawned. Cannot register player {playerController.PlayerNetwork.PlayerID}.");
+                return;
             }
-            else
-            {
-                Debug.LogError($"Player Manager is not spawned. Cannot register player {playerController.PlayerID}.");
-            }
+
+            playerController.PlayerNetwork.WritePlayerID((byte)(Players.Count + 1));
+            RegisterPlayer(playerController.PlayerNetwork.PlayerID.Value);
+
+            PlayerControllers.Add(playerController.PlayerNetwork.PlayerID.Value, playerController);
         }
         
         public void RegisterPlayer(byte playerID)
@@ -93,14 +102,14 @@ namespace OverBang.GameName.Managers
         
         public void UnregisterPlayer(PlayerController playerController)
         {
-            if (IsSpawned)
+            if (!IsSpawned)
             {
-                UnregisterPlayer(playerController.PlayerNetwork.PlayerID.Value);
+                Debug.LogError(
+                    $"Player Manager is not spawned. Cannot unregister player {playerController.PlayerNetwork.PlayerID}.");
+                return;
             }
-            else
-            {
-                Debug.LogError($"Player Manager is not spawned. Cannot unregister player {playerController.PlayerNetwork.PlayerID}.");
-            }
+
+            UnregisterPlayer(playerController.PlayerNetwork.PlayerID.Value);
         }
         
         public void UnregisterPlayer(byte playerID)
@@ -136,26 +145,26 @@ namespace OverBang.GameName.Managers
         
         public void ChangePlayerReadyStatus(PlayerController playerController)
         {
-            if (IsSpawned)
+            if (!IsSpawned)
             {
-                ChangePlayerReadyStatus(playerController.PlayerNetwork.PlayerID.Value, playerController.PlayerNetwork.IsReady.Value);
+                Debug.LogError(
+                    $"Player Manager is not spawned. Cannot unregister player {playerController.PlayerNetwork.PlayerID}.");
+                return;
             }
-            else
-            {
-                Debug.LogError($"Player Manager is not spawned. Cannot unregister player {playerController.PlayerNetwork.PlayerID}.");
-            }
+
+            ChangePlayerReadyStatus(playerController.PlayerNetwork.PlayerID.Value,
+                playerController.PlayerNetwork.IsReady.Value);
         }
 
         public void ChangePlayerReadyStatus(byte playerID, bool readyStatus)
         {
-            if (IsSpawned)
-            {
-                OnPlayerReadyStatusChanged?.Invoke(playerID, readyStatus);
-            }
-            else
+            if (!IsSpawned)
             {
                 Debug.LogError($"Player Manager is not spawned. Cannot change player's ready status {playerID}.");
+                return;
             }
+
+            OnPlayerReadyStatusChanged?.Invoke(playerID, readyStatus);
         }
     }
 }

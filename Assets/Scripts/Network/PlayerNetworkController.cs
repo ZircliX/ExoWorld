@@ -30,16 +30,6 @@ namespace OverBang.GameName.Network
             {
                 networkChildren[i].OnNetworkSpawn(this);
             }
-            
-            if (PlayerManager.HasInstance && PlayerManager.Instance.IsSpawned)
-            {
-                RegisterPlayer();
-            }
-            else
-            {
-                Debug.Log("PlayerNetworkController waiting for PlayerManager to be ready...");
-                PlayerManager.OnInstanceCreated += RegisterPlayer;
-            }
         }
         
         public override void OnNetworkDespawn()
@@ -59,11 +49,6 @@ namespace OverBang.GameName.Network
         }
         
         // --- Private Methods ---
-        
-        private void RegisterPlayer()
-        {
-            PlayerManager.Instance.RegisterPlayer(this);
-        }
         
         // --- Public Methods ---
         

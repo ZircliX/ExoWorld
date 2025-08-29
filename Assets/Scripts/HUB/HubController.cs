@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using OverBang.GameName.Managers;
 using OverBang.GameName.Network.Static;
+using OverBang.GameName.Player;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -76,20 +77,8 @@ namespace OverBang.GameName.HUB
                 Debug.LogWarning($"[HubController] Cannot Register player {playerID}.");
                 return;
             }
-            
-            if (IsServer)
-            {
-                OnPlayerRegisteredInternal(playerID);
-            }
-            else
-            {
-                OnPlayerRegisteredRpc(playerID);
-            }
-        }
 
-        private void OnPlayerRegisteredInternal(byte playerID)
-        {
-            
+            OnPlayerRegisteredRpc(playerID);
         }
         
         [Rpc(SendTo.ClientsAndHost)]
@@ -106,63 +95,59 @@ namespace OverBang.GameName.HUB
 
         private void OnPlayerUnregistered(byte playerID)
         {
-            if (this.CanRunNetworkOperation())
-            {
-                OnPlayerUnregisteredRpc(playerID);
-            }
-            else
+            if (!this.CanRunNetworkOperation())
             {
                 Debug.LogWarning($"[HubController] Cannot Unregister player {playerID}.");
+                return;
             }
+
+            OnPlayerUnregisteredRpc(playerID);
         }
 
         [Rpc(SendTo.ClientsAndHost)]
         private void OnPlayerUnregisteredRpc(byte playerID)
         {
-            if (playerCards.TryGetValue(playerID, out PlayerCard card))
-            {
-                Destroy(card.gameObject);
-                playerCards.Remove(playerID);
-            }
-            else
+            if (!playerCards.TryGetValue(playerID, out PlayerCard card))
             {
                 Debug.LogWarning($"PlayerCard for {playerID} not found in dictionary.");
+                return;
             }
+
+            Destroy(card.gameObject);
+            playerCards.Remove(playerID);
         }
 
         private void OnPlayerReadyStatusChanged(byte playerID, bool readyStatus)
         {
-            if (this.CanRunNetworkOperation())
-            {
-                SetPlayerReadyStatusRpc(playerID, readyStatus);
-                CheckForGameStart();
-            }
-            else
+            if (!this.CanRunNetworkOperation())
             {
                 Debug.LogWarning($"[HubController] Cannot change player's ready status {playerID}.");
+                return;
             }
+
+            SetPlayerReadyStatusRpc(playerID, readyStatus);
+            CheckForGameStart();
         }
         
         [Rpc(SendTo.ClientsAndHost)]
         private void SetPlayerReadyStatusRpc(byte playerID, bool readyStatus)
         {
-            if (playerCards.TryGetValue(playerID, out PlayerCard card))
-            {
-                card.SetPlayerStatus(readyStatus ? "Ready" : "Not Ready");
-            }
-            else
+            if (!playerCards.TryGetValue(playerID, out PlayerCard card))
             {
                 Debug.LogWarning($"PlayerCard for {playerID} not found in dictionary.");
+                return;
             }
+
+            card.SetPlayerStatus(readyStatus ? "Ready" : "Not Ready");
         }
 
         private void CheckForGameStart()
         {
             if (playerCards.Count == 0) return;
 
-            foreach (KeyValuePair<byte, PlayerCard> playerInfo in playerCards)
+            foreach (KeyValuePair<byte, PlayerController> playerInfo in PlayerManager.Instance.PlayerControllers)
             {
-                if (playerInfo.Value.PlayerStatus.text != "Ready") return;
+                if (!playerInfo.Value.PlayerNetwork.IsReady.Value) return;
             }
             
             StartCoroutine(StartShip());
@@ -170,6 +155,7 @@ namespace OverBang.GameName.HUB
 
         private IEnumerator StartShip()
         {
+            Debug.LogWarning("Waaaaaaaa");
             yield return null;
         }
     }
