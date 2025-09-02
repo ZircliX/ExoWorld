@@ -41,14 +41,9 @@ namespace OverBang.GameName.Managers
 
             Instance = this;
 
-            if (IsServer)
-            {
-                Debug.Log($"[Server] PlayerManager spawned. Instance set to {this}");
-            }
-            else
-            {
-                Debug.Log($"[Client] PlayerManager spawned. Instance set to {this}");
-            }
+            Debug.Log(IsServer
+                ? $"[Server] PlayerManager spawned. Instance set to {this}"
+                : $"[Client] PlayerManager spawned. Instance set to {this}");
 
             OnInstanceCreated?.Invoke();
         }
@@ -62,42 +57,48 @@ namespace OverBang.GameName.Managers
                 return;
             }
 
-            playerController.PlayerNetwork.WritePlayerID((byte)(Players.Count + 1));
-            RegisterPlayer(playerController.PlayerNetwork.PlayerID.Value);
-
-            PlayerControllers.Add(playerController.PlayerNetwork.PlayerID.Value, playerController);
-        }
-        
-        public void RegisterPlayer(byte playerID)
-        {
-            if (!this.CanRunNetworkOperation()) return;
-            
             if (IsServer)
             {
-                // Direct server-side cleanup
-                RegisterPlayerInternal(playerID);
+                WritePlayerIDInternal(playerController);
             }
             else
             {
-                // Ask the server to do it
-                RegisterPlayerRpc(playerID);
+                WritePlayerIDRpc(NetworkManager.Singleton.LocalClientId);
             }
         }
+
+        private void WritePlayerIDInternal(PlayerController player)
+        {
+            byte newID = (byte)(Players.Count + 1);
+            player.PlayerNetwork.WritePlayerID(newID);
+            
+            RegisterPlayerInternal(newID, player);
+        }
         
-        private void RegisterPlayerInternal(byte playerID)
+        private void RegisterPlayerInternal(byte playerID, PlayerController player)
         {
             if (Players.Contains(playerID)) return;
 
             Players.Add(playerID);
+            PlayerControllers.Add(playerID, player);
+            
+            Debug.Log($"[Server] Registered player {playerID}");
             OnPlayerRegistered?.Invoke(playerID);
         }
-        
+
         [Rpc(SendTo.Server)]
-        private void RegisterPlayerRpc(byte playerID)
+        private void WritePlayerIDRpc(ulong requestingClientId)
         {
-            Debug.Log($"[Server] Registering player {playerID}.");
-            // Only runs on the server
-            RegisterPlayerInternal(playerID);
+            // Only the server runs this
+            if (!NetworkManager.Singleton.ConnectedClients.TryGetValue(requestingClientId, 
+                    out NetworkClient client))
+                return;
+
+            PlayerController playerController = 
+                client.PlayerObject.GetComponent<PlayerController>();
+            if (playerController == null) return;
+
+            WritePlayerIDInternal(playerController);
         }
         
         public void UnregisterPlayer(PlayerController playerController)
@@ -109,22 +110,13 @@ namespace OverBang.GameName.Managers
                 return;
             }
 
-            UnregisterPlayer(playerController.PlayerNetwork.PlayerID.Value);
-        }
-        
-        public void UnregisterPlayer(byte playerID)
-        {
-            if (!this.CanRunNetworkOperation()) return;
-            
             if (IsServer)
             {
-                // Direct server-side cleanup
-                UnregisterPlayerInternal(playerID);
+                UnregisterPlayerInternal(playerController.PlayerNetwork.PlayerID.Value);
             }
             else
             {
-                // Ask the server to do it
-                UnregisterPlayerRpc(playerID);
+                UnregisterPlayerRpc(NetworkManager.Singleton.LocalClientId);
             }
         }
         
@@ -133,38 +125,46 @@ namespace OverBang.GameName.Managers
             if (!Players.Contains(playerID)) return;
 
             Players.Remove(playerID);
+            PlayerControllers.Remove(playerID);
             OnPlayerUnregistered?.Invoke(playerID);
         }
         
         [Rpc(SendTo.Server)]
-        private void UnregisterPlayerRpc(byte playerID)
+        private void UnregisterPlayerRpc(ulong requestingClientId)
         {
-            // Only runs on the server
-            UnregisterPlayerInternal(playerID);
-        }
-        
-        public void ChangePlayerReadyStatus(PlayerController playerController)
-        {
-            if (!IsSpawned)
-            {
-                Debug.LogError(
-                    $"Player Manager is not spawned. Cannot unregister player {playerController.PlayerNetwork.PlayerID}.");
+            // Only the server runs this
+            if (!NetworkManager.Singleton.ConnectedClients.TryGetValue(requestingClientId, 
+                    out NetworkClient client))
                 return;
-            }
 
-            ChangePlayerReadyStatus(playerController.PlayerNetwork.PlayerID.Value,
-                playerController.PlayerNetwork.IsReady.Value);
+            PlayerController playerController = 
+                client.PlayerObject.GetComponent<PlayerController>();
+            if (playerController == null) return;
+
+            UnregisterPlayerInternal(playerController.PlayerNetwork.PlayerID.Value);
         }
 
         public void ChangePlayerReadyStatus(byte playerID, bool readyStatus)
         {
-            if (!IsSpawned)
+            if (!IsSpawned || !this.CanRunNetworkOperation())
             {
                 Debug.LogError($"Player Manager is not spawned. Cannot change player's ready status {playerID}.");
                 return;
             }
+            
+            ChangePlayerReadyStatusRpc(playerID, readyStatus);
 
+            Debug.LogError($"Player {playerID} has ready status: {readyStatus}");
             OnPlayerReadyStatusChanged?.Invoke(playerID, readyStatus);
+        }
+
+        [Rpc(SendTo.ClientsAndHost)]
+        private void ChangePlayerReadyStatusRpc(byte playerID, bool readyStatus)
+        {
+            if (PlayerControllers.TryGetValue(playerID, out PlayerController playerController))
+            {
+                playerController.PlayerNetwork.WritePlayerReadyStatus(readyStatus);
+            }
         }
     }
 }

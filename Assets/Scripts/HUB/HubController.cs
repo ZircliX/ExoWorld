@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using OverBang.GameName.Managers;
 using OverBang.GameName.Network.Static;
@@ -17,7 +16,14 @@ namespace OverBang.GameName.HUB
         
         private void OnEnable()
         {
-            PlayerManager.OnInstanceCreated += SubscribeToPlayerManagerEvents;
+            if (PlayerManager.HasInstance)
+            {
+                SubscribeToPlayerManagerEvents();
+            }
+            else
+            {
+                PlayerManager.OnInstanceCreated += SubscribeToPlayerManagerEvents;
+            }
         }
         
         private void OnDisable()
@@ -64,7 +70,6 @@ namespace OverBang.GameName.HUB
                 {
                     OnPlayerRegisteredRpc(player);
                 }
-                
             }
             
             PlayerManager.OnInstanceCreated -= InitializeHub;
@@ -90,7 +95,7 @@ namespace OverBang.GameName.HUB
             playerCards.Add(playerID, card);
 
             card.SetPlayerName($"Player {playerCards.Count}");
-            SetPlayerReadyStatusRpc(playerID, false);
+            SetPlayerReadyStatusChangedRpc(playerID, false);
         }
 
         private void OnPlayerUnregistered(byte playerID)
@@ -116,6 +121,8 @@ namespace OverBang.GameName.HUB
             Destroy(card.gameObject);
             playerCards.Remove(playerID);
         }
+        
+        // --- Player Ready ---
 
         private void OnPlayerReadyStatusChanged(byte playerID, bool readyStatus)
         {
@@ -125,12 +132,21 @@ namespace OverBang.GameName.HUB
                 return;
             }
 
-            SetPlayerReadyStatusRpc(playerID, readyStatus);
-            CheckForGameStart();
+            Debug.LogError($"Player {playerID} has ready status: {readyStatus}");
+            SetPlayerReadyStatusChangedRpc(playerID, readyStatus);
+            
+            if (IsServer)
+            {
+                CheckForGameStartInternal();
+            }
+            else
+            {
+                CheckForGameStartRpc();
+            }
         }
         
         [Rpc(SendTo.ClientsAndHost)]
-        private void SetPlayerReadyStatusRpc(byte playerID, bool readyStatus)
+        private void SetPlayerReadyStatusChangedRpc(byte playerID, bool readyStatus)
         {
             if (!playerCards.TryGetValue(playerID, out PlayerCard card))
             {
@@ -141,22 +157,29 @@ namespace OverBang.GameName.HUB
             card.SetPlayerStatus(readyStatus ? "Ready" : "Not Ready");
         }
 
-        private void CheckForGameStart()
+        [Rpc(SendTo.Server)]
+        private void CheckForGameStartRpc()
+        {
+            CheckForGameStartInternal();
+        }
+
+        private void CheckForGameStartInternal()
         {
             if (playerCards.Count == 0) return;
 
             foreach (KeyValuePair<byte, PlayerController> playerInfo in PlayerManager.Instance.PlayerControllers)
             {
-                if (!playerInfo.Value.PlayerNetwork.IsReady.Value) return;
+                Debug.LogError($"Player {playerInfo.Key} has ready status: {playerInfo.Value.PlayerNetwork.IsReady}");
+                if (!playerInfo.Value.PlayerNetwork.IsReady) return;
             }
             
-            StartCoroutine(StartShip());
+            StartShipRpc();
         }
 
-        private IEnumerator StartShip()
+        [Rpc(SendTo.ClientsAndHost)]
+        private void StartShipRpc()
         {
             Debug.LogWarning("Waaaaaaaa");
-            yield return null;
         }
     }
 }

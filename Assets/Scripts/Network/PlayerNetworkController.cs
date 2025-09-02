@@ -1,4 +1,3 @@
-using OverBang.GameName.Managers;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -14,18 +13,9 @@ namespace OverBang.GameName.Network
         public NetworkVariable<byte> PlayerID { get; private set; } = 
             new NetworkVariable<byte>(writePerm: NetworkVariableWritePermission.Server);
 
-        public NetworkVariable<bool> IsReady { get; private set; } =
-            new NetworkVariable<bool>(writePerm: NetworkVariableWritePermission.Owner);
-        
+        public bool IsReady { get; private set; }        
         public override void OnNetworkSpawn()
         {
-            // Server assigns a GUID only once at spawn
-            if (IsServer)
-            {
-                PlayerID.Value = 0x0000;
-                Debug.Log($"[Server] Assigned GUID {PlayerID.Value} to player {OwnerClientId}");
-            }
-            
             for (int i = 0; i < networkChildren.Length; i++)
             {
                 networkChildren[i].OnNetworkSpawn(this);
@@ -64,8 +54,8 @@ namespace OverBang.GameName.Network
         
         public void WritePlayerReadyStatus(bool readyStatus)
         {
-            IsReady.Value = readyStatus;
-            PlayerManager.Instance.ChangePlayerReadyStatus(PlayerID.Value, readyStatus);
+            Debug.LogError($"Player {PlayerID.Value} has ready status: {readyStatus}");
+            IsReady = readyStatus;
         }
     }
 }

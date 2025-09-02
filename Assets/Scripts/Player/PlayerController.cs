@@ -53,16 +53,16 @@ namespace OverBang.GameName.Player
             else
             {
                 CameraManager.Instance.SwitchToCamera(CameraID.PlayerView);
-            }
-            
-            if (PlayerManager.HasInstance && PlayerManager.Instance.IsSpawned)
-            {
-                RegisterPlayer();
-            }
-            else
-            {
-                Debug.Log("PlayerNetworkController waiting for PlayerManager to be ready...");
-                PlayerManager.OnInstanceCreated += RegisterPlayer;
+                
+                if (PlayerManager.HasInstance && PlayerManager.Instance.IsSpawned)
+                {
+                    RegisterPlayer();
+                }
+                else
+                {
+                    Debug.Log("PlayerNetworkController waiting for PlayerManager to be ready...");
+                    PlayerManager.OnInstanceCreated += RegisterPlayer;
+                }
             }
             
             PlayerManager.OnInstanceCreated -= InitializePlayer;
@@ -124,7 +124,7 @@ namespace OverBang.GameName.Player
         {
             if (Keyboard.current.spaceKey.wasPressedThisFrame)
             {
-                PlayerNetwork.WritePlayerReadyStatus(!PlayerNetwork.IsReady.Value);
+                PlayerManager.Instance.ChangePlayerReadyStatus(PlayerNetwork.PlayerID.Value, !PlayerNetwork.IsReady);
             }
         }
     }
