@@ -152,19 +152,8 @@ namespace OverBang.GameName.Managers
                 return;
             }
             
-            ChangePlayerReadyStatusRpc(playerID, readyStatus);
-
-            Debug.LogError($"Player {playerID} has ready status: {readyStatus}");
+            Debug.Log($"Player {playerID} to {readyStatus}");
             OnPlayerReadyStatusChanged?.Invoke(playerID, readyStatus);
-        }
-
-        [Rpc(SendTo.ClientsAndHost)]
-        private void ChangePlayerReadyStatusRpc(byte playerID, bool readyStatus)
-        {
-            if (PlayerControllers.TryGetValue(playerID, out PlayerController playerController))
-            {
-                playerController.PlayerNetwork.WritePlayerReadyStatus(readyStatus);
-            }
         }
     }
 }

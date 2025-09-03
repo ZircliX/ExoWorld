@@ -132,7 +132,7 @@ namespace OverBang.GameName.HUB
                 return;
             }
 
-            Debug.LogError($"Player {playerID} has ready status: {readyStatus}");
+            Debug.Log($"Player {playerID} to {readyStatus}");
             SetPlayerReadyStatusChangedRpc(playerID, readyStatus);
             
             if (IsServer)
@@ -169,8 +169,8 @@ namespace OverBang.GameName.HUB
 
             foreach (KeyValuePair<byte, PlayerController> playerInfo in PlayerManager.Instance.PlayerControllers)
             {
-                Debug.LogError($"Player {playerInfo.Key} has ready status: {playerInfo.Value.PlayerNetwork.IsReady}");
-                if (!playerInfo.Value.PlayerNetwork.IsReady) return;
+                Debug.LogError($"Player {playerInfo.Key} has ready status: {playerInfo.Value.PlayerNetwork.IsReady.Value}");
+                if (!playerInfo.Value.PlayerNetwork.IsReady.Value) return;
             }
             
             StartShipRpc();

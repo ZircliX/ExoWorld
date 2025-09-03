@@ -13,7 +13,8 @@ namespace OverBang.GameName.Network
         public NetworkVariable<byte> PlayerID { get; private set; } = 
             new NetworkVariable<byte>(writePerm: NetworkVariableWritePermission.Server);
 
-        public bool IsReady { get; private set; }        
+        public NetworkVariable<bool> IsReady { get; private set; } = 
+            new NetworkVariable<bool>(writePerm: NetworkVariableWritePermission.Owner);       
         public override void OnNetworkSpawn()
         {
             for (int i = 0; i < networkChildren.Length; i++)
@@ -54,8 +55,7 @@ namespace OverBang.GameName.Network
         
         public void WritePlayerReadyStatus(bool readyStatus)
         {
-            Debug.LogError($"Player {PlayerID.Value} has ready status: {readyStatus}");
-            IsReady = readyStatus;
+            IsReady.Value = readyStatus;
         }
     }
 }
