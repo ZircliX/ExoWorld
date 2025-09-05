@@ -1,13 +1,30 @@
+using System;
+using System.Collections;
+using OverBang.GameName.Metrics;
 using Unity.Netcode;
+using UnityEngine;
 
 namespace OverBang.GameName.Network.Static
 {
     public static class NetworkHelpers
     {
-        public static bool CanRunNetworkOperation(this NetworkBehaviour behavior)
+        public static IEnumerator CanRunNetworkOperation(this NetworkBehaviour behavior, Action onFinish)
         {
-            //Debug.LogError($"{behavior.IsSpawned}, {behavior.NetworkManager != null}, {behavior.NetworkManager.IsListening}");
-            return behavior.IsSpawned || behavior.NetworkManager != null || behavior.NetworkManager.IsListening;
+            float timer = 0f;
+            while (timer < GameMetrics.Global.MaxDelay)
+            {
+                if (behavior.IsSpawned && 
+                    behavior.NetworkManager && 
+                    behavior.NetworkManager.IsListening)
+                {
+                    onFinish?.Invoke();
+                    yield return null;
+                }
+                
+                timer += Time.deltaTime;
+            }
+            
+            Debug.LogError("TIMEOUT ERROR, CANNOT PERFORM NETWORK OPERATION !");
         }
     }
 }

@@ -1,5 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
 using OverBang.GameName.Managers;
+using OverBang.GameName.Metrics;
 using OverBang.GameName.Network.Static;
 using OverBang.GameName.Player;
 using Unity.Netcode;
@@ -77,18 +79,16 @@ namespace OverBang.GameName.HUB
         
         private void OnPlayerRegistered(byte playerID)
         {
-            if (!this.CanRunNetworkOperation())
+            StartCoroutine(this.CanRunNetworkOperation(() =>
             {
-                Debug.LogWarning($"[HubController] Cannot Register player {playerID}.");
-                return;
-            }
-
-            OnPlayerRegisteredRpc(playerID);
+                OnPlayerRegisteredRpc(playerID);
+            }));
         }
         
         [Rpc(SendTo.ClientsAndHost)]
         private void OnPlayerRegisteredRpc(byte playerID)
         {
+            Debug.Log(playerCards);
             if (playerCards.ContainsKey(playerID)) return;
             
             PlayerCard card = Instantiate(playerCardPrefab, playerCardContainer);
@@ -100,13 +100,10 @@ namespace OverBang.GameName.HUB
 
         private void OnPlayerUnregistered(byte playerID)
         {
-            if (!this.CanRunNetworkOperation())
+            StartCoroutine(this.CanRunNetworkOperation(() =>
             {
-                Debug.LogWarning($"[HubController] Cannot Unregister player {playerID}.");
-                return;
-            }
-
-            OnPlayerUnregisteredRpc(playerID);
+                OnPlayerUnregisteredRpc(playerID);
+            }));
         }
 
         [Rpc(SendTo.ClientsAndHost)]
@@ -126,23 +123,20 @@ namespace OverBang.GameName.HUB
 
         private void OnPlayerReadyStatusChanged(byte playerID, bool readyStatus)
         {
-            if (!this.CanRunNetworkOperation())
+            StartCoroutine(this.CanRunNetworkOperation(() =>
             {
-                Debug.LogWarning($"[HubController] Cannot change player's ready status {playerID}.");
-                return;
-            }
-
-            Debug.Log($"Player {playerID} to {readyStatus}");
-            SetPlayerReadyStatusChangedRpc(playerID, readyStatus);
+                Debug.Log($"Player {playerID} to {readyStatus}");
+                SetPlayerReadyStatusChangedRpc(playerID, readyStatus);
             
-            if (IsServer)
-            {
-                CheckForGameStartInternal();
-            }
-            else
-            {
-                CheckForGameStartRpc();
-            }
+                if (IsServer)
+                {
+                    CheckForGameStartInternal();
+                }
+                else
+                {
+                    CheckForGameStartRpc();
+                }
+            }));
         }
         
         [Rpc(SendTo.ClientsAndHost)]

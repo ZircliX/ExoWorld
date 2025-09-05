@@ -146,14 +146,11 @@ namespace OverBang.GameName.Managers
 
         public void ChangePlayerReadyStatus(byte playerID, bool readyStatus)
         {
-            if (!IsSpawned || !this.CanRunNetworkOperation())
+            StartCoroutine(this.CanRunNetworkOperation(() =>
             {
-                Debug.LogError($"Player Manager is not spawned. Cannot change player's ready status {playerID}.");
-                return;
-            }
-            
-            Debug.Log($"Player {playerID} to {readyStatus}");
-            OnPlayerReadyStatusChanged?.Invoke(playerID, readyStatus);
+                Debug.Log($"Player {playerID} to {readyStatus}");
+                OnPlayerReadyStatusChanged?.Invoke(playerID, readyStatus);
+            }));
         }
     }
 }
