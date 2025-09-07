@@ -125,9 +125,7 @@ namespace OverBang.GameName.Player
             if (Keyboard.current.spaceKey.wasPressedThisFrame)
             {
                 bool newReadyStatus = !PlayerNetwork.IsReady.Value;
-                PlayerNetwork.WritePlayerReadyStatus(newReadyStatus);
-                Debug.Log($"Player {PlayerNetwork.PlayerID.Value} to {newReadyStatus}");
-                PlayerManager.Instance.ChangePlayerReadyStatus(PlayerNetwork.PlayerID.Value, newReadyStatus);
+                PlayerNetwork.RequestSetReadyRpc(newReadyStatus);
             }
         }
     }

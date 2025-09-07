@@ -12,6 +12,6 @@ namespace OverBang.GameName.Metrics
         [field: SerializeField] public CameraID PlayerSpectate { get; private set; }
         [field: SerializeField] public CameraID MainMenu { get; private set; }
 
-        [field: SerializeField] public float MaxDelay { get; private set; } = 30f;
+        [field: SerializeField] public float MaxDelay { get; private set; }
     }
 }

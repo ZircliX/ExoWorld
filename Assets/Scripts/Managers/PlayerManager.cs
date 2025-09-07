@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
-using OverBang.GameName.Network;
 using OverBang.GameName.Network.Static;
 using OverBang.GameName.Player;
-using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -11,13 +9,13 @@ namespace OverBang.GameName.Managers
 {
     public class PlayerManager : NetworkBehaviour
     {
-        public Dictionary<byte, PlayerController> PlayerControllers { get; private set; }
-        public NetworkList<byte> Players { get; private set; }
+        public Dictionary<byte, PlayerController> Players { get; private set; }
+        public NetworkList<byte> PlayerIDs { get; private set; }
             = new NetworkList<byte>(writePerm: NetworkVariableWritePermission.Server);
         
         public event Action<byte> OnPlayerRegistered;
         public event Action<byte> OnPlayerUnregistered;
-        public event Action<byte, bool> OnPlayerReadyStatusChanged;
+        public event Action<byte> OnPlayerReadyStatusChanged;
 
         public static event Action OnInstanceCreated;
         
@@ -26,7 +24,7 @@ namespace OverBang.GameName.Managers
 
         private void Awake()
         {
-            PlayerControllers = new Dictionary<byte, PlayerController>(4);
+            Players = new Dictionary<byte, PlayerController>(4);
         }
 
         public override void OnNetworkSpawn()
@@ -69,7 +67,7 @@ namespace OverBang.GameName.Managers
 
         private void WritePlayerIDInternal(PlayerController player)
         {
-            byte newID = (byte)(Players.Count + 1);
+            byte newID = (byte)(PlayerIDs.Count + 1);
             player.PlayerNetwork.WritePlayerID(newID);
             
             RegisterPlayerInternal(newID, player);
@@ -77,10 +75,10 @@ namespace OverBang.GameName.Managers
         
         private void RegisterPlayerInternal(byte playerID, PlayerController player)
         {
-            if (Players.Contains(playerID)) return;
+            if (PlayerIDs.Contains(playerID)) return;
 
-            Players.Add(playerID);
-            PlayerControllers.Add(playerID, player);
+            PlayerIDs.Add(playerID);
+            Players.Add(playerID, player);
             
             Debug.Log($"[Server] Registered player {playerID}");
             OnPlayerRegistered?.Invoke(playerID);
@@ -122,10 +120,10 @@ namespace OverBang.GameName.Managers
         
         private void UnregisterPlayerInternal(byte playerID)
         {
-            if (!Players.Contains(playerID)) return;
+            if (!PlayerIDs.Contains(playerID)) return;
 
+            PlayerIDs.Remove(playerID);
             Players.Remove(playerID);
-            PlayerControllers.Remove(playerID);
             OnPlayerUnregistered?.Invoke(playerID);
         }
         
@@ -149,7 +147,7 @@ namespace OverBang.GameName.Managers
             StartCoroutine(this.CanRunNetworkOperation(() =>
             {
                 Debug.Log($"Player {playerID} to {readyStatus}");
-                OnPlayerReadyStatusChanged?.Invoke(playerID, readyStatus);
+                OnPlayerReadyStatusChanged?.Invoke(playerID);
             }));
         }
     }

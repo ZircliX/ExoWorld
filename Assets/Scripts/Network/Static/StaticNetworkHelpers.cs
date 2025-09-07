@@ -18,13 +18,13 @@ namespace OverBang.GameName.Network.Static
                     behavior.NetworkManager.IsListening)
                 {
                     onFinish?.Invoke();
-                    yield return null;
+                    yield break;
                 }
                 
                 timer += Time.deltaTime;
             }
             
-            Debug.LogError("TIMEOUT ERROR, CANNOT PERFORM NETWORK OPERATION !");
+            Debug.LogError($"{behavior.gameObject.name}TIMEOUT ERROR, CANNOT PERFORM NETWORK OPERATION !", behavior.gameObject);
         }
     }
 }
