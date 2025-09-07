@@ -16,7 +16,6 @@ namespace OverBang.GameName.Player
         [field: SerializeField, Child] public PlayerCamera PlayerCamera { get; private set; }
         [field: SerializeField, Child] public Camera Camera { get; private set; }
 
-        public string Guid { get; private set; }
         public PlayerNetworkController PlayerNetwork { get; private set; }
         
         private void OnValidate()
@@ -53,13 +52,17 @@ namespace OverBang.GameName.Player
             }
             else
             {
-                // Use server-assigned GUID
-                Guid = PlayerNetwork.PlayerGuid.Value.ToString();
-
-                if (PlayerManager.HasInstance && PlayerManager.Instance.IsSpawned)
-                    PlayerManager.Instance.RegisterPlayer(this);
-
                 CameraManager.Instance.SwitchToCamera(CameraID.PlayerView);
+                
+                if (PlayerManager.HasInstance && PlayerManager.Instance.IsSpawned)
+                {
+                    RegisterPlayer();
+                }
+                else
+                {
+                    Debug.Log("PlayerNetworkController waiting for PlayerManager to be ready...");
+                    PlayerManager.OnInstanceCreated += RegisterPlayer;
+                }
             }
             
             PlayerManager.OnInstanceCreated -= InitializePlayer;
@@ -78,6 +81,7 @@ namespace OverBang.GameName.Player
             if (PlayerNetwork.IsOwner)
             {
                 WriteState();
+                CheckForReadyStatusChanged();
             }
             else
             {
@@ -90,7 +94,7 @@ namespace OverBang.GameName.Player
             Vector3 position = PlayerMovement.Position;
             Quaternion rotation = PlayerMovement.rb.rotation;
                 
-            PlayerNetworkState state = new PlayerNetworkState()
+            PlayerNetworkTransform playerTransform = new PlayerNetworkTransform()
             {
                 Position = position,
                 Rotation = rotation
@@ -98,8 +102,13 @@ namespace OverBang.GameName.Player
 
             if (PlayerNetwork.IsOwner)
             {
-                PlayerNetwork.WritePlayerState(state);
+                PlayerNetwork.WritePlayerNetworkTransform(playerTransform);
             }
+        }
+        
+        private void RegisterPlayer()
+        {
+            PlayerManager.Instance.RegisterPlayer(this);
         }
 
         private void ReadState()
@@ -109,6 +118,15 @@ namespace OverBang.GameName.Player
 
             Quaternion rotation = PlayerNetwork.PlayerState.Value.Rotation;
             transform.rotation = rotation;
+        }
+
+        private void CheckForReadyStatusChanged()
+        {
+            if (Keyboard.current.spaceKey.wasPressedThisFrame)
+            {
+                bool newReadyStatus = !PlayerNetwork.IsReady.Value;
+                PlayerNetwork.RequestSetReadyRpc(newReadyStatus);
+            }
         }
     }
 }

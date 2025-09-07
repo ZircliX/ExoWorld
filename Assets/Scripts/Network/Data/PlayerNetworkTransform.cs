@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace OverBang.GameName.Network
 {
-    public struct PlayerNetworkState : INetworkSerializable
+    public struct PlayerNetworkTransform : INetworkSerializable
     {
         private Vector3 position;
         private short rotationY;

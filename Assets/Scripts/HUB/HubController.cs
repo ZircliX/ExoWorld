@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using OverBang.GameName.Managers;
 using OverBang.GameName.Network.Static;
-using Unity.Collections;
+using OverBang.GameName.Player;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -12,11 +12,18 @@ namespace OverBang.GameName.HUB
         [SerializeField] private PlayerCard playerCardPrefab;
         [SerializeField] private Transform playerCardContainer;
 
-        private Dictionary<string, PlayerCard> playerCards;
-
+        private Dictionary<byte, PlayerCard> playerCards;
+        
         private void OnEnable()
         {
-            PlayerManager.OnInstanceCreated += SubscribeToPlayerManagerEvents;
+            if (PlayerManager.HasInstance)
+            {
+                SubscribeToPlayerManagerEvents();
+            }
+            else
+            {
+                PlayerManager.OnInstanceCreated += SubscribeToPlayerManagerEvents;
+            }
         }
         
         private void OnDisable()
@@ -25,108 +32,161 @@ namespace OverBang.GameName.HUB
             
             PlayerManager.Instance.OnPlayerRegistered -= OnPlayerRegistered;
             PlayerManager.Instance.OnPlayerUnregistered -= OnPlayerUnregistered;
+            PlayerManager.Instance.OnPlayerReadyStatusChanged -= OnPlayerReadyStatusChanged;
         }
         
         private void SubscribeToPlayerManagerEvents()
         {
             PlayerManager.Instance.OnPlayerRegistered += OnPlayerRegistered;
             PlayerManager.Instance.OnPlayerUnregistered += OnPlayerUnregistered;
+            PlayerManager.Instance.OnPlayerReadyStatusChanged += OnPlayerReadyStatusChanged;
             
             PlayerManager.OnInstanceCreated -= SubscribeToPlayerManagerEvents;
         }
 
         private void Awake()
         {
-            playerCards = new Dictionary<string, PlayerCard>(4);
+            playerCards = new Dictionary<byte, PlayerCard>(4);
         }
 
         public override void OnNetworkSpawn()
         {
             if (PlayerManager.HasInstance && PlayerManager.Instance.IsSpawned)
             {
-                InitializeHub();
+                InitializeHubRpc();
             }
             else
             {
                 // Manager not yet ready, subscribe and wait
-                PlayerManager.OnInstanceCreated += InitializeHub;
+                PlayerManager.OnInstanceCreated += InitializeHubRpc;
             }
         }
 
-        private void InitializeHub()
+        [Rpc(SendTo.Server)]
+        private void InitializeHubRpc()
         {
-            if (IsClient)
+            foreach (byte player in PlayerManager.Instance.PlayerIDs)
             {
-                foreach (FixedString64Bytes player in PlayerManager.Instance.Players)
-                {
-                    OnPlayerRegisteredRpc(player.ToString());
-                }
+                byte playerID = player;
+                bool isReady = IsPlayerReady(playerID);
                 
+                OnPlayerRegisteredRpc(playerID, isReady);
             }
             
-            PlayerManager.OnInstanceCreated -= InitializeHub;
+            PlayerManager.OnInstanceCreated -= InitializeHubRpc;
         }
-        
-        private void OnPlayerRegistered(string guid)
+
+        private void OnPlayerRegistered(byte playerID)
         {
-            if (this.CanRunNetworkOperation())
-            {
-                OnPlayerRegisteredRpc(guid);
-            }
-            else
-            {
-                Debug.LogWarning($"[HubController] Cannot Register player {guid}. NetworkManager inactive.");
-            }
+            OnPlayerRegisteredRpc(playerID, false);
         }
         
         [Rpc(SendTo.ClientsAndHost)]
-        private void OnPlayerRegisteredRpc(string guid)
+        private void OnPlayerRegisteredRpc(byte playerID, bool isReady)
         {
-            if (playerCards.ContainsKey(guid)) return;
-            
-            PlayerCard card = Instantiate(playerCardPrefab, playerCardContainer);
-            playerCards.Add(guid, card);
+            StartCoroutine(this.CanRunNetworkOperation(() =>
+            {
+                if (playerCards.ContainsKey(playerID)) return;
+                
+                PlayerCard card = Instantiate(playerCardPrefab, playerCardContainer);
+                playerCards.Add(playerID, card);
 
-            card.SetPlayerName($"Player {playerCards.Count}");
-            SetPlayerReadyStatus(guid, false);
+                card.SetPlayerName($"Player {playerID}");
+                
+                SetPlayerReadyStatusChangedRpc(playerID, isReady);
+            }));
         }
 
-        private void OnPlayerUnregistered(string guid)
+        private void OnPlayerUnregistered(byte playerID)
         {
-            if (this.CanRunNetworkOperation())
+            StartCoroutine(this.CanRunNetworkOperation(() =>
             {
-                OnPlayerUnregisteredRpc(guid);
-            }
-            else
-            {
-                Debug.LogWarning($"[HubController] Cannot Unregister player {guid}. NetworkManager inactive.");
-            }
+                OnPlayerUnregisteredRpc(playerID);
+            }));
         }
 
         [Rpc(SendTo.ClientsAndHost)]
-        private void OnPlayerUnregisteredRpc(string guid)
+        private void OnPlayerUnregisteredRpc(byte playerID)
         {
-            if (playerCards.TryGetValue(guid, out PlayerCard card))
+            if (!playerCards.TryGetValue(playerID, out PlayerCard card))
             {
-                Destroy(card.gameObject);
-                playerCards.Remove(guid);
+                Debug.LogWarning($"PlayerCard for {playerID} not found in dictionary.");
+                return;
             }
-            else
+
+            Destroy(card.gameObject);
+            playerCards.Remove(playerID);
+        }
+        
+        // --- Player Ready ---
+
+        private void OnPlayerReadyStatusChanged(byte playerID)
+        {
+            StartCoroutine(this.CanRunNetworkOperation(() =>
             {
-                Debug.LogWarning($"PlayerCard for {guid} not found in dictionary.");
+                bool isReady = IsPlayerReady(playerID);
+                SetPlayerReadyStatusChangedRpc(playerID, isReady);
+                
+                if (IsServer)
+                {
+                    CheckForGameStartInternal();
+                }
+                else
+                {
+                    CheckForGameStartRpc();
+                }
+            }));
+        }
+        
+        [Rpc(SendTo.ClientsAndHost)]
+        private void SetPlayerReadyStatusChangedRpc(byte playerID, bool isReady)
+        {
+            if (!playerCards.TryGetValue(playerID, out PlayerCard card))
+            {
+                Debug.LogWarning($"PlayerCard for {playerID} not found in dictionary.");
+                return;
             }
+
+            card.SetPlayerStatus(isReady ? "Ready" : "Not Ready");
         }
 
-        private void SetPlayerReadyStatus(string guid, bool isReady)
+        [Rpc(SendTo.Server)]
+        private void CheckForGameStartRpc()
         {
-            if (playerCards.TryGetValue(guid, out PlayerCard card))
+            CheckForGameStartInternal();
+        }
+
+        //OnlyServer
+        private void CheckForGameStartInternal()
+        {
+            if (playerCards.Count == 0) return;
+
+            foreach (KeyValuePair<byte, PlayerController> playerInfo in PlayerManager.Instance.Players)
             {
-                card.SetPlayerStatus(isReady ? "Ready" : "Not Ready");
+                Debug.LogError($"Player {playerInfo.Key} has ready status: {playerInfo.Value.PlayerNetwork.IsReady.Value}");
+                if (!playerInfo.Value.PlayerNetwork.IsReady.Value) return;
             }
-            else
+            
+            StartShipRpc();
+        }
+
+        [Rpc(SendTo.ClientsAndHost)]
+        private void StartShipRpc()
+        {
+            Debug.LogWarning("Waaaaaaaa");
+        }
+        
+        // --- Helpers Methods ---
+
+        private bool IsPlayerReady(byte playerID)
+        {
+            bool ready = false;
+            if (PlayerManager.Instance.Players.TryGetValue(playerID, out PlayerController pc))
             {
-                Debug.LogWarning($"PlayerCard for {guid} not found in dictionary.");
+                ready = pc.PlayerNetwork.IsReady.Value;
             }
+            
+            return ready;
         }
     }
 }
