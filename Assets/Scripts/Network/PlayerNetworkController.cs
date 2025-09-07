@@ -43,7 +43,8 @@ namespace OverBang.GameName.Network
         
         // --- Public Methods ---
         
-        public void WritePlayerNetworkTransform(PlayerNetworkTransform playerTransform)
+        [Rpc(SendTo.Owner)]
+        public void WritePlayerNetworkTransformRpc(PlayerNetworkTransform playerTransform)
         {
             PlayerState.Value = playerTransform;
         }

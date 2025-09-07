@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using OverBang.GameName.Network;
 using OverBang.GameName.Network.Static;
 using OverBang.GameName.Player;
 using Unity.Netcode;
@@ -162,12 +163,14 @@ namespace OverBang.GameName.Managers
 
         public void TeleportPlayer(PlayerController player, Vector3 position)
         {
-            player.PlayerMovement.Rb.isKinematic = true;
-            
-            player.PlayerMovement.Rb.position = position;
-            player.PlayerMovement.Rb.linearVelocity = Vector3.zero;
+            player.PlayerMovement.Rb.MovePosition(position);
 
-            player.PlayerMovement.Rb.isKinematic = false;
+            PlayerNetworkTransform newPos = new PlayerNetworkTransform()
+            {
+                Position = position,
+                Rotation = player.PlayerMovement.Rb.rotation,
+            };
+            player.PlayerNetwork.WritePlayerNetworkTransformRpc(newPos);
         }
     }
 }

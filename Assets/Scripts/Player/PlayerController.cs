@@ -100,7 +100,7 @@ namespace OverBang.GameName.Player
                 Rotation = rotation
             };
             
-            PlayerNetwork.WritePlayerNetworkTransform(playerTransform);
+            PlayerNetwork.WritePlayerNetworkTransformRpc(playerTransform);
         }
         
         private void RegisterPlayer()
