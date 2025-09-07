@@ -83,7 +83,7 @@ namespace OverBang.GameName.Movement
                 alongWallDirection = -alongWallDirection;
             }
 
-            Debug.DrawRay(movement.rb.position, alongWallDirection * 10, Color.green);
+            Debug.DrawRay(movement.Rb.position, alongWallDirection * 10, Color.green);
             //Debug.Break();
 
             //Snap to Wall
@@ -91,7 +91,7 @@ namespace OverBang.GameName.Movement
             if (distFromWall > wallSnapDistance)
             {
                 Vector3 snapDeltaMovement = -movement.WallNormal * (wallPull * deltaTime);
-                movement.rb.position += snapDeltaMovement;
+                movement.Rb.position += snapDeltaMovement;
             }
 
             //Velocities calculation

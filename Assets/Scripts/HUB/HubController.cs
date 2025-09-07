@@ -9,8 +9,12 @@ namespace OverBang.GameName.HUB
 {
     public class HubController : NetworkBehaviour
     {
+        [Header("Player UI Card")]
         [SerializeField] private PlayerCard playerCardPrefab;
         [SerializeField] private Transform playerCardContainer;
+        
+        [Header("Game Start")]
+        [SerializeField] private Transform shipTransform;
 
         private Dictionary<byte, PlayerCard> playerCards;
         
@@ -170,10 +174,10 @@ namespace OverBang.GameName.HUB
             StartShipRpc();
         }
 
-        [Rpc(SendTo.ClientsAndHost)]
         private void StartShipRpc()
         {
-            Debug.LogWarning("Waaaaaaaa");
+            Debug.LogWarning("All players are ready, starting game !");
+            PlayerManager.Instance.TeleportPlayersRpc(shipTransform.position);
         }
         
         // --- Helpers Methods ---

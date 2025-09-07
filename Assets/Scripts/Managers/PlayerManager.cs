@@ -150,5 +150,24 @@ namespace OverBang.GameName.Managers
                 OnPlayerReadyStatusChanged?.Invoke(playerID);
             }));
         }
+        
+        [Rpc(SendTo.ClientsAndHost)]
+        public void TeleportPlayersRpc(Vector3 position)
+        {
+            foreach (PlayerController playerController in Players.Values)
+            {
+                TeleportPlayer(playerController, position);
+            }
+        }
+
+        public void TeleportPlayer(PlayerController player, Vector3 position)
+        {
+            player.PlayerMovement.Rb.isKinematic = true;
+            
+            player.PlayerMovement.Rb.position = position;
+            player.PlayerMovement.Rb.linearVelocity = Vector3.zero;
+
+            player.PlayerMovement.Rb.isKinematic = false;
+        }
     }
 }

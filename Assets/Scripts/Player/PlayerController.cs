@@ -47,7 +47,7 @@ namespace OverBang.GameName.Player
                 Destroy(PlayerCamera.gameObject);
 
                 // Safer than destroying Rigidbody
-                PlayerMovement.rb.isKinematic = true;
+                PlayerMovement.Rb.isKinematic = true;
                 PlayerMovement.enabled = false;
             }
             else
@@ -92,18 +92,15 @@ namespace OverBang.GameName.Player
         private void WriteState()
         {
             Vector3 position = PlayerMovement.Position;
-            Quaternion rotation = PlayerMovement.rb.rotation;
+            Quaternion rotation = PlayerMovement.Rb.rotation;
                 
             PlayerNetworkTransform playerTransform = new PlayerNetworkTransform()
             {
                 Position = position,
                 Rotation = rotation
             };
-
-            if (PlayerNetwork.IsOwner)
-            {
-                PlayerNetwork.WritePlayerNetworkTransform(playerTransform);
-            }
+            
+            PlayerNetwork.WritePlayerNetworkTransform(playerTransform);
         }
         
         private void RegisterPlayer()
@@ -122,7 +119,7 @@ namespace OverBang.GameName.Player
 
         private void CheckForReadyStatusChanged()
         {
-            if (Keyboard.current.spaceKey.wasPressedThisFrame)
+            if (Keyboard.current.qKey.wasPressedThisFrame)
             {
                 bool newReadyStatus = !PlayerNetwork.IsReady.Value;
                 PlayerNetwork.RequestSetReadyRpc(newReadyStatus);
