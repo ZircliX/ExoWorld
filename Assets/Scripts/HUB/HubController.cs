@@ -82,6 +82,7 @@ namespace OverBang.GameName.HUB
 
         private void OnPlayerRegistered(byte playerID)
         {
+            if (!IsOwner) return;
             OnPlayerRegisteredRpc(playerID, false);
         }
         
