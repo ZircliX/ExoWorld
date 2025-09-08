@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using OverBang.GameName.Network;
-using OverBang.GameName.Network.Static;
 using OverBang.GameName.Player;
 using Unity.Netcode;
 using UnityEngine;
@@ -145,11 +144,8 @@ namespace OverBang.GameName.Managers
 
         public void ChangePlayerReadyStatus(byte playerID, bool readyStatus)
         {
-            StartCoroutine(this.CanRunNetworkOperation(() =>
-            {
-                Debug.Log($"Player {playerID} to {readyStatus}");
-                OnPlayerReadyStatusChanged?.Invoke(playerID);
-            }));
+            Debug.Log($"Player {playerID} to {readyStatus}");
+            OnPlayerReadyStatusChanged?.Invoke(playerID);
         }
         
         [Rpc(SendTo.ClientsAndHost)]
