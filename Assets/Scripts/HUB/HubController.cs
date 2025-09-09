@@ -131,7 +131,6 @@ namespace OverBang.GameName.HUB
                     RemovePlayerCard(changeEvent.Value.PlayerID);
                     break;
                 case NetworkListEvent<PlayerHubState>.EventType.Value:
-                    Debug.Log("Update");
                     UpdatePlayerCard(changeEvent.Value);
                     break;
                 case NetworkListEvent<PlayerHubState>.EventType.Clear:
@@ -173,7 +172,6 @@ namespace OverBang.GameName.HUB
 
             foreach (PlayerHubState player in PlayerStates)
             {
-                Debug.LogError($"Player {player.PlayerID} is {player.IsReady}");
                 if (!player.IsReady)
                     return;
             }

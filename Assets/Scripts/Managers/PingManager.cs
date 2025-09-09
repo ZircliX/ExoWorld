@@ -35,15 +35,16 @@ namespace OverBang.GameName.Managers
         [Rpc(SendTo.Server)]
         private void SendPingServerRpc(float sentTime, RpcParams rpcParams = default)
         {
-            SendPingClientRpc(Time.realtimeSinceStartup - sentTime, rpcParams.Receive.SenderClientId);
+            SendPingClientRpc(sentTime, rpcParams.Receive.SenderClientId);
         }
 
         [Rpc(SendTo.ClientsAndHost)]
         private void SendPingClientRpc(float sentTime, ulong clientId)
         {
-            float rtt = sentTime;
+            if (clientId != NetworkManager.LocalClientId) return;
 
-            Ping[clientId] = rtt;
+            float rtt = Time.realtimeSinceStartup - sentTime;
+            Ping[clientId] = rtt * 1000; //ms
         }
 
         public float GetPlayerPing(ulong playerID)

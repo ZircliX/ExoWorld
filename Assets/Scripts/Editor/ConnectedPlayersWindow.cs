@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using OverBang.GameName.Managers;
@@ -75,7 +76,7 @@ namespace Editor
             EditorGUILayout.BeginHorizontal();
             GUILayout.Label("Ping: ", GUILayout.Width(100));
             float playerPing = PlayerManager.Instance.PingManager.GetPlayerPing(playerID);
-            string ping = Mathf.RoundToInt(playerPing).ToString(CultureInfo.InvariantCulture);
+            string ping = Math.Round(playerPing, 2).ToString(CultureInfo.InvariantCulture);
             GUILayout.Label(ping);
             EditorGUILayout.EndHorizontal();
         }

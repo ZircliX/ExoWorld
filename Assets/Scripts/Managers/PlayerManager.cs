@@ -150,7 +150,6 @@ namespace OverBang.GameName.Managers
 
         public void ChangePlayerReadyStatus(ulong playerID, bool readyStatus)
         {
-            Debug.Log($"Player {playerID} to {readyStatus}");
             OnPlayerReadyStatusChanged?.Invoke(playerID);
         }
         
