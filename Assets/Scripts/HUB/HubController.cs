@@ -19,11 +19,11 @@ namespace OverBang.GameName.HUB
         public NetworkList<PlayerHubState> PlayerStates { get; private set; } 
             = new NetworkList<PlayerHubState>(writePerm: NetworkVariableWritePermission.Server);
         
-        private Dictionary<byte, PlayerCard> playerCards;
+        private Dictionary<ulong, PlayerCard> playerCards;
         
         private void Awake()
         {
-            playerCards = new Dictionary<byte, PlayerCard>(4);
+            playerCards = new Dictionary<ulong, PlayerCard>(4);
         }
         
         // --- Network Lifecycle ---
@@ -36,9 +36,8 @@ namespace OverBang.GameName.HUB
             {
                 // Init de la liste avec les joueurs existants
                 PlayerStates.Clear();
-                foreach (KeyValuePair<byte, PlayerController> kvp in PlayerManager.Instance.Players)
+                foreach (ulong playerID in PlayerManager.Instance.Players.Keys)
                 {
-                    byte playerID = kvp.Key;
                     bool isReady = IsPlayerReady(playerID);
                     PlayerStates.Add(new PlayerHubState(playerID, isReady));
                 }
@@ -70,15 +69,16 @@ namespace OverBang.GameName.HUB
             }
         }
 
-        private void OnPlayerRegistered_Server(byte playerID)
+        private void OnPlayerRegistered_Server(ulong playerID)
         {
             if (!IsServer) return;
             PlayerStates.Add(new PlayerHubState(playerID, false));
         }
 
-        private void OnPlayerUnregistered_Server(byte playerID)
+        private void OnPlayerUnregistered_Server(ulong playerID)
         {
             if (!IsServer) return;
+            
             for (int i = 0; i < PlayerStates.Count; i++)
             {
                 if (PlayerStates[i].PlayerID == playerID)
@@ -89,14 +89,16 @@ namespace OverBang.GameName.HUB
             }
         }
 
-        private void OnPlayerReadyStatusChanged_Server(byte playerID)
+        private void OnPlayerReadyStatusChanged_Server(ulong playerID)
         {
             if (!IsServer) return;
+            
             for (int i = 0; i < PlayerStates.Count; i++)
             {
                 if (PlayerStates[i].PlayerID == playerID)
                 {
                     PlayerStates[i] = new PlayerHubState(playerID, IsPlayerReady(playerID));
+                    UpdatePlayerCard(PlayerStates[i]);
                     break;
                 }
             }
@@ -116,6 +118,7 @@ namespace OverBang.GameName.HUB
                     RemovePlayerCard(changeEvent.Value.PlayerID);
                     break;
                 case NetworkListEvent<PlayerHubState>.EventType.Value:
+                    Debug.Log("Update");
                     UpdatePlayerCard(changeEvent.Value);
                     break;
                 case NetworkListEvent<PlayerHubState>.EventType.Clear:
@@ -136,7 +139,7 @@ namespace OverBang.GameName.HUB
             card.SetPlayerStatus(info.IsReady ? "Ready" : "Not Ready");
         }
 
-        private void RemovePlayerCard(byte playerID)
+        private void RemovePlayerCard(ulong playerID)
         {
             if (!playerCards.TryGetValue(playerID, out PlayerCard card)) return;
             Destroy(card.gameObject);
@@ -155,9 +158,10 @@ namespace OverBang.GameName.HUB
             if (!IsServer) return;
             if (PlayerStates.Count == 0) return;
 
-            foreach (PlayerHubState info in PlayerStates)
+            foreach (PlayerHubState player in PlayerStates)
             {
-                if (!info.IsReady)
+                Debug.LogError($"Player {player.PlayerID} is {player.IsReady}");
+                if (!player.IsReady)
                     return;
             }
 
@@ -168,12 +172,12 @@ namespace OverBang.GameName.HUB
         [Rpc(SendTo.ClientsAndHost)]
         private void StartGameClientRpc()
         {
-            Debug.Log("[Hub] Game starting!");
+            Debug.Log("[Hub] Game starting");
             PlayerManager.Instance.TeleportPlayersRpc(shipTransform.position);
         }
 
         // --- Helpers ---
-        private bool IsPlayerReady(byte playerID)
+        private bool IsPlayerReady(ulong playerID)
         {
             if (PlayerManager.Instance.Players.TryGetValue(playerID, out PlayerController pc))
             {

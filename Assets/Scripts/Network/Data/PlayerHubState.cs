@@ -5,10 +5,10 @@ namespace OverBang.GameName.Network
 {
     public struct PlayerHubState : IEquatable<PlayerHubState>, INetworkSerializable
     {
-        public byte PlayerID;
+        public ulong PlayerID;
         public bool IsReady;
 
-        public PlayerHubState(byte playerId, bool isReady)
+        public PlayerHubState(ulong playerId, bool isReady)
         {
             PlayerID = playerId;
             IsReady = isReady;

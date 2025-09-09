@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using KBCore.Refs;
 using OverBang.GameName.Network;
 using OverBang.GameName.Player;
 using Unity.Netcode;
@@ -9,22 +10,26 @@ namespace OverBang.GameName.Managers
 {
     public class PlayerManager : NetworkBehaviour
     {
-        public Dictionary<byte, PlayerController> Players { get; private set; }
-        public NetworkList<byte> PlayerIDs { get; private set; }
-            = new NetworkList<byte>(writePerm: NetworkVariableWritePermission.Server);
+        public Dictionary<ulong, PlayerController> Players { get; private set; }
+        public NetworkList<ulong> PlayerIDs { get; private set; }
+            = new NetworkList<ulong>(writePerm: NetworkVariableWritePermission.Server);
         
-        public event Action<byte> OnPlayerRegistered;
-        public event Action<byte> OnPlayerUnregistered;
-        public event Action<byte> OnPlayerReadyStatusChanged;
+        [field: SerializeField, Self] public PingManager PingManager { get; private set; }
+        
+        public event Action<ulong> OnPlayerRegistered;
+        public event Action<ulong> OnPlayerUnregistered;
+        public event Action<ulong> OnPlayerReadyStatusChanged;
 
         public static event Action OnInstanceCreated;
         
         public static PlayerManager Instance { get; private set; }
         public static bool HasInstance => Instance != null;
 
+        private void OnValidate() => this.ValidateRefs();
+
         private void Awake()
         {
-            Players = new Dictionary<byte, PlayerController>(4);
+            Players = new Dictionary<ulong, PlayerController>(4);
         }
 
         public override void OnNetworkSpawn()
@@ -55,25 +60,26 @@ namespace OverBang.GameName.Managers
                 return;
             }
 
+            ulong clientID = NetworkManager.Singleton.LocalClientId;
+
             if (IsServer)
             {
-                WritePlayerIDInternal(playerController);
+                WritePlayerIDInternal(playerController, clientID);
             }
             else
             {
-                WritePlayerIDRpc(NetworkManager.Singleton.LocalClientId);
+                WritePlayerIDRpc(clientID);
             }
         }
 
-        private void WritePlayerIDInternal(PlayerController player)
+        private void WritePlayerIDInternal(PlayerController player, ulong clientID)
         {
-            byte newID = (byte)(PlayerIDs.Count + 1);
-            player.PlayerNetwork.WritePlayerID(newID);
+            player.PlayerNetwork.WritePlayerID(clientID);
             
-            RegisterPlayerInternal(newID, player);
+            RegisterPlayerInternal(clientID, player);
         }
         
-        private void RegisterPlayerInternal(byte playerID, PlayerController player)
+        private void RegisterPlayerInternal(ulong playerID, PlayerController player)
         {
             if (PlayerIDs.Contains(playerID)) return;
 
@@ -96,7 +102,7 @@ namespace OverBang.GameName.Managers
                 client.PlayerObject.GetComponent<PlayerController>();
             if (playerController == null) return;
 
-            WritePlayerIDInternal(playerController);
+            WritePlayerIDInternal(playerController, requestingClientId);
         }
         
         public void UnregisterPlayer(PlayerController playerController)
@@ -118,7 +124,7 @@ namespace OverBang.GameName.Managers
             }
         }
         
-        private void UnregisterPlayerInternal(byte playerID)
+        private void UnregisterPlayerInternal(ulong playerID)
         {
             if (!PlayerIDs.Contains(playerID)) return;
 
@@ -142,7 +148,7 @@ namespace OverBang.GameName.Managers
             UnregisterPlayerInternal(playerController.PlayerNetwork.PlayerID.Value);
         }
 
-        public void ChangePlayerReadyStatus(byte playerID, bool readyStatus)
+        public void ChangePlayerReadyStatus(ulong playerID, bool readyStatus)
         {
             Debug.Log($"Player {playerID} to {readyStatus}");
             OnPlayerReadyStatusChanged?.Invoke(playerID);

@@ -11,8 +11,8 @@ namespace OverBang.GameName.Network
         public NetworkVariable<PlayerNetworkTransform> PlayerState { get; private set; } = 
             new NetworkVariable<PlayerNetworkTransform>(writePerm: NetworkVariableWritePermission.Owner);
         
-        public NetworkVariable<byte> PlayerID { get; private set; } = 
-            new NetworkVariable<byte>(writePerm: NetworkVariableWritePermission.Server);
+        public NetworkVariable<ulong> PlayerID { get; private set; } = 
+            new NetworkVariable<ulong>(writePerm: NetworkVariableWritePermission.Server);
 
         public NetworkVariable<bool> IsReady { get; private set; } = 
             new NetworkVariable<bool>(writePerm: NetworkVariableWritePermission.Server);
@@ -49,7 +49,7 @@ namespace OverBang.GameName.Network
             PlayerState.Value = playerTransform;
         }
 
-        public void WritePlayerID(byte playerID)
+        public void WritePlayerID(ulong playerID)
         {
             PlayerID.Value = playerID;
         }
