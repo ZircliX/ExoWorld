@@ -19,39 +19,38 @@ namespace OverBang.GameName.Managers
 
         private void Update()
         {
-            if (!IsClient || !IsOwner) return;
-            
+            if (!IsClient) return;
+
+            currentTime += Time.deltaTime;
             if (currentTime >= pingActualisationTime)
             {
                 currentTime = 0;
                 SendPingServerRpc(Time.realtimeSinceStartup);
             }
-            else
-            {
-                currentTime += Time.deltaTime;
-            }
         }
 
-        [Rpc(SendTo.Server)]
-        private void SendPingServerRpc(float sentTime, RpcParams rpcParams = default)
+        [ServerRpc(RequireOwnership = false)]
+        private void SendPingServerRpc(float sentTime, ServerRpcParams rpcParams = default)
         {
-            SendPingClientRpc(sentTime, rpcParams.Receive.SenderClientId);
-        }
-
-        [Rpc(SendTo.ClientsAndHost)]
-        private void SendPingClientRpc(float sentTime, ulong clientId)
-        {
-            if (clientId != NetworkManager.LocalClientId) return;
-
+            ulong clientId = rpcParams.Receive.SenderClientId;
             float rtt = Time.realtimeSinceStartup - sentTime;
-            Ping[clientId] = rtt * 1000; //ms
+
+            // Update server's dictionary
+            Ping[clientId] = rtt * 1000; // ms
+
+            // Broadcast to all clients (including host)
+            UpdatePingClientRpc(clientId, rtt * 1000);
+        }
+
+        [ClientRpc]
+        private void UpdatePingClientRpc(ulong clientId, float rtt)
+        {
+            Ping[clientId] = rtt;
         }
 
         public float GetPlayerPing(ulong playerID)
         {
-            float ping = -1;
-            Ping.TryGetValue(playerID, out ping);
-            return ping;
+            return Ping.GetValueOrDefault(playerID, -1);
         }
     }
 }

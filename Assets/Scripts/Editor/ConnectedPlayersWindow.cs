@@ -77,7 +77,7 @@ namespace Editor
             GUILayout.Label("Ping: ", GUILayout.Width(100));
             float playerPing = PlayerManager.Instance.PingManager.GetPlayerPing(playerID);
             string ping = Math.Round(playerPing, 2).ToString(CultureInfo.InvariantCulture);
-            GUILayout.Label(ping);
+            GUILayout.Label(ping + "ms");
             EditorGUILayout.EndHorizontal();
         }
     }
