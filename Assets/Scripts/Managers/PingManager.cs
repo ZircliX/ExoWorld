@@ -7,9 +7,9 @@ namespace OverBang.GameName.Managers
     public class PingManager : NetworkBehaviour
     {
         [SerializeField] private float pingActualisationTime = 2f;
-        
+
         [field: SerializeField] public Dictionary<ulong, float> Ping { get; private set; }
-        
+
         private float currentTime;
 
         private void Awake()
@@ -25,21 +25,54 @@ namespace OverBang.GameName.Managers
             if (currentTime >= pingActualisationTime)
             {
                 currentTime = 0;
-                SendPingServerRpc(Time.realtimeSinceStartup);
+                MeasureAndSendPing();
             }
         }
 
+        private void MeasureAndSendPing()
+        {
+            float startTime = Time.realtimeSinceStartup;
+            SendPingServerRpc(startTime);
+        }
+
+        // The client sends its local timestamp
         [ServerRpc(RequireOwnership = false)]
-        private void SendPingServerRpc(float sentTime, ServerRpcParams rpcParams = default)
+        private void SendPingServerRpc(float startTime, ServerRpcParams rpcParams = default)
         {
             ulong clientId = rpcParams.Receive.SenderClientId;
-            float rtt = Time.realtimeSinceStartup - sentTime;
 
-            // Update server's dictionary
-            Ping[clientId] = rtt * 1000; // ms
+            // Immediately echo back to the client that sent the ping
+            EchoPingClientRpc(startTime, new ClientRpcParams
+            {
+                Send = new ClientRpcSendParams { TargetClientIds = new[] { clientId } }
+            });
+        }
 
-            // Broadcast to all clients (including host)
-            UpdatePingClientRpc(clientId, rtt * 1000);
+        // Client receives echo and calculates RTT locally
+        [ClientRpc]
+        private void EchoPingClientRpc(float startTime, ClientRpcParams rpcParams = default)
+        {
+            float rtt = (Time.realtimeSinceStartup - startTime) * 1000f; // ms
+            ulong clientId = NetworkManager.Singleton.LocalClientId;
+
+            // Update local dictionary
+            Ping[clientId] = rtt;
+
+            // Send measured RTT to server for storage/broadcast if needed
+            SendMeasuredPingToServerRpc(rtt);
+        }
+
+        // Optional: server stores RTT to broadcast to others
+        [ServerRpc(RequireOwnership = false)]
+        private void SendMeasuredPingToServerRpc(float rtt, ServerRpcParams rpcParams = default)
+        {
+            ulong clientId = rpcParams.Receive.SenderClientId;
+
+            // Store RTT on server
+            Ping[clientId] = rtt;
+
+            // Broadcast to all clients
+            UpdatePingClientRpc(clientId, rtt);
         }
 
         [ClientRpc]
