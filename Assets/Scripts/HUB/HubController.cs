@@ -29,6 +29,19 @@ namespace OverBang.GameName.HUB
         // --- Network Lifecycle ---
         public override void OnNetworkSpawn()
         {
+            if (PlayerManager.HasInstance && PlayerManager.Instance.IsSpawned)
+            {
+                InitializeHub();
+            }
+            else
+            {
+                PlayerManager.OnInstanceCreated += InitializeHub;
+            }
+        }
+
+        private void InitializeHub()
+        {
+            PlayerManager.OnInstanceCreated -= InitializeHub;
             // Clients s'abonnent aux events
             PlayerStates.OnListChanged += OnPlayersListChanged;
 
