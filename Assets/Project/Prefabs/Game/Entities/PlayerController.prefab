@@ -48,11 +48,11 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.95
+  m_Radius: 0.75
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2015653316493775338
 MonoBehaviour:
@@ -94,7 +94,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.0986414, y: 0.17069773, z: 0.47895452}
   m_LocalScale: {x: 6.1650867, y: 4.97661, z: 1.1112635}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 9160215276403551252}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -125,9 +125,9 @@ Transform:
   m_GameObject: {fileID: 1234068852491477882}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.493, y: 0, z: 0.372}
-  m_LocalScale: {x: 0.16220371, y: 0.20094, z: 0.89987665}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -0.25, y: 0, z: 0.372}
+  m_LocalScale: {x: 0.09, y: 0.11149651, z: 0.49931872}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2224179559912033500}
   m_Father: {fileID: 8676647657924908099}
@@ -210,7 +210,7 @@ Transform:
   m_GameObject: {fileID: 3000591483809483146}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -243,7 +243,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.024660397, y: 0.17069775, z: 0.47895452}
   m_LocalScale: {x: 6.1650867, y: 4.97661, z: 1.1112635}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 487430975061280795}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -274,7 +274,7 @@ Transform:
   m_GameObject: {fileID: 3867709443837853277}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -350,7 +350,7 @@ Transform:
   m_GameObject: {fileID: 4586079106163108224}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -389,7 +389,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 75
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -664,15 +664,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementStates:
-  - {fileID: 11400000, guid: 5e4bcd4b83c261443b9414fe80298e6b, type: 2}
-  - {fileID: 11400000, guid: e28da9b0a8db01542a3770b3e1a28e1c, type: 2}
   - {fileID: 11400000, guid: be1dcc172ba00724ea9b156b06ecc9da, type: 2}
-  - {fileID: 11400000, guid: 9d3d4af720a56e642b1fdbd0543cb6e0, type: 2}
   - {fileID: 11400000, guid: 1584499b6b911c740bb388239cf6a091, type: 2}
+  - {fileID: 11400000, guid: 9d3d4af720a56e642b1fdbd0543cb6e0, type: 2}
+  - {fileID: 11400000, guid: 5e4bcd4b83c261443b9414fe80298e6b, type: 2}
   - {fileID: 11400000, guid: 65418ada7e21f654fa5e1c852d785aa5, type: 2}
-  - {fileID: 11400000, guid: 1aa7a36b7dffb6c4cb38c3b598ac66a4, type: 2}
-  - {fileID: 11400000, guid: fbab10ddc9204e24eb7857ef1f772720, type: 2}
-  - {fileID: 11400000, guid: 9c330759aaab57647ac2ccd06053627a, type: 2}
+  - {fileID: 11400000, guid: cd52e72197f988043b0af1aea128d259, type: 2}
   groundCheckDistance: 0.2
   groundCheckMaxAngle: 50
   <GroundLayer>k__BackingField:
@@ -693,7 +690,7 @@ MonoBehaviour:
   coyoteTime: 25
   gravityScale: 2.75
   gravityAlignSpeed: 5
-  <BaseCapsuleHeight>k__BackingField: 2
+  <BaseCapsuleHeight>k__BackingField: 1.5
   <CrouchCapsuleHeight>k__BackingField: 0.5
   <BaseHeadHeight>k__BackingField: 0.5
   <ColliderCenterOffset>k__BackingField: {x: 0, y: -0.5, z: 0}
@@ -701,7 +698,7 @@ MonoBehaviour:
   <Head>k__BackingField: {fileID: 2065021886003205984}
   <Foot>k__BackingField: {fileID: 7415998647446923790}
   <CapsuleCollider>k__BackingField: {fileID: 2649105432247018214}
-  <rb>k__BackingField: {fileID: 7362595536518079642}
+  <Rb>k__BackingField: {fileID: 7362595536518079642}
   <Camera>k__BackingField: {fileID: 818597675296926653}
   <CameraController>k__BackingField: {fileID: 3883945405582393277}
 --- !u!54 &7362595536518079642
@@ -750,8 +747,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.35
+  m_Height: 1.5
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7771178899970783667
@@ -1174,7 +1171,7 @@ Transform:
   m_GameObject: {fileID: 7951095932090443510}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -0.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1207,9 +1204,9 @@ Transform:
   m_GameObject: {fileID: 8082449280172089930}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.445, y: 0, z: 0.372}
-  m_LocalScale: {x: 0.16220371, y: 0.20094, z: 0.89987665}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0.25, y: 0, z: 0.372}
+  m_LocalScale: {x: 0.09, y: 0.11149651, z: 0.49931872}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4802033896124536546}
   m_Father: {fileID: 8676647657924908099}
@@ -1295,8 +1292,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8676647657924908099}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1459,7 +1456,7 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 75
+    FieldOfView: 60
     OrthographicSize: 5
     NearClipPlane: 0.01
     FarClipPlane: 1000
