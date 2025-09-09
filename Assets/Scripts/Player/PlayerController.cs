@@ -17,7 +17,10 @@ namespace OverBang.GameName.Player
         [field: SerializeField, Child] public Camera Camera { get; private set; }
 
         public PlayerNetworkController PlayerNetwork { get; private set; }
-        
+
+        private float updateRate = 1f / 20f; // 20Hz network send
+        private float timer;
+
         private void OnValidate()
         {
             this.ValidateRefs();
@@ -27,44 +30,42 @@ namespace OverBang.GameName.Player
         {
             PlayerNetwork = network;
 
+            if (!PlayerNetwork.IsOwner)
+            {
+                // Non-owner: strip controls & camera
+                Destroy(PlayerInput);
+                Destroy(Camera.gameObject);
+                Destroy(PlayerCamera.gameObject);
+
+                // Keep Rigidbody but disable local movement
+                PlayerMovement.Rb.isKinematic = true;
+                PlayerMovement.Rb.interpolation = RigidbodyInterpolation.Interpolate;
+                PlayerMovement.enabled = false;
+
+                // Snap to the latest state immediately
+                Vector3 pos = PlayerNetwork.PlayerState.Value.Position;
+                Quaternion rot = PlayerNetwork.PlayerState.Value.Rotation;
+                PlayerMovement.Rb.position = pos;
+                PlayerMovement.Rb.rotation = rot;
+            }
+            else
+            {
+                CameraManager.Instance.SwitchToCamera(CameraID.PlayerView);
+            }
+
             if (PlayerManager.HasInstance && PlayerManager.Instance.IsSpawned)
             {
                 InitializePlayer();
             }
             else
             {
-                Debug.Log("PlayerController waiting for PlayerManager to be ready...");
                 PlayerManager.OnInstanceCreated += InitializePlayer;
             }
         }
 
         private void InitializePlayer()
         {
-            if (!PlayerNetwork.IsOwner)
-            {
-                Destroy(PlayerInput);
-                Destroy(Camera.gameObject);
-                Destroy(PlayerCamera.gameObject);
-
-                // Safer than destroying Rigidbody
-                PlayerMovement.Rb.isKinematic = true;
-                PlayerMovement.enabled = false;
-            }
-            else
-            {
-                CameraManager.Instance.SwitchToCamera(CameraID.PlayerView);
-                
-                if (PlayerManager.HasInstance && PlayerManager.Instance.IsSpawned)
-                {
-                    RegisterPlayer();
-                }
-                else
-                {
-                    Debug.Log("PlayerNetworkController waiting for PlayerManager to be ready...");
-                    PlayerManager.OnInstanceCreated += RegisterPlayer;
-                }
-            }
-            
+            PlayerManager.Instance.RegisterPlayer(this);
             PlayerManager.OnInstanceCreated -= InitializePlayer;
         }
 
@@ -76,45 +77,55 @@ namespace OverBang.GameName.Player
             }
         }
 
-        public override void OnUpdate()
+        private void FixedUpdate()
         {
+            if (PlayerNetwork == null) return;
+
             if (PlayerNetwork.IsOwner)
             {
                 WriteState();
-                CheckForReadyStatusChanged();
             }
-            else
+        }
+
+        public override void OnUpdate()
+        {
+            if (PlayerNetwork == null) return;
+
+            if (!PlayerNetwork.IsOwner)
             {
                 ReadState();
             }
+            else
+            {
+                CheckForReadyStatusChanged();
+            }
         }
-        
+
         private void WriteState()
         {
-            Vector3 position = PlayerMovement.Position;
-            Quaternion rotation = PlayerMovement.Rb.rotation;
-                
-            PlayerNetworkTransform playerTransform = new PlayerNetworkTransform()
+            timer += Time.fixedDeltaTime;
+            if (timer < updateRate) return;
+            timer = 0f;
+
+            PlayerNetwork.PlayerState.Value = new PlayerNetworkTransform()
             {
-                Position = position,
-                Rotation = rotation
+                Position = PlayerMovement.Rb.position,
+                Rotation = PlayerMovement.Rb.rotation
             };
-            
-            PlayerNetwork.WritePlayerNetworkTransformRpc(playerTransform);
-        }
-        
-        private void RegisterPlayer()
-        {
-            PlayerManager.Instance.RegisterPlayer(this);
         }
 
         private void ReadState()
         {
-            Vector3 position = PlayerNetwork.PlayerState.Value.Position;
-            transform.position = position;
+            Vector3 targetPos = PlayerNetwork.PlayerState.Value.Position;
+            Quaternion targetRot = PlayerNetwork.PlayerState.Value.Rotation;
 
-            Quaternion rotation = PlayerNetwork.PlayerState.Value.Rotation;
-            transform.rotation = rotation;
+            Vector3 currentPos = PlayerMovement.Rb.position;
+            Quaternion currentRot = PlayerMovement.Rb.rotation;
+
+            // Smooth interpolation (factor-based, not delta-time scaled)
+            float lerpFactor = 6f;
+            PlayerMovement.Rb.MovePosition(Vector3.Lerp(currentPos, targetPos, lerpFactor));
+            PlayerMovement.Rb.MoveRotation(Quaternion.Slerp(currentRot, targetRot, lerpFactor));
         }
 
         private void CheckForReadyStatusChanged()

@@ -64,7 +64,7 @@ namespace OverBang.GameName.Managers
 
             if (IsServer)
             {
-                WritePlayerIDInternal(playerController, clientID);
+                RegisterPlayerOnServer(playerController, clientID);
             }
             else
             {
@@ -72,22 +72,17 @@ namespace OverBang.GameName.Managers
             }
         }
 
-        private void WritePlayerIDInternal(PlayerController player, ulong clientID)
+        private void RegisterPlayerOnServer(PlayerController player, ulong clientID)
         {
             player.PlayerNetwork.WritePlayerID(clientID);
             
-            RegisterPlayerInternal(clientID, player);
-        }
-        
-        private void RegisterPlayerInternal(ulong playerID, PlayerController player)
-        {
-            if (PlayerIDs.Contains(playerID)) return;
+            if (PlayerIDs.Contains(clientID)) return;
 
-            PlayerIDs.Add(playerID);
-            Players.Add(playerID, player);
+            PlayerIDs.Add(clientID);
+            Players.Add(clientID, player);
             
-            Debug.Log($"[Server] Registered player {playerID}");
-            OnPlayerRegistered?.Invoke(playerID);
+            Debug.Log($"[Server] Registered player {clientID}");
+            OnPlayerRegistered?.Invoke(clientID);
         }
 
         [Rpc(SendTo.Server)]
@@ -102,7 +97,7 @@ namespace OverBang.GameName.Managers
                 client.PlayerObject.GetComponent<PlayerController>();
             if (playerController == null) return;
 
-            WritePlayerIDInternal(playerController, requestingClientId);
+            RegisterPlayerOnServer(playerController, requestingClientId);
         }
         
         public void UnregisterPlayer(PlayerController playerController)
@@ -171,7 +166,7 @@ namespace OverBang.GameName.Managers
                 Position = position,
                 Rotation = player.PlayerMovement.Rb.rotation,
             };
-            player.PlayerNetwork.WritePlayerNetworkTransformRpc(newPos);
+            //player.PlayerNetwork.WritePlayerNetworkTransformRpc(newPos);
         }
     }
 }

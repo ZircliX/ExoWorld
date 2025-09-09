@@ -6,7 +6,7 @@ namespace OverBang.GameName.Network
     public struct PlayerNetworkTransform : INetworkSerializable
     {
         private Vector3 position;
-        private short rotationY;
+        private float rotationY;
 
         internal Vector3 Position
         {
@@ -17,7 +17,7 @@ namespace OverBang.GameName.Network
         internal Quaternion Rotation
         {
             get => Quaternion.Euler(0, rotationY, 0);
-            set => rotationY = (short) value.eulerAngles.y;
+            set => rotationY = value.eulerAngles.y;
         }
 
         public void NetworkSerialize<T>(BufferSerializer<T> serializer)
