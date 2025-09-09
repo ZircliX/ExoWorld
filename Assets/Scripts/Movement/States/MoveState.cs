@@ -106,7 +106,7 @@ namespace OverBang.GameName.Movement
                     movement.GroundLayer))
             {
                 float stepHeight = maxStepHeight - hit.distance;
-                movement.rb.position += projectionPlaneNormal * stepHeight;
+                movement.Rb.position += projectionPlaneNormal * stepHeight;
             }
 
             //Debug.DrawRay(stepPoint, -projectionPlaneNormal * maxStepHeight, Color.magenta);

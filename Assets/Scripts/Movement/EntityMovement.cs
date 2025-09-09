@@ -97,7 +97,7 @@ namespace OverBang.GameName.Movement
         [field: SerializeField] public Transform Head { get; private set; }
         [field: SerializeField] public Transform Foot { get; private set; }
         [field: SerializeField, Child] public CapsuleCollider CapsuleCollider { get; private set; }
-        [field: SerializeField, Self] public Rigidbody rb { get; private set; }
+        [field: SerializeField, Self] public Rigidbody Rb { get; private set; }
 
         #endregion
         
@@ -165,7 +165,7 @@ namespace OverBang.GameName.Movement
 
         protected virtual void Awake()
         {
-            Position = rb.position;
+            Position = Rb.position;
             CurrentVelocity = new Formula<Vector3>(Vector3.zero);
             stateChannelKey = ChannelKey.GetUniqueChannelKey();
             CurrentVelocity.Add(stateChannelKey, Vector3.zero);
@@ -234,7 +234,7 @@ namespace OverBang.GameName.Movement
         
         protected virtual void FixedUpdate()
         {
-            Position = rb.position;
+            Position = Rb.position;
             
             currentStateIndex = currentStateIndex == -1 ? 0 : currentStateIndex;
 
@@ -288,12 +288,12 @@ namespace OverBang.GameName.Movement
                     Quaternion rot = other.attachedRigidbody == null
                         ? other.transform.rotation
                         : other.attachedRigidbody.rotation;
-                    if (Physics.ComputePenetration(CapsuleCollider, Position, rb.rotation,
+                    if (Physics.ComputePenetration(CapsuleCollider, Position, Rb.rotation,
                             other, pos, rot,
                             out Vector3 offset, out float distance))
                     {
                         Position += offset * distance;
-                        rb.position = Position;
+                        Rb.position = Position;
                         //Debug.Log(offset * distance);
                         //Debug.Break();
                     }
@@ -315,12 +315,12 @@ namespace OverBang.GameName.Movement
                 Vector3 deltaPosition = snapPosition - capsuleBottom;
                 if (deltaPosition.sqrMagnitude > 0.1f)
                 {
-                    rb.DOMove(rb.position + deltaPosition, 0.1f);
+                    Rb.DOMove(Rb.position + deltaPosition, 0.1f);
                 }
             }
 
             Vector3 velocity = CurrentVelocity.Value;
-            rb.linearVelocity = velocity;
+            Rb.linearVelocity = velocity;
         }
         
         private void HandleGravityOrientation()
@@ -331,7 +331,7 @@ namespace OverBang.GameName.Movement
 
             Quaternion rotation = Quaternion.LookRotation(forward, targetUp);
 
-            rb.MoveRotation(Quaternion.Slerp(rb.rotation, rotation, gravityAlignSpeed * Time.deltaTime));
+            Rb.MoveRotation(Quaternion.Slerp(Rb.rotation, rotation, gravityAlignSpeed * Time.deltaTime));
         }
         
         #region Detections
