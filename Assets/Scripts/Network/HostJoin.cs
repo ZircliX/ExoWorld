@@ -17,6 +17,8 @@ namespace OverBang.GameName.Network
         [SerializeField] private CanvasGroup menuCanvas;
         [SerializeField] private TMP_InputField inputField;
 
+        public static string JoinCode;
+
         private void Awake()
         {
             GameController.CursorLockModePriority.AddPriority(this, PriorityTags.High);
@@ -42,8 +44,8 @@ namespace OverBang.GameName.Network
             {
                 Allocation allocation = await RelayService.Instance.CreateAllocationAsync(4);
                 
-                string joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
-                Debug.Log($"Join code: {joinCode}");
+                JoinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
+                Debug.Log($"Join code: {JoinCode}");
                 //Debug.Log($"allocation.AllocationId: {allocation.AllocationId}");
                 
                 NetworkManager.Singleton.GetComponent<UnityTransport>().SetHostRelayData(
