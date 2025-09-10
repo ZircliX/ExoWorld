@@ -8,17 +8,19 @@ namespace OverBang.GameName.Network
         private Vector3 position;
         private float rotationY;
 
-        internal Vector3 Position
+        public Vector3 Position
         {
             get => position;
-            set => position = value;
+            internal set => position = value;
         }
 
-        internal Quaternion Rotation
+        public Quaternion Rotation
         {
             get => Quaternion.Euler(0, rotationY, 0);
-            set => rotationY = value.eulerAngles.y;
+            internal set => rotationY = value.eulerAngles.y;
         }
+
+        public float RotationY => rotationY;
 
         public void NetworkSerialize<T>(BufferSerializer<T> serializer)
             where T : IReaderWriter
