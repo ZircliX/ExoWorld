@@ -7,7 +7,7 @@ using Unity.Netcode;
 using UnityEditor;
 using UnityEngine;
 
-namespace Editor
+namespace OverBang.GameName.Editor
 {
     public class ConnectedPlayersWindow : EditorWindow
     {
