@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using OverBang.GameName.Managers;
 using OverBang.GameName.Network;
 using OverBang.GameName.Player;
+using Unity.Netcode;
 using UnityEditor;
 using UnityEngine;
 
@@ -114,6 +115,12 @@ namespace Editor
             GUIStyle style = new GUIStyle() { normal = { textColor = ping < 50 ? Color.green : ping < 100 ? Color.orange : Color.red } };
             GUILayout.Label($"{ping} ms", style);
             EditorGUILayout.EndHorizontal();
+            
+            //Tools
+            if (GUILayout.Button("Kick")) 
+            {
+                NetworkManager.Singleton.DisconnectClient(playerID);
+            }
         }
     }
 }
