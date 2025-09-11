@@ -29,7 +29,6 @@ namespace OverBang.GameName.Core.Scene
             OnInstanceCreated?.Invoke();
         }
 
-
         public void ChangeScene(string sceneName)
         {
             if (NetworkManager.Singleton.IsServer)
