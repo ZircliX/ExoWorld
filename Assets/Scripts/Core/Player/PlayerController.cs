@@ -1,5 +1,6 @@
 using KBCore.Refs;
 using OverBang.GameName.Cameras;
+using OverBang.GameName.Core.Scene;
 using OverBang.GameName.Managers;
 using OverBang.GameName.Metrics;
 using OverBang.GameName.Movement;
@@ -98,6 +99,7 @@ namespace OverBang.GameName.Player
             else
             {
                 CheckForReadyStatusChanged();
+                CheckForChangeScene();
             }
         }
 
@@ -134,6 +136,15 @@ namespace OverBang.GameName.Player
             {
                 bool newReadyStatus = !PlayerNetwork.IsReady.Value;
                 PlayerNetwork.RequestSetReadyRpc(newReadyStatus);
+            }
+        }
+
+        private void CheckForChangeScene()
+        {
+            if (Keyboard.current.lKey.wasPressedThisFrame)
+            {
+                SceneManager.Instance.ChangeScene("Test");
+                Debug.Log("Try to change scene to Test");
             }
         }
     }
