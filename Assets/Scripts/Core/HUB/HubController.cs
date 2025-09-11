@@ -1,6 +1,6 @@
+using System;
 using System.Collections.Generic;
 using OverBang.GameName.Managers;
-using OverBang.GameName.Network;
 using OverBang.GameName.Player;
 using Unity.Netcode;
 using UnityEngine;
@@ -12,189 +12,112 @@ namespace OverBang.GameName.HUB
         [Header("Player UI Card")]
         [SerializeField] private PlayerCard playerCardPrefab;
         [SerializeField] private Transform playerCardContainer;
-        
+
         [Header("Game Start")]
         [SerializeField] private Transform shipTransform;
 
-        public NetworkList<PlayerHubState> PlayerStates { get; private set; } 
-            = new NetworkList<PlayerHubState>(writePerm: NetworkVariableWritePermission.Server);
-        
         private Dictionary<ulong, PlayerCard> playerCards;
         
+        public event Action<ulong> OnHubPlayerAdded;
+        public event Action<ulong> OnHubPlayerRemoved;
+        public event Action<ulong, bool> OnHubPlayerReadyChanged;
+        
+        private void OnEnable()
+        {
+            if (PlayerManager.HasInstance)
+            {
+                SubscribeToEvents();
+            }
+            else
+            {
+                PlayerManager.OnInstanceCreated += SubscribeToEvents;
+            }
+        }
+
+        private void SubscribeToEvents()
+        {
+            PlayerManager.OnInstanceCreated -= SubscribeToEvents;
+            
+            PlayerManager manager = PlayerManager.Instance;
+            manager.OnPlayerRegistered += HandlePlayerRegistered;
+            manager.OnPlayerUnregistered += HandlePlayerUnregistered;
+            manager.OnPlayerReadyStatusChanged += HandlePlayerReadyChanged;
+        }
+
+        private void OnDisable()
+        {
+            if (!PlayerManager.HasInstance) return;
+            
+            PlayerManager manager = PlayerManager.Instance;
+            manager.OnPlayerRegistered -= HandlePlayerRegistered;
+            manager.OnPlayerUnregistered -= HandlePlayerUnregistered;
+            manager.OnPlayerReadyStatusChanged -= HandlePlayerReadyChanged;
+        }
+
         private void Awake()
         {
             playerCards = new Dictionary<ulong, PlayerCard>(4);
         }
         
-        // --- Network Lifecycle ---
-        public override void OnNetworkSpawn()
+        private void HandlePlayerRegistered(ulong playerId)
         {
-            if (PlayerManager.HasInstance && PlayerManager.Instance.IsSpawned)
-            {
-                InitializeHub();
-            }
-            else
-            {
-                PlayerManager.OnInstanceCreated += InitializeHub;
-            }
+            AddPlayerCard(playerId, false);
+            OnHubPlayerAdded?.Invoke(playerId);
         }
 
-        private void InitializeHub()
+        private void HandlePlayerUnregistered(ulong playerId)
         {
-            PlayerManager.OnInstanceCreated -= InitializeHub;
-            // Clients s'abonnent aux events
-            PlayerStates.OnListChanged += OnPlayersListChanged;
-
-            if (IsServer)
-            {
-                // Init de la liste avec les joueurs existants
-                PlayerStates.Clear();
-                foreach (ulong playerID in PlayerManager.Instance.Players.Keys)
-                {
-                    bool isReady = IsPlayerReady(playerID);
-                    PlayerStates.Add(new PlayerHubState(playerID, isReady));
-                }
-
-                // Subscribes aux events PlayerManager côté serveur
-                PlayerManager.Instance.OnPlayerRegistered += OnPlayerRegistered_Server;
-                PlayerManager.Instance.OnPlayerUnregistered += OnPlayerUnregistered_Server;
-                PlayerManager.Instance.OnPlayerReadyStatusChanged += OnPlayerReadyStatusChanged_Server;
-            }
-            
-            if (IsClient)
-            {
-                foreach (PlayerHubState info in PlayerStates) // <- en late join, cette boucle sera remplie
-                {
-                    AddPlayerCard(info);
-                }
-            }
+            RemovePlayerCard(playerId);
+            OnHubPlayerRemoved?.Invoke(playerId);
         }
 
-        public override void OnNetworkDespawn()
+        private void HandlePlayerReadyChanged(ulong playerId, bool isReady)
         {
-            PlayerStates.OnListChanged -= OnPlayersListChanged;
-
-            if (IsServer && PlayerManager.HasInstance)
-            {
-                PlayerManager.Instance.OnPlayerRegistered -= OnPlayerRegistered_Server;
-                PlayerManager.Instance.OnPlayerUnregistered -= OnPlayerUnregistered_Server;
-                PlayerManager.Instance.OnPlayerReadyStatusChanged -= OnPlayerReadyStatusChanged_Server;
-            }
+            UpdatePlayerCard(playerId, isReady);
+            OnHubPlayerReadyChanged?.Invoke(playerId, isReady);
         }
-
-        private void OnPlayerRegistered_Server(ulong playerID)
+        
+        // --- Gameplay UI updates ---
+        public void AddPlayerCard(ulong playerId, bool isReady)
         {
-            if (!IsServer) return;
-            PlayerStates.Add(new PlayerHubState(playerID, false));
-        }
-
-        private void OnPlayerUnregistered_Server(ulong playerID)
-        {
-            if (!IsServer) return;
-            
-            for (int i = 0; i < PlayerStates.Count; i++)
-            {
-                if (PlayerStates[i].PlayerID == playerID)
-                {
-                    PlayerStates.RemoveAt(i);
-                    break;
-                }
-            }
-        }
-
-        private void OnPlayerReadyStatusChanged_Server(ulong playerID)
-        {
-            if (!IsServer) return;
-            
-            for (int i = 0; i < PlayerStates.Count; i++)
-            {
-                if (PlayerStates[i].PlayerID == playerID)
-                {
-                    PlayerStates[i] = new PlayerHubState(playerID, IsPlayerReady(playerID));
-                    UpdatePlayerCard(PlayerStates[i]);
-                    break;
-                }
-            }
-
-            CheckForGameStartInternal();
-        }
-
-        // --- Client-side UI updates ---
-        private void OnPlayersListChanged(NetworkListEvent<PlayerHubState> changeEvent)
-        {
-            switch (changeEvent.Type)
-            {
-                case NetworkListEvent<PlayerHubState>.EventType.Add:
-                    AddPlayerCard(changeEvent.Value);
-                    break;
-                case NetworkListEvent<PlayerHubState>.EventType.Remove:
-                    RemovePlayerCard(changeEvent.Value.PlayerID);
-                    break;
-                case NetworkListEvent<PlayerHubState>.EventType.Value:
-                    UpdatePlayerCard(changeEvent.Value);
-                    break;
-                case NetworkListEvent<PlayerHubState>.EventType.Clear:
-                    foreach (PlayerCard card in playerCards.Values)
-                        Destroy(card.gameObject);
-                    playerCards.Clear();
-                    break;
-            }
-        }
-
-        private void AddPlayerCard(PlayerHubState info)
-        {
-            if (playerCards.ContainsKey(info.PlayerID)) return;
+            if (playerCards.ContainsKey(playerId)) return;
 
             PlayerCard card = Instantiate(playerCardPrefab, playerCardContainer);
-            playerCards.Add(info.PlayerID, card);
-            card.SetPlayerName($"Player {info.PlayerID}");
-            card.SetPlayerStatus(info.IsReady ? "Ready" : "Not Ready");
+            playerCards.Add(playerId, card);
+            card.SetPlayerName($"Player {playerId}");
+            card.SetPlayerStatus(isReady ? "Ready" : "Not Ready");
         }
 
-        private void RemovePlayerCard(ulong playerID)
+        public void RemovePlayerCard(ulong playerId)
         {
-            if (!playerCards.TryGetValue(playerID, out PlayerCard card)) return;
+            if (!playerCards.TryGetValue(playerId, out PlayerCard card)) return;
             Destroy(card.gameObject);
-            playerCards.Remove(playerID);
+            playerCards.Remove(playerId);
         }
 
-        private void UpdatePlayerCard(PlayerHubState info)
+        public void UpdatePlayerCard(ulong playerId, bool isReady)
         {
-            if (!playerCards.TryGetValue(info.PlayerID, out PlayerCard card)) return;
-            card.SetPlayerStatus(info.IsReady ? "Ready" : "Not Ready");
+            if (!playerCards.TryGetValue(playerId, out PlayerCard card)) return;
+            card.SetPlayerStatus(isReady ? "Ready" : "Not Ready");
         }
 
-        // --- Game start (server only) ---
-        private void CheckForGameStartInternal()
+        public void ClearPlayerCards()
         {
-            if (!IsServer) return;
-            if (PlayerStates.Count == 0) return;
+            foreach (PlayerCard card in playerCards.Values)
+                Destroy(card.gameObject);
+            playerCards.Clear();
+        }
+        
+        // --- Runtime Logic ---
 
-            foreach (PlayerHubState player in PlayerStates)
+        public void StartGame()
+        {
+            Debug.Log("[Hub] Game starting!");
+            // Offline: directly teleport players
+            foreach (KeyValuePair<ulong, PlayerController> kvp in Managers.PlayerManager.Instance.Players)
             {
-                if (!player.IsReady)
-                    return;
+                Managers.PlayerManager.Instance.TeleportPlayer(kvp.Key, shipTransform.position);
             }
-
-            Debug.LogWarning("[Hub] All PlayerStates ready -> starting game!");
-            StartGameClientRpc();
-        }
-
-        [Rpc(SendTo.ClientsAndHost)]
-        private void StartGameClientRpc()
-        {
-            Debug.Log("[Hub] Game starting");
-            PlayerManager.Instance.TeleportPlayersRpc(shipTransform.position);
-        }
-
-        // --- Helpers ---
-        private bool IsPlayerReady(ulong playerID)
-        {
-            if (PlayerManager.Instance.Players.TryGetValue(playerID, out PlayerController pc))
-            {
-                return pc.PlayerNetwork.IsReady.Value;
-            }
-            return false;
         }
     }
 }

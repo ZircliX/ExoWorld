@@ -18,7 +18,7 @@ namespace OverBang.GameName.Movement
         protected override void Awake()
         {
             base.Awake();
-            CameraController.CameraEffectProperty.AddPriority(stateChannelKey, PriorityTags.High);
+            CameraController.CameraEffectProperty?.AddPriority(stateChannelKey, PriorityTags.High);
         }
 
         protected override void FixedUpdate()

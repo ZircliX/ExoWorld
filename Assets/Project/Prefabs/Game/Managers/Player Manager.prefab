@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1243660159616898381}
   - component: {fileID: 754908797188311438}
+  - component: {fileID: 4532397565030585948}
   - component: {fileID: 2704829238120262941}
   - component: {fileID: 2206382691725922556}
   m_Layer: 0
@@ -52,13 +53,27 @@ MonoBehaviour:
   Ownership: 1
   AlwaysReplicateAsRoot: 1
   SynchronizeTransform: 0
-  ActiveSceneSynchronization: 0
+  ActiveSceneSynchronization: 1
   SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 0
   AllowOwnerToParent: 0
+--- !u!114 &4532397565030585948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2394542601939000898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a3697ea1d54c55b3c527dc7991fcce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  <PlayerManager>k__BackingField: {fileID: 2704829238120262941}
 --- !u!114 &2704829238120262941
 MonoBehaviour:
   m_ObjectHideFlags: 0
