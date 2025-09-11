@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using OverBang.GameName.Managers;
 using OverBang.GameName.Network;
-using OverBang.GameName.Player;
 using Unity.Netcode;
 using UnityEditor;
 using UnityEngine;
@@ -19,7 +18,7 @@ namespace OverBang.GameName.Editor
 
         public void OnInspectorUpdate() => Repaint();
 
-        private bool CheckForValidation() => EditorApplication.isPlaying && PlayerManager.HasInstance && PlayerManager.Instance.IsSpawned;
+        private bool CheckForValidation() => EditorApplication.isPlaying && PlayerManagerNetworkAdapter.HasInstance && PlayerManagerNetworkAdapter.Instance.IsSpawned;
 
         private void OnGUI()
         {
@@ -48,27 +47,27 @@ namespace OverBang.GameName.Editor
             EditorGUILayout.BeginHorizontal();
             if (GUILayout.Button("✅ Ready All", GUILayout.Width(100)))
             {
-                foreach (KeyValuePair<ulong, PlayerController> kvp in PlayerManager.Instance.Players)
+                foreach (KeyValuePair<ulong, PlayerControllerNetworkAdapter> kvp in PlayerManagerNetworkAdapter.Instance.Players)
                 {
-                    PlayerController p = kvp.Value;
-                    if (!p.PlayerNetwork.IsReady.Value)
-                        p.PlayerNetwork.RequestSetReadyRpc(true);
+                    PlayerControllerNetworkAdapter playerController = kvp.Value;
+                    if (!playerController.PlayerNetworkController.IsReady.Value)
+                        playerController.PlayerNetworkController.RequestSetReadyRpc(true);
                 }
             }
             if (GUILayout.Button("❌ Unready All", GUILayout.Width(100)))
             {
-                foreach (KeyValuePair<ulong, PlayerController> kvp in PlayerManager.Instance.Players)
+                foreach (KeyValuePair<ulong, PlayerControllerNetworkAdapter> kvp in PlayerManagerNetworkAdapter.Instance.Players)
                 {
-                    PlayerController p = kvp.Value;
-                    if (p.PlayerNetwork.IsReady.Value)
-                        p.PlayerNetwork.RequestSetReadyRpc(false);
+                    PlayerControllerNetworkAdapter playerController = kvp.Value;
+                    if (playerController.PlayerNetworkController.IsReady.Value)
+                        playerController.PlayerNetworkController.RequestSetReadyRpc(false);
                 }
             }
             if (GUILayout.Button("🚪 Kick All Clients", GUILayout.Width(150)))
             {
-                foreach (KeyValuePair<ulong, PlayerController> kvp in PlayerManager.Instance.Players)
+                foreach (KeyValuePair<ulong, PlayerControllerNetworkAdapter> kvp in PlayerManagerNetworkAdapter.Instance.Players)
                 {
-                    if (!kvp.Value.PlayerNetwork.IsHost) // don’t kick host
+                    if (!kvp.Value.PlayerNetworkController.IsHost) // don’t kick host
                         NetworkManager.Singleton.DisconnectClient(kvp.Key);
                 }
             }
@@ -80,7 +79,7 @@ namespace OverBang.GameName.Editor
             scrollPos = EditorGUILayout.BeginScrollView(scrollPos, GUILayout.Width(position.width), GUILayout.Height(position.height));
 
             EditorGUILayout.BeginVertical();
-            foreach (KeyValuePair<ulong, PlayerController> players in PlayerManager.Instance.Players)
+            foreach (KeyValuePair<ulong, PlayerControllerNetworkAdapter> players in PlayerManagerNetworkAdapter.Instance.Players)
             {
                 EditorGUILayout.Space();
                 DisplayPlayerData(players.Value, players.Key);
@@ -91,11 +90,11 @@ namespace OverBang.GameName.Editor
         }
 
 
-        private void DisplayPlayerData(PlayerController player, ulong playerID)
+        private void DisplayPlayerData(PlayerControllerNetworkAdapter playerController, ulong playerID)
         {
             // Highlight local player
             Color prevBg = GUI.backgroundColor;
-            GUI.backgroundColor = player.PlayerNetwork.IsOwner ? new Color(0.25f, 0.45f, 0.25f) : // greenish tint
+            GUI.backgroundColor = playerController.PlayerNetworkController.IsOwner ? new Color(0.25f, 0.45f, 0.25f) : // greenish tint
                 new Color(0.2f, 0.2f, 0.2f);
 
             EditorGUILayout.BeginVertical("box");
@@ -105,7 +104,7 @@ namespace OverBang.GameName.Editor
             foldouts.TryAdd(playerID, true);
             foldouts[playerID] = EditorGUILayout.Foldout(
                 foldouts[playerID], 
-                $"Player {playerID} {(player.PlayerNetwork.IsOwner ? "(Local)" : "")}", 
+                $"Player {playerID} {(playerController.PlayerNetworkController.IsOwner ? "(Local)" : "")}", 
                 true, 
                 new GUIStyle(EditorStyles.foldout) { fontStyle = FontStyle.Bold }
             );
@@ -115,18 +114,18 @@ namespace OverBang.GameName.Editor
                 // --- Ready State ---
                 EditorGUILayout.BeginHorizontal();
                 GUILayout.Label("Ready Status: ", GUILayout.Width(100));
-                bool isReady = player.PlayerNetwork.IsReady.Value;
+                bool isReady = playerController.PlayerNetworkController.IsReady.Value;
                 Texture readyIcon = EditorGUIUtility.IconContent(isReady ? "TestPassed" : "TestFailed").image;
                 GUILayout.Label(new GUIContent(isReady ? "Ready" : "Not Ready", readyIcon));
                 if (GUILayout.Button("Toggle", GUILayout.Width(75))) {
-                    player.PlayerNetwork.RequestSetReadyRpc(!isReady);
+                    playerController.PlayerNetworkController.RequestSetReadyRpc(!isReady);
                 }
                 EditorGUILayout.EndHorizontal();
 
                 // --- Transform ---
                 EditorGUILayout.Space();
-                GUILayout.Label($"Pos: {player.PlayerNetwork.PlayerState.Value.Position:F1}");
-                GUILayout.Label($"RotY: {player.PlayerNetwork.PlayerState.Value.RotationY:F1} °");
+                GUILayout.Label($"Pos: {playerController.PlayerNetworkController.PlayerState.Value.Position:F1}");
+                GUILayout.Label($"RotY: {playerController.PlayerNetworkController.PlayerState.Value.RotationY:F1} °");
 
                 // --- Network ---
                 EditorGUILayout.Space();
@@ -135,14 +134,14 @@ namespace OverBang.GameName.Editor
                 // Authority
                 EditorGUILayout.BeginHorizontal();
                 GUILayout.Label("Authority: ", GUILayout.Width(100));
-                bool isHost = player.PlayerNetwork.IsHost;
+                bool isHost = playerController.PlayerNetworkController.IsHost;
                 GUILayout.Label(new GUIContent(isHost ? "Host" : "Client"));
                 EditorGUILayout.EndHorizontal();
 
                 // Client ID
                 EditorGUILayout.BeginHorizontal();
                 GUILayout.Label("ClientID: ", GUILayout.Width(100));
-                GUILayout.Label($"{player.PlayerNetwork.OwnerClientId}");
+                GUILayout.Label($"{playerController.PlayerNetworkController.OwnerClientId}");
                 EditorGUILayout.EndHorizontal();
 
                 // Ping
@@ -162,7 +161,7 @@ namespace OverBang.GameName.Editor
                 EditorGUILayout.Space();
                 EditorGUILayout.BeginHorizontal();
                 if (GUILayout.Button("Localize", GUILayout.Width(75))) {
-                    Selection.activeObject = player.gameObject;
+                    Selection.activeObject = playerController.gameObject;
                 }
                 if (GUILayout.Button("Kick", GUILayout.Width(75))) {
                     NetworkManager.Singleton.DisconnectClient(playerID);

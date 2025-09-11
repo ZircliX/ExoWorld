@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3214864485440696800}
   - component: {fileID: 7802162413815413304}
   - component: {fileID: 8391480036621521149}
+  - component: {fileID: 5912290204971085330}
   m_Layer: 0
   m_Name: HubController
   m_TagString: Untagged
@@ -28,7 +29,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7521174851029297269}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 7.19}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 1
@@ -116,8 +117,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2462669277
-  InScenePlacedSourceGlobalObjectIdHash: 3214690407
+  GlobalObjectIdHash: 488033318
+  InScenePlacedSourceGlobalObjectIdHash: 887330494
   DeferredDespawnTick: 0
   Ownership: 1
   AlwaysReplicateAsRoot: 1
@@ -144,6 +145,20 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   playerCardPrefab: {fileID: 8586276897037977085, guid: d69687b33ce30c54199bc221446685e0, type: 3}
   playerCardContainer: {fileID: 7104827232580469359}
+  shipTransform: {fileID: 0}
+--- !u!114 &5912290204971085330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7521174851029297269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4e48dabdfed48afad7c941e4b5f8b88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
 --- !u!1 &8668514588645964764
 GameObject:
   m_ObjectHideFlags: 0
