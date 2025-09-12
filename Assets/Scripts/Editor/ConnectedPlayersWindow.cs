@@ -11,22 +11,39 @@ namespace OverBang.GameName.Editor
     public class ConnectedPlayersWindow : EditorWindow
     {
         private Vector2 scrollPos;
-        private Dictionary<ulong, bool> foldouts = new Dictionary<ulong, bool>();
+        private readonly Dictionary<ulong, bool> foldouts = new Dictionary<ulong, bool>(4);
         
         [MenuItem("Tools/Networking/Connected Players")]
-        public static void ShowWindow() => GetWindow<ConnectedPlayersWindow>("Connected Players");
+        public static void ShowWindow() => GetWindow<ConnectedPlayersWindow>("Current Lobby Session");
 
         public void OnInspectorUpdate() => Repaint();
 
-        private bool CheckForValidation() => EditorApplication.isPlaying && PlayerManagerNetworkAdapter.HasInstance && PlayerManagerNetworkAdapter.Instance.IsSpawned;
+        private bool CheckForValidation()
+        {
+            if (!EditorApplication.isPlaying)
+            {
+                EditorGUILayout.HelpBox("No active session found." +
+                                        "\nPlease start Play Mode.", MessageType.Warning);
+                
+                if (GUILayout.Button("▶ Start Play Mode", GUILayout.Height(40)))
+                {
+                    EditorApplication.EnterPlaymode();
+                }
+                return false;
+            }
+            if (!PlayerManager.HasInstance)
+            {
+                EditorGUILayout.HelpBox("No active client connection found." +
+                                        "\nPlease join / create a lobby", MessageType.Warning);
+                return false;
+            }
+
+            return true;
+        } 
 
         private void OnGUI()
         {
-            if (!CheckForValidation())
-            {
-                EditorGUILayout.HelpBox("No active network connections found. Cannot fetch data.", MessageType.Warning);
-                return;
-            }
+            if (!CheckForValidation()) return;
 
             GUILayout.Label("SESSION", EditorStyles.boldLabel);
 
@@ -134,7 +151,7 @@ namespace OverBang.GameName.Editor
                 // Authority
                 EditorGUILayout.BeginHorizontal();
                 GUILayout.Label("Authority: ", GUILayout.Width(100));
-                bool isHost = playerController.PlayerNetworkController.IsHost;
+                bool isHost = player.PlayerNetwork.IsHost;
                 GUILayout.Label(new GUIContent(isHost ? "Host" : "Client"));
                 EditorGUILayout.EndHorizontal();
 
