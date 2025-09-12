@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using LTX.Singletons;
 using Unity.Netcode;
 using UnityEngine;
@@ -43,5 +44,34 @@ namespace OverBang.GameName.Core.Scene
             }
         }
         
+        public IEnumerator PreloadSceneServerOnly(string sceneName)
+        {
+            UnityEngine.SceneManagement.Scene targetScene =  UnityEngine.SceneManagement.SceneManager.GetSceneByName(sceneName);
+            if (targetScene.isLoaded)
+            {
+                Debug.Log($"[Server] La scène {sceneName} est déjà préchargée.");
+                yield break;
+            }
+
+            Debug.Log($"[Server] Préchargement de la scène {sceneName}...");
+            AsyncOperation asyncOp = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+
+            while (!asyncOp.isDone)
+            {
+                yield return null;
+            }
+
+            Debug.Log($"[Server] Scène {sceneName} préchargée avec succès !");
+        }
+        
+        
+        public void ActivatePreloadedScene(string sceneName)
+        {
+            if (!IsServer)
+                return;
+
+            Debug.Log($"[Server] Activation de la scène {sceneName} pour tous les joueurs...");
+            NetworkManager.Singleton.SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        }
     }
 }

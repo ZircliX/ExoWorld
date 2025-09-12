@@ -10,13 +10,11 @@ public class EditorCustomStyle
         element = e;
     }
 
-    // --- Création ---
     public static EditorCustomStyle Create(VisualElement e)
     {
         return new EditorCustomStyle(e);
     }
-
-    // --- Méthodes pour modifier le style ---
+    
     public EditorCustomStyle Bold()
     {
         element.style.unityFontStyleAndWeight = FontStyle.Bold;
@@ -44,6 +42,12 @@ public class EditorCustomStyle
     public EditorCustomStyle AlignCenter()
     {
         element.style.unityTextAlign = TextAnchor.MiddleCenter;
+        return this;
+    }
+    
+    public EditorCustomStyle Overflow(Overflow overflow)
+    {
+        element.style.overflow = overflow;
         return this;
     }
 
@@ -74,6 +78,110 @@ public class EditorCustomStyle
         return this;
     }
     
+    public EditorCustomStyle Margin(int left, int right, int top, int bottom)
+    {
+        element.style.marginLeft = left;
+        element.style.marginRight = right;
+        element.style.marginTop = top;
+        element.style.marginBottom = bottom;
+        return this;
+    }
+
+    #region Flexbox
+    
+    public EditorCustomStyle FlexGrow(float value = 1f)
+    {
+        element.style.flexGrow = value;
+        return this;
+    }
+
+    public EditorCustomStyle FlexShrink(float value = 1f)
+    {
+        element.style.flexShrink = value;
+        return this;
+    }
+
+    public EditorCustomStyle FlexDirection(FlexDirection direction)
+    {
+        element.style.flexDirection = direction;
+        return this;
+    }
+
+    public EditorCustomStyle AlignItems(Align align)
+    {
+        element.style.alignItems = align;
+        return this;
+    }
+
+    public EditorCustomStyle JustifyContent(Justify justify)
+    {
+        element.style.justifyContent = justify;
+        return this;
+    }
+
+    
+    #endregion Flexbox
+    
+    #region Size
+    
+    public EditorCustomStyle Width(float width)
+    {
+        element.style.width = width;
+        return this;
+    }
+
+    public EditorCustomStyle Height(float height)
+    {
+        element.style.height = height;
+        return this;
+    }
+
+    public EditorCustomStyle MinWidth(float minWidth)
+    {
+        element.style.minWidth = minWidth;
+        return this;
+    }
+
+    public EditorCustomStyle MinHeight(float minHeight)
+    {
+        element.style.minHeight = minHeight;
+        return this;
+    }
+
+    
+    #endregion Size
+    
+    
+    #region Border & Radius
+    
+    public EditorCustomStyle BorderColor(Color color)
+    {
+        element.style.borderTopColor = color;
+        element.style.borderRightColor = color;
+        element.style.borderBottomColor = color;
+        element.style.borderLeftColor = color;
+        return this;
+    }
+
+    public EditorCustomStyle BorderWidth(float width)
+    {
+        element.style.borderTopWidth = width;
+        element.style.borderRightWidth = width;
+        element.style.borderBottomWidth = width;
+        element.style.borderLeftWidth = width;
+        return this;
+    }
+
+    public EditorCustomStyle BorderRadius(float radius)
+    {
+        element.style.borderTopLeftRadius = radius;
+        element.style.borderTopRightRadius = radius;
+        element.style.borderBottomLeftRadius = radius;
+        element.style.borderBottomRightRadius = radius;
+        return this;
+    }
+
+    #endregion Border & Radius
     public VisualElement Build()
     {
         return element;
