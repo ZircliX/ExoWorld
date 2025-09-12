@@ -57,18 +57,18 @@ namespace OverBang.GameName.Network
             }
             else
             {
-                ulong playerID = playerController.PlayerNetworkController.PlayerID.Value;
+                ulong playerID = playerController.PlayerControllerNetwork.PlayerID.Value;
                 RegisterPlayerRpc(playerID);
             }
         }
 
         private void RegisterPlayerServer(PlayerControllerNetworkAdapter playerController)
         {
-            ulong playerID = playerController.PlayerNetworkController.PlayerID.Value;
+            ulong playerID = playerController.PlayerControllerNetwork.PlayerID.Value;
             if (PlayerIDs.Contains(playerID)) return;
 
             Debug.Log($"[PlayerManagerNetworkAdapter] RegisterPlayerServer");
-            playerController.PlayerNetworkController.WritePlayerID(playerID);
+            playerController.PlayerControllerNetwork.WritePlayerID(playerID);
             PlayerIDs.Add(playerID);
             Players.Add(playerID, playerController);
             PlayerManager.RegisterPlayer(playerID, playerController.PlayerController);
@@ -91,14 +91,14 @@ namespace OverBang.GameName.Network
             }
             else
             {
-                ulong playerID = playerController.PlayerNetworkController.PlayerID.Value;
+                ulong playerID = playerController.PlayerControllerNetwork.PlayerID.Value;
                 UnregisterPlayerRpc(playerID);
             }
         }
 
         private void UnregisterPlayerServer(PlayerControllerNetworkAdapter playerController)
         {
-            ulong playerID = playerController.PlayerNetworkController.PlayerID.Value;
+            ulong playerID = playerController.PlayerControllerNetwork.PlayerID.Value;
             if (!PlayerIDs.Contains(playerID)) return;
             
             PlayerIDs.Remove(playerID);

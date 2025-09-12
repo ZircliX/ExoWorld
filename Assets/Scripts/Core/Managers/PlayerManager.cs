@@ -54,7 +54,7 @@ namespace OverBang.GameName.Managers
 
         public void TeleportPlayer(ulong playerId, Vector3 position)
         {
-            if (!Players.TryGetValue(playerId, out var player)) return;
+            if (!Players.TryGetValue(playerId, out PlayerController player)) return;
 
             player.PlayerMovement.Rb.MovePosition(position);
         }

@@ -9,7 +9,7 @@ using UnityEngine;
 namespace OverBang.GameName.HUB
 {
     [RequireComponent(typeof(HubController))]
-    public class HubControllerNetworkAdapter : NetworkBehaviour
+    public class HubControllerNetworkAdapter : NetworkBehaviour, ICheckForGameStart
     {
         [field: SerializeField, Self] public HubController Hub { get; private set; }
 
@@ -97,7 +97,7 @@ namespace OverBang.GameName.HUB
                     break;
             }
         }
-
+        
         private void CheckForGameStartInternal()
         {
             if (!IsServer) return;
@@ -112,12 +112,17 @@ namespace OverBang.GameName.HUB
             StartGameClientRpc();
         }
 
-        [Rpc(SendTo.ClientsAndHost)]
-        private void StartGameClientRpc()
+        public void StartGame()
         {
             Hub.StartGame();
             PlayerManager.Instance.GetComponent<PlayerManagerNetworkAdapter>()
                 .TeleportPlayersRpc(Hub.transform.position);
+        }
+
+        [Rpc(SendTo.ClientsAndHost)]
+        private void StartGameClientRpc()
+        {
+            StartGame();
         }
     }
 }

@@ -114,9 +114,9 @@ namespace OverBang.GameName.HUB
         {
             Debug.Log("[Hub] Game starting!");
             // Offline: directly teleport players
-            foreach (KeyValuePair<ulong, PlayerController> kvp in Managers.PlayerManager.Instance.Players)
+            foreach (KeyValuePair<ulong, PlayerController> kvp in PlayerManager.Instance.Players)
             {
-                Managers.PlayerManager.Instance.TeleportPlayer(kvp.Key, shipTransform.position);
+                PlayerManager.Instance.TeleportPlayer(kvp.Key, shipTransform.position);
             }
         }
     }

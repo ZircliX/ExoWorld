@@ -6,6 +6,8 @@ namespace OverBang.GameName.Managers
 {
     public static partial class GameController
     {
+        public static GameMode GameMode { get; private set; }
+        
         private static GameMetrics gameMetrics;
         public static GameMetrics Metrics
         {
@@ -27,11 +29,17 @@ namespace OverBang.GameName.Managers
         private static void LoadGame()
         {
             SetupPrioritisedProperties();
+            SetupFields();
         }
 
         public static void QuitGame()
         {
             
+        }
+
+        private static void SetupFields()
+        {
+            GameMode = new GameMode();
         }
 
         private static void SetupPrioritisedProperties()

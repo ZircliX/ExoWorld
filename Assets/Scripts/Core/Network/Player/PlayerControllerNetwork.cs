@@ -3,7 +3,7 @@ using Unity.Netcode;
 
 namespace OverBang.GameName.Network
 {
-    public class PlayerNetworkController : NetworkBehaviour
+    public class PlayerControllerNetwork : NetworkBehaviour
     {
         public NetworkVariable<PlayerNetworkTransform> PlayerState { get; private set; } =
             new NetworkVariable<PlayerNetworkTransform>(writePerm: NetworkVariableWritePermission.Owner);

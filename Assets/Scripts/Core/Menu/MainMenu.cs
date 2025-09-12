@@ -1,6 +1,7 @@
 using DG.Tweening;
 using LTX.ChanneledProperties.Priorities;
 using OverBang.GameName.Managers;
+using OverBang.GameName.Player;
 using TMPro;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
@@ -12,10 +13,14 @@ using UnityEngine;
 
 namespace OverBang.GameName.Network
 {
-    public class HostJoin : MonoBehaviour
+    public class MainMenu : MonoBehaviour
     {
-        [SerializeField] private CanvasGroup menuCanvas;
+        [SerializeField] private CanvasGroup mainCanvas;
+        [SerializeField] private CanvasGroup playModeCanvas;
+        [SerializeField] private CanvasGroup onlineCanvas;
         [SerializeField] private TMP_InputField inputField;
+        
+        [SerializeField] private PlayerController playerPrefab; 
 
         public static string JoinCode;
 
@@ -42,6 +47,7 @@ namespace OverBang.GameName.Network
         {
             try
             {
+                GameController.GameMode.SetGameMode(GameMode.GameModeType.Multiplayer);
                 Allocation allocation = await RelayService.Instance.CreateAllocationAsync(4);
                 
                 JoinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
@@ -63,13 +69,15 @@ namespace OverBang.GameName.Network
                 Debug.Log(e);
             }
 
-            CloseMainMenu();
+            ChangeCanvasState(mainCanvas, false);
         }
 
         public async void JoinRelay()
         {
             try
             {
+                GameController.GameMode.SetGameMode(GameMode.GameModeType.Multiplayer);
+                
                 JoinAllocation joinAllocation = await RelayService.Instance.JoinAllocationAsync(inputField.text);
                 Debug.Log($"Joined relay with allocation ID: {joinAllocation.AllocationId}");
                 
@@ -81,7 +89,7 @@ namespace OverBang.GameName.Network
                     joinAllocation.ConnectionData,
                     joinAllocation.HostConnectionData
                     );
-
+                
                 NetworkManager.Singleton.StartClient();
             }
             catch (RelayServiceException e)
@@ -89,18 +97,41 @@ namespace OverBang.GameName.Network
                 Debug.Log(e);
             }
             
-            CloseMainMenu();
+            ChangeCanvasState(mainCanvas, false);
         }
         
-        private void CloseMainMenu()
+        public void StartSoloGame()
         {
-            menuCanvas.DOFade(0, 0.25f).OnComplete(() =>
+            GameController.GameMode.SetGameMode(GameMode.GameModeType.Solo);
+            PlayerController player = Instantiate(playerPrefab);
+            ChangeCanvasState(mainCanvas, false);
+        }
+
+        public void OpenOnlineCanvas()
+        {
+            ChangeCanvasState(playModeCanvas, false);
+            ChangeCanvasState(onlineCanvas, true);
+        }
+
+        public void OpenPlayModeCanvas()
+        {
+            ChangeCanvasState(onlineCanvas, false);
+            ChangeCanvasState(playModeCanvas, true);
+        }
+        
+        private void ChangeCanvasState(CanvasGroup canvasGroup, bool state)
+        {
+            canvasGroup.DOFade(state ? 1 : 0, 0.25f).OnComplete(() =>
             {
-                menuCanvas.interactable = false;
+                canvasGroup.interactable = state;
+                canvasGroup.blocksRaycasts = state;
             });
-            
-            GameController.CursorLockModePriority.Write(this, CursorLockMode.Locked);
-            GameController.CursorVisibleStatePriority.Write(this, false);
+
+            if (canvasGroup == mainCanvas)
+            {
+                GameController.CursorLockModePriority.Write(this, CursorLockMode.Locked);
+                GameController.CursorVisibleStatePriority.Write(this, false);
+            }
         }
     }
 }
