@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ad488206cba46cf8d546999cd40a53d, type: 3}
   m_Name: Jump
   m_EditorClassIdentifier: 
-  maxSpeed: 9
+  maxSpeed: 15
   directionControl: 10
   accelerationCurve:
     serializedVersion: 2
@@ -68,7 +68,7 @@ MonoBehaviour:
   deceleration: 5
   maxStepHeight: 1
   <CameraEffectData>k__BackingField: {fileID: 11400000, guid: 67908ccb270482344a04c4caee34c247, type: 2}
-  jumpForce: 3.25
+  jumpForce: 4.11
   jumpDuration: 0.175
   jumpCurve:
     serializedVersion: 2
