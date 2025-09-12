@@ -9,14 +9,20 @@ using UnityEngine.InputSystem;
 namespace OverBang.GameName.Network
 {
     [RequireComponent(typeof(PlayerController))]
-    [RequireComponent(typeof(PlayerControllerNetwork))]
     public class PlayerControllerNetworkAdapter : NetworkBehaviour, IPlayerReady
-
     {
     [field: SerializeField, Self] public PlayerController PlayerController { get; private set; }
-    [field: SerializeField, Self] public PlayerControllerNetwork PlayerControllerNetwork { get; private set; }
     
-    public bool IsReady => PlayerControllerNetwork.IsReady.Value;
+    public NetworkVariable<PlayerNetworkTransform> PlayerState { get; private set; } =
+        new NetworkVariable<PlayerNetworkTransform>(writePerm: NetworkVariableWritePermission.Owner);
+
+    public NetworkVariable<ulong> PlayerID { get; private set; } =
+        new NetworkVariable<ulong>(writePerm: NetworkVariableWritePermission.Server);
+
+    public NetworkVariable<bool> Ready { get; private set; } =
+        new NetworkVariable<bool>(writePerm: NetworkVariableWritePermission.Server);
+    
+    public bool IsReady => Ready.Value;
 
     private readonly float updateRate = 1f / 20f;
     private float timer;
@@ -38,7 +44,6 @@ namespace OverBang.GameName.Network
     private void Awake()
     {
         if (PlayerController == null) Debug.LogError($"Player {nameof(PlayerController)} is null.");
-        if (PlayerControllerNetwork == null) Debug.LogError($"PlayerNetworkController is null.");
     }
 
     public override void OnNetworkSpawn()
@@ -50,8 +55,8 @@ namespace OverBang.GameName.Network
         else
         {
             PlayerController.DisableRemoteControls(
-                PlayerControllerNetwork.PlayerState.Value.Position,
-                PlayerControllerNetwork.PlayerState.Value.Rotation);
+                PlayerState.Value.Position,
+                PlayerState.Value.Rotation);
         }
 
         if (PlayerManagerNetworkAdapter.HasInstance && PlayerManagerNetworkAdapter.Instance.IsSpawned)
@@ -80,14 +85,14 @@ namespace OverBang.GameName.Network
 
     private void FixedUpdate()
     {
-        if (!IsOwner || !PlayerControllerNetwork.IsSpawned) return;
+        if (!IsOwner || !IsSpawned) return;
 
         timer += Time.fixedDeltaTime;
         if (timer >= updateRate)
         {
             timer = 0f;
             (Vector3 pos, Quaternion rot) = PlayerController.CaptureState();
-            PlayerControllerNetwork.PlayerState.Value = new PlayerNetworkTransform()
+            PlayerState.Value = new PlayerNetworkTransform()
             {
                 Position = pos,
                 Rotation = rot
@@ -97,12 +102,12 @@ namespace OverBang.GameName.Network
 
     private void Update()
     {
-        if (!PlayerControllerNetwork.IsSpawned) return;
+        if (!IsSpawned) return;
 
         if (!IsOwner)
         {
-            PlayerController.ApplyNetworkState(PlayerControllerNetwork.PlayerState.Value.Position,
-                PlayerControllerNetwork.PlayerState.Value.Rotation);
+            PlayerController.ApplyNetworkState(PlayerState.Value.Position,
+                PlayerState.Value.Rotation);
         }
         else
         {
@@ -118,11 +123,28 @@ namespace OverBang.GameName.Network
             Debug.Log("Try to change scene to Test");
         }
     }
+
+    public void WritePlayerID(ulong playerID)
+    {
+        PlayerID.Value = playerID;
+    }
+
+    private void WritePlayerReadyStatus(bool readyStatus)
+    {
+        Ready.Value = readyStatus;
+    }
+
+    [Rpc(SendTo.Server)]
+    public void RequestSetReadyRpc(bool newReadyStatus)
+    {
+        WritePlayerReadyStatus(newReadyStatus);
+        PlayerManager.Instance.ChangePlayerReadyStatus(PlayerID.Value, newReadyStatus);
+    }
     
     public void ToggleReady()
     {
-        bool newReady = !PlayerControllerNetwork.IsReady.Value;
-        PlayerControllerNetwork.RequestSetReadyRpc(newReady);
+        bool newReady = !Ready.Value;
+        RequestSetReadyRpc(newReady);
     }
 
     [Rpc(SendTo.Server)]

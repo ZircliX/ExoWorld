@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7802162413815413304}
   - component: {fileID: 8391480036621521149}
   - component: {fileID: 5912290204971085330}
+  - component: {fileID: 3834875831974759933}
   m_Layer: 0
   m_Name: HubController
   m_TagString: Untagged
@@ -159,6 +160,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
+  <Hub>k__BackingField: {fileID: 8391480036621521149}
+--- !u!114 &3834875831974759933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7521174851029297269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8dad0b4ee2b4403886bcf27b14ad1b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Hub>k__BackingField: {fileID: 8391480036621521149}
 --- !u!1 &8668514588645964764
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,7 +31,7 @@ namespace OverBang.GameName.Editor
                 }
                 return false;
             }
-            if (!PlayerManager.HasInstance)
+            if (!PlayerManager.HasInstance || !PlayerManagerNetworkAdapter.HasInstance)
             {
                 EditorGUILayout.HelpBox("No active client connection found." +
                                         "\nPlease join / create a lobby", MessageType.Warning);
@@ -64,27 +64,25 @@ namespace OverBang.GameName.Editor
             EditorGUILayout.BeginHorizontal();
             if (GUILayout.Button("✅ Ready All", GUILayout.Width(100)))
             {
-                foreach (KeyValuePair<ulong, PlayerControllerNetworkAdapter> kvp in PlayerManagerNetworkAdapter.Instance.Players)
-                {
-                    PlayerControllerNetworkAdapter playerController = kvp.Value;
-                    if (!playerController.PlayerControllerNetwork.IsReady.Value)
-                        playerController.PlayerControllerNetwork.RequestSetReadyRpc(true);
+                foreach (KeyValuePair<ulong,PlayerControllerNetworkAdapter> kvp in PlayerManagerNetworkAdapter.Instance.Players)
+                { PlayerControllerNetworkAdapter playerController = kvp.Value;
+                    if (!playerController.Ready.Value)
+                        playerController.RequestSetReadyRpc(true);
                 }
             }
             if (GUILayout.Button("❌ Unready All", GUILayout.Width(100)))
             {
-                foreach (KeyValuePair<ulong, PlayerControllerNetworkAdapter> kvp in PlayerManagerNetworkAdapter.Instance.Players)
-                {
-                    PlayerControllerNetworkAdapter playerController = kvp.Value;
-                    if (playerController.PlayerControllerNetwork.IsReady.Value)
-                        playerController.PlayerControllerNetwork.RequestSetReadyRpc(false);
+                foreach (KeyValuePair<ulong,PlayerControllerNetworkAdapter> kvp in PlayerManagerNetworkAdapter.Instance.Players)
+                { PlayerControllerNetworkAdapter playerController = kvp.Value;
+                    if (playerController.Ready.Value)
+                        playerController.RequestSetReadyRpc(false);
                 }
             }
             if (GUILayout.Button("🚪 Kick All Clients", GUILayout.Width(150)))
             {
-                foreach (KeyValuePair<ulong, PlayerControllerNetworkAdapter> kvp in PlayerManagerNetworkAdapter.Instance.Players)
+                foreach (KeyValuePair<ulong,PlayerControllerNetworkAdapter> kvp in PlayerManagerNetworkAdapter.Instance.Players)
                 {
-                    if (!kvp.Value.PlayerControllerNetwork.IsHost) // don’t kick host
+                    if (!kvp.Value.IsHost) // don’t kick host
                         NetworkManager.Singleton.DisconnectClient(kvp.Key);
                 }
             }
@@ -111,7 +109,7 @@ namespace OverBang.GameName.Editor
         {
             // Highlight local player
             Color prevBg = GUI.backgroundColor;
-            GUI.backgroundColor = playerController.PlayerControllerNetwork.IsOwner ? new Color(0.25f, 0.45f, 0.25f) : // greenish tint
+            GUI.backgroundColor = playerController.IsOwner ? new Color(0.25f, 0.45f, 0.25f) : // greenish tint
                 new Color(0.2f, 0.2f, 0.2f);
 
             EditorGUILayout.BeginVertical("box");
@@ -121,7 +119,7 @@ namespace OverBang.GameName.Editor
             foldouts.TryAdd(playerID, true);
             foldouts[playerID] = EditorGUILayout.Foldout(
                 foldouts[playerID], 
-                $"Player {playerID} {(playerController.PlayerControllerNetwork.IsOwner ? "(Local)" : "")}", 
+                $"Player {playerID} {(playerController.IsOwner ? "(Local)" : "")}", 
                 true, 
                 new GUIStyle(EditorStyles.foldout) { fontStyle = FontStyle.Bold }
             );
@@ -131,18 +129,18 @@ namespace OverBang.GameName.Editor
                 // --- Ready State ---
                 EditorGUILayout.BeginHorizontal();
                 GUILayout.Label("Ready Status: ", GUILayout.Width(100));
-                bool isReady = playerController.PlayerControllerNetwork.IsReady.Value;
+                bool isReady = playerController.Ready.Value;
                 Texture readyIcon = EditorGUIUtility.IconContent(isReady ? "TestPassed" : "TestFailed").image;
                 GUILayout.Label(new GUIContent(isReady ? "Ready" : "Not Ready", readyIcon));
                 if (GUILayout.Button("Toggle", GUILayout.Width(75))) {
-                    playerController.PlayerControllerNetwork.RequestSetReadyRpc(!isReady);
+                    playerController.RequestSetReadyRpc(!isReady);
                 }
                 EditorGUILayout.EndHorizontal();
 
                 // --- Transform ---
                 EditorGUILayout.Space();
-                GUILayout.Label($"Pos: {playerController.PlayerControllerNetwork.PlayerState.Value.Position:F1}");
-                GUILayout.Label($"RotY: {playerController.PlayerControllerNetwork.PlayerState.Value.RotationY:F1} °");
+                GUILayout.Label($"Pos: {playerController.PlayerState.Value.Position:F1}");
+                GUILayout.Label($"RotY: {playerController.PlayerState.Value.RotationY:F1} °");
 
                 // --- Network ---
                 EditorGUILayout.Space();
@@ -151,14 +149,14 @@ namespace OverBang.GameName.Editor
                 // Authority
                 EditorGUILayout.BeginHorizontal();
                 GUILayout.Label("Authority: ", GUILayout.Width(100));
-                bool isHost = playerController.PlayerControllerNetwork.IsHost;
+                bool isHost = playerController.IsHost;
                 GUILayout.Label(new GUIContent(isHost ? "Host" : "Client"));
                 EditorGUILayout.EndHorizontal();
 
                 // Client ID
                 EditorGUILayout.BeginHorizontal();
                 GUILayout.Label("ClientID: ", GUILayout.Width(100));
-                GUILayout.Label($"{playerController.PlayerControllerNetwork.OwnerClientId}");
+                GUILayout.Label($"{playerController.OwnerClientId}");
                 EditorGUILayout.EndHorizontal();
 
                 // Ping
