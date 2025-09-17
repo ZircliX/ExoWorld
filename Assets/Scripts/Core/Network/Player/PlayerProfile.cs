@@ -1,6 +1,6 @@
 using OverBang.GameName.Core.Characters;
 
-namespace OverBang.GameName.Offline.CharacterSelectionSystem
+namespace OverBang.GameName.Core
 {
     [System.Serializable]
     public struct PlayerProfile

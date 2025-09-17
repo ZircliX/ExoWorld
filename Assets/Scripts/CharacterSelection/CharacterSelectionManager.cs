@@ -4,10 +4,11 @@ using OverBang.GameName.Core.Characters;
 using OverBang.GameName.Managers;
 using UnityEngine;
 
-namespace OverBang.GameName.Offline.CharacterSelectionSystem
+namespace OverBang.GameName.CharacterSelection
 {
     public class CharacterSelectionManager : MonoSingleton<CharacterSelectionManager>
     {
+        [System.Serializable]
         public struct SelectionSettings
         {
             public enum SelectionType

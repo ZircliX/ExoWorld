@@ -3,7 +3,7 @@ using DG.Tweening;
 using OverBang.GameName.Core.Characters;
 using UnityEngine;
 
-namespace OverBang.GameName.Offline.CharacterSelectionSystem
+namespace OverBang.GameName.CharacterSelection
 {
     public class CharacterSelection : MonoBehaviour
     {
@@ -49,8 +49,9 @@ namespace OverBang.GameName.Offline.CharacterSelectionSystem
                 case CharacterSelectionManager.SelectionSettings.SelectionType.Random:
                 {
                     int randomIndex = Random.Range(0, validAgents.Count);
-                    CharacterData randomAgent = agentData[randomIndex];
+                    CharacterData randomAgent = validAgents[randomIndex];
                     CharacterSelectionManager.Instance.PlayerSelected(randomAgent);
+                    Debug.LogWarning("Character selected randomly: " + randomAgent.AgentName);
                     Destroy(gameObject, 0.5f);
                     break;
                 }
@@ -58,17 +59,14 @@ namespace OverBang.GameName.Offline.CharacterSelectionSystem
                     SpawnCards(validAgents);
                     break;
             }
+            
         }
 
         private List<CharacterData> SortCharacters(CharacterSelectionManager.SelectionSettings settings)
         {
-            List<CharacterData> validAgents = new List<CharacterData>(agentData);
-            if (settings.ClassLimitation != CharacterClasses.None)
-            {
-                validAgents = agentData.FindAll(data => data.CharacterClass == currentSettings.ClassLimitation);
-            }
-            
-            return validAgents;
+            return settings.ClassLimitation == CharacterClasses.None ? 
+                new List<CharacterData>(agentData) : 
+                agentData.FindAll(data => data.CharacterClass.Matches(settings.ClassLimitation));
         }
     }
 }

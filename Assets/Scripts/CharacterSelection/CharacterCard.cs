@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace OverBang.GameName.Offline.CharacterSelectionSystem
+namespace OverBang.GameName.CharacterSelection
 {
     public class CharacterCard : MonoBehaviour
     {

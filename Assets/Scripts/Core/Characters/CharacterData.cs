@@ -8,5 +8,6 @@ namespace OverBang.GameName.Core.Characters
         [field: SerializeField] public string AgentName { get; private set; }
         [field: SerializeField] public Sprite AgentSprite { get; private set; }
         [field: SerializeField] public CharacterClasses CharacterClass { get; private set; }
+        [field: SerializeField] public GameObject CharacterPrefab { get; private set; }
     }
 }

@@ -1,4 +1,4 @@
-using OverBang.GameName.Core.Core.GameMode;
+using OverBang.GameName.Core;
 using OverBang.GameName.Managers;
 using UnityEngine;
 

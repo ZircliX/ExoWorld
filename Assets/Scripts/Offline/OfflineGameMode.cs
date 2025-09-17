@@ -1,9 +1,8 @@
 using System;
+using OverBang.GameName.CharacterSelection;
+using OverBang.GameName.Core;
 using OverBang.GameName.Core.Characters;
-using OverBang.GameName.Core.Core.GameMode;
 using OverBang.GameName.Core.Scene;
-using OverBang.GameName.Offline.CharacterSelectionSystem;
-using OverBang.GameName.Offline.CharacterSelectionSystem.Interfaces;
 using UnityEngine;
 using SceneManager = UnityEngine.SceneManagement.SceneManager;
 
@@ -76,7 +75,7 @@ namespace OverBang.GameName.Offline
             CharacterSelectionManager.SelectionSettings settings = new CharacterSelectionManager.SelectionSettings
             {
                 Type = CharacterSelectionManager.SelectionSettings.SelectionType.Pick,
-                ClassLimitation = CharacterClasses.None
+                ClassLimitation = CharacterClasses.Tactical | CharacterClasses.Attack
             };
             
             CharacterSelectionManager.Instance.StartCharacterSelection(settings, HandleCharacterSelectionResult);
@@ -97,7 +96,7 @@ namespace OverBang.GameName.Offline
         {
             isGameRunning = true;
             Debug.LogError("STARTING OFFLINE GAME");
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Map");
+            SceneManager.LoadScene("Map");
         }
     }
 }

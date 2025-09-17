@@ -1,4 +1,4 @@
-namespace OverBang.GameName.Core.Core.GameMode
+namespace OverBang.GameName.Core
 {
     public interface IGameMode
     {

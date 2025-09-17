@@ -1,6 +1,6 @@
 using OverBang.GameName.Core.Characters;
 
-namespace OverBang.GameName.Offline.CharacterSelectionSystem.Interfaces
+namespace OverBang.GameName.CharacterSelection
 {
     public interface ICharacterSelectionListener
     {
