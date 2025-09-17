@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace OverBang.GameName.Movement
 {
-    [CreateAssetMenu(menuName = "RogueLike/Movement/WallRun")]
+    [CreateAssetMenu(menuName = "OverBang/Movement/WallRun")]
     public class WallRunState : MovementStateBehavior
     {
         [field: Header("Camera Effects")]

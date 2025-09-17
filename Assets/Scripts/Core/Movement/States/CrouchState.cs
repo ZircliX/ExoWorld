@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace OverBang.GameName.Movement
 {
-    [CreateAssetMenu(menuName = "RogueLike/Movement/Crouch")]
+    [CreateAssetMenu(menuName = "OverBang/Movement/Crouch")]
     public class CrouchState : MoveState
     {
         [field: Header("Camera Effects")]

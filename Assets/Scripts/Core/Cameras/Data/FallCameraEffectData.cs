@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace OverBang.GameName.Cameras
 {
-    [CreateAssetMenu(menuName = "RogueLike/Camera/FallCameraEffectData")]
+    [CreateAssetMenu(menuName = "OverBang/Camera/FallCameraEffectData")]
     public class FallCameraEffectData : CameraEffectData
     {
         [field: Header("Extra Parameters")]

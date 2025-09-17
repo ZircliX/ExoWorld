@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace OverBang.GameName.Movement
 {
-    [CreateAssetMenu(menuName = "RogueLike/Movement/Slide")]
+    [CreateAssetMenu(menuName = "OverBang/Movement/Slide")]
     public class SlideState : MovementStateBehavior
     {
         [field: Header("Camera Effects")]

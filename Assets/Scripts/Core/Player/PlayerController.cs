@@ -1,8 +1,5 @@
-using System;
 using KBCore.Refs;
 using OverBang.GameName.Cameras;
-using OverBang.GameName.Combat;
-using OverBang.GameName.Managers;
 using OverBang.GameName.Metrics;
 using OverBang.GameName.Movement;
 using UnityEngine;
@@ -16,30 +13,10 @@ namespace OverBang.GameName.Player
         [field: SerializeField, Child] public PlayerMovement PlayerMovement { get; private set; }
         [field: SerializeField, Child] public PlayerCamera PlayerCamera { get; private set; }
         [field: SerializeField, Child] public Camera Camera { get; private set; }
-        [field: SerializeField, Child] public Weapon Weapon { get; private set; }
 
-        public event Action OnReadyKeyPressed;
-        public event Action<Vector3> OnShootKeyPressed;
-        
         private void OnValidate()
         {
             this.ValidateRefs();
-        }
-
-        private void Update()
-        {
-            if (Keyboard.current.qKey.wasPressedThisFrame)
-            {
-                OnReadyKeyPressed?.Invoke();
-            }
-
-            if (Mouse.current.leftButton.wasPressedThisFrame)
-            {
-                Vector3 direction = Camera.transform.forward;
-                Weapon.Shoot(direction);
-                
-                OnShootKeyPressed?.Invoke(direction);
-            }
         }
 
         public void EnableLocalControls()

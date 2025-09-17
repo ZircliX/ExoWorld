@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace OverBang.GameName.Movement
 {
-    [CreateAssetMenu(menuName = "RogueLike/Movement/Run")]
+    [CreateAssetMenu(menuName = "OverBang/Movement/Run")]
     public class RunState : WalkState
     {
         public override MovementState GetNextState(EntityMovement movement)

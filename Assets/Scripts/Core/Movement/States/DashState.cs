@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace OverBang.GameName.Movement
 {
-    [CreateAssetMenu(menuName = "RogueLike/Movement/Dash")]
+    [CreateAssetMenu(menuName = "OverBang/Movement/Dash")]
     public class DashState : MovementStateBehavior
     {
         [field: Header("Camera Effects")]

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace OverBang.GameName.Movement
 {
-    [RequireComponent(typeof(BoxCollider)), AddComponentMenu("RogueLike/Gravity/Arc")]
+    [RequireComponent(typeof(BoxCollider)), AddComponentMenu("OverBang/Gravity/Arc")]
     public class ArcGravityZone : GravityZone
     {
         [SerializeField] private float size = 1f;

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace OverBang.GameName.Movement
 {
-    [CreateAssetMenu(menuName = "RogueLike/Movement/Idle")]
+    [CreateAssetMenu(menuName = "OverBang/Movement/Idle")]
     public class IdleState : MovementStateBehavior
     {
         [field: Header("Camera Effects")]

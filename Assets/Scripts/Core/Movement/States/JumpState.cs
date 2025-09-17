@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace OverBang.GameName.Movement
 {
-    [CreateAssetMenu(menuName = "RogueLike/Movement/Jump")]
+    [CreateAssetMenu(menuName = "OverBang/Movement/Jump")]
     public class JumpState : FallState
     {
         [Header("Jump")]

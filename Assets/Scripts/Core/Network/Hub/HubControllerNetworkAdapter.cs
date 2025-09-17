@@ -9,7 +9,7 @@ using UnityEngine;
 namespace OverBang.GameName.HUB
 {
     [RequireComponent(typeof(HubController))]
-    public class HubControllerNetworkAdapter : NetworkBehaviour, ICheckForGameStart
+    public class HubControllerNetworkAdapter : NetworkBehaviour
     {
         [field: SerializeField, Self] public HubController Hub { get; private set; }
 
@@ -31,6 +31,8 @@ namespace OverBang.GameName.HUB
                 Hub.OnHubPlayerRemoved += HandlePlayerRemoved;
                 Hub.OnHubPlayerReadyChanged += HandlePlayerReadyChanged;
                 
+                NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
+                
                 PlayerStates.Clear();
                 foreach (KeyValuePair<ulong, PlayerController> kvp in PlayerManager.Instance.Players)
                 {
@@ -48,7 +50,15 @@ namespace OverBang.GameName.HUB
                 Hub.OnHubPlayerAdded -= HandlePlayerAdded;
                 Hub.OnHubPlayerRemoved -= HandlePlayerRemoved;
                 Hub.OnHubPlayerReadyChanged -= HandlePlayerReadyChanged;
+                
+                NetworkManager.Singleton.OnClientConnectedCallback -= OnClientConnected;
             }
+        }
+        
+        private void OnClientConnected(ulong clientId)
+        {
+            if (!IsServer) return;
+            SpawnPlayerForClientServerRpc(clientId);
         }
         
         private void HandlePlayerAdded(ulong playerId)
@@ -123,6 +133,18 @@ namespace OverBang.GameName.HUB
         private void StartGameClientRpc()
         {
             StartGame();
+        }
+        
+        [ServerRpc(RequireOwnership = false)]
+        private void SpawnPlayerForClientServerRpc(ulong clientId)
+        {
+            PlayerControllerNetworkAdapter playerPrefab = GameController.Metrics.PlayerControllerNetworkAdapter;
+            PlayerControllerNetworkAdapter playerObj = Instantiate(playerPrefab);
+            
+            NetworkObject netObj = playerObj.GetComponent<NetworkObject>();
+            netObj.SpawnWithOwnership(clientId);
+
+            PlayerManagerNetworkAdapter.Instance.AssignPlayerToClient(clientId, playerObj);
         }
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace OverBang.GameName.Movement
 {
-    [RequireComponent(typeof(MeshCollider)), AddComponentMenu("RogueLike/Gravity/Tube")]
+    [RequireComponent(typeof(MeshCollider)), AddComponentMenu("OverBang/Gravity/Tube")]
     public class TubeGravityZone : GravityZone
     {
         [SerializeField, Self] private MeshCollider mc;

@@ -4,7 +4,7 @@ using UnityEngine.Rendering;
 
 namespace OverBang.GameName.Movement
 {
-    [AddComponentMenu("RogueLike/Gravity/Mesh")]
+    [AddComponentMenu("OverBang/Gravity/Mesh")]
     public class MeshGravityZone : GravityZone
     {
         [SerializeField] private MeshFilter meshFilter;

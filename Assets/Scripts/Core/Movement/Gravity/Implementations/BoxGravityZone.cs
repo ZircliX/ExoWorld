@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace OverBang.GameName.Movement
 {
-    [RequireComponent(typeof(BoxCollider)), AddComponentMenu("RogueLike/Gravity/Box")]
+    [RequireComponent(typeof(BoxCollider)), AddComponentMenu("OverBang/Gravity/Box")]
     public class BoxGravityZone : GravityZone
     {
         protected override Vector3 GetGravityForReceiver(GravityReceiver receiver)

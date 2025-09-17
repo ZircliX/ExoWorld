@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace OverBang.GameName.Movement
 {
-    [RequireComponent(typeof(SphereCollider)), AddComponentMenu("RogueLike/Gravity/Sphere")]
+    [RequireComponent(typeof(SphereCollider)), AddComponentMenu("OverBang/Gravity/Sphere")]
     public class SphereGravityZone : GravityZone
     {
         [SerializeField, Self] private SphereCollider sc;

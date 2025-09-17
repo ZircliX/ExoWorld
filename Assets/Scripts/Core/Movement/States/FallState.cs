@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace OverBang.GameName.Movement
 {
-    [CreateAssetMenu(menuName = "RogueLike/Movement/Fall")]
+    [CreateAssetMenu(menuName = "OverBang/Movement/Fall")]
     public class FallState : MoveState
     {
         [field: Header("Camera Effects")]

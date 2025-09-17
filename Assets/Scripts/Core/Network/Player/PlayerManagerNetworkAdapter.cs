@@ -49,6 +49,8 @@ namespace OverBang.GameName.Network
             OnInstanceCreated?.Invoke();
         }
 
+        #region Register Player
+
         public void RegisterPlayer(PlayerControllerNetworkAdapter playerController)
         {
             if (IsServer)
@@ -82,6 +84,10 @@ namespace OverBang.GameName.Network
             if (playerController != null)
                 RegisterPlayerServer(playerController);
         }
+        
+        #endregion
+
+        #region Unregister Player
 
         public void UnregisterPlayer(PlayerControllerNetworkAdapter playerController)
         {
@@ -113,6 +119,28 @@ namespace OverBang.GameName.Network
             PlayerControllerNetworkAdapter playerController = obj.GetComponent<PlayerControllerNetworkAdapter>();
             if (playerController != null)
                 UnregisterPlayerServer(playerController);
+        }
+        
+        #endregion
+        
+        public void AssignPlayerToClient(ulong clientId, PlayerControllerNetworkAdapter player)
+        {
+            Players[clientId] = player;
+            RegisterPlayerServer(player);
+        }
+
+        public void ChangePlayerCharacter(ulong clientId, PlayerControllerNetworkAdapter player)
+        {
+            
+        }
+
+        public void RemovePlayerFromClient(ulong clientId)
+        {
+            if (Players.TryGetValue(clientId, out PlayerControllerNetworkAdapter player))
+            {
+                UnregisterPlayerServer(player);
+                Players.Remove(clientId);
+            }
         }
 
         [Rpc(SendTo.ClientsAndHost)]
