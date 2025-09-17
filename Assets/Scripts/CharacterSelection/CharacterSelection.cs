@@ -34,7 +34,7 @@ namespace OverBang.GameName.CharacterSelection
 
         private void UpdateAgentCard(CharacterCard card, CharacterData data)
         {
-            card.Setup(data);
+            card.Setup(data, this);
         }
         
         public void StartSelection(CharacterSelectionManager.SelectionSettings settings)
@@ -50,8 +50,11 @@ namespace OverBang.GameName.CharacterSelection
                 {
                     int randomIndex = Random.Range(0, validAgents.Count);
                     CharacterData randomAgent = validAgents[randomIndex];
-                    CharacterSelectionManager.Instance.PlayerSelected(randomAgent);
+                    SelectCharacter(randomAgent);
+                    
                     Debug.LogWarning("Character selected randomly: " + randomAgent.AgentName);
+                    
+                    canvasGroup?.DOFade(0, 0.25f);
                     Destroy(gameObject, 0.5f);
                     break;
                 }
@@ -59,7 +62,6 @@ namespace OverBang.GameName.CharacterSelection
                     SpawnCards(validAgents);
                     break;
             }
-            
         }
 
         private List<CharacterData> SortCharacters(CharacterSelectionManager.SelectionSettings settings)
@@ -67,6 +69,14 @@ namespace OverBang.GameName.CharacterSelection
             return settings.ClassLimitation == CharacterClasses.None ? 
                 new List<CharacterData>(agentData) : 
                 agentData.FindAll(data => data.CharacterClass.Matches(settings.ClassLimitation));
+        }
+        
+        public void SelectCharacter(CharacterData character)
+        {
+            CharacterSelectionManager.Instance.PlayerSelected(character);
+            
+            canvasGroup?.DOFade(0, 0.25f);
+            Destroy(gameObject, 0.5f);
         }
     }
 }

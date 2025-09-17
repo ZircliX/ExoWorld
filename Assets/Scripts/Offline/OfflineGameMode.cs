@@ -3,12 +3,17 @@ using OverBang.GameName.CharacterSelection;
 using OverBang.GameName.Core;
 using OverBang.GameName.Core.Characters;
 using OverBang.GameName.Core.Scene;
+using OverBang.GameName.Gameplay.States;
 using UnityEngine;
+using Object = UnityEngine.Object;
 using SceneManager = UnityEngine.SceneManagement.SceneManager;
 
 namespace OverBang.GameName.Offline
 {
-    public class OfflineGameMode : IGameMode, ICharacterSelectionListener
+    public class OfflineGameMode : IGameMode, 
+        ICharacterSelectionService, 
+        ICharacterSpawnService, 
+        IGameStartService
     {
         public static OfflineGameMode Create(int map, int difficulty)
         {
@@ -26,6 +31,7 @@ namespace OverBang.GameName.Offline
         public PlayerProfile PlayerProfile { get; private set; }
 
         private bool isGameRunning;
+        private IGameState currentState;
 
         private OfflineGameMode(int map, int difficulty)
         {
@@ -38,7 +44,6 @@ namespace OverBang.GameName.Offline
             if (isGameRunning) return;
             
             PlayerProfile = profile;
-            if (PlayerProfile.IsValid) LoadGameplayMap();
         }
         
         public async void Activate()
@@ -52,11 +57,11 @@ namespace OverBang.GameName.Offline
                         await SceneLoader.LoadSceneAsync("Hub");
                     }
                 
-                    StartCharacterSelection();
+                    TransitionTo(new SelectionState(this, this, TransitionTo));
                 }
                 else
                 {
-                    LoadGameplayMap();
+                    StartGame();
                 }
             }
             catch (Exception e)
@@ -67,36 +72,62 @@ namespace OverBang.GameName.Offline
 
         public void Deactivate()
         {
+            currentState?.Exit();
             Debug.LogError("DEACTIVATING OFFLINE GAME");
         }
         
-        private void StartCharacterSelection()
+        public void TransitionTo(IGameState newState)
         {
-            CharacterSelectionManager.SelectionSettings settings = new CharacterSelectionManager.SelectionSettings
-            {
-                Type = CharacterSelectionManager.SelectionSettings.SelectionType.Pick,
-                ClassLimitation = CharacterClasses.Tactical | CharacterClasses.Attack
-            };
-            
-            CharacterSelectionManager.Instance.StartCharacterSelection(settings, HandleCharacterSelectionResult);
+            currentState?.Exit();
+            currentState = newState;
+            currentState.Enter();
         }
         
-        public void HandleCharacterSelectionResult(CharacterData character)
+        public void StartCharacterSelection(Action<CharacterData> onSelected)
         {
-            SetPlayerProfile(new PlayerProfile
-            {
-                PlayerName = character.AgentName,
-                CharacterData = character
-            });
-            
-            CharacterSelectionManager.Instance.OnCharacterSelected -= HandleCharacterSelectionResult;
+            CharacterSelectionManager.Instance.StartCharacterSelection(
+                new CharacterSelectionManager.SelectionSettings
+                {
+                    Type = CharacterSelectionManager.SelectionSettings.SelectionType.Pick,
+                    ClassLimitation = CharacterClasses.None
+                },
+                onSelected);
         }
 
-        private void LoadGameplayMap()
+        public void SpawnCharacter(CharacterData characterData)
         {
-            isGameRunning = true;
-            Debug.LogError("STARTING OFFLINE GAME");
-            SceneManager.LoadScene("Map");
+            SetPlayerProfile(new PlayerProfile()
+            {
+                CharacterData = characterData,
+                PlayerName = characterData.AgentName
+            });
+            Object.Instantiate(characterData.CharacterPrefab);
+        }
+
+        public async void StartGame()
+        {
+            try
+            {
+                if (SceneManager.GetActiveScene().name != "Map")
+                {
+                    await SceneLoader.LoadSceneAsync("Map");
+                }
+
+                SpawnCharacter(PlayerProfile.CharacterData);
+                
+                if (currentState is SelectionState)
+                {
+                    TransitionTo(new HubState(TransitionTo));
+                }
+                else
+                {
+                    TransitionTo(new GameplayState(TransitionTo));
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Error starting offline game: " + e);
+            }
         }
     }
 }

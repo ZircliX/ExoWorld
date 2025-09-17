@@ -24,6 +24,8 @@ namespace OverBang.GameName.Network
 
         private async void Start()
         {
+            if (UnityServices.Instance.State == ServicesInitializationState.Initialized) return;
+            
             await UnityServices.InitializeAsync();
             
             AuthenticationService.Instance.SignedIn += OnSignedIn;

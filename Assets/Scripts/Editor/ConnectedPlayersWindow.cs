@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using OverBang.GameName.Gameplay.Player;
 using OverBang.GameName.Managers;
 using OverBang.GameName.Network;
 using Unity.Netcode;
@@ -162,7 +163,7 @@ namespace OverBang.GameName.Editor
                 // Ping
                 EditorGUILayout.BeginHorizontal();
                 GUILayout.Label("Ping: ", GUILayout.Width(100));
-                float playerPing = PlayerManager.Instance.PingManager.GetPlayerPing(playerID);
+                float playerPing = PingManager.Instance.GetPlayerPing(playerID);
                 double ping = Math.Round(playerPing, 2);
 
                 // Ping dot color

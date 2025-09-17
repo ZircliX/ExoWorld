@@ -16,6 +16,7 @@ namespace OverBang.GameName.CharacterSelection
         [field: SerializeField, Self] public CanvasGroup CardCanvasGroup { get; private set; }
 
         private CharacterData characterData;
+        private CharacterSelection characterSelection;
 
         private void OnValidate() => this.ValidateRefs();
 
@@ -25,7 +26,7 @@ namespace OverBang.GameName.CharacterSelection
 
         private void OnButtonClick()
         {
-            CharacterSelectionManager.Instance.PlayerSelected(characterData);
+            characterSelection.SelectCharacter(characterData);
         }
 
         public void SetSprite(Sprite sprite)
@@ -47,9 +48,10 @@ namespace OverBang.GameName.CharacterSelection
             CardCanvasGroup.blocksRaycasts = availability;
         }
 
-        public void Setup(CharacterData character)
+        public void Setup(CharacterData character, CharacterSelection selection)
         {
             characterData = character;
+            characterSelection = selection;
             
             SetSprite(character.AgentSprite);
             SetName(character.AgentName);
