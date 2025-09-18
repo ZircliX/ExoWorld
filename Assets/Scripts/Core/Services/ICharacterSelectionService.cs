@@ -7,14 +7,4 @@ namespace OverBang.GameName.Core
     {
         void StartCharacterSelection(Action<CharacterData> onSelected);
     }
-
-    public interface ICharacterSpawnService
-    {
-        void SpawnCharacter(CharacterData characterData);
-    }
-
-    public interface IGameStartService
-    {
-        void StartGame();
-    }
 }
