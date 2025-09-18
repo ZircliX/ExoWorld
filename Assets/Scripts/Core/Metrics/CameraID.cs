@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace OverBang.GameName.Metrics
 {
-    [CreateAssetMenu(menuName = "OverBang/NomDuJeu/Metrics/CameraID")]
+    [CreateAssetMenu(menuName = "OverBang/Metrics/CameraID")]
     public class CameraID : ScriptableObject
     {
         public static CameraID PlayerView => GameMetrics.Global.PlayerView;
