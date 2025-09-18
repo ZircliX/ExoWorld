@@ -2,7 +2,7 @@ using KBCore.Refs;
 using OverBang.GameName.Gameplay.Player;
 using UnityEngine;
 
-namespace OverBang.GameName.Player
+namespace OverBang.GameName.Online.Network
 {
     public class PlayerControllerOfflineAdapter : MonoBehaviour
     {

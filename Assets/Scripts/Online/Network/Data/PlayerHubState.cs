@@ -1,7 +1,7 @@
 using System;
 using Unity.Netcode;
 
-namespace OverBang.GameName.Network
+namespace OverBang.GameName.Online.Network
 {
     public struct PlayerHubState : IEquatable<PlayerHubState>, INetworkSerializable
     {

@@ -2,7 +2,7 @@ using EditorAttributes;
 using OverBang.GameName.Managers;
 using UnityEngine;
 
-namespace OverBang.GameName.Metrics
+namespace OverBang.GameName.Core.Metrics
 {
     [CreateAssetMenu(menuName = "OverBang/Metrics/GameMetrics")]
     public partial class GameMetrics : ScriptableObject

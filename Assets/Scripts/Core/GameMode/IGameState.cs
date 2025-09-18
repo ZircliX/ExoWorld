@@ -1,4 +1,4 @@
-namespace OverBang.GameName.Core
+namespace OverBang.GameName.Core.GameMode
 {
     public interface IGameState
     {

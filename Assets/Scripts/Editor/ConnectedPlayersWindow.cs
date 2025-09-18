@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
+using OverBang.GameName.Core.Menu;
 using OverBang.GameName.Gameplay.Player;
 using OverBang.GameName.Managers;
-using OverBang.GameName.Network;
+using OverBang.GameName.Online.Network;
 using Unity.Netcode;
 using UnityEditor;
 using UnityEngine;

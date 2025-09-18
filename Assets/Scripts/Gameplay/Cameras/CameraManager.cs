@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using LTX.Singletons;
-using OverBang.GameName.Metrics;
+using OverBang.GameName.Core.Metrics;
 using UnityEngine;
 
 namespace OverBang.GameName.Gameplay.Cameras

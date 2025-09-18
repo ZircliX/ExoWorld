@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace OverBang.GameName.Sessions
+namespace OverBang.GameName.Online.Sessions
 {
     public class SessionManager : MonoBehaviour
     {

@@ -1,6 +1,6 @@
 using Unity.Netcode;
 
-namespace OverBang.GameName.Sessions
+namespace OverBang.GameName.Online.Sessions
 {
     public class Client : NetworkBehaviour
     {

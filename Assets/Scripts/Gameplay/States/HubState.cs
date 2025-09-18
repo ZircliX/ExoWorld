@@ -2,6 +2,7 @@ using System;
 using LTX.ChanneledProperties;
 using LTX.ChanneledProperties.Priorities;
 using OverBang.GameName.Core;
+using OverBang.GameName.Core.GameMode;
 using OverBang.GameName.Managers;
 using UnityEngine;
 

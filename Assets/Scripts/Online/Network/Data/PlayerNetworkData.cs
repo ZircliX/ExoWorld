@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace OverBang.GameName.Network
+namespace OverBang.GameName.Online.Network
 {
     [System.Serializable]
     public struct PlayerNetworkData

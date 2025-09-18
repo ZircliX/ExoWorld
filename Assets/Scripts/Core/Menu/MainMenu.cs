@@ -8,7 +8,7 @@ using Unity.Services.Relay.Models;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace OverBang.GameName.Network
+namespace OverBang.GameName.Core.Menu
 {
     public class MainMenu : MonoBehaviour
     {

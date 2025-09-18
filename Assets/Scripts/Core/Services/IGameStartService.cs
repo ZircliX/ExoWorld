@@ -1,4 +1,4 @@
-namespace OverBang.GameName.Core
+namespace OverBang.GameName.Core.Services
 {
     public interface IGameStartService
     {

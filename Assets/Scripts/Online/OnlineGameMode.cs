@@ -1,4 +1,4 @@
-using OverBang.GameName.Core;
+using OverBang.GameName.Core.GameMode;
 using UnityEngine;
 
 namespace OverBang.GameName.Online

@@ -3,7 +3,7 @@ using KBCore.Refs;
 using OverBang.GameName.Gameplay.Hub;
 using UnityEngine;
 
-namespace OverBang.GameName.Online
+namespace OverBang.GameName.Online.Network
 {
     public class HubControllerOfflineAdapter : MonoBehaviour
     {

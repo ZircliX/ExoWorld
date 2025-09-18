@@ -5,7 +5,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace OverBang.GameName.Network
+namespace OverBang.GameName.Online.Network
 {
     [RequireComponent(typeof(PlayerController))]
     public class PlayerControllerNetworkAdapter : NetworkBehaviour

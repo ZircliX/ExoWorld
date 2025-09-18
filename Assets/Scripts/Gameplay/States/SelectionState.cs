@@ -1,6 +1,7 @@
 using System;
-using OverBang.GameName.Core;
 using OverBang.GameName.Core.Characters;
+using OverBang.GameName.Core.GameMode;
+using OverBang.GameName.Core.Services;
 
 namespace OverBang.GameName.Gameplay.States
 {

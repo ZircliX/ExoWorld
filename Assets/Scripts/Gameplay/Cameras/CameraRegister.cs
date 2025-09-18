@@ -1,5 +1,5 @@
 using KBCore.Refs;
-using OverBang.GameName.Metrics;
+using OverBang.GameName.Core.Metrics;
 using Unity.Cinemachine;
 using UnityEngine;
 

@@ -1,6 +1,6 @@
 using LTX.ChanneledProperties.Priorities;
-using OverBang.GameName.Core;
-using OverBang.GameName.Metrics;
+using OverBang.GameName.Core.GameMode;
+using OverBang.GameName.Core.Metrics;
 using UnityEngine;
 
 namespace OverBang.GameName.Managers
