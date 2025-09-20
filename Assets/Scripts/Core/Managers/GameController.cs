@@ -1,3 +1,4 @@
+using System;
 using LTX.ChanneledProperties.Priorities;
 using OverBang.GameName.Core.GameMode;
 using OverBang.GameName.Core.Metrics;
@@ -67,6 +68,17 @@ namespace OverBang.GameName.Managers
 
             CurrentGameMode = mode;
             CurrentGameMode.Activate();
+        }
+        
+        public static T GetOrCreateGameMode<T>(this IGameMode mode, Func<T> factory) 
+            where T : class, IGameMode
+        {
+            if (CurrentGameMode is T existing)
+                return existing;
+
+            T newMode = factory();
+            newMode.SetGameMode();
+            return newMode;
         }
     }
 }

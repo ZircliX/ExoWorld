@@ -1,6 +1,7 @@
 using System;
 using LTX.ChanneledProperties;
 using LTX.ChanneledProperties.Priorities;
+using OverBang.GameName.Core.Characters;
 using OverBang.GameName.Core.GameMode;
 using OverBang.GameName.Core.Scene;
 using OverBang.GameName.Core.Services;
@@ -11,9 +12,9 @@ using SceneManager = UnityEngine.SceneManagement.SceneManager;
 
 namespace OverBang.GameName.Gameplay.States
 {
-    public class HubState : IGameState
+    public class CharacterSelectionState : IGameState
     {
-        public string Name => "Hub";
+        public string Name => "Character Selection";
         
         private readonly ICharacterSelectionService selectionService;
         private readonly ICharacterSpawnService spawnService;
@@ -21,7 +22,7 @@ namespace OverBang.GameName.Gameplay.States
 
         private ChannelKey key;
 
-        public HubState(StateMachine<IGameState> stateMachine,
+        public CharacterSelectionState(StateMachine<IGameState> stateMachine,
             ICharacterSelectionService selectionService,
             ICharacterSpawnService spawnService)
         {
@@ -39,18 +40,15 @@ namespace OverBang.GameName.Gameplay.States
                 GameController.CursorLockModePriority.AddPriority(key, PriorityTags.High);
                 GameController.CursorVisibleStatePriority.AddPriority(key, PriorityTags.High);
             
-                GameController.CursorLockModePriority.Write(key, CursorLockMode.Locked);
-                GameController.CursorVisibleStatePriority.Write(key, false);
+                GameController.CursorLockModePriority.Write(key, CursorLockMode.None);
+                GameController.CursorVisibleStatePriority.Write(key, true);
             
                 if (SceneManager.GetActiveScene().name != "Hub")
                 {
                     await SceneLoader.LoadSceneAsync("Hub");
                 }
             
-                spawnService.SpawnCharacter();
-            
-                // Subscribe to hub input (press "Start" to begin game)
-                //HubController.OnGameStartRequested += HandleGameStart;
+                selectionService.StartCharacterSelection(OnCharacterSelected);
             }
             catch (Exception e)
             {
@@ -58,17 +56,19 @@ namespace OverBang.GameName.Gameplay.States
             }
         }
 
-        public void Exit()
+        private void OnCharacterSelected(CharacterData character)
         {
-            //HubController.OnGameStartRequested -= HandleGameStart;
-            
-            GameController.CursorLockModePriority.RemovePriority(key);
-            GameController.CursorVisibleStatePriority.RemovePriority(key);
+            selectionService.SetCharacter(character);
+            spawnService.SpawnCharacter();
+            stateMachine.ChangeState(new HubState(stateMachine, selectionService, spawnService));
         }
 
-        private void HandleGameStart()
+        public void Exit()
         {
-            stateMachine.ChangeState(new GameplayState(stateMachine, selectionService, spawnService));
+            selectionService.StopCharacterSelection(OnCharacterSelected);
+
+            GameController.CursorLockModePriority.RemovePriority(key);
+            GameController.CursorVisibleStatePriority.RemovePriority(key);
         }
     }
 }
