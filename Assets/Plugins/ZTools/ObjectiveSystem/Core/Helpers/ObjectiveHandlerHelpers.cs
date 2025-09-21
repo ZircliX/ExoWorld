@@ -17,7 +17,7 @@ namespace ZTools.ObjectiveSystem.Core.Helpers
             return false;
         }
         
-        public static bool CastData<T>(this IObjectiveHandler handler, out T typedData) where T : class
+        public static bool CastData<T>(this IObjectiveHandler handler, out T typedData) where T : ObjectiveData
         {
             if (handler.ObjectiveData is T d)
             {
