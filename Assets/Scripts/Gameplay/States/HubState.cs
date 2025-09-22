@@ -8,7 +8,6 @@ using OverBang.GameName.Core.Services;
 using OverBang.GameName.Gameplay.Gameplay.StateMachine;
 using OverBang.GameName.Managers;
 using OverBang.GameName.Quests.QuestEvents;
-using Unity.Plastic.Newtonsoft.Json;
 using UnityEngine;
 using ZTools.ObjectiveSystem.Core;
 using ZTools.ObjectiveSystem.Core.Interfaces;
@@ -67,8 +66,6 @@ namespace OverBang.GameName.Gameplay.States
                     await SceneLoader.LoadSceneAsync("Hub");
                 }
 
-                await Task.Delay(100);
-                
                 spawnService.SpawnCharacter();
             }
             catch (Exception e)

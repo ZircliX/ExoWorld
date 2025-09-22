@@ -31,17 +31,28 @@ namespace OverBang.GameName.Gameplay.States
             this.spawnService = spawnService;
         }
 
+        private void Initialize()
+        {
+            key = ChannelKey.GetUniqueChannelKey();
+            
+            GameController.CursorLockModePriority.AddPriority(key, PriorityTags.High);
+            GameController.CursorVisibleStatePriority.AddPriority(key, PriorityTags.High);
+            
+            GameController.CursorLockModePriority.Write(key, CursorLockMode.None);
+            GameController.CursorVisibleStatePriority.Write(key, true);
+        }
+
+        private void Dispose()
+        {
+            GameController.CursorLockModePriority.RemovePriority(key);
+            GameController.CursorVisibleStatePriority.RemovePriority(key);
+        }
+
         public async void Enter()
         {
             try
             {
-                key = ChannelKey.GetUniqueChannelKey();
-            
-                GameController.CursorLockModePriority.AddPriority(key, PriorityTags.High);
-                GameController.CursorVisibleStatePriority.AddPriority(key, PriorityTags.High);
-            
-                GameController.CursorLockModePriority.Write(key, CursorLockMode.None);
-                GameController.CursorVisibleStatePriority.Write(key, true);
+                Initialize();
             
                 if (SceneManager.GetActiveScene().name != "Hub")
                 {
@@ -67,8 +78,7 @@ namespace OverBang.GameName.Gameplay.States
         {
             selectionService.StopCharacterSelection(OnCharacterSelected);
 
-            GameController.CursorLockModePriority.RemovePriority(key);
-            GameController.CursorVisibleStatePriority.RemovePriority(key);
+            Dispose();
         }
     }
 }

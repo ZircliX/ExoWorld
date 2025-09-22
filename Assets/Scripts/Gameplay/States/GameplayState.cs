@@ -7,13 +7,9 @@ using OverBang.GameName.Core.Scene;
 using OverBang.GameName.Core.Services;
 using OverBang.GameName.Gameplay.Gameplay.StateMachine;
 using OverBang.GameName.Managers;
-using OverBang.GameName.Quests.QuestData;
 using OverBang.GameName.Quests.QuestEvents;
-using OverBang.GameName.Quests.QuestHandlers;
 using UnityEngine;
 using ZTools.ObjectiveSystem.Core;
-using ZTools.ObjectiveSystem.Core.Enum;
-using ZTools.ObjectiveSystem.Core.Helpers;
 using ZTools.ObjectiveSystem.Core.Interfaces;
 using SceneManager = UnityEngine.SceneManagement.SceneManager;
 
@@ -71,8 +67,6 @@ namespace OverBang.GameName.Gameplay.States
                 {
                     await SceneLoader.LoadSceneAsync("Map");
                 }
-                
-                await Task.Delay(100); // Wait a frame for everything to initialize
                 
                 spawnService.SpawnCharacter();
             }
