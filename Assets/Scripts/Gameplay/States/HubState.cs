@@ -1,24 +1,42 @@
 using System;
+using System.Threading.Tasks;
 using LTX.ChanneledProperties;
 using LTX.ChanneledProperties.Priorities;
-using OverBang.GameName.Core;
+using OverBang.GameName.Core.GameMode;
+using OverBang.GameName.Core.Scene;
+using OverBang.GameName.Core.Services;
+using OverBang.GameName.Gameplay.Gameplay.StateMachine;
 using OverBang.GameName.Managers;
+using OverBang.GameName.Quests.QuestEvents;
 using UnityEngine;
+using ZTools.ObjectiveSystem.Core;
+using ZTools.ObjectiveSystem.Core.Interfaces;
+using SceneManager = UnityEngine.SceneManagement.SceneManager;
 
 namespace OverBang.GameName.Gameplay.States
 {
     public class HubState : IGameState
     {
-        private readonly Action<IGameState> stateTransition;
+        public string Name => "Hub";
+        
+        private readonly ICharacterSelectionService selectionService;
+        private readonly ICharacterSpawnService spawnService;
+        private readonly StateMachine<IGameState> stateMachine;
 
-        public HubState(Action<IGameState> stateTransition)
+        private ChannelKey key;
+
+        public HubState(StateMachine<IGameState> stateMachine,
+            ICharacterSelectionService selectionService,
+            ICharacterSpawnService spawnService)
         {
-            this.stateTransition = stateTransition;
+            this.stateMachine = stateMachine;
+            this.selectionService = selectionService;
+            this.spawnService = spawnService;
         }
-
-        public void Enter()
+        
+        private void Initialize()
         {
-            ChannelKey key = ChannelKey.GetUniqueChannelKey();
+            key = ChannelKey.GetUniqueChannelKey();
             
             GameController.CursorLockModePriority.AddPriority(key, PriorityTags.High);
             GameController.CursorVisibleStatePriority.AddPriority(key, PriorityTags.High);
@@ -26,18 +44,46 @@ namespace OverBang.GameName.Gameplay.States
             GameController.CursorLockModePriority.Write(key, CursorLockMode.Locked);
             GameController.CursorVisibleStatePriority.Write(key, false);
             
-            // Subscribe to hub input (press "Start" to begin game)
-            //HubController.OnGameStartRequested += HandleGameStart;
+            ObjectivesManager.OnGameEventDispatched += HandleGameEvent;
+        }
+
+        private void Dispose()
+        {
+            GameController.CursorLockModePriority.RemovePriority(key);
+            GameController.CursorVisibleStatePriority.RemovePriority(key);
+            
+            ObjectivesManager.OnGameEventDispatched -= HandleGameEvent;
+        }
+
+        public async void Enter()
+        {
+            try
+            {
+                Initialize();
+                
+                if (SceneManager.GetActiveScene().name != "Hub")
+                {
+                    await SceneLoader.LoadSceneAsync("Hub");
+                }
+
+                spawnService.SpawnCharacter();
+            }
+            catch (Exception e)
+            {
+                Debug.LogException(e);
+            }
         }
 
         public void Exit()
         {
-            //HubController.OnGameStartRequested -= HandleGameStart;
+            Dispose();
         }
 
-        private void HandleGameStart()
+        private void HandleGameEvent(IGameEvent gameEvent)
         {
-            stateTransition(new GameplayState(stateTransition));
+            if (gameEvent.GetType() != typeof(HubStartEvent)) return;
+            
+            stateMachine.ChangeState(new GameplayState(stateMachine, selectionService, spawnService));
         }
     }
 }

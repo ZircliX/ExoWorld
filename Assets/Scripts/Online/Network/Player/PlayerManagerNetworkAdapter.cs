@@ -5,7 +5,7 @@ using OverBang.GameName.Gameplay.Player;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace OverBang.GameName.Network
+namespace OverBang.GameName.Online.Network
 {
     [RequireComponent(typeof(PlayerManager))]
     public class PlayerManagerNetworkAdapter : NetworkBehaviour

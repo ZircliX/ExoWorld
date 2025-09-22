@@ -1,7 +1,7 @@
 using KBCore.Refs;
+using OverBang.GameName.Core.Metrics;
 using OverBang.GameName.Gameplay.Cameras;
 using OverBang.GameName.Gameplay.Movement;
-using OverBang.GameName.Metrics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 

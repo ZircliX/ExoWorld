@@ -22,14 +22,24 @@ namespace OverBang.GameName.CharacterSelection
         }
         
         public event Action<CharacterData> OnCharacterSelected;
+        private GameObject currentSelection;
 
         public void StartCharacterSelection(SelectionSettings settings, Action<CharacterData> predicate)
         {
-            Debug.Log("Starting character selection");
+            StopCharacterSelection(predicate);
             
             OnCharacterSelected += predicate;
-            GameObject selection = Instantiate(GameController.Metrics.CharacterSelectionPrefab);
-            selection.GetComponent<CharacterSelection>().StartSelection(settings);
+            currentSelection = Instantiate(GameController.Metrics.CharacterSelectionPrefab);
+            currentSelection.GetComponent<CharacterSelection>().StartSelection(settings);
+        }
+
+
+        public void StopCharacterSelection(Action<CharacterData> predicate)
+        {
+            OnCharacterSelected -= predicate;
+            
+            if (currentSelection == null) return;
+            Destroy(currentSelection);
         }
 
         public void PlayerSelected(CharacterData character)

@@ -90,6 +90,8 @@ namespace OverBang.GameName.Gameplay.Hub
         public void RemovePlayerCard(ulong playerId)
         {
             if (!playerCards.TryGetValue(playerId, out PlayerCard card)) return;
+
+            if (card == null) return;
             Destroy(card.gameObject);
             playerCards.Remove(playerId);
         }

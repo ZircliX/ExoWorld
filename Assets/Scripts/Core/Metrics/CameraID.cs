@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace OverBang.GameName.Metrics
+namespace OverBang.GameName.Core.Metrics
 {
     [CreateAssetMenu(menuName = "OverBang/Metrics/CameraID")]
     public class CameraID : ScriptableObject

@@ -1,3 +1,5 @@
+using LTX.ChanneledProperties.Priorities;
+using OverBang.GameName.Managers;
 using TMPro;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
@@ -8,7 +10,7 @@ using Unity.Services.Relay.Models;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace OverBang.GameName.Network
+namespace OverBang.GameName.Core.Menu
 {
     public class MainMenu : MonoBehaviour
     {
@@ -21,6 +23,21 @@ namespace OverBang.GameName.Network
         [SerializeField] private UnityEvent onOnlineModeSelected;
         
         public static string JoinCode;
+
+        private void Awake()
+        {
+            GameController.CursorLockModePriority.AddPriority(this, PriorityTags.High);
+            GameController.CursorVisibleStatePriority.AddPriority(this, PriorityTags.High);
+            
+            GameController.CursorLockModePriority.Write(this, CursorLockMode.None);
+            GameController.CursorVisibleStatePriority.Write(this, true);
+        }
+
+        private void OnDestroy()
+        {
+            GameController.CursorLockModePriority.RemovePriority(this);
+            GameController.CursorVisibleStatePriority.RemovePriority(this);
+        }
 
         private async void Start()
         {

@@ -1,4 +1,5 @@
 using OverBang.GameName.Core;
+using OverBang.GameName.Gameplay.States;
 using OverBang.GameName.Managers;
 using OverBang.GameName.Offline;
 using UnityEngine;
@@ -16,6 +17,7 @@ namespace OverBang.GameName.Debug
             {
                 OfflineGameMode offlineGameMode = OfflineGameMode.Create(0, difficulty).WithPlayer(playerProfile);
                 offlineGameMode.SetGameMode();
+                offlineGameMode.StateMachine.ChangeState(new GameplayState(offlineGameMode.StateMachine, offlineGameMode, offlineGameMode));
             }
             else
             {

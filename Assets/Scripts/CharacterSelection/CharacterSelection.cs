@@ -55,7 +55,6 @@ namespace OverBang.GameName.CharacterSelection
                     Debug.LogWarning("Character selected randomly: " + randomAgent.AgentName);
                     
                     canvasGroup?.DOFade(0, 0.25f);
-                    Destroy(gameObject, 0.5f);
                     break;
                 }
                 default:
@@ -74,9 +73,7 @@ namespace OverBang.GameName.CharacterSelection
         public void SelectCharacter(CharacterData character)
         {
             CharacterSelectionManager.Instance.PlayerSelected(character);
-            
             canvasGroup?.DOFade(0, 0.25f);
-            Destroy(gameObject, 0.5f);
         }
     }
 }

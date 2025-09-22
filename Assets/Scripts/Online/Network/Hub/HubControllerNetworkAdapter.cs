@@ -3,11 +3,10 @@ using KBCore.Refs;
 using OverBang.GameName.Gameplay.Hub;
 using OverBang.GameName.Gameplay.Player;
 using OverBang.GameName.Managers;
-using OverBang.GameName.Network;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace OverBang.GameName.Online
+namespace OverBang.GameName.Online.Network
 {
     [RequireComponent(typeof(HubController))]
     public class HubControllerNetworkAdapter : NetworkBehaviour

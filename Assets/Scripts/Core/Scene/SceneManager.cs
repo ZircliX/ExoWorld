@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using LTX.Singletons;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
