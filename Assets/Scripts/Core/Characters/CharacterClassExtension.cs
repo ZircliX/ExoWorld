@@ -7,7 +7,7 @@ namespace OverBang.GameName.Core.Characters
         /// </summary>
         public static bool Matches(this CharacterClasses characterClass, CharacterClasses mask)
         {
-            return (mask & characterClass) != CharacterClasses.None;
+            return (mask & characterClass) != 0;
         }
     }
 }

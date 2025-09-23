@@ -1,14 +1,17 @@
 using System;
 using LTX.ChanneledProperties.Priorities;
+using OverBang.GameName.Core.GameAssets;
 using OverBang.GameName.Core.GameMode;
 using OverBang.GameName.Core.Metrics;
+using OverBang.GameName.Managers;
 using UnityEngine;
 
-namespace OverBang.GameName.Managers
+namespace OverBang.GameName
 {
     public static partial class GameController
     {
         public static IGameMode CurrentGameMode { get; private set; }
+        public static GameDatabase GameDatabase { get; private set; }
         
         private static GameMetrics gameMetrics;
         public static GameMetrics Metrics
@@ -41,6 +44,7 @@ namespace OverBang.GameName.Managers
 
         private static void SetupFields()
         {
+            GameDatabase = new GameDatabase();
         }
 
         private static void SetupPrioritisedProperties()
@@ -64,13 +68,12 @@ namespace OverBang.GameName.Managers
 
         public static void SetGameMode(this IGameMode mode)
         {
-            CurrentGameMode?.Deactivate();
-
             CurrentGameMode = mode;
-            CurrentGameMode.Activate();
+            Awaitable result = CurrentGameMode.Run();
+            result.Run();
         }
         
-        public static T GetOrCreateGameMode<T>(this IGameMode mode, Func<T> factory) 
+        public static T GetOrCreateGameMode<T>(this IGameMode mode, Func<T> factory)
             where T : class, IGameMode
         {
             if (CurrentGameMode is T existing)

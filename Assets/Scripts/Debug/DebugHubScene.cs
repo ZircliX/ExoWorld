@@ -9,7 +9,7 @@ namespace OverBang.GameName.Debug
     {
         [SerializeField] private int difficulty = 0;
 
-        [SerializeField] private CharacterSelectionManager.SelectionSettings settings;
+        [SerializeField] private HubPhase.SelectionSettings settings;
         
         private void Start()
         {

@@ -138,13 +138,13 @@ namespace OverBang.GameName.Online.Network
         [ServerRpc(RequireOwnership = false)]
         private void SpawnPlayerForClientServerRpc(ulong clientId)
         {
-            PlayerControllerNetworkAdapter playerPrefab = GameController.Metrics.PlayerControllerNetworkAdapter.GetComponent<PlayerControllerNetworkAdapter>();
-            PlayerControllerNetworkAdapter playerObj = Instantiate(playerPrefab);
+            //PlayerControllerNetworkAdapter playerPrefab = GameController.Metrics.PlayerControllerNetworkAdapter.GetComponent<PlayerControllerNetworkAdapter>();
+            //PlayerControllerNetworkAdapter playerObj = Instantiate(playerPrefab);
             
-            NetworkObject netObj = playerObj.GetComponent<NetworkObject>();
-            netObj.SpawnWithOwnership(clientId);
+            //NetworkObject netObj = playerObj.GetComponent<NetworkObject>();
+            //netObj.SpawnWithOwnership(clientId);
 
-            PlayerManagerNetworkAdapter.Instance.AssignPlayerToClient(clientId, playerObj);
+            //PlayerManagerNetworkAdapter.Instance.AssignPlayerToClient(clientId, playerObj);
         }
     }
 }

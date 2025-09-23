@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace OverBang.GameName.Core.Characters
 {
@@ -8,6 +9,6 @@ namespace OverBang.GameName.Core.Characters
         [field: SerializeField] public string AgentName { get; private set; }
         [field: SerializeField] public Sprite AgentSprite { get; private set; }
         [field: SerializeField] public CharacterClasses CharacterClass { get; private set; }
-        [field: SerializeField] public GameObject CharacterPrefab { get; private set; }
+        [field: SerializeField] public AssetReferenceT<GameObject> CharacterPrefabRef { get; private set; }
     }
 }

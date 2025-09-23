@@ -401,11 +401,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba16c33f4e78493c91165301a5ff608c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentData:
-  - {fileID: 11400000, guid: 8538becf3d7dff243b44f593a4e788a8, type: 2}
-  - {fileID: 11400000, guid: bed7478a90a81034487b01a6fbd270ea, type: 2}
-  - {fileID: 11400000, guid: 464e9e9c5413d1340bd1934a0c4149f5, type: 2}
-  - {fileID: 11400000, guid: 6907ab4dd1948334eabe022b53c8b49d, type: 2}
-  characterCardPrefab: {fileID: 2821782395721218169, guid: b8f02fd9949afa94ba8fe3510f711e21, type: 3}
+  characterCardUIPrefab: {fileID: 2821782395721218169, guid: b8f02fd9949afa94ba8fe3510f711e21, type: 3}
   agentCardContainer: {fileID: 3525039567268030608}
   canvasGroup: {fileID: 378959076427168456}

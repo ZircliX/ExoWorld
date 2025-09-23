@@ -12,7 +12,8 @@ namespace OverBang.GameName.Core.Scene
             TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
             AsyncOperation op = UnitySceneManager.LoadSceneAsync(sceneName, mode);
 
-            if (op != null) op.completed += _ => tcs.SetResult(true);
+            if (op != null) 
+                op.completed += _ => tcs.SetResult(true);
 
             return tcs.Task;
         }
