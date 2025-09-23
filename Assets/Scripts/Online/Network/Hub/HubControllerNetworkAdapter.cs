@@ -124,7 +124,7 @@ namespace OverBang.GameName.Online.Network
 
         public void StartGame()
         {
-            Hub.StartGame();
+            //Hub.StartGame();
             PlayerManager.Instance.GetComponent<PlayerManagerNetworkAdapter>()
                 .TeleportPlayersRpc(Hub.transform.position);
         }

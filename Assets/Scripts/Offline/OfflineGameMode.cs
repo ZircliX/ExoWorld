@@ -1,7 +1,8 @@
-using OverBang.GameName.CharacterSelection;
+using OverBang.GameName.Hub;
 using OverBang.GameName.Core;
 using OverBang.GameName.Core.Characters;
 using OverBang.GameName.Core.GameMode;
+using OverBang.GameName.Gameplay.Gameplay;
 using UnityEngine;
 
 namespace OverBang.GameName.Offline
@@ -22,8 +23,6 @@ namespace OverBang.GameName.Offline
         public int Map { get; private set; }
         public int Difficulty { get; private set; }
         public PlayerProfile PlayerProfile { get; private set; }
-
-        private GameObject player;
 
         private OfflineGameMode(int map, int difficulty)
         {
@@ -58,6 +57,13 @@ namespace OverBang.GameName.Offline
                 });
                 
                 SetPlayerProfile(newCharacter);
+                
+                //Handle GameplayPhase
+                GameplayPhase.GameplayRewards rewards = await GameplayPhase.CreateAsync(new GameplayPhase.GameplaySettings
+                {
+                    gameDatabase = GameController.GameDatabase,
+                    playerCharacter = PlayerProfile.CharacterData
+                });
             }
         }
     }

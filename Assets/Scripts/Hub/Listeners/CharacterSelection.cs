@@ -3,7 +3,7 @@ using DG.Tweening;
 using OverBang.GameName.Core.Characters;
 using UnityEngine;
 
-namespace OverBang.GameName.CharacterSelection
+namespace OverBang.GameName.Hub
 {
     public class CharacterSelection : HubListener
     {
@@ -21,19 +21,19 @@ namespace OverBang.GameName.CharacterSelection
         
         protected internal override void OnInit(HubPhase phase)
         {
-            canvasGroup.DOFade(1f, 0.5f);
+            ChangeEnabledState(true);
             phase.OnAvailableCharacterAdded += AddCharacter;
         }
 
         protected internal override void OnRelease(HubPhase phase)
         {
-            canvasGroup.DOFade(0f, 0.5f);
+            ChangeEnabledState(false);
             phase.OnAvailableCharacterAdded -= AddCharacter;
         }
         
         private void AddCharacter(CharacterData characterData)
         {
-            if (Mathf.Approximately(canvasGroup.alpha, 0)) canvasGroup.DOFade(1f, 0.5f);
+            if (Mathf.Approximately(canvasGroup.alpha, 0)) ChangeEnabledState(true);
             
             //Debug.Log($" Adding character {characterData.AgentName} to selection UI");
             CharacterCardUI cardUI = Instantiate(characterCardUIPrefab, agentCardContainer);
@@ -45,8 +45,15 @@ namespace OverBang.GameName.CharacterSelection
         public void SelectCharacter(CharacterData characterData)
         {
             //Debug.Log(" [Character Selection] SelectCharacter + " + characterData.AgentName);
-            canvasGroup.DOFade(0f, 0.5f);
+            ChangeEnabledState(false);
             current?.SelectCharacter(characterData);
+        }
+        
+        private void ChangeEnabledState(bool enabled)
+        {
+            canvasGroup.DOFade(enabled ? 1f : 0f, 0.5f);
+            canvasGroup.interactable = enabled;
+            canvasGroup.blocksRaycasts = enabled;
         }
     }
 }

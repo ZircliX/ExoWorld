@@ -11,7 +11,7 @@ using UnityEngine;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using Object = UnityEngine.Object;
 
-namespace OverBang.GameName.CharacterSelection
+namespace OverBang.GameName.Hub
 {
     public class HubPhase
     {
@@ -33,8 +33,13 @@ namespace OverBang.GameName.CharacterSelection
         public static async Awaitable<CharacterData> CreateAsync(SelectionSettings settings)
         {
             SceneReference hubSceneRef = SceneCollection.Global.HubSceneRef;
-            Task loadSceneAsync = SceneLoader.LoadSceneAsync(hubSceneRef.Name);
-            await loadSceneAsync;
+            string currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+            
+            if (currentSceneName != hubSceneRef.Path)
+            {
+                Task loadSceneAsync = SceneLoader.LoadSceneAsync(hubSceneRef.Name);
+                await loadSceneAsync;
+            }
 
             HubListener[] listeners = Object.FindObjectsByType<HubListener>(FindObjectsInactive.Include, FindObjectsSortMode.None);
             HubPhase phase = new HubPhase(settings, listeners);
@@ -47,7 +52,7 @@ namespace OverBang.GameName.CharacterSelection
             return phase.SelectedCharacter;
         }
         
-        public event Action<bool> OnCompleted; 
+        public event Action<bool> OnCompleted;
         public event Action<CharacterData> OnCharacterSelected;
         public event Action<CharacterData> OnAvailableCharacterAdded;
 
@@ -80,6 +85,13 @@ namespace OverBang.GameName.CharacterSelection
             });
 
             //Debug.Log("HubPhase: Loading available characters...");
+            AsyncOperationHandle operation = StartCharacterSelection();
+            
+            await operation.Task;
+        }
+
+        public AsyncOperationHandle StartCharacterSelection()
+        {
             AsyncOperationHandle operation = settings.gameDatabase.LoadMultiple("AgentData", ctx =>
             {
                 //Debug.Log("HubPhase: Processing loaded character " + ctx.name);
@@ -93,8 +105,7 @@ namespace OverBang.GameName.CharacterSelection
                 AvailableCharacters.Add(characterData);
                 OnAvailableCharacterAdded?.Invoke(characterData);
             });
-            
-            await operation.Task;
+            return operation;
         }
 
         public void Complete(bool isSuccess)

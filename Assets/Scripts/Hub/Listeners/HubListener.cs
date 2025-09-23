@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace OverBang.GameName.CharacterSelection
+namespace OverBang.GameName.Hub
 {
     public abstract class HubListener : MonoBehaviour
     {

@@ -82,7 +82,8 @@ namespace ZTools.ObjectiveSystem.Core
         {
             if (ActiveObjectives.Contains(objectiveHandler))
             {
-                // Unsubscribe from its events before disposing
+                //TODO : Rework for proper objective chain management
+                //Unsubscribe from its events before disposing
                 objectiveHandler.OnObjectiveStateChanged -= HandleObjectiveStateChanged;
 
                 objectiveHandler.DisposeObjective();
@@ -103,6 +104,11 @@ namespace ZTools.ObjectiveSystem.Core
             {
                 LogProvider.LogWarning($"Objective '{objectiveHandler.ObjectiveData.ObjectiveName}' not found in the active objectives list for completion.");
             }
+        }
+
+        public static void RemoveObjective(ObjectiveData objectiveData)
+        {
+            RemoveObjective(objectiveData.GetHandler());
         }
 
         /// <summary>

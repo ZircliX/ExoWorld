@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
-using OverBang.GameName.Gameplay.Player;
-using Unity.Netcode;
 using UnityEngine;
 
 namespace OverBang.GameName.Gameplay.Hub
 {
-    public class HubController : NetworkBehaviour
+    public class HubController : MonoBehaviour
     {
         [Header("Player UI Card")]
         [SerializeField] private PlayerCard playerCardPrefab;
@@ -20,38 +18,6 @@ namespace OverBang.GameName.Gameplay.Hub
         public event Action<ulong> OnHubPlayerAdded;
         public event Action<ulong> OnHubPlayerRemoved;
         public event Action<ulong, bool> OnHubPlayerReadyChanged;
-        
-        private void OnEnable()
-        {
-            if (PlayerManager.HasInstance)
-            {
-                SubscribeToEvents();
-            }
-            else
-            {
-                PlayerManager.OnInstanceCreated += SubscribeToEvents;
-            }
-        }
-
-        private void SubscribeToEvents()
-        {
-            PlayerManager.OnInstanceCreated -= SubscribeToEvents;
-            
-            PlayerManager manager = PlayerManager.Instance;
-            manager.OnPlayerRegistered += HandlePlayerRegistered;
-            manager.OnPlayerUnregistered += HandlePlayerUnregistered;
-            manager.OnPlayerReadyStatusChanged += HandlePlayerReadyChanged;
-        }
-
-        private void OnDisable()
-        {
-            if (!PlayerManager.HasInstance) return;
-            
-            PlayerManager manager = PlayerManager.Instance;
-            manager.OnPlayerRegistered -= HandlePlayerRegistered;
-            manager.OnPlayerUnregistered -= HandlePlayerUnregistered;
-            manager.OnPlayerReadyStatusChanged -= HandlePlayerReadyChanged;
-        }
 
         private void Awake()
         {
@@ -107,18 +73,6 @@ namespace OverBang.GameName.Gameplay.Hub
             foreach (PlayerCard card in playerCards.Values)
                 Destroy(card.gameObject);
             playerCards.Clear();
-        }
-        
-        // --- Runtime Logic ---
-
-        public void StartGame()
-        {
-            Debug.Log("[Hub] Game starting!");
-            // Offline: directly teleport players
-            foreach (KeyValuePair<ulong, PlayerController> kvp in PlayerManager.Instance.Players)
-            {
-                PlayerManager.Instance.TeleportPlayer(kvp.Key, shipTransform.position);
-            }
         }
     }
 }
