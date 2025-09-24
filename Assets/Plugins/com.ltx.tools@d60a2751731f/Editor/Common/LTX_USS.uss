@@ -1,0 +1,22 @@
+.panel-enable {
+ display: flex;
+}
+
+.panel-disable {
+    display: none;
+}
+
+.panel {
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+.text-zone {
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+.unity-help-box {
+}

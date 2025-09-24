@@ -1,0 +1,51 @@
+
+.channeled-property-toggle
+{
+    flex-grow: 1;
+    -unity-text-align: middle-center;
+}
+
+.channeled-property-element
+{
+    padding: 8px;
+    margin: 3px;
+    background-color: rgb(55 55 55);
+    border-radius: 5px;
+}
+.selected-button
+{
+    border-bottom-color: palegreen;
+    border-bottom-width: 3px;
+}
+
+.channeled-property-toolbar
+{
+    flex-direction: row;
+    margin-bottom: 10px;
+    height: 25px;
+    border-bottom-width: 1px;
+    border-bottom-color: palegreen;
+}
+.channel-value
+{
+    flex-direction: row;
+    border-bottom-width: 1px;
+    border-bottom-color: palegreen;
+    margin-bottom: 5px;
+    align-items: center;
+    height: 40px;
+}
+.channeled-property-root
+{
+    padding-bottom: 5px;
+    margin: 2px;
+    border-radius: 3px;
+    flex-direction: column;
+    background-color: #3F3F3F;
+}
+.channel-value-field
+{
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding-left: 10;
+}

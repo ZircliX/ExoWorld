@@ -1,0 +1,25 @@
+{
+  "name": "com.ltx.channeled-properties",
+  "version": "2.0.1",
+  "displayName": "Helteix-Channeled Properties",
+  "description": "Advanced package based on the broker patters, granting the ability to have multiple object influencing a property without dependencies. \n The owner can listen and update only when the 'value' changes without knowing how it changed, who was responsible and where it occured.",
+  "unity": "2020.1",
+  "unityRelease": "0b5",
+  "keywords": [
+    "Scripts",
+    "Tools",
+    "Advanced",
+    "Broker",
+    "Pop-Sub"
+  ],
+  "author": {
+    "name": "LTX",
+    "email": "lupeni.tuikalepa@gmail.com",
+    "url": "https://www.unity3d.com"
+  },
+  "dependencies": {
+    "com.ltx.tools": "1.1.3",
+    "com.unity.burst": "1.8.18"
+  },
+  "_fingerprint": "436b56de42d2fa8c8d734d3218e8fc8729d8c27f"
+}
