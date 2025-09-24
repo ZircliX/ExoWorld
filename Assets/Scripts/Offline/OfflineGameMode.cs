@@ -49,22 +49,25 @@ namespace OverBang.GameName.Offline
         {
             if (!PlayerProfile.IsValid)
             {
-                CharacterData newCharacter = await HubPhase.CreateAsync(new HubPhase.SelectionSettings
+                HubPhase.SelectionSettings selectionSettings = new HubPhase.SelectionSettings
                 {
                     type = HubPhase.SelectionType.Pick,
                     availableClasses = CharacterClasses.All,
                     gameDatabase = GameController.GameDatabase
-                });
+                };
+                CharacterData newCharacter = await HubPhase.CreateAsync(selectionSettings);
                 
                 SetPlayerProfile(newCharacter);
-                
-                //Handle GameplayPhase
-                GameplayPhase.GameplayRewards rewards = await GameplayPhase.CreateAsync(new GameplayPhase.GameplaySettings
-                {
-                    gameDatabase = GameController.GameDatabase,
-                    playerCharacter = PlayerProfile.CharacterData
-                });
             }
+            
+            //Handle GameplayPhase
+            GameplayPhase.GameplayRewards rewards = await GameplayPhase.CreateAsync(new GameplayPhase.GameplaySettings
+            {
+                gameDatabase = GameController.GameDatabase,
+                playerCharacter = PlayerProfile.CharacterData
+            });
+                
+            Debug.LogError(rewards.score);
         }
     }
 }

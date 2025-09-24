@@ -23,7 +23,7 @@ namespace OverBang.GameName.Gameplay.Gameplay
         [System.Serializable]
         public struct GameplayRewards
         {
-            
+            public int score; // test
         }
         
         public static async Awaitable<GameplayRewards> CreateAsync(GameplaySettings settings)
@@ -48,6 +48,8 @@ namespace OverBang.GameName.Gameplay.Gameplay
             return phase.CurrentRewards;
         }
         
+        public event Action<bool> OnCompleted;
+        
         private readonly GameplaySettings settings;
         private readonly GameplayListener[] listeners;
         
@@ -61,28 +63,63 @@ namespace OverBang.GameName.Gameplay.Gameplay
             this.settings = settings;
             this.listeners = listeners;
         }
+        
+        public void CompletePhase(bool success)
+        {
+            for (int i = 0; i < listeners.Length; i++)
+                listeners[i].OnRelease(this);
+            
+            IsDone = true;
+            OnCompleted?.Invoke(success);
+        }
 
+        /*
+            TODO:
+             - Start game loop
+             - Handle game end conditions
+             - Collect rewards and stats
+             - Transition back to hub or main menu
+        */
         private async Awaitable Initialize()
         {
-            /*
-                TODO:
-                 - Setup gameplay sub-phases
-                 - Initialize game map
-                 - Initialize player and enemies
-                 - Start game loop
-                 - Handle game end conditions
-                 - Collect rewards and stats
-                 - Transition back to hub or main menu
-            */
-            
             for (int i = 0; i < listeners.Length; i++)
             {
                 listeners[i].current = this;
                 listeners[i].OnInit(this);
             }
             
-            Debug.Log( "[GameplayPhase] Initialized with player character: " + settings.playerCharacter?.AgentName);
+            await SetupGameMap();
+            await SetupPlayer();
+            await SetupEnemies();
+            await SetupUI();
+
+            CurrentRewards = new GameplayRewards()
+            {
+                score = 10
+            };
+        }
+
+        private async Awaitable SetupGameMap()
+        {
+            // Placeholder for map setup logic
+            await Awaitable.EndOfFrameAsync();
+        }
+        
+        private async Awaitable SetupPlayer()
+        {
             OnSpawnPlayer?.Invoke(settings.playerCharacter);
+            Debug.Log( "[GameplayPhase] Initialized with player character: " + settings.playerCharacter?.AgentName);
+            await Awaitable.EndOfFrameAsync();
+        }
+
+        private async Awaitable SetupEnemies()
+        {
+            await Awaitable.EndOfFrameAsync();
+        }
+
+        private async Awaitable SetupUI()
+        {
+            await Awaitable.EndOfFrameAsync();
         }
     }
 }

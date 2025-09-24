@@ -19,7 +19,8 @@ namespace OverBang.GameName.Hub
         public enum SelectionType
         {
             Random,
-            Pick
+            Pick,
+            None
         }
         
         [System.Serializable]
@@ -108,7 +109,7 @@ namespace OverBang.GameName.Hub
             return operation;
         }
 
-        public void Complete(bool isSuccess)
+        public void CompletePhase(bool isSuccess)
         {
             for (int i = 0; i < listeners.Length; i++)
                 listeners[i].OnRelease(this);

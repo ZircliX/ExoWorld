@@ -11,7 +11,7 @@ namespace OverBang.GameName.Gameplay.Hub
         {
             if (other.CompareTag("Player") && canBeTriggered)
             {
-                current.Complete(true);
+                current.CompletePhase(true);
             }
         }
 

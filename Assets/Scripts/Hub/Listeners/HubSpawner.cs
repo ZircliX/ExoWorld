@@ -36,7 +36,6 @@ namespace OverBang.GameName.Hub
             if (handle.Status == AsyncOperationStatus.Succeeded)
             {
                 currentPlayer = handle.Result;
-                Debug.Log($"Successfully instantiated GameObject with name ''.");
             }
         }
         
