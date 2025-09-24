@@ -4,6 +4,7 @@ namespace OverBang.GameName.Core.Characters
     public enum CharacterClasses
     {
         None = 0,
+        All = -1,
         
         Attack = 1 << 0,
         Defense = 1 << 1,

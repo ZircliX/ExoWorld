@@ -34,7 +34,6 @@ namespace OverBang.GameName.Gameplay.Player
         public void RegisterPlayer(ulong playerId, PlayerController controller)
         {
             if (!Players.TryAdd(playerId, controller)) return;
-            Debug.Log($"[PlayerManager] RegisterPlayer");
             OnPlayerRegistered?.Invoke(playerId);
         }
 

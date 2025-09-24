@@ -1,5 +1,4 @@
-using OverBang.GameName.CharacterSelection;
-using OverBang.GameName.Managers;
+using OverBang.GameName.Hub;
 using OverBang.GameName.Offline;
 using UnityEngine;
 
@@ -9,7 +8,7 @@ namespace OverBang.GameName.Debug
     {
         [SerializeField] private int difficulty = 0;
 
-        [SerializeField] private CharacterSelectionManager.SelectionSettings settings;
+        [SerializeField] private HubPhase.SelectionSettings settings;
         
         private void Start()
         {

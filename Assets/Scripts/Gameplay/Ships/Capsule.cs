@@ -1,3 +1,5 @@
+using OverBang.GameName.Gameplay.Gameplay;
+using OverBang.GameName.Gameplay.Gameplay.Listeners;
 using OverBang.GameName.Quests.QuestData;
 using OverBang.GameName.Quests.QuestEvents;
 using OverBang.GameName.Quests.QuestHandlers;
@@ -9,17 +11,17 @@ using ZTools.ObjectiveSystem.Core.Interfaces;
 
 namespace OverBang.GameName.Gameplay.Ships
 {
-    public class Capsule : MonoBehaviour
+    public class Capsule : GameplayListener
     {
         [SerializeField] private GameObject body;
 
-        private void OnEnable()
+        protected internal override void OnInit(GameplayPhase phase)
         {
             ObjectivesManager.OnObjectiveProgress += HandleObjectiveProgressChanged;
             body.SetActive(false);
         }
-        
-        private void OnDisable()
+
+        protected internal override void OnRelease(GameplayPhase phase)
         {
             ObjectivesManager.OnObjectiveProgress -= HandleObjectiveProgressChanged;
         }
@@ -39,7 +41,7 @@ namespace OverBang.GameName.Gameplay.Ships
         {
             if (other.CompareTag("Player") && body.activeSelf)
             {
-                ObjectivesManager.DispatchGameEvent(new ReachPointEvent("Extraction-Ship"));
+                current.CompletePhase(true);
             }
         }
     }

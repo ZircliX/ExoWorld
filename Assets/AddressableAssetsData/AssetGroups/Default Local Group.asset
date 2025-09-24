@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_GUID: 8ac8a392ca5be564c871c2b28e4350a9
+  m_SerializeEntries:
+  - m_GUID: 464e9e9c5413d1340bd1934a0c4149f5
+    m_Address: Assets/Project/ScriptableObjects/Characters/Agent 2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AgentData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6907ab4dd1948334eabe022b53c8b49d
+    m_Address: Assets/Project/ScriptableObjects/Characters/Agent 3.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AgentData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8538becf3d7dff243b44f593a4e788a8
+    m_Address: Assets/Project/ScriptableObjects/Characters/Agent 0.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AgentData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bed7478a90a81034487b01a6fbd270ea
+    m_Address: Assets/Project/ScriptableObjects/Characters/Agent 1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AgentData
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: faa98871f0f2223438b8b603a72e38ca, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 50df8eee6638303449033827d272a007, type: 2}
+    - {fileID: 11400000, guid: 779341651d99c3d4a8f711d1d539143f, type: 2}

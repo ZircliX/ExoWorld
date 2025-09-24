@@ -12,10 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81cc4ae666c74560aade2173e6a7b18f, type: 3}
   m_Name: GameMetrics
   m_EditorClassIdentifier: 
+  <SceneCollection>k__BackingField:
+    <HubSceneRef>k__BackingField:
+      asset: {fileID: 102900000, guid: 963625231579ac04b9d7ef327577da1e, type: 3}
+      guid: 963625231579ac04b9d7ef327577da1e
+    <GameSceneRef>k__BackingField:
+      asset: {fileID: 102900000, guid: 527cd7e9820ed9a45a26b6df973423db, type: 3}
+      guid: 527cd7e9820ed9a45a26b6df973423db
+    <MainMenuSceneRef>k__BackingField:
+      asset: {fileID: 102900000, guid: 325d58d44bd901d47aff0616967a4cb2, type: 3}
+      guid: 325d58d44bd901d47aff0616967a4cb2
   <PlayerView>k__BackingField: {fileID: 11400000, guid: 0651c1f6b95f9974ab7cd342a657f61b, type: 2}
   <PlayerSpectate>k__BackingField: {fileID: 11400000, guid: 5843128c84a91d94da42c9ea8606b4d7, type: 2}
   <MainMenu>k__BackingField: {fileID: 11400000, guid: a964d8e4b1d9be747a3fe8189c0d3504, type: 2}
-  <PlayerControllerNetworkAdapter>k__BackingField: {fileID: 0}
-  <PlayerControllerOfflineAdapter>k__BackingField: {fileID: 0}
   <CharacterSelectionPrefab>k__BackingField: {fileID: 8031220736375901205, guid: 274bb0aa719a2b644811f00aa12d1057, type: 3}
   <DebugInputs>k__BackingField: {fileID: 5566769545373903973, guid: c536f002a338a7e4a96af5177feb10ed, type: 3}
