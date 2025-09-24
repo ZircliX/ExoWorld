@@ -84,6 +84,8 @@ namespace OverBang.GameName.Hub
             {
                 name = "Hub catalog",
             });
+            
+            await GameController.PoolManager.Initialize(GameController.GameDatabase);
 
             //Debug.Log("HubPhase: Loading available characters...");
             AsyncOperationHandle operation = StartCharacterSelection();

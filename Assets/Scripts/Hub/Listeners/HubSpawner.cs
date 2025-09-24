@@ -1,5 +1,6 @@
 ﻿using OverBang.GameName.Core;
 using OverBang.GameName.Core.Characters;
+using OverBang.GameName.Core.Pooling;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -27,8 +28,10 @@ namespace OverBang.GameName.Hub
             {
                 ReleaseTrackedResources();
             }
+
+            PoolableObject test = GameController.PoolManager.Spawn<PoolableObject>("Player Pool");
             
-            Addressables.InstantiateAsync(characterData.CharacterPrefabRef).Completed += OnInstantiateCompleteObjectTracked;
+            //Addressables.InstantiateAsync(characterData.CharacterPrefabRef).Completed += OnInstantiateCompleteObjectTracked;
         }
 
         public void OnInstantiateCompleteObjectTracked(AsyncOperationHandle<GameObject> handle)
