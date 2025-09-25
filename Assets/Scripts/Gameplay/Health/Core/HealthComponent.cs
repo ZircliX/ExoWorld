@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using LTX.ChanneledProperties.Priorities;
-using LTX.Tools;
+using Helteix.ChanneledProperties.Priorities;
+using Helteix.Tools;
 using UnityEngine;
 
 namespace OverBang.GameName.Gameplay.Health

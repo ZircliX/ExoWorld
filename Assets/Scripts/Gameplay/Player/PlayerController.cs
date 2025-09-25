@@ -55,11 +55,13 @@ namespace OverBang.GameName.Gameplay.Player
 
         public override void OnSpawn()
         {
+            IsInUse = true;
             EnableLocalControls();
         }
 
         public override void OnDespawn()
         {
+            IsInUse = false;
             //throw new System.NotImplementedException();
         }
     }

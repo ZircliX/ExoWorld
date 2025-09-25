@@ -1,12 +1,11 @@
 using System;
-using LTX.ChanneledProperties.Priorities;
+using Helteix.ChanneledProperties.Priorities;
 using OverBang.GameName.Core.GameAssets;
 using OverBang.GameName.Core.GameMode;
 using OverBang.GameName.Core.Metrics;
 using OverBang.GameName.Core.Pooling;
 using OverBang.GameName.Managers;
 using UnityEngine;
-using UnityUtils;
 
 namespace OverBang.GameName
 {

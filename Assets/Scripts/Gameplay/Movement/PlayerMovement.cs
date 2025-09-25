@@ -1,4 +1,4 @@
-using LTX.ChanneledProperties.Priorities;
+using Helteix.ChanneledProperties.Priorities;
 using OverBang.GameName.Gameplay.Cameras;
 using UnityEngine;
 using UnityEngine.InputSystem;

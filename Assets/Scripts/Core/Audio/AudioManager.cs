@@ -1,4 +1,5 @@
-﻿using LTX.Singletons;
+﻿using Helteix.Singletons.MonoSingletons;
+using UnityEngine;
 
 namespace OverBang.GameName.Core.Audio
 {
