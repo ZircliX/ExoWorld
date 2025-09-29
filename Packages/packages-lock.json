@@ -17,6 +17,32 @@
       },
       "hash": "b849990020c30ac6ead4e4fb4881428f86dcde0d"
     },
+    "com.helteix.channeled-properties": {
+      "version": "2.0.6",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.helteix.tools": "1.3.4",
+        "com.unity.burst": "1.8.25"
+      },
+      "url": "https://upm.pckgs.io"
+    },
+    "com.helteix.singletons": {
+      "version": "1.2.4",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.helteix.tools": "1.3.4"
+      },
+      "url": "https://upm.pckgs.io"
+    },
+    "com.helteix.tools": {
+      "version": "1.3.4",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://upm.pckgs.io"
+    },
     "com.unity.addressables": {
       "version": "2.7.3",
       "depth": 0,
@@ -43,7 +69,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.burst": {
-      "version": "1.8.21",
+      "version": "1.8.25",
       "depth": 1,
       "source": "registry",
       "dependencies": {

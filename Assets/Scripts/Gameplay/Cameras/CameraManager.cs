@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using LTX.Singletons;
+using Helteix.Singletons.MonoSingletons;
 using OverBang.GameName.Core.Metrics;
 using UnityEngine;
 
@@ -10,10 +10,11 @@ namespace OverBang.GameName.Gameplay.Cameras
     {
         public List<CameraRegister> Cameras { get; private set; }
         private CameraRegister currentCamera;
-        
-        protected override void Awake()
+
+
+        protected override void OnAwake()
         {
-            base.Awake();
+            base.OnAwake();
             Cameras = new List<CameraRegister>(4);
         }
         

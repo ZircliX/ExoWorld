@@ -1,8 +1,8 @@
 using DG.Tweening;
+using Helteix.ChanneledProperties;
+using Helteix.ChanneledProperties.Formulas;
 using KBCore.Refs;
-using LTX.ChanneledProperties;
-using LTX.ChanneledProperties.Formulas;
-using LTX.ChanneledProperties.Priorities;
+using Helteix.ChanneledProperties.Priorities;
 using UnityEngine;
 
 namespace OverBang.GameName.Gameplay.Movement

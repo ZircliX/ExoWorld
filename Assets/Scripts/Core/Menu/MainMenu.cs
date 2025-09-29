@@ -1,5 +1,4 @@
-using LTX.ChanneledProperties.Priorities;
-using OverBang.GameName.Managers;
+using Helteix.ChanneledProperties.Priorities;
 using TMPro;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;

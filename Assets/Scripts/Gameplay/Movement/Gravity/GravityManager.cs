@@ -1,5 +1,6 @@
 using System.Collections.Generic;
-using LTX.Singletons;
+using Helteix.Singletons;
+using Helteix.Singletons.MonoSingletons;
 
 namespace OverBang.GameName.Gameplay.Movement
 {
@@ -7,10 +8,10 @@ namespace OverBang.GameName.Gameplay.Movement
     {
         private List<GravityZone> GravityZones;
 
-        protected override void Awake()
+        protected override void OnAwake()
         {
             //DontDestroyOnLoad(this); // Pourquoi Lupeni a fait ça ?
-            base.Awake();
+            base.OnAwake();
             GravityZones = new List<GravityZone>(64);
         }
 

@@ -1,6 +1,6 @@
 using System.Collections;
 using KBCore.Refs;
-using LTX.ChanneledProperties.Priorities;
+using Helteix.ChanneledProperties.Priorities;
 using Unity.Cinemachine;
 using UnityEngine;
 using Random = UnityEngine.Random;

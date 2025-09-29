@@ -1,4 +1,4 @@
-using LTX.ChanneledProperties.Priorities;
+using Helteix.ChanneledProperties.Priorities;
 using OverBang.GameName.Managers;
 using UnityEngine;
 

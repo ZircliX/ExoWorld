@@ -1,6 +1,9 @@
 {
   "dependencies": {
     "com.eflatun.scenereference": "git+https://github.com/starikcetin/Eflatun.SceneReference.git#4.1.1",
+    "com.helteix.channeled-properties": "2.0.6",
+    "com.helteix.singletons": "1.2.4",
+    "com.helteix.tools": "1.3.4",
     "com.unity.addressables": "2.7.3",
     "com.unity.ai.navigation": "2.0.7",
     "com.unity.cinemachine": "3.1.4",
@@ -58,5 +61,14 @@
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
   },
-  "scopedRegistries": []
+  "scopedRegistries": [
+    {
+      "name": "Helteix",
+      "url": "https://upm.pckgs.io",
+      "scopes": [
+        "com.helteix"
+      ],
+      "overrideBuiltIns": true
+    }
+  ]
 }
