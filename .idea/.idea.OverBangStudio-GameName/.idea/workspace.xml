@@ -5,358 +5,69 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1604e208-f0b5-49be-bc96-e3b796502da2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Editor.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Editor/AddressablePoolAssetEditor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Editor/AddressablePoolAssetEditor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Editor/PoolResourceEditor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Editor/PoolResourceEditor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Editor/PrefabPoolAssetEditor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Editor/PrefabPoolAssetEditor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Editor/ResourcePoolAssetEditor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Editor/ResourcePoolAssetEditor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/IPool.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/IPool.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/IPoolConfig.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/IPoolConfig.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Pool.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Pool.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolEmptyBehavior.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolEmptyBehavior.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolStrategies.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolStrategies/ComponentPoolStrategy.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolStrategies/ComponentPoolStrategy.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolStrategies/IPoolStrategy.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolStrategies/IPoolStrategy.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolStrategies/PoolStrategy.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolStrategies/PoolStrategy.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolStrategies/PoolStrategyUtilities.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolStrategies/PoolStrategyUtilities.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolStrategies/PrefabPoolStrategy.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolStrategies/PrefabPoolStrategy.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolStrategies/ScriptablePoolStrategy.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolStrategies/ScriptablePoolStrategy.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolingSettings.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolingSettings.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/IPoolInstanceListener.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/IPoolInstanceListener.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolAsset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolAsset/AddressablePoolAsset.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolAsset/AddressablePoolAsset.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolAsset/IPoolAsset.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolAsset/IPoolAsset.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolAsset/PrefabPoolAsset.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolAsset/PrefabPoolAsset.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolAsset/ResourcePoolAsset.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolAsset/ResourcePoolAsset.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolConfigAsset.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolConfigAsset.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolResource.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolResource.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OverBangStudio-GameName/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OverBangStudio-GameName/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/ChannelContainer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/ChannelContainer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/ChannelKey.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/ChannelKey.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/ChanneledProperty.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/ChanneledProperty.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/ChanneledProperty_Editor.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/ChanneledProperty_Editor.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Conditions.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Conditions/Condition.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Conditions/Condition.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Conditions/ConditionChannel.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Conditions/ConditionChannel.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Formulas.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Formulas/Controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Formulas/Controller/CalculatorController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Formulas/Controller/CalculatorController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Formulas/Controller/FormulaPropertiesSetup.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Formulas/Controller/FormulaPropertiesSetup.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Formulas/Controller/GetChannelsOrderJob.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Formulas/Controller/GetChannelsOrderJob.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Formulas/Formula.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Formulas/Formula.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Formulas/FormulaChannel.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Formulas/FormulaChannel.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Formulas/Interfaces.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Formulas/Interfaces/ICalculator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Formulas/Interfaces/ICalculator.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Formulas/Operator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Formulas/Operator.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Formulas/Operators.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Formulas/Operators/FloatCalculator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Formulas/Operators/FloatCalculator.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Formulas/Operators/IntCalculator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Formulas/Operators/IntCalculator.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Formulas/Operators/Vector2Calculator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Formulas/Operators/Vector2Calculator.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Formulas/Operators/Vector3Calculator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Formulas/Operators/Vector3Calculator.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Interfaces.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Interfaces/IChannel.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Interfaces/IChannel.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Interfaces/IChannelFactory.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Interfaces/IChannelFactory.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Interfaces/IChanneledPropertyEditor.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Interfaces/IChanneledPropertyEditor.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/LTX.ChanneledProperties.Core.asmdef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/LTX.ChanneledProperties.Core.asmdef.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Priorities.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Priorities/ChannelPriorityUtility.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Priorities/ChannelPriorityUtility.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Priorities/Priority.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Priorities/Priority.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Priorities/PriorityChannel.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Priorities/PriorityChannel.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Settings.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Settings/ChanneledPropertiesSettings.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Core/Settings/ChanneledPropertiesSettings.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/ChanneledPropertyDrawer.uss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/ChanneledPropertyDrawer.uss.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Conditions.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Conditions/ConditionChannelElement.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Conditions/ConditionChannelElement.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Conditions/ConditionPropertyDrawer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Conditions/ConditionPropertyDrawer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Conditions/ConditionPropertyElement.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Conditions/ConditionPropertyElement.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Core.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Core/ChannelElement.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Core/ChannelElement.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Core/ChannelKeyDrawer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Core/ChannelKeyDrawer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Core/ChannelKeyElement.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Core/ChannelKeyElement.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Core/ChanneledPropertyDrawer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Core/ChanneledPropertyDrawer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Core/ChanneledPropertyElement.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Core/ChanneledPropertyElement.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Core/IChanneledPropertyElement.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Core/IChanneledPropertyElement.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Formulas.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Formulas/FormulaChannelElement.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Formulas/FormulaChannelElement.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Formulas/FormulaPropertyDrawer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Formulas/FormulaPropertyDrawer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Formulas/FormulaPropertyElement.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Formulas/FormulaPropertyElement.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/LTX.ChanneledProperties.Editor.asmdef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/LTX.ChanneledProperties.Editor.asmdef.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Priorities.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Priorities/PriorityChannelElement.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Priorities/PriorityChannelElement.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Priorities/PriorityPropertyDrawer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Priorities/PriorityPropertyDrawer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Priorities/PriorityPropertyElement.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Editor/Priorities/PriorityPropertyElement.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/LICENSE.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/README.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Sample.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Sample/Conditions.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Sample/Conditions/ConditionProperties.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Sample/Conditions/ConditionProperties.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Sample/Conditions/SampleCPManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Sample/Conditions/SampleCPManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Sample/Formulas.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Sample/Formulas/Element.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Sample/Formulas/Element.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Sample/Formulas/FormulaProperties.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Sample/Formulas/FormulaProperties.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Sample/Formulas/Group.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Sample/Formulas/Group.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Sample/Formulas/Scripts.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Sample/Formulas/Scripts/FormulaChannelUI.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Sample/Formulas/Scripts/FormulaChannelUI.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Sample/Formulas/Scripts/FormulaGroupUI.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Sample/Formulas/Scripts/FormulaGroupUI.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Sample/Formulas/Scripts/FormulaUI.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Sample/Formulas/Scripts/FormulaUI.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Sample/LTX.ChanneledProperties.Samples.asmdef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Sample/LTX.ChanneledProperties.Samples.asmdef.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Sample/Priorities.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Sample/Priorities/PPItem.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Sample/Priorities/PPItem.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Sample/Priorities/PrioritizedProperties.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Sample/Priorities/PrioritizedProperties.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Sample/Priorities/SamplePPManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Sample/Priorities/SamplePPManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Sample/Priorities/SamplePPSlider.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Sample/Priorities/SamplePPSlider.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Tests.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Tests/Formulas.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Tests/Formulas/FP_PerformancesTests.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Tests/Formulas/FP_PerformancesTests.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Tests/Formulas/FormulaPropertiesPerformancesTest.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Tests/Formulas/FormulaPropertiesPerformancesTest.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Tests/LTX.ChanneledProperties.Tests.asmdef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/Tests/LTX.ChanneledProperties.Tests.asmdef.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.channeled-properties@436b56de42d2/package.json.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/LICENSE.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/README.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/BaseSingleton.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/BaseSingleton.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/Interfaces.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/Interfaces/ISingleton.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/Interfaces/ISingleton.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/Interfaces/ISingletonFactory.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/Interfaces/ISingletonFactory.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/Interfaces/ISingletonFinder.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/Interfaces/ISingletonFinder.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/LTX.Singletons.Runtime.asmdef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/LTX.Singletons.Runtime.asmdef.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/MonoSingletons.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/MonoSingletons/MonoSingleton.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/MonoSingletons/MonoSingleton.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/MonoSingletons/MonoSingletonFactory.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/MonoSingletons/MonoSingletonFactory.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/MonoSingletons/MonoSingletonFinder.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/MonoSingletons/MonoSingletonFinder.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/MonoSingletons/MonoSingletonHolder.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/MonoSingletons/MonoSingletonHolder.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/SceneSingleton.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/SceneSingleton/OverrideCrossSceneBehaviourAttribute.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/SceneSingleton/OverrideCrossSceneBehaviourAttribute.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/SceneSingleton/SceneSingleton.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/SceneSingleton/SceneSingleton.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/SceneSingleton/SceneSingletonMode.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/SceneSingleton/SceneSingletonMode.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/SceneSingleton/SceneSingletonUtility.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/SceneSingleton/SceneSingletonUtility.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/SceneSingleton/SceneSingleton_Static.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/SceneSingleton/SceneSingleton_Static.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/Settings.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/Settings/SingletonSettings.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/Settings/SingletonSettings.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/Singleton.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Runtime/Singleton.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Samples.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Samples/LTX.Singletons.Samples.asmdef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Samples/LTX.Singletons.Samples.asmdef.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Samples/SceneSingletons.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Samples/SceneSingletons/OnePerScene.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Samples/SceneSingletons/OnePerScene/SampleSceneSingleton.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Samples/SceneSingletons/OnePerScene/SampleSceneSingleton.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Samples/SceneSingletons/OnePerScene/SceneSingletonDemo_OnePerScene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Samples/SceneSingletons/OnePerScene/SceneSingletonDemo_OnePerScene.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Samples/SceneSingletons/OnePerScene/SceneSingletonExtensions.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Samples/SceneSingletons/OnePerScene/SceneSingletonExtensions.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Samples/SceneSingletons/OnePerScene/SceneSingletonsSetup.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/Samples/SceneSingletons/OnePerScene/SceneSingletonsSetup.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.singletons@85553c97d047/package.json.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Annotations.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Annotations/Data.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Annotations/Data/LTXProjectAnnotation.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Annotations/Data/LTXProjectAnnotation.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Annotations/Data/LTXSceneAnnotation.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Annotations/Data/LTXSceneAnnotation.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Annotations/Drawers.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Annotations/Drawers/AnnotablePropertyDrawer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Annotations/Drawers/AnnotablePropertyDrawer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Annotations/Drawers/GenericAnnotablePropertyDrawer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Annotations/Drawers/GenericAnnotablePropertyDrawer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Annotations/LTXAnnotationEditorDrawer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Annotations/LTXAnnotationEditorDrawer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Annotations/LTXAnnotationsLibrary.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Annotations/LTXAnnotationsLibrary.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Annotations/LTXAnnotationsPostProcessor.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Annotations/LTXAnnotationsPostProcessor.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Annotations/UIToolkit.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Annotations/UIToolkit/AnnotableElement.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Annotations/UIToolkit/AnnotableElement.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Annotations/UIToolkit/AnnotablePropertyElement.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Annotations/UIToolkit/AnnotablePropertyElement.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Annotations/UIToolkit/AnnotableUXML.uxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Annotations/UIToolkit/AnnotableUXML.uxml.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Annotations/UIToolkit/BaseAnnotableElement.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Annotations/UIToolkit/BaseAnnotableElement.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Annotations/UIToolkit/GenericAnnotableUXML.uxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Annotations/UIToolkit/GenericAnnotableUXML.uxml.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Common.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Common/LTXEditorExtensions.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Common/LTXEditorExtensions.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Common/LTX_USS.uss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Common/LTX_USS.uss.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/CountLinesOfCode.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/CountLinesOfCode.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Data.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Data/SettingsIcon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Data/SettingsIcon.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Icons.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Icons/EditorIcons.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Icons/EditorIcons.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/LTX.Tools.Editor.asmdef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/LTX.Tools.Editor.asmdef.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/ScriptableReadAndWriteMe.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/ScriptableReadAndWriteMe.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Serialisation.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Serialisation/SerialisationHelper.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Serialisation/SerialisationHelper.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/SerializedComponent.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/SerializedComponent/AddComponentDropdown.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/SerializedComponent/AddComponentDropdown.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/SerializedComponent/Drawers.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/SerializedComponent/Drawers/SComponentContainerDrawer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/SerializedComponent/Drawers/SComponentContainerDrawer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/SerializedComponent/UIToolkit.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/SerializedComponent/UIToolkit/SComponentElement.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/SerializedComponent/UIToolkit/SComponentElement.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/SerializedComponent/UIToolkit/SerializedComponentContainerField.uxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/SerializedComponent/UIToolkit/SerializedComponentContainerField.uxml.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Settings.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Settings/LTXStyling.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Settings/LTXStyling.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Settings/SettingsAssetCollectionSettings.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Settings/SettingsAssetCollectionSettings.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Settings/SettingsAssetCollectionSettingsProvider.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Editor/Settings/SettingsAssetCollectionSettingsProvider.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/LICENSE.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/Annotation.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/Annotation.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/DynamicBuffer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/DynamicBuffer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/LTX.Tools.asmdef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/LTX.Tools.asmdef.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/SerializedComponent.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/SerializedComponent/Attributes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/SerializedComponent/Attributes/AddSerializedComponentMenuAttribute.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/SerializedComponent/Attributes/AddSerializedComponentMenuAttribute.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/SerializedComponent/Attributes/FilterPathSComponentsAttribute.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/SerializedComponent/Attributes/FilterPathSComponentsAttribute.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/SerializedComponent/Attributes/ShowNonCompatibleSComponentsAttribute.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/SerializedComponent/Attributes/ShowNonCompatibleSComponentsAttribute.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/SerializedComponent/Attributes/UseDefaultEditorDrawingInsideSerializedComponentsAttribute.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/SerializedComponent/Attributes/UseDefaultEditorDrawingInsideSerializedComponentsAttribute.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/SerializedComponent/Containers.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/SerializedComponent/Containers/SComponentContainer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/SerializedComponent/Containers/SComponentContainer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/SerializedComponent/ISComponent.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/SerializedComponent/ISComponent.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/Settings.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/Settings/Attributes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/Settings/Attributes/LTXSettingsTemplatePath.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/Settings/Attributes/LTXSettingsTemplatePath.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/Settings/Attributes/LTXSettingsTitleAttribute.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/Settings/Attributes/LTXSettingsTitleAttribute.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/Settings/LTXSettingsAsset.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/Settings/LTXSettingsAsset.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/Settings/SettingsCollection.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/Settings/SettingsCollection.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/Settings/SettingsCollectionEditorPointer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/Settings/SettingsCollectionEditorPointer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/Settings/SettingsCollection_Editor.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Runtime/Settings/SettingsCollection_Editor.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Samples.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Samples/Annotables.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Samples/Annotables/SampleAnnotation.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Samples/Annotables/SampleAnnotation.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Samples/Annotables/SampleReadMe.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Samples/Annotables/SampleReadMe.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Samples/CoreSample.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Samples/CoreSample.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Samples/LTX.Tools.Samples.asmdef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Samples/LTX.Tools.Samples.asmdef.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Samples/SerializedComponents.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Samples/SerializedComponents/ISampleSComponent.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Samples/SerializedComponents/ISampleSComponent.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Samples/SerializedComponents/LogFloat.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Samples/SerializedComponents/LogFloat.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Samples/SerializedComponents/LogString.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Samples/SerializedComponents/LogString.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Samples/SerializedComponents/SampleSComponentsOnMonoBehaviour.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Samples/SerializedComponents/SampleSComponentsOnMonoBehaviour.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/Tools.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/package.json.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/readme.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/com.ltx.tools@d60a2751731f/readme.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/UnityUtils/Scripts/FrameRateLimiter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/UnityUtils/Scripts/FrameRateLimiter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Debug/DebugInputs.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Debug/DebugInputs.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Pools/PlayerPoolConfig.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Pools/PlayerPoolConfig.asset.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Project/Terrains/TerrainAsphalt/New Terrain Asphalt.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Terrains/TerrainAsphalt/New Terrain Asphalt.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Audio/AudioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Audio/AudioManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Managers/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Managers/GameController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Menu/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Menu/MainMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Terrains/TerrainDirt/New Terrain.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Terrains/TerrainDirt/New Terrain.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main/Map.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main/Map.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Pooling/Pool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Pooling/Pool.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Debug/Mouse/DisableMouse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Debug/Mouse/DisableMouse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Debug/OverBang.GameName.Debug.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Debug/OverBang.GameName.Debug.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Cameras/CameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Cameras/CameraController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Cameras/CameraManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Cameras/CameraManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Health/Core/HealthComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Health/Core/HealthComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/EntityGravity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/EntityGravity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/EntityMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/EntityMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/Gravity/GravityManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/Gravity/GravityManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/Gravity/GravityReceiver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/Gravity/GravityReceiver.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/PlayerMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Pooling/PoolManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Pooling/PoolManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Player/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/PackageManagerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/PackageManagerSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Spawners/GameplaySpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Spawners/GameplaySpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/LTXSettings.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/LTXSettings.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -370,8 +81,26 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/356a8cd803ae46c2811b1802b99267541fe200/58/4420cac9/DropdownField.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/89527d299cb64ba88f87240781b415e51ea400/7d/d8892caf/Awaitable`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8db6ec373e6d40bd9d38c8037d358c4e46ae00/28/977c9cb8/NullReferenceException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Editor/PoolResourceEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Editor/PrefabPoolAssetEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/IPool.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/IPoolConfig.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Pool.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolEmptyBehavior.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolStrategies/PoolStrategy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolStrategies/PrefabPoolStrategy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolStrategies/ScriptablePoolStrategy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolingSettings.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/IPoolInstanceListener.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolAsset/AddressablePoolAsset.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolAsset/IPoolAsset.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolAsset/PrefabPoolAsset.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolAsset/ResourcePoolAsset.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolConfigAsset.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolResource.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Audio/AudioManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Audio/AudioParameters.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Audio/AudioPrefab.cs" root0="FORCE_HIGHLIGHTING" />
@@ -394,11 +123,15 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Hub/HubPhase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Hub/Listeners/HubSpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Offline/OfflineGameMode.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.eflatun.scenereference@b849990020c3/Runtime/SceneReference.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.channeled-properties/Editor/Core/ChannelKeyElement.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.channeled-properties/Editor/Core/ChanneledPropertyElement.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.singletons/Runtime/BaseSingleton.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.singletons/Runtime/MonoSingletons/MonoSingleton.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.singletons/Runtime/Singleton.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.tools/Runtime/Settings/Attributes/AutoGenerateGameSettingsAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.tools/Runtime/Settings/Attributes/GameSettingsTitleAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.tools/Runtime/Settings/GameSettings.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@633105437483/Runtime/AddressablesImpl.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -503,6 +236,11 @@
       <workItem from="1758723341115" duration="7479000" />
       <workItem from="1758803572422" duration="1815000" />
       <workItem from="1758805536147" duration="1012000" />
+      <workItem from="1758815792046" duration="180000" />
+      <workItem from="1758921903961" duration="204000" />
+      <workItem from="1759133655181" duration="1097000" />
+      <workItem from="1759144382137" duration="1984000" />
+      <workItem from="1759147106686" duration="14058000" />
     </task>
     <servers />
   </component>

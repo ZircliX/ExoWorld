@@ -27,7 +27,7 @@ namespace OverBang.GameName.Core.Pooling
             }
         }
         
-        public T GetObject<T>() where T : Component, IPoolable
+        public T GetObject<T>() where T : PoolableObject
         {
             switch (Objects.Count)
             {

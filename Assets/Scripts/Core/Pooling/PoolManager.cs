@@ -57,7 +57,7 @@ namespace OverBang.GameName.Core.Pooling
             }
         }
 
-        public T Spawn<T>(string poolName) where T : Component, IPoolable
+        public T Spawn<T>(string poolName) where T : PoolableObject
         {
             Pool pool = GetPool(poolName);
             if (pool == null)
