@@ -17,7 +17,7 @@ MonoBehaviour:
   settings:
     m_Version: 1
     dilationSettings:
-      enableDilation: 1
+      enableDilation: 0
       dilationDistance: 2
       dilationValidityThreshold: 0.25
       dilationIterations: 1
@@ -25,8 +25,8 @@ MonoBehaviour:
     virtualOffsetSettings:
       useVirtualOffset: 1
       validityThreshold: 0.25
-      outOfGeoOffset: 0.03
-      searchMultiplier: 0.2
+      outOfGeoOffset: 0.01
+      searchMultiplier: 2
       rayOriginBias: -0.001
       collisionMask:
         serializedVersion: 2
@@ -70,13 +70,13 @@ MonoBehaviour:
       m_Values: []
     m_Asset: {fileID: 0}
   chunkSizeInBricks: 128
-  maxCellPosition: {x: 1, y: 1, z: 1}
-  minCellPosition: {x: -1, y: -1, z: -1}
+  maxCellPosition: {x: 3, y: 1, z: 3}
+  minCellPosition: {x: -3, y: -1, z: -3}
   globalBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 243, y: 243, z: 243}
+    m_Extent: {x: 1458, y: 486, z: 1458}
   bakedSimplificationLevels: 4
-  bakedMinDistanceBetweenProbes: 1
+  bakedMinDistanceBetweenProbes: 2
   bakedProbeOcclusion: 1
   bakedSkyOcclusionValue: 0
   bakedSkyShadingDirectionValue: 0
@@ -87,7 +87,7 @@ MonoBehaviour:
     y: 0
     z: 0
     w: 0
-  maxSHChunkCount: 42
+  maxSHChunkCount: 5
   L0ChunkSize: 65536
   L1ChunkSize: 32768
   L2TextureChunkSize: 32768
@@ -107,7 +107,7 @@ MonoBehaviour:
   freezePlacement: 0
   probeOffset: {x: 0, y: 0, z: 0}
   simplificationLevels: 4
-  minDistanceBetweenProbes: 1
+  minDistanceBetweenProbes: 2
   renderersLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -128,4 +128,4 @@ MonoBehaviour:
       bakeScene: 1
       bounds:
         m_Center: {x: 0, y: 0, z: 0}
-        m_Extent: {x: 243, y: 243, z: 243}
+        m_Extent: {x: 1458, y: 486, z: 1458}
