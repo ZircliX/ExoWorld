@@ -157,7 +157,7 @@ namespace OverBang.Pooling
             pooledObjects.Push(pooledElement);
         }
 
-        public T Instantiate()
+        public T GenericSpawn()
         {
             if (pooledObjects.TryPop(out PooledElement element))
             {
@@ -181,19 +181,19 @@ namespace OverBang.Pooling
                     case PoolEmptyBehavior.ExtendByOne:
                         Size++;
                         SyncFillPool();
-                        return Instantiate();
+                        return GenericSpawn();
                     case PoolEmptyBehavior.ExtendByDouble:
                         Size *= 2;
                         AsyncFillPool();
-                        return Instantiate();
+                        return GenericSpawn();
                     case PoolEmptyBehavior.ExtendByNextPowerOfTwo:
                         Size = Mathf.NextPowerOfTwo(Size + 1);
                         AsyncFillPool();
-                        return Instantiate();
+                        return GenericSpawn();
                     case PoolEmptyBehavior.Loop:
                         (T key, PooledElement value) = releasedObjects.Last();
-                        Destroy(key);
-                        return Instantiate();
+                        Despawn(key);
+                        return GenericSpawn();
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
@@ -203,13 +203,19 @@ namespace OverBang.Pooling
                 fillJob.Cancel();
                 SyncFillPool();
 
-                return Instantiate();
+                return GenericSpawn();
             }
 
             return element.instance;
         }
 
-        public void Destroy(T instance)
+        public Object Spawn()
+        {
+            T genericSpawn = GenericSpawn();
+            return genericSpawn;
+        }
+
+        public void Despawn(T instance)
         {
             if (releasedObjects.Remove(instance, out PooledElement element))
             {
@@ -227,6 +233,14 @@ namespace OverBang.Pooling
             }
         }
 
+        public void Despawn(Object instance)
+        {
+            if (instance is T typed)
+                Despawn(typed);
+            else
+                Debug.LogWarning($"Tried to despawn object of type {instance.GetType()} in pool of {typeof(T)}");
+        }
+
         public void Dispose()
         {
             using (ListPool<T>.Get(out List<T> buffer))
@@ -235,7 +249,7 @@ namespace OverBang.Pooling
 
                 foreach (T instance in buffer)
                 {
-                    Destroy(instance);
+                    Despawn(instance);
                 }
             }
 

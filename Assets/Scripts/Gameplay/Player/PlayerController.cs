@@ -1,6 +1,5 @@
 using KBCore.Refs;
 using OverBang.GameName.Core.Metrics;
-using OverBang.GameName.Core.Pooling;
 using OverBang.GameName.Gameplay.Cameras;
 using OverBang.GameName.Gameplay.Movement;
 using UnityEngine;
@@ -8,7 +7,7 @@ using UnityEngine.InputSystem;
 
 namespace OverBang.GameName.Gameplay.Player
 {
-    public class PlayerController : PoolableObject
+    public class PlayerController : MonoBehaviour
     {
         [field: SerializeField, Self] public PlayerInput PlayerInput { get; private set; }
         [field: SerializeField, Child] public PlayerMovement PlayerMovement { get; private set; }
@@ -51,17 +50,6 @@ namespace OverBang.GameName.Gameplay.Player
 
             PlayerMovement.Rb.MovePosition(Vector3.Lerp(currentPos, targetPos, 6f));
             PlayerMovement.Rb.MoveRotation(Quaternion.Slerp(currentRot, targetRot, 6f));
-        }
-
-        public override void OnSpawn()
-        {
-            IsInUse = true;
-            EnableLocalControls();
-        }
-
-        public override void OnDespawn()
-        {
-            IsInUse = false;
         }
     }
 }

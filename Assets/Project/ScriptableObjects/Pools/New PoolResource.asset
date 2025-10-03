@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <PoolEmptyBehavior>k__BackingField: 0
   <Asset>k__BackingField:
-    rid: -2
+    rid: 4712929735737344009
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
+    - rid: 4712929735737344009
+      type: {class: PrefabPoolAsset, ns: OverBang.Pooling.Resource, asm: OverBang.Pooling.Runtime}
+      data:
+        <Prefab>k__BackingField: {fileID: 0}

@@ -2,6 +2,7 @@ using OverBang.GameName.Hub;
 using OverBang.GameName.Core;
 using OverBang.GameName.Core.Characters;
 using OverBang.GameName.Core.GameMode;
+using OverBang.GameName.Gameplay;
 using OverBang.GameName.Gameplay.Gameplay;
 using UnityEngine;
 
@@ -23,11 +24,13 @@ namespace OverBang.GameName.Offline
         public int Map { get; private set; }
         public int Difficulty { get; private set; }
         public PlayerProfile PlayerProfile { get; private set; }
+        public LevelManager LevelManager { get; private set; }
 
         private OfflineGameMode(int map, int difficulty)
         {
             Map = map;
             Difficulty = difficulty;
+            LevelManager = new LevelManager();
         }
 
         public void SetPlayerProfile(CharacterData character)

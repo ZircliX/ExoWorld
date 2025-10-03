@@ -3,7 +3,6 @@ using Helteix.ChanneledProperties.Priorities;
 using OverBang.GameName.Core.GameAssets;
 using OverBang.GameName.Core.GameMode;
 using OverBang.GameName.Core.Metrics;
-using OverBang.GameName.Core.Pooling;
 using OverBang.GameName.Managers;
 using UnityEngine;
 
@@ -13,7 +12,6 @@ namespace OverBang.GameName
     {
         public static IGameMode CurrentGameMode { get; private set; }
         public static GameDatabase GameDatabase { get; private set; }
-        public static PoolManager PoolManager { get; private set; }
         
         private static GameMetrics gameMetrics;
         public static GameMetrics Metrics
@@ -47,7 +45,6 @@ namespace OverBang.GameName
         private static void SetupFields()
         {
             GameDatabase = new GameDatabase();
-            PoolManager = PoolManager.Create(GameDatabase);
         }
 
         private static void SetupPrioritisedProperties()
