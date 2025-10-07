@@ -28,6 +28,7 @@ namespace OverBang.GameName.Hub
         {
             public SelectionType type;
             public CharacterClasses availableClasses;
+            public CharacterData preselectedCharacter;
             public GameDatabase gameDatabase;
         }
 
@@ -79,16 +80,23 @@ namespace OverBang.GameName.Hub
                 listeners[i].current = this;
                 listeners[i].OnInit(this);
             }
-
+            
             await settings.gameDatabase.ChangeCatalog(new DatabaseCatalog()
             {
                 name = "Hub catalog",
+                assetsKeys = new List<object>(),
+                labels = new List<string>()
             });
-            
-            //Debug.Log("HubPhase: Loading available characters...");
-            AsyncOperationHandle operation = StartCharacterSelection();
-            
-            await operation.Task;
+
+            if (settings.preselectedCharacter == null)
+            {
+                AsyncOperationHandle operation = StartCharacterSelection();
+                await operation.Task;
+            }
+            else
+            {
+                SelectCharacter(settings.preselectedCharacter);
+            }
         }
 
         public AsyncOperationHandle StartCharacterSelection()

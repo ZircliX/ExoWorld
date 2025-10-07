@@ -4,10 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using OverBang.Pooling;
 using OverBang.Pooling.Resource;
+using UnityEngine;
 
 namespace OverBang.GameName.Gameplay
 {
-    public class LevelManager
+    public class LevelManager : MonoBehaviour
     {
         public LevelState State { get; private set; }
 
@@ -15,17 +16,14 @@ namespace OverBang.GameName.Gameplay
         private List<PoolConfigAsset> requiredPools;
 
         public IReadOnlyList<PoolConfigAsset> RequiredPools => requiredPools;
-
-        public LevelManager()
-        {
-            State = LevelState.None;
-            requiredPools = new List<PoolConfigAsset>();
-        }
         
-        public async Task Initialize(LevelDefinition definition)
+        public async Awaitable Initialize(LevelDefinition definition)
         {
             if (State != LevelState.None)
                 throw new InvalidOperationException("LevelManager already initialized.");
+            
+            State = LevelState.None;
+            requiredPools = new List<PoolConfigAsset>();
 
             levelDefinition = definition;
             State = LevelState.Initializing;
@@ -37,7 +35,7 @@ namespace OverBang.GameName.Gameplay
             await Task.CompletedTask;
         }
 
-        public async Task LoadContent()
+        public async Awaitable LoadContent()
         {
             State = LevelState.Loading;
 
@@ -50,7 +48,7 @@ namespace OverBang.GameName.Gameplay
             State = LevelState.Running;
         }
 
-        public async Task UnloadContent()
+        public async Awaitable UnloadContent()
         {
             State = LevelState.Unloading;
 

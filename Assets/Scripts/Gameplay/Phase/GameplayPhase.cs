@@ -21,12 +21,12 @@ namespace OverBang.GameName.Gameplay.Gameplay
         }
 
         [System.Serializable]
-        public struct GameplayRewards
+        public struct GameplayEndInfos
         {
-            public int score; // test
+            public int score;
         }
         
-        public static async Awaitable<GameplayRewards> CreateAsync(GameplaySettings settings)
+        public static async Awaitable<GameplayEndInfos> CreateAsync(GameplaySettings settings)
         {
             SceneReference gameSceneRef = SceneCollection.Global.GameSceneRef;
             string currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
@@ -45,7 +45,7 @@ namespace OverBang.GameName.Gameplay.Gameplay
             await phase.Initialize();
             await AwaitableUtils.AwaitableUntil(() => phase.IsDone, CancellationToken.None);
             
-            return phase.CurrentRewards;
+            return phase.CurrentEndInfos;
         }
         
         public event Action<bool> OnCompleted;
@@ -55,7 +55,7 @@ namespace OverBang.GameName.Gameplay.Gameplay
         
         public event Action<CharacterData> OnSpawnPlayer;
         
-        public GameplayRewards CurrentRewards { get; private set; }
+        public GameplayEndInfos CurrentEndInfos { get; private set; }
         public bool IsDone { get; private set; }
 
         private GameplayPhase(GameplaySettings settings, GameplayListener[] listeners)
@@ -75,10 +75,8 @@ namespace OverBang.GameName.Gameplay.Gameplay
 
         /*
             TODO:
-             - Start game loop
              - Handle game end conditions
              - Collect rewards and stats
-             - Transition back to hub or main menu
         */
         private async Awaitable Initialize()
         {
@@ -93,9 +91,9 @@ namespace OverBang.GameName.Gameplay.Gameplay
             await SetupEnemies();
             await SetupUI();
 
-            CurrentRewards = new GameplayRewards()
+            CurrentEndInfos = new GameplayEndInfos()
             {
-                score = 10
+                score = 10,
             };
         }
 

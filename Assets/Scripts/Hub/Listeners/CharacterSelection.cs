@@ -21,7 +21,6 @@ namespace OverBang.GameName.Hub
         
         protected internal override void OnInit(HubPhase phase)
         {
-            ChangeEnabledState(true);
             phase.OnAvailableCharacterAdded += AddCharacter;
         }
 

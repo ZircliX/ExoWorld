@@ -30,7 +30,9 @@ namespace OverBang.GameName.Offline
         {
             Map = map;
             Difficulty = difficulty;
-            LevelManager = new LevelManager();
+            
+            GameObject go = new GameObject("LevelManager");
+            LevelManager = go.AddComponent<LevelManager>();
         }
 
         public void SetPlayerProfile(CharacterData character)
@@ -50,27 +52,27 @@ namespace OverBang.GameName.Offline
 
         public async Awaitable Run()
         {
-            if (!PlayerProfile.IsValid)
+            bool isRunning = true;
+
+            while (isRunning)
             {
                 HubPhase.SelectionSettings selectionSettings = new HubPhase.SelectionSettings
                 {
                     type = HubPhase.SelectionType.Pick,
                     availableClasses = CharacterClasses.All,
+                    preselectedCharacter = PlayerProfile.CharacterData,
                     gameDatabase = GameController.GameDatabase
                 };
                 CharacterData newCharacter = await HubPhase.CreateAsync(selectionSettings);
-                
                 SetPlayerProfile(newCharacter);
+
+                GameplayPhase.GameplaySettings gameplaySettings = new GameplayPhase.GameplaySettings
+                {
+                    gameDatabase = GameController.GameDatabase,
+                    playerCharacter = PlayerProfile.CharacterData
+                };
+                GameplayPhase.GameplayEndInfos endInfos = await GameplayPhase.CreateAsync(gameplaySettings);
             }
-            
-            //Handle GameplayPhase
-            GameplayPhase.GameplayRewards rewards = await GameplayPhase.CreateAsync(new GameplayPhase.GameplaySettings
-            {
-                gameDatabase = GameController.GameDatabase,
-                playerCharacter = PlayerProfile.CharacterData
-            });
-                
-            Debug.LogError(rewards.score);
         }
     }
 }

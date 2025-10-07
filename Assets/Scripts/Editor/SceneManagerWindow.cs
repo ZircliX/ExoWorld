@@ -1,11 +1,10 @@
+using OverBang.GameName.Core.Scene;
 using OverBang.GameName.Editor.EditorStyle;
-using OverBang.GameName.Managers;
 using Unity.Netcode;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
-using SceneManager = OverBang.GameName.Core.Scene.SceneManager;
 
 namespace OverBang.GameName.Editor
 {
@@ -119,7 +118,7 @@ namespace OverBang.GameName.Editor
         private void TeleportPlayersToScene(string sceneName)
         {
             Debug.Log($"Teleporting all players to scene '{sceneName}'");
-            SceneManager.Instance.ChangeScene(sceneName);
+            SceneLoader.LoadSceneAsync(sceneName);
         }
     }
 }

@@ -30,7 +30,7 @@ namespace OverBang.GameName.Gameplay.Gameplay.Spawners
                 ReleaseTrackedResources();
             }
             
-            //Addressables.InstantiateAsync(characterData.CharacterPrefabRef).Completed += OnInstantiateCompleteObjectTracked;
+            Addressables.InstantiateAsync(characterData.CharacterPrefabRef).Completed += OnInstantiateCompleteObjectTracked;
         }
 
         public void OnInstantiateCompleteObjectTracked(AsyncOperationHandle<GameObject> handle)
