@@ -14,20 +14,18 @@ namespace OverBang.GameName.Core.GameAssets
         public DatabaseCatalog ActiveCatalog { get; private set; } = new DatabaseCatalog()
         {
             name = "None",
-            assetsKeys = new(),
-            labels = new(),
+            assetsKeys = new List<object>(),
+            labels = new List<string>(),
         };
         
         private Dictionary<object, Object> loadedAssets = new();
-        
         private List<object> runningAsyncOperations = new();
-        
         
         public async Awaitable ChangeCatalog(DatabaseCatalog newCatalog)
         {
             while (runningAsyncOperations.Count > 0)
             {
-                Debug.Log(runningAsyncOperations.Count);
+                //Debug.Log(runningAsyncOperations.Count);
                 await Awaitable.NextFrameAsync();
             }
 

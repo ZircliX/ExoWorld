@@ -15,13 +15,13 @@ namespace OverBang.GameName.Gameplay.Ships
     {
         [SerializeField] private GameObject body;
 
-        protected internal override void OnInit(GameplayPhase phase)
+        protected override void Initialize(GameplayPhase phase)
         {
             ObjectivesManager.OnObjectiveProgress += HandleObjectiveProgressChanged;
             body.SetActive(false);
         }
 
-        protected internal override void OnRelease(GameplayPhase phase)
+        protected override void Release(GameplayPhase phase)
         {
             ObjectivesManager.OnObjectiveProgress -= HandleObjectiveProgressChanged;
         }

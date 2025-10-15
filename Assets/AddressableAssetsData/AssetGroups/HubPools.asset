@@ -10,20 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: PoolConfigs
+  m_Name: HubPools
   m_EditorClassIdentifier: 
-  m_GroupName: PoolConfigs
-  m_GUID: 66c82729f0a683e4c9ca260670ef6823
+  m_GroupName: HubPools
+  m_GUID: 85d3048f88c161947b9ea913cef9458b
   m_SerializeEntries:
-  - m_GUID: 12e26feda24e7b744bf52b8ee3aee8ec
-    m_Address: Assets/Project/ScriptableObjects/Pools/PlayerPoolConfig.asset
+  - m_GUID: 5b377b2937ee7cf4a96c73b804bfe165
+    m_Address: Assets/Project/ScriptableObjects/Pools/Bullet Pool Config.asset
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PoolConfig
+    - HubPools
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: faa98871f0f2223438b8b603a72e38ca, type: 2}
   m_SchemaSet:
-    m_Schemas:
-    - {fileID: 11400000, guid: f2da34e7bd7a91e4f83d86941b39f014, type: 2}
-    - {fileID: 11400000, guid: c28b2d42c7ecb1344a6fdd4f2ee8fb9d, type: 2}
+    m_Schemas: []

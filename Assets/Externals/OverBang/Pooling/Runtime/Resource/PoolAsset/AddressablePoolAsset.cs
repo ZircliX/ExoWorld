@@ -8,7 +8,7 @@ namespace OverBang.Pooling.Resource
     public struct AddressablePoolAsset : IPoolAsset
     {
         [field: SerializeField]
-        public AssetReference AssetReference { get; private set; }
+        public AssetReferenceGameObject AssetReference { get; private set; }
         
         public void Load(System.Action<Object> onLoad)
         {

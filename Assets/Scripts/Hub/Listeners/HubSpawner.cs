@@ -1,17 +1,19 @@
-﻿using OverBang.GameName.Core;
-using OverBang.GameName.Core.Characters;
+﻿using System;
+using System.Collections.Generic;
+using OverBang.GameName.Core;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace OverBang.GameName.Hub
 {
-    public class HubSpawner : HubListener, IPlayerSpawner
+    public class HubSpawner : HubListener
     {
-        GameObject currentPlayer;
+        private Dictionary<int, GameObject> currentPlayers;
         
         protected internal override void OnInit(HubPhase phase)
         {
+            currentPlayers ??= new Dictionary<int, GameObject>(phase.Settings.PlayerCount);
             phase.OnCharacterSelected += SpawnPlayer;
         }
 
@@ -20,31 +22,34 @@ namespace OverBang.GameName.Hub
             phase.OnCharacterSelected -= SpawnPlayer;
             ReleaseTrackedResources();
         }
-        
-        public void SpawnPlayer(CharacterData characterData)
+
+        private void SpawnPlayer(int id, PlayerProfile playerProfile)
         {
-            if (currentPlayer != null)
+            if (currentPlayers.Remove(id, out GameObject toRelease))
             {
-                ReleaseTrackedResources();
+                Addressables.ReleaseInstance(toRelease);
             }
-            
-            Addressables.InstantiateAsync(characterData.CharacterPrefabRef).Completed += OnInstantiateCompleteObjectTracked;
+
+            Addressables.InstantiateAsync(playerProfile.characterData.CharacterPrefabRef).Completed +=
+                handle =>
+                {
+                    if (handle.Status == AsyncOperationStatus.Succeeded)
+                    {
+                        currentPlayers[id] = handle.Result;
+                    }
+                };
         }
 
-        public void OnInstantiateCompleteObjectTracked(AsyncOperationHandle<GameObject> handle)
-        {
-            if (handle.Status == AsyncOperationStatus.Succeeded)
-            {
-                currentPlayer = handle.Result;
-            }
-        }
-        
         public void ReleaseTrackedResources()
         {
-            if (currentPlayer == null) return;
-            
-            Addressables.ReleaseInstance(currentPlayer);
-            currentPlayer = null;
+            if (currentPlayers == null) return;
+
+            foreach ((int key, GameObject o) in currentPlayers)
+            {
+                Addressables.ReleaseInstance(o);
+            }
+
+            currentPlayers = null;
         }
     }
 }

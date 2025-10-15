@@ -45,7 +45,7 @@ namespace OverBang.GameName.Hub
         {
             //Debug.Log(" [Character Selection] SelectCharacter + " + characterData.AgentName);
             ChangeEnabledState(false);
-            current?.SelectCharacter(characterData);
+            current?.SelectLocalCharacter(characterData);
         }
         
         private void ChangeEnabledState(bool enabled)

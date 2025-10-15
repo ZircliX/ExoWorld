@@ -6,7 +6,7 @@ namespace OverBang.Pooling
 {
     public class PoolManager : Helteix.Singletons.MonoSingletons.MonoSingleton<PoolManager>
     {
-        private Dictionary<PoolConfigAsset, IPool> pools;
+        private Dictionary<IPoolConfig, IPool> pools;
         private List<IPool> poolList;
         
         private Transform poolParent;
@@ -16,44 +16,47 @@ namespace OverBang.Pooling
         {
             poolParent = new GameObject($"Pools_Root").transform;
 
-            pools = new Dictionary<PoolConfigAsset, IPool>();
+            pools = new Dictionary<IPoolConfig, IPool>();
             poolList = new List<IPool>();
             instanceToPool = new Dictionary<Object, IPool>();
         }
-        
-        public void RegisterPools(params PoolConfigAsset[] poolConfigs)
+
+        public void RegisterPools(params IPoolConfig[] poolConfigs)
         {
-            foreach (PoolConfigAsset poolConfig in poolConfigs)
+            foreach (IPoolConfig poolConfig in poolConfigs)
+                RegisterPool(poolConfig);
+        }
+
+        public void RegisterPool(IPoolConfig poolConfig)
+        {
+            if (pools.ContainsKey(poolConfig))
+                return;
+
+            IPool pool = null;
+
+            switch (poolConfig.PoolResource.Asset)
             {
-                if (pools.ContainsKey(poolConfig))
-                    continue;
-                
-                IPool pool = null;
+                case PrefabPoolAsset prefabAsset:
+                case AddressablePoolAsset addressableAsset:
+                    pool = new Pool<GameObject>(poolParent, poolConfig);
+                    break;
 
-                switch (poolConfig.PoolResource.Asset)
-                {
-                    case PrefabPoolAsset prefabAsset:
-                    case AddressablePoolAsset addressableAsset:
-                        pool = new Pool<GameObject>(poolParent, poolConfig);
-                        break;
+                case ResourcePoolAsset resourceAsset:
+                    pool = new Pool<Object>(poolParent, poolConfig);
+                    break;
 
-                    case ResourcePoolAsset resourceAsset:
-                        pool = new Pool<Object>(poolParent, poolConfig);
-                        break;
+                default:
+                    Debug.LogError($"Unsupported pool asset type {poolConfig.PoolResource.Asset.GetType()}");
+                    break;
+            }
 
-                    default:
-                        Debug.LogError($"Unsupported pool asset type {poolConfig.PoolResource.Asset.GetType()}");
-                        break;
-                }
-
-                if (pool != null)
-                {
-                    pools[poolConfig] = pool;
-                    pool.Load();
-                }
+            if (pool != null)
+            {
+                pools[poolConfig] = pool;
+                pool.Load();
             }
         }
-        
+
         public void UnregisterPools(params PoolConfigAsset[] poolConfigs)
         {
             foreach (PoolConfigAsset config in poolConfigs)
@@ -104,9 +107,9 @@ namespace OverBang.Pooling
             else
             {
                 if (instance == null)
-                    Debug.LogWarning("Tried to despawn a null instance.");
+                    Debug.LogError("Tried to despawn a null instance.");
                 else
-                    Debug.LogWarning($"Tried to despawn {instance.GetType()} in pool of {typeof(T)}");
+                    Debug.LogError($"Tried to despawn {instance.GetType()} in pool of {typeof(T)}");
             }
         }
 

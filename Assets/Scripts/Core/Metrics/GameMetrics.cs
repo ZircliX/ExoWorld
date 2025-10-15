@@ -1,5 +1,5 @@
 using EditorAttributes;
-using OverBang.GameName.Core.Scene;
+using OverBang.GameName.Core.Scenes;
 using OverBang.GameName.Managers;
 using UnityEngine;
 

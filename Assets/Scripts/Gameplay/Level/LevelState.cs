@@ -4,9 +4,8 @@
     {
         None,
         Initializing,
-        Loading,
+        Ready,
         Running,
-        Unloading,
         Disposed
     }
 }

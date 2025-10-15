@@ -3,7 +3,6 @@ using Helteix.Tools.Editor.Serialisation;
 using OverBang.Pooling.Resource;
 using UnityEditor;
 using UnityEditor.UIElements;
-using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace OverBang.Pooling.Editor
@@ -32,8 +31,7 @@ namespace OverBang.Pooling.Editor
             };
             
             root.Add(assetRow);
-            if (asset.managedReferenceValue == null)
-                asset.managedReferenceValue = new PrefabPoolAsset();
+            asset.managedReferenceValue ??= new PrefabPoolAsset();
 
             string defaultValue = asset.managedReferenceValue switch
             {
@@ -72,7 +70,7 @@ namespace OverBang.Pooling.Editor
                         asset.managedReferenceValue = new AddressablePoolAsset();
                         break;
                 }
-                Debug.Log(ctx.newValue);
+                //Debug.Log(ctx.newValue);
 
                 serializedObject.ApplyModifiedProperties();
             });

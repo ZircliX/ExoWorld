@@ -1,89 +1,116 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using Helteix.Singletons.SceneServices;
+using OverBang.GameName.Core;
+using OverBang.GameName.Gameplay.Gameplay;
 using OverBang.Pooling;
-using OverBang.Pooling.Resource;
+using OverBang.Pooling.Dependencies;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.Pool;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace OverBang.GameName.Gameplay
 {
-    public class LevelManager : MonoBehaviour
+    public class LevelManager : SceneService<LevelManager>
     {
-        public LevelState State { get; private set; }
+        public event Action<List<IPoolDependencyProvider>> OnCollectSceneProviders; 
+        public LevelState State { get; protected set; }
 
-        private LevelDefinition levelDefinition;
-        private List<PoolConfigAsset> requiredPools;
-
-        public IReadOnlyList<PoolConfigAsset> RequiredPools => requiredPools;
         
-        public async Awaitable Initialize(LevelDefinition definition)
+        private Dictionary<PlayerProfile, GameObject> currentPlayers;
+
+        private GameplayPhase currentPhase;
+        private GameplayPhase.GameplaySettings Settings => currentPhase.Settings;
+        
+        public virtual async Awaitable Initialize(GameplayPhase phase)
         {
             if (State != LevelState.None)
-                throw new InvalidOperationException("LevelManager already initialized.");
+            {
+                Debug.LogError("LevelManager already initialized.");
+                return;
+            }
             
-            State = LevelState.None;
-            requiredPools = new List<PoolConfigAsset>();
-
-            levelDefinition = definition;
             State = LevelState.Initializing;
+            currentPhase = phase;
 
-            CollectDependencies();
+            await SetupGameMap();
+            await SetupPlayer();
+            await SetupEnemies();
+            await SetupUI();
 
-            PoolManager.Instance.RegisterPools(requiredPools.ToArray());
-
-            await Task.CompletedTask;
+            await SetupPooling();
+            State = LevelState.Ready;
         }
 
-        public async Awaitable LoadContent()
-        {
-            State = LevelState.Loading;
-
-            // TODO: load scene objects
-            await Task.CompletedTask;
-        }
-
-        public void Run()
+        public virtual void StartLevel()
         {
             State = LevelState.Running;
         }
 
-        public async Awaitable UnloadContent()
-        {
-            State = LevelState.Unloading;
-
-            // TODO: unload scene objects
-            await Task.CompletedTask;
-        }
-
-        public void Dispose()
+        public virtual async void Dispose()
         {
             if (State == LevelState.Disposed) return;
-
-            PoolManager.Instance.UnregisterPools(requiredPools.ToArray());
-            requiredPools.Clear();
-
+            
+            PoolManager.Instance.ClearPools();
+            
             State = LevelState.Disposed;
         }
 
-        // -------- Dependency Resolution --------
-
-        private void CollectDependencies()
+        protected virtual async Awaitable SetupGameMap()
         {
-            requiredPools.Clear();
+            // Placeholder for map setup logic
+            await Awaitable.EndOfFrameAsync();
+        }
+        
+        protected virtual async Awaitable SetupPlayer()
+        {
+            currentPlayers = new Dictionary<PlayerProfile, GameObject>();
+            for (int i = 0; i < Settings.playerProfiles.Length; i++)
+            {
+                PlayerProfile profile = Settings.playerProfiles[i];
+                currentPlayers.Add(profile, null);
+                Addressables.InstantiateAsync(profile.characterData.CharacterPrefabRef).Completed +=
+                    handle =>
+                    {
+                        if (handle.Status == AsyncOperationStatus.Succeeded)
+                        {
+                            currentPlayers[profile] = handle.Result;
+                        }
+                    };
+            }
 
-            if (levelDefinition.Equals(null)) return;
+            while (currentPlayers.Any(ctx => ctx.Value == null))
+                await Awaitable.EndOfFrameAsync();
+        }
 
-            // players
-            foreach (CharacterPoolBinding binding in levelDefinition.Players)
-                if (binding.PoolConfig != null)
-                    requiredPools.Add(binding.PoolConfig);
+        protected virtual async Awaitable SetupEnemies()
+        {
+            await Awaitable.EndOfFrameAsync();
+        }
+
+        protected virtual async Awaitable SetupUI()
+        {
+            await Awaitable.EndOfFrameAsync();
+        }
+        
+
+        private async Awaitable SetupPooling()
+        {
+            using (ListPool<IPoolDependencyProvider>.Get(out var providers))
+            {
+                foreach (var profile in Settings.playerProfiles)
+                    providers.Add(profile.characterData);
+                
+                OnCollectSceneProviders?.Invoke(providers);
+
+                PoolDependenciesCollector collector = new PoolDependenciesCollector();
+                foreach (var config in collector.Collect(providers))
+                    PoolManager.Instance.RegisterPool(config);
+            }
             
-            // extra FX
-            requiredPools.AddRange(levelDefinition.ExtraPools);
-
-            // remove duplicates
-            requiredPools = requiredPools.Distinct().ToList();
+            await Awaitable.MainThreadAsync();
         }
     }
 }

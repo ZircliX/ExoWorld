@@ -5,22 +5,63 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1604e208-f0b5-49be-bc96-e3b796502da2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Dependencies.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Dependencies/IPoolDependencyProvider.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Dependencies/IPoolDependencyProvider.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Dependencies/PoolDependenciesCollector.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Dependencies/PoolDependenciesCollector.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolUtilities.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolUtilities.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/SimplePoolConfig.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/SimplePoolConfig.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OverBangStudio-GameName/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OverBangStudio-GameName/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LTXSettings.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LTXSettings.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Terrains/TerrainAsphalt/New Terrain Asphalt.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Terrains/TerrainAsphalt/New Terrain Asphalt.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main/Map.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main/Map.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetGroupSortSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetGroupSortSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/PoolConfigs.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/PoolConfigs.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/PoolConfigs_BundledAssetGroupSchema.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/PoolConfigs_BundledAssetGroupSchema.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/PoolConfigs_ContentUpdateGroupSchema.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/PoolConfigs_ContentUpdateGroupSchema.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Editor/PoolResourceEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Editor/PoolResourceEditor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolAsset/AddressablePoolAsset.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolAsset/AddressablePoolAsset.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolResource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolResource.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Pools/New PoolConfigAsset.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Pools/New PoolConfigAsset.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Pools/New PoolResource.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Pools/New PoolResource.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Pools/OLD.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Pools/OLD/PlayerPoolConfig.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Pools/OLD/PlayerPoolConfig.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main/Hub.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main/Hub.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Characters/CharacterData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Characters/CharacterData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/GameAssets/GameDatabase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/GameAssets/GameDatabase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/IPlayerSpawner.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/IPlayerSpawner.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Metrics/GameMetrics.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Metrics/GameMetrics.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/OverBang.GameName.Core.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/OverBang.GameName.Core.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/PlayerProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/PlayerProfile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Scene/SceneCollection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Scene/SceneCollection.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Scene/SceneLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Scene/SceneLoader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Scene/SceneManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Scene/SceneManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Debug/DebugInputs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Debug/DebugInputs.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Editor/SceneManagerWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/SceneManagerWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Level/CharacterPoolBinding.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Level/CharacterPoolBinding.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Level/LevelDefinition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Level/LevelDefinition.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Level/LevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Level/LevelManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Level/LevelState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Level/LevelState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Phase/GameplayPhase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Phase/GameplayPhase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Spawners/GameplaySpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Spawners/GameplaySpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Phase/Listeners/GameplayListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Phase/Listeners/GameplayListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Ships/Capsule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Ships/Capsule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Spawners/GameplaySpawner.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Spawners/GameplaySpawner.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Hub/HubPhase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Hub/HubPhase.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Hub/Listeners/CharacterSelection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Hub/Listeners/CharacterSelection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Hub/Listeners/HubSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Hub/Listeners/HubSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Hub/OverBang.GameName.Hub.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Hub/OverBang.GameName.Hub.asmdef" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Offline/OfflineGameMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Offline/OfflineGameMode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Offline/OverBang.GameName.Offline.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Offline/OverBang.GameName.Offline.asmdef" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Online/Network/Player/PlayerControllerNetworkAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Online/Network/Player/PlayerControllerNetworkAdapter.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,6 +81,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8db6ec373e6d40bd9d38c8037d358c4e46ae00/28/977c9cb8/NullReferenceException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Editor/PoolResourceEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Editor/PrefabPoolAssetEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Dependencies/PoolDependenciesCollector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/IPool.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Pool.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolEmptyBehavior.cs" root0="FORCE_HIGHLIGHTING" />
@@ -47,6 +89,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolStrategies/PoolStrategy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolStrategies/PrefabPoolStrategy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolStrategies/ScriptablePoolStrategy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolUtilities.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolingSettings.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/IPoolConfig.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/IPoolInstanceListener.cs" root0="FORCE_HIGHLIGHTING" />
@@ -56,16 +99,15 @@
     <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolAsset/ResourcePoolAsset.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolConfigAsset.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolResource.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/SimplePoolConfig.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Audio/AudioManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Audio/AudioParameters.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Audio/AudioPrefab.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/IPlayerSpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Managers/GameController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Utils/AwaitableUtils.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Cameras/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Cameras/CameraManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Health/Core/HealthComponent.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Level/CharacterPoolBinding.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Level/LevelDefinition.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Level/LevelManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Level/LevelState.cs" root0="FORCE_HIGHLIGHTING" />
@@ -73,7 +115,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/Gravity/GravityManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Phase/GameplayPhase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Phase/Listeners/GameplayListener.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Spawners/GameplaySpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Hub/HubPhase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Hub/Listeners/HubSpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Offline/OfflineGameMode.cs" root0="FORCE_HIGHLIGHTING" />
@@ -82,6 +123,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.channeled-properties/Editor/Core/ChanneledPropertyElement.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.singletons/Runtime/BaseSingleton.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.singletons/Runtime/MonoSingletons/MonoSingleton.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.singletons/Runtime/SceneServices/SceneService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.singletons/Runtime/Singleton.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.tools/Runtime/Settings/Attributes/AutoGenerateGameSettingsAttribute.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.tools/Runtime/Settings/Attributes/GameSettingsTitleAttribute.cs" root0="SKIP_HIGHLIGHTING" />
@@ -199,6 +241,9 @@
       <workItem from="1759475029029" duration="8402000" />
       <workItem from="1759745904455" duration="3527000" />
       <workItem from="1759839072661" duration="5310000" />
+      <workItem from="1759907026799" duration="6171000" />
+      <workItem from="1760353996946" duration="3131000" />
+      <workItem from="1760357221446" duration="7440000" />
     </task>
     <servers />
   </component>

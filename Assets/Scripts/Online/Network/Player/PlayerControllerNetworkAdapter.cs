@@ -1,5 +1,5 @@
 using KBCore.Refs;
-using OverBang.GameName.Core.Scene;
+using OverBang.GameName.Core.Scenes;
 using OverBang.GameName.Gameplay.Player;
 using Unity.Netcode;
 using UnityEngine;

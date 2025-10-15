@@ -1,10 +1,15 @@
+using System.Collections.Generic;
+using System.Linq;
 using OverBang.GameName.Hub;
 using OverBang.GameName.Core;
 using OverBang.GameName.Core.Characters;
+using OverBang.GameName.Core.GameAssets;
 using OverBang.GameName.Core.GameMode;
 using OverBang.GameName.Gameplay;
 using OverBang.GameName.Gameplay.Gameplay;
+using OverBang.Pooling.Resource;
 using UnityEngine;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace OverBang.GameName.Offline
 {
@@ -15,63 +20,73 @@ namespace OverBang.GameName.Offline
             return new OfflineGameMode(map, difficulty);
         }
 
-        public OfflineGameMode WithPlayer(PlayerProfile profile)
+        public OfflineGameMode WithPlayer(params PlayerProfile[] profiles)
         {
-            PlayerProfile = profile;
+            PlayerProfiles = profiles;
             return this;
         }
 
         public int Map { get; private set; }
         public int Difficulty { get; private set; }
-        public PlayerProfile PlayerProfile { get; private set; }
+        public PlayerProfile[] PlayerProfiles { get; private set; }
         public LevelManager LevelManager { get; private set; }
+
+        private HubPhase.HubEndInfos hubEndInfos;
+        private GameplayPhase.GameplayEndInfos gameplayEndInfos;
 
         private OfflineGameMode(int map, int difficulty)
         {
             Map = map;
             Difficulty = difficulty;
-            
-            GameObject go = new GameObject("LevelManager");
-            LevelManager = go.AddComponent<LevelManager>();
         }
 
         public void SetPlayerProfile(CharacterData character)
         {
             PlayerProfile profile = new PlayerProfile()
             {
-                CharacterData = character,
-                PlayerName = character.AgentName
+                characterData = character,
+                playerName = character.AgentName
             };
             SetPlayerProfile(profile);
         }
         
-        public void SetPlayerProfile(PlayerProfile profile)
+        public void SetPlayerProfile(params PlayerProfile[] profiles)
         {
-            PlayerProfile = profile;
+            PlayerProfiles = profiles;
         }
 
         public async Awaitable Run()
         {
             bool isRunning = true;
+            bool hasCharacter = false;
 
             while (isRunning)
             {
                 HubPhase.SelectionSettings selectionSettings = new HubPhase.SelectionSettings
                 {
-                    type = HubPhase.SelectionType.Pick,
+                    selectionType = hasCharacter ? HubPhase.SelectionType.None : HubPhase.SelectionType.Pick,
                     availableClasses = CharacterClasses.All,
-                    preselectedCharacter = PlayerProfile.CharacterData,
-                    gameDatabase = GameController.GameDatabase
+                    playerProfiles = hasCharacter ? PlayerProfiles : new PlayerProfile[]
+                    {
+                        new(null, "Player 1")
+                    },
+                    gameDatabase = GameController.GameDatabase,
+                    localPlayer = 0
                 };
-                CharacterData newCharacter = await HubPhase.CreateAsync(selectionSettings);
-                SetPlayerProfile(newCharacter);
+                hubEndInfos = await HubPhase.CreateAsync(selectionSettings);
+                
+                SetPlayerProfile(hubEndInfos.selectedCharacters);
+                hasCharacter = true;
 
                 GameplayPhase.GameplaySettings gameplaySettings = new GameplayPhase.GameplaySettings
                 {
                     gameDatabase = GameController.GameDatabase,
-                    playerCharacter = PlayerProfile.CharacterData
+                    playerProfiles = PlayerProfiles,
                 };
-                GameplayPhase.GameplayEndInfos endInfos = await GameplayPhase.CreateAsync(gameplaySettings);
+                gameplayEndInfos = await GameplayPhase.CreateAsync(gameplaySettings);
+                
+                if(gameplayEndInfos.isFinished)
+                    isRunning = false;
             }
         }
     }
