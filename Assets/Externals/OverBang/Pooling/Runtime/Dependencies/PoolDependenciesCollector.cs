@@ -15,34 +15,35 @@ namespace OverBang.Pooling.Dependencies
         public IEnumerable<IPoolConfig> Collect(List<IPoolDependencyProvider> providers)
         {
             using (DictionaryPool<PoolResource, int>.Get(out Dictionary<PoolResource, int> finalConfigDic))
-            using (ListPool<IPoolConfig>.Get(out List<IPoolConfig> configs))
             {
                 foreach (IPoolDependencyProvider provider in providers)
-                {
-                    ExtractConfigsFromProvider(provider, configs, finalConfigDic);
-                }
+                    ExtractConfigsFromProvider(provider, finalConfigDic);
 
                 foreach ((PoolResource poolResource, int quantity) in finalConfigDic)
-                {
-                    yield return new Config() { PoolResource = poolResource, PoolSize = quantity };
-                }
+                    yield return new Config { PoolResource = poolResource, PoolSize = quantity };
             }
         }
 
-        private static void ExtractConfigsFromProvider(IPoolDependencyProvider provider, List<IPoolConfig> configs, Dictionary<PoolResource, int> finalConfigDic)
+        private static void ExtractConfigsFromProvider(
+            IPoolDependencyProvider provider,
+            Dictionary<PoolResource, int> finalConfigDic)
         {
-            configs.Clear();
-            provider.FillDependencies(configs);
-
-            foreach (IPoolConfig config in configs)
+            using (ListPool<IPoolConfig>.Get(out List<IPoolConfig> configs))
             {
-                if (finalConfigDic.ContainsKey(config.PoolResource))
-                    finalConfigDic[config.PoolResource] += config.PoolSize;
-                else
-                    finalConfigDic.Add(config.PoolResource, config.PoolSize);
+                provider.FillDependencies(configs);
 
-                if (config.PoolResource is IPoolDependencyProvider innerProvider)
-                    ExtractConfigsFromProvider(innerProvider, configs, finalConfigDic);
+                foreach (IPoolConfig config in configs)
+                {
+                    // Aggregate quantities
+                    if (finalConfigDic.TryGetValue(config.PoolResource, out int current))
+                        finalConfigDic[config.PoolResource] = current + config.PoolSize;
+                    else
+                        finalConfigDic.Add(config.PoolResource, config.PoolSize);
+
+                    // Recurse if nested provider
+                    if (config.PoolResource is IPoolDependencyProvider innerProvider)
+                        ExtractConfigsFromProvider(innerProvider, finalConfigDic);
+                }
             }
         }
     }

@@ -10,6 +10,7 @@ using OverBang.GameName.Core.Scenes;
 using OverBang.GameName.Managers;
 using OverBang.Pooling;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using Object = UnityEngine.Object;
 

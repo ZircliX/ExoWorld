@@ -95,7 +95,6 @@ namespace OverBang.GameName.Gameplay
             await Awaitable.EndOfFrameAsync();
         }
         
-
         private async Awaitable SetupPooling()
         {
             using (ListPool<IPoolDependencyProvider>.Get(out var providers))

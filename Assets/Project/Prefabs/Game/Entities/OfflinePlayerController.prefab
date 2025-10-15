@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4171807722037130912}
   - component: {fileID: 8736002663948313377}
   - component: {fileID: 2674150274775296948}
-  m_Layer: 15
+  m_Layer: 0
   m_Name: GravityHurtbox
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -113,11 +113,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aceb76db0bd646738b79931a465c5629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
-  speed: 100
+  speed: 50
   gravityAlignSpeed: 5
-  xModifier: 0.5
-  yModifier: 0.5
+  xModifier: 0.4
+  yModifier: 0.4
   yRange: 75
   pm: {fileID: 4862076419946111438}
   cameraRoot: {fileID: 6943655484419672877}

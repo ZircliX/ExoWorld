@@ -1,11 +1,10 @@
 using OverBang.GameName.Gameplay.Movement;
-using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace OverBang.GameName.Gameplay.Cameras
 {
-    public class PlayerCamera : NetworkBehaviour
+    public class PlayerCamera : MonoBehaviour
     {
         private Vector2 targetCamVelocity;
         private Vector2 camRotation;

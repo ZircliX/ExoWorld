@@ -1,58 +1,37 @@
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using Helteix.Singletons.MonoSingletons;
 using OverBang.GameName.Core.Metrics;
-using UnityEngine;
 
 namespace OverBang.GameName.Gameplay.Cameras
 {
     public class CameraManager : MonoSingleton<CameraManager>
     {
-        public List<CameraRegister> Cameras { get; private set; }
-        private CameraRegister currentCamera;
-
-
+        public event Action<CameraManager, CameraID> OnChangeCamera;
+        public List<CameraRegister> Cameras;
+        
         protected override void OnAwake()
         {
-            base.OnAwake();
-            Cameras = new List<CameraRegister>(4);
+            Cameras = new List<CameraRegister>();
         }
-        
-        public void RegisterCamera(CameraRegister camRegister)
-        {
-            if (Cameras.Contains(camRegister)) return;
 
-            Cameras.Add(camRegister);
-        }
-        
-        public void UnregisterCamera(CameraRegister camRegister)
+        public void RequestCameraChange(CameraID id)
         {
-            if (!Cameras.Contains(camRegister)) return;
-            
-            Cameras.Remove(camRegister);
-            
-            if (currentCamera == camRegister.ID)
-            {
-                currentCamera = Cameras.Count > 0 ? Cameras[0] : null;
-            }
+            OnChangeCamera?.Invoke(this, id);
         }
-        
-        public void SwitchToCamera(CameraID id)
-        {
-            CameraRegister newCam = Cameras.FirstOrDefault(ctx => ctx.ID == id);
-            if (newCam == default)
-            {
-                Debug.LogError($"Cannot change to camera {id}, null or not registered.");
-                return;
-            }
-            
-            currentCamera = newCam;
-            currentCamera.Cam.Priority = 100;
 
-            foreach (CameraRegister register in Cameras)
+        public void SwitchToCamera(CameraRegister register)
+        {
+            register.Cam.Priority = 100;
+
+            if (!Cameras.Contains(register))
+                Cameras.Add(register);
+                
+            foreach (CameraRegister reg in Cameras)
             {
-                register.Cam.Priority = 0;
+                reg.Cam.Priority = 0;
             }
+            
         }
     }
 }
