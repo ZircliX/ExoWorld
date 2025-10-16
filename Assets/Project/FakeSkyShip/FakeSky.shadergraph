@@ -601,6 +601,7 @@
     "m_OutputNode": {
         "m_Id": ""
     },
+    "m_SubDatas": [],
     "m_ActiveTargets": [
         {
             "m_Id": "903a168f58b04b508df1c43b62ea1235"
@@ -834,7 +835,7 @@
     "m_StageCapability": 3,
     "m_BareResource": false,
     "m_Cubemap": {
-        "m_SerializedCubemap": "{\"cubemap\":{\"fileID\":8900000,\"guid\":\"bd998e4208287e6439fc73eeadfa9bb0\",\"type\":3}}",
+        "m_SerializedCubemap": "{\"cubemap\":{\"fileID\":8900000,\"guid\":\"257179f735246e948a34c2b9ede17e8e\",\"type\":3}}",
         "m_Guid": ""
     }
 }
@@ -2016,8 +2017,8 @@
     "m_ObjectId": "840cce8c1bcc43a89ecafe1b833b1c9c",
     "m_Title": "Apply 3D Noise as Cubemap Rotation",
     "m_Position": {
-        "x": -2548.02001953125,
-        "y": 156.9998779296875
+        "x": -2548.667236328125,
+        "y": 86.666748046875
     }
 }
 
@@ -2074,8 +2075,8 @@
     "m_ObjectId": "88878a8af4d742c4a2a589c3647d298f",
     "m_Title": "Create 3D Noise",
     "m_Position": {
-        "x": -4455.0,
-        "y": -448.0000305175781
+        "x": -4455.333984375,
+        "y": -447.3335266113281
     }
 }
 
@@ -2200,7 +2201,7 @@
     ],
     "m_CustomEditorGUI": "",
     "m_SupportVFX": false,
-    "m_SupportComputeForVertexSetup": false
+    "m_SupportLineRendering": false
 }
 
 {
@@ -2551,6 +2552,7 @@
     "m_BackThenFrontRendering": false,
     "m_TransparentDepthPrepass": false,
     "m_TransparentDepthPostpass": false,
+    "m_TransparentPerPixelSorting": false,
     "m_SupportLodCrossFade": false
 }
 
@@ -3548,6 +3550,7 @@
     "m_OpaqueCullMode": 1,
     "m_SortPriority": 0,
     "m_AlphaTest": false,
+    "m_ExcludeFromTUAndAA": false,
     "m_TransparentDepthPrepass": false,
     "m_TransparentDepthPostpass": false,
     "m_SupportLodCrossFade": false,
@@ -3562,7 +3565,8 @@
     "m_TessellationShapeFactor": 0.75,
     "m_TessellationBackFaceCullEpsilon": -0.25,
     "m_TessellationMaxDisplacement": 0.009999999776482582,
-    "m_Version": 1,
+    "m_DebugSymbols": false,
+    "m_Version": 2,
     "inspectorFoldoutMask": 9
 }
 
