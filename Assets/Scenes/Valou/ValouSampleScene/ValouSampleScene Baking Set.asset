@@ -26,7 +26,7 @@ MonoBehaviour:
       useVirtualOffset: 1
       validityThreshold: 0.25
       outOfGeoOffset: 0.01
-      searchMultiplier: 2
+      searchMultiplier: 0.2
       rayOriginBias: -0.001
       collisionMask:
         serializedVersion: 2
@@ -87,7 +87,7 @@ MonoBehaviour:
     y: 0
     z: 0
     w: 0
-  maxSHChunkCount: 39
+  maxSHChunkCount: 24
   L0ChunkSize: 65536
   L1ChunkSize: 32768
   L2TextureChunkSize: 32768

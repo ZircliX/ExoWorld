@@ -169,10 +169,10 @@ MonoBehaviour:
     collapsed: 1
   uiBounds:
     serializedVersion: 2
-    x: -594
+    x: -619
     y: -467
-    width: 2377
-    height: 2272
+    width: 2402
+    height: 2437
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d4c867f6b72b714dbb5fd1780afe208, type: 3}
-  m_Name: FloatingDust
+  m_Name: FloatingDustScreen
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 0}
@@ -858,7 +858,7 @@ VisualEffectResource:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FloatingDust
+  m_Name: FloatingDustScreen
   m_Graph: {fileID: 114350483966674976}
   m_Infos:
     m_RendererSettings:
@@ -955,8 +955,7 @@ MonoBehaviour:
   useEmissive: 1
   materialType: 2
   onlyAmbientLighting: 1
-  diffusionProfileAsset: {fileID: 11400000, guid: 8b9abb3582322444397ea6b158f677c7,
-    type: 2}
+  diffusionProfileAsset: {fileID: 0}
   multiplyThicknessWithAlpha: 0
   doubleSided: 0
   preserveSpecularLighting: 0
@@ -1031,7 +1030,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"obj":{"fileID":2800000,"guid":"199d3e7d6274ec94288fa0fbd2295020","type":3}}'
+      m_SerializableObject: '{"obj":{"fileID":2800000,"guid":"427906eb2dedad041993ce186bd85ca7","type":3}}'
     m_Space: -1
   m_Property:
     name: baseColorMap
@@ -3695,7 +3694,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614753}
   - {fileID: 8926484042661614754}
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 1
+  m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_MasterSlot: {fileID: 8926484042661614750}
   m_MasterData:
@@ -5152,7 +5151,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.FlipBook, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":8,"y":8}'
+      m_SerializableObject: '{"x":5,"y":4}'
     m_Space: -1
   m_Property:
     name: flipBookSize
