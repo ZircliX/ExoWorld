@@ -14,54 +14,52 @@ namespace OverBang.GameName.Core.GameAssets
         public DatabaseCatalog ActiveCatalog { get; private set; } = new DatabaseCatalog()
         {
             name = "None",
-            assetsKeys = new(),
-            labels = new(),
+            assetsKeys = new List<object>(),
+            labels = new List<string>(),
         };
         
         private Dictionary<object, Object> loadedAssets = new();
-        
         private List<object> runningAsyncOperations = new();
-        
         
         public async Awaitable ChangeCatalog(DatabaseCatalog newCatalog)
         {
             while (runningAsyncOperations.Count > 0)
             {
-                Debug.Log(runningAsyncOperations.Count);
+                //Debug.Log(runningAsyncOperations.Count);
                 await Awaitable.NextFrameAsync();
             }
 
             // Determine which assets to unload and which to load
             using(ListPool<object>.Get(out List<object> keysToRelease))
                 using(ListPool<object>.Get(out List<object> keysToLoad))
-            {
-                keysToRelease.AddRange(ActiveCatalog.assetsKeys);
-
-                if (newCatalog.assetsKeys != null)
                 {
-                    // Check for assets that are already loaded and don't need to be released or loaded again
-                    foreach (object key in newCatalog.assetsKeys)
+                    keysToRelease.AddRange(ActiveCatalog.assetsKeys);
+
+                    if (newCatalog.assetsKeys != null)
                     {
-                        if (ActiveCatalog.assetsKeys.Contains(key))
+                        // Check for assets that are already loaded and don't need to be released or loaded again
+                        foreach (object key in newCatalog.assetsKeys)
                         {
-                            keysToRelease.Remove(key);
-                            continue;
+                            if (ActiveCatalog.assetsKeys.Contains(key))
+                            {
+                                keysToRelease.Remove(key);
+                                continue;
+                            }
+                            
+                            keysToLoad.Add(key);
                         }
-                        
-                        keysToLoad.Add(key);
                     }
-                }
 
-                // Release assets that are no longer needed
-                foreach (object key in keysToRelease)
-                {
-                    Unload(key);
+                    // Release assets that are no longer needed
+                    foreach (object key in keysToRelease)
+                    {
+                        Unload(key);
+                    }
+                    
+                    //Load new assets
+                    foreach (object key in keysToLoad)
+                        Load(key);
                 }
-                
-                //Load new assets
-                foreach (object key in keysToLoad)
-                    Load(key);
-            }
 
             if (newCatalog.labels != null)
             {

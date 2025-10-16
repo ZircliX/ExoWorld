@@ -1,5 +1,5 @@
 using KBCore.Refs;
-using OverBang.GameName.Core.Scene;
+using OverBang.GameName.Core.Scenes;
 using OverBang.GameName.Gameplay.Player;
 using Unity.Netcode;
 using UnityEngine;
@@ -89,7 +89,7 @@ namespace OverBang.GameName.Online.Network
         {
             if (Keyboard.current.lKey.wasPressedThisFrame)
             {
-                SceneManager.Instance.ChangeScene("Test");
+                //SceneManager.Instance.ChangeScene("Test");
                 Debug.Log("Try to change scene to Test");
             }
         }

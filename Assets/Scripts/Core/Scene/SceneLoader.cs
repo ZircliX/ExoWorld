@@ -1,21 +1,33 @@
+using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnitySceneManager = UnityEngine.SceneManagement.SceneManager;
 
-namespace OverBang.GameName.Core.Scene
+namespace OverBang.GameName.Core.Scenes
 {
     public static class SceneLoader
     {
-        public static Task LoadSceneAsync(string sceneName, LoadSceneMode mode = LoadSceneMode.Single)
+        public static async Awaitable<Scene> LoadSceneAsync(string sceneName, LoadSceneMode mode = LoadSceneMode.Single, bool setActive = true)
         {
-            TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
-            AsyncOperation op = UnitySceneManager.LoadSceneAsync(sceneName, mode);
+            await UnitySceneManager.LoadSceneAsync(sceneName, new LoadSceneParameters() { loadSceneMode = mode });
 
-            if (op != null) 
-                op.completed += _ => tcs.SetResult(true);
-
-            return tcs.Task;
+            Scene scene = UnitySceneManager.GetSceneByName(sceneName);
+            if (setActive)
+                UnitySceneManager.SetActiveScene(scene);
+            
+            return scene;
+        }
+        
+        public static async Awaitable UnloadSceneAsync(string sceneName)
+        {
+            if (!UnitySceneManager.GetSceneByName(sceneName).isLoaded)
+            {
+                Debug.LogWarning($"La scène {sceneName} n'est pas chargée.");
+                return;
+            }
+            
+            await UnitySceneManager.UnloadSceneAsync(sceneName);
         }
     }
 }

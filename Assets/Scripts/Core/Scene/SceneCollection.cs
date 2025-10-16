@@ -2,7 +2,7 @@ using Eflatun.SceneReference;
 using OverBang.GameName.Core.Metrics;
 using UnityEngine;
 
-namespace OverBang.GameName.Core.Scene
+namespace OverBang.GameName.Core.Scenes
 {
     [System.Serializable]
     public struct SceneCollection

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using DG.Tweening;
+using Helteix.ChanneledProperties.Priorities;
 using OverBang.GameName.Core.Characters;
 using UnityEngine;
 
@@ -21,12 +22,15 @@ namespace OverBang.GameName.Hub
         
         protected internal override void OnInit(HubPhase phase)
         {
-            ChangeEnabledState(true);
+            GameController.CursorLockModePriority.AddPriority(this, PriorityTags.Highest, CursorLockMode.Locked);
+            GameController.CursorVisibleStatePriority.AddPriority(this, PriorityTags.Highest, false);
             phase.OnAvailableCharacterAdded += AddCharacter;
         }
 
         protected internal override void OnRelease(HubPhase phase)
         {
+            GameController.CursorLockModePriority.RemovePriority(this);
+            GameController.CursorVisibleStatePriority.RemovePriority(this);
             ChangeEnabledState(false);
             phase.OnAvailableCharacterAdded -= AddCharacter;
         }
@@ -46,11 +50,14 @@ namespace OverBang.GameName.Hub
         {
             //Debug.Log(" [Character Selection] SelectCharacter + " + characterData.AgentName);
             ChangeEnabledState(false);
-            current?.SelectCharacter(characterData);
+            current?.SelectLocalCharacter(characterData);
         }
         
         private void ChangeEnabledState(bool enabled)
         {
+            GameController.CursorLockModePriority.Write(this, enabled ? CursorLockMode.None : CursorLockMode.Confined);
+            GameController.CursorVisibleStatePriority.Write(this, enabled);
+            
             canvasGroup.DOFade(enabled ? 1f : 0f, 0.5f);
             canvasGroup.interactable = enabled;
             canvasGroup.blocksRaycasts = enabled;

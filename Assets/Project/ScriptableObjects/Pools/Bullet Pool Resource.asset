@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daa81fd4cedf41e788ea397d1f3bc45c, type: 3}
+  m_Name: Bullet Pool Resource
+  m_EditorClassIdentifier: 
+  <PoolEmptyBehavior>k__BackingField: 4
+  <Asset>k__BackingField:
+    rid: 8476280461935771748
+  <Dependencies>k__BackingField: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 8476280461935771748
+      type: {class: PrefabPoolAsset, ns: OverBang.Pooling.Resource, asm: OverBang.Pooling.Runtime}
+      data:
+        <Prefab>k__BackingField: {fileID: 6605403738642720898, guid: 4ea0d9975a6718e46b08230e4b40606b, type: 3}

@@ -59,8 +59,8 @@ namespace OverBang.GameName.Debug
             if (Keyboard.current.numpadPeriodKey.wasPressedThisFrame)
                 Mode.SetPlayerProfile(new PlayerProfile()
                 {
-                    CharacterData = characterData,
-                    PlayerName = characterData.AgentName
+                    characterData = characterData,
+                    playerName = characterData.AgentName
                 });
 
             // Force Character Selection
@@ -71,13 +71,13 @@ namespace OverBang.GameName.Debug
             // Force Hub
             if (Keyboard.current.numpad2Key.wasPressedThisFrame)
             {
-                if (!Mode.PlayerProfile.IsValid) Mode.SetPlayerProfile(characterData);
+                //if (!Mode.PlayerProfile.IsValid) Mode.SetPlayerProfile(characterData);
             }
 
             // Force Gameplay
             if (Keyboard.current.numpad3Key.wasPressedThisFrame)
             {
-                if (!Mode.PlayerProfile.IsValid) Mode.SetPlayerProfile(characterData);
+                //if (!Mode.PlayerProfile.IsValid) Mode.SetPlayerProfile(characterData);
             }
         }
 

@@ -19,13 +19,13 @@ namespace OverBang.GameName.Online.Network
             PlayerManager.Instance?.ChangePlayerReadyStatus(0, IsReady);
         }
         
-        private void Start()
+        private void OnEnable()
         {
             PlayerManager.Instance?.RegisterPlayer(0, PlayerController);
             PlayerController.EnableLocalControls();
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             PlayerManager.Instance?.UnregisterPlayer(0);
         }

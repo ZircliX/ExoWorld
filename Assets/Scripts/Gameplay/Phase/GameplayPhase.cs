@@ -1,125 +1,110 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Eflatun.SceneReference;
+using OverBang.GameName.Core;
 using OverBang.GameName.Core.Characters;
 using OverBang.GameName.Core.GameAssets;
-using OverBang.GameName.Core.Scene;
+using OverBang.GameName.Core.Scenes;
 using OverBang.GameName.Gameplay.Gameplay.Listeners;
 using OverBang.GameName.Managers;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.Gameplay
+namespace OverBang.GameName.Gameplay
 {
     public class GameplayPhase
     {
+        public static event Action<GameplayPhase> OnNewPhaseBegins; 
+        public static event Action<GameplayPhase> OnNewPhaseEnds;
+        
         [System.Serializable]
         public struct GameplaySettings
         {
+            public Type levelManagerType;
             public GameDatabase gameDatabase;
-            public CharacterData playerCharacter;
+            public PlayerProfile[] playerProfiles;
         }
 
         [System.Serializable]
-        public struct GameplayRewards
+        public struct GameplayEndInfos
         {
-            public int score; // test
+            public int score;
+            public bool isFinished;
         }
         
-        public static async Awaitable<GameplayRewards> CreateAsync(GameplaySettings settings)
+        public static async Awaitable<GameplayEndInfos> CreateAsync(GameplaySettings settings)
         {
             SceneReference gameSceneRef = SceneCollection.Global.GameSceneRef;
             string currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
             
             if (currentSceneName != gameSceneRef.Path)
-            {
-                Task loadSceneAsync = SceneLoader.LoadSceneAsync(gameSceneRef.Name);
-                await loadSceneAsync;
-            }
+                await SceneLoader.LoadSceneAsync(gameSceneRef.Name, setActive: true);
 
-            GameplayListener[] listeners = UnityEngine.Object.FindObjectsByType<GameplayListener>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-            GameplayPhase phase = new GameplayPhase(settings, listeners);
-
+            GameplayPhase phase = new GameplayPhase(settings);
             await Awaitable.EndOfFrameAsync();
+            OnNewPhaseBegins?.Invoke(phase);
             
-            await phase.Initialize();
+            bool success = await phase.Initialize();
+            if (!success)
+                return new GameplayEndInfos() { isFinished = true, score = 0 };
+            
             await AwaitableUtils.AwaitableUntil(() => phase.IsDone, CancellationToken.None);
             
-            return phase.CurrentRewards;
+            OnNewPhaseEnds?.Invoke(phase);
+            return phase.CurrentEndInfos;
         }
         
         public event Action<bool> OnCompleted;
         
-        private readonly GameplaySettings settings;
-        private readonly GameplayListener[] listeners;
+        public readonly GameplaySettings Settings;
         
-        public event Action<CharacterData> OnSpawnPlayer;
-        
-        public GameplayRewards CurrentRewards { get; private set; }
+        public GameplayEndInfos CurrentEndInfos { get; private set; }
         public bool IsDone { get; private set; }
-
-        private GameplayPhase(GameplaySettings settings, GameplayListener[] listeners)
-        {
-            this.settings = settings;
-            this.listeners = listeners;
-        }
         
+        public LevelManager LevelManager { get; private set; }
+
+        private GameplayPhase(GameplaySettings gameplaySettings)
+        {
+            Settings = gameplaySettings;
+        }
+
         public void CompletePhase(bool success)
         {
-            for (int i = 0; i < listeners.Length; i++)
-                listeners[i].OnRelease(this);
-            
             IsDone = true;
+            LevelManager.Dispose();
             OnCompleted?.Invoke(success);
         }
 
         /*
             TODO:
-             - Start game loop
              - Handle game end conditions
              - Collect rewards and stats
-             - Transition back to hub or main menu
         */
-        private async Awaitable Initialize()
+        private async Awaitable<bool> Initialize()
         {
-            for (int i = 0; i < listeners.Length; i++)
+            await Settings.gameDatabase.ChangeCatalog(new DatabaseCatalog()
             {
-                listeners[i].current = this;
-                listeners[i].OnInit(this);
-            }
+                name = "Gameplay catalog",
+                assetsKeys = new List<object>(),
+                labels = new List<string>()
+            });
             
-            await SetupGameMap();
-            await SetupPlayer();
-            await SetupEnemies();
-            await SetupUI();
-
-            CurrentRewards = new GameplayRewards()
+            GameObject levelManager = new GameObject("LevelManager")
             {
-                score = 10
+                hideFlags = HideFlags.NotEditable
             };
-        }
+            
+            LevelManager = levelManager.AddComponent(Settings.levelManagerType ?? typeof(LevelManager)) as LevelManager;
 
-        private async Awaitable SetupGameMap()
-        {
-            // Placeholder for map setup logic
-            await Awaitable.EndOfFrameAsync();
-        }
-        
-        private async Awaitable SetupPlayer()
-        {
-            OnSpawnPlayer?.Invoke(settings.playerCharacter);
-            Debug.Log( "[GameplayPhase] Initialized with player character: " + settings.playerCharacter?.AgentName);
-            await Awaitable.EndOfFrameAsync();
-        }
+            if (LevelManager != null)
+            {
+                await LevelManager.Initialize(this);
+                LevelManager.StartLevel();
+                return true;
+            }
 
-        private async Awaitable SetupEnemies()
-        {
-            await Awaitable.EndOfFrameAsync();
-        }
-
-        private async Awaitable SetupUI()
-        {
-            await Awaitable.EndOfFrameAsync();
+            return false;
         }
     }
 }

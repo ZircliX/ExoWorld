@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Eflatun.SceneReference;
+using OverBang.GameName.Core;
 using OverBang.GameName.Core.Characters;
 using OverBang.GameName.Core.GameAssets;
-using OverBang.GameName.Core.Scene;
+using OverBang.GameName.Core.Scenes;
 using OverBang.GameName.Managers;
+using OverBang.Pooling;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using Object = UnityEngine.Object;
 
@@ -18,29 +21,36 @@ namespace OverBang.GameName.Hub
         [System.Serializable]
         public enum SelectionType
         {
+            None,
             Random,
             Pick,
-            None
         }
         
         [System.Serializable]
         public struct SelectionSettings
         {
-            public SelectionType type;
+            public int PlayerCount => playerProfiles?.Length ?? 1;
+            public SelectionType selectionType;
             public CharacterClasses availableClasses;
+            public int localPlayer;
+            
+            public PlayerProfile[] playerProfiles;
             public GameDatabase gameDatabase;
         }
+        
+        [System.Serializable]
+        public struct HubEndInfos
+        {
+            public PlayerProfile[] selectedCharacters;
+        }
 
-        public static async Awaitable<CharacterData> CreateAsync(SelectionSettings settings)
+        public static async Awaitable<HubEndInfos> CreateAsync(SelectionSettings settings)
         {
             SceneReference hubSceneRef = SceneCollection.Global.HubSceneRef;
             string currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
             
             if (currentSceneName != hubSceneRef.Path)
-            {
-                Task loadSceneAsync = SceneLoader.LoadSceneAsync(hubSceneRef.Name);
-                await loadSceneAsync;
-            }
+                await SceneLoader.LoadSceneAsync(hubSceneRef.Name, setActive: true);
 
             HubListener[] listeners = Object.FindObjectsByType<HubListener>(FindObjectsInactive.Include, FindObjectsSortMode.None);
             HubPhase phase = new HubPhase(settings, listeners);
@@ -50,23 +60,28 @@ namespace OverBang.GameName.Hub
             await phase.Initialize();
             await AwaitableUtils.AwaitableUntil(() => phase.IsDone, CancellationToken.None);
             
-            return phase.SelectedCharacter;
+            HubEndInfos endInfos = new HubEndInfos()
+            {
+                selectedCharacters = phase.PlayerProfiles
+            };
+            
+            return endInfos;
         }
         
         public event Action<bool> OnCompleted;
-        public event Action<CharacterData> OnCharacterSelected;
+        public event Action<int, PlayerProfile> OnCharacterSelected;
         public event Action<CharacterData> OnAvailableCharacterAdded;
 
-        private readonly SelectionSettings settings;
+        public readonly SelectionSettings Settings;
         private readonly HubListener[] listeners;
         
         public List<CharacterData> AvailableCharacters { get; private set; }
-        public CharacterData SelectedCharacter { get; private set; }
+        public PlayerProfile[] PlayerProfiles { get; private set; }
         public bool IsDone { get; private set; }
         
         private HubPhase(SelectionSettings settings, HubListener[] listeners)
         {
-            this.settings = settings;
+            this.Settings = settings;
             this.listeners = listeners;
         }
 
@@ -74,35 +89,42 @@ namespace OverBang.GameName.Hub
         {
             AvailableCharacters = new List<CharacterData>();
             
+            await Settings.gameDatabase.ChangeCatalog(new DatabaseCatalog()
+            {
+                name = "Hub catalog",
+                assetsKeys = new List<object>(),
+                labels = new List<string>()
+            });
+            
             for (int i = 0; i < listeners.Length; i++)
             {
                 listeners[i].current = this;
                 listeners[i].OnInit(this);
             }
 
-            await settings.gameDatabase.ChangeCatalog(new DatabaseCatalog()
+            PlayerProfiles = Settings.playerProfiles;
+            
+            if (Settings.selectionType != SelectionType.None)
             {
-                name = "Hub catalog",
-            });
-            
-            await GameController.PoolManager.Initialize(GameController.GameDatabase);
-
-            //Debug.Log("HubPhase: Loading available characters...");
-            AsyncOperationHandle operation = StartCharacterSelection();
-            
-            await operation.Task;
+                AsyncOperationHandle operation = StartCharacterSelection();
+                await operation.Task;
+            }
+            else
+            {
+                OnCharacterSelected?.Invoke(Settings.localPlayer, PlayerProfiles[Settings.localPlayer]);
+            }
         }
 
         public AsyncOperationHandle StartCharacterSelection()
         {
-            AsyncOperationHandle operation = settings.gameDatabase.LoadMultiple("AgentData", ctx =>
+            AsyncOperationHandle operation = Settings.gameDatabase.LoadMultiple("AgentData", ctx =>
             {
                 //Debug.Log("HubPhase: Processing loaded character " + ctx.name);
                 if (ctx is not CharacterData characterData)
                     return;
                 
                 //Debug.Log($" Setting : {settings.availableClasses}, Character class: {characterData.CharacterClass}");
-                if(!characterData.CharacterClass.Matches(settings.availableClasses))
+                if(!characterData.CharacterClass.Matches(Settings.availableClasses))
                     return;
                     
                 AvailableCharacters.Add(characterData);
@@ -120,10 +142,19 @@ namespace OverBang.GameName.Hub
             OnCompleted?.Invoke(isSuccess);
         }
 
-        public void SelectCharacter(CharacterData characterData)
+        public void SelectLocalCharacter(CharacterData playerProfile) =>
+            SelectCharacter(Settings.localPlayer, playerProfile);
+        
+        public void SelectCharacter(int index, CharacterData playerProfile)
         {
-            SelectedCharacter = characterData;
-            OnCharacterSelected?.Invoke(characterData);
+            PlayerProfile profile = new PlayerProfile()
+            {
+                playerName = PlayerProfiles[index].playerName,
+                characterData = playerProfile
+            };
+            PlayerProfiles[index] = profile;
+            
+            OnCharacterSelected?.Invoke(index, profile);
         }
     }
 }
