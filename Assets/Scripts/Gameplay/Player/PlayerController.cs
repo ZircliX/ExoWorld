@@ -37,9 +37,6 @@ namespace OverBang.GameName.Gameplay.Player
 
             PlayerMovement.Rb.position = pos;
             PlayerMovement.Rb.rotation = rot;
-            
-            GameController.CursorLockModePriority.AddPriority(this, PriorityTags.High, CursorLockMode.Locked);
-            GameController.CursorVisibleStatePriority.AddPriority(this, PriorityTags.High, false);
         }
 
         public (Vector3 pos, Quaternion rot) CaptureState()

@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a749efc1a204905bc59d7fdbfc826e4, type: 3}
-  m_Name: ZToolsSettingsData
+  m_Script: {fileID: 11500000, guid: 22ec12bb91524888887fa9dceebd2fc3, type: 3}
+  m_Name: RepairData
   m_EditorClassIdentifier: 
-  <ToolDefinitions>k__BackingField:
-  - {fileID: 11400000, guid: cbe5e2887d9afb84ea2f441eaa3d8d78, type: 2}
-  - {fileID: 11400000, guid: 68f9c99bd2150a04ab11eb655f703da6, type: 2}
+  <ObjectiveName>k__BackingField: repair
+  <ObjectiveDescription>k__BackingField: 
+  <Rewards>k__BackingField: []

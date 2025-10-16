@@ -22,15 +22,15 @@ namespace OverBang.GameName.Hub
         
         protected internal override void OnInit(HubPhase phase)
         {
-            GameController.CursorLockModePriority.AddPriority(this, PriorityTags.Highest);
-            GameController.CursorVisibleStatePriority.AddPriority(this, PriorityTags.Highest);
+            GameController.CursorLockModePriority.AddPriority(this, PriorityTags.Highest, CursorLockMode.Locked);
+            GameController.CursorVisibleStatePriority.AddPriority(this, PriorityTags.Highest, false);
             phase.OnAvailableCharacterAdded += AddCharacter;
         }
 
         protected internal override void OnRelease(HubPhase phase)
         {
             GameController.CursorLockModePriority.RemovePriority(this);
-            GameController.CursorVisibleStatePriority.AddPriority(this);
+            GameController.CursorVisibleStatePriority.RemovePriority(this);
             ChangeEnabledState(false);
             phase.OnAvailableCharacterAdded -= AddCharacter;
         }

@@ -87,7 +87,7 @@ namespace OverBang.Pooling
                 {
                     if (TryGetInstance(pool, out T instance))
                     {
-                        instanceToPool.Add(instance, pool);
+                        instanceToPool.TryAdd(instance, pool);
                         return instance;
                     }
                 }
@@ -121,8 +121,9 @@ namespace OverBang.Pooling
                 instance = typed;
                 return true;
             }
-            
-            Debug.LogError($"Pool for {pool.PoolResource.name} spawned {pooledObject.GetType()}, but requested {typeof(T)}");
+
+            string type = pooledObject != null ? pooledObject.GetType().ToString() : "Null";
+            Debug.LogError($"Pool for {pool.PoolResource.name} spawned {type}, but requested {typeof(T)}");
             pool.Despawn(pooledObject);
 
             instance = null;

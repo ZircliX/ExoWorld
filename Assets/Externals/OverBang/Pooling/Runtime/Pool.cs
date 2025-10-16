@@ -49,6 +49,7 @@ namespace OverBang.Pooling
 
         private Stack<PooledElement> pooledObjects;
         private Dictionary<T, PooledElement> releasedObjects;
+        private Queue<T> releaseOrder;
 
         private readonly GameObject root;
         private IPoolStrategy strategy;
@@ -76,6 +77,7 @@ namespace OverBang.Pooling
             
             pooledObjects = new Stack<PooledElement>(Size);
             releasedObjects = new Dictionary<T, PooledElement>(Size);
+            releaseOrder = new Queue<T>(Size);
         }
 
         public void Load()
@@ -162,22 +164,22 @@ namespace OverBang.Pooling
             if (pooledObjects.TryPop(out PooledElement element))
             {
                 releasedObjects.Add(element.instance, element);
+                releaseOrder.Enqueue(element.instance);
                 strategy?.OnPreSpawn(element.instance);
-
                 for (int i = 0; i < element.listeners.Length; i++)
                 {
                     IPoolInstanceListener listener = element.listeners[i];
                     listener.OnSpawn(this);
                 }
-                
+
                 strategy?.OnPostSpawn(element.instance);
             }
             else if (fillJob is null)
             {
+                Debug.Log("Pool empty, applying behavior: " + PoolResource.PoolEmptyBehavior);
                 switch (PoolResource.PoolEmptyBehavior)
                 {
-                    case PoolEmptyBehavior.DontSpawn:
-                        return null;
+                    case PoolEmptyBehavior.DontSpawn: return null;
                     case PoolEmptyBehavior.ExtendByOne:
                         Size++;
                         SyncFillPool();
@@ -191,18 +193,24 @@ namespace OverBang.Pooling
                         AsyncFillPool();
                         return GenericSpawn();
                     case PoolEmptyBehavior.Loop:
-                        (T key, PooledElement value) = releasedObjects.Last();
-                        Despawn(key);
-                        return GenericSpawn();
-                    default:
-                        throw new ArgumentOutOfRangeException();
+                        while (releaseOrder.Count > 0)
+                        {
+                            T oldest = releaseOrder.Dequeue();
+                            if (releasedObjects.ContainsKey(oldest))
+                            {
+                                Despawn(oldest);
+                                return GenericSpawn();
+                            }
+                        }
+
+                        return null;
+                    default: throw new ArgumentOutOfRangeException();
                 }
             }
             else
             {
-                fillJob.Cancel();
+                fillJob?.Cancel();
                 SyncFillPool();
-
                 return GenericSpawn();
             }
 

@@ -64,7 +64,6 @@ namespace OverBang.GameName.Gameplay
         
         public LevelManager LevelManager { get; private set; }
 
-
         private GameplayPhase(GameplaySettings gameplaySettings)
         {
             Settings = gameplaySettings;
@@ -73,6 +72,7 @@ namespace OverBang.GameName.Gameplay
         public void CompletePhase(bool success)
         {
             IsDone = true;
+            LevelManager.Dispose();
             OnCompleted?.Invoke(success);
         }
 

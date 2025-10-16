@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Helteix.ChanneledProperties.Priorities;
 using Helteix.Singletons.SceneServices;
 using OverBang.GameName.Core;
 using OverBang.GameName.Gameplay.Gameplay;
@@ -93,6 +94,8 @@ namespace OverBang.GameName.Gameplay
         protected virtual async Awaitable SetupUI()
         {
             await Awaitable.EndOfFrameAsync();
+            GameController.CursorLockModePriority.AddPriority(this, PriorityTags.High, CursorLockMode.Locked);
+            GameController.CursorVisibleStatePriority.AddPriority(this, PriorityTags.High, false);
         }
         
         private async Awaitable SetupPooling()
