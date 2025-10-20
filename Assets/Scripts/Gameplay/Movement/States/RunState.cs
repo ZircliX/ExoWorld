@@ -35,6 +35,10 @@ namespace OverBang.GameName.Gameplay.Movement.States
             {
                 return MovementState.Idle;
             }
+            if (!movement.RunInput)
+            {
+                return MovementState.Walking;
+            }
 
             return State;
         }

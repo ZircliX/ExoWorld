@@ -997,7 +997,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1584499b6b911c740bb388239cf6a091, type: 2}
   - {fileID: 11400000, guid: 9d3d4af720a56e642b1fdbd0543cb6e0, type: 2}
   - {fileID: 11400000, guid: 5e4bcd4b83c261443b9414fe80298e6b, type: 2}
-  - {fileID: 11400000, guid: 65418ada7e21f654fa5e1c852d785aa5, type: 2}
+  - {fileID: 11400000, guid: 649c7c004de1d384e894f458425a1d59, type: 2}
   - {fileID: 11400000, guid: cd52e72197f988043b0af1aea128d259, type: 2}
   groundCheckDistance: 0.2
   groundCheckMaxAngle: 50
@@ -1240,8 +1240,9 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4862076419946111438}
-        m_TargetAssemblyTypeName: RogueLike.Player.PlayerMovement, Assembly-CSharp
-        m_MethodName: ReadInputSlide
+        m_TargetAssemblyTypeName: OverBang.GameName.Gameplay.Movement.PlayerMovement,
+          OverBang.GameName.Gameplay
+        m_MethodName: ReadInputRun
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1367,13 +1368,13 @@ MonoBehaviour:
     m_ActionName: 'Player/Pause[/Keyboard/escape]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4862076419946111438}
-        m_TargetAssemblyTypeName: RogueLike.Player.PlayerMovement, DeadLink
-        m_MethodName: ReadInputDash
-        m_Mode: 0
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

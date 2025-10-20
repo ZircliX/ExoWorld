@@ -46,7 +46,11 @@ namespace OverBang.GameName.Gameplay.Movement.States
             {
                 return MovementState.Crouching;
             }
-            if (movement.InputDirection.sqrMagnitude > PlayerMovement.MIN_THRESHOLD)
+            if (movement.InputDirection.sqrMagnitude > EntityMovement.MIN_THRESHOLD)
+            {
+                return MovementState.Walking;
+            }
+            if (movement.RunInput)
             {
                 return MovementState.Running;
             }

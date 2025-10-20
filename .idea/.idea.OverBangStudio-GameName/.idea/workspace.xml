@@ -5,90 +5,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1604e208-f0b5-49be-bc96-e3b796502da2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Project/Materials/Players.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Project/Materials/Players/Player 0.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Project/Materials/Players/Player 0.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Project/Materials/Players/Player 1.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Project/Materials/Players/Player 1.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Project/Materials/Players/Player 2.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Project/Materials/Players/Player 2.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Project/Materials/Players/Player 3.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Project/Materials/Players/Player 3.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OLD.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OfflinePlayerController 1.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OfflinePlayerController 2.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OfflinePlayerController 2.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OfflinePlayerController 3.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OfflinePlayerController 3.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Quests/Rewards.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Quests/Rewards/ShipRewardData.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Quests/Rewards/ShipRewardData.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/DebugGameplay.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/DebugGameplay/DebugBullet.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/DebugGameplay/DebugBullet.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/DebugGameplay/DebugWeapon.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/DebugGameplay/DebugWeapon.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/Repair.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/Repair.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Ships/Ship.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestData/RepairData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestData/RepairData.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestEvents/RepairEvent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestEvents/RepairEvent.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestHandlers/RepairHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestHandlers/RepairHandler.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/Rewards.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/Rewards/ShipRewardData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/Rewards/ShipRewardData.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/Rewards/ShipRewardProcessor.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/Rewards/ShipRewardProcessor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Combat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Combat/Bullets.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Combat/Bullets/Bullet.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Combat/Bullets/Bullet.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Combat/Bullets/BulletDamageInfo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Combat/Bullets/BulletDamageInfo.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Combat/Bullets/BulletData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Combat/Bullets/BulletData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Combat/Bullets/BulletType.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Combat/Bullets/BulletType.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Combat/Weapons.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Combat/Weapons/Weapon.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Combat/Weapons/Weapon.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Combat/Weapons/WeaponData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Combat/Weapons/WeaponData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Combat/Weapons/WeaponType.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Combat/Weapons/WeaponType.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OverBangStudio-GameName/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OverBangStudio-GameName/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OverBangStudio-GameName/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OverBangStudio-GameName/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Characters.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Characters.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/link.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/link.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OfflinePlayerController 1.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Pool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Pool.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Materials/Sample/ConcreteTaupe_Mat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Materials/Sample/ConcreteTaupe_Mat.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Materials/Sample/Ground_Mat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Materials/Sample/Ground_Mat.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/ClientSession.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OLD/ClientSession.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/ClientSession.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OLD/ClientSession.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OfflinePlayerController.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OfflinePlayerController 0.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OfflinePlayerController.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OfflinePlayerController 0.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/PlayerController.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OLD/PlayerController.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/PlayerController.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OLD/PlayerController.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Weapons/Bullets/Bullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Weapons/Bullets/Bullet.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Characters/Agent 0.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Characters/Agent 0.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Characters/Agent 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Characters/Agent 1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Characters/Agent 2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Characters/Agent 2.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Characters/Agent 3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Characters/Agent 3.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Pools/Bullet Pool Config.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Pools/Bullet Pool Config.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Pools/Bullet Pool Resource.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Pools/Bullet Pool Resource.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Quests/ObjectiveCollectionData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Quests/ObjectiveCollectionData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Demos.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Inputs/ActionMap.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Inputs/ActionMap.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/NewSettings/Settings/QualityLevels/2HDRPMediumQuality.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/NewSettings/Settings/QualityLevels/2HDRPMediumQuality.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/NewSettings/Settings/QualityLevels/3HDRPHighQuality.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/NewSettings/Settings/QualityLevels/3HDRPHighQuality.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/NewSettings/Settings/Volumes/VolumeDefault.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/NewSettings/Settings/Volumes/VolumeDefault.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OfflinePlayerController 0.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OfflinePlayerController 0.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OfflinePlayerController 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OfflinePlayerController 1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OfflinePlayerController 2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OfflinePlayerController 2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OfflinePlayerController 3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OfflinePlayerController 3.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/MovementStates/Fall.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/MovementStates/Fall.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/MovementStates/Jump.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/MovementStates/Jump.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/MovementStates/Walk.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/MovementStates/Walk.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/MovementStates/Walk.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/MovementStates/Walk.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main/Hub.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main/Hub.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main/Hub/Hub Baking Set.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main/Hub/Hub Baking Set.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main/Map.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main/Map.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Metrics/GameMetrics.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Metrics/GameMetrics.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/TypeRefCollection.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/TypeRefCollection.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Level/LevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Level/LevelManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/OverBang.GameName.Gameplay.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/OverBang.GameName.Gameplay.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Phase/GameplayPhase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Phase/GameplayPhase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Player/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/ReachPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/ReachPoint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Ships/Capsule.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Ships/Capsule.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Ships/Ship.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Hub/Listeners/CharacterSelection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Hub/Listeners/CharacterSelection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Managers/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Managers/GameController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/EntityMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/EntityMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/PlayerMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/States/FallState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/States/FallState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/States/IdleState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/States/IdleState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/States/RunState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/States/RunState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/States/WalkState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/States/WalkState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Offline/OfflineGameMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Offline/OfflineGameMode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/OverBang.GameName.Quests.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/OverBang.GameName.Quests.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestEvents/HubStartEvent.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestEvents/HubStartEvent.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Core/ObjectiveProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Core/ObjectiveProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/Settings/ZToolsSettingsData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Quests/RepairData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/Settings/ZToolsSettingsData.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Quests/RepairData.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/Graphics/DefaultLookDevProfile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Graphics/DefaultLookDevProfile.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/PoolingSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/PoolingSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TypeMappingCollection.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/TypeMappingCollection.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TypeMappingCollection.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/TypeMappingCollection.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ScriptableBuildPipeline.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ScriptableBuildPipeline.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,6 +97,13 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Utils/AwaitableUtils.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Cameras/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Cameras/CameraManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Combat/Bullets/Bullet.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Combat/Bullets/BulletDamage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Combat/Bullets/BulletData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Combat/Bullets/BulletType.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Combat/Weapons/Weapon.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Combat/Weapons/WeaponData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Combat/Weapons/WeaponType.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/DebugGameplay/DebugBullet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/DebugGameplay/DebugWeapon.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Health/Core/HealthComponent.cs" root0="FORCE_HIGHLIGHTING" />
@@ -206,18 +174,11 @@
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\valre\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\valre\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\valre\\AppData\\Local\\Symbols\\src&quot;
-    ]
   }
 }</component>
   <component name="RunManager" selected="Standalone Player.Standalone Player">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../../UnityBuilds/v0.1/ExoWorld.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../UnityBuilds/ExoWorld Preprod\ExoWorld.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../UnityBuilds" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -234,6 +195,10 @@
       <option name="WORKING_DIRECTORY" value="C:\Users\lolof\Documents\GitHub\OverBangStudio-GameName" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
@@ -242,6 +207,10 @@
       <option name="WORKING_DIRECTORY" value="C:\Users\lolof\Documents\GitHub\OverBangStudio-GameName" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -249,9 +218,13 @@
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
       <option name="selectedOptions">
         <list />
       </option>
+      <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
     <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -259,9 +232,13 @@
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
       <option name="selectedOptions">
         <list />
       </option>
+      <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
     <configuration name="Attach to Device" type="UnityDevicePlayer" factoryName="UnityAttachToDevicePlayer">
@@ -309,6 +286,10 @@
       <workItem from="1760537587205" duration="3610000" />
       <workItem from="1760557357098" duration="2072000" />
       <workItem from="1760598663736" duration="10127000" />
+      <workItem from="1760813173178" duration="1416000" />
+      <workItem from="1760895441227" duration="3739000" />
+      <workItem from="1760944799879" duration="6828000" />
+      <workItem from="1760959795288" duration="343000" />
     </task>
     <servers />
   </component>

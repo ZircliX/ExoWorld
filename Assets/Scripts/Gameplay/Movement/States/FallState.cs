@@ -32,7 +32,7 @@ namespace OverBang.GameName.Gameplay.Movement.States
                     nextState = MovementState.Crouching;
                 else if (movement.InputDirection.sqrMagnitude > EntityMovement.MIN_THRESHOLD)
                 {
-                    nextState = MovementState.Running;
+                    nextState = MovementState.Walking;
                 }
 
                 return nextState;
@@ -41,15 +41,17 @@ namespace OverBang.GameName.Gameplay.Movement.States
             {
                 return MovementState.WallRunning;
             }
-
             if (movement.CanJump())
             {
                 return MovementState.Jumping;
             }
-
             if (movement.CanDash())
             {
                 return MovementState.Dashing;
+            }
+            if (movement.RunInput)
+            {
+                return MovementState.Running;
             }
             
             return State;

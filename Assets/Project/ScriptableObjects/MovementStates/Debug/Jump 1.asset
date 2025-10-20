@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ad488206cba46cf8d546999cd40a53d, type: 3}
-  m_Name: Jump
+  m_Name: Jump 1
   m_EditorClassIdentifier: 
-  maxSpeed: 6
+  maxSpeed: 15
   directionControl: 10
   accelerationCurve:
     serializedVersion: 2
@@ -38,8 +38,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  accelerationDuration: 0.25
-  acceleration: 25
+  accelerationDuration: 1
+  acceleration: 5
   decelerationCurve:
     serializedVersion: 2
     m_Curve:
@@ -64,12 +64,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  decelerationDuration: 0.25
-  deceleration: 15
-  maxStepHeight: 0
+  decelerationDuration: 1
+  deceleration: 5
+  maxStepHeight: 1
   <CameraEffectData>k__BackingField: {fileID: 11400000, guid: 67908ccb270482344a04c4caee34c247, type: 2}
-  jumpForce: 2.5
-  jumpDuration: 0.15
+  jumpForce: 4.11
+  jumpDuration: 0.175
   jumpCurve:
     serializedVersion: 2
     m_Curve:
