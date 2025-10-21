@@ -18,7 +18,7 @@ MonoBehaviour:
     m_Version: 1
     dilationSettings:
       enableDilation: 0
-      dilationDistance: 1
+      dilationDistance: 2
       dilationValidityThreshold: 0.25
       dilationIterations: 1
       squaredDistWeighting: 1
@@ -70,14 +70,14 @@ MonoBehaviour:
       m_Values: []
     m_Asset: {fileID: 0}
   chunkSizeInBricks: 128
-  maxCellPosition: {x: 5, y: 1, z: 5}
-  minCellPosition: {x: -5, y: -1, z: -5}
+  maxCellPosition: {x: 3, y: 1, z: 3}
+  minCellPosition: {x: -3, y: -1, z: -3}
   globalBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 1215, y: 243, z: 1215}
+    m_Extent: {x: 1458, y: 486, z: 1458}
   bakedSimplificationLevels: 4
-  bakedMinDistanceBetweenProbes: 1
-  bakedProbeOcclusion: 1
+  bakedMinDistanceBetweenProbes: 2
+  bakedProbeOcclusion: 0
   bakedSkyOcclusionValue: 0
   bakedSkyShadingDirectionValue: 0
   bakedProbeOffset: {x: 0, y: 0, z: 0}
@@ -87,11 +87,11 @@ MonoBehaviour:
     y: 0
     z: 0
     w: 0
-  maxSHChunkCount: 24
+  maxSHChunkCount: 5
   L0ChunkSize: 65536
   L1ChunkSize: 32768
   L2TextureChunkSize: 32768
-  ProbeOcclusionChunkSize: 32768
+  ProbeOcclusionChunkSize: 0
   sharedValidityMaskChunkSize: 8192
   sharedSkyOcclusionL0L1ChunkSize: 0
   sharedSkyShadingDirectionIndicesChunkSize: 0
@@ -107,7 +107,7 @@ MonoBehaviour:
   freezePlacement: 0
   probeOffset: {x: 0, y: 0, z: 0}
   simplificationLevels: 4
-  minDistanceBetweenProbes: 1
+  minDistanceBetweenProbes: 2
   renderersLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -119,7 +119,15 @@ MonoBehaviour:
   skyOcclusionBackFaceCulling: 0
   skyOcclusionShadingDirection: 1
   useRenderingLayers: 0
-  renderingLayerMasks: []
+  renderingLayerMasks:
+  - mask:
+      serializedVersion: 0
+      m_Bits: 2
+    name: Mask 1
+  - mask:
+      serializedVersion: 0
+      m_Bits: 4
+    name: Mask 2
   m_SceneBakeData:
     m_Keys:
     - 3db1837cc97a95e4c98610966fac2b0b
@@ -128,4 +136,4 @@ MonoBehaviour:
       bakeScene: 1
       bounds:
         m_Center: {x: 0, y: 0, z: 0}
-        m_Extent: {x: 1215, y: 243, z: 1215}
+        m_Extent: {x: 1458, y: 486, z: 1458}
