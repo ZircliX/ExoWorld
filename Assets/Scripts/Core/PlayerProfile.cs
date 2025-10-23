@@ -1,5 +1,6 @@
 using System;
 using OverBang.GameName.Core.Characters;
+using OverBang.GameName.Core.Upgrades;
 
 namespace OverBang.GameName.Core
 {
@@ -8,11 +9,13 @@ namespace OverBang.GameName.Core
     {
         public string playerName;
         public CharacterData characterData;
+        public UpgradeCollection upgradeCollection;
 
-        public PlayerProfile(CharacterData characterData, string playerName)
+        public PlayerProfile(CharacterData characterData, string playerName, UpgradeCollection upgradeCollection)
         {
             this.characterData = characterData;
             this.playerName = playerName;
+            this.upgradeCollection = upgradeCollection;
         }
 
         public bool IsValid => !string.IsNullOrEmpty(playerName) && characterData != null;

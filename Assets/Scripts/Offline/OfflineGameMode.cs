@@ -2,6 +2,7 @@ using OverBang.GameName.Hub;
 using OverBang.GameName.Core;
 using OverBang.GameName.Core.Characters;
 using OverBang.GameName.Core.GameMode;
+using OverBang.GameName.Core.Upgrades;
 using OverBang.GameName.Gameplay;
 using UnityEngine;
 
@@ -62,7 +63,7 @@ namespace OverBang.GameName.Offline
                     availableClasses = CharacterClasses.All,
                     playerProfiles = hasCharacter ? PlayerProfiles : new PlayerProfile[]
                     {
-                        new(null, "Player 1")
+                        new(null, "Player 1", new UpgradeCollection())
                     },
                     gameDatabase = GameController.GameDatabase,
                     localPlayer = 0
