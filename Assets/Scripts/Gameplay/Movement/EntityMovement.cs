@@ -104,6 +104,7 @@ namespace OverBang.GameName.Gameplay.Movement
         #region Movement Inputs
 
         public bool CrouchInput { get; protected set; }
+        public bool RunInput { get; protected set; }
 
         protected float currentWallrunExitTime;
         public bool CanWallRun()
@@ -241,7 +242,7 @@ namespace OverBang.GameName.Gameplay.Movement
             ComputePenetration();
             HandleGroundDetection();
             HandleCeilingDetection();
-            HandleWallDetection();
+            //HandleWallDetection();
 
             float deltaTime = Time.fixedDeltaTime;
             if (canChangeGravityScale)
@@ -335,11 +336,6 @@ namespace OverBang.GameName.Gameplay.Movement
         }
         
         #region Detections
-        
-        public virtual void OnVoidDetection()
-        {
-            
-        }
 
         private void HandleWallDetection()
         {

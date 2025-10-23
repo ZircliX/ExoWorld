@@ -36,7 +36,7 @@ namespace OverBang.GameName
             SetupPrioritisedProperties();
             SetupFields();
 
-            Application.targetFrameRate = 240;
+            Application.targetFrameRate = 60;
         }
 
         public static void QuitGame()

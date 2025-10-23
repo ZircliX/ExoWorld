@@ -52,6 +52,12 @@ namespace OverBang.GameName.Gameplay.Movement
             CrouchInput = context.performed;
         }
 
+        public void ReadInputRun(InputAction.CallbackContext context)
+        {
+            RunInput = context.performed;
+        }
+
+        /*
         public void ReadInputSlide(InputAction.CallbackContext context)
         {
             if (context.performed)
@@ -75,6 +81,7 @@ namespace OverBang.GameName.Gameplay.Movement
                 DashInput = false;
             }
         }
+        */
 
         #endregion
 

@@ -47,6 +47,10 @@ namespace OverBang.GameName.Gameplay.Movement.States
                 //Debug.Log("HAAAAAAA");
                 return MovementState.Idle;
             }
+            if (movement.RunInput)
+            {
+                return MovementState.Running;
+            }
 
             return State;
         }
