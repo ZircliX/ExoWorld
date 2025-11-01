@@ -1,5 +1,6 @@
 ﻿namespace OverBang.GameName.Core.Upgrades
 {
+    [System.Serializable]
     public enum UpgradeTarget
     {
         // Player Stats
