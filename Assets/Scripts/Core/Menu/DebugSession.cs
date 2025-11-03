@@ -1,10 +1,13 @@
-﻿using Unity.Services.Authentication;
+﻿using OverBang.GameName.Core.Metrics;
+using Unity.Netcode;
+using Unity.Services.Authentication;
 using Unity.Services.Core;
 using Unity.Services.Multiplayer;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
-namespace OverBang.GameName.Online.Online.Sessions
+namespace OverBang.GameName.Core.Menu
 {
     public class DebugSession : MonoBehaviour
     {
@@ -27,7 +30,7 @@ namespace OverBang.GameName.Online.Online.Sessions
             if (Keyboard.current.qKey.wasPressedThisFrame)
             {
                 if (session == null) return;
-                Debug.Log("Total Players" + session.PlayerCount);
+                Debug.Log("Total Players : " + session.PlayerCount);
             }
         }
 
@@ -42,6 +45,7 @@ namespace OverBang.GameName.Online.Online.Sessions
 
             session = await MultiplayerService.Instance.CreateOrJoinSessionAsync(sessionId, options);
             Debug.Log("Session started with ID: " + session.Id);
+            NetworkManager.Singleton.SceneManager.LoadScene(GameMetrics.Global.SceneCollection.HubSceneRef.Name, LoadSceneMode.Single);
         }
     }
 }
