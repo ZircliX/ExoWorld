@@ -1,4 +1,5 @@
-﻿using OverBang.GameName.Core.Metrics;
+﻿using System.Collections.Generic;
+using OverBang.GameName.Core.Metrics;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using Unity.Services.Authentication;
@@ -45,48 +46,14 @@ namespace OverBang.GameName.Core.Menu
                 MaxPlayers = 4,
                 IsPrivate = false,
                 Password = sessionId
-            };
+            }.WithRelayNetwork();
 
             session = await MultiplayerService.Instance.CreateOrJoinSessionAsync(sessionId, options);
-            
-            if (session.PlayerCount == 0)
+
+            if (session.IsHost)
             {
-                try
-                {
-                    Allocation allocation = await RelayService.Instance.CreateAllocationAsync(4);
-                
-                    NetworkManager.Singleton.GetComponent<UnityTransport>().SetHostRelayData(
-                        allocation.RelayServer.IpV4,
-                        (ushort) allocation.RelayServer.Port,
-                        allocation.AllocationIdBytes,
-                        allocation.Key,
-                        allocation.ConnectionData
-                    );
-                }
-                catch (RelayServiceException e)
-                {
-                    Debug.Log(e);
-                }
-                
-                NetworkManager.Singleton.StartHost();
+                NetworkManager.Singleton.SceneManager.LoadScene(GameMetrics.Global.SceneCollection.HubSceneRef.Name, LoadSceneMode.Single);
             }
-            else
-            {
-                JoinAllocation joinAllocation = await RelayService.Instance.JoinAllocationAsync(session.Code);
-                
-                NetworkManager.Singleton.GetComponent<UnityTransport>().SetClientRelayData(
-                    joinAllocation.RelayServer.IpV4,
-                    (ushort) joinAllocation.RelayServer.Port,
-                    joinAllocation.AllocationIdBytes,
-                    joinAllocation.Key,
-                    joinAllocation.ConnectionData,
-                    joinAllocation.HostConnectionData
-                );
-                
-                NetworkManager.Singleton.StartClient();
-            }
-            
-            //NetworkManager.Singleton.SceneManager.LoadScene(GameMetrics.Global.SceneCollection.HubSceneRef.Name, LoadSceneMode.Single);
         }
     }
 }
