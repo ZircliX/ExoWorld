@@ -43,7 +43,6 @@ namespace OverBang.GameName.Core.Menu
             {
                 Allocation allocation = await RelayService.Instance.CreateAllocationAsync(4);
                 
-                
                 NetworkManager.Singleton.GetComponent<UnityTransport>().SetHostRelayData(
                     allocation.RelayServer.IpV4,
                     (ushort) allocation.RelayServer.Port,
@@ -51,8 +50,6 @@ namespace OverBang.GameName.Core.Menu
                     allocation.Key,
                     allocation.ConnectionData
                 );
-
-                NetworkManager.Singleton.StartHost();
             }
             catch (RelayServiceException e)
             {
@@ -67,6 +64,7 @@ namespace OverBang.GameName.Core.Menu
             };
 
             session = await MultiplayerService.Instance.CreateOrJoinSessionAsync(sessionId, options);
+            
             if (session.PlayerCount == 0)
             {
                 NetworkManager.Singleton.StartHost();
@@ -76,10 +74,7 @@ namespace OverBang.GameName.Core.Menu
                 NetworkManager.Singleton.StartClient();
             }
             
-            Debug.Log("Session started with ID: " + session.Id);
-            Debug.Log(GameMetrics.Global.SceneCollection.HubSceneRef.Name);
-            Debug.Log(NetworkManager.Singleton.SceneManager);
-            NetworkManager.Singleton.SceneManager.LoadScene(GameMetrics.Global.SceneCollection.HubSceneRef.Name, LoadSceneMode.Single);
+            //NetworkManager.Singleton.SceneManager.LoadScene(GameMetrics.Global.SceneCollection.HubSceneRef.Name, LoadSceneMode.Single);
         }
     }
 }
