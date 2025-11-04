@@ -12,6 +12,7 @@ namespace OverBang.GameName
     {
         public static IGameMode CurrentGameMode { get; private set; }
         public static GameDatabase GameDatabase { get; private set; }
+        public static SessionManager SessionManager { get; private set; }
         
         private static GameMetrics gameMetrics;
         public static GameMetrics Metrics
@@ -47,6 +48,7 @@ namespace OverBang.GameName
         private static void SetupFields()
         {
             GameDatabase = new GameDatabase();
+            SessionManager = new SessionManager();
         }
 
         private static void SetupPrioritisedProperties()

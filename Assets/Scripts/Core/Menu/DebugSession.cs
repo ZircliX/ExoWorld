@@ -1,4 +1,5 @@
 ﻿using OverBang.GameName.Core.Metrics;
+using OverBang.GameName.Managers;
 using Unity.Netcode;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
@@ -43,7 +44,7 @@ namespace OverBang.GameName.Core.Menu
                 IsPrivate = false,
             }.WithRelayNetwork();
 
-            session = await MultiplayerService.Instance.CreateOrJoinSessionAsync(sessionId, options);
+            session = await SessionManager.Global.CreateOrJoinSession(sessionId, options);
 
             if (session.IsHost)
             {

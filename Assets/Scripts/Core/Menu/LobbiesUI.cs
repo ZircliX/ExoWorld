@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using OverBang.GameName.Managers;
 using Unity.Services.Core;
 using Unity.Services.Multiplayer;
 using UnityEngine;
@@ -71,8 +72,6 @@ namespace OverBang.GameName.Core.Menu
 
         public async void Refresh()
         {
-            Debug.Log("Refreshing lobbies...");
-            
             try
             {
                 // Query for available sessions
@@ -80,16 +79,14 @@ namespace OverBang.GameName.Core.Menu
                 {
                     Count = 20,
                 };
+
+                IList<ISessionInfo> availableSessions = await SessionManager.Global.QuerySessions(queryOptions);
         
-                QuerySessionsResults availableSessions = await MultiplayerService.Instance.QuerySessionsAsync(queryOptions);
+                //Debug.Log($"Found {availableSessions.Count} available sessions");
         
-                //Debug.Log($"Found {availableSessions.Sessions.Count} available sessions");
-        
-                int sessionCount = availableSessions.Sessions.Count;
-        
-                for (int i = 0; i < sessionCount; i++)
+                for (int i = 0; i < availableSessions.Count; i++)
                 {
-                    ISessionInfo session = availableSessions.Sessions[i];
+                    ISessionInfo session = availableSessions[i];
             
                     if (i < lobbies.Count)
                     {
@@ -103,7 +100,7 @@ namespace OverBang.GameName.Core.Menu
                     }
                 }
         
-                for (int i = sessionCount; i < lobbies.Count; i++)
+                for (int i = availableSessions.Count; i < lobbies.Count; i++)
                 {
                     lobbies[i]?.Dispose(); // Destroy the excess lobby UI
                 }
