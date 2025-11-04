@@ -2,6 +2,7 @@ using OverBang.GameName.Hub;
 using OverBang.GameName.Core;
 using OverBang.GameName.Core.Characters;
 using OverBang.GameName.Core.GameMode;
+using OverBang.GameName.Core.Upgrades;
 using OverBang.GameName.Gameplay;
 using UnityEngine;
 

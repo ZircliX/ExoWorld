@@ -80,10 +80,5 @@ namespace OverBang.GameName.Debug
                 //if (!Mode.PlayerProfile.IsValid) Mode.SetPlayerProfile(characterData);
             }
         }
-
-        private void OnStateChanged(IGameState newState)
-        {
-            UnityEngine.Debug.Log($"[DebugInputs] State changed to: {newState.Name}");
-        }
     }
 }
