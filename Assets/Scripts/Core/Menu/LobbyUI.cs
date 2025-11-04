@@ -1,4 +1,5 @@
 ﻿using TMPro;
+using Unity.Services.Multiplayer;
 using UnityEngine;
 
 namespace OverBang.GameName.Core.Menu
@@ -8,16 +9,16 @@ namespace OverBang.GameName.Core.Menu
         [SerializeField] private TMP_Text NameText;
         [SerializeField] private TMP_Text PlayerCountText;
         
-        public LobbyUI SetLobbyName(string lobbyName)
-        {
-            NameText.text = lobbyName;
-            return this;
-        }
+        public ISessionInfo SessionInfo { get; private set; }
         
-        public LobbyUI SetPlayerCount(int current, int max)
+        public void Initialize(ISessionInfo sessionInfo)
         {
+            SessionInfo = sessionInfo;
+            NameText.text = SessionInfo.Name;
+
+            int max = SessionInfo.MaxPlayers;
+            int current = max - SessionInfo.AvailableSlots;
             PlayerCountText.text = $"{current}/{max} Players";
-            return this;
         }
 
         public void Dispose()
