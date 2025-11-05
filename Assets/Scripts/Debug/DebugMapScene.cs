@@ -13,7 +13,7 @@ namespace OverBang.GameName.Debug
         {
             if (GameController.CurrentGameMode == null)
             {
-                OfflineGameMode offlineGameMode = OfflineGameMode.Create(0, difficulty).WithPlayer(playerProfile);
+                OfflineGameMode offlineGameMode = OfflineGameMode.Create(0, difficulty).SetPlayerProfile(playerProfile);
                 offlineGameMode.SetGameMode();
                 //offlineGameMode.StateMachine.ChangeState(new GameplayState(offlineGameMode.StateMachine, offlineGameMode, offlineGameMode));
             }

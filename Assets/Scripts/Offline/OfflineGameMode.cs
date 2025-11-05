@@ -1,9 +1,11 @@
 using OverBang.GameName.Hub;
 using OverBang.GameName.Core;
 using OverBang.GameName.Core.Characters;
+using OverBang.GameName.Core.CharacterSelection;
 using OverBang.GameName.Core.GameMode;
-using OverBang.GameName.Core.Upgrades;
+using OverBang.GameName.Core.Phases;
 using OverBang.GameName.Gameplay;
+using OverBang.GameName.Managers;
 using UnityEngine;
 
 namespace OverBang.GameName.Offline
@@ -15,18 +17,17 @@ namespace OverBang.GameName.Offline
             return new OfflineGameMode(map, difficulty);
         }
 
-        public OfflineGameMode WithPlayer(params PlayerProfile[] profiles)
+        public OfflineGameMode SetPlayerProfile(PlayerProfile profiles)
         {
-            PlayerProfiles = profiles;
+            PlayerProfile = profiles;
             return this;
         }
 
         public int Map { get; private set; }
         public int Difficulty { get; private set; }
-        public PlayerProfile[] PlayerProfiles { get; private set; }
+        public PlayerProfile PlayerProfile { get; private set; }
         public LevelManager LevelManager { get; private set; }
 
-        private HubPhase.HubEndInfos hubEndInfos;
         private GameplayPhase.GameplayEndInfos gameplayEndInfos;
 
         private OfflineGameMode(int map, int difficulty)
@@ -44,43 +45,43 @@ namespace OverBang.GameName.Offline
             };
             SetPlayerProfile(profile);
         }
-        
-        public void SetPlayerProfile(params PlayerProfile[] profiles)
-        {
-            PlayerProfiles = profiles;
-        }
 
         public async Awaitable Run()
         {
             bool isRunning = true;
-            bool hasCharacter = PlayerProfiles != null && PlayerProfiles.Length != 0;
+            bool hasCharacter = PlayerProfile.characterData != null;
 
             while (isRunning)
             {
-                HubPhase.SelectionSettings selectionSettings = new HubPhase.SelectionSettings
+                // Hub
+                SelectionPhase.SelectionSettings selectionSettings = new SelectionPhase.SelectionSettings
                 {
-                    selectionType = hasCharacter ? HubPhase.SelectionType.None : HubPhase.SelectionType.Pick,
+                    selectionType = hasCharacter ? SelectionPhase.SelectionType.None : SelectionPhase.SelectionType.Pick,
                     availableClasses = CharacterClasses.All,
-                    playerProfiles = hasCharacter ? PlayerProfiles : new PlayerProfile[]
-                    {
-                        new(null, "Player 1")
-                    },
-                    gameDatabase = GameController.GameDatabase,
-                    localPlayer = 0
                 };
-                hubEndInfos = await HubPhase.CreateAsync(selectionSettings);
                 
-                SetPlayerProfile(hubEndInfos.selectedCharacters);
+                HubPhase hubPhase = new HubPhase(selectionSettings);
+                bool hubSuccess = await hubPhase.Run();
                 hasCharacter = true;
-
+                
+                // Gameplay
                 GameplayPhase.GameplaySettings gameplaySettings = new GameplayPhase.GameplaySettings
                 {
-                    gameDatabase = GameController.GameDatabase,
-                    playerProfiles = PlayerProfiles,
                 };
-                gameplayEndInfos = await GameplayPhase.CreateAsync(gameplaySettings);
+
+                GameplayPhase gameplayPhase;
+                if (SessionManager.Global.IsHost)
+                {
+                    gameplayPhase = new HostGameplayPhase(gameplaySettings);
+                }
+                else
+                {
+                    gameplayPhase = new ClientGameplayPhase(gameplaySettings);
+                }
                 
-                if(gameplayEndInfos.isFinished)
+                bool gameplaySuccess = await gameplayPhase.Run();
+                
+                if(gameplayPhase.CurrentEndInfos.isFinished)
                     isRunning = false;
             }
         }

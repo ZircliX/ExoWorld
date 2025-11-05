@@ -37,7 +37,6 @@ namespace OverBang.Pooling
             switch (poolConfig.PoolResource.Asset)
             {
                 case PrefabPoolAsset prefabAsset:
-                case AddressablePoolAsset addressableAsset:
                     pool = new Pool<GameObject>(poolParent, poolConfig);
                     break;
 

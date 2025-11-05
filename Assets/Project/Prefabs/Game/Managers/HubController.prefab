@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 488033318
+  GlobalObjectIdHash: 887330494
   InScenePlacedSourceGlobalObjectIdHash: 887330494
   DeferredDespawnTick: 0
   Ownership: 1
@@ -143,9 +143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6fd09f0ec294bffa7f046ea3b8785d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
-  playerCardPrefab: {fileID: 8586276897037977085, guid: d69687b33ce30c54199bc221446685e0, type: 3}
-  playerCardContainer: {fileID: 7104827232580469359}
+  playerCardPrefab: {fileID: 0}
+  playerCardContainer: {fileID: 0}
   shipTransform: {fileID: 0}
 --- !u!114 &5912290204971085330
 MonoBehaviour:

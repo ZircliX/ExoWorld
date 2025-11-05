@@ -37,7 +37,6 @@ namespace OverBang.Pooling.Editor
             {
                 PrefabPoolAsset => PREFAB_CHOICE,
                 ResourcePoolAsset => RESOURCE_CHOICE,
-                AddressablePoolAsset => ADDRESSABLES_CHOICE,
                 _ => PREFAB_CHOICE,
             };
             
@@ -45,7 +44,6 @@ namespace OverBang.Pooling.Editor
             {
                 PREFAB_CHOICE,
                 RESOURCE_CHOICE,
-                ADDRESSABLES_CHOICE,
             }, defaultValue)
             {
                 style =
@@ -65,9 +63,6 @@ namespace OverBang.Pooling.Editor
                         break;
                     case RESOURCE_CHOICE:
                         asset.managedReferenceValue = new ResourcePoolAsset();
-                        break;
-                    case ADDRESSABLES_CHOICE:
-                        asset.managedReferenceValue = new AddressablePoolAsset();
                         break;
                 }
                 //Debug.Log(ctx.newValue);

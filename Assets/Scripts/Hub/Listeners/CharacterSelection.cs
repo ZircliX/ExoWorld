@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Helteix.ChanneledProperties.Priorities;
 using OverBang.GameName.Core.Characters;
+using OverBang.GameName.Core.CharacterSelection;
 using UnityEngine;
 
 namespace OverBang.GameName.Hub
@@ -14,20 +15,20 @@ namespace OverBang.GameName.Hub
         [SerializeField] private CanvasGroup canvasGroup;
         
         private List<CharacterCardUI> agentCards;
-        private HubPhase.SelectionSettings currentSettings;
+        private SelectionPhase.SelectionSettings currentSettings;
         private void Awake()
         {
             agentCards = new List<CharacterCardUI>(4);
         }
         
-        protected internal override void OnInit(HubPhase phase)
+        protected override void Begin(HubPhase phase)
         {
             GameController.CursorLockModePriority.AddPriority(this, PriorityTags.Highest, CursorLockMode.Locked);
             GameController.CursorVisibleStatePriority.AddPriority(this, PriorityTags.Highest, false);
             phase.OnAvailableCharacterAdded += AddCharacter;
         }
 
-        protected internal override void OnRelease(HubPhase phase)
+        protected override void End(HubPhase phase, bool success)
         {
             GameController.CursorLockModePriority.RemovePriority(this);
             GameController.CursorVisibleStatePriority.RemovePriority(this);
@@ -50,7 +51,10 @@ namespace OverBang.GameName.Hub
         {
             //Debug.Log(" [Character Selection] SelectCharacter + " + characterData.AgentName);
             ChangeEnabledState(false);
-            current?.SelectLocalCharacter(characterData);
+            if (current is SelectionPhase selectionPhase)
+            {
+                selectionPhase.SelectCharacter(characterData);
+            }
         }
         
         private void ChangeEnabledState(bool enabled)

@@ -1,8 +1,8 @@
 using System;
 using Helteix.ChanneledProperties.Priorities;
-using OverBang.GameName.Core.GameAssets;
 using OverBang.GameName.Core.GameMode;
 using OverBang.GameName.Core.Metrics;
+using OverBang.GameName.Core.Phases;
 using OverBang.GameName.Managers;
 using UnityEngine;
 
@@ -11,8 +11,8 @@ namespace OverBang.GameName
     public static partial class GameController
     {
         public static IGameMode CurrentGameMode { get; private set; }
-        public static GameDatabase GameDatabase { get; private set; }
         public static SessionManager SessionManager { get; private set; }
+        public static PhaseManager PhaseManager { get; private set; }
         
         private static GameMetrics gameMetrics;
         public static GameMetrics Metrics
@@ -47,8 +47,8 @@ namespace OverBang.GameName
 
         private static void SetupFields()
         {
-            GameDatabase = new GameDatabase();
             SessionManager = new SessionManager();
+            PhaseManager = new PhaseManager();
         }
 
         private static void SetupPrioritisedProperties()

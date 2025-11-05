@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8002bf21abc41c0408e1db6075ef733c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  em: {fileID: 7673975130547769438}
+  em: {fileID: 0}
 --- !u!1 &798585918225819646
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,15 +293,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aceb76db0bd646738b79931a465c5629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
-  speed: 100
-  gravityAlignSpeed: 5
-  xModifier: 0.5
-  yModifier: 0.5
-  yRange: 75
-  pm: {fileID: 7673975130547769438}
-  cameraRoot: {fileID: 2193368421882999979}
-  cameraRotations: {fileID: 1477597775340241623}
+  speed: 150
+  gravityAlignSpeed: 0
+  xModifier: 1
+  yModifier: 1
+  yRange: 70
+  pm: {fileID: 0}
+  cameraRoot: {fileID: 0}
+  cameraRotations: {fileID: 0}
 --- !u!1818360608 &604647174449740348
 PositionConstraint:
   m_ObjectHideFlags: 0
@@ -662,44 +661,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 021c8954cdd7467c982615ead7e470f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementStates:
-  - {fileID: 11400000, guid: be1dcc172ba00724ea9b156b06ecc9da, type: 2}
-  - {fileID: 11400000, guid: 1584499b6b911c740bb388239cf6a091, type: 2}
-  - {fileID: 11400000, guid: 9d3d4af720a56e642b1fdbd0543cb6e0, type: 2}
-  - {fileID: 11400000, guid: 5e4bcd4b83c261443b9414fe80298e6b, type: 2}
-  - {fileID: 11400000, guid: 65418ada7e21f654fa5e1c852d785aa5, type: 2}
-  - {fileID: 11400000, guid: cd52e72197f988043b0af1aea128d259, type: 2}
-  groundCheckDistance: 0.2
+  movementStates: []
+  groundCheckDistance: 0.1
   groundCheckMaxAngle: 50
   <GroundLayer>k__BackingField:
     serializedVersion: 2
-    m_Bits: 256
-  ceilingCheckDistance: 0.5
-  ceilingCrouchCheckDistance: 0.75
-  dashCooldown: 1
-  wallCastSample: 20
-  wallCastDistance: 1
-  wallRunCastExpension: 2
-  wallCastAngle: 90
-  wallrunExitTime: 0.1
-  wallrunMinHeight: 2
+    m_Bits: 0
+  ceilingCheckDistance: 0.1
+  ceilingCrouchCheckDistance: 0.1
+  dashCooldown: 2.5
+  wallCastSample: 15
+  wallCastDistance: 1.5
+  wallRunCastExpension: 1.5
+  wallCastAngle: 60
+  wallrunExitTime: 1
+  wallrunMinHeight: 1.5
   <WallLayer>k__BackingField:
     serializedVersion: 2
-    m_Bits: 256
-  coyoteTime: 25
+    m_Bits: 0
+  coyoteTime: 10
   gravityScale: 2.75
   gravityAlignSpeed: 5
-  <BaseCapsuleHeight>k__BackingField: 1.7
+  <BaseCapsuleHeight>k__BackingField: 2
   <CrouchCapsuleHeight>k__BackingField: 0.5
   <BaseHeadHeight>k__BackingField: 0.5
   <ColliderCenterOffset>k__BackingField: {x: 0, y: -0.5, z: 0}
-  <CameraTransform>k__BackingField: {fileID: 1853930067422575411}
-  <Head>k__BackingField: {fileID: 2065021886003205984}
-  <Foot>k__BackingField: {fileID: 7415998647446923790}
+  <CameraTransform>k__BackingField: {fileID: 0}
+  <Head>k__BackingField: {fileID: 0}
+  <Foot>k__BackingField: {fileID: 0}
   <CapsuleCollider>k__BackingField: {fileID: 2649105432247018214}
   <Rb>k__BackingField: {fileID: 7362595536518079642}
-  <Camera>k__BackingField: {fileID: 818597675296926653}
-  <CameraController>k__BackingField: {fileID: 3883945405582393277}
+  <Camera>k__BackingField: {fileID: 0}
+  <CameraController>k__BackingField: {fileID: 0}
 --- !u!54 &7362595536518079642
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1099,8 +1092,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63357a09b9214d69bc207c691f022c60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCamera: {fileID: 818597675296926653}
-  maxDistance: 2
+  playerCamera: {fileID: 0}
+  maxDistance: 0
 --- !u!1 &7951095932090443510
 GameObject:
   m_ObjectHideFlags: 0
@@ -1446,4 +1439,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cam: {fileID: 7880227904453035219}
-  ID: {fileID: 11400000, guid: 0651c1f6b95f9974ab7cd342a657f61b, type: 2}
+  ID: {fileID: 0}

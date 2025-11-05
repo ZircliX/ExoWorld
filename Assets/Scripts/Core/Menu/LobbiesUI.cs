@@ -10,7 +10,7 @@ namespace OverBang.GameName.Core.Menu
 {
     public class LobbiesUI : MonoBehaviour
     {
-        [SerializeField] private GameObject lobbyPrefab;
+        [SerializeField] private LobbyUI lobbyPrefab;
         [SerializeField] private Transform root;
 
         private List<LobbyUI> lobbies;
@@ -56,13 +56,12 @@ namespace OverBang.GameName.Core.Menu
         
         private void AddSession(ISessionInfo session)
         {
-            GameObject lobbyInstance = Instantiate(lobbyPrefab, root);
-            LobbyUI lobbyUI = lobbyInstance.GetComponent<LobbyUI>();
+            LobbyUI lobbyInstance = Instantiate(lobbyPrefab, root);
             
-            if (lobbyUI != null)
+            if (lobbyInstance != null)
             {
-                lobbyUI.Initialize(session);
-                lobbies.Add(lobbyUI);
+                lobbyInstance.Initialize(session);
+                lobbies.Add(lobbyInstance);
             }
             else
             {

@@ -8,30 +8,31 @@ namespace OverBang.GameName.Managers
     {
         public static SessionManager Global => GameController.SessionManager;
         
-        private ISession activeSession;
+        public ISession ActiveSession {get; private set;}
+        public bool IsHost => ActiveSession.IsHost;
 
         public async Awaitable<ISession> CreateOrJoinSession(string sessionId, SessionOptions options)
         {
-            activeSession = await MultiplayerService.Instance.CreateOrJoinSessionAsync(sessionId, options);
-            return activeSession;
+            ActiveSession = await MultiplayerService.Instance.CreateOrJoinSessionAsync(sessionId, options);
+            return ActiveSession;
         }
         
         public async Awaitable<IHostSession> CreateSession(SessionOptions options)
         {
-            activeSession = await MultiplayerService.Instance.CreateSessionAsync(options);
-            return (IHostSession)activeSession;
+            ActiveSession = await MultiplayerService.Instance.CreateSessionAsync(options);
+            return (IHostSession)ActiveSession;
         }
         
         public async Awaitable<ISession> JoinSessionByID(string sessionID)
         {
-            activeSession = await MultiplayerService.Instance.JoinSessionByIdAsync(sessionID);
-            return activeSession;
+            ActiveSession = await MultiplayerService.Instance.JoinSessionByIdAsync(sessionID);
+            return ActiveSession;
         }
         
         public async Awaitable<ISession> JoinSessionByCode(string code)
         {
-            activeSession = await MultiplayerService.Instance.JoinSessionByCodeAsync(code);
-            return activeSession;
+            ActiveSession = await MultiplayerService.Instance.JoinSessionByCodeAsync(code);
+            return ActiveSession;
         }
         
         public async Awaitable<IList<ISessionInfo>> QuerySessions(QuerySessionsOptions options)
@@ -43,17 +44,17 @@ namespace OverBang.GameName.Managers
         
         public async Awaitable KickPlayer(string playerID)
         {
-            if (!activeSession.IsHost) return;
-            await activeSession.AsHost().RemovePlayerAsync(playerID);
+            if (!ActiveSession.IsHost) return;
+            await ActiveSession.AsHost().RemovePlayerAsync(playerID);
         }
 
         public async Awaitable LeaveCurrentSession()
         {
-            if (activeSession != null)
+            if (ActiveSession != null)
             {
                 try
                 {
-                    await activeSession.LeaveAsync();
+                    await ActiveSession.LeaveAsync();
                 }
                 catch
                 {
@@ -61,7 +62,7 @@ namespace OverBang.GameName.Managers
                 }
                 finally
                 {
-                    activeSession = null;
+                    ActiveSession = null;
                 }
             }
         }

@@ -1,4 +1,5 @@
-﻿using OverBang.GameName.Core.Metrics;
+﻿using System.Linq;
+using OverBang.GameName.Core.Metrics;
 using OverBang.GameName.Managers;
 using Unity.Netcode;
 using Unity.Services.Authentication;
@@ -48,7 +49,7 @@ namespace OverBang.GameName.Core.Menu
 
             if (session.IsHost)
             {
-                //NetworkManager.Singleton.SceneManager.LoadScene(GameMetrics.Global.SceneCollection.HubSceneRef.Name, LoadSceneMode.Single);
+                NetworkManager.Singleton.SceneManager.LoadScene(GameMetrics.Global.SceneCollection.HubSceneRef.Name, LoadSceneMode.Single);
             }
         }
     }
