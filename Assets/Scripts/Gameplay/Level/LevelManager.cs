@@ -46,7 +46,7 @@ namespace OverBang.GameName.Gameplay
             State = LevelState.Running;
         }
 
-        public virtual async void Dispose()
+        public virtual void Dispose()
         {
             if (State == LevelState.Disposed) return;
             
