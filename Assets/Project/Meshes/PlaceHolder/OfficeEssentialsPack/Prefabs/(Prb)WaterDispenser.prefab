@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7618477561524223936}
   - component: {fileID: 528911455773489489}
   - component: {fileID: 3828060575980847862}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: waterDispenser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
+  m_ReceiveGI: 2
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -121,7 +121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2792708387186124762}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: (Prb)WaterDispenser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
