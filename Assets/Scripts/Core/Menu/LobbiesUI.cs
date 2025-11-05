@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
-using Helteix.Tools;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using OverBang.GameName.Managers;
 using Unity.Services.Core;
 using Unity.Services.Multiplayer;
 using UnityEngine;
@@ -8,44 +10,58 @@ namespace OverBang.GameName.Core.Menu
 {
     public class LobbiesUI : MonoBehaviour
     {
-        [SerializeField] private GameObject lobbyPrefab;
+        [SerializeField] private LobbyUI lobbyPrefab;
         [SerializeField] private Transform root;
 
         private List<LobbyUI> lobbies;
-        private DynamicBuffer<LobbyUI> buffer;
 
         private void Awake()
         {
             lobbies = new List<LobbyUI>(4);
-            buffer = new DynamicBuffer<LobbyUI>(4);
         }
 
         private void OnEnable()
         {
-            UnityServices.Initialized += Register;
+            if (UnityServices.State == ServicesInitializationState.Initialized)
+            {
+                Refresh();
+            }
+            else
+            {
+                UnityServices.Initialized += OnServicesInitialized;
+            }
         }
 
-        private void Register()
+        private void OnServicesInitialized()
         {
             Refresh();
-            MultiplayerService.Instance.SessionAdded += AddSession;
         }
-        
+    
         private void OnDisable()
         {
-            MultiplayerService.Instance.SessionAdded -= AddSession;
-            UnityServices.Initialized -= Register;
+            UnityServices.Initialized -= OnServicesInitialized;
         }
         
-        private void AddSession(ISession session)
+        private async void Start()
         {
-            GameObject lobbyInstance = Instantiate(lobbyPrefab, root);
-            LobbyUI lobbyUI = lobbyInstance.GetComponent<LobbyUI>();
-            
-            if (lobbyUI != null)
+            while (this != null)
             {
-                lobbyUI.SetLobbyName(session.Name).SetPlayerCount(session.PlayerCount, session.MaxPlayers);
-                lobbies.Add(lobbyUI);
+                await Task.Delay(10000); // Refresh every 5 seconds
+                if (this != null && gameObject.activeInHierarchy)
+                {
+                    Refresh();
+                }
+            }
+        }
+        
+        private void AddSession(ISessionInfo session)
+        {
+            LobbyUI lobbyInstance = Instantiate(lobbyPrefab, root);
+            
+            if (lobbyInstance != null)
+            {
+                lobbyInstance.Initialize(session);
+                lobbies.Add(lobbyInstance);
             }
             else
             {
@@ -53,20 +69,44 @@ namespace OverBang.GameName.Core.Menu
             }
         }
 
-        public void Refresh()
+        public async void Refresh()
         {
-            buffer.CopyFrom(lobbies);
-            
-            for (int i = 0; i < buffer.Length; i++)
+            try
             {
-                LobbyUI lobby = lobbies[i];
-                lobby.Dispose();
-                lobbies.Remove(lobby);
-            }
+                // Query for available sessions
+                QuerySessionsOptions queryOptions = new QuerySessionsOptions()
+                {
+                    Count = 20,
+                };
 
-            foreach ((string key, ISession value) in MultiplayerService.Instance.Sessions)
+                IList<ISessionInfo> availableSessions = await SessionManager.Global.QuerySessions(queryOptions);
+        
+                //Debug.Log($"Found {availableSessions.Count} available sessions");
+        
+                for (int i = 0; i < availableSessions.Count; i++)
+                {
+                    ISessionInfo session = availableSessions[i];
+            
+                    if (i < lobbies.Count)
+                    {
+                        // Reuse existing lobby UI
+                        lobbies[i].Initialize(session);
+                    }
+                    else
+                    {
+                        // Create new lobby UI if we don't have enough
+                        AddSession(session);
+                    }
+                }
+        
+                for (int i = availableSessions.Count; i < lobbies.Count; i++)
+                {
+                    lobbies[i]?.Dispose(); // Destroy the excess lobby UI
+                }
+            }
+            catch (Exception e)
             {
-                AddSession(value);
+                Debug.LogError($"Failed to query sessions: {e}");
             }
         }
     }

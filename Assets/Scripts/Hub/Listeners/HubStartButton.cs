@@ -1,3 +1,4 @@
+using OverBang.GameName.Core.Phases;
 using OverBang.GameName.Hub;
 using UnityEngine;
 
@@ -11,16 +12,16 @@ namespace OverBang.GameName.Gameplay.Hub
         {
             if (other.CompareTag("Player") && canBeTriggered)
             {
-                current.CompletePhase(true);
+                _ = current.End(true);
             }
         }
 
-        protected internal override void OnInit(HubPhase phase)
+        protected override void Begin(HubPhase phase)
         {
             canBeTriggered = true;
         }
 
-        protected internal override void OnRelease(HubPhase phase)
+        protected override void End(HubPhase phase, bool success)
         {
             canBeTriggered = false;
         }

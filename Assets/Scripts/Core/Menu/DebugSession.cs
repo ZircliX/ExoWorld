@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 using OverBang.GameName.Core.Metrics;
+using OverBang.GameName.Managers;
 using Unity.Netcode;
-using Unity.Netcode.Transports.UTP;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
 using Unity.Services.Multiplayer;
-using Unity.Services.Relay;
-using Unity.Services.Relay.Models;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -45,10 +43,9 @@ namespace OverBang.GameName.Core.Menu
                 Name = sessionId,
                 MaxPlayers = 4,
                 IsPrivate = false,
-                Password = sessionId
             }.WithRelayNetwork();
 
-            session = await MultiplayerService.Instance.CreateOrJoinSessionAsync(sessionId, options);
+            session = await SessionManager.Global.CreateOrJoinSession(sessionId, options);
 
             if (session.IsHost)
             {
