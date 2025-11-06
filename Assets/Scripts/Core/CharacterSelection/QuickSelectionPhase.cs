@@ -11,6 +11,7 @@ namespace OverBang.GameName.Core.CharacterSelection
         public override async Awaitable OnBegin()
         {
             await base.OnBegin();
+            StartCharacterSelection();
         }
 
         public override async Awaitable OnEnd(bool success)

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using OverBang.GameName.Core.Database;
 using OverBang.Pooling;
 using OverBang.Pooling.Dependencies;
 using OverBang.Pooling.Resource;
@@ -9,7 +10,7 @@ using UnityEngine;
 namespace OverBang.GameName.Core.Characters
 {
     [CreateAssetMenu(fileName = "New Agent Data", menuName = "OverBang/Agent Data", order = 0)]
-    public class CharacterData : ScriptableObject, IPoolDependencyProvider
+    public class CharacterData : ScriptableObject, IPoolDependencyProvider, IDatabaseAsset
     {
         [field: SerializeField] 
         public string AgentName { get; private set; }

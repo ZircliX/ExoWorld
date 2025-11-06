@@ -1,6 +1,8 @@
 ﻿using System;
 using OverBang.GameName.Core.Characters;
+using OverBang.GameName.Core.Metrics;
 using OverBang.GameName.Core.Phases;
+using OverBang.GameName.Managers;
 using Unity.Services.Multiplayer;
 using UnityEngine;
 
@@ -22,14 +24,12 @@ namespace OverBang.GameName.Core.CharacterSelection
             public SelectionType selectionType;
             public CharacterClasses availableClasses;
             
-            public PlayerProfile playerProfile;
         }
         
         protected readonly SelectionSettings settings;
 
-        public PlayerProfile PlayerProfile { get; private set; }
-        
-        public event Action<PlayerProfile> OnCharacterSelected;
+
+        public event Action<IPlayer, CharacterData> OnCharacterSelected;
         public event Action<CharacterData> OnAvailableCharacterAdded;
 
         public SelectionPhase(SelectionSettings selectionSettings)
@@ -37,30 +37,20 @@ namespace OverBang.GameName.Core.CharacterSelection
             settings = selectionSettings;
         }
 
-        public virtual Awaitable OnBegin()
+        public virtual async Awaitable OnBegin()
         {
-            PlayerProfile.sessionPlayer.SetProperty("Character", new PlayerProperty(string.Empty));
-            return null;
+            SessionManager.Global.CurrentPlayer.SetProperty(ConstID.Global.PlayerPropertyCharacterData, new PlayerProperty(string.Empty));
         }
 
-        public virtual Awaitable OnEnd(bool success)
+        public virtual async Awaitable OnEnd(bool success)
         {
-            if (success)
-            {
-                PlayerProfile.sessionPlayer.SetProperty("Character", new PlayerProperty(PlayerProfile.characterData.ID));
-            }
-
-            return null;
         }
 
-        public void SelectCharacter(CharacterData characterData)
+        public  void SelectCharacter(CharacterData characterData)
         {
-            PlayerProfile = new PlayerProfile()
-            {
-                characterData = characterData
-            };
-            
-            OnCharacterSelected?.Invoke(PlayerProfile);
+            IPlayer globalCurrentPlayer = SessionManager.Global.CurrentPlayer;
+            globalCurrentPlayer.SetProperty(ConstID.Global.PlayerPropertyCharacterData, new PlayerProperty(characterData.ID));
+            OnCharacterSelected?.Invoke(globalCurrentPlayer, characterData);
         }
         
         public void StartCharacterSelection()
@@ -69,7 +59,6 @@ namespace OverBang.GameName.Core.CharacterSelection
 
             for (int i = 0; i < characters.Length; i++)
             {
-                //Debug.Log("HubPhase: Processing loaded character " + ctx.name);
                 if(!characters[i].CharacterClass.Matches(settings.availableClasses))
                     return;
                 OnAvailableCharacterAdded?.Invoke(characters[i]);

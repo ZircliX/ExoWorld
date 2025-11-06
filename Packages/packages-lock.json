@@ -18,27 +18,27 @@
       "hash": "b849990020c30ac6ead4e4fb4881428f86dcde0d"
     },
     "com.helteix.channeled-properties": {
-      "version": "2.0.7",
+      "version": "2.0.8",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.helteix.tools": "1.3.4",
+        "com.helteix.tools": "1.4.0",
         "com.unity.burst": "1.8.25"
       },
       "url": "https://upm.pckgs.io"
     },
     "com.helteix.singletons": {
-      "version": "1.3.1",
+      "version": "1.3.2",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.helteix.tools": "1.3.5"
+        "com.helteix.tools": "1.4.0"
       },
       "url": "https://upm.pckgs.io"
     },
     "com.helteix.tools": {
-      "version": "1.3.7",
-      "depth": 0,
+      "version": "1.4.0",
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://upm.pckgs.io"
@@ -487,6 +487,13 @@
       "source": "git",
       "dependencies": {},
       "hash": "4de62306b1412118f44f177952d3f6268e8e1161"
+    },
+    "unity-missing-scripts-finder": {
+      "version": "https://github.com/RimuruDev/Unity-MissingScriptsFinder.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "e5fadd6a55f3266690b1a60234b75acde4a0678d"
     },
     "com.unity.modules.accessibility": {
       "version": "1.0.0",

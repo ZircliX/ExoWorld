@@ -3,11 +3,12 @@ using DG.Tweening;
 using Helteix.ChanneledProperties.Priorities;
 using OverBang.GameName.Core.Characters;
 using OverBang.GameName.Core.CharacterSelection;
+using OverBang.GameName.Core.Phases;
 using UnityEngine;
 
 namespace OverBang.GameName.Hub
 {
-    public class CharacterSelection : HubListener
+    public class CharacterSelection : MonoPhaseListener<HubPhase>
     {
         [SerializeField] private CharacterCardUI characterCardUIPrefab;
         
@@ -26,6 +27,8 @@ namespace OverBang.GameName.Hub
             GameController.CursorLockModePriority.AddPriority(this, PriorityTags.Highest, CursorLockMode.Locked);
             GameController.CursorVisibleStatePriority.AddPriority(this, PriorityTags.Highest, false);
             phase.OnAvailableCharacterAdded += AddCharacter;
+
+            phase.StartSelection();
         }
 
         protected override void End(HubPhase phase, bool success)
@@ -51,7 +54,7 @@ namespace OverBang.GameName.Hub
         {
             //Debug.Log(" [Character Selection] SelectCharacter + " + characterData.AgentName);
             ChangeEnabledState(false);
-            if (current is SelectionPhase selectionPhase)
+            if (currentPhase is SelectionPhase selectionPhase)
             {
                 selectionPhase.SelectCharacter(characterData);
             }

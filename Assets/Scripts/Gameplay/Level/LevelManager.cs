@@ -4,8 +4,13 @@ using System.Linq;
 using Helteix.ChanneledProperties.Priorities;
 using Helteix.Singletons.SceneServices;
 using OverBang.GameName.Core;
+using OverBang.GameName.Core.Characters;
+using OverBang.GameName.Core.Database;
+using OverBang.GameName.Core.Metrics;
+using OverBang.GameName.Managers;
 using OverBang.Pooling;
 using OverBang.Pooling.Dependencies;
+using Unity.Services.Multiplayer;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -16,7 +21,7 @@ namespace OverBang.GameName.Gameplay
         public event Action<List<IPoolDependencyProvider>> OnCollectSceneProviders;
         public LevelState State { get; protected set; }
         
-        private Dictionary<PlayerProfile, GameObject> currentPlayers;
+        private Dictionary<IPlayer, GameObject> currentPlayers;
 
         private GameplayPhase currentPhase;
         private GameplayPhase.GameplaySettings Settings => currentPhase.Settings;
@@ -33,7 +38,7 @@ namespace OverBang.GameName.Gameplay
             currentPhase = phase;
 
             await SetupGameMap();
-            await SetupPlayer();
+            SetupPlayer();
             await SetupEnemies();
             await SetupUI();
 
@@ -61,20 +66,16 @@ namespace OverBang.GameName.Gameplay
             await Awaitable.EndOfFrameAsync();
         }
         
-        protected virtual async Awaitable SetupPlayer()
+        protected virtual void SetupPlayer()
         {
-            currentPlayers = new Dictionary<PlayerProfile, GameObject>();
-            for (int i = 0; i < Settings.playerProfiles.Length; i++)
-            {
-                PlayerProfile profile = Settings.playerProfiles[i];
-
-                GameObject player = Instantiate(profile.characterData.CharacterPrefab);
-                currentPlayers.Add(profile, player);
-            }
-
-            while (currentPlayers.Any(ctx => ctx.Value == null))
-                await Awaitable.EndOfFrameAsync();
+            currentPlayers = new Dictionary<IPlayer, GameObject>();
+            IPlayer currentPlayer = SessionManager.Global.CurrentPlayer;
             
+            if (TryGetCharacterDataByPlayer(currentPlayer, out CharacterData characterData))
+            {
+                GameObject playerObject = Instantiate(characterData.CharacterPrefab);
+                currentPlayers.Add(currentPlayer, playerObject);
+            }
         }
 
         protected virtual async Awaitable SetupEnemies()
@@ -93,18 +94,26 @@ namespace OverBang.GameName.Gameplay
         {
             using (ListPool<IPoolDependencyProvider>.Get(out List<IPoolDependencyProvider> providers))
             {
-                /*
-                foreach (var profile in Settings.playerProfiles)
-                    providers.Add(profile.characterData);
-                */
+                IPlayer currentPlayer = SessionManager.Global.CurrentPlayer;
+                if (TryGetCharacterDataByPlayer(currentPlayer, out CharacterData characterData))
+                {
+                    providers.Add(characterData);
+                }
+                
                 OnCollectSceneProviders?.Invoke(providers);
 
                 PoolDependenciesCollector collector = new PoolDependenciesCollector();
-                foreach (var config in collector.Collect(providers))
+                foreach (IPoolConfig config in collector.Collect(providers))
                     PoolManager.Instance.RegisterPool(config);
             }
             
             await Awaitable.MainThreadAsync();
+        }
+
+        private bool TryGetCharacterDataByPlayer(IPlayer player, out CharacterData characterData)
+        {
+            string characterDataPropertyName = ConstID.Global.PlayerPropertyCharacterData;
+            return player.TryGetAssetByPlayerProperty(characterDataPropertyName, out characterData);
         }
     }
 }

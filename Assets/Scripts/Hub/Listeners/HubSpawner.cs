@@ -1,16 +1,18 @@
 ﻿using System.Collections.Generic;
-using OverBang.GameName.Core;
+using OverBang.GameName.Core.Characters;
+using OverBang.GameName.Core.Phases;
+using Unity.Services.Multiplayer;
 using UnityEngine;
 
 namespace OverBang.GameName.Hub
 {
-    public class HubSpawner : HubListener
+    public class HubSpawner : MonoPhaseListener<HubPhase>
     {
-        private Dictionary<PlayerProfile, GameObject> currentPlayers;
+        private Dictionary<IPlayer, GameObject> currentPlayers;
         
         protected override void Begin(HubPhase phase)
         {
-            currentPlayers ??= new Dictionary<PlayerProfile, GameObject>();
+            currentPlayers ??= new Dictionary<IPlayer, GameObject>();
             phase.OnCharacterSelected += SpawnPlayer;
         }
 
@@ -19,18 +21,18 @@ namespace OverBang.GameName.Hub
             phase.OnCharacterSelected -= SpawnPlayer;
         }
 
-        private void SpawnPlayer(PlayerProfile playerProfile)
+        private void SpawnPlayer(IPlayer player, CharacterData characterData)
         {
-            foreach ((PlayerProfile key, GameObject value) in currentPlayers)
+            foreach ((IPlayer key, GameObject value) in currentPlayers)
             {
-                if (key.characterData.ID == playerProfile.characterData.ID)
+                if (key == player)
                 {
                     Destroy(value);
                 }
             }
 
-            GameObject player = Instantiate(playerProfile.characterData.CharacterPrefab);
-            currentPlayers[playerProfile] = player;
+            GameObject playerObject = Instantiate(characterData.CharacterPrefab);
+            currentPlayers[player] = playerObject;
         }
     }
 }

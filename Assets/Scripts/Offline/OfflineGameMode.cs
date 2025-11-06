@@ -1,8 +1,10 @@
+using Codice.CM.Common.Tree;
 using OverBang.GameName.Hub;
 using OverBang.GameName.Core;
 using OverBang.GameName.Core.Characters;
 using OverBang.GameName.Core.CharacterSelection;
 using OverBang.GameName.Core.GameMode;
+using OverBang.GameName.Core.Metrics;
 using OverBang.GameName.Core.Phases;
 using OverBang.GameName.Gameplay;
 using OverBang.GameName.Managers;
@@ -17,16 +19,8 @@ namespace OverBang.GameName.Offline
             return new OfflineGameMode(map, difficulty);
         }
 
-        public OfflineGameMode SetPlayerProfile(PlayerProfile profiles)
-        {
-            PlayerProfile = profiles;
-            return this;
-        }
-
         public int Map { get; private set; }
         public int Difficulty { get; private set; }
-        public PlayerProfile PlayerProfile { get; private set; }
-        public LevelManager LevelManager { get; private set; }
 
         private GameplayPhase.GameplayEndInfos gameplayEndInfos;
 
@@ -36,20 +30,15 @@ namespace OverBang.GameName.Offline
             Difficulty = difficulty;
         }
 
-        public void SetPlayerProfile(CharacterData character)
-        {
-            PlayerProfile profile = new PlayerProfile()
-            {
-                characterData = character,
-                playerName = character.AgentName
-            };
-            SetPlayerProfile(profile);
-        }
-
         public async Awaitable Run()
         {
             bool isRunning = true;
-            bool hasCharacter = PlayerProfile.characterData != null;
+            bool hasCharacter = false;
+            if (SessionManager.Global.CurrentPlayer.TryGetPlayerProperty(
+                    ConstID.Global.PlayerPropertyCharacterData, out string propertyValue))
+            {
+                hasCharacter = propertyValue != string.Empty;
+            }
 
             while (isRunning)
             {

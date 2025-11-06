@@ -11,17 +11,16 @@ namespace OverBang.GameName.Gameplay
         {
         }
 
-        protected override Awaitable LoadScene()
+        protected override async Awaitable LoadScene()
         {
             SceneReference gameSceneRef = SceneCollection.Global.GameSceneRef;
             string currentSceneName = SceneLoader.GetCurrentSceneName();
 
             if (currentSceneName != gameSceneRef.Path)
             {
-                SceneEventProgressStatus sceneProgress = SceneLoader.NetworkLoadScene(currentSceneName);
+                await SceneLoader.LoadSceneAsync(gameSceneRef.Name);
+                //SceneEventProgressStatus sceneProgress = SceneLoader.NetworkLoadScene(currentSceneName);
             }
-
-            return null;
         }
 
         protected override async Awaitable<LevelManager> CreateLevelManager()

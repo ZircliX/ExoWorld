@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace OverBang.GameName.Gameplay.Hub
 {
-    public class HubStartButton : HubListener
+    public class HubStartButton : MonoPhaseListener<HubPhase>
     {
         private bool canBeTriggered = false;
         
@@ -12,7 +12,7 @@ namespace OverBang.GameName.Gameplay.Hub
         {
             if (other.CompareTag("Player") && canBeTriggered)
             {
-                _ = current.End(true);
+                _ = currentPhase.End(true);
             }
         }
 

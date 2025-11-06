@@ -17,6 +17,8 @@ namespace OverBang.GameName.Core.Metrics
         
         [field: SerializeField, FoldoutGroup("UI")] public GameObject CharacterSelectionPrefab { get; private set; }
         
+        [field: SerializeField, FoldoutGroup("Const ID")] public ConstID ConstID { get; private set; }
+        
         [field: SerializeField, FoldoutGroup("DEBUG")] public GameObject DebugInputs { get; private set; }
     }
 }

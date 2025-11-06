@@ -45,7 +45,7 @@ namespace OverBang.GameName.Online.Network
 
             Players = new Dictionary<ulong, PlayerControllerNetworkAdapter>(4);
             Instance = this;
-            Debug.Log("PlayerManagerNetworkAdapter Instance created");
+            //Debug.Log("PlayerManagerNetworkAdapter Instance created");
             OnInstanceCreated?.Invoke();
         }
 

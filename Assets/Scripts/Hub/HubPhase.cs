@@ -20,11 +20,21 @@ namespace OverBang.GameName.Hub
             
             if (currentSceneName != hubSceneRef.Path)
                 await SceneLoader.LoadSceneAsync(hubSceneRef.Name);
+            
+            await Awaitable.NextFrameAsync();
         }
 
         public override async Awaitable OnEnd(bool success)
         {
             await base.OnEnd(success);
+        }
+
+        public void StartSelection()
+        {
+            if (settings.selectionType == SelectionType.Pick)
+            {
+                StartCharacterSelection();
+            }
         }
     }
 }

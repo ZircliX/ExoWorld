@@ -4,23 +4,23 @@ namespace OverBang.GameName.Core.Phases
 {
     public abstract class MonoPhaseListener<T> : MonoBehaviour, IPhaseListener<T> where T : IPhase
     {
-        protected T phase;
+        protected T currentPhase;
         
         protected virtual void OnEnable() => this.Register();
         protected virtual void OnDisable() => this.Unregister();
 
         public void OnBegin(T phase)
         {
-            this.phase = phase;
-            Begin();
+            currentPhase = phase;
+            Begin(phase);
         }
 
         public void OnEnd(T phase, bool success)
         {
-            End(success);
+            End(phase, success);
         }
         
-        protected virtual void Begin() {}
-        protected virtual void End(bool success) {}
+        protected virtual void Begin(T phase) {}
+        protected virtual void End(T phase, bool success) {}
     }
 }

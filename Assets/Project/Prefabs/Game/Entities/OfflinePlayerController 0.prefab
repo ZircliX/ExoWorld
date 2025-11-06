@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2a246f0f2894d83b5d723725305c5bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootPoint: {fileID: 0}
-  bulletResource: {fileID: 0}
+  shootPoint: {fileID: 289793016013458955}
+  bulletResource: {fileID: 11400000, guid: 369e6753a4c4cd749a3b2309af60e11d, type: 2}
 --- !u!1 &796471661262600508
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8002bf21abc41c0408e1db6075ef733c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  em: {fileID: 0}
+  em: {fileID: 4862076419946111438}
 --- !u!1 &992906681163127405
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,14 +159,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aceb76db0bd646738b79931a465c5629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 150
-  gravityAlignSpeed: 0
-  xModifier: 1
-  yModifier: 1
-  yRange: 70
-  pm: {fileID: 0}
-  cameraRoot: {fileID: 0}
-  cameraRotations: {fileID: 0}
+  speed: 50
+  gravityAlignSpeed: 5
+  xModifier: 0.4
+  yModifier: 0.4
+  yRange: 75
+  pm: {fileID: 4862076419946111438}
+  cameraRoot: {fileID: 6943655484419672877}
+  cameraRotations: {fileID: 7830069918296049799}
 --- !u!1818360608 &1849331416877468507
 PositionConstraint:
   m_ObjectHideFlags: 0
@@ -281,6 +281,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -302,6 +304,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -624,6 +627,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -645,6 +650,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -710,6 +716,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -731,6 +739,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -907,7 +916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cam: {fileID: 7197011858373512656}
-  ID: {fileID: 0}
+  ID: {fileID: 11400000, guid: 0651c1f6b95f9974ab7cd342a657f61b, type: 2}
 --- !u!1 &5556534416351841667
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,38 +1001,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 021c8954cdd7467c982615ead7e470f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementStates: []
-  groundCheckDistance: 0.1
+  movementStates:
+  - {fileID: 11400000, guid: 5e4bcd4b83c261443b9414fe80298e6b, type: 2}
+  - {fileID: 11400000, guid: be1dcc172ba00724ea9b156b06ecc9da, type: 2}
+  - {fileID: 11400000, guid: 9d3d4af720a56e642b1fdbd0543cb6e0, type: 2}
+  - {fileID: 11400000, guid: 1584499b6b911c740bb388239cf6a091, type: 2}
+  - {fileID: 11400000, guid: cd52e72197f988043b0af1aea128d259, type: 2}
+  - {fileID: 11400000, guid: 649c7c004de1d384e894f458425a1d59, type: 2}
+  groundCheckDistance: 0.2
   groundCheckMaxAngle: 50
   <GroundLayer>k__BackingField:
     serializedVersion: 2
-    m_Bits: 0
-  ceilingCheckDistance: 0.1
-  ceilingCrouchCheckDistance: 0.1
-  dashCooldown: 2.5
-  wallCastSample: 15
-  wallCastDistance: 1.5
-  wallRunCastExpension: 1.5
-  wallCastAngle: 60
-  wallrunExitTime: 1
-  wallrunMinHeight: 1.5
+    m_Bits: 256
+  ceilingCheckDistance: 0.5
+  ceilingCrouchCheckDistance: 0.75
+  dashCooldown: 1
+  wallCastSample: 20
+  wallCastDistance: 1
+  wallRunCastExpension: 2
+  wallCastAngle: 90
+  wallrunExitTime: 0.1
+  wallrunMinHeight: 2
   <WallLayer>k__BackingField:
     serializedVersion: 2
-    m_Bits: 0
-  coyoteTime: 10
+    m_Bits: 256
+  coyoteTime: 25
   gravityScale: 2.75
   gravityAlignSpeed: 5
-  <BaseCapsuleHeight>k__BackingField: 2
+  <BaseCapsuleHeight>k__BackingField: 1.7
   <CrouchCapsuleHeight>k__BackingField: 0.5
   <BaseHeadHeight>k__BackingField: 0.5
   <ColliderCenterOffset>k__BackingField: {x: 0, y: -0.5, z: 0}
-  <CameraTransform>k__BackingField: {fileID: 0}
-  <Head>k__BackingField: {fileID: 0}
-  <Foot>k__BackingField: {fileID: 0}
+  <CameraTransform>k__BackingField: {fileID: 5785903728308733047}
+  <Head>k__BackingField: {fileID: 4581234042795819341}
+  <Foot>k__BackingField: {fileID: 5925640226901206663}
   <CapsuleCollider>k__BackingField: {fileID: 1667684208971407432}
   <Rb>k__BackingField: {fileID: 7499400410501169703}
-  <Camera>k__BackingField: {fileID: 0}
-  <CameraController>k__BackingField: {fileID: 0}
+  <Camera>k__BackingField: {fileID: 7401193920116433370}
+  <CameraController>k__BackingField: {fileID: 225607456673580912}
 --- !u!54 &7499400410501169703
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1486,5 +1501,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63357a09b9214d69bc207c691f022c60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCamera: {fileID: 0}
+  playerCamera: {fileID: 7401193920116433370}
   maxDistance: 0

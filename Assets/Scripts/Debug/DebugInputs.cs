@@ -55,14 +55,6 @@ namespace OverBang.GameName.Debug
                 SceneManager.LoadScene("MainMenu");
             }
             
-            // Set PlayerProfile
-            if (Keyboard.current.numpadPeriodKey.wasPressedThisFrame)
-                Mode.SetPlayerProfile(new PlayerProfile()
-                {
-                    characterData = characterData,
-                    playerName = characterData.AgentName
-                });
-
             // Force Character Selection
             if (Keyboard.current.numpad1Key.wasPressedThisFrame)
             {
