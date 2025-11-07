@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Helteix.ChanneledProperties.Priorities;
 using Helteix.Singletons.SceneServices;
-using OverBang.GameName.Core;
 using OverBang.GameName.Core.Characters;
-using OverBang.GameName.Core.Database;
-using OverBang.GameName.Core.Metrics;
 using OverBang.GameName.Managers;
 using OverBang.Pooling;
 using OverBang.Pooling.Dependencies;
+using Unity.Netcode;
 using Unity.Services.Multiplayer;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -21,7 +18,7 @@ namespace OverBang.GameName.Gameplay
         public event Action<List<IPoolDependencyProvider>> OnCollectSceneProviders;
         public LevelState State { get; protected set; }
         
-        private Dictionary<IPlayer, GameObject> currentPlayers;
+        private Dictionary<IPlayer, NetworkObject> currentPlayers;
 
         private GameplayPhase currentPhase;
         private GameplayPhase.GameplaySettings Settings => currentPhase.Settings;
@@ -56,6 +53,11 @@ namespace OverBang.GameName.Gameplay
             if (State == LevelState.Disposed) return;
             
             PoolManager.Instance.ClearPools();
+
+            foreach (KeyValuePair<IPlayer, NetworkObject> player in currentPlayers)
+            {
+                Destroy(player.Value.gameObject);
+            }
             
             State = LevelState.Disposed;
         }
@@ -68,12 +70,12 @@ namespace OverBang.GameName.Gameplay
         
         protected virtual void SetupPlayer()
         {
-            currentPlayers = new Dictionary<IPlayer, GameObject>();
+            currentPlayers = new Dictionary<IPlayer, NetworkObject>();
             IPlayer currentPlayer = SessionManager.Global.CurrentPlayer;
-            
-            if (TryGetCharacterDataByPlayer(currentPlayer, out CharacterData characterData))
+
+            if (currentPlayer.TryGetCharacterDataByPlayer(out CharacterData characterData))
             {
-                GameObject playerObject = Instantiate(characterData.CharacterPrefab);
+                NetworkObject playerObject = NetworkManager.Singleton.SpawnManager.InstantiateAndSpawn(characterData.CharacterPrefab);
                 currentPlayers.Add(currentPlayer, playerObject);
             }
         }
@@ -95,7 +97,7 @@ namespace OverBang.GameName.Gameplay
             using (ListPool<IPoolDependencyProvider>.Get(out List<IPoolDependencyProvider> providers))
             {
                 IPlayer currentPlayer = SessionManager.Global.CurrentPlayer;
-                if (TryGetCharacterDataByPlayer(currentPlayer, out CharacterData characterData))
+                if (currentPlayer.TryGetCharacterDataByPlayer(out CharacterData characterData))
                 {
                     providers.Add(characterData);
                 }
@@ -108,12 +110,6 @@ namespace OverBang.GameName.Gameplay
             }
             
             await Awaitable.MainThreadAsync();
-        }
-
-        private bool TryGetCharacterDataByPlayer(IPlayer player, out CharacterData characterData)
-        {
-            string characterDataPropertyName = ConstID.Global.PlayerPropertyCharacterData;
-            return player.TryGetAssetByPlayerProperty(characterDataPropertyName, out characterData);
         }
     }
 }

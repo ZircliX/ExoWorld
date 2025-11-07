@@ -1,5 +1,9 @@
-﻿using Eflatun.SceneReference;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using Eflatun.SceneReference;
 using OverBang.GameName.Core.Scenes;
+using OverBang.GameName.Core.Utils;
+using OverBang.GameName.Managers;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -18,8 +22,27 @@ namespace OverBang.GameName.Gameplay
 
             if (currentSceneName != gameSceneRef.Path)
             {
-                await SceneLoader.LoadSceneAsync(gameSceneRef.Name);
-                //SceneEventProgressStatus sceneProgress = SceneLoader.NetworkLoadScene(currentSceneName);
+                bool loadingCompleted = false;
+                
+                void OnSceneEvent(SceneEvent sceneEvent)
+                {
+                    if (sceneEvent.SceneName == gameSceneRef.Name && sceneEvent.SceneEventType == SceneEventType.LoadComplete)
+                    {
+                        loadingCompleted = true;
+                    }
+                }
+
+                NetworkManager.Singleton.SceneManager.OnSceneEvent += OnSceneEvent;
+        
+                try
+                {
+                    SceneLoader.NetworkLoadScene(gameSceneRef.Name);
+                    await AwaitableUtils.AwaitableUntil(() => loadingCompleted == true, CancellationToken.None);
+                }
+                finally
+                {
+                    NetworkManager.Singleton.SceneManager.OnSceneEvent -= OnSceneEvent;
+                }
             }
         }
 

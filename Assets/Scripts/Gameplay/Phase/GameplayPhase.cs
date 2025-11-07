@@ -1,5 +1,4 @@
-﻿
-using OverBang.GameName.Core.Phases;
+﻿using OverBang.GameName.Core.Phases;
 using UnityEngine;
 
 namespace OverBang.GameName.Gameplay
@@ -33,15 +32,18 @@ namespace OverBang.GameName.Gameplay
         public async Awaitable OnBegin()
         {
             await LoadScene();
-            await CreateLevelManager();
-            
-            // sétè tro dur mé ct coul
-            // NetworkManager.Singleton.PrefabHandler.AddHandler(15, new CustomNetworkPrefabHandler())
+            LevelManager = await CreateLevelManager();
         }
 
-        public Awaitable OnEnd(bool success)
+        public async Awaitable OnEnd(bool success)
         {
-            return null;
+            LevelManager.Dispose();
+            
+            CurrentEndInfos = new GameplayEndInfos()
+            {
+                isFinished = false,
+                score = success ? 1 : 0,
+            };
         }
 
         protected abstract Awaitable LoadScene();

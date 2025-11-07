@@ -1,4 +1,3 @@
-using Helteix.ChanneledProperties.Priorities;
 using KBCore.Refs;
 using OverBang.GameName.Core.Metrics;
 using OverBang.GameName.Gameplay.Cameras;

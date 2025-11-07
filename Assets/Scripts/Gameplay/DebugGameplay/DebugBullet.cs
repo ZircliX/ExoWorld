@@ -8,6 +8,7 @@ namespace OverBang.GameName.Gameplay.Gameplay.DebugGameplay
     public class DebugBullet : MonoBehaviour, IPoolInstanceListener
     {
         [SerializeField, Self] private Rigidbody rb;
+        public IPool Pool { get; private set; }
 
         private void OnValidate() => this.ValidateRefs();
 
@@ -21,6 +22,7 @@ namespace OverBang.GameName.Gameplay.Gameplay.DebugGameplay
 
         public void OnSpawn(IPool pool)
         {
+            Pool = pool;
             rb.isKinematic = false;
             rb.linearVelocity = Vector3.zero;
         }
@@ -29,6 +31,12 @@ namespace OverBang.GameName.Gameplay.Gameplay.DebugGameplay
         {
             rb.linearVelocity = Vector3.zero;
             rb.isKinematic = true;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (!other.CompareTag("Player"))
+                Pool.Despawn(gameObject);
         }
     }
 }

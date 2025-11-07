@@ -39,7 +39,12 @@ namespace OverBang.GameName.Core.CharacterSelection
 
         public virtual async Awaitable OnBegin()
         {
-            SessionManager.Global.CurrentPlayer.SetProperty(ConstID.Global.PlayerPropertyCharacterData, new PlayerProperty(string.Empty));
+            IPlayer globalCurrentPlayer = SessionManager.Global.CurrentPlayer;
+            if (!globalCurrentPlayer.Properties.ContainsKey(ConstID.Global.PlayerPropertyCharacterData))
+            {
+                globalCurrentPlayer.SetProperty(ConstID.Global.PlayerPropertyCharacterData,
+                    new PlayerProperty(string.Empty));
+            }
         }
 
         public virtual async Awaitable OnEnd(bool success)

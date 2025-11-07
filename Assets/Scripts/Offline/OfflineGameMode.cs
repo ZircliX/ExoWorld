@@ -1,6 +1,4 @@
-using Codice.CM.Common.Tree;
 using OverBang.GameName.Hub;
-using OverBang.GameName.Core;
 using OverBang.GameName.Core.Characters;
 using OverBang.GameName.Core.CharacterSelection;
 using OverBang.GameName.Core.GameMode;
@@ -34,14 +32,15 @@ namespace OverBang.GameName.Offline
         {
             bool isRunning = true;
             bool hasCharacter = false;
-            if (SessionManager.Global.CurrentPlayer.TryGetPlayerProperty(
-                    ConstID.Global.PlayerPropertyCharacterData, out string propertyValue))
-            {
-                hasCharacter = propertyValue != string.Empty;
-            }
-
+            
             while (isRunning)
             {
+                if (SessionManager.Global.CurrentPlayer.TryGetPlayerProperty(
+                        ConstID.Global.PlayerPropertyCharacterData, out string propertyValue))
+                {
+                    hasCharacter = propertyValue != string.Empty;
+                }
+                
                 // Hub
                 SelectionPhase.SelectionSettings selectionSettings = new SelectionPhase.SelectionSettings
                 {
@@ -51,7 +50,6 @@ namespace OverBang.GameName.Offline
                 
                 HubPhase hubPhase = new HubPhase(selectionSettings);
                 bool hubSuccess = await hubPhase.Run();
-                hasCharacter = true;
                 
                 // Gameplay
                 GameplayPhase.GameplaySettings gameplaySettings = new GameplayPhase.GameplaySettings

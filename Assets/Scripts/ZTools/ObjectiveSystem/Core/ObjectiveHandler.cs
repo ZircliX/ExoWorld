@@ -20,7 +20,7 @@ namespace ZTools.ObjectiveSystem.Core
         /// The typed data associated with this objective handler.
         /// Only used internally to avoid casting in derived classes.
         /// </summary>
-        private TS DataTyped;
+        protected TS DataTyped;
         
         /// <summary>
         /// Gets the base <see cref="ObjectiveData"/> associated with this objective.

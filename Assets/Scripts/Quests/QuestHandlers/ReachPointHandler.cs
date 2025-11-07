@@ -1,6 +1,7 @@
 using OverBang.GameName.Quests.QuestData;
 using OverBang.GameName.Quests.QuestEvents;
 using ZTools.ObjectiveSystem.Core;
+using ZTools.RewardSystem.Core;
 
 namespace OverBang.GameName.Quests.QuestHandlers
 {
@@ -18,7 +19,7 @@ namespace OverBang.GameName.Quests.QuestHandlers
 
         protected override void ObjectiveCompleted()
         {
-            
+            RewardManager.ProcessRewards(DataTyped.Rewards);
         }
     }
 }

@@ -8,14 +8,26 @@ namespace OverBang.GameName.Gameplay
         {
         }
 
-        protected override Awaitable LoadScene()
+        protected override async Awaitable LoadScene()
         {
-            throw new System.NotImplementedException();
         }
 
-        protected override Awaitable<LevelManager> CreateLevelManager()
+        protected override async Awaitable<LevelManager> CreateLevelManager()
         {
-            throw new System.NotImplementedException();
+            GameObject levelManager = new GameObject("LevelManager")
+            {
+                hideFlags = HideFlags.NotEditable
+            };
+            
+            LevelManager = levelManager.AddComponent(typeof(LevelManager)) as LevelManager;
+
+            if (LevelManager != null)
+            {
+                await LevelManager.Initialize(this);
+                LevelManager.StartLevel();
+            }
+
+            return LevelManager;
         }
     }
 }

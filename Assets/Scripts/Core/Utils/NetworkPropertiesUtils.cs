@@ -1,4 +1,6 @@
-﻿using OverBang.GameName.Core.Database;
+﻿using OverBang.GameName.Core.Characters;
+using OverBang.GameName.Core.Database;
+using OverBang.GameName.Core.Metrics;
 using Unity.Services.Multiplayer;
 
 namespace OverBang.GameName.Managers
@@ -26,6 +28,12 @@ namespace OverBang.GameName.Managers
 
             return player.TryGetPlayerProperty(propertyName, out string propertyValue) 
                    && propertyValue.TryGetAssetByID(out asset);
+        }
+
+        public static bool TryGetCharacterDataByPlayer(this IPlayer player, out CharacterData characterData)
+        {
+            string characterDataPropertyName = ConstID.Global.PlayerPropertyCharacterData;
+            return player.TryGetAssetByPlayerProperty(characterDataPropertyName, out characterData);
         }
     }
 }

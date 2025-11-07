@@ -9,10 +9,8 @@ namespace OverBang.GameName.Gameplay.Ships
         
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("Entered Ship");
             if (other.CompareTag("Player") && go.activeInHierarchy)
             {
-                Debug.Log("Ending hub phase");
                 _ = currentPhase.End(true);
             }
         }

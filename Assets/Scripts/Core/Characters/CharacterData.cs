@@ -5,6 +5,7 @@ using OverBang.Pooling;
 using OverBang.Pooling.Dependencies;
 using OverBang.Pooling.Resource;
 using Sirenix.OdinInspector;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace OverBang.GameName.Core.Characters
@@ -19,7 +20,7 @@ namespace OverBang.GameName.Core.Characters
         [field: SerializeField] 
         public CharacterClasses CharacterClass { get; private set; }
         [field: SerializeField] 
-        public GameObject CharacterPrefab { get; private set; }
+        public NetworkObject CharacterPrefab { get; private set; }
         [field: SerializeField] 
         public SimplePoolConfig[] Dependencies { get; private set; }
 
