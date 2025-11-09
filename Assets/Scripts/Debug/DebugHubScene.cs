@@ -1,4 +1,3 @@
-using OverBang.GameName.Hub;
 using OverBang.GameName.Offline;
 using UnityEngine;
 
@@ -6,15 +5,11 @@ namespace OverBang.GameName.Debug
 {
     public class DebugHubScene : MonoBehaviour
     {
-        [SerializeField] private int difficulty = 0;
-
-        [SerializeField] private HubPhase.SelectionSettings settings;
-        
-        private void Start()
+        private void Awake()
         {
             if (GameController.CurrentGameMode == null)
             {
-                OfflineGameMode offlineGameMode = OfflineGameMode.Create(0, difficulty);
+                OfflineGameMode offlineGameMode = OfflineGameMode.Create();
                 offlineGameMode.SetGameMode();
             }
             else

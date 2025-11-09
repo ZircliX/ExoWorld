@@ -1,7 +1,4 @@
-using OverBang.GameName.Core;
 using OverBang.GameName.Core.Characters;
-using OverBang.GameName.Core.GameMode;
-using OverBang.GameName.Managers;
 using OverBang.GameName.Offline;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -20,7 +17,7 @@ namespace OverBang.GameName.Debug
         {
             get
             {
-                mode ??= mode.GetOrCreateGameMode(() => OfflineGameMode.Create(0, 0));
+                mode ??= mode.GetOrCreateGameMode(OfflineGameMode.Create);
                 return mode;
             }
         }

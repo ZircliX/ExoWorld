@@ -1,11 +1,8 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Eflatun.SceneReference;
+﻿using Eflatun.SceneReference;
 using OverBang.GameName.Core.Scenes;
-using OverBang.GameName.Core.Utils;
-using OverBang.GameName.Managers;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace OverBang.GameName.Gameplay
 {
@@ -18,31 +15,11 @@ namespace OverBang.GameName.Gameplay
         protected override async Awaitable LoadScene()
         {
             SceneReference gameSceneRef = SceneCollection.Global.GameSceneRef;
-            string currentSceneName = SceneLoader.GetCurrentSceneName();
-
-            if (currentSceneName != gameSceneRef.Path)
+            Scene currentSceneName = SceneLoader.GetCurrentScene();
+    
+            if (currentSceneName.name != gameSceneRef.Name && NetworkManager.Singleton.IsServer)
             {
-                bool loadingCompleted = false;
-                
-                void OnSceneEvent(SceneEvent sceneEvent)
-                {
-                    if (sceneEvent.SceneName == gameSceneRef.Name && sceneEvent.SceneEventType == SceneEventType.LoadComplete)
-                    {
-                        loadingCompleted = true;
-                    }
-                }
-
-                NetworkManager.Singleton.SceneManager.OnSceneEvent += OnSceneEvent;
-        
-                try
-                {
-                    SceneLoader.NetworkLoadScene(gameSceneRef.Name);
-                    await AwaitableUtils.AwaitableUntil(() => loadingCompleted == true, CancellationToken.None);
-                }
-                finally
-                {
-                    NetworkManager.Singleton.SceneManager.OnSceneEvent -= OnSceneEvent;
-                }
+                await SceneLoader.LoadSceneAsync(gameSceneRef.Name, LoadSceneMode.Single);
             }
         }
 

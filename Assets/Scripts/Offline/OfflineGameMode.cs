@@ -6,26 +6,22 @@ using OverBang.GameName.Core.Metrics;
 using OverBang.GameName.Core.Phases;
 using OverBang.GameName.Gameplay;
 using OverBang.GameName.Managers;
+using Unity.Services.Multiplayer;
 using UnityEngine;
 
 namespace OverBang.GameName.Offline
 {
     public class OfflineGameMode : IGameMode
     {
-        public static OfflineGameMode Create(int map, int difficulty)
+        public static OfflineGameMode Create()
         {
-            return new OfflineGameMode(map, difficulty);
+            return new OfflineGameMode();
         }
-
-        public int Map { get; private set; }
-        public int Difficulty { get; private set; }
 
         private GameplayPhase.GameplayEndInfos gameplayEndInfos;
 
-        private OfflineGameMode(int map, int difficulty)
+        private OfflineGameMode()
         {
-            Map = map;
-            Difficulty = difficulty;
         }
 
         public async Awaitable Run()
@@ -35,42 +31,63 @@ namespace OverBang.GameName.Offline
             
             while (isRunning)
             {
-                if (SessionManager.Global.CurrentPlayer.TryGetPlayerProperty(
-                        ConstID.Global.PlayerPropertyCharacterData, out string propertyValue))
-                {
-                    hasCharacter = propertyValue != string.Empty;
-                }
+                hasCharacter = CheckForCharacter(hasCharacter);
                 
                 // Hub
-                SelectionPhase.SelectionSettings selectionSettings = new SelectionPhase.SelectionSettings
-                {
-                    selectionType = hasCharacter ? SelectionPhase.SelectionType.None : SelectionPhase.SelectionType.Pick,
-                    availableClasses = CharacterClasses.All,
-                };
-                
-                HubPhase hubPhase = new HubPhase(selectionSettings);
-                bool hubSuccess = await hubPhase.Run();
-                
-                // Gameplay
-                GameplayPhase.GameplaySettings gameplaySettings = new GameplayPhase.GameplaySettings
-                {
-                };
+                bool hubSuccess = await HandleHubPhase(hasCharacter);
 
-                GameplayPhase gameplayPhase;
-                if (SessionManager.Global.IsHost)
-                {
-                    gameplayPhase = new HostGameplayPhase(gameplaySettings);
-                }
-                else
-                {
-                    gameplayPhase = new ClientGameplayPhase(gameplaySettings);
-                }
-                
-                bool gameplaySuccess = await gameplayPhase.Run();
-                
+                // Gameplay
+                GameplayPhase gameplayPhase = await HandleGameplayPhase();
+
                 if(gameplayPhase.CurrentEndInfos.isFinished)
                     isRunning = false;
             }
         }
+
+        private static bool CheckForCharacter(bool hasCharacter)
+        {
+            if (SessionManager.Global.CurrentPlayer.TryGetPlayerProperty(
+                    ConstID.Global.PlayerPropertyCharacterData, out string propertyValue))
+            {
+                hasCharacter = propertyValue != string.Empty;
+                Debug.Log(hasCharacter);
+            }
+
+            return hasCharacter;
+        }
+
+        private static async Awaitable<bool> HandleHubPhase(bool hasCharacter)
+        {
+            SelectionPhase.SelectionSettings selectionSettings = new SelectionPhase.SelectionSettings
+            {
+                selectionType = hasCharacter ? SelectionPhase.SelectionType.None : SelectionPhase.SelectionType.Pick,
+                availableClasses = CharacterClasses.All,
+            };
+                
+            HubPhase hubPhase = new HubPhase(selectionSettings);
+            bool hubSuccess = await hubPhase.Run();
+            return hubSuccess;
+        }
+        
+        private static async Awaitable<GameplayPhase> HandleGameplayPhase()
+        {
+            GameplayPhase.GameplaySettings gameplaySettings = new GameplayPhase.GameplaySettings
+            {
+            };
+
+            GameplayPhase gameplayPhase;
+            if (SessionManager.Global.IsHost)
+            {
+                gameplayPhase = new HostGameplayPhase(gameplaySettings);
+            }
+            else
+            {
+                gameplayPhase = new ClientGameplayPhase(gameplaySettings);
+            }
+                
+            bool gameplaySuccess = await gameplayPhase.Run();
+            return gameplayPhase;
+        }
+
     }
 }

@@ -53,11 +53,6 @@ namespace OverBang.GameName.Gameplay
             if (State == LevelState.Disposed) return;
             
             PoolManager.Instance.ClearPools();
-
-            foreach (KeyValuePair<IPlayer, NetworkObject> player in currentPlayers)
-            {
-                Destroy(player.Value.gameObject);
-            }
             
             State = LevelState.Disposed;
         }
@@ -75,7 +70,8 @@ namespace OverBang.GameName.Gameplay
 
             if (currentPlayer.TryGetCharacterDataByPlayer(out CharacterData characterData))
             {
-                NetworkObject playerObject = NetworkManager.Singleton.SpawnManager.InstantiateAndSpawn(characterData.CharacterPrefab);
+                NetworkObject playerObject = NetworkManager.Singleton.SpawnManager.
+                    InstantiateAndSpawn(characterData.CharacterPrefab, destroyWithScene:true, isPlayerObject:true);
                 currentPlayers.Add(currentPlayer, playerObject);
             }
         }

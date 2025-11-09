@@ -65,7 +65,7 @@ namespace OverBang.GameName.Core.CharacterSelection
             for (int i = 0; i < characters.Length; i++)
             {
                 if(!characters[i].CharacterClass.Matches(settings.availableClasses))
-                    return;
+                    continue;
                 OnAvailableCharacterAdded?.Invoke(characters[i]);
             }
         }

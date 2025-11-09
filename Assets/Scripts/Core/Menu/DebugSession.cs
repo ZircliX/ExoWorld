@@ -1,5 +1,5 @@
-﻿using System.Linq;
-using OverBang.GameName.Core.Metrics;
+﻿using OverBang.GameName.Core.Metrics;
+using OverBang.GameName.Core.Scenes;
 using OverBang.GameName.Managers;
 using Unity.Netcode;
 using Unity.Services.Authentication;
@@ -34,6 +34,14 @@ namespace OverBang.GameName.Core.Menu
                 if (session == null) return;
                 Debug.Log("Total Players : " + session.PlayerCount);
             }
+
+            if (Keyboard.current.rKey.wasPressedThisFrame)
+            {
+                if (session is { IsHost: true })
+                {
+                    SceneLoader.NetworkLoadScene(GameMetrics.Global.SceneCollection.HubSceneRef.Name, LoadSceneMode.Single);
+                }
+            }
         }
 
         private async void StartSession()
@@ -46,11 +54,6 @@ namespace OverBang.GameName.Core.Menu
             }.WithRelayNetwork();
 
             session = await SessionManager.Global.CreateOrJoinSession(sessionId, options);
-
-            if (session.IsHost)
-            {
-                NetworkManager.Singleton.SceneManager.LoadScene(GameMetrics.Global.SceneCollection.HubSceneRef.Name, LoadSceneMode.Single);
-            }
         }
     }
 }

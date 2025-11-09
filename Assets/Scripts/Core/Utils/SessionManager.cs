@@ -9,6 +9,7 @@ namespace OverBang.GameName.Managers
         public static SessionManager Global => GameController.SessionManager;
         
         public ISession ActiveSession {get; private set;}
+        
         public IPlayer CurrentPlayer => ActiveSession.CurrentPlayer;
         public bool IsHost => ActiveSession.IsHost;
 

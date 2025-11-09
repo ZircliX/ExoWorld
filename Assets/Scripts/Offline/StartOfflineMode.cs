@@ -8,7 +8,7 @@ namespace OverBang.GameName.Offline
     {
         public void StartMode()
         {
-            IGameMode offlineGameMode = OfflineGameMode.Create(0, 0);
+            IGameMode offlineGameMode = OfflineGameMode.Create();
             offlineGameMode.SetGameMode();
         }
     }
