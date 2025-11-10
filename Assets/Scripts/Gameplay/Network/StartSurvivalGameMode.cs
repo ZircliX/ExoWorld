@@ -1,14 +1,13 @@
 using OverBang.GameName.Core.GameMode;
-using OverBang.GameName.Managers;
 using UnityEngine;
 
 namespace OverBang.GameName.Offline
 {
-    public class StartOfflineMode : MonoBehaviour
+    public class StartSurvivalGameMode : MonoBehaviour
     {
         public void StartMode()
         {
-            IGameMode offlineGameMode = OfflineGameMode.Create();
+            IGameMode offlineGameMode = SurvivalGameMode.Create();
             offlineGameMode.SetGameMode();
         }
     }

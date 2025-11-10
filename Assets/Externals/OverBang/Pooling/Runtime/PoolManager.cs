@@ -1,11 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using OverBang.Pooling.Resource;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace OverBang.Pooling
 {
     public class PoolManager : Helteix.Singletons.MonoSingletons.MonoSingleton<PoolManager>
     {
+        public event Action<PoolResource> OnPoolAssetRegistered; 
+        public event Action<PoolResource> OnPoolAssetUnregistered;
+        
         private Dictionary<IPoolConfig, IPool> pools;
         private List<IPool> poolList;
         
@@ -34,7 +39,8 @@ namespace OverBang.Pooling
 
             IPool pool = null;
 
-            switch (poolConfig.PoolResource.Asset)
+            PoolResource poolResource = poolConfig.PoolResource;
+            switch (poolResource.Asset)
             {
                 case PrefabPoolAsset prefabAsset:
                     pool = new Pool<GameObject>(poolParent, poolConfig);
@@ -42,10 +48,11 @@ namespace OverBang.Pooling
 
                 case ResourcePoolAsset resourceAsset:
                     pool = new Pool<Object>(poolParent, poolConfig);
+                    OnPoolAssetRegistered?.Invoke(poolResource);
                     break;
 
                 default:
-                    Debug.LogError($"Unsupported pool asset type {poolConfig.PoolResource.Asset.GetType()}");
+                    Debug.LogError($"Unsupported pool asset type {poolResource.Asset.GetType()}");
                     break;
             }
 
@@ -60,11 +67,19 @@ namespace OverBang.Pooling
         {
             foreach (PoolConfigAsset config in poolConfigs)
             {
-                if (pools.Remove(config, out IPool pool))
-                {
-                    pool.Dispose();
-                }
+                if(UnregisterPool(config))
+                    OnPoolAssetUnregistered?.Invoke(config.PoolResource);
             }
+        }
+
+        public bool UnregisterPool(PoolConfigAsset config)
+        {
+            if (pools.Remove(config, out IPool pool))
+            {
+                pool.Dispose();
+                return true;
+            }
+            return false;
         }
 
         public void ClearPools()

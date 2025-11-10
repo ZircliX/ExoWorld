@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using Helteix.ChanneledProperties.Priorities;
 using Helteix.Singletons.SceneServices;
 using OverBang.GameName.Core.Characters;
+using OverBang.GameName.Core.Core;
+using OverBang.GameName.Core.Metrics;
 using OverBang.GameName.Managers;
 using OverBang.Pooling;
 using OverBang.Pooling.Dependencies;
+using OverBang.Pooling.Resource;
 using Unity.Netcode;
 using Unity.Services.Multiplayer;
 using UnityEngine;
@@ -22,7 +25,41 @@ namespace OverBang.GameName.Gameplay
 
         private GameplayPhase currentPhase;
         private GameplayPhase.GameplaySettings Settings => currentPhase.Settings;
+
+        protected override void Activate()
+        {
+            base.Activate();
+            PoolManager.Instance.OnPoolAssetRegistered += OnPoolAssetRegistered;
+            PoolManager.Instance.OnPoolAssetUnregistered += OnPoolAssetUnregistered;
+        }
+
+        protected override void Deactivate()
+        {
+            base.Deactivate();
+            PoolManager.Instance.OnPoolAssetRegistered -= OnPoolAssetRegistered;
+            PoolManager.Instance.OnPoolAssetUnregistered -= OnPoolAssetUnregistered;
+        }
         
+        private void OnPoolAssetRegistered(PoolResource resource)
+        {
+            switch (resource.Asset)
+            {
+                case PrefabPoolAsset prefabPoolAsset:
+                    PoolingNetworkPrefabHandler networkPrefabHandler = new PoolingNetworkPrefabHandler(resource);
+                    NetworkManager.Singleton.PrefabHandler.AddHandler(prefabPoolAsset.Prefab, networkPrefabHandler);
+                    break;
+            }
+        }
+        private void OnPoolAssetUnregistered(PoolResource resource)
+        {
+            switch (resource.Asset)
+            {
+                case PrefabPoolAsset prefabPoolAsset:
+                    NetworkManager.Singleton.PrefabHandler.RemoveHandler(prefabPoolAsset.Prefab);
+                    break;
+            }
+        }
+
         public virtual async Awaitable Initialize(GameplayPhase phase)
         {
             if (State != LevelState.None)
@@ -70,8 +107,15 @@ namespace OverBang.GameName.Gameplay
 
             if (currentPlayer.TryGetCharacterDataByPlayer(out CharacterData characterData))
             {
-                NetworkObject playerObject = NetworkManager.Singleton.SpawnManager.
-                    InstantiateAndSpawn(characterData.CharacterPrefab, destroyWithScene:true, isPlayerObject:true);
+                ulong clientID = NetworkManager.Singleton.LocalClient.ClientId;
+                NetworkObject playerObject = Instantiate(GameMetrics.Global.PlayerControllerPrefab);
+                playerObject.SpawnAsPlayerObject(clientID, destroyWithScene: true);
+
+                if (playerObject.TryGetComponent(out IPlayerController playerController))
+                {
+                    playerController.SetDataRpc(characterData.ID);
+                }
+                
                 currentPlayers.Add(currentPlayer, playerObject);
             }
         }

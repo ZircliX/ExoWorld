@@ -15,13 +15,17 @@ namespace OverBang.GameName.Core.Characters
     {
         [field: SerializeField] 
         public string AgentName { get; private set; }
+        
         [field: SerializeField]
         public Sprite AgentSprite { get; private set; }
+        
         [field: SerializeField] 
         public CharacterClasses CharacterClass { get; private set; }
+        
         [field: SerializeField] 
-        public NetworkObject CharacterPrefab { get; private set; }
-        [field: SerializeField] 
+        public GameObject ModelPrefab { get; private set; }
+        
+        [field: SerializeField, Space] 
         public SimplePoolConfig[] Dependencies { get; private set; }
 
         [field: SerializeField, ReadOnly]

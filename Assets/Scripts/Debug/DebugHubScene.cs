@@ -9,8 +9,8 @@ namespace OverBang.GameName.Debug
         {
             if (GameController.CurrentGameMode == null)
             {
-                OfflineGameMode offlineGameMode = OfflineGameMode.Create();
-                offlineGameMode.SetGameMode();
+                SurvivalGameMode survivalGameMode = SurvivalGameMode.Create();
+                survivalGameMode.SetGameMode();
             }
             else
             {

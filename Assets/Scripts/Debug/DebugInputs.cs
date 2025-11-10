@@ -11,13 +11,13 @@ namespace OverBang.GameName.Debug
         [SerializeField] private CharacterData characterData;
         private static DebugInputs instance;
 
-        private OfflineGameMode mode;
+        private SurvivalGameMode mode;
 
-        public OfflineGameMode Mode
+        public SurvivalGameMode Mode
         {
             get
             {
-                mode ??= mode.GetOrCreateGameMode(OfflineGameMode.Create);
+                mode ??= mode.GetOrCreateGameMode(SurvivalGameMode.Create);
                 return mode;
             }
         }
@@ -36,7 +36,7 @@ namespace OverBang.GameName.Debug
             instance = this;
             DontDestroyOnLoad(gameObject);
 
-            mode = GameController.CurrentGameMode as OfflineGameMode;
+            mode = GameController.CurrentGameMode as SurvivalGameMode;
         }
         
         private void OnDestroy()

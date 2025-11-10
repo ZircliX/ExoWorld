@@ -1,5 +1,8 @@
 ﻿using OverBang.GameName.Core.Characters;
+using OverBang.GameName.Core.Core;
+using OverBang.GameName.Core.Metrics;
 using OverBang.GameName.Core.Phases;
+using OverBang.GameName.Managers;
 using Unity.Netcode;
 using Unity.Services.Multiplayer;
 
@@ -19,8 +22,14 @@ namespace OverBang.GameName.Hub
 
         private void SpawnPlayer(IPlayer player, CharacterData characterData)
         {
-            NetworkObject playerObject = NetworkManager.Singleton.SpawnManager.
-                InstantiateAndSpawn(characterData.CharacterPrefab, destroyWithScene:true, isPlayerObject:true);
+            ulong clientID = NetworkManager.Singleton.LocalClient.ClientId;
+            NetworkObject playerObject = Instantiate(GameMetrics.Global.PlayerControllerPrefab);
+            playerObject.SpawnAsPlayerObject(clientID, destroyWithScene: true);
+
+            if (playerObject.TryGetComponent(out IPlayerController playerController))
+            {
+                playerController.SetDataRpc(characterData.ID);
+            }
         }
     }
 }

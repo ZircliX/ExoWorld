@@ -11,16 +11,16 @@ using UnityEngine;
 
 namespace OverBang.GameName.Offline
 {
-    public class OfflineGameMode : IGameMode
+    public class SurvivalGameMode : IGameMode
     {
-        public static OfflineGameMode Create()
+        public static SurvivalGameMode Create()
         {
-            return new OfflineGameMode();
+            return new SurvivalGameMode();
         }
 
         private GameplayPhase.GameplayEndInfos gameplayEndInfos;
 
-        private OfflineGameMode()
+        private SurvivalGameMode()
         {
         }
 
