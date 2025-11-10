@@ -3,7 +3,7 @@ using OverBang.Pooling;
 using OverBang.Pooling.Resource;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.Gameplay.DebugGameplay
+namespace OverBang.GameName.Gameplay
 {
     public class DebugBullet : MonoBehaviour, IPoolInstanceListener
     {

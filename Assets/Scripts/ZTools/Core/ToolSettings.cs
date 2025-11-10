@@ -1,7 +1,7 @@
 using UnityEngine;
-using ZTools.Logger.Core.Enums;
+using ZTools.Core.ZTools.Core.Enums;
 
-namespace ZTools.Core.Settings
+namespace ZTools.Core.ZTools.Core
 {
     [System.Serializable]
     public struct ToolSettings

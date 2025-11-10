@@ -1,8 +1,7 @@
-using OverBang.GameName.Gameplay.Movement;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace OverBang.GameName.Gameplay.Cameras
+namespace OverBang.GameName.Gameplay
 {
     public class PlayerCamera : MonoBehaviour
     {

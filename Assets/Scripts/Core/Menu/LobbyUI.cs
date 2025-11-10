@@ -1,10 +1,9 @@
-﻿using OverBang.GameName.Managers;
-using TMPro;
+﻿using TMPro;
 using Unity.Services.Multiplayer;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace OverBang.GameName.Core.Menu
+namespace OverBang.GameName.Core
 {
     public class LobbyUI : MonoBehaviour, IPointerClickHandler
     {

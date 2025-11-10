@@ -1,9 +1,8 @@
-using OverBang.GameName.Core.Scenes;
 using Sirenix.OdinInspector;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace OverBang.GameName.Core.Metrics
+namespace OverBang.GameName.Core
 {
     [CreateAssetMenu(menuName = "OverBang/Metrics/GameMetrics")]
     public partial class GameMetrics : ScriptableObject

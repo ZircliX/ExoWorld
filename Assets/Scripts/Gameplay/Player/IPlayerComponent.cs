@@ -1,6 +1,6 @@
-﻿using OverBang.GameName.Core.Characters;
+﻿using OverBang.GameName.Core;
 
-namespace OverBang.GameName.Gameplay.Player
+namespace OverBang.GameName.Gameplay
 {
     public interface IPlayerComponent
     {

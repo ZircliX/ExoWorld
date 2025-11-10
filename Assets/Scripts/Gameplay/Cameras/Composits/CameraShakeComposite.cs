@@ -1,4 +1,4 @@
-namespace OverBang.GameName.Gameplay.Cameras
+namespace OverBang.GameName.Gameplay.Composits
 {
     [System.Serializable]
     public struct CameraShakeComposite

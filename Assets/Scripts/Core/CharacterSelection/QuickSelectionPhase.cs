@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace OverBang.GameName.Core.CharacterSelection
+namespace OverBang.GameName.Core
 {
     public class QuickSelectionPhase : SelectionPhase
     {

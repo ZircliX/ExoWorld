@@ -1,8 +1,5 @@
 using Eflatun.SceneReference;
-using OverBang.GameName.Core.Characters;
-using OverBang.GameName.Core.CharacterSelection;
-using OverBang.GameName.Core.Scenes;
-using OverBang.GameName.Managers;
+using OverBang.GameName.Core;
 using Unity.Netcode;
 using Unity.Services.Multiplayer;
 using UnityEngine;

@@ -1,7 +1,7 @@
-using OverBang.GameName.Core.GameMode;
+using OverBang.GameName.Core;
 using UnityEngine;
 
-namespace OverBang.GameName.Offline
+namespace OverBang.GameName.Gameplay
 {
     public class StartSurvivalGameMode : MonoBehaviour
     {

@@ -1,4 +1,4 @@
-﻿namespace OverBang.GameName.Core.Core
+﻿namespace OverBang.GameName.Core
 {
     public interface IPlayerController
     {

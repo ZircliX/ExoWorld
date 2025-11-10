@@ -1,12 +1,10 @@
 using Helteix.Tools;
-using OverBang.GameName.Core.Characters;
-using OverBang.GameName.Core.Core;
-using OverBang.GameName.Managers;
-using OverBang.GameName.Online.Network;
+using OverBang.GameName.Core;
+using OverBang.GameName.Gameplay.Data;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.Player
+namespace OverBang.GameName.Gameplay
 {
     public class PlayerController : NetworkBehaviour, IPlayerController
     {

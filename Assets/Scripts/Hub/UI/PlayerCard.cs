@@ -1,7 +1,7 @@
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.Hub
+namespace OverBang.GameName.Hub
 {
     public class PlayerCard : MonoBehaviour
     {

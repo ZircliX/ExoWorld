@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.Combat
+namespace OverBang.GameName.Gameplay.Bullets
 {
     public abstract class Bullet : MonoBehaviour
     {

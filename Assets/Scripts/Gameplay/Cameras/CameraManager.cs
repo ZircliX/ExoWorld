@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using Helteix.Singletons.MonoSingletons;
-using OverBang.GameName.Core.Metrics;
+using OverBang.GameName.Core;
 
-namespace OverBang.GameName.Gameplay.Cameras
+namespace OverBang.GameName.Gameplay
 {
     public class CameraManager : MonoSingleton<CameraManager>
     {

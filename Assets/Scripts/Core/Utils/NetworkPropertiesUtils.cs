@@ -1,9 +1,6 @@
-﻿using OverBang.GameName.Core.Characters;
-using OverBang.GameName.Core.Database;
-using OverBang.GameName.Core.Metrics;
-using Unity.Services.Multiplayer;
+﻿using Unity.Services.Multiplayer;
 
-namespace OverBang.GameName.Managers
+namespace OverBang.GameName.Core
 {
     public static class NetworkPropertiesUtils
     {

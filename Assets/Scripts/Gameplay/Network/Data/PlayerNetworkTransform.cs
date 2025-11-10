@@ -1,7 +1,7 @@
 using Unity.Netcode;
 using UnityEngine;
 
-namespace OverBang.GameName.Online.Network
+namespace OverBang.GameName.Gameplay.Data
 {
     public struct PlayerNetworkTransform : INetworkSerializable
     {

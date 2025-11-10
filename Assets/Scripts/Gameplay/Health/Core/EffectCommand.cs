@@ -1,7 +1,9 @@
 using System.Collections;
+using OverBang.GameName.Gameplay.Core.Interfaces;
+using OverBang.GameName.Gameplay.Core.Structs;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.Health
+namespace OverBang.GameName.Gameplay.Core
 {
     public class EffectCommand
     {

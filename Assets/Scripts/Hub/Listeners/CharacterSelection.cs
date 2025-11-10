@@ -1,9 +1,7 @@
 using System.Collections.Generic;
 using DG.Tweening;
 using Helteix.ChanneledProperties.Priorities;
-using OverBang.GameName.Core.Characters;
-using OverBang.GameName.Core.CharacterSelection;
-using OverBang.GameName.Core.Phases;
+using OverBang.GameName.Core;
 using UnityEngine;
 
 namespace OverBang.GameName.Hub

@@ -1,8 +1,7 @@
-using OverBang.GameName.Core.Phases;
-using OverBang.GameName.Hub;
+using OverBang.GameName.Core;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.Hub
+namespace OverBang.GameName.Hub
 {
     public class HubStartButton : MonoPhaseListener<HubPhase>
     {

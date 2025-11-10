@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using OverBang.GameName.Managers;
 using Unity.Services.Core;
 using Unity.Services.Multiplayer;
 using UnityEngine;
 
-namespace OverBang.GameName.Core.Menu
+namespace OverBang.GameName.Core
 {
     public class LobbiesUI : MonoBehaviour
     {

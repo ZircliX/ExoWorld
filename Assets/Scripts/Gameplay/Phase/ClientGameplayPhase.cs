@@ -19,7 +19,7 @@ namespace OverBang.GameName.Gameplay
                 hideFlags = HideFlags.NotEditable
             };
             
-            LevelManager = levelManager.AddComponent(typeof(LevelManager)) as LevelManager;
+            LevelManager = levelManager.AddComponent<LevelManager>();
 
             if (LevelManager != null)
             {

@@ -1,11 +1,12 @@
 using System;
 using UnityEngine;
-using ZTools.Logger.Core.Interfaces;
-using ZTools.ObjectiveSystem.Core.Data;
-using ZTools.ObjectiveSystem.Core.Enum;
-using ZTools.ObjectiveSystem.Core.Interfaces;
+using ZTools.Logger.Core.ZTools.Logger.Core.Interfaces;
+using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Data;
+using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Enum;
+using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Interfaces;
+using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Structs;
 
-namespace ZTools.ObjectiveSystem.Core
+namespace ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core
 {
     public abstract class ObjectiveHandler<TS, TV> : IObjectiveHandler, ILogSource
         where TS : ObjectiveData

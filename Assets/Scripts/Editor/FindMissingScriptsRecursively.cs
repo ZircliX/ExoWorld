@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace AndroidUltimatePlugin.Helpers.Editor
+namespace OverBang.GameName.Editor
 {
     public class FindMissingScriptsRecursively : EditorWindow
     {

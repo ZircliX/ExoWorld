@@ -1,12 +1,8 @@
 ﻿using System;
-using OverBang.GameName.Core.Characters;
-using OverBang.GameName.Core.Metrics;
-using OverBang.GameName.Core.Phases;
-using OverBang.GameName.Managers;
 using Unity.Services.Multiplayer;
 using UnityEngine;
 
-namespace OverBang.GameName.Core.CharacterSelection
+namespace OverBang.GameName.Core
 {
     public abstract class SelectionPhase : IPhase
     {

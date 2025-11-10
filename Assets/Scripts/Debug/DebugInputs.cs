@@ -1,5 +1,5 @@
-using OverBang.GameName.Core.Characters;
-using OverBang.GameName.Offline;
+using OverBang.GameName.Core;
+using OverBang.GameName.Gameplay;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;

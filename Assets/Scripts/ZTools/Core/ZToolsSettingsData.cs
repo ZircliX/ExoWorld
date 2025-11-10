@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
-using ZTools.Logger.Core.Enums;
+using ZTools.Core.ZTools.Core.Enums;
 
-namespace ZTools.Core.Settings
+namespace ZTools.Core.ZTools.Core
 {
     [CreateAssetMenu(fileName = "ZToolsSettingsData", menuName = "ZTools/Settings/ZToolsSettingsData", order = 1)]
     public class ZToolsSettingsData : ScriptableObject

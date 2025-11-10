@@ -2,7 +2,7 @@
 using Unity.Services.Multiplayer;
 using UnityEngine;
 
-namespace OverBang.GameName.Managers
+namespace OverBang.GameName.Core
 {
     public class SessionManager
     {

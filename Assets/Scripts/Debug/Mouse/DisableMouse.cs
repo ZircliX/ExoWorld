@@ -1,5 +1,5 @@
 using Helteix.ChanneledProperties.Priorities;
-using OverBang.GameName.Managers;
+using OverBang.GameName.Core;
 using UnityEngine;
 
 namespace OverBang.GameName.Debug.Mouse

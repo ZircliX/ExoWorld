@@ -1,7 +1,7 @@
-using OverBang.GameName.Core.Phases;
+using OverBang.GameName.Core;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.Ships
+namespace OverBang.GameName.Gameplay
 {
     public class Ship : MonoPhaseListener<GameplayPhase>
     {

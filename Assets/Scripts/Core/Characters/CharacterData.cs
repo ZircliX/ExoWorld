@@ -1,14 +1,12 @@
 using System;
 using System.Collections.Generic;
-using OverBang.GameName.Core.Database;
 using OverBang.Pooling;
 using OverBang.Pooling.Dependencies;
 using OverBang.Pooling.Resource;
 using Sirenix.OdinInspector;
-using Unity.Netcode;
 using UnityEngine;
 
-namespace OverBang.GameName.Core.Characters
+namespace OverBang.GameName.Core
 {
     [CreateAssetMenu(fileName = "New Agent Data", menuName = "OverBang/Agent Data", order = 0)]
     public class CharacterData : ScriptableObject, IPoolDependencyProvider, IDatabaseAsset

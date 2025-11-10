@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace OverBang.GameName.Gameplay.Quests
+namespace OverBang.GameName.Gameplay
 {
     [RequireComponent(typeof(Collider))]
     public class RepairStart : MonoBehaviour

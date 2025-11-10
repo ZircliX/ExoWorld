@@ -1,7 +1,6 @@
 using UnityEngine;
-using ZTools.RewardSystem.Core.Interfaces;
 
-namespace ZTools.RewardSystem.Core.Data
+namespace ZTools.RewardSystem.Core.ZTools.RewardSystem.Core.Data
 {
     public abstract class RewardData : ScriptableObject
     {

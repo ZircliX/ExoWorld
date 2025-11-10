@@ -1,14 +1,8 @@
 using System;
 using Helteix.ChanneledProperties.Priorities;
-using OverBang.GameName.Core.Database;
-using OverBang.GameName.Core.GameMode;
-using OverBang.GameName.Core.Metrics;
-using OverBang.GameName.Core.Phases;
-using OverBang.GameName.Core.Utils;
-using OverBang.GameName.Managers;
 using UnityEngine;
 
-namespace OverBang.GameName
+namespace OverBang.GameName.Core
 {
     public static partial class GameController
     {

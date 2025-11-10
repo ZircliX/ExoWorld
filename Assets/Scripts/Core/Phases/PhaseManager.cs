@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace OverBang.GameName.Core.Phases
+namespace OverBang.GameName.Core
 {
     public class PhaseManager
     {

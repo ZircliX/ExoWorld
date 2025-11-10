@@ -1,11 +1,10 @@
 using System;
 using System.Threading;
-using OverBang.GameName.Core.Utils;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace OverBang.GameName.Core.Scenes
+namespace OverBang.GameName.Core
 {
     public static class SceneLoader
     {

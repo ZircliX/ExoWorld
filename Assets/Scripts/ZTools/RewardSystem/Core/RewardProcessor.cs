@@ -1,9 +1,9 @@
 using UnityEngine;
-using ZTools.Logger.Core.Interfaces;
-using ZTools.RewardSystem.Core.Data;
-using ZTools.RewardSystem.Core.Interfaces;
+using ZTools.Logger.Core.ZTools.Logger.Core.Interfaces;
+using ZTools.RewardSystem.Core.ZTools.RewardSystem.Core.Data;
+using ZTools.RewardSystem.Core.ZTools.RewardSystem.Core.Interfaces;
 
-namespace ZTools.RewardSystem.Core
+namespace ZTools.RewardSystem.Core.ZTools.RewardSystem.Core
 {
     public abstract class RewardProcessor<T> : MonoBehaviour, IRewardProcessor, ILogSource
         where T : RewardData

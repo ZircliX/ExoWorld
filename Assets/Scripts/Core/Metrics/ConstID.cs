@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace OverBang.GameName.Core.Metrics
+namespace OverBang.GameName.Core
 {
     [System.Serializable]
     public struct ConstID

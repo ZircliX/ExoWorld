@@ -1,4 +1,4 @@
-﻿namespace OverBang.GameName.Core.Database
+﻿namespace OverBang.GameName.Core
 {
     public interface IDatabaseAsset
     {

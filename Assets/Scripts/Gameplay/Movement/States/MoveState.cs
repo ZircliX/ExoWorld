@@ -1,7 +1,7 @@
 using Unity.Cinemachine;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.Movement.States
+namespace OverBang.GameName.Gameplay.States
 {
     public abstract class MoveState : MovementStateBehavior
     {

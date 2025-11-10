@@ -1,6 +1,8 @@
+using OverBang.GameName.Gameplay.Core;
+using OverBang.GameName.Gameplay.Core.Structs;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.Health
+namespace OverBang.GameName.Gameplay.Implementations
 {
     public class HealthPlayerSample : MonoBehaviour
     {

@@ -1,15 +1,8 @@
+using OverBang.GameName.Core;
 using OverBang.GameName.Hub;
-using OverBang.GameName.Core.Characters;
-using OverBang.GameName.Core.CharacterSelection;
-using OverBang.GameName.Core.GameMode;
-using OverBang.GameName.Core.Metrics;
-using OverBang.GameName.Core.Phases;
-using OverBang.GameName.Gameplay;
-using OverBang.GameName.Managers;
-using Unity.Services.Multiplayer;
 using UnityEngine;
 
-namespace OverBang.GameName.Offline
+namespace OverBang.GameName.Gameplay
 {
     public class SurvivalGameMode : IGameMode
     {

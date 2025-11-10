@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace OverBang.GameName.Core.Database
+namespace OverBang.GameName.Core
 {
     [CreateAssetMenu(fileName = "New GameDatabase", menuName = "OverBang/GameDatabase", order = 0)]
     public class GameDatabase : ScriptableObject

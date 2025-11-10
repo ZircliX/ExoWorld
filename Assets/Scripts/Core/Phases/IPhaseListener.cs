@@ -1,4 +1,4 @@
-﻿namespace OverBang.GameName.Core.Phases
+﻿namespace OverBang.GameName.Core
 {
     public interface IPhaseListener<in T> : IPhaseListener where T : IPhase
     {

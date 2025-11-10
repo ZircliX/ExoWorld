@@ -1,5 +1,5 @@
 ﻿using Eflatun.SceneReference;
-using OverBang.GameName.Core.Scenes;
+using OverBang.GameName.Core;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -30,7 +30,7 @@ namespace OverBang.GameName.Gameplay
                 hideFlags = HideFlags.NotEditable
             };
             
-            LevelManager = levelManager.AddComponent(typeof(LevelManager)) as LevelManager;
+            LevelManager = levelManager.AddComponent<LevelManager>();
 
             if (LevelManager != null)
             {

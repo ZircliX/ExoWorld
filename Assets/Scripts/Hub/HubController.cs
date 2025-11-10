@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.Hub
+namespace OverBang.GameName.Hub
 {
     public class HubController : MonoBehaviour
     {

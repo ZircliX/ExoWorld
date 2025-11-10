@@ -1,7 +1,7 @@
-using ZTools.RewardSystem.Core;
-using ZTools.RewardSystem.Sample.Data;
+using ZTools.RewardSystem.Core.ZTools.RewardSystem.Core;
+using ZTools.RewardSystem.Sample.ZTools.RewardSystem.Sample.Scripts.Data;
 
-namespace ZTools.RewardSystem.Sample
+namespace ZTools.RewardSystem.Sample.ZTools.RewardSystem.Sample.Scripts
 {
     public class ItemRewardProcessor : RewardProcessor<InventoryItemRewardData>
     {

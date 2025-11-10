@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using Helteix.ChanneledProperties.Priorities;
 using Helteix.Singletons.SceneServices;
-using OverBang.GameName.Core.Characters;
-using OverBang.GameName.Core.Core;
-using OverBang.GameName.Core.Metrics;
-using OverBang.GameName.Managers;
+using OverBang.GameName.Core;
 using OverBang.Pooling;
 using OverBang.Pooling.Dependencies;
 using OverBang.Pooling.Resource;

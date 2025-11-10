@@ -1,6 +1,4 @@
-﻿using OverBang.GameName.Core.Database;
-
-namespace OverBang.GameName.Managers
+﻿namespace OverBang.GameName.Core
 {
     public static class GameDatabaseUtils
     {

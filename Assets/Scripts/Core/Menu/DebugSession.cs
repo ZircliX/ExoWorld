@@ -1,15 +1,11 @@
-﻿using OverBang.GameName.Core.Metrics;
-using OverBang.GameName.Core.Scenes;
-using OverBang.GameName.Managers;
-using Unity.Netcode;
-using Unity.Services.Authentication;
+﻿using Unity.Services.Authentication;
 using Unity.Services.Core;
 using Unity.Services.Multiplayer;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-namespace OverBang.GameName.Core.Menu
+namespace OverBang.GameName.Core
 {
     public class DebugSession : MonoBehaviour
     {

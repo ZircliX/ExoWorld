@@ -1,6 +1,4 @@
-﻿using OverBang.GameName.Core.Phases;
-
-namespace OverBang.GameName.Gameplay.Gameplay.Listeners
+﻿namespace OverBang.GameName.Core
 {
     public abstract class PhaseListener<T> : IPhaseListener<T> where T : IPhase
     {
