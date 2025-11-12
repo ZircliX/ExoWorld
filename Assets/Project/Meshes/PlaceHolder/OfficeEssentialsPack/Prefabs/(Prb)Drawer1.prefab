@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1056496622087331895}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: (Prb)Drawer1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 8066954008036387652}
   - component: {fileID: 2495015756079353697}
   - component: {fileID: 5179135243558658673}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: drawer1_cabinet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,6 +94,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -116,6 +118,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -153,7 +156,7 @@ GameObject:
   - component: {fileID: 8891986365626263866}
   - component: {fileID: 7134806101153601851}
   - component: {fileID: 7800762080112486165}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: drawer1_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,6 +206,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -224,6 +229,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -261,7 +267,7 @@ GameObject:
   - component: {fileID: 549953697845522612}
   - component: {fileID: 2948017894787045430}
   - component: {fileID: 3158040383376775415}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: drawer1_cabinet1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,6 +317,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -333,6 +341,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -367,7 +376,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5161900621857732705}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: drawer1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

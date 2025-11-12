@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 244553815089755531}
   - component: {fileID: 2142209188595175697}
   - component: {fileID: 2157246261016104394}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spotlight_wing_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,6 +61,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
@@ -82,6 +84,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -97,7 +100,7 @@ GameObject:
   - component: {fileID: 7961644302379082431}
   - component: {fileID: 2148729774643757063}
   - component: {fileID: 2589393178056551187}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spotlight_Lens
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,6 +150,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
@@ -168,6 +173,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -183,7 +189,7 @@ GameObject:
   - component: {fileID: 3197499246426665341}
   - component: {fileID: 7384641149758506043}
   - component: {fileID: 4438923196512041604}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spotlight_wing_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,6 +239,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
@@ -254,6 +262,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -269,7 +278,7 @@ GameObject:
   - component: {fileID: 8304577911710584325}
   - component: {fileID: 2025283205283449720}
   - component: {fileID: 4914547944397673563}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spotlight_wing_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319,6 +328,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
@@ -340,6 +351,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -355,7 +367,7 @@ GameObject:
   - component: {fileID: 1031117691198916261}
   - component: {fileID: 2425376611918232099}
   - component: {fileID: 6043138991229849130}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tripod_Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -406,6 +418,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
@@ -427,6 +441,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -443,7 +458,7 @@ GameObject:
   - component: {fileID: 4126798600079534711}
   - component: {fileID: 4529563913972098093}
   - component: {fileID: 4252982005387196853}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -699,7 +714,7 @@ GameObject:
   - component: {fileID: 3489191794758736361}
   - component: {fileID: 3152073359768677078}
   - component: {fileID: 364282540510100317}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spotlight_wing_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -749,6 +764,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
@@ -770,6 +787,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -785,7 +803,7 @@ GameObject:
   - component: {fileID: 4143302112860216674}
   - component: {fileID: 1504145194653637985}
   - component: {fileID: 3590474122446220807}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HDRPSamplesSpotlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -836,6 +854,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
@@ -857,6 +877,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -872,7 +893,7 @@ GameObject:
   - component: {fileID: 8109572768922345645}
   - component: {fileID: 3917696126225203502}
   - component: {fileID: 8521625108831272740}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spotlight_Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -928,6 +949,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
@@ -949,6 +972,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0

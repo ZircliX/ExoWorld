@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8473409441100465802}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: clock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 7998226814304881963}
   - component: {fileID: 9034327721246490980}
   - component: {fileID: 2603297534265124569}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: clock_seconds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,6 +97,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -118,6 +120,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -155,7 +158,7 @@ GameObject:
   - component: {fileID: 2484872832566584214}
   - component: {fileID: 6484487973475134660}
   - component: {fileID: 3773488079165872801}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: clock_minute
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,6 +208,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -226,6 +231,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -263,7 +269,7 @@ GameObject:
   - component: {fileID: 4148243934598596431}
   - component: {fileID: 3873559618986983031}
   - component: {fileID: 4613306871175076029}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: clock_hour
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,6 +319,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -334,6 +342,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -371,7 +380,7 @@ GameObject:
   - component: {fileID: 7676053748732163822}
   - component: {fileID: 1991845478663690471}
   - component: {fileID: 2834006093350662649}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: clock_body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -421,6 +430,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -443,6 +454,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -477,7 +489,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7420932954599747970}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: (Prb)Clock
   m_TagString: Untagged
   m_Icon: {fileID: 0}

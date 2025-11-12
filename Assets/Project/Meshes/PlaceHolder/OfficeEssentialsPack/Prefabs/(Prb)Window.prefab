@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8377026891862300069}
   - component: {fileID: 5096259357889569019}
   - component: {fileID: 4954604594032033478}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: window_blinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,6 +62,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -84,6 +86,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -121,7 +124,7 @@ GameObject:
   - component: {fileID: 2894231210503081214}
   - component: {fileID: 5400335714751017653}
   - component: {fileID: 3980690202776514149}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: window_body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,6 +174,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -193,6 +198,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -227,7 +233,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3404955811961125688}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +266,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7273810965948066530}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: (Prb)Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
