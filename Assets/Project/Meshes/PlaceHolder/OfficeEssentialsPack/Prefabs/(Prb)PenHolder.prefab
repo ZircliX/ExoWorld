@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 697422240011838758}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: (Prb)PenHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 4571191255041767885}
   - component: {fileID: 7704702765773817277}
   - component: {fileID: 5558677657471461002}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: penHolder_pen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,6 +94,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -116,6 +118,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -155,7 +158,7 @@ GameObject:
   - component: {fileID: 4244917146373649109}
   - component: {fileID: 113702135756542858}
   - component: {fileID: 4160675182322110632}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: penHolder_marker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,6 +208,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -228,6 +233,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -267,7 +273,7 @@ GameObject:
   - component: {fileID: 1662002267798315496}
   - component: {fileID: 5776593862529010565}
   - component: {fileID: 1014840700694782919}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: penHolder_pencil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -317,6 +323,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -340,6 +348,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -379,7 +388,7 @@ GameObject:
   - component: {fileID: 4052818560558346014}
   - component: {fileID: 6429394282814052743}
   - component: {fileID: 1824495335605007579}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: penHolder_body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,6 +438,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -450,6 +461,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -484,7 +496,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5653690427253510351}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: penHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

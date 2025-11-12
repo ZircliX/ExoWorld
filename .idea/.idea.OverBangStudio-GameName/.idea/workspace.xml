@@ -5,142 +5,73 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1604e208-f0b5-49be-bc96-e3b796502da2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/CharacterSelection.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/CharacterSelection/QuickSelectionPhase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/CharacterSelection/QuickSelectionPhase.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/CharacterSelection/SelectionPhase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/CharacterSelection/SelectionPhase.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Managers/CustomNetworkPrefabHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Managers/CustomNetworkPrefabHandler.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Phases.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Phases/IPhase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Phases/IPhase.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Phases/IPhaseListener.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Phases/IPhaseListener.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Phases/MonoPhaseListener.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Phases/MonoPhaseListener.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Phases/PhaseListener.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Phases/PhaseManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Phases/PhaseManager.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Phases/PhaseUtils.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Phases/PhaseUtils.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Phase/ClientGameplayPhase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Phase/ClientGameplayPhase.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Phase/HostGameplayPhase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Phase/HostGameplayPhase.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OverBangStudio-GameName/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OverBangStudio-GameName/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetGroupSortSettings.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetGroupSortSettings.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetSettings.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetSettings.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroupTemplates.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroupTemplates/Packed Assets.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroupTemplates/Packed Assets.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Characters.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Characters.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/HubPools.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/HubPools.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Characters_BundledAssetGroupSchema.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Characters_BundledAssetGroupSchema.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Default Local Group_BundledAssetGroupSchema.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Default Local Group_BundledAssetGroupSchema.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Default Local Group_ContentUpdateGroupSchema.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Default Local Group_ContentUpdateGroupSchema.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/DataBuilders.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/DataBuilders/BuildScriptFastMode.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/DataBuilders/BuildScriptFastMode.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/DataBuilders/BuildScriptPackedMode.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/DataBuilders/BuildScriptPackedMode.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/DataBuilders/BuildScriptPackedPlayMode.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/DataBuilders/BuildScriptPackedPlayMode.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/DefaultObject.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/DefaultObject.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/ProfileDataSourceSettings.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/ProfileDataSourceSettings.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/Windows.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Editor/AddressablePoolAssetEditor.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Editor/AddressablePoolAssetEditor.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Editor/PoolResourceEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Editor/PoolResourceEditor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolAsset/AddressablePoolAsset.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolAsset/AddressablePoolAsset.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/AddressablesInspectors.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/AddressablesInspectors.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Internal.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Internal/OdinAddressableReflection.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Internal/OdinAddressableReflection.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Internal/OdinAddressableReflectionValidator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Internal/OdinAddressableReflectionValidator.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Sirenix.OdinInspector.Modules.Unity.Addressables.asmdef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Sirenix.OdinInspector.Modules.Unity.Addressables.asmdef.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Validators.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Validators/AssetLabelReferenceValidator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Validators/AssetLabelReferenceValidator.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Validators/AssetReferenceValidator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Validators/AssetReferenceValidator.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Validators/CheckDuplicateBundleDependenciesValidator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Validators/CheckDuplicateBundleDependenciesValidator.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Validators/CheckResourcesToAddressableDuplicateDependenciesValidator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Validators/CheckResourcesToAddressableDuplicateDependenciesValidator.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Validators/DisallowAddressableSubAssetFieldAttributeValidator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Validators/DisallowAddressableSubAssetFieldAttributeValidator.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Validators/MissingAddressableGroupReferenceValidator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Validators/MissingAddressableGroupReferenceValidator.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/manifest.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/manifest.txt.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OLD/PlayerController.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OLD/PlayerController.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OfflinePlayerController 0.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OfflinePlayerController 0.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OfflinePlayerController 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OfflinePlayerController 1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OfflinePlayerController 2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OfflinePlayerController 2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OfflinePlayerController 3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/OfflinePlayerController 3.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Managers/HubController.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Managers/HubController.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/UI/HUB/CharacterCard.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/UI/HUB/CharacterCard.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Characters.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Characters.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Characters/Agent 0.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Characters/Agent 0.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Characters/Agent 0.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Characters/Agent 0.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Characters/Agent 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Characters/Agent 1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Characters/Agent 1.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Characters/Agent 1.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Characters/Agent 2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Characters/Agent 2.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Characters/Agent 2.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Characters/Agent 2.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Characters/Agent 3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Characters/Agent 3.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Characters/Agent 3.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Characters/Agent 3.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main/MainMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Characters/CharacterData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Characters/CharacterData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/GameAssets.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/GameAssets/DatabaseCatalog.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/GameAssets/DatabaseCatalog.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/GameAssets/GameDatabase.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/GameAssets/GameDatabase.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Managers/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Managers/GameController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Menu/DebugSession.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Menu/DebugSession.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Menu/LobbiesUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Menu/LobbiesUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/OverBang.GameName.Core.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/OverBang.GameName.Core.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/PlayerProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/PlayerProfile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Scene/SceneLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Scene/SceneLoader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Utils/SessionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Utils/SessionManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Debug/DebugMapScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Debug/DebugMapScene.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Level/LevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Level/LevelManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/OverBang.GameName.Gameplay.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/OverBang.GameName.Gameplay.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Phase/GameplayPhase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Phase/GameplayPhase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Phase/Listeners/GameplayListener.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Phase/Listeners/GameplayListener.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Phases/PhaseListener.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Ships/Ship.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Ships/Ship.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Hub/HubPhase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Hub/HubPhase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Hub/Listeners/CharacterSelection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Hub/Listeners/CharacterSelection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Hub/Listeners/HubListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Hub/Listeners/HubListener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Hub/Listeners/HubSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Hub/Listeners/HubSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Hub/Listeners/HubStartButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Hub/Listeners/HubStartButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Hub/OverBang.GameName.Hub.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Hub/OverBang.GameName.Hub.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Offline/OfflineGameMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Offline/OfflineGameMode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Offline/OverBang.GameName.Offline.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Offline/OverBang.GameName.Offline.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Externals/ProBuilder Data/Default Color Palette.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/ProBuilder Data/Default Color Palette.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Materials/(Mat)GradientDarkGreen.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Materials/(Mat)GradientDarkGreen.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BigDrawer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BigDrawer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookOpen.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookOpen.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookPile1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookPile1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookPile2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookPile2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookPile3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookPile3.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookPile4.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookPile4.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookPile5.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookPile5.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookPile6.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookPile6.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookPile7.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookPile7.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)CeilingFan.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)CeilingFan.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)CeilingLight1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)CeilingLight1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)CeilingLight2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)CeilingLight2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Clock.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Clock.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)CoffePot.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)CoffePot.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)CoffeTable.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)CoffeTable.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)ConferenceLongTable.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)ConferenceLongTable.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)ConferenceTable.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)ConferenceTable.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Desk1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Desk1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Desk2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Desk2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)DeskLight.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)DeskLight.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)DeskPlant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)DeskPlant.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)DeskPrinter.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)DeskPrinter.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)DocumentHolder.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)DocumentHolder.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Drawer1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Drawer1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Drawer2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Drawer2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Drawer3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Drawer3.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Fatboy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Fatboy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)KitchenModule.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)KitchenModule.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)LoungeChair.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)LoungeChair.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Microwave.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Microwave.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Mug.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Mug.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)PC.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)PC.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)PCCase.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)PCCase.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)PenHolder.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)PenHolder.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Plant1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Plant1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Plant2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Plant2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)PlantBox.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)PlantBox.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Printer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Printer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Projector.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Projector.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Separator.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Separator.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)SeparatorDoor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)SeparatorDoor.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Shelves2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Shelves2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)SmokeDetector.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)SmokeDetector.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Sofa1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Sofa1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Sofa2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Sofa2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Stapler.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Stapler.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)TrashCan.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)TrashCan.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Window.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Window.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)YogaBall.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)YogaBall.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/NewSettings/Settings/Volumes/VolumeDefault.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/NewSettings/Settings/Volumes/VolumeDefault.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/NewSettings/Settings/Volumes/VolumeGlobalMap.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/NewSettings/Settings/Volumes/VolumeGlobalMap.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Modular/Props/Poteau4m.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Modular/Props/Poteau4m.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Modular/Props/Poteau8m.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Modular/Props/Poteau8m.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Samples/High Definition Render Pipeline/Common/Prefabs/Light/HDRPLightFixture.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Samples/High Definition Render Pipeline/Common/Prefabs/Light/HDRPLightFixture.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Samples/High Definition Render Pipeline/Common/Prefabs/Light/HDRPSamplesFloorSpotlight.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Samples/High Definition Render Pipeline/Common/Prefabs/Light/HDRPSamplesFloorSpotlight.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Samples/High Definition Render Pipeline/Common/Prefabs/Light/HDRPSamplesSpotlight.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Samples/High Definition Render Pipeline/Common/Prefabs/Light/HDRPSamplesSpotlight.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Samples/High Definition Render Pipeline/Common/RenderingResources/ExteriorVolumeProfile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Samples/High Definition Render Pipeline/Common/RenderingResources/ExteriorVolumeProfile.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Valou/ValouSampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Valou/ValouSampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Valou/ValouSampleScene/ValouSampleScene Baking Set.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Valou/ValouSampleScene/ValouSampleScene Baking Set.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Phase/Listeners.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,24 +204,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Standalone Player.Standalone Player.executor&quot;: &quot;Debug&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;ZircliX&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Standalone Player.Standalone Player.executor": "Debug",
+    "git-widget-placeholder": "Valou",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\valre\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\valre\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\valre\\AppData\\Local\\Symbols\\src"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Standalone Player.Standalone Player">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../../UnityBuilds/ExoWorld Preprod\ExoWorld.exe" />
@@ -340,11 +278,11 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Attach to Unity Editor.Attach to Unity Editor &amp; Play" />
+      <item itemvalue="Attach to Unity Editor.Attach to Unity Editor" />
       <item itemvalue="Standalone Player.Standalone Player" />
       <item itemvalue="Standalone Player.Start Unity" />
       <item itemvalue="Standalone Player.Unit Tests (batch mode)" />
-      <item itemvalue="Attach to Unity Editor.Attach to Unity Editor &amp; Play" />
-      <item itemvalue="Attach to Unity Editor.Attach to Unity Editor" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -393,6 +331,7 @@
       <workItem from="1762244232915" duration="5373000" />
       <workItem from="1762251555167" duration="15144000" />
       <workItem from="1762331110917" duration="10551000" />
+      <workItem from="1762782819830" duration="760000" />
     </task>
     <servers />
   </component>

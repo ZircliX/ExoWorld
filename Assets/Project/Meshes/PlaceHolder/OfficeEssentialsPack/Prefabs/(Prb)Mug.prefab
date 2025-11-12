@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3788214816403349608}
   - component: {fileID: 7234081500100680487}
   - component: {fileID: 7539112396013802054}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: mug_antiSpill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,6 +62,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -83,6 +85,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -120,7 +123,7 @@ GameObject:
   - component: {fileID: 3290097413644113958}
   - component: {fileID: 1181578430982868008}
   - component: {fileID: 8474462644438524402}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: mug_body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,6 +173,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -191,6 +196,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -225,7 +231,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5393540807503056394}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: mug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +264,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3720469616557226011}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: (Prb)Mug
   m_TagString: Untagged
   m_Icon: {fileID: 0}

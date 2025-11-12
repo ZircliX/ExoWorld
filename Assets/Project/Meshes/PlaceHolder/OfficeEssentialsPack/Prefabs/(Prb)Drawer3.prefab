@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1397581058977312176}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: (Prb)Drawer3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 1584227374149829362}
   - component: {fileID: 1716095486582038432}
   - component: {fileID: 3608829046758135640}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: drawer3_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,6 +94,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -115,6 +117,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -149,7 +152,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 337939539911884620}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: drawer3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,7 +189,7 @@ GameObject:
   - component: {fileID: 7183827634350483261}
   - component: {fileID: 3808335222054998558}
   - component: {fileID: 3048612952064085996}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: drawer3_cabinet1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,6 +239,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -258,6 +263,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -295,7 +301,7 @@ GameObject:
   - component: {fileID: 1618186840188351311}
   - component: {fileID: 5939301801447877063}
   - component: {fileID: 8824340773998446767}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: drawer3_cabinet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,6 +351,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -367,6 +375,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0

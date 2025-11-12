@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7100788130748573451}
   - component: {fileID: 5318571147124810878}
   - component: {fileID: 8632461574464184690}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: yogaBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,6 +62,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -83,6 +85,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -117,7 +120,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7854120647061642055}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: (Prb)YogaBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}

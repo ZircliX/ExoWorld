@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4976992200052297545}
   - component: {fileID: 5319397741576201493}
   - component: {fileID: 5274045507953540518}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: desk2_drawer1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,6 +62,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -84,6 +86,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -118,7 +121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6445939194947935301}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: desk2_drawers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +155,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4750561637992501988}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: desk2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +188,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3643333674795363868}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: (Prb)Desk2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +223,7 @@ GameObject:
   - component: {fileID: 182452831243076355}
   - component: {fileID: 8496615379371033742}
   - component: {fileID: 6354042097419917295}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: desk2_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,6 +273,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -292,6 +297,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -329,7 +335,7 @@ GameObject:
   - component: {fileID: 4932647925785892985}
   - component: {fileID: 390733829692670942}
   - component: {fileID: 4834446538244162240}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: desk2_drawer2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -379,6 +385,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -401,6 +409,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -438,7 +447,7 @@ GameObject:
   - component: {fileID: 4878637641364150596}
   - component: {fileID: 3454266869451765746}
   - component: {fileID: 3352200874744382852}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: desk2_body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -488,6 +497,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -509,6 +520,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0

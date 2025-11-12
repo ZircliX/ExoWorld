@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1305230810965809213}
   - component: {fileID: 5972983570249253109}
   - component: {fileID: 2537803991167266457}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: separatorDoor_frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,6 +62,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -84,6 +86,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -118,7 +121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6141248050949583199}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: separatorDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +154,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6276409764197313900}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: (Prb)SeparatorDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,7 +189,7 @@ GameObject:
   - component: {fileID: 2836761287768587954}
   - component: {fileID: 4223926231404369219}
   - component: {fileID: 8594438205957587431}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: separatorDoor_body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,6 +239,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -259,6 +264,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0

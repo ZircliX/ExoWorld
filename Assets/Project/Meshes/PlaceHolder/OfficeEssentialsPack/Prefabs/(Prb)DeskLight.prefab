@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2068398726653781473}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: (Prb)DeskLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5588734616251921829}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: deskLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 556590341887828401}
   - component: {fileID: 8880446063561351988}
   - component: {fileID: 1263633680441987447}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: deskLight_joint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,6 +127,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -149,6 +151,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -186,7 +189,7 @@ GameObject:
   - component: {fileID: 2832606991950876078}
   - component: {fileID: 3650949104723663344}
   - component: {fileID: 6524381050847945960}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: deskLight_joint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -237,6 +240,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -259,6 +264,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -296,7 +302,7 @@ GameObject:
   - component: {fileID: 781578924853671013}
   - component: {fileID: 3470619795241627156}
   - component: {fileID: 999792575059826862}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: deskLight_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,6 +353,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -368,6 +376,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -405,7 +414,7 @@ GameObject:
   - component: {fileID: 1474906144105397441}
   - component: {fileID: 4593749069961977660}
   - component: {fileID: 6406248311501918183}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: deskLight_joint3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -455,6 +464,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -477,6 +488,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
