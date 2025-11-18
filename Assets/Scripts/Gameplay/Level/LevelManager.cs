@@ -64,14 +64,6 @@ namespace OverBang.GameName.Gameplay
         protected virtual async Awaitable SetupPlayer()
         {
             currentPlayers = new Dictionary<PlayerProfile, GameObject>();
-            for (int i = 0; i < Settings.playerProfiles.Length; i++)
-            {
-                PlayerProfile profile = Settings.playerProfiles[i];
-
-                GameObject player = Instantiate(profile.characterData.CharacterPrefab);
-                currentPlayers.Add(profile, player);
-            }
-
             while (currentPlayers.Any(ctx => ctx.Value == null))
                 await Awaitable.EndOfFrameAsync();
             

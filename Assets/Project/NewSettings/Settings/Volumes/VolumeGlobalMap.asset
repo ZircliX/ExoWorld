@@ -24,7 +24,7 @@ MonoBehaviour:
     m_Value: 1
   color:
     m_OverrideState: 1
-    m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    m_Value: {r: 1024, g: 1024, b: 1024, a: 1}
   tint:
     m_OverrideState: 1
     m_Value: {r: 0.7607843, g: 1.4570976, b: 1.4980392, a: 1}
@@ -42,7 +42,7 @@ MonoBehaviour:
     m_Value: 1000
   baseHeight:
     m_OverrideState: 1
-    m_Value: 125
+    m_Value: 100
   maximumHeight:
     m_OverrideState: 1
     m_Value: 365
@@ -335,7 +335,7 @@ MonoBehaviour:
     m_Value: {fileID: 0}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.1
+    m_Value: 0.025
   m_MaxSamples:
     m_OverrideState: 0
     m_Value: 6
