@@ -64,6 +64,7 @@ Material:
   - _NORMALMAP_TANGENT_SPACE1
   - _NORMALMAP_TANGENT_SPACE2
   - _NORMALMAP_TANGENT_SPACE3
+  - _TESSELLATION_DISPLACEMENT
   m_InvalidKeywords:
   - _NORMALMAP_TANGENT_SPACE
   - _TERRAIN_INSTANCED_PERPIXEL_NORMAL
@@ -91,20 +92,20 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseColorMap0:
-        m_Texture: {fileID: 2800000, guid: b79bb64dc44a5b64885768f99bad179d, type: 3}
-        m_Scale: {x: 125, y: 125}
+        m_Texture: {fileID: 2800000, guid: 4f78310645fb6a649977fe7d0a4e08ec, type: 3}
+        m_Scale: {x: 100, y: 100}
         m_Offset: {x: 0, y: 0}
     - _BaseColorMap1:
-        m_Texture: {fileID: 2800000, guid: 0dec9a56e4526794f900b8ab98ff9f9b, type: 3}
-        m_Scale: {x: 125, y: 125}
+        m_Texture: {fileID: 2800000, guid: 53c4b47529eb4824f9098af3e8b27177, type: 3}
+        m_Scale: {x: 100, y: 100}
         m_Offset: {x: 0, y: 0}
     - _BaseColorMap2:
-        m_Texture: {fileID: 2800000, guid: e4262be52f101af4e8adb153b122fb8c, type: 3}
-        m_Scale: {x: 125, y: 125}
+        m_Texture: {fileID: 2800000, guid: e58a337e61edacb4cb56a305b61822b3, type: 3}
+        m_Scale: {x: 100, y: 100}
         m_Offset: {x: 0, y: 0}
     - _BaseColorMap3:
-        m_Texture: {fileID: 2800000, guid: fd3702f9fdfca0a4c970b083b73803b9, type: 3}
-        m_Scale: {x: 125, y: 125}
+        m_Texture: {fileID: 2800000, guid: 94be348344996d240a0c272f44acbf3d, type: 3}
+        m_Scale: {x: 100, y: 100}
         m_Offset: {x: 0, y: 0}
     - _BentNormalMap:
         m_Texture: {fileID: 0}
@@ -179,19 +180,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HeightMap0:
-        m_Texture: {fileID: 2800000, guid: bc4537c0cc4803646963112f43cae3eb, type: 3}
+        m_Texture: {fileID: 2800000, guid: 71b38719bc4dee145b9821f1eaf04612, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HeightMap1:
-        m_Texture: {fileID: 2800000, guid: 125709a7536e0d64ab970c081dd34f5d, type: 3}
+        m_Texture: {fileID: 2800000, guid: f65739312b8eef543a79a82ead41e81c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HeightMap2:
-        m_Texture: {fileID: 2800000, guid: 270fc1453782f604c8b5ef1219af45ba, type: 3}
+        m_Texture: {fileID: 2800000, guid: 57e4c8412debbbb4ca02282937bbac51, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HeightMap3:
-        m_Texture: {fileID: 2800000, guid: 6f1c3603294a92744915534c8097d47e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 188f5423bb44d14478b7b695bab00e1c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _IridescenceMaskMap:
@@ -219,19 +220,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap0:
-        m_Texture: {fileID: 2800000, guid: ce02f195b31dada448ef868f02159dd6, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2001c86b38a4dfa4ab0e452bb523e8fb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap1:
-        m_Texture: {fileID: 2800000, guid: b545d6ddd81b27444a343acb69576ca3, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1232d2aab7d4b3746a56e376ff674bba, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap2:
-        m_Texture: {fileID: 2800000, guid: 78e521f3a5c878147bed40172c27c771, type: 3}
+        m_Texture: {fileID: 2800000, guid: 41d01aa05a952bc4c93411d31a4e5894, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap3:
-        m_Texture: {fileID: 2800000, guid: 33a2bd79101ffa34dbd0a8a1bf64705d, type: 3}
+        m_Texture: {fileID: 2800000, guid: fa2d626a9f1f6b54cba6ae36c65ba507, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
@@ -239,19 +240,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap0:
-        m_Texture: {fileID: 2800000, guid: 1d63747b9e4778f458e587cb3faa9f7c, type: 3}
+        m_Texture: {fileID: 2800000, guid: fa580bc54ae567b4e80b9e329e2c410e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap1:
-        m_Texture: {fileID: 2800000, guid: 27b2b32a5a33c544aaf8b6dbb5d42a5c, type: 3}
+        m_Texture: {fileID: 2800000, guid: c4087dcf6d200dd40b4aa51dc96748d3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap2:
-        m_Texture: {fileID: 2800000, guid: 25707ec30c3835b41bdec55619433f51, type: 3}
+        m_Texture: {fileID: 2800000, guid: 940b74000c4773b44ad553838b59d7b5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap3:
-        m_Texture: {fileID: 2800000, guid: a89b9eca45161f744a9acd0f078c6924, type: 3}
+        m_Texture: {fileID: 2800000, guid: 22870f8da1738a84a8c90634a6e10b18, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMapOS:
@@ -432,7 +433,7 @@ Material:
     - _DiffusionProfileHash3: 0
     - _DisplacementLockObjectScale: 0
     - _DisplacementLockTilingScale: 0
-    - _DisplacementMode: 0
+    - _DisplacementMode: 3
     - _DoubleSidedEnable: 0
     - _DoubleSidedGIMode: 0
     - _DoubleSidedNormalMode: 1
@@ -449,10 +450,10 @@ Material:
     - _EnableInstancedPerPixelNormal: 1
     - _EnergyConservingSpecularColor: 1
     - _HeightAmplitude: 0.02
-    - _HeightAmplitude0: 0.099999994
-    - _HeightAmplitude1: 0.099999994
-    - _HeightAmplitude2: 0.099999994
-    - _HeightAmplitude3: 0.099999994
+    - _HeightAmplitude0: 0.19999999
+    - _HeightAmplitude1: 0.19999999
+    - _HeightAmplitude2: 0.19999999
+    - _HeightAmplitude3: 0.19999999
     - _HeightCenter: 0.5
     - _HeightCenter0: 0.5
     - _HeightCenter1: 0.5
@@ -464,15 +465,15 @@ Material:
     - _HeightMapParametrization2: 0
     - _HeightMapParametrization3: 0
     - _HeightMax: 1
-    - _HeightMax0: 5
-    - _HeightMax1: 5
-    - _HeightMax2: 5
-    - _HeightMax3: 5
+    - _HeightMax0: 10
+    - _HeightMax1: 10
+    - _HeightMax2: 10
+    - _HeightMax3: 10
     - _HeightMin: -1
-    - _HeightMin0: -5
-    - _HeightMin1: -5
-    - _HeightMin2: -5
-    - _HeightMin3: -5
+    - _HeightMin0: -10
+    - _HeightMin1: -10
+    - _HeightMin2: -10
+    - _HeightMin3: -10
     - _HeightOffset: 0
     - _HeightOffset0: 0
     - _HeightOffset1: 0
@@ -504,10 +505,10 @@ Material:
     - _InheritBaseNormal2: 0
     - _InheritBaseNormal3: 0
     - _InvTilingScale: 1
-    - _InvTilingScale0: 0.008
-    - _InvTilingScale1: 0.008
-    - _InvTilingScale2: 0.008
-    - _InvTilingScale3: 0.008
+    - _InvTilingScale0: 0.01
+    - _InvTilingScale1: 0.01
+    - _InvTilingScale2: 0.01
+    - _InvTilingScale3: 0.01
     - _Ior: 1.5
     - _IridescenceMask: 1
     - _IridescenceThickness: 1
@@ -567,7 +568,7 @@ Material:
     - _Smoothness2: 0.5
     - _Smoothness3: 0.5
     - _SmoothnessRemapMax: 1
-    - _SmoothnessRemapMax0: 0.23249304
+    - _SmoothnessRemapMax0: 0.22729832
     - _SmoothnessRemapMax1: 0.23249304
     - _SmoothnessRemapMax2: 0.23249304
     - _SmoothnessRemapMax3: 0.23249304
@@ -596,9 +597,9 @@ Material:
     - _SupportDecals: 1
     - _SurfaceType: 0
     - _TessellationBackFaceCullEpsilon: -0.25
-    - _TessellationFactor: 24
-    - _TessellationFactorMaxDistance: 5
-    - _TessellationFactorMinDistance: 2
+    - _TessellationFactor: 12
+    - _TessellationFactorMaxDistance: 10
+    - _TessellationFactorMinDistance: 1
     - _TessellationFactorTriangleSize: 10
     - _TessellationMode: 0
     - _TessellationObjectScale: 1

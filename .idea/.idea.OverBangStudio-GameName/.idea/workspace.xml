@@ -5,73 +5,145 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1604e208-f0b5-49be-bc96-e3b796502da2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/TechArt/FlickeringLight/FlickerLightManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/TechArt/FlickeringLight/FlickerLightManager.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OverBangStudio-GameName/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OverBangStudio-GameName/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/ProBuilder Data/Default Color Palette.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/ProBuilder Data/Default Color Palette.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Materials/(Mat)GradientDarkGreen.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Materials/(Mat)GradientDarkGreen.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BigDrawer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BigDrawer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookOpen.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookOpen.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookPile1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookPile1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookPile2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookPile2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookPile3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookPile3.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookPile4.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookPile4.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookPile5.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookPile5.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookPile6.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookPile6.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookPile7.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)BookPile7.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)CeilingFan.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)CeilingFan.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)CeilingLight1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)CeilingLight1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)CeilingLight2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)CeilingLight2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Clock.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Clock.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)CoffePot.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)CoffePot.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)CoffeTable.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)CoffeTable.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)ConferenceLongTable.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)ConferenceLongTable.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)ConferenceTable.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)ConferenceTable.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Desk1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Desk1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Desk2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Desk2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)DeskLight.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)DeskLight.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)DeskPlant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)DeskPlant.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)DeskPrinter.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)DeskPrinter.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)DocumentHolder.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)DocumentHolder.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Drawer1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Drawer1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Drawer2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Drawer2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Drawer3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Drawer3.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Fatboy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Fatboy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)KitchenModule.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)KitchenModule.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)LoungeChair.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)LoungeChair.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Microwave.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Microwave.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Mug.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Mug.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)PC.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)PC.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)PCCase.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)PCCase.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)PenHolder.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)PenHolder.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Plant1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Plant1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Plant2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Plant2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)PlantBox.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)PlantBox.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Printer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Printer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Materials/DecalPuddle_Mat.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Materials/DecalPuddle_Mat.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Materials/DecalWearDark_Mat.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Materials/DecalWearDark_Mat.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Materials/DecalWear_Mat.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Materials/DecalWear_Mat.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Materials/Decal_Mat.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Materials/Decal_Mat.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Materials/LeakingDecal_03.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Materials/LeakingDecal_03.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Materials/Trash1_Decal.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Materials/Trash1_Decal.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Materials/Trash2_Decal.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Materials/Trash2_Decal.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Prefabs/P_Decal_Leaking.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Prefabs/P_Decal_Leaking.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Prefabs/P_Decal_Oil.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Prefabs/P_Decal_Oil.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Prefabs/P_Decal_Trash1.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Prefabs/P_Decal_Trash1.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Prefabs/P_Decal_Trash2.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Prefabs/P_Decal_Trash2.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Textures/Leak.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Textures/Leak/DecalsLeaking0315_1_alphamasked_L.tif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Textures/Leak/DecalsLeaking0315_1_alphamasked_L.tif.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Textures/Leak/DecalsLeaking0315_1_mask.tif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Textures/Leak/DecalsLeaking0315_1_mask.tif.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Textures/Trash1.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Textures/Trash1/Garbage_Pile_shnmezh_1K_BaseColorOpacity.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Textures/Trash1/Garbage_Pile_shnmezh_1K_BaseColorOpacity.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Textures/Trash1/Garbage_Pile_shnmezh_1K_NormalMapOpacity.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Textures/Trash1/Garbage_Pile_shnmezh_1K_NormalMapOpacity.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Textures/Trash1/Garbage_Pile_shnmezh_1K_Opacity.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Textures/Trash1/Garbage_Pile_shnmezh_1K_Opacity.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Textures/Trash2.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Textures/Trash2/Garbage_Pile_shllf2h_1K_BaseColor_Opacity.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Textures/Trash2/Garbage_Pile_shllf2h_1K_BaseColor_Opacity.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Textures/Trash2/Garbage_Pile_shllf2h_1K_NormalMap_Opacity.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Textures/Trash2/Garbage_Pile_shllf2h_1K_NormalMap_Opacity.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Textures/Trash2/Garbage_Pile_shllf2h_1K_Opacity.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Decals/Textures/Trash2/Garbage_Pile_shllf2h_1K_Opacity.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Materials/Glass/M_Glass.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Materials/Glass/M_Glass.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Materials/Glass/M_Plastic.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Materials/Glass/M_Plastic.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Materials/Tess/Asphalt/M_GroundB1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Materials/Tess/Asphalt/M_GroundB1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Materials/Tess/Asphalt/M_GroundB2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Materials/Tess/Asphalt/M_GroundB2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Materials/Tess/Asphalt/M_GroundB3.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Materials/Tess/Asphalt/M_GroundB3.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Materials/Tess/Asphalt/M_GroundB4.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Materials/Tess/Asphalt/M_GroundB4.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Materials/Tess/Dirt/M_Ground1.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Materials/Tess/Dirt/M_Ground1.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Materials/Tess/Dirt/M_Ground2.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Materials/Tess/Dirt/M_Ground2.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Materials/Tess/Dirt/M_Ground3.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Materials/Tess/Dirt/M_Ground3.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Materials/Tess/Dirt/M_Ground4.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Materials/Tess/Dirt/M_Ground4.mat.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Projector.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Projector.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Separator.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Separator.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)SeparatorDoor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)SeparatorDoor.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Shelves2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Shelves2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)SmokeDetector.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)SmokeDetector.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Sofa1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Sofa1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Sofa2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Sofa2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Stapler.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Stapler.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)TrashCan.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)TrashCan.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Window.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)Window.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)YogaBall.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/PlaceHolder/OfficeEssentialsPack/Prefabs/(Prb)YogaBall.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/NewSettings/Settings/Volumes/VolumeDefault.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/NewSettings/Settings/Volumes/VolumeDefault.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Project/NewSettings/Settings/Volumes/VolumeGlobalMap.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/NewSettings/Settings/Volumes/VolumeGlobalMap.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Modular/Props/Poteau4m.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Modular/Props/Poteau4m.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Modular/Props/Poteau8m.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Modular/Props/Poteau8m.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Samples/High Definition Render Pipeline/Common/Prefabs/Light/HDRPLightFixture.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Samples/High Definition Render Pipeline/Common/Prefabs/Light/HDRPLightFixture.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Samples/High Definition Render Pipeline/Common/Prefabs/Light/HDRPSamplesFloorSpotlight.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Samples/High Definition Render Pipeline/Common/Prefabs/Light/HDRPSamplesFloorSpotlight.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Samples/High Definition Render Pipeline/Common/Prefabs/Light/HDRPSamplesSpotlight.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Samples/High Definition Render Pipeline/Common/Prefabs/Light/HDRPSamplesSpotlight.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Samples/High Definition Render Pipeline/Common/RenderingResources/ExteriorVolumeProfile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Samples/High Definition Render Pipeline/Common/RenderingResources/ExteriorVolumeProfile.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/NewSettings/Settings/Volumes/VolumeInterior.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/NewSettings/Settings/Volumes/VolumeInterior.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Modular/Props/Camera.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Modular/Props/Camera.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Modular/Props/HDRPSamplesSpotlight.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Modular/Props/HDRPSamplesSpotlight.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Modular/Props/Kit.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Modular/Props/Kit.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Modular/Props/LightBasicWhiteFlickering.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Modular/Props/LightBasicWhiteFlickering.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Modular/Props/LightBasicWhiteOff.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Modular/Props/LightBasicWhiteOff.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Modular/Props/LightBasicWhiteOn.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Modular/Props/LightBasicWhiteOn.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Modular/Props/LightCeilingFlickering.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Modular/Props/LightCeilingFlickering.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Modular/Props/LightCeilingOff.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Modular/Props/LightCeilingOff.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Modular/Props/LightCeilingOn.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Modular/Props/LightCeilingOn.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Modular/Props/Trash_Bag.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Modular/Props/Trash_Bag.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Samples/High Definition Render Pipeline/17.1.0/Volumetric Samples/Fog Volume Shadergraph/Ground Smoke Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Samples/High Definition Render Pipeline/17.1.0/Volumetric Samples/Fog Volume Shadergraph/Ground Smoke Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Samples/High Definition Render Pipeline/17.1.0/Volumetric Samples/Fog Volume Shadergraph/LocalClouds_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Samples/High Definition Render Pipeline/17.1.0/Volumetric Samples/Fog Volume Shadergraph/LocalClouds_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Samples/Scriptable Render Pipeline Core/Common/Materials/SamplesFixtureEmissive.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Samples/Scriptable Render Pipeline Core/Common/Materials/SamplesFixtureEmissive.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Samples/Scriptable Render Pipeline Core/Common/Materials/SamplesSpotlightEmissive.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Samples/Scriptable Render Pipeline Core/Common/Materials/SamplesSpotlightEmissive.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Terrains/TerrainAsphalt/M_TerrainTessAslphalt.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Terrains/TerrainAsphalt/M_TerrainTessAslphalt.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Terrains/TerrainAsphalt/New Terrain Asphalt.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Terrains/TerrainAsphalt/New Terrain Asphalt.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Terrains/TerrainAsphalt/NewLayer 1.terrainlayer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Terrains/TerrainAsphalt/NewLayer 1.terrainlayer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Terrains/TerrainAsphalt/NewLayer 2.terrainlayer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Terrains/TerrainAsphalt/NewLayer 2.terrainlayer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Terrains/TerrainAsphalt/NewLayer 3.terrainlayer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Terrains/TerrainAsphalt/NewLayer 3.terrainlayer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Terrains/TerrainAsphalt/NewLayer.terrainlayer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Terrains/TerrainAsphalt/NewLayer.terrainlayer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Terrains/TerrainAsphalt/TerrainData_49ecf981-39b9-4601-8f63-bd263922673a.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Terrains/TerrainAsphalt/TerrainData_49ecf981-39b9-4601-8f63-bd263922673a.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Terrains/TerrainAsphalt/TerrainData_883382fa-ef78-4687-a927-2b77162524a1.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Terrains/TerrainAsphalt/TerrainData_883382fa-ef78-4687-a927-2b77162524a1.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Terrains/TerrainDirt/New Terrain.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Terrains/TerrainDirt/New Terrain.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Concrete Floor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Concrete Floor/Concrete Floor_BaseMap.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Concrete Floor/Concrete Floor_BaseMap.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Concrete Floor/Concrete Floor_Height.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Concrete Floor/Concrete Floor_Height.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Concrete Floor/Concrete Floor_MaskMap.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Concrete Floor/Concrete Floor_MaskMap.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Concrete Floor/Concrete Floor_Normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Concrete Floor/Concrete Floor_Normal.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Cracked Ground.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Cracked Ground/Cracked_Ground_BaseMap.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Cracked Ground/Cracked_Ground_BaseMap.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Cracked Ground/Cracked_Ground_Height.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Cracked Ground/Cracked_Ground_Height.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Cracked Ground/Cracked_Ground_MaskMap.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Cracked Ground/Cracked_Ground_MaskMap.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Cracked Ground/Cracked_Ground_Normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Cracked Ground/Cracked_Ground_Normal.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Damaged Floor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Damaged Floor/Damaged Floor_BaseMap.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Damaged Floor/Damaged Floor_BaseMap.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Damaged Floor/Damaged Floor_Height.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Damaged Floor/Damaged Floor_Height.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Damaged Floor/Damaged Floor_MaskMap.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Damaged Floor/Damaged Floor_MaskMap.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Damaged Floor/Damaged Floor_Normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Damaged Floor/Damaged Floor_Normal.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Dirt Floor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Dirt Floor/Dirt_Floor_BaseMap.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Dirt Floor/Dirt_Floor_BaseMap.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Dirt Floor/Dirt_Floor_Height.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Dirt Floor/Dirt_Floor_Height.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Dirt Floor/Dirt_Floor_MaskMap.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Dirt Floor/Dirt_Floor_MaskMap.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Dirt Floor/Dirt_Floor_Normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Textures/Ground/Dirt Floor/Dirt_Floor_Normal.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/VFX/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/VFX/Materials/BurningFuelDecal.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/VFX/Materials/BurningFuelDecal.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/VFX/Shaders/BurningFuelDecal.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/VFX/Shaders/BurningFuelDecal.shadergraph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/GameMetrics.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/GameMetrics.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Valou/ValouSampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Valou/ValouSampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Valou/ValouSampleScene/ValouSampleScene Baking Set.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Valou/ValouSampleScene/ValouSampleScene Baking Set.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Phase/Listeners.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Metrics/GameMetrics.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Metrics/GameMetrics.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Level/LevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Level/LevelManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,15 +157,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/356a8cd803ae46c2811b1802b99267541fe200/58/4420cac9/DropdownField.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/846ac0b1a3da41799c8b06176c0e224ba7000/26/97c83241/ISession.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/846ac0b1a3da41799c8b06176c0e224ba7000/35/5c4ac556/ISessionInfo.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/89527d299cb64ba88f87240781b415e51ea400/06/a9f15659/MonoBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/89527d299cb64ba88f87240781b415e51ea400/4d/7debba45/Object.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/89527d299cb64ba88f87240781b415e51ea400/7d/d8892caf/Awaitable`1.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8db6ec373e6d40bd9d38c8037d358c4e46ae00/28/977c9cb8/NullReferenceException.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b6155dd53b574abca7e30fa639042b2a1bf6b8/40/e2d0883a/InvokableCall.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b6155dd53b574abca7e30fa639042b2a1bf6b8/79/4007e49b/UnityEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Editor/PoolResourceEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Editor/PrefabPoolAssetEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Dependencies/PoolDependenciesCollector.cs" root0="FORCE_HIGHLIGHTING" />
@@ -154,7 +217,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Phase/ClientGameplayPhase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Phase/GameplayPhase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Phase/HostGameplayPhase.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Phase/Listeners/GameplayListener.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/Repair.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Hub/HubPhase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Hub/Listeners/HubSpawner.cs" root0="FORCE_HIGHLIGHTING" />
@@ -173,12 +235,11 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.singletons/Runtime/Singleton.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.tools/Editor/TypeMapping/TypeMappingBuildProcess.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.tools/Editor/TypeMapping/TypeMappingEditor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.tools/Editor/TypeMapping/TypeRefEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.tools/Runtime/DynamicBuffer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.tools/Runtime/Settings/Attributes/AutoGenerateGameSettingsAttribute.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.tools/Runtime/Settings/Attributes/GameSettingsTitleAttribute.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.tools/Runtime/Settings/GameSettings.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.tools/Runtime/TypeMapping/TypeMappingCollection.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@7fe8299111a7/InputSystem/Plugins/UI/InputSystemUIInputModule.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.multiplayer.tools@8395f16a9a9a/Common/Runtime/Helpers/RuntimeUpdaterBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@837011a5fcd5/Runtime/Core/NetworkManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@837011a5fcd5/Runtime/Transports/UTP/UnityTransport.cs" root0="SKIP_HIGHLIGHTING" />
@@ -187,9 +248,6 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.multiplayer@403a0e64f139/Runtime/Multiplayer/Session/Models/Player/IReadOnlyPlayer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.multiplayer@403a0e64f139/Runtime/Multiplayer/Session/Options/SessionOptions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.multiplayer@403a0e64f139/Runtime/Multiplayer/SessionBrowser/QuerySessionsOptions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@8a519b6be09c/Runtime/UGUI/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@8a519b6be09c/Runtime/UGUI/EventSystem/ExecuteEvents.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@8a519b6be09c/Runtime/UGUI/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -218,7 +276,8 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "settings.editor.splitter.proportion": "0.2790224",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -332,6 +391,7 @@
       <workItem from="1762251555167" duration="15144000" />
       <workItem from="1762331110917" duration="10551000" />
       <workItem from="1762782819830" duration="760000" />
+      <workItem from="1763399047718" duration="4133000" />
     </task>
     <servers />
   </component>

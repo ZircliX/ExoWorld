@@ -18,5 +18,6 @@ namespace OverBang.GameName.Core.Metrics
         [field: SerializeField, FoldoutGroup("UI")] public GameObject CharacterSelectionPrefab { get; private set; }
         
         [field: SerializeField, FoldoutGroup("DEBUG")] public GameObject DebugInputs { get; private set; }
+        [field: SerializeField, FoldoutGroup("DEBUG")] public bool LightFlickerInEditMode { get; private set; }
     }
 }
