@@ -1,42 +1,75 @@
+using System;
+using System.Threading;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnitySceneManager = UnityEngine.SceneManagement.SceneManager;
 
-namespace OverBang.GameName.Core.Scenes
+namespace OverBang.GameName.Core
 {
     public static class SceneLoader
     {
-        public static string GetCurrentSceneName()
+        public static Scene GetCurrentScene() => SceneManager.GetActiveScene();
+
+        public static void SetActiveScene(string sceneName)
         {
-            return SceneManager.GetActiveScene().name;
+            Scene scene = SceneManager.GetSceneByName(sceneName);
+            if (scene.isLoaded) SceneManager.SetActiveScene(scene);
         }
 
+        static async Awaitable AwaitSceneEvent(SceneEventType eventType, string sceneName, Func<SceneEventProgressStatus> op)
+        {
+            bool done = false;
+
+            void Handler(SceneEvent e)
+            {
+                // Some events report name via e.Scene or e.SceneName; handle both safely.
+                string name = string.IsNullOrEmpty(e.SceneName) ? e.Scene.name : e.SceneName;
+                if (name == sceneName && e.SceneEventType == eventType) done = true;
+            }
+
+            NetworkSceneManager sm = NetworkManager.Singleton.SceneManager;
+            sm.OnSceneEvent += Handler;
+            try
+            {
+                op();
+                await AwaitableUtils.AwaitableUntil(() => done, CancellationToken.None);
+                await Awaitable.EndOfFrameAsync();
+            }
+            finally
+            {
+                sm.OnSceneEvent -= Handler;
+            }
+        }
+        
         public static SceneEventProgressStatus NetworkLoadScene(string sceneName, LoadSceneMode mode = LoadSceneMode.Single)
         {
+            if (!NetworkManager.Singleton.IsServer)
+            {
+                Debug.LogWarning($"NetworkLoadScene ignored on client: {sceneName}");
+                return SceneEventProgressStatus.SceneEventInProgress;
+            }
             return NetworkManager.Singleton.SceneManager.LoadScene(sceneName, mode);
         }
         
-        public static async Awaitable<Scene> LoadSceneAsync(string sceneName, LoadSceneMode mode = LoadSceneMode.Single, bool setActive = true)
+        public static async Awaitable LoadSceneAsync(string sceneName, LoadSceneMode mode = LoadSceneMode.Single)
         {
-            await UnitySceneManager.LoadSceneAsync(sceneName, new LoadSceneParameters() { loadSceneMode = mode });
+            Scene current = SceneManager.GetActiveScene();
+            if (current.name == sceneName) return;
 
-            Scene scene = UnitySceneManager.GetSceneByName(sceneName);
-            if (setActive)
-                UnitySceneManager.SetActiveScene(scene);
-            
-            return scene;
+            // Server waits for all clients; clients wait for themselves.
+            SceneEventType eventType = NetworkManager.Singleton.IsServer
+                ? SceneEventType.LoadEventCompleted
+                : SceneEventType.LoadComplete;
+
+            await AwaitSceneEvent(eventType, sceneName, () => NetworkLoadScene(sceneName, mode));
         }
-        
-        public static async Awaitable UnloadSceneAsync(string sceneName)
+
+        public static async Awaitable UnloadSceneAsync(Scene scene)
         {
-            if (!UnitySceneManager.GetSceneByName(sceneName).isLoaded)
-            {
-                Debug.LogWarning($"La scène {sceneName} n'est pas chargée.");
-                return;
-            }
-            
-            await UnitySceneManager.UnloadSceneAsync(sceneName);
+            if (!scene.isLoaded) return;
+
+            await AwaitSceneEvent(SceneEventType.UnloadComplete, scene.name,
+                () => NetworkManager.Singleton.SceneManager.UnloadScene(scene));
         }
     }
 }

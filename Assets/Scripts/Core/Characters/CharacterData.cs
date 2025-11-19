@@ -6,20 +6,24 @@ using OverBang.Pooling.Resource;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace OverBang.GameName.Core.Characters
+namespace OverBang.GameName.Core
 {
     [CreateAssetMenu(fileName = "New Agent Data", menuName = "OverBang/Agent Data", order = 0)]
-    public class CharacterData : ScriptableObject, IPoolDependencyProvider
+    public class CharacterData : ScriptableObject, IPoolDependencyProvider, IDatabaseAsset
     {
         [field: SerializeField] 
         public string AgentName { get; private set; }
+        
         [field: SerializeField]
         public Sprite AgentSprite { get; private set; }
+        
         [field: SerializeField] 
         public CharacterClasses CharacterClass { get; private set; }
+        
         [field: SerializeField] 
-        public GameObject CharacterPrefab { get; private set; }
-        [field: SerializeField] 
+        public GameObject ModelPrefab { get; private set; }
+        
+        [field: SerializeField, Space] 
         public SimplePoolConfig[] Dependencies { get; private set; }
 
         [field: SerializeField, ReadOnly]

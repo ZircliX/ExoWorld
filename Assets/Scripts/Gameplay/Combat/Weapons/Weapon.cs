@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using OverBang.GameName.Gameplay.Bullets;
+using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.Combat
+namespace OverBang.GameName.Gameplay.Weapons
 {
     public abstract class Weapon : MonoBehaviour
     {

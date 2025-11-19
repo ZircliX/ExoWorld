@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace OverBang.GameName.Core.Upgrades
+namespace OverBang.GameName.Core
 {
     [CreateAssetMenu(menuName = "OverBang/Upgrades/Stats Upgrade", fileName = "New Stats Upgrade", order = 0)]
     public class StatsUpgrade : Upgrade

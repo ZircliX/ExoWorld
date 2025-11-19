@@ -1,4 +1,4 @@
-using OverBang.GameName.Core.Scenes;
+using OverBang.GameName.Core;
 using OverBang.GameName.Editor.EditorStyle;
 using Unity.Netcode;
 using UnityEditor;

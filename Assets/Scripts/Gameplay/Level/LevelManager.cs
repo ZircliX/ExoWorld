@@ -1,27 +1,60 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using Helteix.ChanneledProperties.Priorities;
 using Helteix.Singletons.SceneServices;
 using OverBang.GameName.Core;
 using OverBang.Pooling;
 using OverBang.Pooling.Dependencies;
+using OverBang.Pooling.Resource;
+using Unity.Netcode;
+using Unity.Services.Multiplayer;
 using UnityEngine;
-using UnityEngine.Pool;
 
 namespace OverBang.GameName.Gameplay
 {
-    public class LevelManager : SceneService<LevelManager>
+    public sealed class LevelManager : SceneService<LevelManager>
     {
         public event Action<List<IPoolDependencyProvider>> OnCollectSceneProviders;
-        public LevelState State { get; protected set; }
+        public LevelState State { get; private set; }
         
-        private Dictionary<PlayerProfile, GameObject> currentPlayers;
-
         private GameplayPhase currentPhase;
         private GameplayPhase.GameplaySettings Settings => currentPhase.Settings;
+
+        protected override void Activate()
+        {
+            base.Activate();
+            PoolManager.Instance.OnPoolAssetRegistered += OnPoolAssetRegistered;
+            PoolManager.Instance.OnPoolAssetUnregistered += OnPoolAssetUnregistered;
+        }
+
+        protected override void Deactivate()
+        {
+            base.Deactivate();
+            PoolManager.Instance.OnPoolAssetRegistered -= OnPoolAssetRegistered;
+            PoolManager.Instance.OnPoolAssetUnregistered -= OnPoolAssetUnregistered;
+        }
         
-        public virtual async Awaitable Initialize(GameplayPhase phase)
+        private void OnPoolAssetRegistered(PoolResource resource)
+        {
+            switch (resource.Asset)
+            {
+                case PrefabPoolAsset prefabPoolAsset:
+                    PoolingNetworkPrefabHandler networkPrefabHandler = new PoolingNetworkPrefabHandler(resource);
+                    NetworkManager.Singleton.PrefabHandler.AddHandler(prefabPoolAsset.Prefab, networkPrefabHandler);
+                    break;
+            }
+        }
+        private void OnPoolAssetUnregistered(PoolResource resource)
+        {
+            switch (resource.Asset)
+            {
+                case PrefabPoolAsset prefabPoolAsset:
+                    NetworkManager.Singleton.PrefabHandler.RemoveHandler(prefabPoolAsset.Prefab);
+                    break;
+            }
+        }
+
+        public async Awaitable Initialize(GameplayPhase phase)
         {
             if (State != LevelState.None)
             {
@@ -33,20 +66,20 @@ namespace OverBang.GameName.Gameplay
             currentPhase = phase;
 
             await SetupGameMap();
-            await SetupPlayer();
+            SetupPlayer();
             await SetupEnemies();
             await SetupUI();
-
             await SetupPooling();
+            
             State = LevelState.Ready;
         }
 
-        public virtual void StartLevel()
+        public void StartLevel()
         {
             State = LevelState.Running;
         }
 
-        public virtual void Dispose()
+        public void Dispose()
         {
             if (State == LevelState.Disposed) return;
             
@@ -55,48 +88,38 @@ namespace OverBang.GameName.Gameplay
             State = LevelState.Disposed;
         }
 
-        protected virtual async Awaitable SetupGameMap()
+        private async Awaitable SetupGameMap()
         {
-            // Placeholder for map setup logic
-            await Awaitable.EndOfFrameAsync();
-        }
-        
-        protected virtual async Awaitable SetupPlayer()
-        {
-            currentPlayers = new Dictionary<PlayerProfile, GameObject>();
-            while (currentPlayers.Any(ctx => ctx.Value == null))
-                await Awaitable.EndOfFrameAsync();
-            
+            await AwaitableUtils.CompletedAwaitable;
         }
 
-        protected virtual async Awaitable SetupEnemies()
+        private void SetupPlayer()
         {
-            await Awaitable.EndOfFrameAsync();
+            IPlayer currentPlayer = SessionManager.Global.CurrentPlayer;
+            Debug.Log("SetupPlayer : " + currentPlayer.Id);
+
+            if (currentPlayer.TryGetCharacterDataByPlayer(out CharacterData characterData))
+            {
+                ulong clientID = NetworkManager.Singleton.LocalClient.ClientId;
+                NetworkObject player = PlayerSpawner.SpawnPlayerObject(characterData, clientID, SessionManager.Global.CurrentPlayer);
+            }
         }
 
-        protected virtual async Awaitable SetupUI()
+        private async Awaitable SetupEnemies()
         {
-            await Awaitable.EndOfFrameAsync();
+            await AwaitableUtils.CompletedAwaitable;
+        }
+
+        private async Awaitable SetupUI()
+        {
             GameController.CursorLockModePriority.AddPriority(this, PriorityTags.High, CursorLockMode.Locked);
             GameController.CursorVisibleStatePriority.AddPriority(this, PriorityTags.High, false);
+            await AwaitableUtils.CompletedAwaitable;
         }
         
         private async Awaitable SetupPooling()
         {
-            using (ListPool<IPoolDependencyProvider>.Get(out List<IPoolDependencyProvider> providers))
-            {
-                /*
-                foreach (var profile in Settings.playerProfiles)
-                    providers.Add(profile.characterData);
-                */
-                OnCollectSceneProviders?.Invoke(providers);
-
-                PoolDependenciesCollector collector = new PoolDependenciesCollector();
-                foreach (var config in collector.Collect(providers))
-                    PoolManager.Instance.RegisterPool(config);
-            }
-            
-            await Awaitable.MainThreadAsync();
+            await PoolUtils.SetupPooling(OnCollectSceneProviders);
         }
     }
 }

@@ -18,12 +18,26 @@ namespace OverBang.Pooling.PoolStrategies
 
         protected override void OnPostSpawn(GameObject instance)
         {
-            instance.SetActive(true);
+            if (instance == null)
+            {
+                Debug.LogWarning($"Object instance : {instance.name} on prefab pool strategy was null.");
+            }
+            else
+            {
+                instance.SetActive(true);
+            }
         }
 
         protected override void OnPostDestroy(GameObject instance)
         {
-            instance.SetActive(false);
+            if (instance == null)
+            {
+                Debug.LogWarning($"Object instance : {instance.name} on prefab pool strategy was null.");
+            }
+            else
+            {
+                instance.SetActive(false);
+            }
         }
     }
 }

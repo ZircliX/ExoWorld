@@ -1,7 +1,8 @@
-using OverBang.GameName.Gameplay.Cameras;
+using OverBang.GameName.Gameplay.Composits;
+using OverBang.GameName.Gameplay.Data;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.Movement.States
+namespace OverBang.GameName.Gameplay.States
 {
     [CreateAssetMenu(menuName = "OverBang/Movement/Walk")]
     public class WalkState : MoveState

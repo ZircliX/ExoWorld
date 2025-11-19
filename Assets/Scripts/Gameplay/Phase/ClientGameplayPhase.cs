@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Threading;
+using OverBang.GameName.Core;
+using UnityEngine;
 
 namespace OverBang.GameName.Gameplay
 {
@@ -7,15 +9,35 @@ namespace OverBang.GameName.Gameplay
         public ClientGameplayPhase(GameplaySettings gameplaySettings) : base(gameplaySettings)
         {
         }
-
-        protected override Awaitable LoadScene()
+        
+        protected override async Awaitable LoadScene()
         {
-            throw new System.NotImplementedException();
+            await AwaitableUtils.AwaitableUntil(() =>
+            {
+                Debug.Log("Waiting");
+                SessionManager.Global.CurrentPlayer.TryGetPhaseStatusByPlayer(out PhaseStatus status);
+                return status == PhaseStatus.SceneLoaded;
+            }, CancellationToken.None);
         }
 
-        protected override Awaitable<LevelManager> CreateLevelManager()
+        protected override async Awaitable<LevelManager> CreateLevelManager()
         {
-            throw new System.NotImplementedException();
+            Debug.Log("Creating level manager");
+            
+            GameObject levelManager = new GameObject("LevelManager")
+            {
+                hideFlags = HideFlags.NotEditable
+            };
+            
+            LevelManager = levelManager.AddComponent<LevelManager>();
+
+            if (LevelManager != null)
+            {
+                await LevelManager.Initialize(this);
+                LevelManager.StartLevel();
+            }
+
+            return LevelManager;
         }
     }
 }

@@ -1,36 +1,31 @@
-﻿using System.Collections.Generic;
-using OverBang.GameName.Core;
-using UnityEngine;
+﻿using OverBang.GameName.Core;
+using Unity.Netcode;
+using Unity.Services.Multiplayer;
 
 namespace OverBang.GameName.Hub
 {
-    public class HubSpawner : HubListener
+    public class HubSpawner : MonoPhaseListener<HubPhase>
     {
-        private Dictionary<PlayerProfile, GameObject> currentPlayers;
-        
-        protected override void Begin(HubPhase phase)
+        protected override void OnBegin(HubPhase phase)
         {
-            currentPlayers ??= new Dictionary<PlayerProfile, GameObject>();
+            //Debug.Log("OnBegin");
             phase.OnCharacterSelected += SpawnPlayer;
+            
+            if (phase.SelectedCharacter != null)
+                SpawnPlayer(phase.CurrentPlayer, phase.SelectedCharacter);
         }
 
-        protected override void End(HubPhase phase, bool success)
+        protected override void OnEnd(HubPhase phase)
         {
+            //Debug.Log("OnEnd");
             phase.OnCharacterSelected -= SpawnPlayer;
         }
 
-        private void SpawnPlayer(PlayerProfile playerProfile)
+        private void SpawnPlayer(IPlayer player, CharacterData characterData)
         {
-            foreach ((PlayerProfile key, GameObject value) in currentPlayers)
-            {
-                if (key.characterData.ID == playerProfile.characterData.ID)
-                {
-                    Destroy(value);
-                }
-            }
-
-            GameObject player = Instantiate(playerProfile.characterData.CharacterPrefab);
-            currentPlayers[playerProfile] = player;
+            //Debug.Log($"Spawn player {player.Id} with character {characterData.AgentName}");
+            ulong clientID = NetworkManager.Singleton.LocalClient.ClientId;
+            PlayerSpawner.SpawnPlayerObject(characterData, clientID, SessionManager.Global.CurrentPlayer);
         }
     }
 }

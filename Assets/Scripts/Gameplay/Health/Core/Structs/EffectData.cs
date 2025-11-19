@@ -1,4 +1,6 @@
-namespace OverBang.GameName.Gameplay.Health
+using OverBang.GameName.Gameplay.Core.Enums;
+
+namespace OverBang.GameName.Gameplay.Core.Structs
 {
     public readonly struct EffectData
     {

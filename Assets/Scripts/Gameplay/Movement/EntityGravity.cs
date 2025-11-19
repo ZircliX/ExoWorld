@@ -1,8 +1,9 @@
-using KBCore.Refs;
 using Helteix.ChanneledProperties.Priorities;
+using KBCore.Refs;
+using OverBang.GameName.Gameplay.Gravity;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.Movement
+namespace OverBang.GameName.Gameplay
 {
     public class EntityGravity : GravityReceiver
     {

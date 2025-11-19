@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace OverBang.GameName.Core.Audio
+namespace OverBang.GameName.Core
 {
     public struct AudioParameters
     {

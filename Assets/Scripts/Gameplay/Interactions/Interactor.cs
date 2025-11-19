@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace OverBang.GameName.Interactions
+namespace OverBang.GameName.Gameplay
 {
     public class Interactor : MonoBehaviour
     {

@@ -1,6 +1,4 @@
-using UnityEngine;
-
-namespace OverBang.GameName.Interactions
+namespace OverBang.GameName.Gameplay.Interface
 {
     public interface IInteractable
     {

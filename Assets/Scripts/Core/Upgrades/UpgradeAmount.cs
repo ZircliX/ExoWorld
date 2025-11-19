@@ -1,4 +1,4 @@
-﻿namespace OverBang.GameName.Core.Upgrades
+﻿namespace OverBang.GameName.Core
 {
     [System.Serializable]
     public struct UpgradeAmount

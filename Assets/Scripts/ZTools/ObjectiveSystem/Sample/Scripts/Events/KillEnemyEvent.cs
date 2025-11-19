@@ -1,6 +1,6 @@
-using ZTools.ObjectiveSystem.Core.Interfaces;
+using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Interfaces;
 
-namespace ZTools.ObjectiveSystem.Sample.Events
+namespace ZTools.ObjectiveSystem.Sample.ZTools.ObjectiveSystem.Sample.Scripts.Events
 {
     /// <summary>
     /// Example concrete command for when an enemy is killed.

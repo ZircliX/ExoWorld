@@ -1,5 +1,5 @@
 using KBCore.Refs;
-using OverBang.GameName.Core.Characters;
+using OverBang.GameName.Core;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

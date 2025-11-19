@@ -1,12 +1,11 @@
 using System;
 using System.Collections.Generic;
-using ZTools.Logger.Core;
-using ZTools.Logger.Core.Enums;
-using ZTools.ObjectiveSystem.Core.Data;
-using ZTools.ObjectiveSystem.Core.Enum;
-using ZTools.ObjectiveSystem.Core.Interfaces;
+using ZTools.Logger.Core.ZTools.Logger.Core;
+using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Data;
+using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Enum;
+using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Interfaces;
 
-namespace ZTools.ObjectiveSystem.Core
+namespace ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core
 {
     /// <summary>
     /// Manages all active objectives. Dispatches game gameEvents and orchestrates objective lifecycle.

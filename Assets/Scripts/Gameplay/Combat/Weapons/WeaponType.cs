@@ -1,4 +1,4 @@
-﻿namespace OverBang.GameName.Gameplay.Combat
+﻿namespace OverBang.GameName.Gameplay.Weapons
 {
     public enum WeaponType
     {

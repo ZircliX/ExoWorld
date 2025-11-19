@@ -1,56 +1,47 @@
-using Helteix.ChanneledProperties.Priorities;
-using KBCore.Refs;
-using OverBang.GameName.Core.Metrics;
-using OverBang.GameName.Gameplay.Cameras;
-using OverBang.GameName.Gameplay.Movement;
+using Helteix.Tools;
+using OverBang.GameName.Core;
+using OverBang.GameName.Gameplay.Data;
+using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-namespace OverBang.GameName.Gameplay.Player
+namespace OverBang.GameName.Gameplay
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : NetworkBehaviour, IPlayerController
     {
-        [field: SerializeField, Self] public PlayerInput PlayerInput { get; private set; }
-        [field: SerializeField, Child] public PlayerMovement PlayerMovement { get; private set; }
-        [field: SerializeField, Child] public PlayerCamera PlayerCamera { get; private set; }
-        [field: SerializeField, Child] public Camera Camera { get; private set; }
+        public NetworkVariable<PlayerNetworkTransform> PlayerState { get; private set; } =
+            new NetworkVariable<PlayerNetworkTransform>(writePerm: NetworkVariableWritePermission.Owner);
+        
+        [SerializeField] private Transform playerModelContainer;
+        private IPlayerComponent[] playerComponents;
 
-        private void OnValidate()
+        private void Awake()
         {
-            this.ValidateRefs();
+            playerComponents = GetComponentsInChildren<IPlayerComponent>();
         }
 
-        public void EnableLocalControls()
+        private void Start()
         {
-            CameraManager.Instance.RequestCameraChange(CameraID.PlayerView);
+            for (int i = 0; i < playerComponents.Length; i++)
+            {
+                IPlayerComponent playerComponent = playerComponents[i];
+                playerComponent.Controller = this;
+            }
         }
 
-        public void DisableRemoteControls(Vector3 pos, Quaternion rot)
+        [Rpc(SendTo.Everyone)]
+        public void SetDataRpc(string characterDataID)
         {
-            Destroy(PlayerInput);
-            Destroy(Camera.gameObject);
-            Destroy(PlayerCamera.gameObject);
-
-            PlayerMovement.Rb.isKinematic = true;
-            PlayerMovement.Rb.interpolation = RigidbodyInterpolation.Interpolate;
-            PlayerMovement.enabled = false;
-
-            PlayerMovement.Rb.position = pos;
-            PlayerMovement.Rb.rotation = rot;
-        }
-
-        public (Vector3 pos, Quaternion rot) CaptureState()
-        {
-            return (PlayerMovement.Rb.position, PlayerMovement.Rb.rotation);
-        }
-
-        public void ApplyNetworkState(Vector3 targetPos, Quaternion targetRot)
-        {
-            Vector3 currentPos = PlayerMovement.Rb.position;
-            Quaternion currentRot = PlayerMovement.Rb.rotation;
-
-            PlayerMovement.Rb.MovePosition(Vector3.Lerp(currentPos, targetPos, 6f));
-            PlayerMovement.Rb.MoveRotation(Quaternion.Slerp(currentRot, targetRot, 6f));
+            if (characterDataID.TryGetAssetByID(out CharacterData characterData))
+            {
+                for (int i = 0; i < playerComponents.Length; i++)
+                {
+                    IPlayerComponent  playerComponent = playerComponents[i];
+                    playerComponent.OnSync(characterData);
+                }
+            }
+            
+            playerModelContainer.ClearChildren();
+            Instantiate(characterData.ModelPrefab, playerModelContainer);
         }
     }
 }

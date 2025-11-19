@@ -1,8 +1,9 @@
 using System;
-using ZTools.ObjectiveSystem.Core.Data;
-using ZTools.ObjectiveSystem.Core.Enum;
+using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Data;
+using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Enum;
+using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Structs;
 
-namespace ZTools.ObjectiveSystem.Core.Interfaces
+namespace ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Interfaces
 {
     /// <summary>
     /// The non-generic base interface for all runtime objectives.

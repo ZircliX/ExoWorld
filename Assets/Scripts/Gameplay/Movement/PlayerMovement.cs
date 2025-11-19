@@ -1,9 +1,8 @@
 using Helteix.ChanneledProperties.Priorities;
-using OverBang.GameName.Gameplay.Cameras;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace OverBang.GameName.Gameplay.Movement
+namespace OverBang.GameName.Gameplay
 {
     public class PlayerMovement : EntityMovement
     {

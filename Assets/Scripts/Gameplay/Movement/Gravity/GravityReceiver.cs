@@ -1,7 +1,7 @@
 using Helteix.ChanneledProperties.Priorities;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.Movement
+namespace OverBang.GameName.Gameplay.Gravity
 {
     public abstract class GravityReceiver : MonoBehaviour
     {

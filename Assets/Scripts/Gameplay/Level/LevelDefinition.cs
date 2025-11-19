@@ -1,5 +1,5 @@
 ﻿using System;
-using OverBang.GameName.Core.Characters;
+using OverBang.GameName.Core;
 using OverBang.Pooling.Resource;
 
 namespace OverBang.GameName.Gameplay

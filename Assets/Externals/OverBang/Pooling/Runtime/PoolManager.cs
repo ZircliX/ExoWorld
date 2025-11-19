@@ -1,12 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using OverBang.Pooling.Resource;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace OverBang.Pooling
 {
     public class PoolManager : Helteix.Singletons.MonoSingletons.MonoSingleton<PoolManager>
     {
+        public event Action<PoolResource> OnPoolAssetRegistered; 
+        public event Action<PoolResource> OnPoolAssetUnregistered;
+        public event Action OnPoolsLoaded;
+        
         private Dictionary<IPoolConfig, IPool> pools;
+        private Dictionary<IPool, bool> poolsLoadStatus;
         private List<IPool> poolList;
         
         private Transform poolParent;
@@ -17,7 +24,9 @@ namespace OverBang.Pooling
             poolParent = new GameObject($"Pools_Root").transform;
 
             pools = new Dictionary<IPoolConfig, IPool>();
+            poolsLoadStatus = new Dictionary<IPool, bool>();
             poolList = new List<IPool>();
+            
             instanceToPool = new Dictionary<Object, IPool>();
         }
 
@@ -34,25 +43,43 @@ namespace OverBang.Pooling
 
             IPool pool = null;
 
-            switch (poolConfig.PoolResource.Asset)
+            PoolResource poolResource = poolConfig.PoolResource;
+            switch (poolResource.Asset)
             {
                 case PrefabPoolAsset prefabAsset:
                     pool = new Pool<GameObject>(poolParent, poolConfig);
+                    OnPoolAssetRegistered?.Invoke(poolResource);
                     break;
 
                 case ResourcePoolAsset resourceAsset:
                     pool = new Pool<Object>(poolParent, poolConfig);
+                    OnPoolAssetRegistered?.Invoke(poolResource);
                     break;
 
                 default:
-                    Debug.LogError($"Unsupported pool asset type {poolConfig.PoolResource.Asset.GetType()}");
+                    Debug.LogError($"Unsupported pool asset type {poolResource.Asset.GetType()}");
                     break;
             }
 
             if (pool != null)
             {
                 pools[poolConfig] = pool;
+                poolsLoadStatus[pool] = false;
+                pool.OnFillComplete += CheckForCompleteFill;
                 pool.Load();
+            }
+        }
+
+        private void CheckForCompleteFill(IPool pool)
+        {
+            poolsLoadStatus[pool] = true;
+            pool.OnFillComplete -= CheckForCompleteFill;
+            
+            foreach (bool status in poolsLoadStatus.Values)
+            {
+                if (!status) return;
+                
+                OnPoolsLoaded?.Invoke();
             }
         }
 
@@ -60,11 +87,19 @@ namespace OverBang.Pooling
         {
             foreach (PoolConfigAsset config in poolConfigs)
             {
-                if (pools.Remove(config, out IPool pool))
-                {
-                    pool.Dispose();
-                }
+                if(UnregisterPool(config))
+                    OnPoolAssetUnregistered?.Invoke(config.PoolResource);
             }
+        }
+
+        public bool UnregisterPool(PoolConfigAsset config)
+        {
+            if (pools.Remove(config, out IPool pool))
+            {
+                pool.Dispose();
+                return true;
+            }
+            return false;
         }
 
         public void ClearPools()

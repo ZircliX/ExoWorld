@@ -2,10 +2,12 @@
 using System.Threading;
 using UnityEngine;
 
-namespace OverBang.GameName.Managers
+namespace OverBang.GameName.Core
 {
     public static class AwaitableUtils
     {
+        static readonly AwaitableCompletionSource completionSource = new();
+        
         public static void Run<T>(this Awaitable<T> task)
         {
             _ = RunInternal(task);
@@ -45,6 +47,17 @@ namespace OverBang.GameName.Managers
             while(!condition()){
                 cancellationToken.ThrowIfCancellationRequested();
                 await Awaitable.NextFrameAsync(cancellationToken);
+            }
+        }
+    
+        public static Awaitable CompletedAwaitable
+        {
+            get
+            {
+                completionSource.SetResult();
+                Awaitable awaitable = completionSource.Awaitable;
+                completionSource.Reset();
+                return awaitable;
             }
         }
     }

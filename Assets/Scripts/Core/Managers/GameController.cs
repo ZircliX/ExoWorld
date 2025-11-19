@@ -1,18 +1,25 @@
 using System;
 using Helteix.ChanneledProperties.Priorities;
-using OverBang.GameName.Core.GameMode;
-using OverBang.GameName.Core.Metrics;
-using OverBang.GameName.Core.Phases;
-using OverBang.GameName.Managers;
 using UnityEngine;
 
-namespace OverBang.GameName
+namespace OverBang.GameName.Core
 {
     public static partial class GameController
     {
         public static IGameMode CurrentGameMode { get; private set; }
         public static SessionManager SessionManager { get; private set; }
-        public static PhaseManager PhaseManager { get; private set; }
+
+        private static GameDatabase gameDatabase;
+        public static GameDatabase GameDatabase
+        {
+            get
+            {
+                if (!gameDatabase)
+                    gameDatabase = LoadGameDatabase();
+                
+                return gameDatabase;
+            }
+        }
         
         private static GameMetrics gameMetrics;
         public static GameMetrics Metrics
@@ -27,6 +34,7 @@ namespace OverBang.GameName
         }
 
         private static GameMetrics LoadMetrics() => Resources.Load<GameMetrics>("GameMetrics");
+        private static GameDatabase LoadGameDatabase() => Resources.Load<GameDatabase>("GameDatabase");
         
         public static Priority<CursorLockMode> CursorLockModePriority { get; private set; }
         public static Priority<bool> CursorVisibleStatePriority { get; private set; }
@@ -37,7 +45,7 @@ namespace OverBang.GameName
             SetupPrioritisedProperties();
             SetupFields();
 
-            Application.targetFrameRate = 60;
+            Application.targetFrameRate = 240;
         }
 
         public static void QuitGame()
@@ -48,7 +56,6 @@ namespace OverBang.GameName
         private static void SetupFields()
         {
             SessionManager = new SessionManager();
-            PhaseManager = new PhaseManager();
         }
 
         private static void SetupPrioritisedProperties()

@@ -1,10 +1,10 @@
 ﻿using System;
-using OverBang.GameName.Core.Characters;
-using OverBang.GameName.Core.Phases;
+using System.Collections.Generic;
+using System.Threading;
 using Unity.Services.Multiplayer;
 using UnityEngine;
 
-namespace OverBang.GameName.Core.CharacterSelection
+namespace OverBang.GameName.Core
 {
     public abstract class SelectionPhase : IPhase
     {
@@ -21,59 +21,79 @@ namespace OverBang.GameName.Core.CharacterSelection
         {
             public SelectionType selectionType;
             public CharacterClasses availableClasses;
+        }
+        
+        protected readonly SelectionSettings Settings;
+        
+        public event Action<IPlayer, CharacterData> OnCharacterSelected;
+        
+        public CharacterData SelectedCharacter { get; private set; }
+        public IPlayer CurrentPlayer => SessionManager.Global.CurrentPlayer;
+
+        public bool IsDone { get; protected set; }
+        
+        public List<CharacterData> AvailableCharacters { get; protected set; }
+        
+        protected SelectionPhase(SelectionSettings selectionSettings)
+        {
+            Settings = selectionSettings;
+            AvailableCharacters = new List<CharacterData>();
+        }
+
+        protected virtual async Awaitable OnBegin()
+        {
+            CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyPhaseStatus, nameof(PhaseStatus.None));
             
-            public PlayerProfile playerProfile;
-        }
-        
-        protected readonly SelectionSettings settings;
-
-        public PlayerProfile PlayerProfile { get; private set; }
-        
-        public event Action<PlayerProfile> OnCharacterSelected;
-        public event Action<CharacterData> OnAvailableCharacterAdded;
-
-        public SelectionPhase(SelectionSettings selectionSettings)
-        {
-            settings = selectionSettings;
-        }
-
-        public virtual Awaitable OnBegin()
-        {
-            PlayerProfile.sessionPlayer.SetProperty("Character", new PlayerProperty(string.Empty));
-            return null;
-        }
-
-        public virtual Awaitable OnEnd(bool success)
-        {
-            if (success)
+            if (!CurrentPlayer.Properties.ContainsKey(ConstID.Global.PlayerPropertyCharacterData))
             {
-                PlayerProfile.sessionPlayer.SetProperty("Character", new PlayerProperty(PlayerProfile.characterData.ID));
+                CurrentPlayer.SetProperty(ConstID.Global.PlayerPropertyCharacterData,
+                    new PlayerProperty(string.Empty));
             }
 
-            return null;
+            LoadCharactersData();
+            
+            await AwaitableUtils.CompletedAwaitable;
+        }
+
+        protected virtual async Awaitable Execute()
+        {
+            await AwaitableUtils.AwaitableUntil(() => IsDone, CancellationToken.None);
+        }
+        
+        protected virtual async Awaitable OnEnd()
+        {
+            await AwaitableUtils.CompletedAwaitable;
         }
 
         public void SelectCharacter(CharacterData characterData)
         {
-            PlayerProfile = new PlayerProfile()
-            {
-                characterData = characterData
-            };
+            if (characterData == null) 
+                return;
             
-            OnCharacterSelected?.Invoke(PlayerProfile);
+            IPlayer globalCurrentPlayer = CurrentPlayer;
+            globalCurrentPlayer.SetProperty(ConstID.Global.PlayerPropertyCharacterData, new PlayerProperty(characterData.ID));
+            
+            SelectedCharacter = characterData;
+            OnCharacterSelected?.Invoke(CurrentPlayer, characterData);
         }
-        
-        public void StartCharacterSelection()
+
+        private void LoadCharactersData()
         {
             CharacterData[] characters = Resources.LoadAll<CharacterData>("Characters");
-
+            CharacterClasses availableClasses = Settings.availableClasses;
+            
             for (int i = 0; i < characters.Length; i++)
             {
-                //Debug.Log("HubPhase: Processing loaded character " + ctx.name);
-                if(!characters[i].CharacterClass.Matches(settings.availableClasses))
-                    return;
-                OnAvailableCharacterAdded?.Invoke(characters[i]);
+                CharacterData character = characters[i];
+                if (!character.CharacterClass.Matches(availableClasses))
+                    continue;
+                
+                AvailableCharacters.Add(character);
             }
         }
+        
+        Awaitable IPhase.OnBegin() => OnBegin();
+        Awaitable IPhase.OnEnd() => OnEnd();
+        Awaitable IPhase.Execute() => Execute();
     }
 }

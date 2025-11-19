@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.Movement
+namespace OverBang.GameName.Gameplay.Gravity.Implementations
 {
     [RequireComponent(typeof(BoxCollider)), AddComponentMenu("OverBang/Gravity/Box")]
     public class BoxGravityZone : GravityZone

@@ -1,4 +1,4 @@
-namespace OverBang.GameName.Gameplay.Movement
+namespace OverBang.GameName.Gameplay
 {
     public enum MovementState
     {

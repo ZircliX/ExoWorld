@@ -1,4 +1,7 @@
-namespace OverBang.GameName.Gameplay.Health
+using OverBang.GameName.Gameplay.Core.Interfaces;
+using OverBang.GameName.Gameplay.Core.Structs;
+
+namespace OverBang.GameName.Gameplay.Core
 {
     public struct PercentageMetricResolver  : IEffectMetricResolver
     {

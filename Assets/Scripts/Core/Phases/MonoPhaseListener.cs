@@ -1,26 +1,41 @@
 ﻿using UnityEngine;
 
-namespace OverBang.GameName.Core.Phases
+namespace OverBang.GameName.Core
 {
-    public abstract class MonoPhaseListener<T> : MonoBehaviour, IPhaseListener<T> where T : IPhase
+    public abstract class MonoPhaseListener<T> : MonoBehaviour, IPhaseListener<T> 
+        where T : class, IPhase
     {
-        protected T phase;
+        protected T CurrentPhase { get; private set; }
         
-        protected virtual void OnEnable() => this.Register();
-        protected virtual void OnDisable() => this.Unregister();
-
-        public void OnBegin(T phase)
+        protected virtual void OnEnable()
         {
-            this.phase = phase;
-            Begin();
+            this.Register();
         }
 
-        public void OnEnd(T phase, bool success)
+        protected virtual void OnDisable()
         {
-            End(success);
+            this.Unregister();
+        }
+
+        void IPhaseListener<T>.OnBegin(T phase)
+        {
+            if(CurrentPhase != null)
+                return;
+            
+            CurrentPhase = phase;
+            OnBegin(phase);
+        }
+
+        void IPhaseListener<T>.OnEnd(T phase)
+        {
+            if(CurrentPhase != phase)
+                return;
+            
+            OnEnd(phase);
+            CurrentPhase = null;
         }
         
-        protected virtual void Begin() {}
-        protected virtual void End(bool success) {}
+        protected virtual void OnBegin(T phase) {}
+        protected virtual void OnEnd(T phase) {}
     }
 }

@@ -1,4 +1,4 @@
-using ZTools.ObjectiveSystem.Core.Interfaces;
+using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Interfaces;
 
 namespace OverBang.GameName.Quests.QuestEvents
 {

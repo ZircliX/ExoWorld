@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace OverBang.GameName.Core.CharacterSelection
+namespace OverBang.GameName.Core
 {
     public class QuickSelectionPhase : SelectionPhase
     {
@@ -8,14 +8,14 @@ namespace OverBang.GameName.Core.CharacterSelection
         {
         }
 
-        public override async Awaitable OnBegin()
+        protected override async Awaitable OnBegin()
         {
             await base.OnBegin();
         }
 
-        public override async Awaitable OnEnd(bool success)
+        protected override async Awaitable OnEnd()
         {
-            await base.OnEnd(success);
+            await base.OnEnd();
         }
     }
 }

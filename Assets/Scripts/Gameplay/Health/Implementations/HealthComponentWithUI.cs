@@ -1,7 +1,8 @@
+using OverBang.GameName.Gameplay.Core;
 using TMPro;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.Health
+namespace OverBang.GameName.Gameplay.Implementations
 {
     public class HealthComponentWithUI : HealthComponent
     {

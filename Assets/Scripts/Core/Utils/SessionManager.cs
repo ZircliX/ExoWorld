@@ -2,13 +2,15 @@
 using Unity.Services.Multiplayer;
 using UnityEngine;
 
-namespace OverBang.GameName.Managers
+namespace OverBang.GameName.Core
 {
     public class SessionManager
     {
         public static SessionManager Global => GameController.SessionManager;
         
         public ISession ActiveSession {get; private set;}
+        
+        public IPlayer CurrentPlayer => ActiveSession.CurrentPlayer;
         public bool IsHost => ActiveSession.IsHost;
 
         public async Awaitable<ISession> CreateOrJoinSession(string sessionId, SessionOptions options)

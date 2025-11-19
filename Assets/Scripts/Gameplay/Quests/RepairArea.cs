@@ -2,7 +2,7 @@
 using KBCore.Refs;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.Quests
+namespace OverBang.GameName.Gameplay
 {
     public class RepairArea : MonoBehaviour
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace OverBang.GameName.Core.GameMode
+namespace OverBang.GameName.Core
 {
     public interface IGameMode
     {

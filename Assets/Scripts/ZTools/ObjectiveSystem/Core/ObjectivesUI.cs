@@ -1,7 +1,7 @@
 using UnityEngine;
-using ZTools.ObjectiveSystem.Core.Interfaces;
+using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Interfaces;
 
-namespace ZTools.ObjectiveSystem.Core
+namespace ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core
 {
     /// <summary>
     /// Base class for UI components that display objectives.

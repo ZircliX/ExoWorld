@@ -1,8 +1,8 @@
-using OverBang.GameName.Core.Scenes;
 using Sirenix.OdinInspector;
+using Unity.Netcode;
 using UnityEngine;
 
-namespace OverBang.GameName.Core.Metrics
+namespace OverBang.GameName.Core
 {
     [CreateAssetMenu(menuName = "OverBang/Metrics/GameMetrics")]
     public partial class GameMetrics : ScriptableObject
@@ -16,6 +16,10 @@ namespace OverBang.GameName.Core.Metrics
         [field: SerializeField, FoldoutGroup("Camera")] public CameraID MainMenu { get; private set; }
         
         [field: SerializeField, FoldoutGroup("UI")] public GameObject CharacterSelectionPrefab { get; private set; }
+        
+        [field: SerializeField, FoldoutGroup("Const ID")] public ConstID ConstID { get; private set; }
+        
+        [field: SerializeField, FoldoutGroup("Prefabs")] public NetworkObject PlayerControllerPrefab { get; private set; }
         
         [field: SerializeField, FoldoutGroup("DEBUG")] public GameObject DebugInputs { get; private set; }
         [field: SerializeField, FoldoutGroup("DEBUG")] public bool LightFlickerInEditMode { get; private set; }

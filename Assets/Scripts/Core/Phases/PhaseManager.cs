@@ -1,42 +1,72 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Pool;
 
-namespace OverBang.GameName.Core.Phases
+namespace OverBang.GameName.Core
 {
-    public class PhaseManager
+    public static class PhaseManager
     {
-        public static PhaseManager Global => GameController.PhaseManager;
+        private static readonly HashSet<IPhaseListener> listeners = new HashSet<IPhaseListener>();
+        private static readonly Dictionary<Type, IPhase> currentPhases = new Dictionary<Type, IPhase>();
 
-        private readonly HashSet<IPhaseListener> listeners = new HashSet<IPhaseListener>();
-
-        public bool RegisterListener<T>(IPhaseListener<T> listener) where T : IPhase
+        public static bool Register<T>(this IPhaseListener<T> listener) where T : IPhase
         {
-            return listeners.Add(listener);
+            Debug.Log("Registering listener: " + listener.GetType().BaseType);
+            
+            bool added = listeners.Add(listener);
+            if (currentPhases.TryGetValue(typeof(T), out IPhase phaseObj) && phaseObj is T phase)
+            {
+                listener.OnBegin(phase);
+            }
+
+            return added;
         }
 
-        public bool UnregisterListener<T>(IPhaseListener<T> listener) where T : IPhase
+        public static bool Unregister<T>(this IPhaseListener<T> listener) where T : IPhase
         {
+            Debug.Log("Unregistering listener: " + listener.GetType().BaseType);
             return listeners.Remove(listener);
         }
 
-        internal void OnBeginPhase<T>(T phase) where T : IPhase
+        public static Awaitable Run<T>(this T phase) where T : IPhase
+            => RunAsync(phase);
+        
+        public static async Awaitable RunAsync<T>(this T phase)  where T : IPhase
         {
-            foreach (IPhaseListener phaseListener in listeners)
+            using (ListPool<IPhaseListener<T>>.Get(out var compatibles))
             {
-                if (phaseListener is IPhaseListener<T> phaseListenerT)
-                {
-                    phaseListenerT.OnBegin(phase);
-                }
-            }
-        }
+                currentPhases[typeof(T)] = phase;
+                
+                Debug.Log("Beginning phase: " + typeof(T).Name);
+                await phase.OnBegin();
+                await Awaitable.EndOfFrameAsync();
 
-        internal void OnEndPhase<T>(T phase, bool success) where T : IPhase
-        {
-            foreach (IPhaseListener phaseListener in listeners)
-            {
-                if (phaseListener is IPhaseListener<T> phaseListenerT)
-                {
-                    phaseListenerT.OnEnd(phase, success);
-                }
+                foreach (IPhaseListener phaseListener in listeners)
+                    if (phaseListener is IPhaseListener<T> compatible)
+                        compatibles.Add(compatible);
+                
+                Debug.Log("Calling listeners for phase begin: " + typeof(T).Name);
+                foreach (IPhaseListener<T> phaseListener in compatibles)
+                    phaseListener.OnBegin(phase);
+                
+                Debug.Log("Executing phase: " + typeof(T).Name);
+                await phase.Execute();
+                
+                compatibles.Clear();
+                foreach (IPhaseListener phaseListener in listeners)
+                    if (phaseListener is IPhaseListener<T> compatible)
+                        compatibles.Add(compatible);
+                
+                Debug.Log("Calling listeners for phase end: " + typeof(T).Name);
+                foreach (IPhaseListener<T> phaseListener in compatibles)
+                    phaseListener.OnEnd(phase);
+                
+                await Awaitable.EndOfFrameAsync();
+                Debug.Log("Ending phase: " + typeof(T).Name);
+                await phase.OnEnd();
+                
+                currentPhases.Remove(typeof(T));
             }
         }
     }

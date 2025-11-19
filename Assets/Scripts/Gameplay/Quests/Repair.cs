@@ -1,15 +1,15 @@
 ﻿using OverBang.GameName.Quests.QuestEvents;
 using UnityEngine;
-using ZTools.ObjectiveSystem.Core;
+using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core;
 
-namespace OverBang.GameName.Gameplay.Quests
+namespace OverBang.GameName.Gameplay
 {
     [RequireComponent(typeof(Collider))]
     public class Repair : MonoBehaviour
     {
         [SerializeField] private GameObject ui;
         private float currentRepairAmount;
-        private float totalRepairAmount = 10f;
+        private float totalRepairAmount = 3f;
         
         private void OnTriggerStay(Collider other)
         {

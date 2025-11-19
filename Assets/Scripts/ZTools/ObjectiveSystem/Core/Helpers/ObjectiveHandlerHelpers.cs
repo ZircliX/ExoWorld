@@ -1,7 +1,7 @@
-using ZTools.ObjectiveSystem.Core.Data;
-using ZTools.ObjectiveSystem.Core.Interfaces;
+using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Data;
+using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Interfaces;
 
-namespace ZTools.ObjectiveSystem.Core.Helpers
+namespace ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Helpers
 {
     public static class ObjectiveHandlerHelpers
     {

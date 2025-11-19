@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace OverBang.GameName.Gameplay.Quests
+namespace OverBang.GameName.Gameplay
 {
     [RequireComponent(typeof(Collider))]
     public class RepairStart : MonoBehaviour
@@ -24,7 +24,6 @@ namespace OverBang.GameName.Gameplay.Quests
             {
                 playerInArea = true;
                 press.SetActive(true);
-                Debug.Log("Player entered repair area");
             }
         }
         
@@ -34,7 +33,6 @@ namespace OverBang.GameName.Gameplay.Quests
             {
                 playerInArea = false;
                 press.SetActive(false);
-                Debug.Log("Player exited repair area");
             }
         }
 

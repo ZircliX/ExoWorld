@@ -1,7 +1,6 @@
 ﻿using Helteix.Singletons.MonoSingletons;
-using UnityEngine;
 
-namespace OverBang.GameName.Core.Audio
+namespace OverBang.GameName.Core
 {
     public class AudioManager : MonoSingleton<AudioManager>
     {

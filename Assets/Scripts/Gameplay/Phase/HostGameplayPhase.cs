@@ -1,7 +1,8 @@
 ﻿using Eflatun.SceneReference;
-using OverBang.GameName.Core.Scenes;
+using OverBang.GameName.Core;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace OverBang.GameName.Gameplay
 {
@@ -11,27 +12,27 @@ namespace OverBang.GameName.Gameplay
         {
         }
 
-        protected override Awaitable LoadScene()
+        protected override async Awaitable LoadScene()
         {
             SceneReference gameSceneRef = SceneCollection.Global.GameSceneRef;
-            string currentSceneName = SceneLoader.GetCurrentSceneName();
-
-            if (currentSceneName != gameSceneRef.Path)
+            Scene currentSceneName = SceneLoader.GetCurrentScene();
+    
+            if (currentSceneName.name != gameSceneRef.Name && NetworkManager.Singleton.IsServer)
             {
-                SceneEventProgressStatus sceneProgress = SceneLoader.NetworkLoadScene(currentSceneName);
+                await SceneLoader.LoadSceneAsync(gameSceneRef.Name, LoadSceneMode.Single);
             }
-
-            return null;
         }
 
         protected override async Awaitable<LevelManager> CreateLevelManager()
         {
+            Debug.Log("Creating level manager");
+            
             GameObject levelManager = new GameObject("LevelManager")
             {
                 hideFlags = HideFlags.NotEditable
             };
             
-            LevelManager = levelManager.AddComponent(typeof(LevelManager)) as LevelManager;
+            LevelManager = levelManager.AddComponent<LevelManager>();
 
             if (LevelManager != null)
             {

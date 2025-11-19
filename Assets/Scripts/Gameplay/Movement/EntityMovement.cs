@@ -1,11 +1,11 @@
 using DG.Tweening;
 using Helteix.ChanneledProperties;
 using Helteix.ChanneledProperties.Formulas;
-using KBCore.Refs;
 using Helteix.ChanneledProperties.Priorities;
+using KBCore.Refs;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.Movement
+namespace OverBang.GameName.Gameplay
 {
     public class EntityMovement : MonoBehaviour
     {

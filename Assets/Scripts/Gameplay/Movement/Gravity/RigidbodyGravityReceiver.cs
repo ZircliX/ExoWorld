@@ -1,7 +1,7 @@
 using KBCore.Refs;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.Movement
+namespace OverBang.GameName.Gameplay.Gravity
 {
     [RequireComponent(typeof(Rigidbody))]
     public class RigidbodyGravityReceiver : GravityReceiver

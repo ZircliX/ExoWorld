@@ -1,6 +1,6 @@
 using System;
 
-namespace ZTools.Logger.Core.Enums
+namespace ZTools.Core.ZTools.Core.Enums
 {
     [System.Serializable]
     [Flags]

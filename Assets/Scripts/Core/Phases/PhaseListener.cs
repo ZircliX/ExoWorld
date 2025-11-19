@@ -1,24 +1,28 @@
-﻿using OverBang.GameName.Core.Phases;
-
-namespace OverBang.GameName.Gameplay.Gameplay.Listeners
+﻿namespace OverBang.GameName.Core
 {
-    public abstract class PhaseListener<T> : IPhaseListener<T> where T : IPhase
+    public abstract class PhaseListener<T> : IPhaseListener<T> where T : class, IPhase
     {
-        protected T currentPhase;
+        protected T CurrentPhase { get; private set; }
 
-        public void OnBegin(T phase)
+        void IPhaseListener<T>.OnBegin(T phase)
         {
-            currentPhase = phase;
-            Begin(phase);
+            if(CurrentPhase != null)
+                return;
+            
+            CurrentPhase = phase;
+            OnBegin(phase);
         }
 
-        public void OnEnd(T phase, bool success)
+        void IPhaseListener<T>.OnEnd(T phase)
         {
-            currentPhase = default;
-            End(phase, success);
+            if(phase != CurrentPhase)
+                return;
+            
+            OnEnd(phase);
+            CurrentPhase = null;
         }
-
-        protected virtual void Begin(T phase) {}
-        protected virtual void End(T phase, bool success) {}
+        
+        protected virtual void OnBegin(T phase) {}
+        protected virtual void OnEnd(T phase) {}
     }
 }

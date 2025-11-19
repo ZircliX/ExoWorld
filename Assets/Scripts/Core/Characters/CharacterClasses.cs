@@ -1,4 +1,4 @@
-namespace OverBang.GameName.Core.Characters
+namespace OverBang.GameName.Core
 {
     [System.Flags]
     public enum CharacterClasses
