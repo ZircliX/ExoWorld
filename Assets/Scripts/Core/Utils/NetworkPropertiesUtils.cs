@@ -1,9 +1,12 @@
-﻿using Unity.Services.Multiplayer;
+﻿using System;
+using Unity.Services.Multiplayer;
 
 namespace OverBang.GameName.Core
 {
     public static class NetworkPropertiesUtils
     {
+        public static event Action<string, string> OnPropertyChanged;
+        
         public static bool TryGetPlayerProperty(this IPlayer player, string propertyName, out string propertyValue)
         {
             if (player?.Properties != null &&
@@ -27,10 +30,43 @@ namespace OverBang.GameName.Core
                    && propertyValue.TryGetAssetByID(out asset);
         }
 
+        public static void UpdatePlayerProperty(this IPlayer player, string propertyName, PlayerProperty property)
+        {
+            UpdatePlayerProperty(player, propertyName, property.Value);
+        }
+
+        public static void UpdatePlayerProperty(this IPlayer player, string propertyName, string value)
+        {
+            player.TryGetPlayerProperty(propertyName, out string oldValue);
+            
+            PlayerProperty property = new PlayerProperty(value);
+            player.SetProperty(propertyName, property);
+    
+            if (oldValue != value)
+            {
+                OnPropertyChanged?.Invoke(propertyName, value);
+            }
+        }
+        
         public static bool TryGetCharacterDataByPlayer(this IPlayer player, out CharacterData characterData)
         {
-            string characterDataPropertyName = ConstID.Global.PlayerPropertyCharacterData;
-            return player.TryGetAssetByPlayerProperty(characterDataPropertyName, out characterData);
+            string propertyName = ConstID.Global.PlayerPropertyCharacterData;
+            return player.TryGetAssetByPlayerProperty(propertyName, out characterData);
+        }
+
+        public static bool TryGetPhaseStatusByPlayer(this IPlayer player, out PhaseStatus phaseStatus)
+        {
+            string propertyName = ConstID.Global.PlayerPropertyPhaseStatus;
+            if (player.TryGetPlayerProperty(propertyName, out string propertyValue))
+            {
+                if (Enum.TryParse(propertyValue, out phaseStatus))
+                {
+                    return true;
+                }
+            }
+
+            phaseStatus = PhaseStatus.None;
+            return false;
         }
     }
 }

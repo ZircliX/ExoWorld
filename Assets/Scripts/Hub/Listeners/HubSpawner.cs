@@ -6,26 +6,26 @@ namespace OverBang.GameName.Hub
 {
     public class HubSpawner : MonoPhaseListener<HubPhase>
     {
-        protected override void Begin(HubPhase phase)
+        protected override void OnBegin(HubPhase phase)
         {
+            //Debug.Log("OnBegin");
             phase.OnCharacterSelected += SpawnPlayer;
+            
+            if (phase.SelectedCharacter != null)
+                SpawnPlayer(phase.CurrentPlayer, phase.SelectedCharacter);
         }
 
-        protected override void End(HubPhase phase, bool success)
+        protected override void OnEnd(HubPhase phase)
         {
+            //Debug.Log("OnEnd");
             phase.OnCharacterSelected -= SpawnPlayer;
         }
 
         private void SpawnPlayer(IPlayer player, CharacterData characterData)
         {
+            //Debug.Log($"Spawn player {player.Id} with character {characterData.AgentName}");
             ulong clientID = NetworkManager.Singleton.LocalClient.ClientId;
-            NetworkObject playerObject = Instantiate(GameMetrics.Global.PlayerControllerPrefab);
-            playerObject.SpawnAsPlayerObject(clientID, destroyWithScene: true);
-
-            if (playerObject.TryGetComponent(out IPlayerController playerController))
-            {
-                playerController.SetDataRpc(characterData.ID);
-            }
+            PlayerSpawner.SpawnPlayerObject(characterData, clientID, SessionManager.Global.CurrentPlayer);
         }
     }
 }

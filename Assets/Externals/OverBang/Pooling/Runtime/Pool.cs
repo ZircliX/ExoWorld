@@ -12,7 +12,6 @@ namespace OverBang.Pooling
     [System.Serializable]
     public class Pool<T> : IPool, IDisposable where T : Object
     {
-
         private struct PooledElement : IEquatable<PooledElement>
         {
             public T instance;
@@ -46,6 +45,10 @@ namespace OverBang.Pooling
         public int CurrentPoolSize => pooledObjects.Count + releasedObjects.Count;
 
         private Awaitable fillJob;
+        private bool isFilling;
+        private bool shouldCancelFill;
+        
+        public event Action<IPool> OnFillComplete;
 
         private Stack<PooledElement> pooledObjects;
         private Dictionary<T, PooledElement> releasedObjects;
@@ -78,6 +81,9 @@ namespace OverBang.Pooling
             pooledObjects = new Stack<PooledElement>(Size);
             releasedObjects = new Dictionary<T, PooledElement>(Size);
             releaseOrder = new Queue<T>(Size);
+            
+            isFilling = false;
+            shouldCancelFill = false;
         }
 
         public void Load()
@@ -102,11 +108,19 @@ namespace OverBang.Pooling
 
         private void AsyncFillPool()
         {
+            if (isFilling)
+            {
+                shouldCancelFill = true;
+                return;
+            }
+
             fillJob = CreateAwaitable();
-            return;
             
             async Awaitable CreateAwaitable()
             {
+                isFilling = true;
+                shouldCancelFill = false;
+
                 using (ListPool<IPoolInstanceListener>.Get(out List<IPoolInstanceListener> listeners))
                 {
                     int missing = Size - CurrentPoolSize;
@@ -114,6 +128,13 @@ namespace OverBang.Pooling
                     int currentFrameCount = 0;
                     for (int i = 0; i < missing; i++)
                     {
+                        // Check for cancellation
+                        if (shouldCancelFill)
+                        {
+                            Debug.Log("Pool fill cancelled");
+                            break;
+                        }
+
                         if (currentFrameCount >= PoolingSettings.Current.MaxInstancePerFrame)
                         {
                             await Awaitable.NextFrameAsync();
@@ -121,12 +142,13 @@ namespace OverBang.Pooling
                         }
 
                         CreateNewPooledInstance(listeners);
-
                         currentFrameCount++;
                     }
                 }
 
+                isFilling = false;
                 fillJob = null;
+                OnFillComplete?.Invoke(this);
             }
         }
 
@@ -171,26 +193,28 @@ namespace OverBang.Pooling
                     IPoolInstanceListener listener = element.listeners[i];
                     listener.OnSpawn(this);
                 }
-
                 strategy?.OnPostSpawn(element.instance);
+                return element.instance;
             }
-            else if (fillJob is null)
+
+            if (!isFilling)
             {
                 Debug.Log("Pool empty, applying behavior: " + PoolResource.PoolEmptyBehavior);
                 switch (PoolResource.PoolEmptyBehavior)
                 {
-                    case PoolEmptyBehavior.DontSpawn: return null;
+                    case PoolEmptyBehavior.DontSpawn:
+                        return null;
                     case PoolEmptyBehavior.ExtendByOne:
                         Size++;
                         SyncFillPool();
                         return GenericSpawn();
                     case PoolEmptyBehavior.ExtendByDouble:
                         Size *= 2;
-                        AsyncFillPool();
+                        SyncFillPool();
                         return GenericSpawn();
                     case PoolEmptyBehavior.ExtendByNextPowerOfTwo:
                         Size = Mathf.NextPowerOfTwo(Size + 1);
-                        AsyncFillPool();
+                        SyncFillPool();
                         return GenericSpawn();
                     case PoolEmptyBehavior.Loop:
                         while (releaseOrder.Count > 0)
@@ -202,19 +226,16 @@ namespace OverBang.Pooling
                                 return GenericSpawn();
                             }
                         }
-
                         return null;
-                    default: throw new ArgumentOutOfRangeException();
+                    default: 
+                        throw new ArgumentOutOfRangeException();
                 }
             }
-            else
-            {
-                fillJob?.Cancel();
-                SyncFillPool();
-                return GenericSpawn();
-            }
-
-            return element.instance;
+            
+            // Fill is in progress, request cancellation instead of canceling immediately
+            shouldCancelFill = true;
+            SyncFillPool();
+            return GenericSpawn();
         }
 
         public Object Spawn()

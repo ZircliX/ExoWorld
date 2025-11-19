@@ -3,7 +3,7 @@
     public interface IPhaseListener<in T> : IPhaseListener where T : IPhase
     {
         void OnBegin(T phase);
-        void OnEnd(T phase, bool success);
+        void OnEnd(T phase);
     }
 
     /// <summary>

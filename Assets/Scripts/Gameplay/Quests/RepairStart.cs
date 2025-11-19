@@ -24,7 +24,6 @@ namespace OverBang.GameName.Gameplay
             {
                 playerInArea = true;
                 press.SetActive(true);
-                Debug.Log("Player entered repair area");
             }
         }
         
@@ -34,7 +33,6 @@ namespace OverBang.GameName.Gameplay
             {
                 playerInArea = false;
                 press.SetActive(false);
-                Debug.Log("Player exited repair area");
             }
         }
 

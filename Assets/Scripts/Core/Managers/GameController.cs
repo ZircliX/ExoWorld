@@ -8,7 +8,6 @@ namespace OverBang.GameName.Core
     {
         public static IGameMode CurrentGameMode { get; private set; }
         public static SessionManager SessionManager { get; private set; }
-        public static PhaseManager PhaseManager { get; private set; }
 
         private static GameDatabase gameDatabase;
         public static GameDatabase GameDatabase
@@ -57,7 +56,6 @@ namespace OverBang.GameName.Core
         private static void SetupFields()
         {
             SessionManager = new SessionManager();
-            PhaseManager = new PhaseManager();
         }
 
         private static void SetupPrioritisedProperties()

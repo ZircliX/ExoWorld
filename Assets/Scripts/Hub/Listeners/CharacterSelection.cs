@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using DG.Tweening;
 using Helteix.ChanneledProperties.Priorities;
+using Helteix.Tools;
 using OverBang.GameName.Core;
 using UnityEngine;
 
@@ -20,42 +21,36 @@ namespace OverBang.GameName.Hub
             agentCards = new List<CharacterCardUI>(4);
         }
         
-        protected override void Begin(HubPhase phase)
+        protected override void OnBegin(HubPhase phase)
         {
             GameController.CursorLockModePriority.AddPriority(this, PriorityTags.Highest, CursorLockMode.Locked);
             GameController.CursorVisibleStatePriority.AddPriority(this, PriorityTags.Highest, false);
-            phase.OnAvailableCharacterAdded += AddCharacter;
-
-            phase.StartSelection();
+            agentCardContainer.ClearChildren();
+            
+            foreach (CharacterData characterData in phase.AvailableCharacters)
+            {
+                //Debug.Log($"Adding character {characterData.AgentName} to selection UI");
+                CharacterCardUI cardUI = Instantiate(characterCardUIPrefab, agentCardContainer);
+                cardUI.Setup(characterData, this);
+            
+                agentCards.Add(cardUI);
+            }
+            
+            ChangeEnabledState(phase.SelectedCharacter == null);
         }
 
-        protected override void End(HubPhase phase, bool success)
+        protected override void OnEnd(HubPhase phase)
         {
             GameController.CursorLockModePriority.RemovePriority(this);
             GameController.CursorVisibleStatePriority.RemovePriority(this);
             ChangeEnabledState(false);
-            phase.OnAvailableCharacterAdded -= AddCharacter;
-        }
-        
-        private void AddCharacter(CharacterData characterData)
-        {
-            if (Mathf.Approximately(canvasGroup.alpha, 0)) ChangeEnabledState(true);
-            
-            //Debug.Log($" Adding character {characterData.AgentName} to selection UI");
-            CharacterCardUI cardUI = Instantiate(characterCardUIPrefab, agentCardContainer);
-            cardUI.Setup(characterData, this);
-            
-            agentCards.Add(cardUI);
         }
         
         public void SelectCharacter(CharacterData characterData)
         {
             //Debug.Log(" [Character Selection] SelectCharacter + " + characterData.AgentName);
             ChangeEnabledState(false);
-            if (currentPhase is SelectionPhase selectionPhase)
-            {
-                selectionPhase.SelectCharacter(characterData);
-            }
+            CurrentPhase.SelectCharacter(characterData);
         }
         
         private void ChangeEnabledState(bool enabled)

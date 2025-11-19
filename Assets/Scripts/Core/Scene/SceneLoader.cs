@@ -33,6 +33,7 @@ namespace OverBang.GameName.Core
             {
                 op();
                 await AwaitableUtils.AwaitableUntil(() => done, CancellationToken.None);
+                await Awaitable.EndOfFrameAsync();
             }
             finally
             {
@@ -49,7 +50,7 @@ namespace OverBang.GameName.Core
             }
             return NetworkManager.Singleton.SceneManager.LoadScene(sceneName, mode);
         }
-
+        
         public static async Awaitable LoadSceneAsync(string sceneName, LoadSceneMode mode = LoadSceneMode.Single)
         {
             Scene current = SceneManager.GetActiveScene();

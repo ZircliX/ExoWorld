@@ -12,6 +12,7 @@ namespace OverBang.GameName.Gameplay
         }
 
         private GameplayPhase.GameplayEndInfos gameplayEndInfos;
+        private bool hasCharacter;
 
         private SurvivalGameMode()
         {
@@ -20,15 +21,17 @@ namespace OverBang.GameName.Gameplay
         public async Awaitable Run()
         {
             bool isRunning = true;
-            bool hasCharacter = false;
+            hasCharacter = false;
             
             while (isRunning)
             {
-                hasCharacter = CheckForCharacter(hasCharacter);
+                CheckForCharacter();
                 
                 // Hub
-                bool hubSuccess = await HandleHubPhase(hasCharacter);
+                await HandleHubPhase();
 
+                Debug.Log("Between Hub and Gameplay");
+                
                 // Gameplay
                 GameplayPhase gameplayPhase = await HandleGameplayPhase();
 
@@ -37,19 +40,16 @@ namespace OverBang.GameName.Gameplay
             }
         }
 
-        private static bool CheckForCharacter(bool hasCharacter)
+        private void CheckForCharacter()
         {
             if (SessionManager.Global.CurrentPlayer.TryGetPlayerProperty(
                     ConstID.Global.PlayerPropertyCharacterData, out string propertyValue))
             {
                 hasCharacter = propertyValue != string.Empty;
-                Debug.Log(hasCharacter);
             }
-
-            return hasCharacter;
         }
 
-        private static async Awaitable<bool> HandleHubPhase(bool hasCharacter)
+        private async Awaitable HandleHubPhase()
         {
             SelectionPhase.SelectionSettings selectionSettings = new SelectionPhase.SelectionSettings
             {
@@ -58,11 +58,10 @@ namespace OverBang.GameName.Gameplay
             };
                 
             HubPhase hubPhase = new HubPhase(selectionSettings);
-            bool hubSuccess = await hubPhase.Run();
-            return hubSuccess;
+            await hubPhase.RunAsync();
         }
         
-        private static async Awaitable<GameplayPhase> HandleGameplayPhase()
+        private async Awaitable<GameplayPhase> HandleGameplayPhase()
         {
             GameplayPhase.GameplaySettings gameplaySettings = new GameplayPhase.GameplaySettings
             {
@@ -78,7 +77,8 @@ namespace OverBang.GameName.Gameplay
                 gameplayPhase = new ClientGameplayPhase(gameplaySettings);
             }
                 
-            bool gameplaySuccess = await gameplayPhase.Run();
+            await gameplayPhase.RunAsync();
+            
             return gameplayPhase;
         }
 

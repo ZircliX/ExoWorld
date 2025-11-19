@@ -9,7 +9,7 @@ namespace OverBang.GameName.Gameplay
     {
         [SerializeField] private GameObject ui;
         private float currentRepairAmount;
-        private float totalRepairAmount = 10f;
+        private float totalRepairAmount = 3f;
         
         private void OnTriggerStay(Collider other)
         {

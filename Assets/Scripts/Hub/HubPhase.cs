@@ -1,5 +1,7 @@
+using System;
 using Eflatun.SceneReference;
 using OverBang.GameName.Core;
+using OverBang.Pooling;
 using Unity.Netcode;
 using Unity.Services.Multiplayer;
 using UnityEngine;
@@ -14,38 +16,58 @@ namespace OverBang.GameName.Hub
         {
         }
 
-        public override async Awaitable OnBegin()
+        protected override async Awaitable OnBegin()
         {
+            SceneManager.sceneLoaded += OnSceneLoaded;
             await base.OnBegin();
-            
-            SceneReference hubSceneRef = SceneCollection.Global.HubSceneRef;
-            Scene currentScene = SceneLoader.GetCurrentScene();
+            StartSelection();
+
+            if (SessionManager.Global.IsHost)
+            {
+                SceneReference hubSceneRef = SceneCollection.Global.HubSceneRef;
+                Scene currentScene = SceneLoader.GetCurrentScene();
     
-            if (currentScene.name != hubSceneRef.Name && NetworkManager.Singleton.IsServer)
-            {
-                await SceneLoader.LoadSceneAsync(hubSceneRef.Name, LoadSceneMode.Single);
+                if (currentScene.name != hubSceneRef.Name && NetworkManager.Singleton.IsServer)
+                {
+                    await SceneLoader.LoadSceneAsync(hubSceneRef.Name, LoadSceneMode.Single);
+                }
             }
+            
+            await PoolUtils.SetupPooling(null);
         }
 
-        public override async Awaitable OnEnd(bool success)
+        protected override async Awaitable OnEnd()
         {
-            await base.OnEnd(success);
+            await base.OnEnd();
+            PoolManager.Instance.ClearPools();
+            Debug.Log("On Hub Phase End");
+            SessionManager.Global.CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyPhaseStatus, nameof(PhaseStatus.None));
         }
 
-        public void StartSelection()
+        public void Validate()
         {
-            if (settings.selectionType == SelectionType.Pick)
-            {
-                StartCharacterSelection();
-            }
-            else
+            IsDone = true;
+        }
+        
+        private void StartSelection()
+        {
+            if (Settings.selectionType == SelectionType.None)
             {
                 IPlayer currentPlayer = SessionManager.Global.CurrentPlayer;
                 
                 if (currentPlayer.TryGetCharacterDataByPlayer(out CharacterData character))
                 {
+                    //Debug.Log($"PLayer {currentPlayer} got character {character.AgentName}");
                     SelectCharacter(character);
                 }
+            }
+        }
+        
+        private void OnSceneLoaded(Scene scene, LoadSceneMode loadMode)
+        {
+            if (scene.name == GameMetrics.Global.SceneCollection.HubSceneRef.Name)
+            {
+                SessionManager.Global.CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyPhaseStatus, nameof(PhaseStatus.SceneLoaded));
             }
         }
     }

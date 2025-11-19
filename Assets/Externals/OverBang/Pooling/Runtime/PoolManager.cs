@@ -10,8 +10,10 @@ namespace OverBang.Pooling
     {
         public event Action<PoolResource> OnPoolAssetRegistered; 
         public event Action<PoolResource> OnPoolAssetUnregistered;
+        public event Action OnPoolsLoaded;
         
         private Dictionary<IPoolConfig, IPool> pools;
+        private Dictionary<IPool, bool> poolsLoadStatus;
         private List<IPool> poolList;
         
         private Transform poolParent;
@@ -22,7 +24,9 @@ namespace OverBang.Pooling
             poolParent = new GameObject($"Pools_Root").transform;
 
             pools = new Dictionary<IPoolConfig, IPool>();
+            poolsLoadStatus = new Dictionary<IPool, bool>();
             poolList = new List<IPool>();
+            
             instanceToPool = new Dictionary<Object, IPool>();
         }
 
@@ -44,6 +48,7 @@ namespace OverBang.Pooling
             {
                 case PrefabPoolAsset prefabAsset:
                     pool = new Pool<GameObject>(poolParent, poolConfig);
+                    OnPoolAssetRegistered?.Invoke(poolResource);
                     break;
 
                 case ResourcePoolAsset resourceAsset:
@@ -59,7 +64,22 @@ namespace OverBang.Pooling
             if (pool != null)
             {
                 pools[poolConfig] = pool;
+                poolsLoadStatus[pool] = false;
+                pool.OnFillComplete += CheckForCompleteFill;
                 pool.Load();
+            }
+        }
+
+        private void CheckForCompleteFill(IPool pool)
+        {
+            poolsLoadStatus[pool] = true;
+            pool.OnFillComplete -= CheckForCompleteFill;
+            
+            foreach (bool status in poolsLoadStatus.Values)
+            {
+                if (!status) return;
+                
+                OnPoolsLoaded?.Invoke();
             }
         }
 

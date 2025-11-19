@@ -7,7 +7,8 @@ namespace OverBang.GameName.Core
     {
         public static GameDatabase Global => GameController.GameDatabase;
         
-        [field: SerializeField] public ScriptableObject[] DatabaseAssets { get; private set; }
+        [field: SerializeField] 
+        public ScriptableObject[] DatabaseAssets { get; private set; }
 
         public bool TryGetAssetByID<T>(string id, out T asset) where T : IDatabaseAsset
         {

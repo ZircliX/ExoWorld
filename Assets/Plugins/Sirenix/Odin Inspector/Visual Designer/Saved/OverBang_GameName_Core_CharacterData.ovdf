@@ -1,0 +1,49 @@
+OVDF v1.0
+OverBang.GameName.Core.CharacterData, OverBang.GameName.Core
+
+# $U7h98PsEjAYiXGRuawM1At
+Position: $root:21
++ [Sirenix.OdinInspector.TabGroupAttribute]
+	GroupName = "Tabs"
+
+# $R14ocaXvQAshF3TFDPY5a4
+Position: $U7h98PsEjAYiXGRuawM1At:0
++ [Sirenix.OdinInspector.TabGroupAttribute+TabSubGroupAttribute]
+	GroupName = "BasicData"
+	Name = "BasicData"
+	Icon = Book
+	TextColor = "lightred"
+
+# $PW2WdHn2iixVYpA5fCoVBv
+Position: $U7h98PsEjAYiXGRuawM1At:1
++ [Sirenix.OdinInspector.TabGroupAttribute+TabSubGroupAttribute]
+	GroupName = "Game Data"
+	Icon = ClipboardData
+	Name = "Game Data"
+	TextColor = "orange"
+
+# <AgentName>k__BackingField
+Position: $R14ocaXvQAshF3TFDPY5a4:0
++ [Sirenix.OdinInspector.TitleAttribute]
+	Title = "Display Fields"
+
+# <ModelPrefab>k__BackingField
+Position: $PW2WdHn2iixVYpA5fCoVBv:1
++ [Sirenix.OdinInspector.RequiredAttribute]
+	ErrorMessage = "Must Reference a Prefab"
+
+# <ID>k__BackingField
++ [Sirenix.OdinInspector.ReadOnlyAttribute]
+
+# <AgentSprite>k__BackingField
+Position: $R14ocaXvQAshF3TFDPY5a4:1
++ [Sirenix.OdinInspector.PreviewFieldAttribute]
+
+# <CharacterClass>k__BackingField
+Position: $PW2WdHn2iixVYpA5fCoVBv:0
+
+# <Dependencies>k__BackingField
+Position: $root:23
+
+# Test
+Visibility: Hidden

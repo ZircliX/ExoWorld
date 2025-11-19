@@ -17,18 +17,22 @@ namespace OverBang.GameName.Gameplay
             transform.position = origin.position;
             transform.rotation = origin.rotation;
             
+            if (rb == null) return;
             rb.AddForce(origin.forward * 1000f);
         }
 
         public void OnSpawn(IPool pool)
         {
             Pool = pool;
+
+            if (rb == null) return;
             rb.isKinematic = false;
             rb.linearVelocity = Vector3.zero;
         }
 
         public void OnDespawn(IPool pool)
         {
+            if (rb == null) return;
             rb.linearVelocity = Vector3.zero;
             rb.isKinematic = true;
         }

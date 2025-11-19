@@ -94,8 +94,8 @@ namespace ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core
             {
                 // Current collection exhausted, move to the next one
                 ChangeCollection();
-                Debug.Log("ObjectiveIndex = " + currentObjectiveIndex + " / " + currentCollection.Objectives.Length);
-                Debug.Log("ObjectiveCollectionIndex = " + currentCollectionIndex + " / " + objectiveCollections.Count);
+                ObjectivesManager.LogProvider.Log("ObjectiveIndex = " + currentObjectiveIndex + " / " + currentCollection.Objectives.Length);
+                ObjectivesManager.LogProvider.Log("ObjectiveCollectionIndex = " + currentCollectionIndex + " / " + objectiveCollections.Count);
                 // After changing collection, try to queue from the new one if available
                 if (currentCollectionIndex < objectiveCollections.Count)
                 {
@@ -113,8 +113,8 @@ namespace ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core
             // Check if the current collection is now exhausted after queuing this objective
             if (currentObjectiveIndex > currentCollection.Objectives.Length)
             {
-                Debug.Log("ObjectiveIndex = " + currentObjectiveIndex + " / " + currentCollection.Objectives.Length);
-                Debug.Log("ObjectiveCollectionIndex = " + currentCollectionIndex + " / " + objectiveCollections.Count);
+                ObjectivesManager.LogProvider.Log("ObjectiveIndex = " + currentObjectiveIndex + " / " + currentCollection.Objectives.Length);
+                ObjectivesManager.LogProvider.Log("ObjectiveCollectionIndex = " + currentCollectionIndex + " / " + objectiveCollections.Count);
                 ObjectivesManager.LogProvider.Log(this, $"Collection '{currentCollection.name}' exhausted. Moving to next collection.");
                 ChangeCollection();
             }

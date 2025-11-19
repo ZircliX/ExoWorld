@@ -8,15 +8,14 @@ namespace OverBang.GameName.Core
         {
         }
 
-        public override async Awaitable OnBegin()
+        protected override async Awaitable OnBegin()
         {
             await base.OnBegin();
-            StartCharacterSelection();
         }
 
-        public override async Awaitable OnEnd(bool success)
+        protected override async Awaitable OnEnd()
         {
-            await base.OnEnd(success);
+            await base.OnEnd();
         }
     }
 }

@@ -9,17 +9,14 @@ using OverBang.Pooling.Resource;
 using Unity.Netcode;
 using Unity.Services.Multiplayer;
 using UnityEngine;
-using UnityEngine.Pool;
 
 namespace OverBang.GameName.Gameplay
 {
-    public class LevelManager : SceneService<LevelManager>
+    public sealed class LevelManager : SceneService<LevelManager>
     {
         public event Action<List<IPoolDependencyProvider>> OnCollectSceneProviders;
-        public LevelState State { get; protected set; }
+        public LevelState State { get; private set; }
         
-        private Dictionary<IPlayer, NetworkObject> currentPlayers;
-
         private GameplayPhase currentPhase;
         private GameplayPhase.GameplaySettings Settings => currentPhase.Settings;
 
@@ -57,7 +54,7 @@ namespace OverBang.GameName.Gameplay
             }
         }
 
-        public virtual async Awaitable Initialize(GameplayPhase phase)
+        public async Awaitable Initialize(GameplayPhase phase)
         {
             if (State != LevelState.None)
             {
@@ -72,17 +69,17 @@ namespace OverBang.GameName.Gameplay
             SetupPlayer();
             await SetupEnemies();
             await SetupUI();
-
             await SetupPooling();
+            
             State = LevelState.Ready;
         }
 
-        public virtual void StartLevel()
+        public void StartLevel()
         {
             State = LevelState.Running;
         }
 
-        public virtual void Dispose()
+        public void Dispose()
         {
             if (State == LevelState.Disposed) return;
             
@@ -91,62 +88,38 @@ namespace OverBang.GameName.Gameplay
             State = LevelState.Disposed;
         }
 
-        protected virtual async Awaitable SetupGameMap()
+        private async Awaitable SetupGameMap()
         {
-            // Placeholder for map setup logic
-            await Awaitable.EndOfFrameAsync();
+            await AwaitableUtils.CompletedAwaitable;
         }
-        
-        protected virtual void SetupPlayer()
+
+        private void SetupPlayer()
         {
-            currentPlayers = new Dictionary<IPlayer, NetworkObject>();
             IPlayer currentPlayer = SessionManager.Global.CurrentPlayer;
+            Debug.Log("SetupPlayer : " + currentPlayer.Id);
 
             if (currentPlayer.TryGetCharacterDataByPlayer(out CharacterData characterData))
             {
                 ulong clientID = NetworkManager.Singleton.LocalClient.ClientId;
-                NetworkObject playerObject = Instantiate(GameMetrics.Global.PlayerControllerPrefab);
-                playerObject.SpawnAsPlayerObject(clientID, destroyWithScene: true);
-
-                if (playerObject.TryGetComponent(out IPlayerController playerController))
-                {
-                    playerController.SetDataRpc(characterData.ID);
-                }
-                
-                currentPlayers.Add(currentPlayer, playerObject);
+                NetworkObject player = PlayerSpawner.SpawnPlayerObject(characterData, clientID, SessionManager.Global.CurrentPlayer);
             }
         }
 
-        protected virtual async Awaitable SetupEnemies()
+        private async Awaitable SetupEnemies()
         {
-            await Awaitable.EndOfFrameAsync();
+            await AwaitableUtils.CompletedAwaitable;
         }
 
-        protected virtual async Awaitable SetupUI()
+        private async Awaitable SetupUI()
         {
-            await Awaitable.EndOfFrameAsync();
             GameController.CursorLockModePriority.AddPriority(this, PriorityTags.High, CursorLockMode.Locked);
             GameController.CursorVisibleStatePriority.AddPriority(this, PriorityTags.High, false);
+            await AwaitableUtils.CompletedAwaitable;
         }
         
         private async Awaitable SetupPooling()
         {
-            using (ListPool<IPoolDependencyProvider>.Get(out List<IPoolDependencyProvider> providers))
-            {
-                IPlayer currentPlayer = SessionManager.Global.CurrentPlayer;
-                if (currentPlayer.TryGetCharacterDataByPlayer(out CharacterData characterData))
-                {
-                    providers.Add(characterData);
-                }
-                
-                OnCollectSceneProviders?.Invoke(providers);
-
-                PoolDependenciesCollector collector = new PoolDependenciesCollector();
-                foreach (IPoolConfig config in collector.Collect(providers))
-                    PoolManager.Instance.RegisterPool(config);
-            }
-            
-            await Awaitable.MainThreadAsync();
+            await PoolUtils.SetupPooling(OnCollectSceneProviders);
         }
     }
 }
