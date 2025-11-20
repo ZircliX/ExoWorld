@@ -1,0 +1,333 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53843da5158dfb84db014e418eb22304, type: 3}
+  m_Name: Demo Scene_SceneLayers
+  m_EditorClassIdentifier: 
+  layers:
+  - guid: 399c8ed7-6df8-4f8c-a1cf-ac3f7bf739de
+    displayName: Environment
+    color: {r: 0.65, g: 0.85, b: 0.35, a: 1}
+    objectGlobalIds:
+    - GlobalObjectId_V1-2-f5adbc1049103ca468d37996eede9de5-1271006967-0
+    - GlobalObjectId_V1-2-f5adbc1049103ca468d37996eede9de5-1259254974-0
+    - GlobalObjectId_V1-2-f5adbc1049103ca468d37996eede9de5-831814714-0
+    - GlobalObjectId_V1-2-f5adbc1049103ca468d37996eede9de5-517325669-0
+    autoRules:
+    - componentTypeName: UnityEngine.MeshRenderer
+    - componentTypeName: UnityEngine.Terrain
+    autoAssignLive: 0
+    defaultVisible: 1
+    defaultPickable: 1
+    objectOrder: []
+  - guid: 2b8dc422-dc4f-4da6-8ba3-57f04cd5bf9b
+    displayName: Lighting
+    color: {r: 1, g: 0.76, b: 0.03, a: 1}
+    objectGlobalIds:
+    - GlobalObjectId_V1-2-f5adbc1049103ca468d37996eede9de5-965188668-0
+    - GlobalObjectId_V1-2-f5adbc1049103ca468d37996eede9de5-160934535-0
+    - GlobalObjectId_V1-2-f5adbc1049103ca468d37996eede9de5-547276492-0
+    autoRules:
+    - componentTypeName: UnityEngine.Light
+    - componentTypeName: UnityEngine.LightProbeGroup
+    - componentTypeName: UnityEngine.ReflectionProbe
+    autoAssignLive: 0
+    defaultVisible: 1
+    defaultPickable: 1
+    objectOrder: []
+  - guid: 25dc7ece-81b3-45a2-97bf-48efbd7e9dc7
+    displayName: Cameras
+    color: {r: 0, g: 0.74, b: 0.83, a: 1}
+    objectGlobalIds:
+    - GlobalObjectId_V1-2-f5adbc1049103ca468d37996eede9de5-104746101-0
+    autoRules:
+    - componentTypeName: UnityEngine.Camera
+    autoAssignLive: 0
+    defaultVisible: 1
+    defaultPickable: 1
+    objectOrder: []
+  - guid: f934d861-deb9-4ff3-a602-85818825411b
+    displayName: VFX
+    color: {r: 1, g: 0.34, b: 0.13, a: 1}
+    objectGlobalIds:
+    - GlobalObjectId_V1-2-f5adbc1049103ca468d37996eede9de5-5566709395674846454-5661472128107411435
+    autoRules:
+    - componentTypeName: UnityEngine.ParticleSystem
+    - componentTypeName: UnityEngine.ParticleSystemForceField
+    - componentTypeName: UnityEngine.TrailRenderer
+    - componentTypeName: UnityEngine.LineRenderer
+    autoAssignLive: 0
+    defaultVisible: 0
+    defaultPickable: 1
+    objectOrder: []
+  - guid: 57a0c13b-ba0d-4b3c-a9a9-f3061a639712
+    displayName: Audio
+    color: {r: 0.62, g: 0.36, b: 0.71, a: 1}
+    objectGlobalIds:
+    - GlobalObjectId_V1-2-f5adbc1049103ca468d37996eede9de5-1551559558-0
+    - GlobalObjectId_V1-2-f5adbc1049103ca468d37996eede9de5-1271006967-0
+    autoRules:
+    - componentTypeName: UnityEngine.AudioSource
+    - componentTypeName: UnityEngine.AudioReverbZone
+    autoAssignLive: 0
+    defaultVisible: 1
+    defaultPickable: 1
+    objectOrder: []
+  - guid: abbd0348-cb55-44b1-9e14-bd9ed6385cf7
+    displayName: UI
+    color: {r: 0.13, g: 0.59, b: 0.95, a: 1}
+    objectGlobalIds:
+    - GlobalObjectId_V1-2-f5adbc1049103ca468d37996eede9de5-1439807132-0
+    - GlobalObjectId_V1-2-f5adbc1049103ca468d37996eede9de5-1706218470-0
+    - GlobalObjectId_V1-2-f5adbc1049103ca468d37996eede9de5-486692295-0
+    - GlobalObjectId_V1-2-f5adbc1049103ca468d37996eede9de5-1990849859-0
+    - GlobalObjectId_V1-2-f5adbc1049103ca468d37996eede9de5-383785696-0
+    - GlobalObjectId_V1-2-f5adbc1049103ca468d37996eede9de5-375415867-0
+    - GlobalObjectId_V1-2-f5adbc1049103ca468d37996eede9de5-278434583-0
+    - GlobalObjectId_V1-2-f5adbc1049103ca468d37996eede9de5-392551947-0
+    - GlobalObjectId_V1-2-f5adbc1049103ca468d37996eede9de5-1024217350-0
+    - GlobalObjectId_V1-2-f5adbc1049103ca468d37996eede9de5-588662039-0
+    autoRules:
+    - componentTypeName: UnityEngine.Canvas
+    - componentTypeName: UnityEngine.CanvasRenderer
+    autoAssignLive: 0
+    defaultVisible: 1
+    defaultPickable: 1
+    objectOrder: []
+  - guid: 43d44b6f-bee6-4485-a88a-96e120e672d5
+    displayName: Gameplay Logic
+    color: {r: 0.9, g: 0.25, b: 0.22, a: 1}
+    objectGlobalIds: []
+    autoRules: []
+    autoAssignLive: 0
+    defaultVisible: 1
+    defaultPickable: 1
+    objectOrder: []
+  - guid: eef19486-9a4a-46a0-9888-d325d1506e8b
+    displayName: Debug/Helpers
+    color: {r: 0.95, g: 0.35, b: 0.55, a: 1}
+    objectGlobalIds: []
+    autoRules: []
+    autoAssignLive: 0
+    defaultVisible: 0
+    defaultPickable: 1
+    objectOrder: []
+  views:
+  - viewName: Full Scene
+    color: {r: 0.3, g: 0.5, b: 0.7, a: 1}
+    states:
+    - layerGuid: 399c8ed7-6df8-4f8c-a1cf-ac3f7bf739de
+      visible: 1
+      pickable: 1
+      expanded: 1
+    - layerGuid: 2b8dc422-dc4f-4da6-8ba3-57f04cd5bf9b
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerGuid: 25dc7ece-81b3-45a2-97bf-48efbd7e9dc7
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerGuid: f934d861-deb9-4ff3-a602-85818825411b
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerGuid: 57a0c13b-ba0d-4b3c-a9a9-f3061a639712
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerGuid: abbd0348-cb55-44b1-9e14-bd9ed6385cf7
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerGuid: 43d44b6f-bee6-4485-a88a-96e120e672d5
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerGuid: eef19486-9a4a-46a0-9888-d325d1506e8b
+      visible: 1
+      pickable: 1
+      expanded: 0
+  - viewName: Environment
+    color: {r: 0.3, g: 0.5, b: 0.7, a: 1}
+    states:
+    - layerGuid: 399c8ed7-6df8-4f8c-a1cf-ac3f7bf739de
+      visible: 1
+      pickable: 1
+      expanded: 1
+    - layerGuid: 2b8dc422-dc4f-4da6-8ba3-57f04cd5bf9b
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerGuid: 25dc7ece-81b3-45a2-97bf-48efbd7e9dc7
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerGuid: f934d861-deb9-4ff3-a602-85818825411b
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerGuid: 57a0c13b-ba0d-4b3c-a9a9-f3061a639712
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerGuid: abbd0348-cb55-44b1-9e14-bd9ed6385cf7
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerGuid: 43d44b6f-bee6-4485-a88a-96e120e672d5
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerGuid: eef19486-9a4a-46a0-9888-d325d1506e8b
+      visible: 0
+      pickable: 1
+      expanded: 0
+  - viewName: Lighting
+    color: {r: 0.3, g: 0.5, b: 0.7, a: 1}
+    states:
+    - layerGuid: 399c8ed7-6df8-4f8c-a1cf-ac3f7bf739de
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerGuid: 2b8dc422-dc4f-4da6-8ba3-57f04cd5bf9b
+      visible: 1
+      pickable: 1
+      expanded: 1
+    - layerGuid: 25dc7ece-81b3-45a2-97bf-48efbd7e9dc7
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerGuid: f934d861-deb9-4ff3-a602-85818825411b
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerGuid: 57a0c13b-ba0d-4b3c-a9a9-f3061a639712
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerGuid: abbd0348-cb55-44b1-9e14-bd9ed6385cf7
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerGuid: 43d44b6f-bee6-4485-a88a-96e120e672d5
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerGuid: eef19486-9a4a-46a0-9888-d325d1506e8b
+      visible: 0
+      pickable: 1
+      expanded: 0
+  - viewName: Gameplay
+    color: {r: 0.3, g: 0.5, b: 0.7, a: 1}
+    states:
+    - layerGuid: 399c8ed7-6df8-4f8c-a1cf-ac3f7bf739de
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerGuid: 2b8dc422-dc4f-4da6-8ba3-57f04cd5bf9b
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerGuid: 25dc7ece-81b3-45a2-97bf-48efbd7e9dc7
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerGuid: f934d861-deb9-4ff3-a602-85818825411b
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerGuid: 57a0c13b-ba0d-4b3c-a9a9-f3061a639712
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerGuid: abbd0348-cb55-44b1-9e14-bd9ed6385cf7
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerGuid: 43d44b6f-bee6-4485-a88a-96e120e672d5
+      visible: 1
+      pickable: 1
+      expanded: 1
+    - layerGuid: eef19486-9a4a-46a0-9888-d325d1506e8b
+      visible: 0
+      pickable: 1
+      expanded: 0
+  - viewName: Polish
+    color: {r: 0.3, g: 0.5, b: 0.7, a: 1}
+    states:
+    - layerGuid: 399c8ed7-6df8-4f8c-a1cf-ac3f7bf739de
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerGuid: 2b8dc422-dc4f-4da6-8ba3-57f04cd5bf9b
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerGuid: 25dc7ece-81b3-45a2-97bf-48efbd7e9dc7
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerGuid: f934d861-deb9-4ff3-a602-85818825411b
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerGuid: 57a0c13b-ba0d-4b3c-a9a9-f3061a639712
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerGuid: abbd0348-cb55-44b1-9e14-bd9ed6385cf7
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerGuid: 43d44b6f-bee6-4485-a88a-96e120e672d5
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerGuid: eef19486-9a4a-46a0-9888-d325d1506e8b
+      visible: 0
+      pickable: 1
+      expanded: 0
+  - viewName: Perfomance
+    color: {r: 0.3, g: 0.5, b: 0.7, a: 1}
+    states:
+    - layerGuid: 399c8ed7-6df8-4f8c-a1cf-ac3f7bf739de
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerGuid: 2b8dc422-dc4f-4da6-8ba3-57f04cd5bf9b
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerGuid: 25dc7ece-81b3-45a2-97bf-48efbd7e9dc7
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerGuid: f934d861-deb9-4ff3-a602-85818825411b
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerGuid: 57a0c13b-ba0d-4b3c-a9a9-f3061a639712
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerGuid: abbd0348-cb55-44b1-9e14-bd9ed6385cf7
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerGuid: 43d44b6f-bee6-4485-a88a-96e120e672d5
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerGuid: eef19486-9a4a-46a0-9888-d325d1506e8b
+      visible: 0
+      pickable: 1
+      expanded: 0

@@ -40,6 +40,7 @@ using System.Collections.Generic;
 using System.Linq;
 #endif
 using UnityEditor;
+using UnityEditor.Build;
 using UnityEngine;
 
 namespace BuildReportTool
@@ -254,7 +255,6 @@ namespace BuildReportTool
 			PopulateMobileSettings(settings);
 			PopulateTvDeviceSettings(settings);
 			PopulateBigConsoleGen07Settings(settings);
-			PopulateBigConsoleGen08Settings(settings);
 			PopulatePackageSettings(settings);
 		}
 
@@ -296,7 +296,7 @@ namespace BuildReportTool
 #if !UNITY_4
 			settings.EnableCrashReportApi = PlayerSettings.enableCrashReportAPI;
 			settings.EnableInternalProfiler = PlayerSettings.enableInternalProfiler;
-			settings.ActionOnDotNetUnhandledException = PlayerSettings.actionOnDotNetUnhandledException.ToString();
+			//settings.ActionOnDotNetUnhandledException = PlayerSettings.actionOnDotNetUnhandledException.ToString();
 #endif
 
 			settings.ConnectProfiler = EditorUserBuildSettings.connectProfiler;
@@ -363,7 +363,7 @@ namespace BuildReportTool
 
 #if UNITY_2018_3_OR_NEWER
 			settings.StrippingLevelUsed = PlayerSettings
-			                              .GetManagedStrippingLevel(EditorUserBuildSettings.selectedBuildTargetGroup)
+			                              .GetManagedStrippingLevel(NamedBuildTarget.FromBuildTargetGroup(EditorUserBuildSettings.selectedBuildTargetGroup))
 			                              .ToString();
 #else
 			settings.StrippingLevelUsed = PlayerSettings.strippingLevel.ToString();
@@ -371,13 +371,13 @@ namespace BuildReportTool
 
 #if UNITY_5_6_OR_NEWER
 			settings.NETApiCompatibilityLevel = PlayerSettings
-			                                    .GetApiCompatibilityLevel(EditorUserBuildSettings.selectedBuildTargetGroup)
+			                                    .GetApiCompatibilityLevel(NamedBuildTarget.FromBuildTargetGroup(EditorUserBuildSettings.selectedBuildTargetGroup))
 			                                    .ToString();
 #else
 			settings.NETApiCompatibilityLevel = PlayerSettings.apiCompatibilityLevel.ToString();
 #endif
 
-			settings.AOTOptions = PlayerSettings.aotOptions;
+			//settings.AOTOptions = PlayerSettings.aotOptions;
 
 #if UNITY_5_5_OR_NEWER
 			settings.LocationUsageDescription = PlayerSettings.iOS.locationUsageDescription;
@@ -528,7 +528,7 @@ namespace BuildReportTool
 			settings.StandaloneAllowFullScreenSwitch = PlayerSettings.allowFullscreenSwitch;
 #endif
 
-			settings.StandaloneCaptureSingleScreen = PlayerSettings.captureSingleScreen;
+			//settings.StandaloneCaptureSingleScreen = PlayerSettings.captureSingleScreen;
 
 			settings.StandaloneForceSingleInstance = PlayerSettings.forceSingleInstance;
 			settings.StandaloneEnableResizableWindow = PlayerSettings.resizableWindow;
@@ -664,7 +664,7 @@ namespace BuildReportTool
 
 #if !UNITY_4
 			settings.AndroidAsAndroidProject = EditorUserBuildSettings.exportAsGoogleAndroidProject;
-			settings.AndroidIsGame = PlayerSettings.Android.androidIsGame;
+			//settings.AndroidIsGame = PlayerSettings.Android.androidIsGame;
 			settings.AndroidTvCompatible = PlayerSettings.Android.androidTVCompatibility;
 #endif
 

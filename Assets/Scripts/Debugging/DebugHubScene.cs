@@ -4,14 +4,15 @@ using UnityEngine;
 
 namespace OverBang.GameName.Debugging
 {
-    [DefaultExecutionOrder(-999)]
-    public class DebugHubScene : MonoBehaviour
+    [DefaultExecutionOrder(-10)]
+
+public class DebugHubScene : MonoBehaviour
     {
         private void Awake()
         {
             if (GameController.CurrentGameMode == null)
             {
-                Debug.Log($"No gamemode selected, Starting SurvivalGameMode from {nameof(DebugHubScene)}");
+                Debug.LogWarning($"No gamemode selected, Starting SurvivalGameMode from {nameof(DebugHubScene)}");
                 SurvivalGameMode survivalGameMode = SurvivalGameMode.Create();
                 survivalGameMode.SetGameMode();
             }

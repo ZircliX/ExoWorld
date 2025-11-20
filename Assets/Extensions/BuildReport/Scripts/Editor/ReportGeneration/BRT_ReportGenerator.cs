@@ -14,6 +14,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
 using DldUtil;
+using UnityEditor.Build;
 
 /*
 
@@ -278,7 +279,7 @@ namespace BuildReportTool
 
 #if UNITY_5_6_OR_NEWER
 			buildInfo.MonoLevel =
-				PlayerSettings.GetApiCompatibilityLevel(EditorUserBuildSettings.selectedBuildTargetGroup);
+				PlayerSettings.GetApiCompatibilityLevel(NamedBuildTarget.FromBuildTargetGroup(EditorUserBuildSettings.selectedBuildTargetGroup));
 #else
 			buildInfo.MonoLevel = PlayerSettings.apiCompatibilityLevel;
 #endif
