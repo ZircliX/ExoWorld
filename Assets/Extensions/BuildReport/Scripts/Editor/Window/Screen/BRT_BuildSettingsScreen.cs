@@ -952,8 +952,7 @@ namespace BuildReportTool.Window.Screen
 #if UNITY_2020_2_OR_NEWER
 			if (unityBuildReport != null)
 			{
-				DrawSetting("Enable Shader Livelink Support:",
-					unityBuildReport.HasBuildOption(BuildOptions.ShaderLivelinkSupport));
+				//DrawSetting("Enable Shader Livelink Support:",unityBuildReport.HasBuildOption(BuildOptions.ShaderLivelinkSupport));
 			}
 #endif
 

@@ -1,0 +1,289 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7268c0095e3f41f428cdee9ae457242e, type: 3}
+  m_Name: General
+  m_EditorClassIdentifier: 
+  presetName: General
+  layers:
+  - displayName: Environment
+    color: {r: 0.65, g: 0.85, b: 0.35, a: 1}
+    defaultVisible: 1
+    defaultPickable: 1
+    isExpanded: 0
+    autoRules:
+    - componentTypeName: UnityEngine.MeshRenderer
+    - componentTypeName: UnityEngine.Terrain
+  - displayName: Lighting
+    color: {r: 1, g: 0.76, b: 0.03, a: 1}
+    defaultVisible: 1
+    defaultPickable: 1
+    isExpanded: 0
+    autoRules:
+    - componentTypeName: UnityEngine.Light
+    - componentTypeName: UnityEngine.LightProbeGroup
+    - componentTypeName: UnityEngine.ReflectionProbe
+  - displayName: Cameras
+    color: {r: 0, g: 0.74, b: 0.83, a: 1}
+    defaultVisible: 1
+    defaultPickable: 1
+    isExpanded: 0
+    autoRules:
+    - componentTypeName: UnityEngine.Camera
+  - displayName: VFX
+    color: {r: 1, g: 0.34, b: 0.13, a: 1}
+    defaultVisible: 0
+    defaultPickable: 1
+    isExpanded: 0
+    autoRules:
+    - componentTypeName: UnityEngine.ParticleSystem
+    - componentTypeName: UnityEngine.ParticleSystemForceField
+    - componentTypeName: UnityEngine.TrailRenderer
+    - componentTypeName: UnityEngine.LineRenderer
+  - displayName: Audio
+    color: {r: 0.62, g: 0.36, b: 0.71, a: 1}
+    defaultVisible: 1
+    defaultPickable: 1
+    isExpanded: 0
+    autoRules:
+    - componentTypeName: UnityEngine.AudioSource
+    - componentTypeName: UnityEngine.AudioReverbZone
+  - displayName: UI
+    color: {r: 0.13, g: 0.59, b: 0.95, a: 1}
+    defaultVisible: 1
+    defaultPickable: 1
+    isExpanded: 0
+    autoRules:
+    - componentTypeName: UnityEngine.Canvas
+    - componentTypeName: UnityEngine.CanvasRenderer
+  - displayName: Gameplay Logic
+    color: {r: 0.9, g: 0.25, b: 0.22, a: 1}
+    defaultVisible: 1
+    defaultPickable: 1
+    isExpanded: 0
+    autoRules: []
+  - displayName: Debug/Helpers
+    color: {r: 0.95, g: 0.35, b: 0.55, a: 1}
+    defaultVisible: 0
+    defaultPickable: 1
+    isExpanded: 0
+    autoRules: []
+  views:
+  - viewName: Full Scene
+    color: {r: 0.3, g: 0.5, b: 0.7, a: 1}
+    states:
+    - layerDisplayName: Environment
+      visible: 1
+      pickable: 1
+      expanded: 1
+    - layerDisplayName: Lighting
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: Cameras
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: VFX
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: Audio
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: UI
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: Gameplay Logic
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: Debug/Helpers
+      visible: 1
+      pickable: 1
+      expanded: 0
+  - viewName: Environment
+    color: {r: 0.3, g: 0.5, b: 0.7, a: 1}
+    states:
+    - layerDisplayName: Environment
+      visible: 1
+      pickable: 1
+      expanded: 1
+    - layerDisplayName: Lighting
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: Cameras
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: VFX
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: Audio
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: UI
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: Gameplay Logic
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: Debug/Helpers
+      visible: 0
+      pickable: 1
+      expanded: 0
+  - viewName: Lighting
+    color: {r: 0.3, g: 0.5, b: 0.7, a: 1}
+    states:
+    - layerDisplayName: Environment
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: Lighting
+      visible: 1
+      pickable: 1
+      expanded: 1
+    - layerDisplayName: Cameras
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: VFX
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: Audio
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: UI
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: Gameplay Logic
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: Debug/Helpers
+      visible: 0
+      pickable: 1
+      expanded: 0
+  - viewName: Gameplay
+    color: {r: 0.3, g: 0.5, b: 0.7, a: 1}
+    states:
+    - layerDisplayName: Environment
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: Lighting
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: Cameras
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: VFX
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: Audio
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: UI
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: Gameplay Logic
+      visible: 1
+      pickable: 1
+      expanded: 1
+    - layerDisplayName: Debug/Helpers
+      visible: 0
+      pickable: 1
+      expanded: 0
+  - viewName: Polish
+    color: {r: 0.3, g: 0.5, b: 0.7, a: 1}
+    states:
+    - layerDisplayName: Environment
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: Lighting
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: Cameras
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: VFX
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: Audio
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: UI
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: Gameplay Logic
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: Debug/Helpers
+      visible: 0
+      pickable: 1
+      expanded: 0
+  - viewName: Perfomance
+    color: {r: 0.3, g: 0.5, b: 0.7, a: 1}
+    states:
+    - layerDisplayName: Environment
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: Lighting
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: Cameras
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: VFX
+      visible: 0
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: Audio
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: UI
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: Gameplay Logic
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerDisplayName: Debug/Helpers
+      visible: 0
+      pickable: 1
+      expanded: 0
