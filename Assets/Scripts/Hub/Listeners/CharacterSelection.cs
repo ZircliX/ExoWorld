@@ -36,7 +36,10 @@ namespace OverBang.GameName.Hub
                 agentCards.Add(cardUI);
             }
             
-            ChangeEnabledState(phase.SelectedCharacter == null);
+            if (phase.Settings.selectionType == SelectionPhase.SelectionType.Pick)
+            {
+                EnableUI();
+            }
         }
 
         protected override void OnEnd(HubPhase phase)
@@ -44,6 +47,11 @@ namespace OverBang.GameName.Hub
             GameController.CursorLockModePriority.RemovePriority(this);
             GameController.CursorVisibleStatePriority.RemovePriority(this);
             ChangeEnabledState(false);
+        }
+        
+        private void EnableUI()
+        {
+            ChangeEnabledState(true);
         }
         
         public void SelectCharacter(CharacterData characterData)

@@ -30,8 +30,6 @@ namespace OverBang.GameName.Gameplay
                 // Hub
                 await HandleHubPhase();
 
-                Debug.Log("Between Hub and Gameplay");
-                
                 // Gameplay
                 GameplayPhase gameplayPhase = await HandleGameplayPhase();
 

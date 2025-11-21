@@ -46,12 +46,6 @@ namespace OverBang.GameName.Debugging
         
         private void Update()
         {
-            // Return to Main Menu
-            if (Keyboard.current.numpad0Key.wasPressedThisFrame)
-            {
-                SceneManager.LoadScene("MainMenu");
-            }
-            
             // Force Character Selection
             if (Keyboard.current.numpad1Key.wasPressedThisFrame)
             {

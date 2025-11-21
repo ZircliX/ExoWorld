@@ -9,7 +9,7 @@ namespace OverBang.GameName.Gameplay
     {
         [SerializeField] private GameObject ui;
         private float currentRepairAmount;
-        private float totalRepairAmount = 3f;
+        private readonly float totalRepairAmount = 3f;
         
         private void OnTriggerStay(Collider other)
         {
@@ -21,7 +21,6 @@ namespace OverBang.GameName.Gameplay
             {
                 transform.parent.gameObject.SetActive(false);
                 ui.SetActive(true);
-                Destroy(ui, 2.5f);
             }
         }
     }

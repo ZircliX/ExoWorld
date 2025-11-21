@@ -6,31 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="ab10dc57-16eb-4edb-ab4b-ff57d03b8e3c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OverBangStudio-GameName/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OverBangStudio-GameName/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Extensions/BuildReport/Scripts/Editor/ReportGeneration/BRT_AssetDependencyGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Extensions/BuildReport/Scripts/Editor/ReportGeneration/BRT_AssetDependencyGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Extensions/BuildReport/Scripts/Editor/ReportGeneration/BRT_ReportGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Extensions/BuildReport/Scripts/Editor/ReportGeneration/BRT_ReportGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Extensions/BuildReport/Scripts/Editor/ReportGeneration/BRT_UnityBuildSettingsUtility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Extensions/BuildReport/Scripts/Editor/ReportGeneration/BRT_UnityBuildSettingsUtility.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Extensions/BuildReport/Scripts/Editor/Window/Screen/BRT_BuildSettingsScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Extensions/BuildReport/Scripts/Editor/Window/Screen/BRT_BuildSettingsScreen.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HotReload.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HotReload/Resources.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HotReload/Resources/HotReloadSettingsObject.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HotReload/Resources/HotReloadSettingsObject.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Multiplayer Widgets.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Multiplayer Widgets/Resources.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Multiplayer Widgets/Resources/MultiplayerWidgetsSettings.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Multiplayer Widgets/Resources/MultiplayerWidgetsSettings.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main/MainMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Debugging/DebugHubScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Debugging/DebugHubScene.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TechArt.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TechArt/FlickeringLight.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TechArt/FlickeringLight/FlickerLightManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TechArt/FlickeringLight/FlickerLightManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TechArt/FlickeringLight/FlickeringLight.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TechArt/FlickeringLight/FlickeringLight.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/PackageManagerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/PackageManagerSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/VirtualProjectsConfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/VirtualProjectsConfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Quests/ReachPointData.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Quests/ReachPointData.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/CharacterSelection/SelectionPhase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/CharacterSelection/SelectionPhase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Debugging/DebugInputs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Debugging/DebugInputs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Network/SurvivalGameMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Network/SurvivalGameMode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/ReachPoint.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/ReachPoint.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/Repair.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/Repair.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Hub/HubPhase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Hub/HubPhase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Hub/Listeners/CharacterSelection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Hub/Listeners/CharacterSelection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Hub/Listeners/HubSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Hub/Listeners/HubSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestData/ReachPointData.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestData/ReachPointData.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestEvents/ReachPointEvent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestEvents/ReachPointEvent.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestHandlers/ReachPointHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestHandlers/ReachPointHandler.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +51,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b6155dd53b574abca7e30fa639042b2a1bf6b8/40/e2d0883a/InvokableCall.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b6155dd53b574abca7e30fa639042b2a1bf6b8/79/4007e49b/UnityEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bed9669261d44da0a59448ecde2b1a5c46ae00/e3/4974c9ba/ExceptionDispatchInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Editor/PoolResourceEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Editor/PrefabPoolAssetEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Dependencies/PoolDependenciesCollector.cs" root0="FORCE_HIGHLIGHTING" />
@@ -181,21 +174,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Attach to Unity Player.Unity.exe (Player 2).executor": "Debug",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "ZircliX",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.github.copilot.settings.network.NetworkConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Attach to Unity Player.Unity.exe (Player 2).executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;ZircliX&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.github.copilot.settings.chat.ChatConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Player.Unity.exe (Player 2)">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../../UnityBuilds/ExoWorld Preprod\ExoWorld.exe" />
@@ -266,10 +259,10 @@
     </configuration>
     <configuration name="Unity.exe (Player 2)" type="UnityPlayer" factoryName="UnityAttachToPlayer" temporary="true">
       <option name="host" value="127.0.0.1" />
-      <option name="pid" value="23892" />
+      <option name="pid" value="31012" />
       <option name="playerId" value="EditorHelper(Unity.exe-Player 2-..)" />
       <option name="playerInstanceId" value=".." />
-      <option name="port" value="56892" />
+      <option name="port" value="56012" />
       <option name="projectName" value=".." />
       <option name="roleName" value="Player 2" />
       <method v="2" />
@@ -394,19 +387,6 @@
           <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="3" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Sessions/Session.cs</url>
-          <line>62</line>
-          <properties documentPath="C:\Users\lolof\Documents\GitHub\OverBangStudio-GameName\Assets\Scripts\Gameplay\Sessions\Session.cs" containingFunctionPresentation="Method 'StartGameRpc'">
-            <startOffsets>
-              <option value="1808" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1870" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="DotNet_Exception_Breakpoints" />
