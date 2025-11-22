@@ -23,8 +23,22 @@ namespace OverBang.GameName.Gameplay.States
         public override void Enter(EntityMovement movement)
         {
             movement.PlayerHeight.Write(this, (movement.BaseCapsuleHeight, movement.BaseHeadHeight));
+            
+            if (movement is PlayerMovement playerMovement)
+            {
+                playerMovement.PlayerAnimator.SetBool("Run", true);
+            }
         }
-        
+
+        public override void Exit(EntityMovement movement)
+        {
+            base.Exit(movement);
+            if (movement is PlayerMovement playerMovement)
+            {
+                playerMovement.PlayerAnimator.SetBool("Run", false);
+            }
+        }
+
         public override MovementState GetNextState(EntityMovement movement)
         {
             if (!movement.IsGrounded)

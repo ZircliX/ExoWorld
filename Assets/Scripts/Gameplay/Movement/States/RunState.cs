@@ -6,6 +6,25 @@ namespace OverBang.GameName.Gameplay.States
     [CreateAssetMenu(menuName = "OverBang/Movement/Run")]
     public class RunState : WalkState
     {
+        public override void Enter(EntityMovement movement)
+        {
+            base.Enter(movement);
+            
+            if (movement is PlayerMovement playerMovement)
+            {
+                playerMovement.PlayerAnimator.SetBool("Run", true);
+            }
+        }
+
+        public override void Exit(EntityMovement movement)
+        {
+            base.Exit(movement);
+            if (movement is PlayerMovement playerMovement)
+            {
+                playerMovement.PlayerAnimator.SetBool("Run", false);
+            }
+        }
+
         public override MovementState GetNextState(EntityMovement movement)
         {
             //Debug.Log(movement.WantsToSlide);

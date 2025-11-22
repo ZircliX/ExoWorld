@@ -20,12 +20,22 @@ namespace OverBang.GameName.Gameplay.States
             //Debug.Log($"Entering {State}");
             
             currentJumpTime = 0;
+            
+            if (movement is PlayerMovement playerMovement)
+            {
+                playerMovement.PlayerAnimator.SetBool("Jump", true);
+            }
         }
 
         public override void Exit(EntityMovement movement)
         {
             base.Exit(movement);
             currentJumpTime = 0;
+            
+            if (movement is PlayerMovement playerMovement)
+            {
+                playerMovement.PlayerAnimator.SetBool("Jump", false);
+            }
         }
 
         public override Vector3 GetVelocity(EntityMovement movement, float deltaTime, ref float gravityScale)

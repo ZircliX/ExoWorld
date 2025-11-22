@@ -1,17 +1,21 @@
 using Helteix.ChanneledProperties.Priorities;
+using OverBang.GameName.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace OverBang.GameName.Gameplay
 {
-    public class PlayerMovement : EntityMovement
+    public class PlayerMovement : EntityMovement, IPlayerComponent
     {
         #region References
 
         [field: Header("References")]
         [field: SerializeField] public Camera Camera { get; private set; }
         [field: SerializeField] public CameraController CameraController { get; private set; }
-        
+
+        public PlayerController Controller { get; set; }
+        public Animator PlayerAnimator { get; private set; }
+
         #endregion
 
         protected override void Awake()
@@ -24,6 +28,11 @@ namespace OverBang.GameName.Gameplay
         {
             base.FixedUpdate();
             CameraController.CameraEffectProperty.Write(stateChannelKey, movementStates[currentStateIndex].GetCameraEffects(this, Time.deltaTime));
+        }
+        
+        public void OnSync(CharacterData data, Animator animator)
+        {
+            PlayerAnimator = animator;
         }
         
         #region Inputs
@@ -83,6 +92,5 @@ namespace OverBang.GameName.Gameplay
         */
 
         #endregion
-
     }
 }
