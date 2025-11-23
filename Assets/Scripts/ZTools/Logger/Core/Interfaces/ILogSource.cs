@@ -1,4 +1,4 @@
-namespace ZTools.Logger.Core.ZTools.Logger.Core.Interfaces
+namespace ZTools.Logger.Core.ZTools.Logger.Core
 {
     public interface ILogSource
     {

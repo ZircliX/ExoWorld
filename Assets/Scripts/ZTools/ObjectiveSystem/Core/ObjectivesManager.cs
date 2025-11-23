@@ -1,9 +1,6 @@
 using System;
 using System.Collections.Generic;
 using ZTools.Logger.Core.ZTools.Logger.Core;
-using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Data;
-using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Enum;
-using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Interfaces;
 
 namespace ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core
 {

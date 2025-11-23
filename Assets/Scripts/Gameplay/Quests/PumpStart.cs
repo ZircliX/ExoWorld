@@ -4,35 +4,32 @@ using UnityEngine.InputSystem;
 namespace OverBang.GameName.Gameplay
 {
     [RequireComponent(typeof(Collider))]
-    public class RepairStart : MonoBehaviour
+    public class PumpStart : MonoBehaviour
     {
-        [SerializeField] private GameObject repairArea;
-        [SerializeField] private GameObject press;
-        [SerializeField] private GameObject stay;
+        [SerializeField] private Pump pump;
+        [SerializeField] private GameObject startUI;
         private bool playerInArea;
 
         private void Start()
         {
-            repairArea.SetActive(false);
-            press.SetActive(false);
-            stay.SetActive(false);
+            startUI.SetActive(false);
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player") && !stay.activeInHierarchy)
+            if (other.CompareTag("Player") && !pump.IsStarted.Value && !pump.IsCompleted)
             {
                 playerInArea = true;
-                press.SetActive(true);
+                startUI.SetActive(true);
             }
         }
         
         private void OnTriggerExit(Collider other)
         {
-            if (other.CompareTag("Player") && !stay.activeInHierarchy)
+            if (other.CompareTag("Player"))
             {
                 playerInArea = false;
-                press.SetActive(false);
+                startUI.SetActive(false);
             }
         }
 
@@ -40,9 +37,8 @@ namespace OverBang.GameName.Gameplay
         {
             if (Keyboard.current.fKey.wasPressedThisFrame && playerInArea)
             {
-                repairArea.SetActive(true);
-                press.SetActive(false);
-                stay.SetActive(true);
+                startUI.SetActive(false);
+                pump.CallStartRepair();
             }
         }
     }

@@ -1,10 +1,7 @@
 using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core;
-using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Structs;
-using ZTools.ObjectiveSystem.Sample.ZTools.ObjectiveSystem.Sample.Scripts.Data;
-using ZTools.ObjectiveSystem.Sample.ZTools.ObjectiveSystem.Sample.Scripts.Events;
 using ZTools.RewardSystem.Core.ZTools.RewardSystem.Core;
 
-namespace ZTools.ObjectiveSystem.Sample.ZTools.ObjectiveSystem.Sample.Scripts
+namespace ZTools.ObjectiveSystem.Sample.ZTools.ObjectiveSystem.Sample
 {
     /// <summary>
     /// Concrete runtime implementation of an objective with the typed ObjectiveData and GameCommand

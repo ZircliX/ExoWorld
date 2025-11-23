@@ -1,8 +1,7 @@
 using UnityEngine;
-using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Data;
-using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Interfaces;
+using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core;
 
-namespace ZTools.ObjectiveSystem.Sample.ZTools.ObjectiveSystem.Sample.Scripts.Data
+namespace ZTools.ObjectiveSystem.Sample.ZTools.ObjectiveSystem.Sample
 {
     /// <summary>
     /// Concrete ObjectiveData for a "Kill X Enemies" objective.

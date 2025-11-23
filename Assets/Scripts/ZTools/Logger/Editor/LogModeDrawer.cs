@@ -1,6 +1,6 @@
 using UnityEditor;
 using UnityEngine;
-using ZTools.Core.ZTools.Core.Enums;
+using ZTools.Core.ZTools.Core;
 
 namespace ZTools.Logger.Editor.ZTools.Logger.Editor
 {

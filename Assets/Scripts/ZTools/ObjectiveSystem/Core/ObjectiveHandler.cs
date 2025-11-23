@@ -1,10 +1,6 @@
 using System;
 using UnityEngine;
-using ZTools.Logger.Core.ZTools.Logger.Core.Interfaces;
-using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Data;
-using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Enum;
-using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Interfaces;
-using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Structs;
+using ZTools.Logger.Core.ZTools.Logger.Core;
 
 namespace ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core
 {

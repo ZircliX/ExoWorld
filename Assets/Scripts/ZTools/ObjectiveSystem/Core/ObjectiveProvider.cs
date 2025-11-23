@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using ZTools.Logger.Core.ZTools.Logger.Core.Interfaces;
-using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Data;
-using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Interfaces;
+using ZTools.Logger.Core.ZTools.Logger.Core;
 using ZTools.RewardSystem.Core.ZTools.RewardSystem.Core;
 
 namespace ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core

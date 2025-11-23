@@ -10,8 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22ec12bb91524888887fa9dceebd2fc3, type: 3}
-  m_Name: RepairData
+  m_Name: PumpQuestData
   m_EditorClassIdentifier: 
-  <ObjectiveName>k__BackingField: repair
-  <ObjectiveDescription>k__BackingField: 
+  <ObjectiveName>k__BackingField: "LE SANG D\u2019ADONIS"
+  <ObjectiveDescription>k__BackingField: Activate the pump to extract resources and
+    protect it from the monsters.
   <Rewards>k__BackingField: []
+  <RepairTimeRequired>k__BackingField: 10
+  <TotalRepairHealth>k__BackingField: 10

@@ -1,8 +1,8 @@
 using TMPro;
 using UnityEngine;
-using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Interfaces;
+using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core;
 
-namespace ZTools.ObjectiveSystem.Sample.ZTools.ObjectiveSystem.Sample.Scripts
+namespace ZTools.ObjectiveSystem.Sample.ZTools.ObjectiveSystem.Sample
 {
     public class ObjectivesUI : Core.ZTools.ObjectiveSystem.Core.ObjectivesUI
     {
