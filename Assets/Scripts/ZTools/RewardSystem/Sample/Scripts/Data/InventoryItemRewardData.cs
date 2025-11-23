@@ -1,7 +1,7 @@
 using UnityEngine;
-using ZTools.RewardSystem.Core.ZTools.RewardSystem.Core.Data;
+using ZTools.RewardSystem.Core.ZTools.RewardSystem.Core;
 
-namespace ZTools.RewardSystem.Sample.ZTools.RewardSystem.Sample.Scripts.Data
+namespace ZTools.RewardSystem.Sample.ZTools.RewardSystem.Sample
 {
     [CreateAssetMenu(fileName = "InventoryItemRewardData", menuName = "ZTools/RewardSystem/RewardData", order = 1)]
     public class InventoryItemRewardData : RewardData

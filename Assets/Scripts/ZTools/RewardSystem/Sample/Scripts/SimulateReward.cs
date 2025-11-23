@@ -1,8 +1,7 @@
 using UnityEngine;
 using ZTools.RewardSystem.Core.ZTools.RewardSystem.Core;
-using ZTools.RewardSystem.Core.ZTools.RewardSystem.Core.Data;
 
-namespace ZTools.RewardSystem.Sample.ZTools.RewardSystem.Sample.Scripts
+namespace ZTools.RewardSystem.Sample.ZTools.RewardSystem.Sample
 {
     public class SimulateReward : MonoBehaviour
     {

@@ -1,6 +1,5 @@
 using UnityEngine;
-using ZTools.Core.ZTools.Core.Enums;
-using ZTools.Logger.Core.ZTools.Logger.Core.Interfaces;
+using ZTools.Core.ZTools.Core;
 
 namespace ZTools.Logger.Core.ZTools.Logger.Core
 {

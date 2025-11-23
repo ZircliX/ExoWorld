@@ -23,7 +23,7 @@ namespace OverBang.GameName.Core
             public CharacterClasses availableClasses;
         }
         
-        protected readonly SelectionSettings Settings;
+        public readonly SelectionSettings Settings;
         
         public event Action<IPlayer, CharacterData> OnCharacterSelected;
         
@@ -70,8 +70,7 @@ namespace OverBang.GameName.Core
             if (characterData == null) 
                 return;
             
-            IPlayer globalCurrentPlayer = CurrentPlayer;
-            globalCurrentPlayer.SetProperty(ConstID.Global.PlayerPropertyCharacterData, new PlayerProperty(characterData.ID));
+            CurrentPlayer.SetProperty(ConstID.Global.PlayerPropertyCharacterData, new PlayerProperty(characterData.ID));
             
             SelectedCharacter = characterData;
             OnCharacterSelected?.Invoke(CurrentPlayer, characterData);

@@ -1,4 +1,4 @@
-namespace ZTools.ObjectiveSystem.Sample.ZTools.ObjectiveSystem.Sample.Scripts.CompilerServices
+namespace ZTools.ObjectiveSystem.Sample.ZTools.ObjectiveSystem.Sample
 {
     public static class IsExternalInit { }
 }

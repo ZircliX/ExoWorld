@@ -8,7 +8,7 @@ namespace OverBang.GameName.TechArt
     [ExecuteInEditMode]
     public class FlickeringLight : MonoBehaviour
     {
-        [SerializeField, Self] private Light light;
+        [SerializeField, Self] private Light targetLight;
 
         [SerializeField] private float defaultIntensity;
         
@@ -31,7 +31,7 @@ namespace OverBang.GameName.TechArt
                 timer = Random.Range(minTime, maxTime);
 
             isLit = true;
-            light.intensity = defaultIntensity;
+            targetLight.intensity = defaultIntensity;
         }
 
         private void OnEnable()
@@ -62,7 +62,7 @@ namespace OverBang.GameName.TechArt
             if (timer <= 0)
             {
                 isLit = !isLit;
-                light.intensity = isLit ? defaultIntensity : 0f;
+                targetLight.intensity = isLit ? defaultIntensity : 0f;
                 timer = Random.Range(minTime, maxTime);
                 
                 if (audioClip != null)

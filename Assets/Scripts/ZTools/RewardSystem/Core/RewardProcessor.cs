@@ -1,7 +1,5 @@
 using UnityEngine;
-using ZTools.Logger.Core.ZTools.Logger.Core.Interfaces;
-using ZTools.RewardSystem.Core.ZTools.RewardSystem.Core.Data;
-using ZTools.RewardSystem.Core.ZTools.RewardSystem.Core.Interfaces;
+using ZTools.Logger.Core.ZTools.Logger.Core;
 
 namespace ZTools.RewardSystem.Core.ZTools.RewardSystem.Core
 {

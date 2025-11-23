@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ZTools.Core.ZTools.Core.Enums
+namespace ZTools.Core.ZTools.Core
 {
     [CreateAssetMenu(fileName = "ToolName", menuName = "ZTools/Logger/ToolDefinition", order = 1)]
     public class ToolDefinition : ScriptableObject

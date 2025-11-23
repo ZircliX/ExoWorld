@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using ZTools.Core.ZTools.Core;
-using ZTools.Core.ZTools.Core.Enums;
 
 namespace ZTools.Logger.Core.ZTools.Logger.Core
 {

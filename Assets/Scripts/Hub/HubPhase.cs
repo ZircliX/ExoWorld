@@ -1,4 +1,3 @@
-using System;
 using Eflatun.SceneReference;
 using OverBang.GameName.Core;
 using OverBang.Pooling;
@@ -20,7 +19,6 @@ namespace OverBang.GameName.Hub
         {
             SceneManager.sceneLoaded += OnSceneLoaded;
             await base.OnBegin();
-            StartSelection();
 
             if (SessionManager.Global.IsHost)
             {
@@ -33,14 +31,13 @@ namespace OverBang.GameName.Hub
                 }
             }
             
-            await PoolUtils.SetupPooling(null);
+            StartSelection();
         }
 
         protected override async Awaitable OnEnd()
         {
             await base.OnEnd();
             PoolManager.Instance.ClearPools();
-            Debug.Log("On Hub Phase End");
             SessionManager.Global.CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyPhaseStatus, nameof(PhaseStatus.None));
         }
 

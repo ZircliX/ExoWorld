@@ -1,8 +1,7 @@
 using UnityEngine;
 using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core;
-using ZTools.ObjectiveSystem.Sample.ZTools.ObjectiveSystem.Sample.Scripts.Events;
 
-namespace ZTools.ObjectiveSystem.Sample.ZTools.ObjectiveSystem.Sample.Scripts
+namespace ZTools.ObjectiveSystem.Sample.ZTools.ObjectiveSystem.Sample
 {
     public class Enemy : MonoBehaviour
     {

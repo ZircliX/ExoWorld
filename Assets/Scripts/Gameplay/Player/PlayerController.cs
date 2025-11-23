@@ -36,12 +36,14 @@ namespace OverBang.GameName.Gameplay
                 for (int i = 0; i < playerComponents.Length; i++)
                 {
                     IPlayerComponent  playerComponent = playerComponents[i];
-                    playerComponent.OnSync(characterData);
+                    
+                    playerModelContainer.ClearChildren();
+                    GameObject playerModel = Instantiate(characterData.ModelPrefab, playerModelContainer);
+                    Animator playerAnimator = playerModel.GetComponent<Animator>();
+                    
+                    playerComponent.OnSync(characterData, playerAnimator);
                 }
             }
-            
-            playerModelContainer.ClearChildren();
-            Instantiate(characterData.ModelPrefab, playerModelContainer);
         }
     }
 }

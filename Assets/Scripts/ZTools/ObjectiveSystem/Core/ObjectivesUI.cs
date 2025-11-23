@@ -1,5 +1,4 @@
 using UnityEngine;
-using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Interfaces;
 
 namespace ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core
 {

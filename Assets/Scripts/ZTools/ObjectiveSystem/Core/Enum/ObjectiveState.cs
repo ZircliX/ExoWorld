@@ -1,4 +1,4 @@
-namespace ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Enum
+namespace ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core
 {
     /// <summary>
     /// Defines the possible states an objective can be in.

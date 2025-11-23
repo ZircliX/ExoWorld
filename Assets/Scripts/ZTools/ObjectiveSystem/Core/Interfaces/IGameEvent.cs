@@ -1,4 +1,4 @@
-namespace ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core.Interfaces
+namespace ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core
 {
     /// <summary>
     /// Marker interface for all game events objects.

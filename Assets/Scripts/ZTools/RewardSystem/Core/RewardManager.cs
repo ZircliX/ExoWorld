@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using ZTools.Logger.Core.ZTools.Logger.Core;
-using ZTools.RewardSystem.Core.ZTools.RewardSystem.Core.Data;
-using ZTools.RewardSystem.Core.ZTools.RewardSystem.Core.Interfaces;
 
 namespace ZTools.RewardSystem.Core.ZTools.RewardSystem.Core
 {
