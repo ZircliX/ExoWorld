@@ -19,12 +19,15 @@ namespace OverBang.GameName.Gameplay
         
         private GameplayPhase currentPhase;
         private GameplayPhase.GameplaySettings Settings => currentPhase.Settings;
+        public EnemySpawnerManager EnemySpawnerManager { get; private set; }
 
         protected override void Activate()
         {
             base.Activate();
             PoolManager.Instance.OnPoolAssetRegistered += OnPoolAssetRegistered;
             PoolManager.Instance.OnPoolAssetUnregistered += OnPoolAssetUnregistered;
+            EnemySpawnerManager = new EnemySpawnerManager();
+            EnemySpawnerManager.Register();
         }
 
         protected override void Deactivate()
@@ -32,6 +35,7 @@ namespace OverBang.GameName.Gameplay
             base.Deactivate();
             PoolManager.Instance.OnPoolAssetRegistered -= OnPoolAssetRegistered;
             PoolManager.Instance.OnPoolAssetUnregistered -= OnPoolAssetUnregistered;
+            EnemySpawnerManager.Unregister();
         }
         
         private void OnPoolAssetRegistered(PoolResource resource)
