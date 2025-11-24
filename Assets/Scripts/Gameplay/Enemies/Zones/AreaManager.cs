@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
+using Helteix.Singletons.MonoSingletons;
 using Helteix.Singletons.SceneServices;
 using UnityEngine;
 
 namespace OverBang.GameName.Gameplay
 {
-    public class AreaManager : SceneService<AreaManager>
+    public class AreaManager : MonoSingleton<AreaManager>
     {
         private List<Area> areas;
-
-
+        
         private void Awake()
         {
             areas = new List<Area>();
@@ -30,7 +30,7 @@ namespace OverBang.GameName.Gameplay
             
             foreach (Area area in areas)
             {
-                if (area.CheckForPlayers(PlayerManager.Instance.GetPlayerTransforms()))
+                if (area.IsValid())
                 {
                     availableSpawnAreas.Add(area);
                 }

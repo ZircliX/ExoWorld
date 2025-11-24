@@ -1,29 +1,18 @@
 using System;
 using System.Collections.Generic;
+using Helteix.Singletons.MonoSingletons;
 using Unity.Netcode;
 using UnityEngine;
 
 namespace OverBang.GameName.Gameplay
 {
-    public class PlayerManager : MonoBehaviour
+    public class PlayerManager : MonoSingleton<PlayerManager>
     {
-        public static PlayerManager Instance { get; private set; }
-
         private List<PlayerController> players;
 
         private void Awake()
         {
-            
-            if (Instance == null && Instance != this)
-            {
-                Destroy(gameObject);
-                return;
-            }
-
-            Instance = this;
             players = new List<PlayerController>();
-            
-            DontDestroyOnLoad(gameObject);
         }
         
         public void RegisterPlayer(PlayerController player)

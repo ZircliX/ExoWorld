@@ -27,6 +27,7 @@ namespace OverBang.GameName.Gameplay
                 IPlayerComponent playerComponent = playerComponents[i];
                 playerComponent.Controller = this;
             }
+
             PlayerManager.Instance.RegisterPlayer(this);
         }
 

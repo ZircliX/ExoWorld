@@ -1,6 +1,6 @@
 ﻿using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core;
 
-namespace OverBang.GameName.Quests.QuestEvents
+namespace OverBang.GameName.Gameplay.QuestEvents
 {
     public struct PumpEvent : IGameEvent
     {

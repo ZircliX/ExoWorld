@@ -1,6 +1,6 @@
 ﻿using System;
-using OverBang.GameName.Quests.QuestData;
-using OverBang.GameName.Quests.QuestEvents;
+using OverBang.GameName.Gameplay.QuestData;
+using OverBang.GameName.Gameplay.QuestEvents;
 using Unity.Netcode;
 using UnityEngine;
 using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core;
@@ -31,6 +31,9 @@ namespace OverBang.GameName.Gameplay
             if (IsOwner)
             {
                 SetIsStarted(true);
+                Debug.Log(LevelManager.Instance);
+                Debug.Log(LevelManager.Instance.EnemySpawnerManager);
+                LevelManager.Instance.EnemySpawnerManager.SpawnEnemies(pumpQuestData.EnemySpawnScenario);
             }
             else
             {

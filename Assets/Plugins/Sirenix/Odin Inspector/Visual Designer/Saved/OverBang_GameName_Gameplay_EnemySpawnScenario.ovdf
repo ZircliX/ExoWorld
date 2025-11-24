@@ -1,0 +1,49 @@
+OVDF v1.0
+OverBang.GameName.Gameplay.EnemySpawnScenario, OverBang.GameName.Gameplay
+
+# $NJkK6WSZFE6TjH6g3tMCG7
+Position: $root:28
++ [Sirenix.OdinInspector.TitleGroupAttribute]
+	GroupName = "Enemy Spawn Scenario"
+
+# $LkRF5q8LMXwTUqcTEUoEi2
+Position: $NJkK6WSZFE6TjH6g3tMCG7:0
++ [Sirenix.OdinInspector.TabGroupAttribute]
+
+# $BkiZXLuB15WkpScEKRhyRM
+Position: $LkRF5q8LMXwTUqcTEUoEi2:0
++ [Sirenix.OdinInspector.TabGroupAttribute+TabSubGroupAttribute]
+	GroupName = "Datas"
+	Name = "Datas"
+	Icon = ClipboardData
+	TextColor = "lightgreen"
+
+# "WaveSettings"
+Position: $BkiZXLuB15WkpScEKRhyRM:5
+* [Sirenix.OdinInspector.BoxGroupAttribute]
+	CenterLabel = True
+	LabelText = "Wave Settings"
+
+# <SpawnAmount>k__BackingField
+Position: $BkiZXLuB15WkpScEKRhyRM:3
+
+# <Name>k__BackingField
+Position: $BkiZXLuB15WkpScEKRhyRM:0
+
+# <SpawnBehavior>k__BackingField
+Position: $BkiZXLuB15WkpScEKRhyRM:1
+
+# <EnemyDatas>k__BackingField
+Position: $BkiZXLuB15WkpScEKRhyRM:2
+
+# <MinSpawnInterval>k__BackingField
+Position: $Q2bznNPUzPcNwJTWYrDuo3:0
+
+# <MaxSpawnInterval>k__BackingField
+Position: $Q2bznNPUzPcNwJTWYrDuo3:1
+
+# <MinMaxSpawnIntervals>k__BackingField
+Position: $BkiZXLuB15WkpScEKRhyRM:4
+
+# GetEnemyAmountThisWave(int initialAmount, float multiplier)
+Visibility: Hidden

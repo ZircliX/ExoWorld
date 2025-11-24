@@ -23,7 +23,6 @@ namespace OverBang.GameName.Gameplay
 
         protected override void Activate()
         {
-            base.Activate();
             PoolManager.Instance.OnPoolAssetRegistered += OnPoolAssetRegistered;
             PoolManager.Instance.OnPoolAssetUnregistered += OnPoolAssetUnregistered;
             EnemySpawnerManager = new EnemySpawnerManager();

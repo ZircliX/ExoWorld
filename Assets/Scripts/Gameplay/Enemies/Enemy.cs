@@ -1,12 +1,19 @@
-﻿using Unity.Netcode;
+﻿using System;
+using KBCore.Refs;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace OverBang.GameName.Gameplay
 {
     public class Enemy : MonoBehaviour
     {
-        [field : SerializeField] public NetworkObject networkObject;
-        [field : SerializeField] public EnemyData enemyData;
+        [field : SerializeField, Self] public NetworkObject NetworkObject { get; private set; }
+        [SerializeField] public EnemyData enemyData;
+
+        private void OnValidate()
+        {
+            this.ValidateRefs();
+        }
 
         public void Initialize(EnemyData data)
         {

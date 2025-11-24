@@ -1,68 +1,90 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Security.Cryptography;
 using KBCore.Refs;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace OverBang.GameName.Gameplay
 {
+    [RequireComponent(typeof(BoxCollider))]
     public class Area : MonoBehaviour
     {
         [Header("Bounds Parameters")]
         [field: SerializeField, Self, HideInInspector] public Transform Center { get; private set; }
-        [field: SerializeField] public Vector3 Size { get; private set; }
-        [field: SerializeField] public Color Color { get; private set; }
         
-        [field: SerializeField] public List<EnemySpawner> Spawners { get; private set; }
-        
-        private Bounds Bound;
-        
+        [field: SerializeField, Child] public List<EnemySpawner> Spawners { get; private set; }
+        private List<Transform> players;
+        private BoxCollider boxCollider;
+
+        private void OnValidate()
+        {
+            this.ValidateRefs();
+            
+        }
+
+        private void Awake()
+        {
+            players = new List<Transform>();
+        }
+
+        private void Reset()
+        {
+            boxCollider = GetComponent<BoxCollider>();
+            boxCollider.isTrigger = true;
+            this.ValidateRefs();
+        }
+
+
         private void OnEnable()
         {
             AreaManager.Instance.Register(this);
-            
         }
 
         private void OnDisable()
         {
             AreaManager.Instance.Unregister(this);
         }
-
-        private void OnValidate()
+        
+        private void OnTriggerEnter(Collider other)
         {
-            this.ValidateRefs();
+            if (other.CompareTag("Player"))
+            {   
+                players.Add(other.transform) ;
+            }
         }
 
-        private void Awake()
+        private void OnTriggerExit(Collider other)
         {
-            Bound = Bounds();
-        }
-
-        public Bounds Bounds()
-        {
-            return new Bounds(Center.position, Size);
-        }
-
-        public bool CheckForPlayers(params Transform[] transforms)
-        {
-            for (var index = 0; index < transforms.Length; index++)
+            if (other.CompareTag("Player"))
             {
-                var playerTranform = transforms[index];
-                if (Bound.Contains(playerTranform.position))
-                {
-                    return true;
-                }
+                players.Remove(other.transform) ;
+            }
+        }
+        
+        public bool IsValid()
+        {
+            return players.Count > 0;
+        }
+
+        public async Awaitable<int> SpawnInSpawners(EnemySpawnScenario enemySpawnScenario, int enemyToSpawn, int wave)
+        {
+            int spawnedEnemies = 0;
+            foreach (EnemySpawner spawner in Spawners)
+            {
+                EnemyData[] enemyDatas = enemySpawnScenario.EnemyDatas;
+                
+                int rnd = Random.Range(0, enemyDatas.Length);
+                Enemy enemy = spawner.SpawnEnemy(enemyDatas[rnd]);
+                enemy.name = $"{enemy.name} | Wave {wave} | {enemyToSpawn - spawnedEnemies}";
+                spawnedEnemies++;
+
+                await Awaitable.WaitForSecondsAsync(Random.Range(enemySpawnScenario.MinMaxSpawnIntervals.x, enemySpawnScenario.MinMaxSpawnIntervals.y));
+                if (spawnedEnemies >= enemyToSpawn)
+                    break;
             }
 
-            return false;
+            return spawnedEnemies;
         }
-        
-        private void OnDrawGizmos()
-        {
-            Bound = Bounds();
-
-            Gizmos.color = Color;
-            Gizmos.DrawWireCube(Bound.center, Bound.size);
-        }
-        
-        
     }
 }
