@@ -20,6 +20,7 @@ namespace OverBang.GameName.Core
         [field: SerializeField, FoldoutGroup("Const ID")] public ConstID ConstID { get; private set; }
         
         [field: SerializeField, FoldoutGroup("Prefabs")] public NetworkObject PlayerControllerPrefab { get; private set; }
+        [field: SerializeField, FoldoutGroup("Prefabs")] public NetworkObject EnemyPrefab { get; private set; }
         
         [field: SerializeField, FoldoutGroup("DEBUG")] public GameObject DebugInputs { get; private set; }
         [field: SerializeField, FoldoutGroup("DEBUG")] public bool LightFlickerInEditMode { get; private set; }

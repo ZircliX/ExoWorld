@@ -12,6 +12,7 @@ namespace OverBang.GameName.Gameplay
             new NetworkVariable<PlayerNetworkTransform>(writePerm: NetworkVariableWritePermission.Owner);
         
         [SerializeField] private Transform playerModelContainer;
+        [field : SerializeField] public Transform playerTransform {get ; private set;}
         private IPlayerComponent[] playerComponents;
 
         private void Awake()
@@ -26,6 +27,8 @@ namespace OverBang.GameName.Gameplay
                 IPlayerComponent playerComponent = playerComponents[i];
                 playerComponent.Controller = this;
             }
+
+            PlayerManager.Instance.RegisterPlayer(this);
         }
 
         [Rpc(SendTo.Everyone)]
@@ -44,6 +47,13 @@ namespace OverBang.GameName.Gameplay
                     playerComponent.OnSync(characterData, playerAnimator);
                 }
             }
+        }
+
+        public override void OnDestroy()
+        {
+            base.OnDestroy();
+            PlayerManager.Instance.UnregisterPlayer(this);
+            
         }
     }
 }
