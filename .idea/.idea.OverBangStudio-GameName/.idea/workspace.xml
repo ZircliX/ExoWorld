@@ -72,22 +72,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2fde32bfa1cb49eb86f50f1a654c74ac9fc200/bd/3d693d82/ShaderUtil.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3209c419f8514dc7af6f7bbce69cabc61f7200/14/ba955706/Awaitable.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/356a8cd803ae46c2811b1802b99267541fe200/58/4420cac9/DropdownField.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/38/b8d8d6a8/ArgumentOutOfRangeException.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5ca073a12a864c5eaa0c976a85d9669ba7200/97/265d7f18/ISession.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5ca073a12a864c5eaa0c976a85d9669ba7200/98/78e4b803/ISessionInfo.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/846ac0b1a3da41799c8b06176c0e224ba7000/26/97c83241/ISession.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/846ac0b1a3da41799c8b06176c0e224ba7000/35/5c4ac556/ISessionInfo.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/89527d299cb64ba88f87240781b415e51ea400/06/a9f15659/MonoBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/89527d299cb64ba88f87240781b415e51ea400/4d/7debba45/Object.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/89527d299cb64ba88f87240781b415e51ea400/7d/d8892caf/Awaitable`1.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8db6ec373e6d40bd9d38c8037d358c4e46ae00/28/977c9cb8/NullReferenceException.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b6155dd53b574abca7e30fa639042b2a1bf6b8/40/e2d0883a/InvokableCall.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b6155dd53b574abca7e30fa639042b2a1bf6b8/79/4007e49b/UnityEvent.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bed9669261d44da0a59448ecde2b1a5c46ae00/e3/4974c9ba/ExceptionDispatchInfo.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Editor/PoolResourceEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Editor/PrefabPoolAssetEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Dependencies/PoolDependenciesCollector.cs" root0="FORCE_HIGHLIGHTING" />
@@ -194,6 +178,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@bd2a018756ed/Runtime/Messaging/NetworkMessageManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@bd2a018756ed/Runtime/Messaging/RpcAttributes.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.authentication@868ebdf18f3f/Runtime/AuthenticationService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.multiplayer@34def56704ad/Runtime/Multiplayer/Session/SessionManager.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -222,17 +207,15 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;com.github.copilot.settings.completions.CompletionsConfigurable&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Player.Unity.exe (Player 2)">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../../UnityBuilds/ExoWorld Preprod\ExoWorld.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../UnityBuilds" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="ENV_FILE_PATHS" value="" />
       <option name="REDIRECT_INPUT_PATH" value="" />
-      <option name="PTY_MODE" value="Auto" />
       <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
@@ -241,10 +224,8 @@
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\lolof\Documents\GitHub\OverBangStudio-GameName -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\lolof\Documents\GitHub\OverBangStudio-GameName" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="ENV_FILE_PATHS" value="" />
       <option name="REDIRECT_INPUT_PATH" value="" />
-      <option name="PTY_MODE" value="Auto" />
       <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
@@ -253,10 +234,8 @@
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\lolof\Documents\GitHub\OverBangStudio-GameName -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\lolof\Documents\GitHub\OverBangStudio-GameName" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="ENV_FILE_PATHS" value="" />
       <option name="REDIRECT_INPUT_PATH" value="" />
-      <option name="PTY_MODE" value="Auto" />
       <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
@@ -288,7 +267,7 @@
       <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Device" type="UnityDevicePlayer" factoryName="UnityAttachToDevicePlayer">
+    <configuration name="Attach to" type="UnityDevicePlayer" factoryName="UnityAttachToDevicePlayer">
       <method v="2" />
     </configuration>
     <configuration name="Unity.exe (Player 2)" type="UnityPlayer" factoryName="UnityAttachToPlayer" temporary="true">
@@ -308,7 +287,7 @@
       <item itemvalue="Standalone Player.Standalone Player" />
       <item itemvalue="Standalone Player.Start Unity" />
       <item itemvalue="Standalone Player.Unit Tests (batch mode)" />
-      <item itemvalue="Unity Attach to Device.Attach to Device" />
+      <item itemvalue="Unity Attach To.Attach to" />
     </list>
     <recent_temporary>
       <list>
