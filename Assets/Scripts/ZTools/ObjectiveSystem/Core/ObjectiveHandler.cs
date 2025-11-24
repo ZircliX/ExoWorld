@@ -1,8 +1,8 @@
 using System;
 using UnityEngine;
-using ZTools.Logger.Core.ZTools.Logger.Core;
+using ZTools.Logger.Core;
 
-namespace ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core
+namespace ZTools.ObjectiveSystem.Core
 {
     public abstract class ObjectiveHandler<TS, TV> : IObjectiveHandler, ILogSource
         where TS : ObjectiveData

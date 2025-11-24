@@ -1,7 +1,7 @@
 using UnityEngine;
-using ZTools.Core.ZTools.Core;
+using ZTools.Core;
 
-namespace ZTools.Logger.Core.ZTools.Logger.Core
+namespace ZTools.Logger.Core
 {
     /// <summary>
     /// A simple logger utility for Unity that wraps around Unity's Debug class.

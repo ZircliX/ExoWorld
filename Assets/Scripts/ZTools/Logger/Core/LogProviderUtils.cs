@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
-using ZTools.Core.ZTools.Core;
+using ZTools.Core;
 
-namespace ZTools.Logger.Core.ZTools.Logger.Core
+namespace ZTools.Logger.Core
 {
     public static class LogProviderUtils
     {

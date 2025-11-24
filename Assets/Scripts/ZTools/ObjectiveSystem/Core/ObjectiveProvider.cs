@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
-using ZTools.Logger.Core.ZTools.Logger.Core;
-using ZTools.RewardSystem.Core.ZTools.RewardSystem.Core;
+using ZTools.Logger.Core;
+using ZTools.RewardSystem.Core;
 
-namespace ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core
+namespace ZTools.ObjectiveSystem.Core
 {
     /// <summary>
     /// Manages the sequential queuing of objectives from predefined collections.

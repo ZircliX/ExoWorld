@@ -61,15 +61,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Rewind",
-                    "type": "Button",
-                    "id": "359c87a2-f013-4ec3-a94c-91956d532ddd",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Shoot",
                     "type": "Button",
                     "id": "6cf4fa25-e062-408e-a5a0-223d3639ec13",
@@ -86,15 +77,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "Dash",
-                    "type": "Button",
-                    "id": "771cf6b3-0d6b-4faf-910b-697a2711a33f",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 },
                 {
                     "name": "Pause",
@@ -115,27 +97,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "PowerUp1",
+                    "name": "Interact",
                     "type": "Button",
-                    "id": "5ee5b977-4fd0-442a-bff6-26c3a35c351a",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "PowerUp2",
-                    "type": "Button",
-                    "id": "74403de5-9e31-4d9c-8eeb-2c61a1c2e1ed",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "PowerUp3",
-                    "type": "Button",
-                    "id": "7b2c44e3-5b43-42b6-9eee-49e6a06c57e1",
+                    "id": "99ac99b5-6596-4aef-becf-f2861a5c1ea9",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -365,28 +329,6 @@
                 },
                 {
                     "name": "",
-                    "id": "f140b947-df84-4873-9f7c-b3bb8bc87146",
-                    "path": "<Keyboard>/t",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard and Mouse",
-                    "action": "Rewind",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "880be161-694a-4a6f-94ad-c0be032b0c7c",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Controller",
-                    "action": "Rewind",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "60f209fa-683c-46d4-a99a-9cf7364bec51",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
@@ -497,28 +439,6 @@
                 },
                 {
                     "name": "",
-                    "id": "6593fa5c-787d-4562-a2b1-38c5fbb71d4c",
-                    "path": "<Keyboard>/shift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard and Mouse",
-                    "action": "Dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2fb57a1f-4778-4010-896d-95440c32a780",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Controller",
-                    "action": "Dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "74d10075-2a28-4e52-ac44-89c68578d63b",
                     "path": "<Keyboard>/r",
                     "interactions": "",
@@ -541,67 +461,23 @@
                 },
                 {
                     "name": "",
-                    "id": "9355eb7d-8a38-496a-a574-f1cc9d72119e",
-                    "path": "<Keyboard>/1",
+                    "id": "19390f4f-fdf8-419d-a457-cff52ef070cb",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard and Mouse",
-                    "action": "PowerUp1",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "12ebadde-b188-4c4f-8552-5c32376fc493",
-                    "path": "<Gamepad>/dpad/up",
+                    "id": "3584dae1-a339-4e2e-8c5a-a1e82da932be",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Controller",
-                    "action": "PowerUp1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9de90f0e-ce5a-4483-a9b8-450a669fe5d7",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard and Mouse",
-                    "action": "PowerUp2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e9057c66-99d1-4424-b8ca-b0a0045d329c",
-                    "path": "<Gamepad>/dpad/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Controller",
-                    "action": "PowerUp2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "cd76f023-1dfc-437e-8c1d-cd82c274bcf1",
-                    "path": "<Keyboard>/3",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard and Mouse",
-                    "action": "PowerUp3",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "fa13afed-8af7-472e-94a4-a712ea024157",
-                    "path": "<Gamepad>/dpad/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Controller",
-                    "action": "PowerUp3",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

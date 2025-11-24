@@ -1,10 +1,10 @@
 using TMPro;
 using UnityEngine;
-using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core;
+using ZTools.ObjectiveSystem.Core;
 
-namespace ZTools.ObjectiveSystem.Sample.ZTools.ObjectiveSystem.Sample
+namespace ZTools.ObjectiveSystem.Sample
 {
-    public class ObjectivesUI : Core.ZTools.ObjectiveSystem.Core.ObjectivesUI
+    public class ObjectivesUI : Core.ObjectivesUI
     {
         [SerializeField] private TMP_Text objectiveNameText;
         [SerializeField] private TMP_Text objectiveDescriptionText;

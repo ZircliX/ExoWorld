@@ -1,6 +1,6 @@
 ﻿using OverBang.GameName.Gameplay.QuestHandlers;
 using UnityEngine;
-using ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core;
+using ZTools.ObjectiveSystem.Core;
 
 namespace OverBang.GameName.Gameplay.QuestData
 {

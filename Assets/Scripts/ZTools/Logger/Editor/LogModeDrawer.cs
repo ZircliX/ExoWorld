@@ -1,8 +1,8 @@
 using UnityEditor;
 using UnityEngine;
-using ZTools.Core.ZTools.Core;
+using ZTools.Core;
 
-namespace ZTools.Logger.Editor.ZTools.Logger.Editor
+namespace ZTools.Logger.Editor
 {
     [CustomPropertyDrawer(typeof(LogMode))]
     public class LogModeDrawer : PropertyDrawer

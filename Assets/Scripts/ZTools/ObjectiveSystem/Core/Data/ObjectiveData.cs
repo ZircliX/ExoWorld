@@ -1,8 +1,8 @@
 using UnityEngine;
-using ZTools.Logger.Core.ZTools.Logger.Core;
-using ZTools.RewardSystem.Core.ZTools.RewardSystem.Core;
+using ZTools.Logger.Core;
+using ZTools.RewardSystem.Core;
 
-namespace ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core
+namespace ZTools.ObjectiveSystem.Core
 {
     /// <summary>
     /// Base abstract class for all objective data ScriptableObjects.

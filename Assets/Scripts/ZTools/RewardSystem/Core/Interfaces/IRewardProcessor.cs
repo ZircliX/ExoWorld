@@ -1,4 +1,4 @@
-namespace ZTools.RewardSystem.Core.ZTools.RewardSystem.Core
+namespace ZTools.RewardSystem.Core
 {
     internal interface IRewardProcessor
     {

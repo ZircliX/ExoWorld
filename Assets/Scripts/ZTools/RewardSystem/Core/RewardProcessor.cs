@@ -1,7 +1,7 @@
 using UnityEngine;
-using ZTools.Logger.Core.ZTools.Logger.Core;
+using ZTools.Logger.Core;
 
-namespace ZTools.RewardSystem.Core.ZTools.RewardSystem.Core
+namespace ZTools.RewardSystem.Core
 {
     public abstract class RewardProcessor<T> : MonoBehaviour, IRewardProcessor, ILogSource
         where T : RewardData

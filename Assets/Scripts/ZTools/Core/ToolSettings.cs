@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ZTools.Core.ZTools.Core
+namespace ZTools.Core
 {
     [System.Serializable]
     public struct ToolSettings
