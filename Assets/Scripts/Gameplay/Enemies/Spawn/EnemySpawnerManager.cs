@@ -24,8 +24,6 @@ namespace OverBang.GameName.Gameplay
             {
                 enemies[enemyRessources[i].EnemyType] = enemyRessources[i];
             }
-            
-            
         }
         
         public void SpawnEnemies(EnemySpawnScenario enemySpawnScenario)
@@ -35,29 +33,19 @@ namespace OverBang.GameName.Gameplay
             switch (enemySpawnScenario.SpawnBehavior)
             {
                 case EnemySpawnBehavior.SingleSpawn : 
-                    foreach (Area area in spawnableZones)
-                    {
-                        foreach (var spawner in area.Spawners)
-                        {
-                            spawner.SpawnEnemies(
-                                enemySpawnScenario.EnemyDatas[Random.Range(0, enemySpawnScenario.EnemyDatas.Length)], 
-                                enemySpawnScenario.SpawnAmount
-                            );
-                        }
-                    }
                     break;
                 
                 case EnemySpawnBehavior.MultipleSpawn :
                     break;
                 
                 case EnemySpawnBehavior.Wave :
-                    Awaitable awaitable = StartWaveMode(enemySpawnScenario, spawnableZones);
+                    Awaitable awaitable = StartWaveMode(enemySpawnScenario);
                     awaitable.Run();
                     break;
             }
         }
         
-        private async Awaitable StartWaveMode(EnemySpawnScenario enemySpawnScenario,  HashSet<Area> spawnableZones)
+        private async Awaitable StartWaveMode(EnemySpawnScenario enemySpawnScenario)
         {
             int currentWave = 0;
             int enemyToSpawnInWave = enemySpawnScenario.InitialEnemyAmountInWave; 
@@ -67,13 +55,14 @@ namespace OverBang.GameName.Gameplay
             {
                 enemyToSpawnInWave = enemySpawnScenario.GetEnemyAmountThisWave(enemyToSpawnInWave, enemySpawnScenario.EnemyAmountMultiplier);
                 int currentSpawnedEnemies = 0;
-                
+
+                HashSet<Area> spawnableZones = AreaManager.Instance.GetSpawnableAreas();
                 Debug.Log($"Wave {currentWave} started with {spawnableZones.Count} areas");
 
                 //Single wave loop
                 while (currentSpawnedEnemies <= enemyToSpawnInWave)
                 {
-                    foreach (Area area in spawnableZones)
+                    foreach (Area area in AreaManager.Instance.GetSpawnableAreas())
                     {
                         int remainingEnemiesToSpawn = enemyToSpawnInWave - currentSpawnedEnemies;
                         currentSpawnedEnemies += await area.SpawnInSpawners(enemySpawnScenario, remainingEnemiesToSpawn, currentWave);

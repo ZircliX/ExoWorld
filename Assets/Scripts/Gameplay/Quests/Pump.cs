@@ -33,12 +33,12 @@ namespace OverBang.GameName.Gameplay
                 SetIsStarted(true);
                 Debug.Log(LevelManager.Instance);
                 Debug.Log(LevelManager.Instance.EnemySpawnerManager);
-                LevelManager.Instance.EnemySpawnerManager.SpawnEnemies(pumpQuestData.EnemySpawnScenario);
             }
             else
             {
                 CallStartRepairRpc(true);
             }
+            LevelManager.Instance.EnemySpawnerManager.SpawnEnemies(pumpQuestData.EnemySpawnScenario);
         }
 
         [Rpc(SendTo.Owner)]

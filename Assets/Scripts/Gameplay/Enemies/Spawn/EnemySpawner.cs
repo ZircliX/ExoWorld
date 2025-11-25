@@ -7,15 +7,6 @@ namespace OverBang.GameName.Gameplay
 {
     public class EnemySpawner : MonoBehaviour
     {
-        public void SpawnEnemies(EnemyData enemyData, int amountToSpawn)
-        {
-            NetworkObject enemyObject = Object.Instantiate(GameMetrics.Global.EnemyPrefab, transform.position, transform.rotation);
-            enemyObject.Spawn();
-            
-            enemyObject.TryGetComponent(out Enemy enemy);
-            enemy.Initialize(enemyData);
-        }
-
         public Enemy SpawnEnemy(EnemyData enemyData)
         {
             NetworkObject enemyObject = Object.Instantiate(GameMetrics.Global.EnemyPrefab, transform.position, transform.rotation);
@@ -24,7 +15,7 @@ namespace OverBang.GameName.Gameplay
 
             if (enemyObject.TryGetComponent(out Enemy enemy))
             {
-                enemy.Initialize(enemyData);
+                enemy.Initialize(enemyData.ID);
             }
 
             return enemy;

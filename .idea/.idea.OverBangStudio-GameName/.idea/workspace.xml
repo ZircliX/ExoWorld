@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab10dc57-16eb-4edb-ab4b-ff57d03b8e3c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/Pump.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/PumpUI.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/PumpUI.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/Enemies/Scoria_Local.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/Enemies/Scoria_Local.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/Enemies/Scoria_Remote.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/Enemies/Scoria_Remote.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Enemies/New Enemy Data.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Enemies/New Enemy Data.asset.meta" afterDir="false" />
+    <list default="true" id="a40a4a8d-5d4e-4dca-b1d0-122084d5d9b4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Visual Designer/Saved/OverBang_GameName_Gameplay_EnemySpawnScenario.ovdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/Enemies/Enemy.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/Enemies/Enemy.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/Enemies/Models/Basher.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/Enemies/Models/Basher.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/Enemies/Models/Brutor.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/Enemies/Models/Brutor.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/Enemies/Models/Scoria.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/Enemies/Models/Scoria.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Enemies/Basher.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Enemies/Basher.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Enemies/Brutor.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Enemies/Brutor.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Enemies/Scoria.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Enemies/Scoria.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/SpawnScenario.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/SpawnScenario/DebugScenario.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/SpawnScenario/DebugScenario.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/SpawnScenario/DefaultScenario.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/SpawnScenario/DefaultScenario.asset.meta" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Assets/Scenes/Xictoss/XictossMap.unity" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies.meta" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Enemy.cs" afterDir="false" />
@@ -22,289 +30,95 @@
       <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/EnemyData.cs.meta" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/EnemyManager.cs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/EnemyManager.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/EnemySpawner.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/EnemySpawner.cs.meta" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/EnemyType.cs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/EnemyType.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Scenario.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Scenario/EnemySpawnScenario.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Scenario/EnemySpawnScenario.cs.meta" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Spawn.meta" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Spawn/EnemySpawnBehavior.cs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Spawn/EnemySpawnBehavior.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Spawn/EnemySpawnData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Spawn/EnemySpawnData.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Spawn/EnemySpawnerFactory.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Spawn/EnemySpawnerFactory.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Spawn/EnemySpawner.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Spawn/EnemySpawner.cs.meta" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Spawn/EnemySpawnerManager.cs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Spawn/EnemySpawnerManager.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Spawn/LevelArea.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Spawn/LevelArea.cs.meta" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Zones.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Zones/BoundsManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Zones/BoundsManager.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Zones/ZoneBounds.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Zones/ZoneBounds.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Zones/Area.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Zones/Area.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Zones/AreaManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Zones/AreaManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Recovery.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OverBangStudio-GameName/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OverBangStudio-GameName/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Quests/RepairData.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Quests/RepairData.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main/Map.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main/Map.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main/Map_SceneLayers.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main/Map_SceneLayers.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Lightning/FlickeringLight.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Lightning/FlickeringLight.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/Repair.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/Repair.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/Pump.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/RepairArea.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/RepairArea.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/RepairStart.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/PumpStart.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/RepairStart.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/PumpStart.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestData/RepairData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestData/PumpQuestData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestData/RepairData.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestData/PumpQuestData.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestEvents/RepairEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestEvents/PumpEvent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestEvents/RepairEvent.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestEvents/PumpEvent.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestHandlers/RepairHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestHandlers/PumpQuestHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestHandlers/RepairHandler.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestHandlers/PumpQuestHandler.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/Rewards/ShipRewardData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/Rewards/ShipRewardData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/Core/Enums/LogMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/Core/Enums/LogMode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/Core/Enums/ToolDefinition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/Core/Enums/ToolDefinition.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/Core/ToolSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/Core/ToolSettings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/Core/ZToolsSettingsData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/Core/ZToolsSettingsData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/Logger/Core/Interfaces/ILogSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/Logger/Core/Interfaces/ILogSource.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/Logger/Core/LogProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/Logger/Core/LogProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/Logger/Core/LogProviderUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/Logger/Core/LogProviderUtils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/Logger/Editor/LogModeDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/Logger/Editor/LogModeDrawer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Core/Data/ObjectiveCollectionData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Core/Data/ObjectiveCollectionData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Core/Data/ObjectiveData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Core/Data/ObjectiveData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Core/Enum/ObjectiveState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Core/Enum/ObjectiveState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Core/Helpers/ObjectiveHandlerHelpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Core/Helpers/ObjectiveHandlerHelpers.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Core/Interfaces/IGameEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Core/Interfaces/IGameEvent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Core/Interfaces/IObjectiveHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Core/Interfaces/IObjectiveHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Core/ObjectiveHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Core/ObjectiveHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Core/ObjectiveProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Core/ObjectiveProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Core/ObjectivesManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Core/ObjectivesManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Core/ObjectivesUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Core/ObjectivesUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Core/Structs/ObjectiveProgression.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Core/Structs/ObjectiveProgression.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Sample/Scripts/CompilerServices/IsExternalInit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Sample/Scripts/CompilerServices/IsExternalInit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Sample/Scripts/Data/KillEnemyObjectiveData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Sample/Scripts/Data/KillEnemyObjectiveData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Sample/Scripts/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Sample/Scripts/Enemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Sample/Scripts/Events/KillEnemyEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Sample/Scripts/Events/KillEnemyEvent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Sample/Scripts/KillEnemyHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Sample/Scripts/KillEnemyHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Sample/Scripts/ObjectivesUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/ObjectiveSystem/Sample/Scripts/ObjectivesUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/RewardSystem/Core/Data/RewardData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/RewardSystem/Core/Data/RewardData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/RewardSystem/Core/Interfaces/IRewardProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/RewardSystem/Core/Interfaces/IRewardProcessor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/RewardSystem/Core/RewardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/RewardSystem/Core/RewardManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/RewardSystem/Core/RewardProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/RewardSystem/Core/RewardProcessor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/RewardSystem/Sample/Scripts/Data/InventoryItemRewardData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/RewardSystem/Sample/Scripts/Data/InventoryItemRewardData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/RewardSystem/Sample/Scripts/ItemRewardProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/RewardSystem/Sample/Scripts/ItemRewardProcessor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ZTools/RewardSystem/Sample/Scripts/SimulateReward.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ZTools/RewardSystem/Sample/Scripts/SimulateReward.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/DefaultNetworkPrefabs.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DefaultNetworkPrefabs.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/FImpossible Creations/Editor/Editor Tools/F Texture Tools/Assembly Definitions - Just FTexture Image Tools.unitypackage.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Externals/Multiplayer/DA_Minimal_Setup/PlayerPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/Multiplayer/DA_Minimal_Setup/PlayerPrefab.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Externals/Multiplayer/DA_Minimal_Setup/SpherePrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/Multiplayer/DA_Minimal_Setup/SpherePrefab.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Externals/vFolders/vFolders Data.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/vFolders/vFolders Data.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Externals/vHierarchy/vHierarchy Data.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/vHierarchy/vHierarchy Data.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Externals/vHierarchy/vHierarchy Palette.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/vHierarchy/vHierarchy Palette.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Demos/Custom Attribute Processors.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Demos/Custom Drawers.unitypackage.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemies.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Demos/Editor Windows.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Demos/Sample - RPG Editor.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Visual Designer/Saved/OverBang_GameName_Gameplay_EnemySpawnScenario.ovdf.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Visual Designer/Saved/OverBang_GameName_Gameplay_EnemySpawnScenario.ovdf.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Animation/Player_Upgrade.controller.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Animation/Player_Upgrade.controller.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Meshes/Character/Test.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Meshes/Character/Test.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/Enemies.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/Enemies.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Props/LightBasicWhiteFlickering.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Props/LightBasicWhiteFlickering.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Props/LightCeilingFlickering.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Props/LightCeilingFlickering.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Quests/PumpQuestData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Quests/PumpQuestData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/GameMetrics.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/GameMetrics.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Dydou.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Xictoss.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Dydou/HubMapDydou.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Dydou/HubMapDydou.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Xictoss/XictossMap.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Dydou/HubMapDydou.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Recovery/0.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Dydou/HubMapDydou.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/Enemies/Models.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Dydou/Test.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Dydou/Test.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/Enemies.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Database/GameDatabase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Database/GameDatabase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Dydou/Test.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemies.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main/Hub.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main/Hub.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main/Map.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main/Map.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Xictoss/XictossMap.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Xictoss/XictossMap.unity.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Metrics/GameMetrics.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Metrics/GameMetrics.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/OverBang.GameName.Core.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/OverBang.GameName.Core.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Utils/PlayerSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Utils/PlayerSpawner.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Level/LevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Level/LevelManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Phase/GameplayPhase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Phase/GameplayPhase.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Player/PlayerController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Player/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Player/PlayerManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/Pump.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/Pump.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestData.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/QuestData.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestData/PumpQuestData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/QuestData/PumpQuestData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestData/PumpQuestData.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/QuestData/PumpQuestData.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestEvents.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/QuestEvents.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestEvents/PumpEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/QuestEvents/PumpEvent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestEvents/PumpEvent.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/QuestEvents/PumpEvent.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestHandlers.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/QuestHandlers.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestHandlers/PumpQuestHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/QuestHandlers/PumpQuestHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestHandlers/PumpQuestHandler.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/QuestHandlers/PumpQuestHandler.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/Rewards.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/Rewards.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/Rewards/ShipRewardData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/Rewards/ShipRewardData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/Rewards/ShipRewardData.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/Rewards/ShipRewardData.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/Rewards/ShipRewardProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/Rewards/ShipRewardProcessor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/Rewards/ShipRewardProcessor.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/Rewards/ShipRewardProcessor.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/SingletonSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/SingletonSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Recovery/0.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Recovery/0.unity.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OverBang.GameName.Gameplay.csproj.DotSettings" beforeDir="false" afterPath="$PROJECT_DIR$/OverBang.GameName.Gameplay.csproj.DotSettings" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DpaMonitoringSettings">
-    <option name="firstShow" value="false" />
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Editor/PoolResourceEditor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Editor/PrefabPoolAssetEditor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Dependencies/PoolDependenciesCollector.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/IPool.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Pool.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolEmptyBehavior.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolStrategies/PoolStrategy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolStrategies/PrefabPoolStrategy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolStrategies/ScriptablePoolStrategy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolUtilities.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/PoolingSettings.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/IPoolConfig.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/IPoolInstanceListener.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolAsset/IPoolAsset.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolAsset/PrefabPoolAsset.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolAsset/ResourcePoolAsset.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolConfigAsset.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/PoolResource.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Externals/OverBang/Pooling/Runtime/Resource/SimplePoolConfig.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Audio/AudioManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Audio/AudioParameters.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Audio/AudioPrefab.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/CharacterSelection/QuickSelectionPhase.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/CharacterSelection/SelectionPhase.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Characters/CharacterData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Database/GameDatabase.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Database/IDatabaseAsset.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Managers/GameController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Metrics/ConstID.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Phases/IPhase.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Phases/IPhaseListener.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Phases/MonoPhaseListener.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Phases/PhaseManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Phases/PhaseStatus.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Upgrades/ResourceType.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Upgrades/StatsUpgrade.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Upgrades/Upgrade.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Upgrades/UpgradeAmount.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Upgrades/UpgradeHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Upgrades/UpgradeTarget.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Utils/AwaitableUtils.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Utils/GameDatabaseUtils.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Utils/NetworkPropertiesUtils.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Utils/PhaseStatusUtils.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Utils/PlayerSpawner.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Utils/PoolUtils.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Utils/SessionManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Debugging/DebugHubScene.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Editor/FindMissingScriptsRecursively.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Cameras/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Cameras/CameraManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Combat/Bullets/Bullet.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Combat/Bullets/BulletData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Combat/Bullets/BulletType.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Combat/Weapons/Weapon.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Combat/Weapons/WeaponData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Combat/Weapons/WeaponType.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/DebugGameplay/DebugBullet.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/DebugGameplay/DebugWeapon.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Enemy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/EnemyData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/EnemySpawner.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/EnemyType.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Spawn/SpawnBehavior.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Spawn/SpawnData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Spawn/SpawnerFactory.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Spawn/SpawnerManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Health/Core/HealthComponent.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Level/LevelDefinition.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Level/LevelManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Level/LevelState.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Level/PoolingNetworkPrefabHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/EntityMovement.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/Gravity/GravityManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Network/SurvivalGameMode.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Phase/ClientGameplayPhase.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Phase/GameplayPhase.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Phase/HostGameplayPhase.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/PumpUI.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Sessions/Session.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Sessions/SessionUI.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Ships/Ship.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Hub/HubPhase.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Hub/Listeners/CharacterSelection.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Hub/Listeners/HubSpawner.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Quests/QuestEvents/PumpEvent.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Quests/Rewards/ShipRewardData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Quests/Rewards/ShipRewardProcessor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.eflatun.scenereference@b849990020c3/Editor/MapGeneratorTriggers/PlayModeListener.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.eflatun.scenereference@b849990020c3/Runtime/SceneReference.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.channeled-properties/Core/ChannelKey.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.channeled-properties/Core/Settings/ChanneledPropertiesSettings.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.channeled-properties/Editor/Core/ChannelKeyElement.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.channeled-properties/Editor/Core/ChanneledPropertyElement.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.singletons/Runtime/BaseSingleton.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.singletons/Runtime/MonoSingletons/MonoSingleton.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.singletons/Runtime/SceneServices/SceneService.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.singletons/Runtime/Singleton.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.singletons/Runtime/SingletonSettings.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.tools/Editor/TypeMapping/TypeMappingBuildProcess.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.tools/Editor/TypeMapping/TypeMappingEditor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.tools/Runtime/DynamicBuffer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.tools/Runtime/Settings/Attributes/AutoGenerateGameSettingsAttribute.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.tools/Runtime/Settings/Attributes/GameSettingsTitleAttribute.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.tools/Runtime/Settings/GameSettings.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.helteix.tools/Runtime/TypeMapping/TypeMappingCollection.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.multiplayer.tools@8395f16a9a9a/Common/Runtime/Helpers/RuntimeUpdaterBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@bd2a018756ed/Runtime/Core/NetworkManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@bd2a018756ed/Runtime/Core/NetworkObject.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@bd2a018756ed/Runtime/Core/NetworkUpdateLoop.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@bd2a018756ed/Runtime/Messaging/Messages/RpcMessages.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@bd2a018756ed/Runtime/Messaging/NetworkMessageManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@bd2a018756ed/Runtime/Messaging/RpcAttributes.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.authentication@868ebdf18f3f/Runtime/AuthenticationService.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.multiplayer@34def56704ad/Runtime/Multiplayer/Session/SessionManager.cs" root0="SKIP_HIGHLIGHTING" />
-  </component>
-  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 4
-}</component>
-  <component name="ProjectId" id="333r1sDiKzMId4hFTUZVeW6LuUk" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Attach to Unity Player.Unity.exe (Player 2).executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;ZircliX&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.github.copilot.settings.completions.CompletionsConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Attach to Unity Player.Unity.exe (Player 2).executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Dydou&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "Merging DEV",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Attach to Unity Player.Unity.exe (Player 2)">
-    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../../UnityBuilds/ExoWorld Preprod\ExoWorld.exe" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../UnityBuilds" />
-      <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="ENV_FILE_PATHS" value="" />
-      <option name="REDIRECT_INPUT_PATH" value="" />
-      <option name="MIXED_MODE_DEBUG" value="0" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.2.10f1\Editor\Unity.exe" />
-      <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\lolof\Documents\GitHub\OverBangStudio-GameName -debugCodeOptimization" />
-      <option name="WORKING_DIRECTORY" value="C:\Users\lolof\Documents\GitHub\OverBangStudio-GameName" />
+      <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\xicto\Desktop\EArtSup\RepoUnity\OverBangStudio-GameName -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\xicto\Desktop\EArtSup\RepoUnity\OverBangStudio-GameName" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="ENV_FILE_PATHS" value="" />
       <option name="REDIRECT_INPUT_PATH" value="" />
@@ -313,26 +127,12 @@
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.2.10f1\Editor\Unity.exe" />
-      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\lolof\Documents\GitHub\OverBangStudio-GameName -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
-      <option name="WORKING_DIRECTORY" value="C:\Users\lolof\Documents\GitHub\OverBangStudio-GameName" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\xicto\Desktop\EArtSup\RepoUnity\OverBangStudio-GameName -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\xicto\Desktop\EArtSup\RepoUnity\OverBangStudio-GameName" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="ENV_FILE_PATHS" value="" />
       <option name="REDIRECT_INPUT_PATH" value="" />
       <option name="MIXED_MODE_DEBUG" value="0" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
-      <option name="allowRunningInParallel" value="false" />
-      <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
-      <option name="projectPathOnTarget" />
-      <option name="runtimes">
-        <list />
-      </option>
-      <option name="selectedOptions">
-        <list />
-      </option>
-      <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
     <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -352,150 +152,23 @@
     <configuration name="Attach to" type="UnityDevicePlayer" factoryName="UnityAttachToDevicePlayer">
       <method v="2" />
     </configuration>
-    <configuration name="Unity.exe (Player 2)" type="UnityPlayer" factoryName="UnityAttachToPlayer" temporary="true">
-      <option name="host" value="127.0.0.1" />
-      <option name="pid" value="31012" />
-      <option name="playerId" value="EditorHelper(Unity.exe-Player 2-..)" />
-      <option name="playerInstanceId" value=".." />
-      <option name="port" value="56012" />
-      <option name="projectName" value=".." />
-      <option name="roleName" value="Player 2" />
-      <method v="2" />
-    </configuration>
-    <list>
-      <item itemvalue="Attach to Unity Editor.Attach to Unity Editor &amp; Play" />
-      <item itemvalue="Attach to Unity Editor.Attach to Unity Editor" />
-      <item itemvalue="Attach to Unity Player.Unity.exe (Player 2)" />
-      <item itemvalue="Standalone Player.Standalone Player" />
-      <item itemvalue="Standalone Player.Start Unity" />
-      <item itemvalue="Standalone Player.Unit Tests (batch mode)" />
-      <item itemvalue="Unity Attach To.Attach to" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Attach to Unity Player.Unity.exe (Player 2)" />
-      </list>
-    </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ab10dc57-16eb-4edb-ab4b-ff57d03b8e3c" name="Changes" comment="" />
-      <created>1758556385718</created>
+      <changelist id="a40a4a8d-5d4e-4dca-b1d0-122084d5d9b4" name="Changes" comment="" />
+      <created>1763994534894</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1758556385718</updated>
-      <workItem from="1758556387771" duration="4987000" />
-      <workItem from="1758625891334" duration="13320000" />
-      <workItem from="1758701438698" duration="5192000" />
-      <workItem from="1758706780345" duration="2613000" />
-      <workItem from="1758713300813" duration="624000" />
-      <workItem from="1758723341115" duration="7479000" />
-      <workItem from="1758803572422" duration="1815000" />
-      <workItem from="1758805536147" duration="1012000" />
-      <workItem from="1758815792046" duration="180000" />
-      <workItem from="1758921903961" duration="204000" />
-      <workItem from="1759133655181" duration="1097000" />
-      <workItem from="1759144382137" duration="1984000" />
-      <workItem from="1759147106686" duration="14058000" />
-      <workItem from="1759217447007" duration="11100000" />
-      <workItem from="1759475029029" duration="8402000" />
-      <workItem from="1759745904455" duration="3527000" />
-      <workItem from="1759839072661" duration="5310000" />
-      <workItem from="1759907026799" duration="6171000" />
-      <workItem from="1760353996946" duration="3131000" />
-      <workItem from="1760357221446" duration="7440000" />
-      <workItem from="1760524984444" duration="64000" />
-      <workItem from="1760526588266" duration="7415000" />
-      <workItem from="1760537587205" duration="3610000" />
-      <workItem from="1760557357098" duration="2072000" />
-      <workItem from="1760598663736" duration="10127000" />
-      <workItem from="1760813173178" duration="1416000" />
-      <workItem from="1760895441227" duration="3739000" />
-      <workItem from="1760944799879" duration="6828000" />
-      <workItem from="1760959795288" duration="343000" />
-      <workItem from="1761133527802" duration="4476000" />
-      <workItem from="1761141163542" duration="537000" />
-      <workItem from="1761144393700" duration="2556000" />
-      <workItem from="1761222358423" duration="5545000" />
-      <workItem from="1762019872552" duration="5334000" />
-      <workItem from="1762182686918" duration="731000" />
-      <workItem from="1762244232915" duration="5373000" />
-      <workItem from="1762251555167" duration="15144000" />
-      <workItem from="1762331110917" duration="10551000" />
-      <workItem from="1762782819830" duration="760000" />
-      <workItem from="1763399047718" duration="4133000" />
-      <workItem from="1762416415600" duration="15323000" />
-      <workItem from="1762438293193" duration="2651000" />
-      <workItem from="1762525631857" duration="8652000" />
-      <workItem from="1762550210686" duration="1997000" />
-      <workItem from="1762607643985" duration="7315000" />
-      <workItem from="1762617941551" duration="3387000" />
-      <workItem from="1762641142648" duration="4802000" />
-      <workItem from="1762698747640" duration="1185000" />
-      <workItem from="1762771080247" duration="1423000" />
-      <workItem from="1762784248368" duration="6276000" />
-      <workItem from="1762818443941" duration="1428000" />
-      <workItem from="1762880798253" duration="1421000" />
-      <workItem from="1762935139154" duration="7503000" />
-      <workItem from="1762952953454" duration="6422000" />
-      <workItem from="1762960089290" duration="1205000" />
-      <workItem from="1763069536980" duration="1898000" />
-      <workItem from="1763111567669" duration="7501000" />
-      <workItem from="1763122849769" duration="2276000" />
-      <workItem from="1763317661775" duration="4258000" />
-      <workItem from="1763370406680" duration="27465000" />
-      <workItem from="1763458403408" duration="5485000" />
-      <workItem from="1763571034869" duration="3171000" />
-      <workItem from="1763576296496" duration="733000" />
-      <workItem from="1763637874009" duration="1987000" />
-      <workItem from="1763639907630" duration="3618000" />
-      <workItem from="1763826763747" duration="9256000" />
-      <workItem from="1763906376778" duration="3333000" />
-      <workItem from="1763722915080" duration="23045000" />
-      <workItem from="1763848758479" duration="592000" />
+      <updated>1763994534894</updated>
+      <workItem from="1763994547852" duration="9529000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
-  <component name="UnityProjectDiscoverer">
-    <option name="hasUnityReference" value="true" />
-    <option name="unityProject" value="true" />
-    <option name="unityProjectFolder" value="true" />
-  </component>
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
-  <component name="VcsManagerConfiguration">
-    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint type="DotNet_Exception_Breakpoints">
-          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
-          <option name="timeStamp" value="1" />
-        </breakpoint>
-        <breakpoint type="DotNet_Exception_Breakpoints">
-          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
-          <option name="timeStamp" value="2" />
-        </breakpoint>
-        <breakpoint type="DotNet_Exception_Breakpoints">
-          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
-          <option name="timeStamp" value="3" />
-        </breakpoint>
-      </breakpoints>
-      <default-breakpoints>
-        <breakpoint type="DotNet_Exception_Breakpoints" />
-      </default-breakpoints>
-    </breakpoint-manager>
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
-  </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
       <option value=".github/instructions" />
