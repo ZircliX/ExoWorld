@@ -17,5 +17,8 @@ MonoBehaviour:
   <Damage>k__BackingField: 250
   <EnemyType>k__BackingField: 0
   <ModelPrefab>k__BackingField: {fileID: 2230874645636015531, guid: 6523b03e2dd41e341a0896dc609b9741, type: 3}
-  <Dependencies>k__BackingField: []
+  <EnemyResource>k__BackingField: {fileID: 11400000, guid: 8a9c6c0523685f84481a36802dbab533, type: 2}
+  <Dependencies>k__BackingField:
+  - <PoolSize>k__BackingField: 15
+    <PoolResource>k__BackingField: {fileID: 11400000, guid: 8a9c6c0523685f84481a36802dbab533, type: 2}
   <ID>k__BackingField: e4a5106e-a108-4ccf-a273-2245752de24d

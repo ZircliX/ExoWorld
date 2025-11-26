@@ -19,6 +19,8 @@ namespace OverBang.GameName.Gameplay
         
         [field: SerializeField] 
         public GameObject ModelPrefab { get; private set; }
+        [field: SerializeField] 
+        public PoolResource EnemyResource { get; private set; }
         
         [field: SerializeField, Space] 
         public SimplePoolConfig[] Dependencies { get; private set; }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using OverBang.GameName.Gameplay;
 using OverBang.Pooling;
 using OverBang.Pooling.Dependencies;
 using Unity.Services.Multiplayer;
@@ -16,6 +17,9 @@ namespace OverBang.GameName.Core
             {
                 CharacterData[] characterData = Resources.LoadAll<CharacterData>("Characters");
                 providers.AddRange(characterData);
+                
+                EnemyData[] enemyData = Resources.LoadAll<EnemyData>("Enemies");
+                providers.AddRange(enemyData);
                 
                 OnCollectSceneProviders?.Invoke(providers);
 
