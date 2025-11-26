@@ -1,4 +1,5 @@
 ﻿using OverBang.GameName.Core;
+using OverBang.Pooling;
 using Unity.Netcode;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -9,11 +10,14 @@ namespace OverBang.GameName.Gameplay
     {
         public Enemy SpawnEnemy(EnemyData enemyData)
         {
-            NetworkObject enemyObject = Object.Instantiate(GameMetrics.Global.EnemyPrefab, transform.position, transform.rotation);
+            GameObject enemyGameObject = enemyData.EnemyResource.Spawn<GameObject>();
             
-            enemyObject.Spawn();
-
-            if (enemyObject.TryGetComponent(out Enemy enemy))
+            if (enemyGameObject.TryGetComponent(out NetworkObject networkObject))
+            {
+                enemyGameObject.transform.position = transform.position;
+                networkObject.Spawn();
+            }
+            if (enemyGameObject.TryGetComponent(out Enemy enemy))
             {
                 enemy.Initialize(enemyData.ID);
             }

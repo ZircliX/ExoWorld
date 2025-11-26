@@ -76,7 +76,7 @@ namespace OverBang.GameName.Gameplay
                 
                 int rnd = Random.Range(0, enemyDatas.Length);
                 Enemy enemy = spawner.SpawnEnemy(enemyDatas[rnd]);
-                enemy.name = $"{enemy.name} | Wave {wave} | {enemyToSpawn - spawnedEnemies}";
+                enemy.name = $"{enemy.enemyData.name} | Wave {wave} | Area : {gameObject.name} | EnemyLeft : {enemyToSpawn - spawnedEnemies} | ";
                 spawnedEnemies++;
 
                 await Awaitable.WaitForSecondsAsync(Random.Range(enemySpawnScenario.MinMaxSpawnIntervals.x, enemySpawnScenario.MinMaxSpawnIntervals.y));

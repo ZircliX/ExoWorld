@@ -47,7 +47,7 @@ namespace OverBang.GameName.Gameplay
         
         private async Awaitable StartWaveMode(EnemySpawnScenario enemySpawnScenario)
         {
-            int currentWave = 0;
+            int currentWave = 1;
             int enemyToSpawnInWave = enemySpawnScenario.InitialEnemyAmountInWave; 
 
             //Wave mode loop
