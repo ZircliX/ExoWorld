@@ -20,7 +20,7 @@ namespace OverBang.GameName.Hub
             SceneManager.sceneLoaded += OnSceneLoaded;
             await base.OnBegin();
 
-            if (SessionManager.Global.IsHost)
+            if (SessionManager.Global.IsHost())
             {
                 SceneReference hubSceneRef = SceneCollection.Global.HubSceneRef;
                 Scene currentScene = SceneLoader.GetCurrentScene();

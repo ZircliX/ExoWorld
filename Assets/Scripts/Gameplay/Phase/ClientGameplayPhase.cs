@@ -14,7 +14,7 @@ namespace OverBang.GameName.Gameplay
         {
             await AwaitableUtils.AwaitableUntil(() =>
             {
-                Debug.Log("Waiting");
+                //Debug.Log("Waiting");
                 SessionManager.Global.CurrentPlayer.TryGetPhaseStatusByPlayer(out PhaseStatus status);
                 return status == PhaseStatus.SceneLoaded;
             }, CancellationToken.None);

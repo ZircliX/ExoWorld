@@ -1,8 +1,7 @@
-﻿using OverBang.GameName.Gameplay.QuestHandlers;
-using UnityEngine;
+﻿using UnityEngine;
 using ZTools.ObjectiveSystem.Core;
 
-namespace OverBang.GameName.Gameplay.QuestData
+namespace OverBang.GameName.Gameplay
 {
     [CreateAssetMenu(fileName = "RepairData", menuName = "OverBang/ObjectiveData/RepairData", order = 0)]
     public class PumpQuestData : ObjectiveData

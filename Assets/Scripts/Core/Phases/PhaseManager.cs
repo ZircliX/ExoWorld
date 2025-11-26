@@ -12,8 +12,6 @@ namespace OverBang.GameName.Core
 
         public static bool Register<T>(this IPhaseListener<T> listener) where T : IPhase
         {
-            Debug.Log("Registering listener: " + listener.GetType().BaseType);
-            
             bool added = listeners.Add(listener);
             if (currentPhases.TryGetValue(typeof(T), out IPhase phaseObj) && phaseObj is T phase)
             {
@@ -25,7 +23,6 @@ namespace OverBang.GameName.Core
 
         public static bool Unregister<T>(this IPhaseListener<T> listener) where T : IPhase
         {
-            Debug.Log("Unregistering listener: " + listener.GetType().BaseType);
             return listeners.Remove(listener);
         }
 
@@ -38,7 +35,7 @@ namespace OverBang.GameName.Core
             {
                 currentPhases[typeof(T)] = phase;
                 
-                Debug.Log("Beginning phase: " + typeof(T).Name);
+                //Debug.Log("Beginning phase: " + typeof(T).Name);
                 await phase.OnBegin();
                 await Awaitable.EndOfFrameAsync();
 
@@ -46,11 +43,11 @@ namespace OverBang.GameName.Core
                     if (phaseListener is IPhaseListener<T> compatible)
                         compatibles.Add(compatible);
                 
-                Debug.Log("Calling listeners for phase begin: " + typeof(T).Name);
+                //Debug.Log("Calling listeners for phase begin: " + typeof(T).Name);
                 foreach (IPhaseListener<T> phaseListener in compatibles)
                     phaseListener.OnBegin(phase);
                 
-                Debug.Log("Executing phase: " + typeof(T).Name);
+                //Debug.Log("Executing phase: " + typeof(T).Name);
                 await phase.Execute();
                 
                 compatibles.Clear();
@@ -58,12 +55,12 @@ namespace OverBang.GameName.Core
                     if (phaseListener is IPhaseListener<T> compatible)
                         compatibles.Add(compatible);
                 
-                Debug.Log("Calling listeners for phase end: " + typeof(T).Name);
+                //Debug.Log("Calling listeners for phase end: " + typeof(T).Name);
                 foreach (IPhaseListener<T> phaseListener in compatibles)
                     phaseListener.OnEnd(phase);
                 
                 await Awaitable.EndOfFrameAsync();
-                Debug.Log("Ending phase: " + typeof(T).Name);
+                //Debug.Log("Ending phase: " + typeof(T).Name);
                 await phase.OnEnd();
                 
                 currentPhases.Remove(typeof(T));

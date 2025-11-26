@@ -1,8 +1,6 @@
-using OverBang.GameName.Quests.QuestData;
-using OverBang.GameName.Quests.QuestEvents;
 using ZTools.ObjectiveSystem.Core;
 
-namespace OverBang.GameName.Gameplay.QuestHandlers
+namespace OverBang.GameName.Gameplay
 {
     public class PumpQuestHandler : ObjectiveHandler<PumpQuestData, PumpEvent>
     {

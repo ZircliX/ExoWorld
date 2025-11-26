@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31633a80bfc47a4390742e40cade437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OverBang.GameName.TechArt.FlickeringLight
-  light: {fileID: 6351727747989027926}
+  targetLight: {fileID: 6351727747989027926}
   defaultIntensity: 750
   minTime: 0.1
   maxTime: 2

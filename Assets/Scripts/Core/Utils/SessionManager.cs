@@ -11,7 +11,13 @@ namespace OverBang.GameName.Core
         public ISession ActiveSession {get; private set;}
         
         public IPlayer CurrentPlayer => ActiveSession.CurrentPlayer;
-        public bool IsHost => ActiveSession.IsHost;
+        public bool IsHost()
+        {
+            if (ActiveSession == null)
+                return false;
+            
+            return ActiveSession.IsHost;
+        }
 
         public async Awaitable<ISession> CreateOrJoinSession(string sessionId, SessionOptions options)
         {

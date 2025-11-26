@@ -1,0 +1,98 @@
+OVDF v1.0
+OverBang.GameName.Gameplay.WeaponData, OverBang.GameName.Gameplay
+
+# $5cDy9QCXbQwjBC66YYqezY
+Position: $root:1
++ [Sirenix.OdinInspector.TitleGroupAttribute]
+	GroupName = "General Data"
+	Alignment = Left
+	Indent = False
+	Subtitle = ""
+
+# $2P8G3Qb7cWashAVKtrXQtB
+Position: $root:0
++ [Sirenix.OdinInspector.TitleGroupAttribute]
+	Indent = True
+	GroupName = "Bullet Specific Data"
+	Subtitle = "Define what type of bullet this weapon shoots"
+
+# $Q6RMpRgePS92s5toDpNQDx
+Position: $root:32
++ [Sirenix.OdinInspector.TitleGroupAttribute]
+	GroupName = "Specific Data"
+	Indent = False
+	BoldTitle = True
+	HorizontalLine = False
+	Alignment = Centered
+	AnimateVisibility = False
+
+# $TbUHwMugt1We19qhLB2n7D
+Position: $Q6RMpRgePS92s5toDpNQDx:1
++ [Sirenix.OdinInspector.TitleGroupAttribute]
+	GroupName = "Reload Data"
+	Indent = True
+	Subtitle = "Define how the weapon reloads"
+
+# $U8eL52n4uVwZmbgX6XDe25
+Position: $Q6RMpRgePS92s5toDpNQDx:0
++ [Sirenix.OdinInspector.TitleGroupAttribute]
+	GroupName = "Fire Data"
+	HorizontalLine = True
+	Subtitle = "Define how the weapon fires bullets"
+	Indent = True
+
+# $6wAoQ3N5eCGSmbxcPbbYMx
+Position: $5cDy9QCXbQwjBC66YYqezY:0
++ [Sirenix.OdinInspector.FoldoutGroupAttribute]
+	GroupName = ""
+
+# <FireBehaviour>k__BackingField
+Position: $U8eL52n4uVwZmbgX6XDe25:0
+
+# <ShootingRate>k__BackingField
+Position: $U8eL52n4uVwZmbgX6XDe25:1
++ [Sirenix.OdinInspector.PropertyTooltipAttribute]
+	Tooltip = "Cooldown between each bullet"
+
+# <BulletPerShot>k__BackingField
+Position: $U8eL52n4uVwZmbgX6XDe25:2
+
+# <BulletDispersion>k__BackingField
+Position: $U8eL52n4uVwZmbgX6XDe25:3
+
+# <ReloadBehaviour>k__BackingField
+Position: $TbUHwMugt1We19qhLB2n7D:0
+
+# <MagCapacity>k__BackingField
+Position: $TbUHwMugt1We19qhLB2n7D:1
+
+# <ReloadTime>k__BackingField
+Position: $TbUHwMugt1We19qhLB2n7D:2
+
+# <BulletData>k__BackingField
+Position: $2P8G3Qb7cWashAVKtrXQtB:0
+
+# <WeaponName>k__BackingField
+Position: $6wAoQ3N5eCGSmbxcPbbYMx:0
+
+# <WeaponPrefab>k__BackingField
+Position: $6wAoQ3N5eCGSmbxcPbbYMx:3
++ [Sirenix.OdinInspector.PreviewFieldAttribute]
+	Height = 80
++ [UnityEngine.SpaceAttribute]
+	height = 10
+
+# <WeaponDescription>k__BackingField
+Position: $6wAoQ3N5eCGSmbxcPbbYMx:1
++ [UnityEngine.TextAreaAttribute]
+	minLines = 5
+	maxLines = 15
++ [UnityEngine.SpaceAttribute]
+	height = 10
+
+# <WeaponSprite>k__BackingField
+Position: $6wAoQ3N5eCGSmbxcPbbYMx:2
++ [Sirenix.OdinInspector.PreviewFieldAttribute]
+	Height = 80
++ [UnityEngine.SpaceAttribute]
+	height = 10

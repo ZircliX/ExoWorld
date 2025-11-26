@@ -9,6 +9,8 @@ namespace OverBang.GameName.Gameplay
     [RequireComponent(typeof(SphereCollider))]
     public class PlayerInteraction : MonoBehaviour
     {
+        [field: SerializeField] public Camera InteractionCamera { get; private set; }
+        
         public event Action<IInteractable> OnNewInteractable; 
         
         public IInteractable CurrentInteractable { get; private set; }
@@ -44,7 +46,7 @@ namespace OverBang.GameName.Gameplay
                 interactables.Sort((a, b) => a.Priority.CompareTo(b.Priority));
 
                 nextInteractable = interactables[^1];
-                if (nextInteractable.Priority < 0)
+                if (nextInteractable.Priority < 0 || !nextInteractable.CanInteract)
                     nextInteractable = null;
             }
             

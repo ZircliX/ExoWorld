@@ -1,4 +1,5 @@
-﻿using OverBang.GameName.Gameplay.Interface;
+﻿using DG.Tweening;
+using OverBang.GameName.Gameplay.Interface;
 using TMPro;
 using UnityEngine;
 
@@ -8,10 +9,12 @@ namespace OverBang.GameName.Gameplay
     {
         [SerializeField] private PlayerInteraction playerInteraction;
         [SerializeField] private TMP_Text interactionText;
+        [SerializeField] private CanvasGroup canvasGroup;
 
         private void OnEnable()
         {
             playerInteraction.OnNewInteractable += UpdateInteractableUI;
+            canvasGroup.alpha = 0;
         }
 
         private void OnDisable()
@@ -24,10 +27,25 @@ namespace OverBang.GameName.Gameplay
             if (interactable == null)
             {
                 interactionText.text = string.Empty;
+                canvasGroup.DOKill();
+                canvasGroup.DOFade(0, .2f);
                 return;
             }
+
+            canvasGroup.DOKill();
+            canvasGroup.DOFade(1, .2f);
             
-            interactionText.text = interactable.InteractionText;
+            interactionText.text = interactable.InteractionText == string.Empty ? "Interact" : interactable.InteractionText;
+        }
+
+        private void LateUpdate()
+        {
+            IInteractable interactable = playerInteraction.CurrentInteractable;
+            if (interactable != null)
+            {
+                canvasGroup.transform.position = interactable.UIPosition;
+                canvasGroup.transform.forward = playerInteraction.InteractionCamera.transform.forward;
+            }
         }
     }
 }

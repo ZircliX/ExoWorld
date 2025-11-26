@@ -1,17 +1,22 @@
 using OverBang.GameName.Core;
 using OverBang.GameName.Gameplay;
+using Unity.Services.Authentication;
+using Unity.Services.Core;
+using Unity.Services.Multiplayer;
 using UnityEngine;
 
 namespace OverBang.GameName.Debugging
 {
-    [DefaultExecutionOrder(-999)]
+    [DefaultExecutionOrder(-10)]
     public class DebugMapScene : MonoBehaviour
     {
-        private void Awake()
+        private async void Awake()
         {
             if (GameController.CurrentGameMode == null)
             {
-                Debug.LogError($"No gamemode selected, Starting SurvivalGameMode from {nameof(DebugMapScene)}");
+                Debug.LogWarning($"No gamemode selected, Starting SurvivalGameMode from {nameof(DebugMapScene)}");
+                await LogIn();
+                
                 SurvivalGameMode survivalGameMode = SurvivalGameMode.Create();
                 survivalGameMode.SetGameMode();
             }
@@ -19,6 +24,21 @@ namespace OverBang.GameName.Debugging
             {
                 Destroy(this);
             }
+        } 
+        
+        private async Awaitable LogIn()
+        {
+            await UnityServices.InitializeAsync();
+            await AuthenticationService.Instance.SignInAnonymouslyAsync();
+                
+            SessionOptions options = new SessionOptions()
+            {
+                Name = "Debug Map Session",
+                MaxPlayers = 2,
+                IsPrivate = false,
+            }.WithRelayNetwork();
+
+            await SessionManager.Global.CreateOrJoinSession("DebugMapSession", options);
         }
     }
 }

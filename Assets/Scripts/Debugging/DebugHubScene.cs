@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using OverBang.GameName.Core;
 using OverBang.GameName.Gameplay;
 using Unity.Services.Authentication;
@@ -9,16 +8,15 @@ using UnityEngine;
 namespace OverBang.GameName.Debugging
 {
     [DefaultExecutionOrder(-10)]
-
-public class DebugHubScene : MonoBehaviour
+    public class DebugHubScene : MonoBehaviour
     {
         private async void Awake()
         {
             if (GameController.CurrentGameMode == null)
             {
-                await LogIn();
-
                 Debug.LogWarning($"No gamemode selected, Starting SurvivalGameMode from {nameof(DebugHubScene)}");
+                await LogIn();
+                
                 SurvivalGameMode survivalGameMode = SurvivalGameMode.Create();
                 survivalGameMode.SetGameMode();
             }
@@ -28,19 +26,19 @@ public class DebugHubScene : MonoBehaviour
             }
         }
 
-        private async Task LogIn()
+        private async Awaitable LogIn()
         {
             await UnityServices.InitializeAsync();
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
                 
             SessionOptions options = new SessionOptions()
             {
-                Name = "Degub Session",
-                MaxPlayers = 4,
+                Name = "Debug Hub Session",
+                MaxPlayers = 2,
                 IsPrivate = false,
             }.WithRelayNetwork();
 
-            await SessionManager.Global.CreateOrJoinSession("aaaaaaaaaa", options);
+            await SessionManager.Global.CreateOrJoinSession("DebugHubSession", options);
         }
     }
 }
