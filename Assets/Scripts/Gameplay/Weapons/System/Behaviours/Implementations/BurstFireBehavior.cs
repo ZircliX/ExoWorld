@@ -4,6 +4,8 @@ namespace OverBang.GameName.Gameplay
 {
     public class BurstFireBehavior : IFireBehaviour
     {
+        public int ConsecutiveShots { get; private set; }
+
         public void OnInitialize(Weapon weapon)
         {
             throw new System.NotImplementedException();

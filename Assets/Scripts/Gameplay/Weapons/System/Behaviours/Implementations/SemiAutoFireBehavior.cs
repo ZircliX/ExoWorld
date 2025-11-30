@@ -1,34 +1,23 @@
-﻿using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using UnityEngine.InputSystem;
 
 namespace OverBang.GameName.Gameplay
 {
-    public class SemiAutoFireBehavior : IFireBehaviour
+    public class SemiAutoFireBehavior : BaseFireBehaviour
     {
-        private Weapon weapon;
+        public override void OnShootInput(InputAction.CallbackContext context)
+        {
+            if (!context.performed)
+                return;
+
+            HandleFire();
+        }
+
+        public override void Tick(float deltaTime)
+        {
+            if (consecutiveShotsValue <= 0f)
+                return;
             
-        public void OnInitialize(Weapon weapon)
-        {
-            this.weapon = weapon;
+            HandleConsecutiveShots();
         }
-
-        public void OnShootInput(InputAction.CallbackContext context)
-        {
-            if (!context.performed || weapon == null)
-                return;
-
-            WeaponData data = weapon.WeaponData;
-            RuntimeWeaponState state = weapon.State;
-
-            if (!state.TryConsume(data.BulletPerShot))
-                return;
-
-            for (int i = 0; i < data.BulletPerShot; i++)
-            {
-                weapon.Fire();
-            }
-        }
-
-        public void Tick(float deltaTime) { }
     }
 }

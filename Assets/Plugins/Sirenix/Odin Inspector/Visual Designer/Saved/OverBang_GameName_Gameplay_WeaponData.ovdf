@@ -2,7 +2,7 @@ OVDF v1.0
 OverBang.GameName.Gameplay.WeaponData, OverBang.GameName.Gameplay
 
 # $5cDy9QCXbQwjBC66YYqezY
-Position: $root:1
+Position: $root:0
 + [Sirenix.OdinInspector.TitleGroupAttribute]
 	GroupName = "General Data"
 	Alignment = Left
@@ -10,16 +10,16 @@ Position: $root:1
 	Subtitle = ""
 
 # $2P8G3Qb7cWashAVKtrXQtB
-Position: $root:0
+Position: $root:22
 + [Sirenix.OdinInspector.TitleGroupAttribute]
 	Indent = True
-	GroupName = "Bullet Specific Data"
-	Subtitle = "Define what type of bullet this weapon shoots"
+	GroupName = "Bullet Data"
+	Subtitle = "Choose what bullet this weapon fires"
 
 # $Q6RMpRgePS92s5toDpNQDx
-Position: $root:32
+Position: $root:21
 + [Sirenix.OdinInspector.TitleGroupAttribute]
-	GroupName = "Specific Data"
+	GroupName = "Behaviour Data"
 	Indent = False
 	BoldTitle = True
 	HorizontalLine = False
@@ -27,7 +27,7 @@ Position: $root:32
 	AnimateVisibility = False
 
 # $TbUHwMugt1We19qhLB2n7D
-Position: $Q6RMpRgePS92s5toDpNQDx:1
+Position: $Q6RMpRgePS92s5toDpNQDx:2
 + [Sirenix.OdinInspector.TitleGroupAttribute]
 	GroupName = "Reload Data"
 	Indent = True
@@ -45,6 +45,18 @@ Position: $Q6RMpRgePS92s5toDpNQDx:0
 Position: $5cDy9QCXbQwjBC66YYqezY:0
 + [Sirenix.OdinInspector.FoldoutGroupAttribute]
 	GroupName = ""
+
+# $TGbKACcPdJU3DrHFv9PMzQ
+Position: $Q6RMpRgePS92s5toDpNQDx:1
++ [Sirenix.OdinInspector.TitleGroupAttribute]
+	GroupName = "Recoil Data"
+	Subtitle = "Control the recoil pattern of the weapon"
+	Indent = True
+
+# $Nv1rLGWbqNgQRv2TZZRwhY
+Position: $6wAoQ3N5eCGSmbxcPbbYMx:2
++ [Sirenix.OdinInspector.HorizontalGroupAttribute]
+	GroupName = "Previews"
 
 # <FireBehaviour>k__BackingField
 Position: $U8eL52n4uVwZmbgX6XDe25:0
@@ -76,11 +88,13 @@ Position: $2P8G3Qb7cWashAVKtrXQtB:0
 Position: $6wAoQ3N5eCGSmbxcPbbYMx:0
 
 # <WeaponPrefab>k__BackingField
-Position: $6wAoQ3N5eCGSmbxcPbbYMx:3
+Position: $Nv1rLGWbqNgQRv2TZZRwhY:1
 + [Sirenix.OdinInspector.PreviewFieldAttribute]
 	Height = 80
 + [UnityEngine.SpaceAttribute]
 	height = 10
++ [Sirenix.OdinInspector.LabelTextAttribute]
+	Text = "Prefab"
 
 # <WeaponDescription>k__BackingField
 Position: $6wAoQ3N5eCGSmbxcPbbYMx:1
@@ -91,8 +105,50 @@ Position: $6wAoQ3N5eCGSmbxcPbbYMx:1
 	height = 10
 
 # <WeaponSprite>k__BackingField
-Position: $6wAoQ3N5eCGSmbxcPbbYMx:2
+Position: $Nv1rLGWbqNgQRv2TZZRwhY:0
 + [Sirenix.OdinInspector.PreviewFieldAttribute]
 	Height = 80
 + [UnityEngine.SpaceAttribute]
 	height = 10
++ [Sirenix.OdinInspector.LabelTextAttribute]
+	Text = "Sprite"
+
+# <DispersionMultiplier>k__BackingField
+Position: $TGbKACcPdJU3DrHFv9PMzQ:5
+
+# <RecoilPatternY>k__BackingField
+Position: $TGbKACcPdJU3DrHFv9PMzQ:5
+
+# <BulletDispersionY>k__BackingField
+Position: $TGbKACcPdJU3DrHFv9PMzQ:4
+
+# <RecoilPatternX>k__BackingField
+Position: $TGbKACcPdJU3DrHFv9PMzQ:3
+
+# <BulletDispersionX>k__BackingField
+Position: $TGbKACcPdJU3DrHFv9PMzQ:2
++ [UnityEngine.SpaceAttribute]
+	height = 15
+
+# <RecoilPatternShots>k__BackingField
+Position: $TGbKACcPdJU3DrHFv9PMzQ:0
+
+# <RandomnessMultiplier>k__BackingField
+Position: $TGbKACcPdJU3DrHFv9PMzQ:7
+
+# <CurveMultiplier>k__BackingField
+Position: $TGbKACcPdJU3DrHFv9PMzQ:6
++ [UnityEngine.SpaceAttribute]
+	height = 15
+
+# <ResetLerpSpeed>k__BackingField
+Position: $TGbKACcPdJU3DrHFv9PMzQ:8
+
+# <MaxRecoilShots>k__BackingField
+Position: $TGbKACcPdJU3DrHFv9PMzQ:1
+
+# <FireCooldown>k__BackingField
+Position: $U8eL52n4uVwZmbgX6XDe25:1
+
+# <BulletsPerShot>k__BackingField
+Position: $U8eL52n4uVwZmbgX6XDe25:2

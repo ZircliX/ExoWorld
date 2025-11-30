@@ -2,17 +2,11 @@
 
 namespace OverBang.GameName.Gameplay
 {
-    public class FullAutoFireBehavior : IFireBehaviour
+    public class FullAutoFireBehavior : BaseFireBehaviour
     {
-        private Weapon weapon;
         private bool isFiring;
         
-        public void OnInitialize(Weapon weapon)
-        {
-            this.weapon = weapon;
-        }
-
-        public void OnShootInput(InputAction.CallbackContext context)
+        public override void OnShootInput(InputAction.CallbackContext context)
         {
             if (context.started)
                 isFiring = true;
@@ -20,20 +14,16 @@ namespace OverBang.GameName.Gameplay
                 isFiring = false;
         }
 
-        public void Tick(float deltaTime)
+        public override void Tick(float deltaTime)
         {
-            if (!isFiring || weapon == null)
-                return;
-
-            WeaponData data  = weapon.WeaponData;
-            RuntimeWeaponState state = weapon.State;
-
-            if (!state.TryConsume(data.BulletPerShot))
-                return;
-
-            for (int i = 0; i < data.BulletPerShot; i++)
+            if (!isFiring && consecutiveShotsValue <= 0f)
             {
-                weapon.Fire();
+                HandleConsecutiveShots();
+            }
+
+            if (isFiring)
+            {
+                HandleFire();
             }
         }
     }
