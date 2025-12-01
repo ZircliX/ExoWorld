@@ -12,7 +12,8 @@ namespace OverBang.GameName.Gameplay
         [field: SerializeField] public string WeaponName { get; protected set; }
         [field: SerializeField] public string WeaponDescription { get; protected set; }
         [field: SerializeField] public Sprite WeaponSprite { get; protected set; }
-        [field: SerializeField] public GameObject WeaponPrefab { get; protected set; }
+        [field: SerializeField] public Weapon WeaponPrefab { get; protected set; }
+        [field: SerializeField] public GameObject ModelPrefab { get; protected set; }
         
         // FIRE BEHAVIOUR
         [field: SerializeField] public WeaponFireBehaviour FireBehaviour { get; protected set; }

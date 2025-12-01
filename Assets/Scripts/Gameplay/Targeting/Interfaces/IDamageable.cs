@@ -8,6 +8,6 @@ namespace OverBang.GameName.Gameplay
         float Health { get; }
         float MaxHealth { get; }
         bool IsAlive { get; }
-        void TakeDamage(float damage);
+        void TakeDamage(BulletData.BulletDamageInfo damage);
     }
 }

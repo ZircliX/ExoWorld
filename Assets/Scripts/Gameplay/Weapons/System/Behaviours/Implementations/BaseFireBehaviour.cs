@@ -42,6 +42,7 @@ namespace OverBang.GameName.Gameplay
             {
                 Weapon.Fire();
             }
+            // TODO : SOUND
             
             // Increment Consecutive Shots
             if (ConsecutiveShots < Weapon.WeaponData.MaxRecoilShots)

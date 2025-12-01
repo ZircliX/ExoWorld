@@ -1,28 +1,24 @@
-﻿using OverBang.GameName.Core;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace OverBang.GameName.Gameplay
 {
-    public abstract class Weapon : MonoBehaviour, IPlayerComponent
+    public abstract class Weapon : MonoBehaviour
     {
         [field: SerializeField, Required] public WeaponData WeaponData { get; protected set; }
         public RuntimeWeaponState State { get; protected set; }
-        public PlayerController Controller { get; set; }
 
+        protected Camera playerCamera;
+        
         protected IFireBehaviour fireBehaviour;
         protected IReloadBehaviour reloadBehaviour;
         
-        public void OnSync(CharacterData data, Animator animator)
-        {
-            Initialize(WeaponData);
-        }
-
-        public virtual void Initialize(WeaponData weaponData)
+        public virtual void Initialize(WeaponData weaponData, Camera playerCamera)
         {
             WeaponData = weaponData;
             State = new RuntimeWeaponState(this);
+            this.playerCamera = playerCamera;
 
             fireBehaviour = WeaponData.FireBehaviour.CreateFireBehavior();
             reloadBehaviour = WeaponData.ReloadBehaviour.CreateReloadBehavior();
@@ -30,7 +26,7 @@ namespace OverBang.GameName.Gameplay
             fireBehaviour?.OnInitialize(this);
             reloadBehaviour?.OnInitialize(this);
 
-            Instantiate(weaponData.WeaponPrefab, transform);
+            Instantiate(WeaponData.ModelPrefab, transform);
         }
         
         protected virtual void Update()

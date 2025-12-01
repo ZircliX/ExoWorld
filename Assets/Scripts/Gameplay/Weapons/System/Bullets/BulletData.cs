@@ -9,13 +9,14 @@ namespace OverBang.GameName.Gameplay
         [System.Serializable]
         public struct BulletDamageInfo
         {
-            public float bodyDamage;
-            public float headDamage;
+            public float baseDamage;
+            public float weakSpotMultiplier;
         }
         
         [field: SerializeField] public PoolResource BulletPoolResource { get; protected set; }
         
         [field: SerializeField] public float BulletSpeed { get; protected set; }
+        [field: SerializeField] public int Penetration { get; protected set; }
         [field: SerializeField] public BulletDamageInfo BulletDamage { get; protected set; }
     }
 }

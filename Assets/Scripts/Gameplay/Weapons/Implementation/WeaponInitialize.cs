@@ -7,6 +7,7 @@ namespace OverBang.GameName.Gameplay
     public class WeaponInitialize : MonoBehaviour
     {
         [SerializeField, Self] private Weapon weapon;
+        [SerializeField] private WeaponData weaponData;
 
         private void OnValidate()
         {
@@ -17,7 +18,7 @@ namespace OverBang.GameName.Gameplay
         {
             Awaitable aw = PoolUtils.SetupPooling(null);
             aw.Run();
-            weapon.OnSync(null, null);
+            weapon.Initialize(weaponData, Camera.main);
         }
     }
 }

@@ -11,9 +11,9 @@ namespace OverBang.GameName.Gameplay
         [field: SerializeField] public float MaxHealth { get; private set; }
         public bool IsAlive => Health > 0;
         
-        public void TakeDamage(float damage)
+        public void TakeDamage(BulletData.BulletDamageInfo damage)
         {
-            Health -= damage;
+            Health -= damage.baseDamage;
             OnDamaged?.Invoke();
         }
     }

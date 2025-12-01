@@ -1,0 +1,122 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53843da5158dfb84db014e418eb22304, type: 3}
+  m_Name: New Scene_SceneLayers
+  m_EditorClassIdentifier: 
+  layers:
+  - guid: 6d2dc451-82f2-4f2f-bfb0-535ce497ab0f
+    displayName: Layer 1
+    color: {r: 0.13, g: 0.59, b: 0.95, a: 1}
+    objectGlobalIds:
+    - GlobalObjectId_V1-2-1ba6f7719fba048499416bddd7aaf7ec-124565732-0
+    autoRules: []
+    autoAssignLive: 0
+    defaultVisible: 1
+    defaultPickable: 1
+    objectOrder: []
+  - guid: 26424197-29d2-42f2-aea0-2ebeee53f019
+    displayName: Layer 2
+    color: {r: 0.3, g: 0.69, b: 0.31, a: 1}
+    objectGlobalIds:
+    - GlobalObjectId_V1-2-1ba6f7719fba048499416bddd7aaf7ec-643867978-0
+    autoRules: []
+    autoAssignLive: 0
+    defaultVisible: 1
+    defaultPickable: 1
+    objectOrder: []
+  - guid: 021cdeda-73df-423a-b15e-7ce222d05809
+    displayName: Layer 3
+    color: {r: 1, g: 0.76, b: 0.03, a: 1}
+    objectGlobalIds: []
+    autoRules: []
+    autoAssignLive: 0
+    defaultVisible: 1
+    defaultPickable: 1
+    objectOrder: []
+  - guid: 14084d6b-baaf-4f22-8a17-af785d1f173b
+    displayName: Layer 4
+    color: {r: 1, g: 0.34, b: 0.13, a: 1}
+    objectGlobalIds: []
+    autoRules: []
+    autoAssignLive: 0
+    defaultVisible: 1
+    defaultPickable: 1
+    objectOrder: []
+  views:
+  - viewName: View 1
+    color: {r: 0.3, g: 0.5, b: 0.7, a: 1}
+    states:
+    - layerGuid: 6d2dc451-82f2-4f2f-bfb0-535ce497ab0f
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerGuid: 26424197-29d2-42f2-aea0-2ebeee53f019
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerGuid: 021cdeda-73df-423a-b15e-7ce222d05809
+      visible: 1
+      pickable: 1
+      expanded: 0
+  - viewName: View 2
+    color: {r: 0.3, g: 0.5, b: 0.7, a: 1}
+    states:
+    - layerGuid: 6d2dc451-82f2-4f2f-bfb0-535ce497ab0f
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerGuid: 26424197-29d2-42f2-aea0-2ebeee53f019
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerGuid: 021cdeda-73df-423a-b15e-7ce222d05809
+      visible: 1
+      pickable: 1
+      expanded: 0
+  - viewName: View 3
+    color: {r: 0.3, g: 0.5, b: 0.7, a: 1}
+    states:
+    - layerGuid: 6d2dc451-82f2-4f2f-bfb0-535ce497ab0f
+      visible: 1
+      pickable: 1
+      expanded: 1
+    - layerGuid: 26424197-29d2-42f2-aea0-2ebeee53f019
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerGuid: 021cdeda-73df-423a-b15e-7ce222d05809
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerGuid: 14084d6b-baaf-4f22-8a17-af785d1f173b
+      visible: 1
+      pickable: 1
+      expanded: 0
+  - viewName: View 4
+    color: {r: 0.3, g: 0.5, b: 0.7, a: 1}
+    states:
+    - layerGuid: 6d2dc451-82f2-4f2f-bfb0-535ce497ab0f
+      visible: 1
+      pickable: 1
+      expanded: 1
+    - layerGuid: 26424197-29d2-42f2-aea0-2ebeee53f019
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerGuid: 021cdeda-73df-423a-b15e-7ce222d05809
+      visible: 1
+      pickable: 1
+      expanded: 0
+    - layerGuid: 14084d6b-baaf-4f22-8a17-af785d1f173b
+      visible: 1
+      pickable: 1
+      expanded: 0

@@ -65,7 +65,7 @@ namespace OverBang.GameName.Gameplay
             IsStarted = isStarted;
         }
 
-        public void TakeDamage(float damage)
+        public void TakeDamage(BulletData.BulletDamageInfo damage)
         {
             if (IsOwner)
             {

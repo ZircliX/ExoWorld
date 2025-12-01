@@ -1,4 +1,5 @@
-﻿using UnityEngine.InputSystem;
+﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace OverBang.GameName.Gameplay
 {
@@ -16,7 +17,7 @@ namespace OverBang.GameName.Gameplay
 
         public override void Tick(float deltaTime)
         {
-            if (!isFiring && consecutiveShotsValue <= 0f)
+            if (!isFiring && consecutiveShotsValue > 0f)
             {
                 HandleConsecutiveShots();
             }

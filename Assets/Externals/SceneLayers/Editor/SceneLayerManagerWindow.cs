@@ -430,7 +430,7 @@ namespace SceneLayers.Editor
             EditorPrefs.SetInt(PALETTE_INDEX_PREFIX, (idx + 1) % m_DefaultPalette.Length);
         }
 
-        [MenuItem("Window/Scene Layers/Layer Manager")]
+        [MenuItem("Window/Scene Layers/Layer Manager", false, 1000)]
         public static void ShowWindow()
         {
             var win = GetWindow<SceneLayerManagerWindow>();
@@ -438,7 +438,7 @@ namespace SceneLayers.Editor
             win.Show();
         }
 
-        [MenuItem("Window/Scene Layers/Options…")]
+        [MenuItem("Window/Scene Layers/Options…", false, 1020)]
         public static void ShowOptionsWindow()
         {
             SceneLayerOptionsWindow.ShowWindow();
@@ -879,6 +879,20 @@ namespace SceneLayers.Editor
             }
         }
 
+        private void RepaintAllSceneLayerWindows()
+        {
+            var viewsPanels = Resources.FindObjectsOfTypeAll<SceneLayerViewsPanel>();
+            foreach (var panel in viewsPanels)
+            {
+                panel.Repaint();
+            }
+
+            var floatingToolbars = Resources.FindObjectsOfTypeAll<SceneLayerFloatingToolbar>();
+            foreach (var toolbar in floatingToolbars)
+            {
+                toolbar.Repaint();
+            }
+        }
         private void OnHierarchyChanged()
         {
             var currentObjects = SceneLayerController.EnumerateAllSceneObjects().ToList();
@@ -1081,6 +1095,7 @@ namespace SceneLayers.Editor
                 m_extDragTargetLayerGuid = null;
                 m_extDragInsertIndex = -1;
             }
+
 
             EditorGUILayout.Space();
             DrawTopBar();
@@ -1492,7 +1507,9 @@ namespace SceneLayers.Editor
 
         private void RequestHierarchyRepaintIfNeeded()
         {
-            bool needsRepaint = m_hoverObjectForHierarchy != m_prevHoverObjectForHierarchy;
+            bool needsRepaint = false;
+            if (m_hoverObjectForHierarchy != m_prevHoverObjectForHierarchy)
+                needsRepaint = true;
             if (m_selectedLayerGuid != m_prevSelectedLayerGuid)
                 needsRepaint = true;
             if (!string.IsNullOrEmpty(m_hoverLayerGuidInPanel))
@@ -1635,12 +1652,17 @@ namespace SceneLayers.Editor
 
             int maxButtonsPerRow = Mathf.FloorToInt((availableWidth + buttonSpacing) / (minButtonWidth + buttonSpacing));
             maxButtonsPerRow = Mathf.Max(1, maxButtonsPerRow);
+
+            int totalButtons = m_database.views.Count;
+            int numRows = Mathf.CeilToInt((float)totalButtons / maxButtonsPerRow);
+            int buttonsPerRow = Mathf.CeilToInt((float)totalButtons / numRows);
+
             var buttonRows = new List<List<SceneLayerDatabase.LayerView>>();
             var currentRow = new List<SceneLayerDatabase.LayerView>();
 
             foreach (var view in m_database.views)
             {
-                if (currentRow.Count >= maxButtonsPerRow)
+                if (currentRow.Count >= buttonsPerRow)
                 {
                     buttonRows.Add(currentRow);
                     currentRow = new List<SceneLayerDatabase.LayerView>();
@@ -1652,6 +1674,7 @@ namespace SceneLayers.Editor
             {
                 buttonRows.Add(currentRow);
             }
+
             for (int rowIndex = 0; rowIndex < buttonRows.Count; rowIndex++)
             {
                 var row = buttonRows[rowIndex];
@@ -1821,6 +1844,14 @@ namespace SceneLayers.Editor
                     m_database.views.Remove(view);
                     EditorUtility.SetDirty(m_database);
                     RequestRepaint();
+
+                    var viewsPanels = Resources.FindObjectsOfTypeAll<SceneLayerViewsPanel>();
+                    foreach (var panel in viewsPanels)
+                        panel.Repaint();
+
+                    var floatingToolbars = Resources.FindObjectsOfTypeAll<SceneLayerFloatingToolbar>();
+                    foreach (var toolbar in floatingToolbars)
+                        toolbar.Repaint();
                 }
             });
 
@@ -1879,7 +1910,7 @@ namespace SceneLayers.Editor
                             }
 
                             if (GUILayout.Button(new GUIContent(deleteIcon?.image, "Delete View"),
-                                cleanButtonStyle))
+                                                            cleanButtonStyle))
                             {
                                 if (EditorUtility.DisplayDialog("Delete View?",
                                     $"Delete view '{view.viewName}'?", "Delete", "Cancel"))
@@ -1887,6 +1918,14 @@ namespace SceneLayers.Editor
                                     Undo.RecordObject(m_database, "Delete Layer View");
                                     m_database.views.RemoveAt(i);
                                     EditorUtility.SetDirty(m_database);
+
+                                    var viewsPanels = Resources.FindObjectsOfTypeAll<SceneLayerViewsPanel>();
+                                    foreach (var panel in viewsPanels)
+                                        panel.Repaint();
+
+                                    var floatingToolbars = Resources.FindObjectsOfTypeAll<SceneLayerFloatingToolbar>();
+                                    foreach (var toolbar in floatingToolbars)
+                                        toolbar.Repaint();
                                 }
                             }
                         }
@@ -2184,6 +2223,14 @@ namespace SceneLayers.Editor
 
                 _owner.ShowNotification(new GUIContent($"Saved view: {newView.viewName}"));
                 _owner.Repaint();
+
+                var viewsPanels = Resources.FindObjectsOfTypeAll<SceneLayerViewsPanel>();
+                foreach (var panel in viewsPanels)
+                    panel.Repaint();
+
+                var floatingToolbars = Resources.FindObjectsOfTypeAll<SceneLayerFloatingToolbar>();
+                foreach (var toolbar in floatingToolbars)
+                    toolbar.Repaint();
 
                 editorWindow.Close();
             }

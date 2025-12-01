@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2d01a8c707e4d989da02fe932e4c153, type: 3}
   m_Name: Shotgun Data
   m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.WeaponData
-  <BulletData>k__BackingField: {fileID: 11400000, guid: 2f05b2fdbfddd914f8008d629ae521d8, type: 2}
-  <WeaponName>k__BackingField: Rifle
+  <BulletData>k__BackingField: {fileID: 11400000, guid: 5be247ec03bcd5b45a9b83ad70efbfaa, type: 2}
+  <WeaponName>k__BackingField: Shotgun
   <WeaponDescription>k__BackingField: "A compact sidearm engineered for reliability
     in hostile environments.\nIts reinforced barrel channels excess heat outward,
     stabilizing recoil across rapid shots.\nFavored by scavengers and operatives
     alike, it\u2019s less about raw power and more about putting the first bullet
     exactly where it matters."
   <WeaponSprite>k__BackingField: {fileID: 21300000, guid: 298f504c385824d2ba4d29c3eff0ba45, type: 3}
-  <WeaponPrefab>k__BackingField: {fileID: 3356263050659617615, guid: a9ab6056f5b063b48acb22bcfcf35324, type: 3}
-  <FireBehaviour>k__BackingField: 1
+  <WeaponPrefab>k__BackingField: {fileID: -7924449126968411070, guid: a9ab6056f5b063b48acb22bcfcf35324, type: 3}
+  <ModelPrefab>k__BackingField: {fileID: 3356263050659617615, guid: 82999907f19d3ac4f9c2ab0e202ee791, type: 3}
+  <FireBehaviour>k__BackingField: 0
   <FireCooldown>k__BackingField: 0.35
   <BulletsPerShot>k__BackingField: 6
   <RecoilPatternShots>k__BackingField: 4
@@ -80,5 +81,5 @@ MonoBehaviour:
   <RandomnessMultiplier>k__BackingField: 10
   <ResetLerpSpeed>k__BackingField: 2
   <ReloadBehaviour>k__BackingField: 1
-  <MagCapacity>k__BackingField: 24
+  <MagCapacity>k__BackingField: 36
   <ReloadTime>k__BackingField: 1

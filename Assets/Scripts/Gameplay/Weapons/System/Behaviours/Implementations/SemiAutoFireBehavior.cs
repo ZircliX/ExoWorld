@@ -1,4 +1,5 @@
-﻿using UnityEngine.InputSystem;
+﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace OverBang.GameName.Gameplay
 {
@@ -9,12 +10,17 @@ namespace OverBang.GameName.Gameplay
             if (!context.performed)
                 return;
 
+            if (Weapon.State.CurrentBullets <= 0)
+            {
+                // TODO : Reload when no bullets
+            }
+            
             HandleFire();
         }
 
         public override void Tick(float deltaTime)
         {
-            if (consecutiveShotsValue <= 0f)
+            if (consecutiveShotsValue > 0f)
                 return;
             
             HandleConsecutiveShots();

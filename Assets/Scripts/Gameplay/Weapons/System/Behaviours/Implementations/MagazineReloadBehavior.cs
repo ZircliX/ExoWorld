@@ -23,14 +23,19 @@ namespace OverBang.GameName.Gameplay
                 if (weapon.State.CurrentBullets >= weapon.WeaponData.MagCapacity)
                     return;
 
-                weapon.State.SetBullets(0, false);
-                await Awaitable.WaitForSecondsAsync(weapon.WeaponData.ReloadTime);
-                weapon.State.SetBullets(weapon.WeaponData.MagCapacity, true);
+                await Reload();
             }
             catch (Exception e)
             {
                 Debug.LogException(e);
             }
+        }
+
+        public async Awaitable Reload()
+        {
+            weapon.State.SetBullets(0, false);
+            await Awaitable.WaitForSecondsAsync(weapon.WeaponData.ReloadTime);
+            weapon.State.SetBullets(weapon.WeaponData.MagCapacity, true);
         }
 
         public void Tick(float dt) { }

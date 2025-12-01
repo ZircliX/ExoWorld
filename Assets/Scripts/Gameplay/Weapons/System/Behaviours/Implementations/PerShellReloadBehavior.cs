@@ -1,4 +1,5 @@
-﻿using UnityEngine.InputSystem;
+﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace OverBang.GameName.Gameplay
 {
@@ -10,6 +11,11 @@ namespace OverBang.GameName.Gameplay
         }
 
         public void OnReloadInput(InputAction.CallbackContext context)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Awaitable Reload()
         {
             throw new System.NotImplementedException();
         }

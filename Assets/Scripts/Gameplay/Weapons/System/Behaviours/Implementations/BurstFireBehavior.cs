@@ -1,22 +1,16 @@
-﻿using UnityEngine.InputSystem;
+﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace OverBang.GameName.Gameplay
 {
-    public class BurstFireBehavior : IFireBehaviour
+    public class BurstFireBehavior : BaseFireBehaviour
     {
-        public int ConsecutiveShots { get; private set; }
-
-        public void OnInitialize(Weapon weapon)
+        public override void OnShootInput(InputAction.CallbackContext context)
         {
             throw new System.NotImplementedException();
         }
 
-        public void OnShootInput(InputAction.CallbackContext context)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Tick(float deltaTime)
+        public override void Tick(float deltaTime)
         {
             throw new System.NotImplementedException();
         }

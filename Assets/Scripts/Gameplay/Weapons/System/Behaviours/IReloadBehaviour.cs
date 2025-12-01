@@ -1,4 +1,5 @@
-﻿using UnityEngine.InputSystem;
+﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace OverBang.GameName.Gameplay
 {
@@ -6,6 +7,7 @@ namespace OverBang.GameName.Gameplay
     {
         void OnInitialize(Weapon weapon);
         void OnReloadInput(InputAction.CallbackContext context);
+        Awaitable Reload();
         void Tick(float dt);
     }
 }
