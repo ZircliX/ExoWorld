@@ -33,7 +33,7 @@ MonoBehaviour:
     m_Value: 4
   limitMax:
     m_OverrideState: 1
-    m_Value: 9
+    m_Value: 6
   curveMap:
     m_OverrideState: 0
     m_Value:
@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 953beb541740ddc499d005ee80c9ff29, type: 3}
   m_Name: Fog
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   quality:
     m_OverrideState: 1
     m_Value: 3
@@ -239,10 +239,10 @@ MonoBehaviour:
     m_Value: 1
   color:
     m_OverrideState: 1
-    m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    m_Value: {r: 1024, g: 1024, b: 1024, a: 1}
   tint:
     m_OverrideState: 1
-    m_Value: {r: 0.7607843, g: 1.4570976, b: 1.4980392, a: 1}
+    m_Value: {r: 0.5869511, g: 0.7490196, b: 0.69645685, a: 1}
   maxFogDistance:
     m_OverrideState: 1
     m_Value: 1000
@@ -257,7 +257,7 @@ MonoBehaviour:
     m_Value: 1000
   baseHeight:
     m_OverrideState: 1
-    m_Value: 125
+    m_Value: 90
   maximumHeight:
     m_OverrideState: 1
     m_Value: 365
@@ -269,7 +269,7 @@ MonoBehaviour:
     m_Value: 1
   albedo:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_Value: {r: 0.5254902, g: 0.67058825, b: 0.62352943, a: 1}
   globalLightProbeDimmer:
     m_OverrideState: 1
     m_Value: 1
@@ -299,10 +299,10 @@ MonoBehaviour:
     m_Value: 64
   m_VolumetricFogBudget:
     m_OverrideState: 1
-    m_Value: 0.33
+    m_Value: 0.4
   m_ResolutionDepthRatio:
     m_OverrideState: 1
-    m_Value: 0.666
+    m_Value: 0.95
   directionalLightsOnly:
     m_OverrideState: 1
     m_Value: 0
