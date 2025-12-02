@@ -115,8 +115,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 2705
     y: -1157
-    width: 2245
-    height: 1191
+    width: 2247
+    height: 1218
 --- !u!114 &114616963954940652
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -349,7 +349,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Vector2, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":0.10000000149011612,"y":1.5}'
+      m_SerializableObject: '{"x":2.0,"y":7.0}'
     m_Space: -1
   m_Property:
     name: Delay
@@ -1301,8 +1301,7 @@ MonoBehaviour:
       slotIndex: 0
   m_OutputFlowSlot:
   - link: []
-  m_Subgraph: {fileID: 8926484042661614526, guid: e7d848bf196cd7a4c856b8ba82f57ba0,
-    type: 3}
+  m_Subgraph: {fileID: 8926484042661614526, guid: e7d848bf196cd7a4c856b8ba82f57ba0, type: 3}
   m_InputFlowNames:
   - OnStop
   - Burst
