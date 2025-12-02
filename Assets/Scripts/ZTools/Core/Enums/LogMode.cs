@@ -1,6 +1,6 @@
 using System;
 
-namespace ZTools.Core.ZTools.Core
+namespace ZTools.Core
 {
     [System.Serializable]
     [Flags]

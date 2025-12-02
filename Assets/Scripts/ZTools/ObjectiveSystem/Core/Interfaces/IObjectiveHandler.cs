@@ -1,6 +1,6 @@
 using System;
 
-namespace ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core
+namespace ZTools.ObjectiveSystem.Core
 {
     /// <summary>
     /// The non-generic base interface for all runtime objectives.

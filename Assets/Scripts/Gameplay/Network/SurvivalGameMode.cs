@@ -66,7 +66,7 @@ namespace OverBang.GameName.Gameplay
             };
 
             GameplayPhase gameplayPhase;
-            if (SessionManager.Global.IsHost)
+            if (SessionManager.Global.IsHost())
             {
                 gameplayPhase = new HostGameplayPhase(gameplaySettings);
             }

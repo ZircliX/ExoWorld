@@ -1,45 +1,30 @@
-﻿using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using OverBang.GameName.Gameplay.Interface;
+using UnityEngine;
+using UnityUtils;
 
 namespace OverBang.GameName.Gameplay
 {
-    [RequireComponent(typeof(Collider))]
-    public class PumpStart : MonoBehaviour
+    public class PumpStart : MonoBehaviour, IInteractable
     {
         [SerializeField] private Pump pump;
-        [SerializeField] private GameObject startUI;
-        private bool playerInArea;
 
-        private void Start()
+        public string InteractionText => string.Empty;
+        public int Priority => (int)TargetPriority.High;
+        public bool CanInteract => !pump.IsStarted && !pump.IsCompleted;
+
+        Vector3 IInteractable.UIPosition => transform.position.Add(y: 1f, x: -1f);
+
+        public void OnPlayerEnter(PlayerInteraction playerInteraction)
         {
-            startUI.SetActive(false);
         }
 
-        private void OnTriggerEnter(Collider other)
+        public void OnPlayerExit(PlayerInteraction playerInteraction)
         {
-            if (other.CompareTag("Player") && !pump.IsStarted.Value && !pump.IsCompleted)
-            {
-                playerInArea = true;
-                startUI.SetActive(true);
-            }
-        }
-        
-        private void OnTriggerExit(Collider other)
-        {
-            if (other.CompareTag("Player"))
-            {
-                playerInArea = false;
-                startUI.SetActive(false);
-            }
         }
 
-        private void Update()
+        public void Interact(PlayerInteraction playerInteraction)
         {
-            if (Keyboard.current.fKey.wasPressedThisFrame && playerInArea)
-            {
-                startUI.SetActive(false);
-                pump.CallStartRepair();
-            }
+            pump.CallStartRepair();
         }
     }
 }

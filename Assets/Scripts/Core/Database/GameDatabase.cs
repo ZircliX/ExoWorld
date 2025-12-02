@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using InterfaceAttributes;
 
 namespace OverBang.GameName.Core
 {
@@ -7,8 +8,8 @@ namespace OverBang.GameName.Core
     {
         public static GameDatabase Global => GameController.GameDatabase;
         
-        [field: SerializeField] 
-        public ScriptableObject[] DatabaseAssets { get; private set; }
+        [field: SerializeField]
+        public InterfaceReference<IDatabaseAsset, ScriptableObject>[] DatabaseAssets { get; private set; }
 
         public bool TryGetAssetByID<T>(string id, out T asset) where T : IDatabaseAsset
         {
@@ -16,9 +17,10 @@ namespace OverBang.GameName.Core
             
             for (int i = 0; i < DatabaseAssets.Length; i++)
             {
-                if (DatabaseAssets[i] is IDatabaseAsset dbAsset && dbAsset.ID == id)
+                InterfaceReference<IDatabaseAsset, ScriptableObject> interfaceReference = DatabaseAssets[i];
+                if (interfaceReference.Value.ID == id)
                 {
-                    asset = (T)dbAsset;
+                    asset = (T)interfaceReference;
                     return true;
                 }
             }

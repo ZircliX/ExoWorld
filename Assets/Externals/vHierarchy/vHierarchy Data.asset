@@ -16,6 +16,7 @@ MonoBehaviour:
     keys:
     - bd02460b4f330064a92f8ff0bf0723bd
     - 527cd7e9820ed9a45a26b6df973423db
+    - 325d58d44bd901d47aff0616967a4cb2
     values:
     - goDatas_byGlobalId:
         keys:
@@ -98,8 +99,22 @@ MonoBehaviour:
           iconNameOrGuid: NavMeshAgent Icon
           isIconRecursive: 0
           isColorRecursive: 0
+    - goDatas_byGlobalId:
+        keys:
+        - globalObjectIdString: GlobalObjectId_V1-2-325d58d44bd901d47aff0616967a4cb2-1150586893-0
+        - globalObjectIdString: GlobalObjectId_V1-2-325d58d44bd901d47aff0616967a4cb2-102306897490740131-2097898096
+        values:
+        - colorIndex: 2
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 1
+        - colorIndex: 1
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 1
   bookmarks: []
   bookmarkedScenePaths:
   - Assets/Scenes/Main/Hub.unity
   - Assets/Scenes/Main/Map.unity
   - Assets/Scenes/Main/MainMenu.unity
+  - Assets/Scenes/ZircliX/ZircliX_Weapon.unity

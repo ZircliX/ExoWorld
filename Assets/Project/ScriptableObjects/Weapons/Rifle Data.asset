@@ -1,0 +1,139 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d01a8c707e4d989da02fe932e4c153, type: 3}
+  m_Name: Rifle Data
+  m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.WeaponData
+  <BulletData>k__BackingField: {fileID: 11400000, guid: af2179437747fbd40a09f4abcbc2ce31, type: 2}
+  <WeaponName>k__BackingField: Rifle
+  <WeaponDescription>k__BackingField: "A compact sidearm engineered for reliability
+    in hostile environments.\nIts reinforced barrel channels excess heat outward,
+    stabilizing recoil across rapid shots.\nFavored by scavengers and operatives
+    alike, it\u2019s less about raw power and more about putting the first bullet
+    exactly where it matters."
+  <WeaponSprite>k__BackingField: {fileID: 21300000, guid: 298f504c385824d2ba4d29c3eff0ba45, type: 3}
+  <WeaponPrefab>k__BackingField: {fileID: -7924449126968411070, guid: a9ab6056f5b063b48acb22bcfcf35324, type: 3}
+  <ModelPrefab>k__BackingField: {fileID: 3356263050659617615, guid: 82999907f19d3ac4f9c2ab0e202ee791, type: 3}
+  <FireBehaviour>k__BackingField: 1
+  <FireCooldown>k__BackingField: 0.1
+  <BulletsPerShot>k__BackingField: 1
+  <RecoilPatternShots>k__BackingField: 20
+  <MaxRecoilShots>k__BackingField: 25
+  <BulletDispersionX>k__BackingField: {x: -0.2, y: 0.2}
+  <RecoilPatternX>k__BackingField:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.0016937256
+      value: 0
+      inSlope: -3.1299477
+      outSlope: -3.1299477
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.2926406
+    - serializedVersion: 3
+      time: 0.09895325
+      value: -0.20269775
+      inSlope: 0.0066008805
+      outSlope: 0.0066008805
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.20321187
+      value: 0.20306504
+      inSlope: -0.013479311
+      outSlope: -0.013479311
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.3940442
+    - serializedVersion: 3
+      time: 0.29378185
+      value: -0.18617976
+      inSlope: -0.018705068
+      outSlope: -0.018705068
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.4422662
+    - serializedVersion: 3
+      time: 0.40256423
+      value: 0.19604057
+      inSlope: 0.0016711465
+      outSlope: 0.0016711465
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.5985016
+      value: -0.49583256
+      inSlope: -0.011242026
+      outSlope: -0.011242026
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.5407484
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.79953676
+      value: 0.49870294
+      inSlope: 0.007249595
+      outSlope: 0.007249595
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.48865023
+      outWeight: 1
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -2.8699932
+      outSlope: -2.8699932
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.19552065
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  <BulletDispersionY>k__BackingField: {x: -0.15, y: 0.3}
+  <RecoilPatternY>k__BackingField:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 3
+      tangentMode: 65
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 3
+      inSlope: 3
+      outSlope: 0
+      tangentMode: 5
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  <CurveMultiplier>k__BackingField: 2.5
+  <RandomnessMultiplier>k__BackingField: 2
+  <ResetLerpSpeed>k__BackingField: 25
+  <ReloadBehaviour>k__BackingField: 1
+  <MagCapacity>k__BackingField: 30
+  <ReloadTime>k__BackingField: 1

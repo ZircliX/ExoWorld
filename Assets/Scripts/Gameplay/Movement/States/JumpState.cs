@@ -60,7 +60,7 @@ namespace OverBang.GameName.Gameplay.States
 
             Vector3 finalVelocity = gravityNormal * (jumpModifier * jumpForce) + baseVelocity;
             //Debug.Log(finalVelocity);
-            Debug.DrawRay(movement.Position, finalVelocity * 2, Color.red);
+            //Debug.DrawRay(movement.Position, finalVelocity * 2, Color.red);
             
             return finalVelocity;
         }

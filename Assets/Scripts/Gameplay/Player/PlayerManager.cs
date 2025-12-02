@@ -30,7 +30,7 @@ namespace OverBang.GameName.Gameplay
         {
             foreach (PlayerController playerController in players)
             {
-                yield return playerController.playerTransform;
+                yield return playerController.PlayerTransform;
             }
         }
 
@@ -39,7 +39,7 @@ namespace OverBang.GameName.Gameplay
             List<Transform> transforms = new List<Transform>();
             foreach (PlayerController playerController in players)
             {
-                transforms.Add(playerController.playerTransform);
+                transforms.Add(playerController.PlayerTransform);
             }
             return transforms.ToArray();
         }

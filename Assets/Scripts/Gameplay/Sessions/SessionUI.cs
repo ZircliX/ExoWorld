@@ -28,6 +28,7 @@ namespace OverBang.GameName.Gameplay.Sessions
                 OnServicesInitialized();
                 MultiplayerService.Instance.SessionAdded += OnSessionsChanged;
                 MultiplayerService.Instance.SessionRemoved += OnSessionsChanged;
+                session.OnJoinedSession += Refresh;
             }
             else
             {
@@ -39,6 +40,7 @@ namespace OverBang.GameName.Gameplay.Sessions
         {
             MultiplayerService.Instance.SessionAdded -= OnSessionsChanged;
             MultiplayerService.Instance.SessionRemoved -= OnSessionsChanged;
+            session.OnJoinedSession -= Refresh;
         }
 
         private void SubToEvents()
@@ -50,6 +52,9 @@ namespace OverBang.GameName.Gameplay.Sessions
         {
             UnityServices.Initialized -= OnServicesInitialized;
             AuthenticationService.Instance.SignedIn -= OnServicesInitialized;
+            
+            MultiplayerService.Instance.SessionAdded += OnSessionsChanged;
+            MultiplayerService.Instance.SessionRemoved += OnSessionsChanged;
             
             Refresh();
         }

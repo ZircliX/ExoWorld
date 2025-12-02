@@ -19,6 +19,10 @@ Layer management system for Unity scenes. Organize, hide, lock, and manage scene
 - **Multi-layer objects** - Objects can belong to multiple layers simultaneously
 - **Per-scene databases** - Each scene has its own independent layer setup
 
+### Compact Interfaces
+- **Views Panel** - Dockable panel showing only layer view buttons
+- **Floating Toolbar** - Minimal floating window for quick view switching
+
 ## Installation
 
 1. Import the package into your Unity project
@@ -28,6 +32,8 @@ Layer management system for Unity scenes. Organize, hide, lock, and manage scene
 
 ### Opening the Window
 - **Window > Scene Layers > Layer Manager** to open the main window
+- **Window > Scene Layers > Views Panel** for a compact dockable views panel
+- **Window > Scene Layers > Floating Toolbar** for a minimal floating view switcher
 - **Window > Scene Layers > Options** for settings
 
 ### Creating Layers
@@ -68,7 +74,7 @@ Each layer header shows:
 - **🔒 Lock icon** - Toggle picking (selection) for layer
 - **Layer name** - Double-click to rename
 - **Object count** - Number of objects in layer
-- **★ Select All** - Select all objects in layer
+- **☆ Select All** - Select all objects in layer
 - **⚙ Rules** - Configure auto-assign rules
 - **✕ Delete** - Delete the layer
 
@@ -77,6 +83,45 @@ Each layer header shows:
 - **🔒 Lock/Unlock** - Toggle object picking
 - **Object name** - Click to ping, double-click to select
 - **Drag handle** - Drag to reorder or move between layers
+
+### Views Panel
+A compact, dockable panel that displays only the layer view buttons. Ideal for docking above the Hierarchy window for quick access without taking up much space.
+
+**Features:**
+- Shows current scene name in toolbar
+- **Manage** button opens the main Layer Manager window
+- Automatically loads views for the current scene
+- View buttons resize and wrap to multiple rows based on panel width
+- Buttons are distributed evenly across rows (e.g., 6 buttons = 3+3, not 4+2)
+
+**Usage:**
+1. Open via **Window > Scene Layers > Views Panel**
+2. Dock it above your Hierarchy for quick access
+3. Click any view button to apply that visibility state
+
+### Floating Toolbar
+A minimal floating window for rapid view switching, similar to Blender's floating toolbars.
+
+**Features:**
+- Chromeless design with minimal visual footprint
+- **Drag handle** at top (dotted grip) - drag to reposition
+- **Resize handle** at bottom-right (diagonal grip) - drag to resize
+- **Close button** (✕) in top-right corner
+- Buttons wrap to multiple rows when window is narrowed
+- Remembers position and size between sessions
+- Height automatically adjusts to fit all buttons
+
+**Usage:**
+1. Open via **Window > Scene Layers > Floating Toolbar**
+2. Drag from the top grip to position anywhere on screen
+3. Resize from the bottom-right corner as needed
+4. Click any view button to apply that visibility state
+5. Click ✕ to close
+
+**Tips:**
+- Position it near your Scene View for easy access while working
+- Resize horizontally to control button layout (wider = more buttons per row)
+- The toolbar stays on top of other windows
 
 ## Keyboard Shortcuts
 - **Enter** - Confirm layer/view rename
@@ -105,6 +150,13 @@ Access via **Window > Scene Layers > Options**
 2. **Use auto-rules for common types** - Lights, Cameras, Audio Sources
 3. **Create views for different modes** - "Level Design Mode", "Lighting Mode", "Gameplay Mode"
 4. **Use presets for consistency** - Create a preset for your team's standard layers
+5. **Use the Views Panel** - Dock it above your Hierarchy for quick view switching
+6. **Use the Floating Toolbar** - Keep it near your Scene View for rapid access
+
+### Choosing an Interface
+- **Main Layer Manager** - Full control over layers, objects, views, and settings
+- **Views Panel** - When you need quick view switching in a docked panel
+- **Floating Toolbar** - When you want minimal UI that floats over your workspace
 
 ### Performance Tips
 - Layer operations are fast and lightweight
@@ -125,6 +177,7 @@ Each scene gets its own `[SceneName]_SceneLayers.asset` file stored alongside th
 - **Layer membership**: Stored using GlobalObjectId (persists through scene reloads)
 - **Object order**: Stored in EditorPrefs (survives domain reloads)
 - **UI state**: Stored in EditorPrefs per-scene (foldouts, selected layer, etc.)
+- **Floating Toolbar position**: Stored in EditorPrefs (persists between sessions)
 
 ### Unity Version Support
 - **Minimum**: Unity 2021.3 LTS
@@ -132,9 +185,9 @@ Each scene gets its own `[SceneName]_SceneLayers.asset` file stored alongside th
 - **Tested**: 2021 LTS, 2022 LTS, 2023 LTS, 2024+
 
 ### Render Pipeline Support
-- Built-in Render Pipeline ✓
-- Universal Render Pipeline (URP) ✓
-- High Definition Render Pipeline (HDRP) ✓
+- Built-in Render Pipeline ✔
+- Universal Render Pipeline (URP) ✔
+- High Definition Render Pipeline (HDRP) ✔
 
 ## Troubleshooting
 
@@ -161,6 +214,16 @@ Each scene gets its own `[SceneName]_SceneLayers.asset` file stored alongside th
 - If layers have been renamed, the preset may not apply fully
 - Consider creating a new preset if layer structure has changed significantly
 
+### Views Panel or Floating Toolbar showing "No views yet"
+- Create layer views in the main Layer Manager window first
+- Use the **Manage** button in the Views Panel to open the main window
+- Save a view using the 💾 icon in the Layer Views section
+
+### Floating Toolbar position reset
+- Position is saved when the toolbar is closed
+- If Unity crashes, the last saved position may be lost
+- Reopen the toolbar and reposition as needed
+
 ## Limitations
 
 - **Editor-only**: This is an editor tool and has no runtime functionality
@@ -176,6 +239,12 @@ For issues, feature requests, or questions:
 - Contact: cheekychopslabs@gmail.com
 
 ## Changelog
+
+### Version 1.1.0
+- Added Views Panel - compact dockable panel for quick view switching
+- Added Floating Toolbar - minimal floating window for rapid view access
+- Improved button layout - even distribution across rows (3+3 instead of 4+2)
+- Views can be applied from any interface without opening the main window
 
 ### Version 1.0.0 (Initial Release)
 - Complete layer management system

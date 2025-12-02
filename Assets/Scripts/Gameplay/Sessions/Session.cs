@@ -12,6 +12,8 @@ namespace OverBang.GameName.Gameplay.Sessions
     {
         [SerializeField] private string sessionId;
         public ISession CurrentSession { get; private set; }
+
+        public event Action OnJoinedSession;
         
         private async void Awake()
         {
@@ -42,6 +44,7 @@ namespace OverBang.GameName.Gameplay.Sessions
                 }.WithRelayNetwork();
 
                 CurrentSession = await SessionManager.Global.CreateOrJoinSession(sessionId, options);
+                PlayerJoinedSessionRpc();
             }
             catch (Exception e)
             {
@@ -51,10 +54,16 @@ namespace OverBang.GameName.Gameplay.Sessions
 
         public void StartGame()
         {
-            if (!SessionManager.Global.IsHost)
+            if (!SessionManager.Global.IsHost())
                 return;
             
             StartGameRpc();
+        }
+
+        [Rpc(SendTo.Everyone)]
+        private void PlayerJoinedSessionRpc()
+        {
+            OnJoinedSession?.Invoke();
         }
 
         [Rpc(SendTo.Everyone)]

@@ -1,4 +1,4 @@
-namespace ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core
+namespace ZTools.ObjectiveSystem.Core
 {
     [System.Serializable]
     public struct ObjectiveProgression

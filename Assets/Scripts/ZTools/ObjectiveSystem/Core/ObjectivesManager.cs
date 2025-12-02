@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using ZTools.Logger.Core.ZTools.Logger.Core;
+using ZTools.Logger.Core;
 
-namespace ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core
+namespace ZTools.ObjectiveSystem.Core
 {
     /// <summary>
     /// Manages all active objectives. Dispatches game gameEvents and orchestrates objective lifecycle.

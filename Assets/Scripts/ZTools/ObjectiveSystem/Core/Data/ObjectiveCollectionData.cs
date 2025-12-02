@@ -1,7 +1,7 @@
 using UnityEngine;
-using ZTools.RewardSystem.Core.ZTools.RewardSystem.Core;
+using ZTools.RewardSystem.Core;
 
-namespace ZTools.ObjectiveSystem.Core.ZTools.ObjectiveSystem.Core
+namespace ZTools.ObjectiveSystem.Core
 {
     [CreateAssetMenu(fileName = "ObjectiveCollectionData", menuName = "ZTools/ObjectiveSystem/ObjectiveCollectionData", order = 1)]
     public class ObjectiveCollectionData : ScriptableObject

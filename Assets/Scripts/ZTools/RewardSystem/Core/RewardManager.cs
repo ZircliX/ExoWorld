@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using ZTools.Logger.Core.ZTools.Logger.Core;
+using ZTools.Logger.Core;
 
-namespace ZTools.RewardSystem.Core.ZTools.RewardSystem.Core
+namespace ZTools.RewardSystem.Core
 {
     public static class RewardManager
     {

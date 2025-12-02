@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using ZTools.RewardSystem.Core.ZTools.RewardSystem.Core;
+using ZTools.RewardSystem.Core;
 
-namespace OverBang.GameName.Gameplay.Rewards
+namespace OverBang.GameName.Gameplay
 {
     public class ShipRewardProcessor : RewardProcessor<ShipRewardData>
     {
