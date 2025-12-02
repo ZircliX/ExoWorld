@@ -5,71 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a40a4a8d-5d4e-4dca-b1d0-122084d5d9b4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/Implementation/BulletImplementation.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/Loadout.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/Loadout.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/WeaponController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/WeaponController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/IK Animation.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/IK Animation/CustomParentConstraint.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/IK Animation/CustomParentConstraint.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/IK Animation/PlayerRig.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/IK Animation/PlayerRig.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OverBangStudio-GameName/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OverBangStudio-GameName/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Demo/Demo Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Demo/Demo Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Demo/Demo Scene.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Demo/Demo Scene.unity.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Demo/Demo Scene_SceneLayers.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Demo/Demo Scene_SceneLayers.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Demo/Demo Scene_SceneLayers.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Demo/Demo Scene_SceneLayers.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Demo/Particle System Prefab.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Demo/Particle System Prefab.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Editor/SceneLayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Editor/SceneLayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Editor/SceneLayerController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Editor/SceneLayerController.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Editor/SceneLayerManagerWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Editor/SceneLayerManagerWindow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Editor/SceneLayerManagerWindow.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Editor/SceneLayerManagerWindow.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Editor/SceneLayers.Editor.asmdef.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Editor/SceneLayers.Editor.asmdef.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Presets/General.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Presets/General.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Presets/Level Design.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Presets/Level Design.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Presets/UI.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Presets/UI.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/SceneLayers/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/SceneLayers/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/SceneLayers/README.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/SceneLayers/README.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Runtime/SceneLayerDatabase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Runtime/SceneLayerDatabase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Runtime/SceneLayerDatabase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Runtime/SceneLayerDatabase.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Runtime/SceneLayerPreset.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Runtime/SceneLayerPreset.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Runtime/SceneLayerPreset.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Runtime/SceneLayerPreset.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Runtime/SceneLayers.asmdef.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Runtime/SceneLayers.asmdef.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Scene Layers - User Manual.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Scene Layers - User Manual.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Scene Layers - User Manual.pdf.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Externals/SceneLayers/Scene Layers - User Manual.pdf.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/Player 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/Player 1.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/PlayerController_Local.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Entities/PlayerController_Local.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Weapons/WeaponPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Weapons/WeaponPrefab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Pools/Bullet Pool Resource.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Pools/Bullet Pool Resource.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Pools/Enemy Pool Resource.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Pools/Enemy Pool Resource.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Weapons/Pistol Bullet Data.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Weapons/Pistol Bullet Data.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Weapons/Pistol Data.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Weapons/Pistol Data.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Weapons/Pistol Data.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Weapons/Pistol Data.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Weapons/Rifle Data.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Weapons/Rifle Data.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Weapons/Shotgun Data.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/ScriptableObjects/Weapons/Shotgun Data.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ZircliX/ZircliX_Map.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ZircliX/ZircliX_Map.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ZircliX/ZircliX_Map_SceneLayers.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ZircliX/ZircliX_Map_SceneLayers.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Metrics/GameMetrics.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Metrics/GameMetrics.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/States/JumpState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/States/JumpState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/Pump.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Quests/Pump.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Targeting/DamageableAndHealableComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Targeting/DamageableAndHealableComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Targeting/DamageableComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Targeting/DamageableComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Targeting/Interfaces/IDamageable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Targeting/Interfaces/IDamageable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/Implementation/PistolBullet.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/Implementation/PistolBullet.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/Implementation/BulletImplementation.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/Implementation/PistolWeapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/Implementation/WeaponImplementation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/Implementation/PistolWeapon.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/Implementation/WeaponImplementation.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/Implementation/WeaponInitialize.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/Implementation/WeaponInitialize.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/Behaviours/BaseFireBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/Behaviours/Implementations/BaseFireBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/Behaviours/BaseFireBehaviour.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Weapons/Rifle Model.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game/Weapons/Rifle Model.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ZircliX/ZircliX_Weapon.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ZircliX/ZircliX_Weapon.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/OverBang.GameName.Gameplay.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/OverBang.GameName.Gameplay.asmdef" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/Behaviours/IFireBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/Behaviours/IFireBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/Behaviours/IReloadBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/Behaviours/IReloadBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/Behaviours/Implementations/BurstFireBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/Behaviours/Implementations/BurstFireBehavior.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/Behaviours/Implementations/FullAutoFireBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/Behaviours/Implementations/FullAutoFireBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/Behaviours/Implementations/MagazineReloadBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/Behaviours/Implementations/MagazineReloadBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/Behaviours/Implementations/PerShellReloadBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/Behaviours/Implementations/PerShellReloadBehavior.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/Behaviours/Implementations/SemiAutoFireBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/Behaviours/Implementations/SemiAutoFireBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/Bullets/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/Bullets/Bullet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/Bullets/BulletData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/Bullets/BulletData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/Weapons/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/Weapons/Weapon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/Weapons/WeaponData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/Weapons/WeaponData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/WeaponController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/WeaponController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OverBang.GameName.Gameplay.csproj.DotSettings" beforeDir="false" afterPath="$PROJECT_DIR$/OverBang.GameName.Gameplay.csproj.DotSettings" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,6 +34,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3209c419f8514dc7af6f7bbce69cabc61f7200/55/3137cf28/Mathf.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/IK Animation/PlayerRig.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/Implementation/WeaponInitialize.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/Behaviours/Implementations/BaseFireBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Weapons/System/Loadout.cs" root0="FORCE_HIGHLIGHTING" />
@@ -172,7 +126,8 @@
       <workItem from="1764234503243" duration="157000" />
       <workItem from="1764261982778" duration="2479000" />
       <workItem from="1764522295781" duration="8663000" />
-      <workItem from="1764580172702" duration="8787000" />
+      <workItem from="1764580172702" duration="14179000" />
+      <workItem from="1764602511399" duration="1931000" />
     </task>
     <servers />
   </component>

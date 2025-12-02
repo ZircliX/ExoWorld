@@ -1,7 +1,6 @@
 ﻿using OverBang.GameName.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityUtils;
 
 namespace OverBang.GameName.Gameplay
 {
@@ -18,14 +17,16 @@ namespace OverBang.GameName.Gameplay
 
         public void OnSync(CharacterData data, Animator animator)
         {
-            primaryWeapon = Instantiate(Loadout.primaryWeapon.WeaponPrefab, transform).SetInactive();
-            secondaryWeapon = Instantiate(Loadout.secondaryWeapon.WeaponPrefab, transform).SetInactive();
-
+            primaryWeapon = Instantiate(Loadout.primaryWeapon.WeaponPrefab, transform);
+            secondaryWeapon = Instantiate(Loadout.secondaryWeapon.WeaponPrefab, transform);
+            primaryWeapon.gameObject.SetActive(false);
+            secondaryWeapon.gameObject.SetActive(false);
+            
             primaryWeapon.Initialize(Loadout.primaryWeapon, playerCamera);
             secondaryWeapon.Initialize(Loadout.secondaryWeapon, playerCamera);
 
             currentWeapon = primaryWeapon;
-            currentWeapon.SetActive();
+            currentWeapon.gameObject.SetActive(true);
         }
         
         public void OnShootInput(InputAction.CallbackContext context)
@@ -43,9 +44,9 @@ namespace OverBang.GameName.Gameplay
             if (!context.performed)
                 return;
 
-            currentWeapon.SetInactive();
+            currentWeapon.gameObject.SetActive(false);
             currentWeapon = currentWeapon == primaryWeapon ? secondaryWeapon : primaryWeapon;
-            currentWeapon.SetActive();
+            currentWeapon.gameObject.SetActive(true);
         }
     }
 }

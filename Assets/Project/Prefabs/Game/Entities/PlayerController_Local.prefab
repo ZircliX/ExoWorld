@@ -83,7 +83,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.WeaponController
   <Loadout>k__BackingField:
     primaryWeapon: {fileID: 11400000, guid: 809e1cc872852744095949b9f3db0e65, type: 2}
-    secondaryWeapon: {fileID: 11400000, guid: 93782c9a0a47e8c4ba207ac96de170d6, type: 2}
+    secondaryWeapon: {fileID: 11400000, guid: ae083bb006b256b4499ab1878499bbff, type: 2}
   <playerCamera>k__BackingField: {fileID: 7401193920116433370}
 --- !u!1 &661434748773175317
 GameObject:
@@ -590,7 +590,7 @@ Transform:
   m_GameObject: {fileID: 3316059015117000691}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.36, z: -0.16000003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -627,7 +627,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.01
+  near clip plane: 0.2
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -1018,7 +1018,7 @@ MonoBehaviour:
   Lens:
     FieldOfView: 60
     OrthographicSize: 5
-    NearClipPlane: 0.01
+    NearClipPlane: 0.301
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
@@ -1066,7 +1066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d70cc20219cd84593f67d248eafe36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Offset: {x: 0, y: 0, z: 0}
+  Offset: {x: 0, y: -0.14, z: -0.16}
   ApplyAfter: 1
   PreserveComposition: 0
 --- !u!114 &225607456673580912
