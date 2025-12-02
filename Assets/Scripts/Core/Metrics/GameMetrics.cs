@@ -12,9 +12,7 @@ namespace OverBang.GameName.Core
         
         [field: SerializeField, FoldoutGroup("Scenes")] public SceneCollection SceneCollection { get; private set; }
         
-        [field: SerializeField, FoldoutGroup("Camera")] public CameraID PlayerView { get; private set; }
-        [field: SerializeField, FoldoutGroup("Camera")] public CameraID PlayerSpectate { get; private set; }
-        [field: SerializeField, FoldoutGroup("Camera")] public CameraID MainMenu { get; private set; }
+        [field: SerializeField, FoldoutGroup("Camera")] public CameraIDs CameraIDs { get; private set; }
         
         [field: SerializeField, FoldoutGroup("UI")] public GameObject CharacterSelectionPrefab { get; private set; }
         

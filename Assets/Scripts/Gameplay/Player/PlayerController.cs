@@ -31,6 +31,11 @@ namespace OverBang.GameName.Gameplay
             }
 
             PlayerManager.Instance.RegisterPlayer(this);
+
+            if (IsOwner)
+            {
+                CameraManager.Instance.RequestCameraChange(CameraIDs.Global.PlayerViewCamera);
+            }
         }
 
         [Rpc(SendTo.Everyone)]
@@ -57,7 +62,6 @@ namespace OverBang.GameName.Gameplay
         {
             base.OnDestroy();
             PlayerManager.Instance.UnregisterPlayer(this);
-            
         }
     }
 }

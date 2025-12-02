@@ -14,14 +14,6 @@ namespace OverBang.GameName.Gameplay
 
         Vector3 IInteractable.UIPosition => transform.position.Add(y: 1f, x: -1f);
 
-        public void OnPlayerEnter(PlayerInteraction playerInteraction)
-        {
-        }
-
-        public void OnPlayerExit(PlayerInteraction playerInteraction)
-        {
-        }
-
         public void Interact(PlayerInteraction playerInteraction)
         {
             pump.CallStartRepair();

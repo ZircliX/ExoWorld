@@ -14,20 +14,12 @@ namespace OverBang.GameName.Gameplay
         
         private void OnEnable()
         {
-            CameraManager.Instance.OnChangeCamera += OnChangeCamera;
+            this.RegisterCamera();
         }
 
         private void OnDisable()
         {
-            CameraManager.Instance.OnChangeCamera -= OnChangeCamera;
-        }
-
-        private void OnChangeCamera(CameraManager cameraManager, CameraID cameraID)
-        {
-            if (ID != cameraID)
-                return;
-            
-            cameraManager.SwitchToCamera(this);
+            this.UnregisterCamera();
         }
     }
 }

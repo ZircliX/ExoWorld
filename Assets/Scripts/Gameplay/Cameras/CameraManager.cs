@@ -7,31 +7,35 @@ namespace OverBang.GameName.Gameplay
 {
     public class CameraManager : MonoSingleton<CameraManager>
     {
-        public event Action<CameraManager, CameraID> OnChangeCamera;
-        public List<CameraRegister> Cameras;
+        public event Action<CameraRegister> OnChangeCamera;
+        public HashSet<CameraRegister> Cameras;
         
         protected override void OnAwake()
         {
-            Cameras = new List<CameraRegister>();
+            Cameras = new HashSet<CameraRegister>();
+        }
+
+        public void RegisterCamera(CameraRegister cameraRegister)
+        {
+            Cameras.Add(cameraRegister);
+        }
+        
+        public void UnregisterCamera(CameraRegister cameraRegister)
+        {
+            Cameras.Remove(cameraRegister);
         }
 
         public void RequestCameraChange(CameraID id)
         {
-            OnChangeCamera?.Invoke(this, id);
-        }
-
-        public void SwitchToCamera(CameraRegister register)
-        {
-            register.Cam.Priority = 100;
-
-            if (!Cameras.Contains(register))
-                Cameras.Add(register);
-                
             foreach (CameraRegister reg in Cameras)
             {
                 reg.Cam.Priority = 0;
+                if (reg.ID == id)
+                {
+                    reg.Cam.Priority = 100;
+                    OnChangeCamera?.Invoke(reg);
+                }
             }
-            
         }
     }
 }

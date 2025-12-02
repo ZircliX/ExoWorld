@@ -9,8 +9,16 @@ namespace OverBang.GameName.Gameplay
     [RequireComponent(typeof(SphereCollider))]
     public class PlayerInteraction : MonoBehaviour
     {
-        [field: SerializeField] public Camera InteractionCamera { get; private set; }
-        
+        [SerializeField] private Camera cam;
+        public Camera InteractionCamera
+        {
+            get
+            {
+                if (cam == null) cam = Camera.main;
+                return cam;
+            }
+        }
+
         public event Action<IInteractable> OnNewInteractable; 
         
         public IInteractable CurrentInteractable { get; private set; }

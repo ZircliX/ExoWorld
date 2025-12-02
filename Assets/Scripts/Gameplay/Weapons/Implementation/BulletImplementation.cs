@@ -1,4 +1,4 @@
-﻿using KBCore.Refs;
+using KBCore.Refs;
 using OverBang.GameName.Core;
 using OverBang.Pooling;
 using UnityEngine;
@@ -38,13 +38,11 @@ namespace OverBang.GameName.Gameplay
             
             int hitSize = Physics.SphereCastNonAlloc(currentPosition, sc.radius, direction, results, distance.sqrMagnitude, mask, QueryTriggerInteraction.Collide);
 
-            if (hitSize > 0)
+            for (int i = 0; i < hitSize; i++)
             {
-                for (int i = 0; i < hitSize; i++)
+                if (i <= data.Penetration - 1)
                 {
-                    if (i <= data.Penetration - 1)
-                    {
-                        RaycastHit hit = results[i];
+                    RaycastHit hit = results[i];
 
                         if (hit.collider.TryGetComponent(out IDamageable damageable))
                         {
@@ -54,8 +52,12 @@ namespace OverBang.GameName.Gameplay
                     }
                     else
                     {
-                        OnDespawn(Pool);
+                        damageable.TakeDamage(data.BulletDamage);
                     }
+                }
+                else
+                {
+                    OnDespawn(Pool);
                 }
             }
             
