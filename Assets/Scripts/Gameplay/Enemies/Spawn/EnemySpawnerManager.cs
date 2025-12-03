@@ -11,6 +11,8 @@ namespace OverBang.GameName.Gameplay
         
         public EnemySpawnScenario CurrentEnemySpawnScenario {get; private set;}
 
+        private bool IsWaving; 
+
         
         
         protected override void OnBegin(GameplayPhase phase)
@@ -25,7 +27,13 @@ namespace OverBang.GameName.Gameplay
                 enemies[enemyRessources[i].EnemyType] = enemyRessources[i];
             }
         }
-        
+
+        protected override void OnEnd(GameplayPhase phase)
+        {
+            base.OnEnd(phase);
+            IsWaving = false;
+        }
+
         public void SpawnEnemies(EnemySpawnScenario enemySpawnScenario)
         {
             CurrentEnemySpawnScenario = enemySpawnScenario;
@@ -39,6 +47,7 @@ namespace OverBang.GameName.Gameplay
                     break;
                 
                 case EnemySpawnBehavior.Wave :
+                    IsWaving = true;
                     Awaitable awaitable = StartWaveMode(enemySpawnScenario);
                     awaitable.Run();
                     break;
@@ -51,7 +60,7 @@ namespace OverBang.GameName.Gameplay
             int enemyToSpawnInWave = enemySpawnScenario.InitialEnemyAmountInWave; 
 
             //Wave mode loop
-            while (currentWave <= enemySpawnScenario.WaveAmount)
+            while (currentWave <= enemySpawnScenario.WaveAmount && IsWaving)
             {
                 enemyToSpawnInWave = enemySpawnScenario.GetEnemyAmountThisWave(enemyToSpawnInWave, enemySpawnScenario.EnemyAmountMultiplier);
                 int currentSpawnedEnemies = 0;
@@ -78,6 +87,7 @@ namespace OverBang.GameName.Gameplay
             }
             
             Debug.Log("Wave Mode End");
+            IsWaving = false;
         }
     }
 }
