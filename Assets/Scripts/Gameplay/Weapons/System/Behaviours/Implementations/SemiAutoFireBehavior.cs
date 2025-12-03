@@ -19,7 +19,7 @@ namespace OverBang.GameName.Gameplay
 
         public override void Tick(float deltaTime)
         {
-            if (consecutiveShotsValue > 0f)
+            if (consecutiveShotsValue <= 0f)
                 return;
             
             HandleConsecutiveShots();

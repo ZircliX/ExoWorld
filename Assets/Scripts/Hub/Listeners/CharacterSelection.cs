@@ -23,8 +23,8 @@ namespace OverBang.GameName.Hub
         
         protected override void OnBegin(HubPhase phase)
         {
-            GameController.CursorLockModePriority.AddPriority(this, PriorityTags.Highest, CursorLockMode.Locked);
-            GameController.CursorVisibleStatePriority.AddPriority(this, PriorityTags.Highest, false);
+            GameController.CursorLockModePriority.AddPriority(this, PriorityTags.High, CursorLockMode.Locked);
+            GameController.CursorVisibleStatePriority.AddPriority(this, PriorityTags.High, false);
             agentCardContainer.ClearChildren();
             
             foreach (CharacterData characterData in phase.AvailableCharacters)

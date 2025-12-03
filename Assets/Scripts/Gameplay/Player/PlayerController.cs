@@ -15,8 +15,6 @@ namespace OverBang.GameName.Gameplay
         [SerializeField] private Transform playerModelContainer;
         private IPlayerComponent[] playerComponents;
         
-        private Animator playerAnimator;
-
         private void Awake()
         {
             playerComponents = GetComponentsInChildren<IPlayerComponent>();
@@ -45,15 +43,27 @@ namespace OverBang.GameName.Gameplay
             {
                 playerModelContainer.ClearChildren();
                 GameObject playerModel = Instantiate(characterData.ModelPrefab, playerModelContainer);
-                if (!playerModel.TryGetComponent(out playerAnimator))
+                
+                if (!playerModel.TryGetComponent(out Animator playerAnimator))
                 {
                     Debug.LogError("Player Model does not have an Animator !");
+                }
+
+                if (!playerModel.TryGetComponent(out PlayerRig playerRig))
+                {
+                    Debug.LogError("Player Model does not have a PlayerRig !");
                 }
                 
                 for (int i = 0; i < playerComponents.Length; i++)
                 {
                     IPlayerComponent  playerComponent = playerComponents[i];
-                    playerComponent.OnSync(characterData, playerAnimator);
+                    PlayerRuntimeContext context = new PlayerRuntimeContext()
+                    {
+                        playerCharacterData = characterData,
+                        playerAnimator = playerAnimator,
+                        PlayerRig = playerRig,
+                    };
+                    playerComponent.OnSync(context);
                 }
             }
         }

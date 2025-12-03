@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -24,7 +25,10 @@ namespace OverBang.GameName.Gameplay
             camRotation.x -= targetCamVelocity.x * speed * Time.deltaTime * sens;
             camRotation.y += targetCamVelocity.y * speed * Time.deltaTime * sens;
             camRotation.x = Mathf.Clamp(camRotation.x, -yRange, yRange);
+        }
 
+        private void LateUpdate()
+        {
             // --- Calculate Gravity Alignment ---
             Quaternion localYaw = Quaternion.AngleAxis(camRotation.y, Vector3.up);
             Quaternion localPitch = Quaternion.AngleAxis(-camRotation.x, Vector3.right);

@@ -25,7 +25,7 @@ namespace OverBang.GameName.Gameplay
 
         protected override async Awaitable<LevelManager> CreateLevelManager()
         {
-            Debug.Log("Creating level manager");
+            //Debug.Log("Creating level manager");
             
             GameObject levelManager = new GameObject("LevelManager")
             {

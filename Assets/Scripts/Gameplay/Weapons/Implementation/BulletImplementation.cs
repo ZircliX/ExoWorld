@@ -32,7 +32,7 @@ namespace OverBang.GameName.Gameplay
         private void FixedUpdate()
         {
             Vector3 currentPosition = transform.position;
-            Vector3 distance = currentPosition - previousPosition;
+            Vector3 distance = previousPosition - currentPosition;
             Vector3 direction = distance.normalized;
             LayerMask mask = GameMetrics.Global.HittableLayers;
             
@@ -61,7 +61,7 @@ namespace OverBang.GameName.Gameplay
                 }
             }
             
-            previousPosition = transform.position;
+            previousPosition = currentPosition;
         }
 
         public override void OnSpawn(IPool pool)

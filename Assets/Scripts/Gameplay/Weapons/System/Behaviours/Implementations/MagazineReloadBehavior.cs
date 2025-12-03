@@ -36,6 +36,7 @@ namespace OverBang.GameName.Gameplay
             weapon.State.SetBullets(0, false);
             await Awaitable.WaitForSecondsAsync(weapon.WeaponData.ReloadTime);
             weapon.State.SetBullets(weapon.WeaponData.MagCapacity, true);
+            weapon.RequestOnWeaponReloaded();
         }
 
         public void Tick(float dt) { }
