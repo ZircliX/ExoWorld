@@ -50,7 +50,6 @@ namespace OverBang.GameName.Gameplay
             {
                 CallStartRepairRpc(true);
             }
-            LevelManager.Instance.EnemySpawnerManager.SpawnEnemies(pumpQuestData.EnemySpawnScenario);
         }
 
         [Rpc(SendTo.Owner)]
@@ -65,7 +64,7 @@ namespace OverBang.GameName.Gameplay
             IsStarted = isStarted;
         }
 
-        public void TakeDamage(BulletData.BulletDamageInfo damage)
+        public void TakeDamage(DamageInfo damage)
         {
             if (IsOwner)
             {

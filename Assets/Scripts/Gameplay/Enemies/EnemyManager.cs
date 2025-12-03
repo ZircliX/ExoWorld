@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Helteix.Singletons.SceneServices;
  
  namespace OverBang.GameName.Gameplay
@@ -6,8 +7,13 @@ using Helteix.Singletons.SceneServices;
      public class EnemyManager : SceneService<EnemyManager>
      {
         private List<Enemy> enemies;
-        
-         public void Register(Enemy enemy)
+
+        private void Start()
+        {
+            enemies = new List<Enemy>();
+        }
+
+        public void Register(Enemy enemy)
          {
              enemies.Add(enemy);
          }
@@ -16,9 +22,6 @@ using Helteix.Singletons.SceneServices;
          {
              enemies.Remove(enemy);
          }
-         
-         
-         
          
          
      }

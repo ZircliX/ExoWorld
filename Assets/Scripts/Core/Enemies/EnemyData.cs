@@ -13,9 +13,8 @@ namespace OverBang.GameName.Gameplay
     public class EnemyData : ScriptableObject, IPoolDependencyProvider, IDatabaseAsset
     {
         [field: SerializeField] public string EnemyName { get; private set; }
-        [field: SerializeField] public float Health { get; private set; }
-        [field: SerializeField] public float Damage { get; private set; }
         [field: SerializeField] public EnemyType EnemyType { get; private set; }
+        [field: SerializeField] public DamageInfo DamageInfo { get; private set; }
         
         [field: SerializeField] 
         public GameObject ModelPrefab { get; private set; }

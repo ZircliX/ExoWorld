@@ -17,9 +17,10 @@ MonoBehaviour:
   <EnemyDatas>k__BackingField:
   - {fileID: 11400000, guid: 52866766131662e46b51ec7a2887e506, type: 2}
   - {fileID: 11400000, guid: 3314422291d81724c8e1736c676430a3, type: 2}
-  <SpawnAmount>k__BackingField: 20
-  <MinMaxSpawnIntervals>k__BackingField: {x: 0.2, y: 1.2}
-  <WaveAmount>k__BackingField: 4
-  <InitialEnemyAmountInWave>k__BackingField: 16
+  - {fileID: 11400000, guid: f5305a9813141a94d86017f1907a6acf, type: 2}
+  <SpawnAmount>k__BackingField: 18
+  <MinMaxSpawnIntervals>k__BackingField: {x: 0.55707484, y: 1.4525973}
+  <WaveAmount>k__BackingField: 10
+  <InitialEnemyAmountInWave>k__BackingField: 20
   <EnemyAmountMultiplier>k__BackingField: 1.2
-  <TimeBetweenWaves>k__BackingField: 10
+  <TimeBetweenWaves>k__BackingField: 5
