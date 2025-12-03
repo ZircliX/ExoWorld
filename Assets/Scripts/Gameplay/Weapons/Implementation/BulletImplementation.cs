@@ -44,15 +44,10 @@ namespace OverBang.GameName.Gameplay
                 {
                     RaycastHit hit = results[i];
 
-                        if (hit.collider.TryGetComponent(out IDamageable damageable))
-                        {
-                            Debug.Log($"Bullet hit : {hit.collider.gameObject.name}", hit.collider.gameObject);
-                            damageable.TakeDamage(data.Damage);
-                        }
-                    }
-                    else
+                    if (hit.collider.TryGetComponent(out IDamageable damageable))
                     {
-                        damageable.TakeDamage(data.BulletDamage);
+                        Debug.Log($"Bullet hit : {hit.collider.gameObject.name}", hit.collider.gameObject);
+                        damageable.TakeDamage(data.Damage);
                     }
                 }
                 else

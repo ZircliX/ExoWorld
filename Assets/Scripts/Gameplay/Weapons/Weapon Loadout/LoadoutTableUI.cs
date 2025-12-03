@@ -84,7 +84,7 @@ namespace OverBang.GameName.Gameplay
             weaponName.text = w.WeaponName;
             weaponDescription.text = w.WeaponDescription;
             weaponType.text = w.name.ToString();
-            weaponDamage.text = w.BulletData.BulletDamage.baseDamage.ToString(CultureInfo.InvariantCulture);
+            weaponDamage.text = w.BulletData.Damage.baseDamage.ToString(CultureInfo.InvariantCulture);
             weaponShootRate.text = w.FireCooldown.ToString(CultureInfo.InvariantCulture);
             weaponMagCapacity.text = w.MagCapacity.ToString();
 
