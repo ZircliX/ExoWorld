@@ -48,7 +48,8 @@ namespace OverBang.GameName.Gameplay
 
                         if (hit.collider.TryGetComponent(out IDamageable damageable))
                         {
-                            damageable.TakeDamage(data.BulletDamage);
+                            Debug.Log($"Bullet hit : {hit.collider.gameObject.name}", hit.collider.gameObject);
+                            damageable.TakeDamage(data.Damage);
                         }
                     }
                     else

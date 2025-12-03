@@ -30,6 +30,8 @@ MonoBehaviour:
     <PlayerPropertyCharacterData>k__BackingField: CharacterData
     <PlayerPropertyPhaseStatus>k__BackingField: PhaseStatus
   <PlayerControllerPrefab>k__BackingField: {fileID: 6522341107633415678, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
-  <EnemyPrefab>k__BackingField: {fileID: 827771057727792807, guid: f615e6bd2f350664a9f5d3e82c0f415c, type: 3}
+  <HittableLayers>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 2304
   <DebugInputs>k__BackingField: {fileID: 5566769545373903973, guid: c536f002a338a7e4a96af5177feb10ed, type: 3}
   <LightFlickerInEditMode>k__BackingField: 1

@@ -18,7 +18,7 @@ namespace OverBang.GameName.Gameplay
             OnHealed?.Invoke();
         }
 
-        public void TakeDamage(BulletData.BulletDamageInfo damage)
+        public void TakeDamage(DamageInfo damage)
         {
             Health -= damage.baseDamage;
             OnDamaged?.Invoke();
