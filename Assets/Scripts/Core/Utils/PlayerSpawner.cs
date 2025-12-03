@@ -1,5 +1,6 @@
 ﻿using Unity.Netcode;
 using Unity.Services.Multiplayer;
+using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace OverBang.GameName.Core
@@ -10,6 +11,7 @@ namespace OverBang.GameName.Core
         {
             NetworkObject playerObject = Object.Instantiate(GameMetrics.Global.PlayerControllerPrefab);
             playerObject.SpawnAsPlayerObject(clientId, destroyWithScene: true);
+            Debug.Log($"Instantiated player object {playerObject.name}", playerObject);
 
             if (playerObject.TryGetComponent(out IPlayerController playerController))
             {

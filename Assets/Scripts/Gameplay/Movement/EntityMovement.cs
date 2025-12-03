@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using Helteix.ChanneledProperties;
 using Helteix.ChanneledProperties.Formulas;
@@ -232,7 +233,12 @@ namespace OverBang.GameName.Gameplay
             else
                 jumpCooldown = 0;
         }
-        
+
+        private void LateUpdate()
+        {
+            HandleGravityOrientation();
+        }
+
         protected virtual void FixedUpdate()
         {
             Position = Rb.position;
@@ -258,7 +264,6 @@ namespace OverBang.GameName.Gameplay
             CurrentVelocity.Write(stateChannelKey, stateVelocity);
 
             MovePlayer();
-            HandleGravityOrientation();
             HandleStateChange();
             
             if (IsGrounded)
@@ -332,7 +337,8 @@ namespace OverBang.GameName.Gameplay
 
             Quaternion rotation = Quaternion.LookRotation(forward, targetUp);
 
-            Rb.MoveRotation(Quaternion.Slerp(Rb.rotation, rotation, gravityAlignSpeed * Time.deltaTime));
+            //Rb.MoveRotation(Quaternion.Slerp(Rb.rotation, rotation, gravityAlignSpeed * Time.deltaTime));
+            Rb.rotation = rotation;
         }
         
         #region Detections

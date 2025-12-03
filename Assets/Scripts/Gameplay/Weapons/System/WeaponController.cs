@@ -1,4 +1,6 @@
-﻿using OverBang.GameName.Core;
+﻿using System;
+using OverBang.GameName.Core;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,47 +8,90 @@ namespace OverBang.GameName.Gameplay
 {
     public class WeaponController : MonoBehaviour, IPlayerComponent
     {
-        [field: SerializeField]
         public Loadout Loadout { get; private set; }
-        [field: SerializeField] public Camera playerCamera { get; private set; }
+        private Camera cam;
+        public Camera InteractionCamera
+        {
+            get
+            {
+                if (cam == null) cam = Camera.main;
+                return cam;
+            }
+        }
         public PlayerController Controller { get; set; }
 
-        private Weapon primaryWeapon;
-        private Weapon secondaryWeapon;
-        private Weapon currentWeapon;
+        public Weapon PrimaryWeapon { get; private set; }
+        public Weapon SecondaryWeapon { get; private set; }
+        public Weapon CurrentWeapon { get; private set; }
 
-        public void OnSync(CharacterData data, Animator animator)
+        public event Action OnWeaponChanged;
+        private PlayerRig playerRig;
+        
+        private void OnEnable()
         {
-            primaryWeapon = Instantiate(Loadout.primaryWeapon.WeaponPrefab, transform);
-            secondaryWeapon = Instantiate(Loadout.secondaryWeapon.WeaponPrefab, transform);
-            primaryWeapon.gameObject.SetActive(false);
-            secondaryWeapon.gameObject.SetActive(false);
-            
-            primaryWeapon.Initialize(Loadout.primaryWeapon, playerCamera);
-            secondaryWeapon.Initialize(Loadout.secondaryWeapon, playerCamera);
+            PlayerLoadout.OnLoadoutChanged += RefreshLoadout;
+        }
 
-            currentWeapon = primaryWeapon;
-            currentWeapon.gameObject.SetActive(true);
+        private void OnDisable()
+        {
+            PlayerLoadout.OnLoadoutChanged -= RefreshLoadout;
+        }
+
+        public void OnSync(PlayerRuntimeContext context)
+        {
+            playerRig = context.PlayerRig;
+            RefreshLoadout();
+        }
+
+        private void RefreshLoadout()
+        {
+            if (PrimaryWeapon != null)
+                DestroyImmediate(PrimaryWeapon.gameObject);
+            if (SecondaryWeapon != null)
+                DestroyImmediate(SecondaryWeapon.gameObject);
+            
+            Loadout = PlayerLoadout.Loadout;
+            if (Loadout.primaryWeapon == null && Loadout.secondaryWeapon == null)
+                return;
+            
+            // Instantiate weapon objects
+            PrimaryWeapon = Instantiate(Loadout.primaryWeapon.WeaponPrefab, transform);
+            SecondaryWeapon = Instantiate(Loadout.secondaryWeapon.WeaponPrefab, transform);
+            PrimaryWeapon.gameObject.SetActive(false);
+            SecondaryWeapon.gameObject.SetActive(false);
+
+            // Initialize the weapon with loadout
+            PrimaryWeapon.Initialize(Loadout.primaryWeapon, InteractionCamera);
+            SecondaryWeapon.Initialize(Loadout.secondaryWeapon, InteractionCamera);
+
+            CurrentWeapon = PrimaryWeapon;
+            CurrentWeapon.gameObject.SetActive(true);
+            
+            OnWeaponChanged?.Invoke();
+            playerRig.OnWeaponChange(CurrentWeapon.Rig);
         }
         
         public void OnShootInput(InputAction.CallbackContext context)
         {
-            currentWeapon?.OnShootInput(context);
+            CurrentWeapon?.OnShootInput(context);
         }
 
         public void OnReloadInput(InputAction.CallbackContext context)
         {
-            currentWeapon?.OnReloadInput(context);
+            CurrentWeapon?.OnReloadInput(context);
         }
         
         public void OnWeaponSwitch(InputAction.CallbackContext context)
         {
-            if (!context.performed)
+            if (!context.performed || CurrentWeapon == null)
                 return;
 
-            currentWeapon.gameObject.SetActive(false);
-            currentWeapon = currentWeapon == primaryWeapon ? secondaryWeapon : primaryWeapon;
-            currentWeapon.gameObject.SetActive(true);
+            CurrentWeapon.gameObject.SetActive(false);
+            CurrentWeapon = CurrentWeapon == PrimaryWeapon ? SecondaryWeapon : PrimaryWeapon;
+            CurrentWeapon.gameObject.SetActive(true);
+            
+            OnWeaponChanged?.Invoke();
+            playerRig.OnWeaponChange(CurrentWeapon.Rig);
         }
     }
 }

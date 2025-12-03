@@ -104,7 +104,12 @@ namespace OverBang.GameName.Gameplay
             if (currentPlayer.TryGetCharacterDataByPlayer(out CharacterData characterData))
             {
                 ulong clientID = NetworkManager.Singleton.LocalClient.ClientId;
+                Debug.Log($"Player {clientID} has CharacterData {characterData.AgentName}");
                 NetworkObject player = PlayerSpawner.SpawnPlayerObject(characterData, clientID, SessionManager.Global.CurrentPlayer);
+            }
+            else
+            {
+                Debug.LogError($"Player {currentPlayer.Id} does not have CharacterData");
             }
         }
 

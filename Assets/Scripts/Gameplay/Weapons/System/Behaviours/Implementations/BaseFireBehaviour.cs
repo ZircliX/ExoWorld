@@ -42,6 +42,7 @@ namespace OverBang.GameName.Gameplay
             {
                 Weapon.Fire();
             }
+            Weapon.RequestOnWeaponFired();
             // TODO : SOUND
             
             // Increment Consecutive Shots

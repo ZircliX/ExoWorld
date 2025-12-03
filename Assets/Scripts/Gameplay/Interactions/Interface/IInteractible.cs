@@ -11,9 +11,15 @@ namespace OverBang.GameName.Gameplay.Interface
         Vector3 UIPosition => transform.position;
         // ReSharper disable once InconsistentNaming
         Transform transform { get; }
-     
-        void OnPlayerEnter(PlayerInteraction playerInteraction);
-        void OnPlayerExit(PlayerInteraction playerInteraction);
-        public void Interact(PlayerInteraction playerInteraction);
+
+        void OnPlayerEnter(PlayerInteraction playerInteraction)
+        {
+            
+        }
+        void OnPlayerExit(PlayerInteraction playerInteraction)
+        {
+            
+        }
+        void Interact(PlayerInteraction playerInteraction);
     }
 }

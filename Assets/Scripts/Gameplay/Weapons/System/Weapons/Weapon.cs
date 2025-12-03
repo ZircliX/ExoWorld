@@ -1,6 +1,9 @@
-﻿using Sirenix.OdinInspector;
+﻿using System;
+using Sirenix.OdinInspector;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 namespace OverBang.GameName.Gameplay
 {
@@ -8,11 +11,15 @@ namespace OverBang.GameName.Gameplay
     {
         [field: SerializeField, Required] public WeaponData WeaponData { get; protected set; }
         public RuntimeWeaponState State { get; protected set; }
+        public WeaponRig Rig { get; private set; }
 
         protected Camera playerCamera;
         
         protected IFireBehaviour fireBehaviour;
         protected IReloadBehaviour reloadBehaviour;
+        
+        public event Action OnWeaponFired;
+        public event Action OnWeaponReloaded;
         
         public virtual void Initialize(WeaponData weaponData, Camera playerCamera)
         {
@@ -26,7 +33,8 @@ namespace OverBang.GameName.Gameplay
             fireBehaviour?.OnInitialize(this);
             reloadBehaviour?.OnInitialize(this);
 
-            Instantiate(WeaponData.ModelPrefab, transform);
+            GameObject weaponModel = Instantiate(WeaponData.ModelPrefab, transform);
+            Rig = weaponModel.GetComponent<WeaponRig>();
         }
         
         protected virtual void Update()
@@ -83,5 +91,8 @@ namespace OverBang.GameName.Gameplay
 
             return (forward + offset).normalized;
         }
+
+        public void RequestOnWeaponFired() => OnWeaponFired?.Invoke();
+        public void RequestOnWeaponReloaded() => OnWeaponReloaded?.Invoke();
     }
 }

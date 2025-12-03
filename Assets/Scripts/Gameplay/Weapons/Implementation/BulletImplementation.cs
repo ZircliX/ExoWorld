@@ -1,4 +1,4 @@
-﻿using KBCore.Refs;
+using KBCore.Refs;
 using OverBang.GameName.Core;
 using OverBang.Pooling;
 using UnityEngine;
@@ -32,34 +32,31 @@ namespace OverBang.GameName.Gameplay
         private void FixedUpdate()
         {
             Vector3 currentPosition = transform.position;
-            Vector3 distance = currentPosition - previousPosition;
+            Vector3 distance = previousPosition - currentPosition;
             Vector3 direction = distance.normalized;
             LayerMask mask = GameMetrics.Global.HittableLayers;
             
             int hitSize = Physics.SphereCastNonAlloc(currentPosition, sc.radius, direction, results, distance.sqrMagnitude, mask, QueryTriggerInteraction.Collide);
 
-            if (hitSize > 0)
+            for (int i = 0; i < hitSize; i++)
             {
-                for (int i = 0; i < hitSize; i++)
+                if (i <= data.Penetration - 1)
                 {
-                    if (i <= data.Penetration - 1)
-                    {
-                        RaycastHit hit = results[i];
+                    RaycastHit hit = results[i];
 
-                        if (hit.collider.TryGetComponent(out IDamageable damageable))
-                        {
-                            Debug.Log($"Bullet hit : {hit.collider.gameObject.name}", hit.collider.gameObject);
-                            damageable.TakeDamage(data.Damage);
-                        }
-                    }
-                    else
+                    if (hit.collider.TryGetComponent(out IDamageable damageable))
                     {
-                        OnDespawn(Pool);
+                        Debug.Log($"Bullet hit : {hit.collider.gameObject.name}", hit.collider.gameObject);
+                        damageable.TakeDamage(data.Damage);
                     }
+                }
+                else
+                {
+                    OnDespawn(Pool);
                 }
             }
             
-            previousPosition = transform.position;
+            previousPosition = currentPosition;
         }
 
         public override void OnSpawn(IPool pool)

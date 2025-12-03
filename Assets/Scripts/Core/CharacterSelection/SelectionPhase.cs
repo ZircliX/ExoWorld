@@ -44,11 +44,13 @@ namespace OverBang.GameName.Core
         {
             CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyPhaseStatus, nameof(PhaseStatus.None));
             
+            /* Not sure if it's useful and prob creates bugs
             if (!CurrentPlayer.Properties.ContainsKey(ConstID.Global.PlayerPropertyCharacterData))
             {
-                CurrentPlayer.SetProperty(ConstID.Global.PlayerPropertyCharacterData,
+                CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyCharacterData,
                     new PlayerProperty(string.Empty));
             }
+            */
 
             LoadCharactersData();
             
@@ -67,10 +69,11 @@ namespace OverBang.GameName.Core
 
         public void SelectCharacter(CharacterData characterData)
         {
-            if (characterData == null) 
+            if (characterData == null)
                 return;
             
-            CurrentPlayer.SetProperty(ConstID.Global.PlayerPropertyCharacterData, new PlayerProperty(characterData.ID));
+            Debug.LogError($"SetPlayer property {ConstID.Global.PlayerPropertyCharacterData} for character {characterData.AgentName}");
+            CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyCharacterData, new PlayerProperty(characterData.ID));
             
             SelectedCharacter = characterData;
             OnCharacterSelected?.Invoke(CurrentPlayer, characterData);

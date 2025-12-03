@@ -1,4 +1,5 @@
 ﻿using OverBang.Pooling;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace OverBang.GameName.Gameplay
