@@ -72,8 +72,9 @@ namespace OverBang.GameName.Core
             if (characterData == null)
                 return;
             
-            Debug.LogError($"SetPlayer property {ConstID.Global.PlayerPropertyCharacterData} for character {characterData.AgentName}");
-            CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyCharacterData, new PlayerProperty(characterData.ID));
+            //Debug.LogError($"SetPlayer property {ConstID.Global.PlayerPropertyCharacterData} for character {characterData.AgentName}");
+            Awaitable aw = CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyCharacterData, new PlayerProperty(characterData.ID));
+            aw.Run();
             
             SelectedCharacter = characterData;
             OnCharacterSelected?.Invoke(CurrentPlayer, characterData);

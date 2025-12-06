@@ -1,5 +1,4 @@
 ﻿using System;
-using OverBang.GameName.Core;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -57,6 +56,7 @@ namespace OverBang.GameName.Gameplay
             // Instantiate weapon objects
             PrimaryWeapon = Instantiate(Loadout.primaryWeapon.WeaponPrefab, transform);
             SecondaryWeapon = Instantiate(Loadout.secondaryWeapon.WeaponPrefab, transform);
+            
             PrimaryWeapon.gameObject.SetActive(false);
             SecondaryWeapon.gameObject.SetActive(false);
 

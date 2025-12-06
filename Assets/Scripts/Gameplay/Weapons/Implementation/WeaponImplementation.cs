@@ -1,14 +1,17 @@
 ﻿using OverBang.Pooling;
-using Unity.Netcode;
 using UnityEngine;
 
 namespace OverBang.GameName.Gameplay
 {
     public class WeaponImplementation : Weapon
     {
-        [SerializeField] private Transform shootPoint;
-
         public override void Fire()
+        {
+            Vector3 dir = this.GetBulletDirection(Rig.shootPoint) + playerCamera.transform.forward;
+            FireWithDirection(Rig.shootPoint.position, dir);
+        }
+
+        public override void FireWithDirection(Vector3 origin, Vector3 direction)
         {
             GameObject bulletObject = WeaponData.BulletData.BulletPoolResource.Spawn<GameObject>();
             
@@ -20,8 +23,7 @@ namespace OverBang.GameName.Gameplay
             
             if (bulletObject.TryGetComponent(out BulletImplementation bullet))
             {
-                Vector3 dir = this.GetBulletDirection(shootPoint) + playerCamera.transform.forward;
-                bullet.Fire(shootPoint, dir, WeaponData.BulletData);
+                bullet.Fire(origin, direction, WeaponData.BulletData);
             }
             else
             {

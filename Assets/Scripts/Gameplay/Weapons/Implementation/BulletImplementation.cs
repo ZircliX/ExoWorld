@@ -15,44 +15,57 @@ namespace OverBang.GameName.Gameplay
         
         private Vector3 previousPosition;
         private RaycastHit[] results;
+        private int currentPenetration;
 
         private void OnValidate() => this.ValidateRefs();
 
-        public override void Fire(Transform origin, Vector3 direction, BulletData bulletData)
+        public override void Fire(Vector3 origin, Vector3 direction, BulletData bulletData)
         {
-            transform.position = origin.position;
-            transform.rotation = origin.rotation;
+            transform.position = origin;
+            transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
+            
+            results = new RaycastHit[8];
+            previousPosition = transform.position;
 
             data = bulletData;
             
             if (rb == null) return;
-            rb.AddForce(direction * data.BulletSpeed);
+            rb.AddForce(direction * data.BulletSpeed, ForceMode.Impulse);
         }
 
         private void FixedUpdate()
         {
             Vector3 currentPosition = transform.position;
-            Vector3 distance = previousPosition - currentPosition;
+            Vector3 distance = currentPosition - previousPosition;
             Vector3 direction = distance.normalized;
             LayerMask mask = GameMetrics.Global.HittableLayers;
             
-            int hitSize = Physics.SphereCastNonAlloc(currentPosition, sc.radius, direction, results, distance.sqrMagnitude, mask, QueryTriggerInteraction.Collide);
+            int hitSize = Physics.SphereCastNonAlloc(previousPosition, sc.radius, direction, results, distance.magnitude, mask, QueryTriggerInteraction.Collide);
 
+            //Debug.DrawRay(previousPosition, direction * distance.magnitude, Color.red, 0.5f);
+            //Debug.Log(hitSize);
+            
             for (int i = 0; i < hitSize; i++)
             {
-                if (i <= data.Penetration - 1)
+                if (currentPenetration >= data.Penetration)
                 {
-                    RaycastHit hit = results[i];
+                    //Debug.Log("Despawning bullet", gameObject);
+                    gameObject.Despawn();
+                    break;
+                }
+                
+                RaycastHit hit = results[i];
+                //Debug.Log($"Bullet hit : {hit.collider.gameObject.name} with tag {hit.collider.tag}", hit.collider.gameObject);
 
+                if (!hit.collider.gameObject.CompareTag("LocalPlayer"))
+                {
                     if (hit.collider.TryGetComponent(out IDamageable damageable))
                     {
-                        Debug.Log($"Bullet hit : {hit.collider.gameObject.name}", hit.collider.gameObject);
+                        //Debug.Log($"Dealing damage to IDamageable {hit.collider.name}", hit.collider.gameObject);
                         damageable.TakeDamage(data.Damage);
                     }
-                }
-                else
-                {
-                    OnDespawn(Pool);
+                    
+                    currentPenetration++;
                 }
             }
             
@@ -62,7 +75,8 @@ namespace OverBang.GameName.Gameplay
         public override void OnSpawn(IPool pool)
         {
             Pool = pool;
-
+            currentPenetration = 0;
+            
             if (rb == null) return;
             rb.isKinematic = false;
             rb.linearVelocity = Vector3.zero;
@@ -70,6 +84,8 @@ namespace OverBang.GameName.Gameplay
 
         public override void OnDespawn(IPool pool)
         {
+            currentPenetration = 0;
+            
             if (rb == null) return;
             rb.linearVelocity = Vector3.zero;
             rb.isKinematic = true;

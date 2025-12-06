@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Shotgun Bullet Data
   m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.BulletData
   <BulletPoolResource>k__BackingField: {fileID: 11400000, guid: 369e6753a4c4cd749a3b2309af60e11d, type: 2}
-  <BulletSpeed>k__BackingField: 8000
+  <BulletSpeed>k__BackingField: 100
   <Penetration>k__BackingField: 1
   <Damage>k__BackingField:
     baseDamage: 12
-    weakSpotMultiplier: 0
+    weakSpotMultiplier: 1.25

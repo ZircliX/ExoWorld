@@ -8,6 +8,7 @@ namespace OverBang.GameName.Gameplay
     {
         [SerializeField, Self] private Weapon weapon;
         [SerializeField] private WeaponData weaponData;
+        [SerializeField] private Camera cam;
 
         private void OnValidate()
         {
@@ -18,7 +19,7 @@ namespace OverBang.GameName.Gameplay
         {
             Awaitable aw = PoolUtils.SetupPooling(null);
             aw.Run();
-            weapon.Initialize(weaponData, Camera.main);
+            weapon.Initialize(weaponData, cam);
         }
     }
 }

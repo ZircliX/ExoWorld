@@ -76,6 +76,9 @@ namespace OverBang.GameName.Gameplay
                 
                 int rnd = Random.Range(0, enemyDatas.Length);
                 Enemy enemy = spawner.SpawnEnemy(enemyDatas[rnd]);
+                if (enemy == null)
+                    break;
+                
                 enemy.name = $"{enemy.enemyData.name} | Wave {wave} | Area : {gameObject.name} | EnemyLeft : {enemyToSpawn - spawnedEnemies} | ";
                 spawnedEnemies++;
 

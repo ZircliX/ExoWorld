@@ -138,11 +138,11 @@ Transform:
   m_GameObject: {fileID: 541951478846730839}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.1, y: -0.076, z: 0.25}
+  m_LocalPosition: {x: 0.1, y: -0.076000005, z: 0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6056385108535544490}
+  m_Father: {fileID: 5785903728308733047}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4717950129876588308
 MonoBehaviour:
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 1895274584272249732}
   - component: {fileID: 658258591948460019}
   - component: {fileID: 1436991980165399558}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: PlayerInteraction
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 4171807722037130912}
   - component: {fileID: 8736002663948313377}
   - component: {fileID: 2674150274775296948}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GravityHurtbox
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -377,7 +377,7 @@ GameObject:
   - component: {fileID: 2093647829438347895}
   - component: {fileID: 5958118168469823536}
   - component: {fileID: 5882599016879091144}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: InteractionCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -454,38 +454,6 @@ MonoBehaviour:
   playerInteraction: {fileID: 1436991980165399558}
   interactionText: {fileID: 4218151798373704810}
   canvasGroup: {fileID: 5958118168469823536}
---- !u!1 &1342683230882548900
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6056385108535544490}
-  m_Layer: 0
-  m_Name: WeaponsHolder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6056385108535544490
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1342683230882548900}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 289793016013458955}
-  m_Father: {fileID: 5785903728308733047}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2138794095722072628
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,7 +465,7 @@ GameObject:
   - component: {fileID: 473632811130349475}
   - component: {fileID: 3210155345790208712}
   - component: {fileID: 8093125597647808140}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -810,7 +778,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2748755101925067747}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PlayerModelContainer
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -866,7 +834,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6056385108535544490}
+  - {fileID: 289793016013458955}
   m_Father: {fileID: 7830069918296049799}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7197011858373512656
@@ -986,7 +954,7 @@ GameObject:
   - component: {fileID: 1517369359864375328}
   - component: {fileID: 860978442460885477}
   - component: {fileID: 968483522936832260}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: KeyIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1244,7 +1212,7 @@ GameObject:
   - component: {fileID: 3606115591776901758}
   - component: {fileID: 2104742411258041686}
   - component: {fileID: 4586533350132109736}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1415,15 +1383,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1518980571670799238}
+  - component: {fileID: 4225862939240760527}
   - component: {fileID: 4862076419946111438}
   - component: {fileID: 7499400410501169703}
   - component: {fileID: 1667684208971407432}
   - component: {fileID: 5606427084754297701}
   - component: {fileID: 4750881104551519335}
-  - component: {fileID: 4225862939240760527}
   m_Layer: 11
   m_Name: Player
-  m_TagString: Player
+  m_TagString: LocalPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1448,6 +1416,20 @@ Transform:
   - {fileID: 1895274584272249732}
   m_Father: {fileID: 7218111507029689259}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4225862939240760527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6684921334843441845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4ecf37cc7574919987aa2df07f3a2fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.DamageableAndHealableComponent
+  <Health>k__BackingField: 0
+  <MaxHealth>k__BackingField: 100
 --- !u!114 &4862076419946111438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1496,7 +1478,6 @@ MonoBehaviour:
   <Foot>k__BackingField: {fileID: 5925640226901206663}
   <CapsuleCollider>k__BackingField: {fileID: 1667684208971407432}
   <Rb>k__BackingField: {fileID: 7499400410501169703}
-  <Camera>k__BackingField: {fileID: 0}
   <CameraController>k__BackingField: {fileID: 225607456673580912}
 --- !u!54 &7499400410501169703
 Rigidbody:
@@ -1611,19 +1592,6 @@ MonoBehaviour:
   UseRigidBodyForMotion: 1
   AutoUpdateKinematicState: 1
   AutoSetKinematicOnDespawn: 1
---- !u!114 &4225862939240760527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6684921334843441845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4ecf37cc7574919987aa2df07f3a2fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.DamageableAndHealableComponent
-  <MaxHealth>k__BackingField: 100
 --- !u!1 &7021016169931765619
 GameObject:
   m_ObjectHideFlags: 0
@@ -1914,7 +1882,7 @@ GameObject:
   - component: {fileID: 7817588517851972012}
   - component: {fileID: 2780232586978370958}
   - component: {fileID: 4218151798373704810}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2048,9 +2016,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7218111507029689259}
-  - component: {fileID: 6016904456671023715}
   - component: {fileID: 6522341107633415678}
   - component: {fileID: 5248633824829772109}
+  - component: {fileID: 6016904456671023715}
   - component: {fileID: -5202455698350677450}
   m_Layer: 0
   m_Name: PlayerController_Local
@@ -2077,6 +2045,46 @@ Transform:
   - {fileID: 2275991089988777961}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6522341107633415678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8985065719729054035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
+  GlobalObjectIdHash: 1576227847
+  InScenePlacedSourceGlobalObjectIdHash: 1576227847
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 0
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
+--- !u!114 &5248633824829772109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8985065719729054035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5020a99b6a514844b448fe8f6dbda072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  <PlayerTransform>k__BackingField: {fileID: 1518980571670799238}
+  playerModelContainer: {fileID: 2748755101925067747}
 --- !u!114 &6016904456671023715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2284,46 +2292,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &6522341107633415678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8985065719729054035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 1576227847
-  InScenePlacedSourceGlobalObjectIdHash: 1576227847
-  DeferredDespawnTick: 0
-  Ownership: 1
-  AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
-  ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 0
-  SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
-  SyncOwnerTransformWhenParented: 1
-  AllowOwnerToParent: 0
---- !u!114 &5248633824829772109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8985065719729054035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5020a99b6a514844b448fe8f6dbda072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
-  <PlayerTransform>k__BackingField: {fileID: 1518980571670799238}
-  playerModelContainer: {fileID: 2748755101925067747}
 --- !u!114 &-5202455698350677450
 MonoBehaviour:
   m_ObjectHideFlags: 0

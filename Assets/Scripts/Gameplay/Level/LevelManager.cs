@@ -42,6 +42,9 @@ namespace OverBang.GameName.Gameplay
             switch (resource.Asset)
             {
                 case PrefabPoolAsset prefabPoolAsset:
+                    if (!prefabPoolAsset.Prefab.TryGetComponent(out NetworkObject networkObject))
+                        return;
+                    
                     PoolingNetworkPrefabHandler networkPrefabHandler = new PoolingNetworkPrefabHandler(resource);
                     NetworkManager.Singleton.PrefabHandler.AddHandler(prefabPoolAsset.Prefab, networkPrefabHandler);
                     break;
@@ -104,7 +107,7 @@ namespace OverBang.GameName.Gameplay
             if (currentPlayer.TryGetCharacterDataByPlayer(out CharacterData characterData))
             {
                 ulong clientID = NetworkManager.Singleton.LocalClient.ClientId;
-                Debug.Log($"Player {clientID} has CharacterData {characterData.AgentName}");
+                //Debug.Log($"Player {clientID} has CharacterData {characterData.AgentName}");
                 NetworkObject player = PlayerSpawner.SpawnPlayerObject(characterData, clientID, SessionManager.Global.CurrentPlayer);
             }
             else
