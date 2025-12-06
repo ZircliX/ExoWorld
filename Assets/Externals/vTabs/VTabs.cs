@@ -567,7 +567,7 @@ namespace VTabs
                     if (m_rootInstanceID == 0) return;
 
                     var folderIid = m_rootInstanceID;
-                    var folderPath = EditorUtility.InstanceIDToObject(folderIid).GetPath();
+                    var folderPath = _EditorUtility_InstanceIDToObject(folderIid).GetPath();
 
                     browser.SetLockedFolderPath_oneColumn(folderPath);
 
@@ -1530,7 +1530,7 @@ namespace VTabs
 
 
 
-        const string version = "2.1.3";
+        const string version = "2.1.4";
 
     }
 }

@@ -61,7 +61,7 @@ namespace OverBang.GameName.Gameplay
                 {
                     if (hit.collider.TryGetComponent(out IDamageable damageable))
                     {
-                        //Debug.Log($"Dealing damage to IDamageable {hit.collider.name}", hit.collider.gameObject);
+                        Debug.Log($"Dealing damage to IDamageable {hit.collider.name}", hit.collider.gameObject);
                         damageable.TakeDamage(data.Damage);
                     }
                     
