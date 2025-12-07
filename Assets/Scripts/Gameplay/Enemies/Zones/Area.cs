@@ -48,7 +48,7 @@ namespace OverBang.GameName.Gameplay
         
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player"))
+            if (other.CompareTag("Player") || other.CompareTag("LocalPlayer"))
             {   
                 players.Add(other.transform) ;
             }
@@ -56,7 +56,7 @@ namespace OverBang.GameName.Gameplay
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.CompareTag("Player"))
+            if (other.CompareTag("Player") || other.CompareTag("LocalPlayer"))
             {
                 players.Remove(other.transform) ;
             }

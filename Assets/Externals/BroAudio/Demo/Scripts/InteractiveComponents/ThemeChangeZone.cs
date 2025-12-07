@@ -34,7 +34,7 @@ namespace Ami.BroAudio.Demo
             SceneManager.activeSceneChanged -= OnSceneChanged;
         }
 
-        public override void OnInZoneChanged(bool isInZone)
+        protected override void OnInZoneChanged(InteractiveZone zone, bool isInZone)
 		{
 			if(isInZone && _canChange)
 			{

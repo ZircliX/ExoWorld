@@ -149,6 +149,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ecf37cc7574919987aa2df07f3a2fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.DamageableAndHealableComponent
+  damagedSound:
+    ID: 1342177280
+    _sourceAsset: {fileID: 11400000, guid: 1e98a9d7d89afe544803e95a716644ff, type: 2}
+    <DebugObject>k__BackingField: {fileID: 3953532697497277536}
+  <Health>k__BackingField: 0
   <MaxHealth>k__BackingField: 170
 --- !u!135 &1289449639148392637
 SphereCollider:

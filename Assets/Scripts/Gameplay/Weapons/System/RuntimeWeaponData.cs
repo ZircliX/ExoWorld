@@ -3,7 +3,8 @@
     public class RuntimeWeaponState
     {
         public int CurrentBullets { get; private set; }
-        public bool CanShoot { get; private set; }
+        public bool CanShoot => !IsReloading && CurrentBullets > 0 && TimeForNextShot <= 0f;
+        public bool IsReloading  { get; private set; }
         public float TimeForNextShot;
 
         private readonly Weapon weapon;
@@ -12,26 +13,19 @@
         {
             this.weapon = weapon;
             CurrentBullets = weapon.WeaponData.MagCapacity;
-            CanShoot = true;
         }
         
         public bool TryConsume(ref int amount)
         {
-            if (CurrentBullets < amount)
-            {
-                amount = CurrentBullets;
-            }
-
             if (!CanShoot)
             {
                 //Debug.LogWarning($"Could not fire weapon : CanShoot == false");
                 return false;
             }
-
-            if (TimeForNextShot > 0f)
+            
+            if (CurrentBullets < amount)
             {
-                //Debug.LogWarning($"Could not fire weapon : TimeForNextShot is {TimeForNextShot} instead of 0 seconds");
-                return false;
+                amount = CurrentBullets;
             }
             
             CurrentBullets -= amount;
@@ -39,9 +33,9 @@
             return true;
         }
 
-        public void SetBullets(int amount, bool canShoot)
+        public void SetBullets(int amount, bool reloading)
         {
-            CanShoot = canShoot;
+            IsReloading = reloading;
             CurrentBullets = amount;
         }
 

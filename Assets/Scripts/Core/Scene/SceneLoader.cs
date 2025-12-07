@@ -1,5 +1,6 @@
 using System;
 using System.Threading;
+using Ami.BroAudio;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -27,6 +28,7 @@ namespace OverBang.GameName.Core
                 if (name == sceneName && e.SceneEventType == eventType) done = true;
             }
 
+            BroAudio.Stop(BroAudioType.All, 1f);
             NetworkSceneManager sm = NetworkManager.Singleton.SceneManager;
             sm.OnSceneEvent += Handler;
             try

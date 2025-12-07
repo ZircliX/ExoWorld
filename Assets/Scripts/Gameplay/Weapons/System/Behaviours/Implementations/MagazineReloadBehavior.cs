@@ -33,9 +33,9 @@ namespace OverBang.GameName.Gameplay
 
         public async Awaitable Reload()
         {
-            weapon.State.SetBullets(0, false);
+            weapon.State.SetBullets(0, true);
             await Awaitable.WaitForSecondsAsync(weapon.WeaponData.ReloadTime);
-            weapon.State.SetBullets(weapon.WeaponData.MagCapacity, true);
+            weapon.State.SetBullets(weapon.WeaponData.MagCapacity, false);
             weapon.RequestOnWeaponReloaded();
         }
 

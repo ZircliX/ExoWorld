@@ -146,7 +146,7 @@ namespace OverBang.GameName.Gameplay
         {
             if (!IsOwner) return;
             
-            if (other.CompareTag("Player"))
+            if (other.CompareTag("Player") || other.CompareTag("LocalPlayer"))
             {   
                 currentPlayersInRange.Add(other.transform);
             }
@@ -156,7 +156,7 @@ namespace OverBang.GameName.Gameplay
         {
             if (!IsOwner) return;
             
-            if (other.CompareTag("Player"))
+            if (other.CompareTag("Player") || other.CompareTag("LocalPlayer"))
             {
                 currentPlayersInRange.Remove(other.transform);
             }

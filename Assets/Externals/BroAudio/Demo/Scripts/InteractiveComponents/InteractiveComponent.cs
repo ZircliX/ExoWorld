@@ -1,34 +1,47 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Ami.BroAudio.Demo
 {
 	public abstract class InteractiveComponent : MonoBehaviour
 	{
-		[SerializeField] protected InteractiveZone InteractiveZone = null;
+		[SerializeField] protected InteractiveZone[] InteractiveZones = null;
 
 		protected virtual bool ListenToInteractiveZone() => true;
 		protected virtual bool IsTriggerOnce => false;
+		protected InteractiveZone InteractiveZone;
 
 		protected virtual void Awake()
 		{
 			if(ListenToInteractiveZone())
 			{
-				InteractiveZone.OnInZoneStateChanged += OnInZoneChanged;
+				for (int index = 0; index < InteractiveZones.Length; index++)
+				{
+					InteractiveZone zone = InteractiveZones[index];
+					zone.OnInZoneStateChanged += OnInZoneChanged;
+				}
 			}
 		}
 
 		protected virtual void OnDestroy()
 		{
-			InteractiveZone.OnInZoneStateChanged -= OnInZoneChanged;
+			for (int index = 0; index < InteractiveZones.Length; index++)
+			{
+				InteractiveZone zone = InteractiveZones[index];
+				zone.OnInZoneStateChanged -= OnInZoneChanged;
+			}
 		}
 
-		public virtual void OnInZoneChanged(bool isInZone)
+		protected virtual void OnInZoneChanged(InteractiveZone zone, bool isInZone)
 		{
-			if(isInZone && IsTriggerOnce)
+			InteractiveZone = zone;
+			
+			if (isInZone && IsTriggerOnce)
 			{
-				InteractiveZone.OnInZoneStateChanged -= OnInZoneChanged;
+				for (int index = 0; index < InteractiveZones.Length; index++)
+				{
+					InteractiveZone intZone = InteractiveZones[index];
+					intZone.OnInZoneStateChanged -= OnInZoneChanged;
+				}
 			}
 		}
 	} 

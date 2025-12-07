@@ -12,7 +12,7 @@ namespace Ami.BroAudio.Demo
 
         private bool _hasStarted = false;
 
-        public override void OnInZoneChanged(bool isInZone)
+        protected override void OnInZoneChanged(InteractiveZone zone, bool isInZone)
         {
             if(isInZone)
             {

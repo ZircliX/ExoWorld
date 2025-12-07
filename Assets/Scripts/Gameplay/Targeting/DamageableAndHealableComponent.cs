@@ -1,4 +1,5 @@
 ﻿using System;
+using Ami.BroAudio;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -6,6 +7,8 @@ namespace OverBang.GameName.Gameplay
 {
     public class DamageableAndHealableComponent : MonoBehaviour, IDamageable, IHealable
     {
+        [SerializeField] protected SoundID damagedSound;
+        
         public event Action OnDamaged;
         public event Action OnHealed;
         
@@ -22,6 +25,7 @@ namespace OverBang.GameName.Gameplay
         public void TakeDamage(DamageInfo damage)
         {
             Health -= damage.baseDamage;
+            BroAudio.Play(damagedSound, transform.position);
             OnDamaged?.Invoke();
         }
     }

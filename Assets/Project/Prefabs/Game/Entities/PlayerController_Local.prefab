@@ -1428,6 +1428,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ecf37cc7574919987aa2df07f3a2fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.DamageableAndHealableComponent
+  damagedSound:
+    ID: 1342177280
+    _sourceAsset: {fileID: 11400000, guid: 1e98a9d7d89afe544803e95a716644ff, type: 2}
+    <DebugObject>k__BackingField: {fileID: 6684921334843441845}
   <Health>k__BackingField: 0
   <MaxHealth>k__BackingField: 100
 --- !u!114 &4862076419946111438
@@ -1442,6 +1446,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 021c8954cdd7467c982615ead7e470f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LandSound:
+    ID: 0
+    _sourceAsset: {fileID: 0}
+    <DebugObject>k__BackingField: {fileID: 6684921334843441845}
+  FootStepSound:
+    ID: 1073741841
+    _sourceAsset: {fileID: 11400000, guid: 1e98a9d7d89afe544803e95a716644ff, type: 2}
+    <DebugObject>k__BackingField: {fileID: 6684921334843441845}
   movementStates:
   - {fileID: 11400000, guid: 5e4bcd4b83c261443b9414fe80298e6b, type: 2}
   - {fileID: 11400000, guid: be1dcc172ba00724ea9b156b06ecc9da, type: 2}
@@ -2057,7 +2069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 1576227847
+  GlobalObjectIdHash: 2994845136
   InScenePlacedSourceGlobalObjectIdHash: 1576227847
   DeferredDespawnTick: 0
   Ownership: 1

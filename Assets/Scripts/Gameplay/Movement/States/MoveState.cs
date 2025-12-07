@@ -1,4 +1,6 @@
+using Ami.BroAudio;
 using Unity.Cinemachine;
+using UnityEditor;
 using UnityEngine;
 
 namespace OverBang.GameName.Gameplay.States
@@ -22,6 +24,9 @@ namespace OverBang.GameName.Gameplay.States
 
         [Header("STEPSSSSSSSSSSSSSSSSSSSSSSSS")]
         [SerializeField] private float maxStepHeight;
+        
+        [Header("Audio")]
+        [SerializeField] private float footStepTime;
 
         protected Vector3 direction;
 
@@ -45,6 +50,13 @@ namespace OverBang.GameName.Gameplay.States
 
         public override Vector3 GetVelocity(EntityMovement movement, float deltaTime, ref float gravityScale)
         {
+            footStepTime += deltaTime;
+            if (footStepTime >= 0.4f && movement.IsGrounded)
+            {
+                footStepTime = 0;
+                BroAudio.Play(movement.FootStepSound, movement.transform.position);
+            }
+            
             Vector3 lastVelocity = movement.StateVelocity;
             Vector3 worldInputs = GetWorldInputs(movement);
 

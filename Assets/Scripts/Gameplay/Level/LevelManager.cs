@@ -102,7 +102,7 @@ namespace OverBang.GameName.Gameplay
         private void SetupPlayer()
         {
             IPlayer currentPlayer = SessionManager.Global.CurrentPlayer;
-            Debug.Log("SetupPlayer : " + currentPlayer.Id);
+            //Debug.Log("SetupPlayer : " + currentPlayer.Id);
 
             if (currentPlayer.TryGetCharacterDataByPlayer(out CharacterData characterData))
             {

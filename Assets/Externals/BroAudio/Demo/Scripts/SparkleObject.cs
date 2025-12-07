@@ -10,9 +10,9 @@ namespace Ami.BroAudio.Demo
 
         protected override bool IsTriggerOnce => true;
 
-        public override void OnInZoneChanged(bool isInZone)
+        protected override void OnInZoneChanged(InteractiveZone zone, bool isInZone)
         {
-            base.OnInZoneChanged(isInZone);
+            base.OnInZoneChanged(zone, isInZone);
             BroAudio.Play(_sound);
             Destroy(gameObject);
         }

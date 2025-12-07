@@ -25,7 +25,7 @@ namespace Ami.BroAudio.Demo
 #endif
 		}
 
-        public override void OnInZoneChanged(bool isInZone)
+        protected override void OnInZoneChanged(InteractiveZone zone, bool isInZone)
 		{
 			if(_coroutine != null)
 			{
