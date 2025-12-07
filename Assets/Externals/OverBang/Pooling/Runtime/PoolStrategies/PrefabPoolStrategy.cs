@@ -36,6 +36,7 @@ namespace OverBang.Pooling.PoolStrategies
             }
             else
             {
+                //Debug.Log($"{instance.name} OnPostDestroy on prefab pool strategy.");
                 instance.SetActive(false);
             }
         }

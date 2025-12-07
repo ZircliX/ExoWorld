@@ -1,5 +1,6 @@
 ﻿using System;
 using Unity.Services.Multiplayer;
+using UnityEngine;
 
 namespace OverBang.GameName.Core
 {
@@ -30,17 +31,18 @@ namespace OverBang.GameName.Core
                    && propertyValue.TryGetAssetByID(out asset);
         }
 
-        public static void UpdatePlayerProperty(this IPlayer player, string propertyName, PlayerProperty property)
+        public static async Awaitable UpdatePlayerProperty(this IPlayer player, string propertyName, PlayerProperty property)
         {
-            UpdatePlayerProperty(player, propertyName, property.Value);
+            await UpdatePlayerProperty(player, propertyName, property.Value);
         }
 
-        public static void UpdatePlayerProperty(this IPlayer player, string propertyName, string value)
+        public static async Awaitable UpdatePlayerProperty(this IPlayer player, string propertyName, string value)
         {
             player.TryGetPlayerProperty(propertyName, out string oldValue);
             
             PlayerProperty property = new PlayerProperty(value);
             player.SetProperty(propertyName, property);
+            await SessionManager.Global.ActiveSession.SaveCurrentPlayerDataAsync();
     
             if (oldValue != value)
             {

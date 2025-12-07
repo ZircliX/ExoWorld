@@ -8,7 +8,7 @@ namespace OverBang.GameName.Gameplay
     {
         public abstract IPool Pool { get; protected set; }
         
-        public abstract void Fire(Transform origin, Vector3 direction, BulletData bulletData);
+        public abstract void Fire(Vector3 vector3, Vector3 direction, BulletData bulletData);
 
         public abstract void OnSpawn(IPool pool);
         public abstract void OnDespawn(IPool pool);

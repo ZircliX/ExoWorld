@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 using KBCore.Refs;
 using OverBang.GameName.Core;
 using OverBang.Pooling;
 using OverBang.Pooling.Resource;
-using Sirenix.OdinInspector;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.AI;
@@ -63,7 +61,7 @@ namespace OverBang.GameName.Gameplay
             
             if (DahComponent.Health <= 0)
             {
-                OnDespawn(Pool);
+                gameObject.Despawn();
             }
         }
 
@@ -170,7 +168,7 @@ namespace OverBang.GameName.Gameplay
         public void OnDeath()
         {
             EnemyManager.Instance.Unregister(this);
-            OnDespawn(Pool);
+            gameObject.Despawn();
         }
         
         

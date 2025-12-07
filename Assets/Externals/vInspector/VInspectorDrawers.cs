@@ -340,19 +340,56 @@ namespace VInspector
     {
         public override void OnGUI(Rect rect, SerializedProperty prop, GUIContent label)
         {
-            var variants = ((VariantsAttribute)attribute).variants;
+
+            var variantsAttribtue = (VariantsAttribute)attribute;
+
+
+            if (variantsAttribtue.variants.Length == 1 && variantsAttribtue.variants[0] is string dynamicCollectionName)
+            {
+                var target = prop.serializedObject.targetObject;
+
+
+
+
+                IEnumerable ienum = null;
+
+                if (target.GetType().GetMember(dynamicCollectionName, maxBindingFlags).FirstOrDefault() is MemberInfo collectionMember)
+                    if (collectionMember is MethodInfo methodInfo)
+                        ienum = methodInfo.Invoke(target, null) as IEnumerable;
+                    else
+                        ienum = target.GetMemberValue(dynamicCollectionName) as IEnumerable;
+
+
+
+                if (ienum != null)
+                {
+                    var variantsList = new List<object>();
+
+                    foreach (var r in ienum)
+                        variantsList.Add(r);
+
+                    variantsAttribtue.variants = variantsList.ToArray();
+                }
+
+
+            }
+
+            var variantsArray = variantsAttribtue.variants;
+
+
+
 
 
             EditorGUI.BeginProperty(rect, label, prop);
 
-            var iCur = prop.hasMultipleDifferentValues ? -1 : variants.ToList().IndexOf(prop.GetBoxedValue());
+            var iCur = prop.hasMultipleDifferentValues ? -1 : variantsArray.ToList().IndexOf(prop.GetBoxedValue());
 
-            var iNew = EditorGUI.IntPopup(rect, label.text, iCur, variants.Select(r => r.ToString()).ToArray(), Enumerable.Range(0, variants.Length).ToArray());
+            var iNew = EditorGUI.IntPopup(rect, label.text, iCur, variantsArray.Select(r => r.ToString()).ToArray(), Enumerable.Range(0, variantsArray.Length).ToArray());
 
             if (iNew != -1)
-                prop.SetBoxedValue(variants[iNew]);
+                prop.SetBoxedValue(variantsArray[iNew]);
             else if (!prop.hasMultipleDifferentValues)
-                prop.SetBoxedValue(variants[0]);
+                prop.SetBoxedValue(variantsArray[0]);
 
             EditorGUI.EndProperty();
 

@@ -15,17 +15,17 @@ namespace OverBang.GameName.Gameplay
 
         protected Camera playerCamera;
         
-        protected IFireBehaviour fireBehaviour;
-        protected IReloadBehaviour reloadBehaviour;
+        public IFireBehaviour fireBehaviour { get; protected set; }
+        public IReloadBehaviour reloadBehaviour { get; protected set; }
         
         public event Action OnWeaponFired;
         public event Action OnWeaponReloaded;
         
-        public virtual void Initialize(WeaponData weaponData, Camera playerCamera)
+        public virtual void Initialize(WeaponData weaponData, Camera cam)
         {
             WeaponData = weaponData;
             State = new RuntimeWeaponState(this);
-            this.playerCamera = playerCamera;
+            playerCamera = cam;
 
             fireBehaviour = WeaponData.FireBehaviour.CreateFireBehavior();
             reloadBehaviour = WeaponData.ReloadBehaviour.CreateReloadBehavior();
@@ -47,6 +47,7 @@ namespace OverBang.GameName.Gameplay
         }
 
         public abstract void Fire();
+        public abstract void FireWithDirection(Vector3 origin, Vector3 direction);
 
         public virtual void OnShootInput(InputAction.CallbackContext context)
         {
@@ -57,8 +58,8 @@ namespace OverBang.GameName.Gameplay
         {
             reloadBehaviour?.OnReloadInput(context);
         }
-        
-        protected Vector3 GetBulletDirection(Transform shootPoint)
+
+        public Vector3 GetBulletDirection(Transform shootPoint)
         {
             int shotIndex = fireBehaviour.ConsecutiveShots;
             int patternShots = Mathf.Max(WeaponData.RecoilPatternShots, 1);
@@ -92,7 +93,11 @@ namespace OverBang.GameName.Gameplay
             return (forward + offset).normalized;
         }
 
-        public void RequestOnWeaponFired() => OnWeaponFired?.Invoke();
+        public void RequestOnWeaponFired()
+        {
+            OnWeaponFired?.Invoke();
+        }
+
         public void RequestOnWeaponReloaded() => OnWeaponReloaded?.Invoke();
     }
 }

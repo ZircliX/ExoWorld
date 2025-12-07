@@ -34,7 +34,7 @@ namespace OverBang.GameName.Gameplay
 
         protected virtual async Awaitable OnBegin()
         {
-            SessionManager.Global.CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyPhaseStatus, nameof(PhaseStatus.None));
+            await SessionManager.Global.CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyPhaseStatus, nameof(PhaseStatus.None));
             SceneManager.sceneLoaded += OnSceneLoaded;
             
             await LoadScene();
@@ -54,7 +54,7 @@ namespace OverBang.GameName.Gameplay
         
         protected virtual async Awaitable OnEnd()
         {
-            SessionManager.Global.CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyPhaseStatus, nameof(PhaseStatus.None));
+            await SessionManager.Global.CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyPhaseStatus, nameof(PhaseStatus.None));
             LevelManager.Dispose();
             
             
@@ -65,7 +65,8 @@ namespace OverBang.GameName.Gameplay
         {
             if (scene.name == GameMetrics.Global.SceneCollection.GameSceneRef.Name)
             {
-                SessionManager.Global.CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyPhaseStatus, nameof(PhaseStatus.SceneLoaded));
+                Awaitable aw = SessionManager.Global.CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyPhaseStatus, nameof(PhaseStatus.SceneLoaded));
+                aw.Run();
             }
         }
 

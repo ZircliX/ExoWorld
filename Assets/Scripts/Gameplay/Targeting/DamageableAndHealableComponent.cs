@@ -1,4 +1,5 @@
 ﻿using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace OverBang.GameName.Gameplay
@@ -8,7 +9,7 @@ namespace OverBang.GameName.Gameplay
         public event Action OnDamaged;
         public event Action OnHealed;
         
-        public float Health { get; private set; }
+        [field: SerializeField, ReadOnly] public float Health { get; private set; }
         [field: SerializeField] public float MaxHealth { get; private set; }
         public bool IsAlive => Health > 0;
         
