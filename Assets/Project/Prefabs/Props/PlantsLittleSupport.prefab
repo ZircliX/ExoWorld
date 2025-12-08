@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2950322157416439891}
   - component: {fileID: 2540827010428996643}
   - component: {fileID: 7291346630869594668}
-  - component: {fileID: 2192026562342687985}
+  - component: {fileID: 4741122258404491546}
   m_Layer: 8
   m_Name: PlantsLittleSupport
   m_TagString: Untagged
@@ -574,8 +574,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6758324721775685787}
   m_Mesh: {fileID: 0}
---- !u!64 &2192026562342687985
-MeshCollider:
+--- !u!65 &4741122258404491546
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -592,10 +592,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.0000083, z: 1}
+  m_Center: {x: 0, y: 0.000004172325, z: 0}
 --- !u!1001 &1113719091513672204
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -668,7 +667,12 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8100520280158985103, guid: 2db51a3ce7d7fe34a934d68f0c488f54, type: 3}
+      propertyPath: m_ReceiveGI
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2120291204548729036, guid: 2db51a3ce7d7fe34a934d68f0c488f54, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

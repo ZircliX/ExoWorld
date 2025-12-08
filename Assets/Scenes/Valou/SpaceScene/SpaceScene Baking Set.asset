@@ -381,11 +381,11 @@ MonoBehaviour:
         hasOnlyBiggerBricks: 1
     - position: {x: -1, y: 0, z: -1}
       index: 3
-      probeCount: 576
+      probeCount: 768
       minSubdiv: 0
       indexChunkCount: 117
       shChunkCount: 1
-      bricksCount: 9
+      bricksCount: 12
       indirectionEntryInfo:
       - positionInBricks: {x: -81, y: 0, z: -81}
         minSubdiv: 4
@@ -551,11 +551,11 @@ MonoBehaviour:
         hasOnlyBiggerBricks: 1
     - position: {x: -1, y: 0, z: 0}
       index: 12
-      probeCount: 704
+      probeCount: 768
       minSubdiv: 0
       indexChunkCount: 117
       shChunkCount: 1
-      bricksCount: 11
+      bricksCount: 12
       indirectionEntryInfo:
       - positionInBricks: {x: -81, y: 0, z: 0}
         minSubdiv: 4
@@ -1061,11 +1061,11 @@ MonoBehaviour:
         hasOnlyBiggerBricks: 1
     - position: {x: 0, y: 0, z: -1}
       index: 4
-      probeCount: 576
+      probeCount: 768
       minSubdiv: 0
       indexChunkCount: 117
       shChunkCount: 1
-      bricksCount: 9
+      bricksCount: 12
       indirectionEntryInfo:
       - positionInBricks: {x: 0, y: 0, z: -81}
         minSubdiv: 4
@@ -1231,11 +1231,11 @@ MonoBehaviour:
         hasOnlyBiggerBricks: 1
     - position: {x: 0, y: 0, z: 0}
       index: 13
-      probeCount: 704
+      probeCount: 768
       minSubdiv: 0
       indexChunkCount: 117
       shChunkCount: 1
-      bricksCount: 11
+      bricksCount: 12
       indirectionEntryInfo:
       - positionInBricks: {x: 0, y: 0, z: 0}
         minSubdiv: 0
@@ -1430,7 +1430,7 @@ MonoBehaviour:
     m_Keys:
     - Default
     m_Values:
-    - sceneHash: -1520225139
+    - sceneHash: 223176803
       cellDataAsset:
         m_AssetGUID: cc4e24b297efeb04a910d317366e980b
         m_StreamableAssetPath: APVStreamingAssets\37881197e16e55344994f392c6ab53af\cc4e24b297efeb04a910d317366e980b.bytes
@@ -1515,17 +1515,17 @@ MonoBehaviour:
       - offset: 128
         elementCount: 8
       - offset: 256
-        elementCount: 9
-      - offset: 400
-        elementCount: 11
-      - offset: 576
+        elementCount: 12
+      - offset: 448
+        elementCount: 12
+      - offset: 640
         elementCount: 8
-      - offset: 704
+      - offset: 768
         elementCount: 8
-      - offset: 832
-        elementCount: 9
-      - offset: 976
-        elementCount: 11
+      - offset: 896
+        elementCount: 12
+      - offset: 1088
+        elementCount: 12
     m_Asset: {fileID: 4900000, guid: e98f79ab743401a4f86bc17d7f754605, type: 3}
   cellSupportDataAsset:
     m_AssetGUID: 09d22228ac8511f4abd9c22437d80cdd

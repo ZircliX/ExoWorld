@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8578899916634749661}
   - component: {fileID: 7722207646445594879}
   - component: {fileID: 4916724304714157692}
-  - component: {fileID: 3766250529659623553}
   m_Layer: 0
   m_Name: BoardLeg (2)
   m_TagString: Untagged
@@ -357,28 +356,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3018734856270306158}
   m_Mesh: {fileID: 0}
---- !u!64 &3766250529659623553
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3018734856270306158}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &5074795086580138427
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,7 +369,7 @@ GameObject:
   - component: {fileID: 3179114893964969457}
   - component: {fileID: 4915914040385241615}
   - component: {fileID: 8368880098695905124}
-  - component: {fileID: 580556519143498464}
+  - component: {fileID: 4369574304606386303}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -738,8 +715,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5074795086580138427}
   m_Mesh: {fileID: 0}
---- !u!64 &580556519143498464
-MeshCollider:
+--- !u!65 &4369574304606386303
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -756,10 +733,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 3
+  m_Size: {x: 0.05000305, y: 2.1875, z: 3}
+  m_Center: {x: 0, y: -0.25, z: 0}
 --- !u!1 &5910124393278230057
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,7 +749,6 @@ GameObject:
   - component: {fileID: 21733000933349494}
   - component: {fileID: 5205307015994366736}
   - component: {fileID: 1884173895271911350}
-  - component: {fileID: 7283820333944371817}
   m_Layer: 0
   m_Name: BoardLeg
   m_TagString: Untagged
@@ -1116,26 +1091,4 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5910124393278230057}
-  m_Mesh: {fileID: 0}
---- !u!64 &7283820333944371817
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5910124393278230057}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
   m_Mesh: {fileID: 0}
