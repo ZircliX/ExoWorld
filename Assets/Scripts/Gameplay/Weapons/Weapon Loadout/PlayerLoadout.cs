@@ -6,6 +6,7 @@ namespace OverBang.GameName.Gameplay
     {
         public static Loadout Loadout { get; private set; }
         public static event Action OnLoadoutChanged;
+        public static bool HasLoadout => Loadout.primaryWeapon != null || Loadout.secondaryWeapon != null;
 
         public static void SetWeapons(WeaponData primary, WeaponData secondary)
         {

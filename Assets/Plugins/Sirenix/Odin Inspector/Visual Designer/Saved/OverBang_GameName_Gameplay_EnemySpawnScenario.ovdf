@@ -26,6 +26,8 @@ Position: $BkiZXLuB15WkpScEKRhyRM:5
 
 # <SpawnAmount>k__BackingField
 Position: $BkiZXLuB15WkpScEKRhyRM:3
++ [Sirenix.OdinInspector.ShowIfAttribute]
+	Condition = "@SpawnBehavior != EnemySpawnBehavior.Wave"
 
 # <Name>k__BackingField
 Position: $BkiZXLuB15WkpScEKRhyRM:0

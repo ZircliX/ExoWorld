@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using KBCore.Refs;
 using OverBang.GameName.Core;
 using OverBang.Pooling;
@@ -6,6 +7,7 @@ using OverBang.Pooling.Resource;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 namespace OverBang.GameName.Gameplay
 {
@@ -13,11 +15,10 @@ namespace OverBang.GameName.Gameplay
     public class Enemy : NetworkBehaviour, IPoolInstanceListener, IDamageSource
     {
         [field : Header("Datas")]
-        
         [field : SerializeField, Self, HideInInspector] public NetworkObject EnemyNetworkObject { get; private set; }
         [field : SerializeField] public NavMeshAgent Agent { get; private set; }
         
-        [field : Self] public DamageableAndHealableComponent DahComponent { get; private set; }
+        [field : SerializeField, Self] public DamageableAndHealableComponent DahComponent { get; private set; }
         
         [SerializeField] public EnemyData enemyData;
         public IPool Pool { get; protected set; }
@@ -25,15 +26,10 @@ namespace OverBang.GameName.Gameplay
         public DamageInfo DamageInfo => enemyData.DamageInfo;
         
         [field : Header("Informations :")]
-        
-        [field : Space(15f)]
         [field : SerializeField] public Transform enemyModelContainer { get; private set; }
         
         [field : Header("Patrol Parameters :")]
-        [field : Space(15f)]
-        
-        [field : SerializeField] public SphereCollider TriggerSphere { get; private set; }
-        [field : SerializeField] public float TriggerRadius { get; private set; }
+        [field : SerializeField, Child] public TriggerComponent TriggerComponent { get; private set; }
 
         [field: SerializeField] public float patrolRadius { get; private set; } = 10f;
 
@@ -50,18 +46,28 @@ namespace OverBang.GameName.Gameplay
         private void OnValidate()
         {
             this.ValidateRefs();
+        }
 
+        private void OnEnable()
+        {
             DahComponent.OnDamaged += Damaged;
-            TriggerSphere.radius = TriggerRadius;
+            TriggerComponent.OnEntered += OnEntered;
+            TriggerComponent.OnExited += OnExited;
+        }
+
+        private void OnDisable()
+        {
+            DahComponent.OnDamaged -= Damaged;
+            TriggerComponent.OnEntered -= OnEntered;
+            TriggerComponent.OnExited -= OnExited;
         }
 
         private void Damaged()
         {
             Debug.Log($"Remaining Health : {DahComponent.Health}");
-            
             if (DahComponent.Health <= 0)
             {
-                gameObject.Despawn();
+                OnDeath();
             }
         }
 
@@ -71,6 +77,7 @@ namespace OverBang.GameName.Gameplay
             
             if (IsOwner)
             {
+                // TODO : Setup Health based on enemy data
                 currentPlayersInRange = new List<Transform>();
                 EnemyManager.Instance.Register(this);
             }
@@ -142,33 +149,26 @@ namespace OverBang.GameName.Gameplay
             return closest.position;
         }
         
-        private void OnTriggerEnter(Collider other)
+        private void OnEntered(Transform playerTransform)
         {
             if (!IsOwner) return;
-            
-            if (other.CompareTag("Player") || other.CompareTag("LocalPlayer"))
-            {   
-                currentPlayersInRange.Add(other.transform);
-            }
+            currentPlayersInRange.Add(playerTransform);
         }
 
-        private void OnTriggerExit(Collider other)
+        private void OnExited(Transform playerTransform)
         {
             if (!IsOwner) return;
-            
-            if (other.CompareTag("Player") || other.CompareTag("LocalPlayer"))
-            {
-                currentPlayersInRange.Remove(other.transform);
-            }
+            currentPlayersInRange.Remove(playerTransform);
         }
         
         #endregion detection
         
 
-        public void OnDeath()
+        protected void OnDeath()
         {
             EnemyManager.Instance.Unregister(this);
-            gameObject.Despawn();
+            //TODO : Fix network spawn -> removes from pool 
+            EnemyNetworkObject.Despawn();
         }
         
         

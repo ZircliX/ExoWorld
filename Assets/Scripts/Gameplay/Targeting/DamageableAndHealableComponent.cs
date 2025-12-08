@@ -15,7 +15,13 @@ namespace OverBang.GameName.Gameplay
         [field: SerializeField, ReadOnly] public float Health { get; private set; }
         [field: SerializeField] public float MaxHealth { get; private set; }
         public bool IsAlive => Health > 0;
-        
+
+        private void OnEnable()
+        {
+            if (Health < MaxHealth)
+                Heal(MaxHealth);
+        }
+
         public void Heal(float amount)
         {
             Health += amount;

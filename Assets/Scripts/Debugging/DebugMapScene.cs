@@ -24,7 +24,7 @@ namespace OverBang.GameName.Debugging
             {
                 Destroy(this);
             }
-        } 
+        }
         
         private async Awaitable LogIn()
         {
