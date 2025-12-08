@@ -251,7 +251,7 @@ MonoBehaviour:
     m_Value: 1
   m_MaxRaySteps:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 128
   m_DenoiseSS:
     m_OverrideState: 1
     m_Value: 1
@@ -494,7 +494,7 @@ MonoBehaviour:
     m_Value: 0
   limitMin:
     m_OverrideState: 1
-    m_Value: 6
+    m_Value: 5.5
   limitMax:
     m_OverrideState: 1
     m_Value: 7
@@ -1224,7 +1224,7 @@ MonoBehaviour:
   interCascadeBorders: 1
   maxShadowDistance:
     m_OverrideState: 1
-    m_Value: 100
+    m_Value: 80
   directionalTransmissionMultiplier:
     m_OverrideState: 1
     m_Value: 1
@@ -1233,7 +1233,7 @@ MonoBehaviour:
     m_Value: 4
   cascadeShadowSplit0:
     m_OverrideState: 1
-    m_Value: 0.028571429
+    m_Value: 0.0285
   cascadeShadowSplit1:
     m_OverrideState: 1
     m_Value: 0.057142857
@@ -1242,10 +1242,10 @@ MonoBehaviour:
     m_Value: 0.22857143
   cascadeShadowBorder0:
     m_OverrideState: 1
-    m_Value: 0.13397461
+    m_Value: 0.13157895
   cascadeShadowBorder1:
     m_OverrideState: 1
-    m_Value: 0.58578646
+    m_Value: 0.5673317
   cascadeShadowBorder2:
     m_OverrideState: 1
     m_Value: 0.27924076
@@ -1613,13 +1613,13 @@ MonoBehaviour:
   active: 1
   indirectDiffuseLightingMultiplier:
     m_OverrideState: 1
-    m_Value: 0.25
+    m_Value: 0.5
   indirectDiffuseLightingLayers:
     m_OverrideState: 0
     m_Value: 65535
   reflectionLightingMultiplier:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 2
   reflectionLightingLayers:
     m_OverrideState: 0
     m_Value: 65535

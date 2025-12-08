@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2884983424104536101}
   - component: {fileID: 1783294140943554780}
   - component: {fileID: 5529699601741266175}
-  - component: {fileID: 1799136341853656066}
+  - component: {fileID: 6795239182368491986}
   m_Layer: 8
   m_Name: Big Eletric Container
   m_TagString: Untagged
@@ -357,8 +357,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4373663709492622039}
   m_Mesh: {fileID: 0}
---- !u!64 &1799136341853656066
-MeshCollider:
+--- !u!65 &6795239182368491986
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -375,7 +375,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 3
+  m_Size: {x: 1.0000039, y: 5, z: 4.0000005}
+  m_Center: {x: -0.000000834465, y: 2, z: -1.4999995}

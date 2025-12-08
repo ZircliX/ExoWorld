@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8834105052225675367}
   - component: {fileID: 644878857669984509}
   - component: {fileID: 3486480942590533506}
-  - component: {fileID: 7181926545493615364}
+  - component: {fileID: 6672727950368143634}
   m_Layer: 8
   m_Name: Poteau4m
   m_TagString: Untagged
@@ -333,8 +333,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3888530030003850550}
   m_Mesh: {fileID: 0}
---- !u!64 &7181926545493615364
-MeshCollider:
+--- !u!65 &6672727950368143634
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -351,7 +351,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 3
+  m_Size: {x: 1, y: 3.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5683315380541988953}
   - component: {fileID: 3149526331958292192}
   - component: {fileID: 2629358194293804390}
-  - component: {fileID: 5187312673911637141}
+  - component: {fileID: 8756086781513679903}
   m_Layer: 8
   m_Name: Eletric Container
   m_TagString: Untagged
@@ -357,8 +357,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7879531540603214007}
   m_Mesh: {fileID: 0}
---- !u!64 &5187312673911637141
-MeshCollider:
+--- !u!65 &8756086781513679903
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -375,7 +375,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 3
+  m_Size: {x: 1.0000083, y: 2, z: 2.0000021}
+  m_Center: {x: 0.0000042021275, y: 0.5, z: -0.49999937}

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7891225469267781182}
   - component: {fileID: 6437629230183100817}
   - component: {fileID: 3699407531938985614}
-  - component: {fileID: 3313506735736384581}
   m_Layer: 8
   m_Name: TVLeg
   m_TagString: Untagged
@@ -334,7 +333,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
+  m_ReceiveGI: 2
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -357,28 +356,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1324357191308728522}
   m_Mesh: {fileID: 0}
---- !u!64 &3313506735736384581
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1324357191308728522}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &2799851449756089082
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,7 +367,6 @@ GameObject:
   - component: {fileID: 868620437749981823}
   - component: {fileID: 7065673435601580828}
   - component: {fileID: 4085052111574675635}
-  - component: {fileID: 8053718083327769050}
   m_Layer: 0
   m_Name: Quad
   m_TagString: Untagged
@@ -469,28 +445,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8053718083327769050
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2799851449756089082}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &5141174395372154139
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,7 +458,7 @@ GameObject:
   - component: {fileID: 8403782606521790058}
   - component: {fileID: 8780344228433783193}
   - component: {fileID: 4645782722605232542}
-  - component: {fileID: 4404487437796469094}
+  - component: {fileID: 6948813392102789030}
   m_Layer: 8
   m_Name: TV
   m_TagString: Untagged
@@ -1123,8 +1077,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5141174395372154139}
   m_Mesh: {fileID: 0}
---- !u!64 &4404487437796469094
-MeshCollider:
+--- !u!65 &6948813392102789030
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1141,10 +1095,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 3
+  m_Size: {x: 0.10001068, y: 1.6875, z: 3}
+  m_Center: {x: 0.0000053402036, y: 0, z: 0}
 --- !u!1 &6175828825653672938
 GameObject:
   m_ObjectHideFlags: 0

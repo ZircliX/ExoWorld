@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 8157886720644674729}
   - component: {fileID: 8066954008036387652}
   - component: {fileID: 2495015756079353697}
-  - component: {fileID: 5179135243558658673}
   m_Layer: 8
   m_Name: drawer1_cabinet2
   m_TagString: Untagged
@@ -108,7 +107,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
+  m_ReceiveGI: 2
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -123,27 +122,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5179135243558658673
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1791146818412558754}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.55049217, y: 0.2368721, z: 0.4651136}
-  m_Center: {x: 0.0011021793, y: 0.0051357187, z: 0.23255701}
 --- !u!1 &3899650872401039942
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,7 +133,6 @@ GameObject:
   - component: {fileID: 4889880799869862484}
   - component: {fileID: 8891986365626263866}
   - component: {fileID: 7134806101153601851}
-  - component: {fileID: 7800762080112486165}
   m_Layer: 8
   m_Name: drawer1_base
   m_TagString: Untagged
@@ -219,7 +196,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
+  m_ReceiveGI: 2
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -234,27 +211,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7800762080112486165
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3899650872401039942}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.55049217, y: 0.4734233, z: 0.44039375}
-  m_Center: {x: 0.0000021606684, y: 0.23671165, z: 0.0011009648}
 --- !u!1 &3951552045235018764
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,7 +222,6 @@ GameObject:
   - component: {fileID: 9037408175822245888}
   - component: {fileID: 549953697845522612}
   - component: {fileID: 2948017894787045430}
-  - component: {fileID: 3158040383376775415}
   m_Layer: 8
   m_Name: drawer1_cabinet1
   m_TagString: Untagged
@@ -331,7 +286,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
+  m_ReceiveGI: 2
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -346,27 +301,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3158040383376775415
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3951552045235018764}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.55049217, y: 0.23687214, z: 0.4660165}
-  m_Center: {x: 0.0011021793, y: -0.009081457, z: 0.23300846}
 --- !u!1 &6211592008863694911
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,6 +310,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5161900621857732705}
+  - component: {fileID: 9219451189695518690}
   m_Layer: 8
   m_Name: drawer1
   m_TagString: Untagged
@@ -401,3 +336,24 @@ Transform:
   - {fileID: 8157886720644674729}
   m_Father: {fileID: 1056496622087331895}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &9219451189695518690
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6211592008863694911}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.46470004, y: 0.48189378, z: 0.5643463}
+  m_Center: {x: 0.0063043833, y: 0.23727429, z: 0.0057703257}
