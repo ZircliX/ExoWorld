@@ -1,22 +1,11 @@
+Copyright © 2025 OverBang Studio.
+Tous droits réservés.
 
-The MIT License (MIT)
+Le présent logiciel et ses ressources sont la propriété exclusive de l’auteur.
+Il est interdit de :
+redistribuer le jeu, gratuitement ou commercialement ;
+modifier, décompiler ou réutiliser les fichiers ;
+utiliser le jeu ou son contenu dans un cadre commercial sans l’autorisation écrite de l’auteur.
 
-Copyright (c) 2025 ZircliX
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+Une licence d’utilisation personnelle est accordée pour jouer au jeu. 
+Aucun autre droit n’est concédé.

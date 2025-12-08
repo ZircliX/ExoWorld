@@ -11,15 +11,16 @@ namespace OverBang.GameName.Core
         {
             NetworkObject playerObject = Object.Instantiate(GameMetrics.Global.PlayerControllerPrefab);
             playerObject.SpawnAsPlayerObject(clientId, destroyWithScene: true);
-            Debug.Log($"Instantiated player object {playerObject.name}", playerObject);
+            //Debug.Log($"Instantiated player object {playerObject.name}", playerObject);
 
             if (playerObject.TryGetComponent(out IPlayerController playerController))
             {
                 playerController.SetDataRpc(characterData.ID);
             }
             
-            player.UpdatePlayerProperty(ConstID.Global.PlayerPropertyPhaseStatus, nameof(PhaseStatus.PlayerSetup));
-
+            Awaitable aw = player.UpdatePlayerProperty(ConstID.Global.PlayerPropertyPhaseStatus, nameof(PhaseStatus.PlayerSetup));
+            aw.Run();
+            
             return playerObject;
         }
     }

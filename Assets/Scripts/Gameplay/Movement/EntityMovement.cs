@@ -1,4 +1,5 @@
 using System;
+using Ami.BroAudio;
 using DG.Tweening;
 using Helteix.ChanneledProperties;
 using Helteix.ChanneledProperties.Formulas;
@@ -22,6 +23,10 @@ namespace OverBang.GameName.Gameplay
         public Vector3 Position { get; protected set; }
         public Priority<Vector3> Gravity { get; protected set; }
         #endregion
+        
+        [Header("Audio Settings")]
+        [field: SerializeField] public SoundID LandSound;
+        [field: SerializeField] public SoundID FootStepSound;
         
         [Header("Movement States")]
         [SerializeField] protected MovementStateBehavior[] movementStates;

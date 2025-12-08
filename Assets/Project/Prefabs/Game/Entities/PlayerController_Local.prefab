@@ -223,7 +223,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 389f3d99b6d141b4b2848ece80eaac06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.PlayerInteraction
-  cam: {fileID: 0}
 --- !u!1 &796471661262600508
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,6 +544,7 @@ GameObject:
   - component: {fileID: 4871333159565970601}
   - component: {fileID: 6734250226248909908}
   - component: {fileID: 3049967832089082369}
+  - component: {fileID: 1894891351675891445}
   m_Layer: 0
   m_Name: PlayerHUD
   m_TagString: Untagged
@@ -648,6 +648,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2095704bf014c0f97d40c49eff804fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.HUD
+  inputs: {fileID: 6016904456671023715}
+  Ath: {fileID: 1894891351675891445}
+  fadeDuration: 0.5
 --- !u!114 &3049967832089082369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -663,6 +666,18 @@ MonoBehaviour:
   controller: {fileID: 4717950129876588308}
   weaponIcon: {fileID: 7435986355583789059}
   ammoText: {fileID: 2933343950988326565}
+--- !u!225 &1894891351675891445
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3312335043432271708}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &3975036619403742606
 GameObject:
   m_ObjectHideFlags: 0
@@ -1428,6 +1443,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ecf37cc7574919987aa2df07f3a2fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.DamageableAndHealableComponent
+  damagedSound:
+    ID: 1342177280
+    _sourceAsset: {fileID: 11400000, guid: 1e98a9d7d89afe544803e95a716644ff, type: 2}
+    <DebugObject>k__BackingField: {fileID: 6684921334843441845}
   <Health>k__BackingField: 0
   <MaxHealth>k__BackingField: 100
 --- !u!114 &4862076419946111438
@@ -1442,6 +1461,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 021c8954cdd7467c982615ead7e470f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LandSound:
+    ID: 0
+    _sourceAsset: {fileID: 0}
+    <DebugObject>k__BackingField: {fileID: 6684921334843441845}
+  FootStepSound:
+    ID: 1073741841
+    _sourceAsset: {fileID: 11400000, guid: 1e98a9d7d89afe544803e95a716644ff, type: 2}
+    <DebugObject>k__BackingField: {fileID: 6684921334843441845}
   movementStates:
   - {fileID: 11400000, guid: 5e4bcd4b83c261443b9414fe80298e6b, type: 2}
   - {fileID: 11400000, guid: be1dcc172ba00724ea9b156b06ecc9da, type: 2}
@@ -2287,9 +2314,49 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 99ac99b5-6596-4aef-becf-f2861a5c1ea9
     m_ActionName: 'Player/Interact[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 069df963-5e8c-418f-86bd-0939477f3fd3
+    m_ActionName: 'UI/Navigate[/DualShock4GamepadHID/leftStick/up,/DualShock4GamepadHID/rightStick/up,/DualShock4GamepadHID/leftStick/down,/DualShock4GamepadHID/rightStick/down,/DualShock4GamepadHID/leftStick/left,/DualShock4GamepadHID/rightStick/left,/DualShock4GamepadHID/leftStick/right,/DualShock4GamepadHID/rightStick/right,/DualShock4GamepadHID/dpad,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: cff4bcd3-e593-45d7-8b86-680c2a4b7d6e
+    m_ActionName: 'UI/Submit[/Keyboard/enter,/DualShock4GamepadHID/buttonSouth]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 31c66513-630b-4a9d-99a0-554327ba668b
+    m_ActionName: 'UI/Cancel[/Keyboard/escape,/DualShock4GamepadHID/buttonEast]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7682246e-0905-460d-b875-5b0cf4391572
+    m_ActionName: 'UI/Point[/Mouse/position,/Pen/position]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c43ba7f8-ba47-4630-a6fe-a909bfb016ab
+    m_ActionName: 'UI/Click[/Mouse/leftButton,/Pen/tip]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ba746d57-3c51-40a5-9a7c-0dcd30f1cfba
+    m_ActionName: 'UI/RightClick[/Mouse/rightButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5fdf9120-f197-4552-a456-ace9d1956a07
+    m_ActionName: 'UI/MiddleClick[/Mouse/middleButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 594b4e58-8de7-446c-820b-a92a63e1e699
+    m_ActionName: 'UI/ScrollWheel[/Mouse/scroll]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 21942ee1-c75c-4115-8abb-92131840c171
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: df9e6603-d0f4-4cf1-a7cd-db50f3a8e296
+    m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard and Mouse
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: b9806e4e-43b6-4d6e-bde3-46114f8b12de
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &-5202455698350677450

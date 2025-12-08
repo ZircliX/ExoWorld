@@ -11,7 +11,7 @@ namespace OverBang.GameName.Gameplay
         
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player") && canBeTriggered)
+            if (other.CompareTag("Player") || other.CompareTag("LocalPlayer") && canBeTriggered && go.activeSelf)
             {
                 ExitHubPhaseRpc();
             }

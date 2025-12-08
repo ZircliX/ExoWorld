@@ -9,7 +9,7 @@ namespace OverBang.GameName.Gameplay
     [RequireComponent(typeof(SphereCollider))]
     public class PlayerInteraction : MonoBehaviour
     {
-        [SerializeField] private Camera cam;
+        private Camera cam;
         public Camera InteractionCamera
         {
             get

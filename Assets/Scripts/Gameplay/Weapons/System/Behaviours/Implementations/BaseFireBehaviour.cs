@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Ami.BroAudio;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace OverBang.GameName.Gameplay
@@ -43,7 +44,8 @@ namespace OverBang.GameName.Gameplay
                 Weapon.Fire();
                 Weapon.RequestOnWeaponFired();
             }
-            // TODO : SOUND
+
+            BroAudio.Play(Weapon.WeaponData.FireSound);
             
             // Increment Consecutive Shots
             if (ConsecutiveShots < Weapon.WeaponData.MaxRecoilShots)

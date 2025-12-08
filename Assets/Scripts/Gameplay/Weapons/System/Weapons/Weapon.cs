@@ -39,11 +39,14 @@ namespace OverBang.GameName.Gameplay
         
         protected virtual void Update()
         {
+            if (State == null || fireBehaviour == null || reloadBehaviour == null)
+                return;
+            
             float deltaTime = Time.deltaTime;
             
             State.Tick(deltaTime);
-            fireBehaviour?.Tick(deltaTime);
-            reloadBehaviour?.Tick(deltaTime);
+            fireBehaviour.Tick(deltaTime);
+            reloadBehaviour.Tick(deltaTime);
         }
 
         public abstract void Fire();

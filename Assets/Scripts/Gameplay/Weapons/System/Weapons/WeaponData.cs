@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Ami.BroAudio;
+using OverBang.GameName.Gameplay;
+using UnityEngine;
 
 namespace OverBang.GameName.Gameplay
 {
@@ -14,6 +16,9 @@ namespace OverBang.GameName.Gameplay
         [field: SerializeField] public Sprite WeaponSprite { get; protected set; }
         [field: SerializeField] public Weapon WeaponPrefab { get; protected set; }
         [field: SerializeField] public GameObject ModelPrefab { get; protected set; }
+        
+        // Audio DATA
+        [field: SerializeField] public SoundID FireSound { get; protected set; }
         
         // FIRE BEHAVIOUR
         [field: SerializeField] public WeaponFireBehaviour FireBehaviour { get; protected set; }

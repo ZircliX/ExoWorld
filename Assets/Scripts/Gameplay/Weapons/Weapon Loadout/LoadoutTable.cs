@@ -21,7 +21,7 @@ namespace OverBang.GameName.Gameplay
         public string InteractionText => string.Empty;
         public int Priority => (int)TargetPriority.High;
         public bool CanInteract { get; private set; } = true;
-        Vector3 IInteractable.UIPosition => transform.position.Add(y: 1f);
+        Vector3 IInteractable.UIPosition => transform.position.Add(y: 0.2f);
 
         public void Interact(PlayerInteraction playerInteraction)
         {
@@ -32,7 +32,7 @@ namespace OverBang.GameName.Gameplay
         {
             CanInteract = false;
             CameraManager.Instance.RequestCameraChange(CameraIDs.Global.LoadoutCamera);
-            HUD.Instance.SetCursorState(true);
+            HUD.Instance.ChangeHudState(true);
             OnRankSelectionUIRequested?.Invoke(true);
         } 
 
@@ -48,13 +48,14 @@ namespace OverBang.GameName.Gameplay
         public void ConfirmSelection()
         {
             // Assign default weapons
-            if (selectedPrimary == null && PlayerLoadout.Loadout.primaryWeapon == null)
+            
+            if (selectedPrimary == null || PlayerLoadout.Loadout.primaryWeapon == null)
                 selectedPrimary = primaryWeaponData[0];
-            if (selectedSecondary == null && PlayerLoadout.Loadout.secondaryWeapon == null)
+            if (selectedSecondary == null || PlayerLoadout.Loadout.secondaryWeapon == null)
                 selectedSecondary = secondaryWeaponData[0];
             
             OnRankSelectionUIRequested?.Invoke(false);
-            HUD.Instance.SetCursorState(false);
+            HUD.Instance.ChangeHudState(false);
             PlayerLoadout.SetWeapons(selectedPrimary, selectedSecondary);
             CameraManager.Instance.RequestCameraChange(CameraIDs.Global.PlayerViewCamera);
             CanInteract = true;

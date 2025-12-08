@@ -199,7 +199,7 @@ namespace OverBang.Pooling
 
             if (!isFilling)
             {
-                Debug.Log("Pool empty, applying behavior: " + PoolResource.PoolEmptyBehavior);
+                //Debug.Log("Pool empty, applying behavior: " + PoolResource.PoolEmptyBehavior);
                 switch (PoolResource.PoolEmptyBehavior)
                 {
                     case PoolEmptyBehavior.DontSpawn:

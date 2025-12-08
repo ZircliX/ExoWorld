@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 7577639757662427964}
   - component: {fileID: 6307496961718370695}
   - component: {fileID: 2641663678897118583}
-  - component: {fileID: 1289449639148392637}
   - component: {fileID: 4209642412550774923}
   m_Layer: 11
   m_Name: Enemy
@@ -67,6 +66,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7473997488970608723}
+  - {fileID: 5543645050160963184}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &827771057727792807
@@ -109,10 +109,10 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   <EnemyNetworkObject>k__BackingField: {fileID: 827771057727792807}
   <Agent>k__BackingField: {fileID: 6307496961718370695}
+  <DahComponent>k__BackingField: {fileID: 2641663678897118583}
   enemyData: {fileID: 0}
   <enemyModelContainer>k__BackingField: {fileID: 7473997488970608723}
-  <TriggerSphere>k__BackingField: {fileID: 1289449639148392637}
-  <TriggerRadius>k__BackingField: 10
+  <TriggerComponent>k__BackingField: {fileID: 4249110270004385719}
   <patrolRadius>k__BackingField: 10
   <stopDistance>k__BackingField: 1
 --- !u!195 &6307496961718370695
@@ -149,28 +149,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ecf37cc7574919987aa2df07f3a2fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.DamageableAndHealableComponent
+  damagedSound:
+    ID: 1342177280
+    _sourceAsset: {fileID: 11400000, guid: 1e98a9d7d89afe544803e95a716644ff, type: 2}
+    <DebugObject>k__BackingField: {fileID: 3953532697497277536}
+  <Health>k__BackingField: 0
   <MaxHealth>k__BackingField: 170
---- !u!135 &1289449639148392637
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3953532697497277536}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 10
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &4209642412550774923
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -190,7 +174,75 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.71
-  m_Height: 3.5759063
+  m_Radius: 0.75
+  m_Height: 2.5
   m_Direction: 1
-  m_Center: {x: 0, y: 0.46152115, z: 0}
+  m_Center: {x: 0, y: 1.18, z: 0}
+--- !u!1 &8569898657867337544
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5543645050160963184}
+  - component: {fileID: 3635136003686820902}
+  - component: {fileID: 4249110270004385719}
+  m_Layer: 2
+  m_Name: Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5543645050160963184
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8569898657867337544}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7438193527821288508}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &3635136003686820902
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8569898657867337544}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 20
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4249110270004385719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8569898657867337544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23604574e714443ebaf0b3bd04d97c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.TriggerComponent
+  <TriggerCollider>k__BackingField: {fileID: 3635136003686820902}
+  <TriggerRadius>k__BackingField: 20
