@@ -1,11 +1,16 @@
 ﻿using System;
+using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 using UnityEngine.InputSystem;
 
 namespace OverBang.GameName.Gameplay
 {
-    public class WeaponController : MonoBehaviour, IPlayerComponent
+    public class WeaponController : NetworkBehaviour, IPlayerComponent
     {
+        [SerializeField] private WeaponData[] weaponsData;
+        public event Action<RigBuilder> OnRigBuilderAccessed;
+        
         public Loadout Loadout { get; private set; }
         private Camera cam;
         public Camera InteractionCamera
@@ -20,7 +25,16 @@ namespace OverBang.GameName.Gameplay
 
         public Weapon PrimaryWeapon { get; private set; }
         public Weapon SecondaryWeapon { get; private set; }
-        public Weapon CurrentWeapon { get; private set; }
+
+        public Weapon CurrentWeapon => CurrentWeaponCategory switch
+        {
+            WeaponCategory.Primary => PrimaryWeapon,
+            WeaponCategory.Secondary => SecondaryWeapon,
+            _ => null
+        };
+        public WeaponCategory CurrentWeaponCategory { get; private set; }
+        
+        [SerializeField] private Transform weaponHolder;
 
         public event Action OnWeaponChanged;
         private PlayerRig playerRig;
@@ -38,59 +52,92 @@ namespace OverBang.GameName.Gameplay
         public void OnSync(PlayerRuntimeContext context)
         {
             playerRig = context.PlayerRig;
+
+            if (playerRig.TryGetComponent(out RigBuilder builder))
+            {
+                OnRigBuilderAccessed?.Invoke(builder);
+            }
+            
+            if (!IsOwner)
+            {
+                weaponHolder = context.playerAnimator.GetBoneTransform(HumanBodyBones.RightHand);
+                //weaponHolder.position = weaponHolder.position.Add(z: 0.2f)
+            }
+            
             RefreshLoadout();
         }
 
         private void RefreshLoadout()
+        {
+            if (!IsOwner) return;
+            
+            Loadout = PlayerLoadout.Loadout;
+            if (Loadout.primaryWeapon == null && Loadout.secondaryWeapon == null)
+                return;
+            
+            InstantiateWeaponsRpc(Loadout.primaryWeapon.WeaponName, Loadout.secondaryWeapon.WeaponName);
+            SetVisibleWeaponRpc(WeaponCategory.Primary);
+        }
+
+        [Rpc(SendTo.Everyone)]
+        private void InstantiateWeaponsRpc(string primaryWeaponName, string secondaryWeaponName)
         {
             if (PrimaryWeapon != null)
                 DestroyImmediate(PrimaryWeapon.gameObject);
             if (SecondaryWeapon != null)
                 DestroyImmediate(SecondaryWeapon.gameObject);
             
-            Loadout = PlayerLoadout.Loadout;
-            if (Loadout.primaryWeapon == null && Loadout.secondaryWeapon == null)
-                return;
-            
             // Instantiate weapon objects
-            PrimaryWeapon = Instantiate(Loadout.primaryWeapon.WeaponPrefab, transform);
-            SecondaryWeapon = Instantiate(Loadout.secondaryWeapon.WeaponPrefab, transform);
+            WeaponData primary = null;
+            WeaponData secondary = null;
+            for (int i = 0; i < weaponsData.Length; i++)
+            {
+                if (weaponsData[i].WeaponName == primaryWeaponName)
+                    primary = weaponsData[i];
+                if (weaponsData[i].WeaponName == secondaryWeaponName)
+                    secondary = weaponsData[i];
+            }
             
-            PrimaryWeapon.gameObject.SetActive(false);
-            SecondaryWeapon.gameObject.SetActive(false);
-
+            PrimaryWeapon = Instantiate(primary.Prefab, weaponHolder);
+            SecondaryWeapon = Instantiate(secondary.Prefab, weaponHolder);
+            
             // Initialize the weapon with loadout
-            PrimaryWeapon.Initialize(Loadout.primaryWeapon, InteractionCamera);
-            SecondaryWeapon.Initialize(Loadout.secondaryWeapon, InteractionCamera);
+            PrimaryWeapon.Initialize(primary, InteractionCamera);
+            SecondaryWeapon.Initialize(secondary, InteractionCamera);
+        }
 
-            CurrentWeapon = PrimaryWeapon;
-            CurrentWeapon.gameObject.SetActive(true);
+        [Rpc(SendTo.Everyone)]
+        private void SetVisibleWeaponRpc(WeaponCategory category)
+        {
+            PrimaryWeapon.gameObject.SetActive(category == WeaponCategory.Primary);
+            SecondaryWeapon.gameObject.SetActive(category == WeaponCategory.Secondary);
+            CurrentWeaponCategory = category;
             
             OnWeaponChanged?.Invoke();
             playerRig.OnWeaponChange(CurrentWeapon.Rig);
         }
         
+        //INPUTS
+        
         public void OnShootInput(InputAction.CallbackContext context)
         {
+            if (!IsOwner) return;
             CurrentWeapon?.OnShootInput(context);
         }
 
         public void OnReloadInput(InputAction.CallbackContext context)
         {
+            if (!IsOwner) return;
             CurrentWeapon?.OnReloadInput(context);
         }
         
         public void OnWeaponSwitch(InputAction.CallbackContext context)
         {
+            if (!IsOwner) return;
             if (!context.performed || CurrentWeapon == null)
                 return;
 
-            CurrentWeapon.gameObject.SetActive(false);
-            CurrentWeapon = CurrentWeapon == PrimaryWeapon ? SecondaryWeapon : PrimaryWeapon;
-            CurrentWeapon.gameObject.SetActive(true);
-            
-            OnWeaponChanged?.Invoke();
-            playerRig.OnWeaponChange(CurrentWeapon.Rig);
+            SetVisibleWeaponRpc(CurrentWeaponCategory == WeaponCategory.Primary ? WeaponCategory.Secondary : WeaponCategory.Primary);
         }
     }
 }

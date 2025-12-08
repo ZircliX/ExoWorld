@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using Ami.BroAudio;
+using OverBang.Pooling;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,14 +10,11 @@ namespace OverBang.GameName.Core
 {
     public static class SceneLoader
     {
+        public static event Action OnPreSceneLoad;
+        public static event Action OnPostSceneLoad;
+        
         public static Scene GetCurrentScene() => SceneManager.GetActiveScene();
-
-        public static void SetActiveScene(string sceneName)
-        {
-            Scene scene = SceneManager.GetSceneByName(sceneName);
-            if (scene.isLoaded) SceneManager.SetActiveScene(scene);
-        }
-
+        
         static async Awaitable AwaitSceneEvent(SceneEventType eventType, string sceneName, Func<SceneEventProgressStatus> op)
         {
             bool done = false;
@@ -28,6 +26,8 @@ namespace OverBang.GameName.Core
                 if (name == sceneName && e.SceneEventType == eventType) done = true;
             }
 
+            PoolManager.Instance.ClearPools();
+            OnPreSceneLoad?.Invoke();
             BroAudio.Stop(BroAudioType.All, 1f);
             NetworkSceneManager sm = NetworkManager.Singleton.SceneManager;
             sm.OnSceneEvent += Handler;
@@ -35,6 +35,7 @@ namespace OverBang.GameName.Core
             {
                 op();
                 await AwaitableUtils.AwaitableUntil(() => done, CancellationToken.None);
+                OnPostSceneLoad?.Invoke();
                 await Awaitable.EndOfFrameAsync();
             }
             finally

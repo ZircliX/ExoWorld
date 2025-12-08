@@ -121,9 +121,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 289793016013458955}
-  - component: {fileID: 4717950129876588308}
   m_Layer: 0
-  m_Name: Weapon
+  m_Name: WeaponHolder
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -144,18 +143,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5785903728308733047}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4717950129876588308
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 541951478846730839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 267065aeca4843d3905050e0d9f49c34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.WeaponController
 --- !u!1 &661434748773175317
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,6 +532,7 @@ GameObject:
   - component: {fileID: 6734250226248909908}
   - component: {fileID: 3049967832089082369}
   - component: {fileID: 1894891351675891445}
+  - component: {fileID: 2138125697222187719}
   m_Layer: 0
   m_Name: PlayerHUD
   m_TagString: Untagged
@@ -663,7 +651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb5b08fb8d514691885e903fc4b38eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.WeaponControllerUI
-  controller: {fileID: 4717950129876588308}
+  controller: {fileID: 8973511709967392776}
   weaponIcon: {fileID: 7435986355583789059}
   ammoText: {fileID: 2933343950988326565}
 --- !u!225 &1894891351675891445
@@ -678,6 +666,21 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &2138125697222187719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3312335043432271708}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2fe15f3755b4341b55defae6c1a477d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: ZTools.ObjectiveSystem.Sample::ZTools.ObjectiveSystem.Sample.ObjectivesUI
+  objectiveNameText: {fileID: 0}
+  objectiveDescriptionText: {fileID: 0}
+  objectiveProgressText: {fileID: 0}
 --- !u!1 &3975036619403742606
 GameObject:
   m_ObjectHideFlags: 0
@@ -2044,6 +2047,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7218111507029689259}
   - component: {fileID: 6522341107633415678}
+  - component: {fileID: 8973511709967392776}
   - component: {fileID: 5248633824829772109}
   - component: {fileID: 6016904456671023715}
   - component: {fileID: -5202455698350677450}
@@ -2084,7 +2088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 1576227847
+  GlobalObjectIdHash: 2994845136
   InScenePlacedSourceGlobalObjectIdHash: 1576227847
   DeferredDespawnTick: 0
   Ownership: 1
@@ -2097,6 +2101,24 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &8973511709967392776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8985065719729054035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 267065aeca4843d3905050e0d9f49c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.WeaponController
+  ShowTopMostFoldoutHeaderGroup: 1
+  weaponsData:
+  - {fileID: 11400000, guid: 93782c9a0a47e8c4ba207ac96de170d6, type: 2}
+  - {fileID: 11400000, guid: 809e1cc872852744095949b9f3db0e65, type: 2}
+  - {fileID: 11400000, guid: ae083bb006b256b4499ab1878499bbff, type: 2}
+  weaponHolder: {fileID: 289793016013458955}
 --- !u!114 &5248633824829772109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2236,7 +2258,7 @@ MonoBehaviour:
     m_ActionName: 'Player/LookY[/Mouse/delta/y]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4717950129876588308}
+      - m_Target: {fileID: 8973511709967392776}
         m_TargetAssemblyTypeName: OverBang.GameName.Gameplay.WeaponController, OverBang.GameName.Gameplay
         m_MethodName: OnShootInput
         m_Mode: 0
@@ -2252,7 +2274,7 @@ MonoBehaviour:
     m_ActionName: 'Player/Shoot[/Mouse/leftButton,/DualShock4GamepadHID/rightTrigger]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4717950129876588308}
+      - m_Target: {fileID: 8973511709967392776}
         m_TargetAssemblyTypeName: OverBang.GameName.Gameplay.WeaponController, OverBang.GameName.Gameplay
         m_MethodName: OnWeaponSwitch
         m_Mode: 0
@@ -2284,7 +2306,7 @@ MonoBehaviour:
     m_ActionName: 'Player/Pause[/Keyboard/escape]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4717950129876588308}
+      - m_Target: {fileID: 8973511709967392776}
         m_TargetAssemblyTypeName: OverBang.GameName.Gameplay.WeaponController, OverBang.GameName.Gameplay
         m_MethodName: OnReloadInput
         m_Mode: 0
@@ -2356,7 +2378,7 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard and Mouse
-  m_DefaultActionMap: b9806e4e-43b6-4d6e-bde3-46114f8b12de
+  m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &-5202455698350677450

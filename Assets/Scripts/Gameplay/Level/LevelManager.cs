@@ -1,10 +1,7 @@
-using System;
-using System.Collections.Generic;
 using Helteix.ChanneledProperties.Priorities;
 using Helteix.Singletons.SceneServices;
 using OverBang.GameName.Core;
 using OverBang.Pooling;
-using OverBang.Pooling.Dependencies;
 using OverBang.Pooling.Resource;
 using Unity.Netcode;
 using Unity.Services.Multiplayer;
@@ -14,7 +11,6 @@ namespace OverBang.GameName.Gameplay
 {
     public sealed class LevelManager : SceneService<LevelManager>
     {
-        public event Action<List<IPoolDependencyProvider>> OnCollectSceneProviders;
         public LevelState State { get; private set; }
         
         private GameplayPhase currentPhase;
@@ -23,41 +19,14 @@ namespace OverBang.GameName.Gameplay
 
         protected override void Activate()
         {
-            PoolManager.Instance.OnPoolAssetRegistered += OnPoolAssetRegistered;
-            PoolManager.Instance.OnPoolAssetUnregistered += OnPoolAssetUnregistered;
             EnemySpawnerManager = new EnemySpawnerManager();
             EnemySpawnerManager.Register();
         }
-
+        
         protected override void Deactivate()
         {
             base.Deactivate();
-            PoolManager.Instance.OnPoolAssetRegistered -= OnPoolAssetRegistered;
-            PoolManager.Instance.OnPoolAssetUnregistered -= OnPoolAssetUnregistered;
             EnemySpawnerManager.Unregister();
-        }
-        
-        private void OnPoolAssetRegistered(PoolResource resource)
-        {
-            switch (resource.Asset)
-            {
-                case PrefabPoolAsset prefabPoolAsset:
-                    if (!prefabPoolAsset.Prefab.TryGetComponent(out NetworkObject networkObject))
-                        return;
-                    
-                    PoolingNetworkPrefabHandler networkPrefabHandler = new PoolingNetworkPrefabHandler(resource);
-                    NetworkManager.Singleton.PrefabHandler.AddHandler(prefabPoolAsset.Prefab, networkPrefabHandler);
-                    break;
-            }
-        }
-        private void OnPoolAssetUnregistered(PoolResource resource)
-        {
-            switch (resource.Asset)
-            {
-                case PrefabPoolAsset prefabPoolAsset:
-                    NetworkManager.Singleton.PrefabHandler.RemoveHandler(prefabPoolAsset.Prefab);
-                    break;
-            }
         }
 
         public async Awaitable Initialize(GameplayPhase phase)
@@ -130,7 +99,7 @@ namespace OverBang.GameName.Gameplay
         
         private async Awaitable SetupPooling()
         {
-            await PoolUtils.SetupPooling(OnCollectSceneProviders);
+            await PoolUtils.SetupPooling();
         }
     }
 }

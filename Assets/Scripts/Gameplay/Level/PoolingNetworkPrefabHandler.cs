@@ -16,16 +16,25 @@ namespace OverBang.GameName.Gameplay
 
         public NetworkObject Instantiate(ulong ownerClientId, Vector3 position, Quaternion rotation)
         {
-            GameObject instance = PoolManager.Instance.Spawn<GameObject>(resource);
-            instance.transform.position = position;
-            instance.transform.rotation = rotation;
-            
-            return instance.GetComponent<NetworkObject>();
+            GameObject go = resource.Spawn<GameObject>();
+            if (go != null && go.TryGetComponent(out NetworkObject networkObject))
+            {
+                Debug.Log($"Spawning  {networkObject.name} network object from pool", networkObject);
+                networkObject.ActiveSceneSynchronization = true;
+                networkObject.transform.position = position;
+                networkObject.transform.rotation = rotation;
+                
+                return networkObject;
+            }
+
+            return null;
         }
 
         public void Destroy(NetworkObject networkObject)
         {
-            PoolManager.Instance.Despawn(networkObject.gameObject);
+            GameObject instance = networkObject.gameObject;
+            Debug.Log($"Return {instance.name} network object to pool", instance);
+            PoolManager.Instance.Despawn(instance);
         }
     }
 }

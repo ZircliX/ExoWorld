@@ -5,6 +5,7 @@ using OverBang.Pooling;
 using OverBang.Pooling.Dependencies;
 using OverBang.Pooling.Resource;
 using Sirenix.OdinInspector;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace OverBang.GameName.Gameplay
@@ -19,7 +20,7 @@ namespace OverBang.GameName.Gameplay
         [field: SerializeField] 
         public GameObject ModelPrefab { get; private set; }
         [field: SerializeField] 
-        public PoolResource EnemyResource { get; private set; }
+        public NetworkObject EnemyPrefab { get; private set; }
         
         [field: SerializeField, Space] 
         public SimplePoolConfig[] Dependencies { get; private set; }

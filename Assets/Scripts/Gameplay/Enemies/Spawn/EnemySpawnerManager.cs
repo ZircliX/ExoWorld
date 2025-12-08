@@ -69,7 +69,7 @@ namespace OverBang.GameName.Gameplay
                 Debug.Log($"Wave {currentWave} started with {spawnableZones.Count} areas");
 
                 //Single wave loop
-                while (currentSpawnedEnemies <= enemyToSpawnInWave)
+                while (currentSpawnedEnemies <= enemyToSpawnInWave && IsWaving)
                 {
                     foreach (Area area in AreaManager.Instance.GetSpawnableAreas())
                     {
