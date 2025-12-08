@@ -74,10 +74,10 @@ MonoBehaviour:
     MulticlipsPlayMode: 0
     _group: {fileID: 0}
     Clips:
-    - AudioClip: {fileID: 8300000, guid: 3068c5ac3bb9b304bbf41ec4a3e0a54b, type: 3}
+    - AudioClip: {fileID: 8300000, guid: aca971f2c94a62f41aa36b923b8051f7, type: 3}
       Volume: 1
       Delay: 0
-      StartPosition: 0.03
+      StartPosition: 0
       EndPosition: 0
       FadeIn: 0
       FadeOut: 0
@@ -285,6 +285,74 @@ MonoBehaviour:
     <MasterVolume>k__BackingField: 1.1
     <Loop>k__BackingField: 0
     <SeamlessLoop>k__BackingField: 1
+    <TransitionTime>k__BackingField: 1
+    <SpatialSetting>k__BackingField: {fileID: 0}
+    <Priority>k__BackingField: 128
+    <Pitch>k__BackingField: 1
+    <PitchRandomRange>k__BackingField: 0
+    <VolumeRandomRange>k__BackingField: 0
+    <RandomFlags>k__BackingField: 0
+    SeamlessTransitionType: 1
+    TransitionTempo:
+      BPM: 0
+      Beats: 0
+    SnapToFullVolume: 0
+  - <Name>k__BackingField: MonstreSound
+    <ID>k__BackingField: 1073741848
+    MulticlipsPlayMode: 2
+    _group: {fileID: 0}
+    Clips:
+    - AudioClip: {fileID: 8300000, guid: 0b5618c600ec41c40acb2c09c50f4700, type: 3}
+      Volume: 0.71036625
+      Delay: 0
+      StartPosition: 0
+      EndPosition: 0
+      FadeIn: 0.3
+      FadeOut: 0
+      Weight: 0
+    - AudioClip: {fileID: 8300000, guid: 773779ddff0bbe048b344b3ed501ba3d, type: 3}
+      Volume: 1
+      Delay: 0
+      StartPosition: 0
+      EndPosition: 0
+      FadeIn: 0.2
+      FadeOut: 0.2
+      Weight: 0
+    - AudioClip: {fileID: 8300000, guid: d9943559cd7560a459d0c20b6b6339aa, type: 3}
+      Volume: 0.65274554
+      Delay: 0
+      StartPosition: 0
+      EndPosition: 0
+      FadeIn: 0.2
+      FadeOut: 0.2
+      Weight: 0
+    - AudioClip: {fileID: 8300000, guid: dca5e634450977043861d6ad336f4e3d, type: 3}
+      Volume: 1
+      Delay: 0
+      StartPosition: 0
+      EndPosition: 0
+      FadeIn: 0.2
+      FadeOut: 0.2
+      Weight: 0
+    - AudioClip: {fileID: 8300000, guid: 23ec1f3cd62eef04096506404c3446c2, type: 3}
+      Volume: 1
+      Delay: 0
+      StartPosition: 0
+      EndPosition: 0
+      FadeIn: 0.2
+      FadeOut: 0.2
+      Weight: 0
+    - AudioClip: {fileID: 8300000, guid: 60c6e51fbd71ed24ba1d73c4a08c29ea, type: 3}
+      Volume: 0.57070255
+      Delay: 0
+      StartPosition: 0
+      EndPosition: 0
+      FadeIn: 0.2
+      FadeOut: 0.5
+      Weight: 0
+    <MasterVolume>k__BackingField: 1
+    <Loop>k__BackingField: 0
+    <SeamlessLoop>k__BackingField: 0
     <TransitionTime>k__BackingField: 1
     <SpatialSetting>k__BackingField: {fileID: 0}
     <Priority>k__BackingField: 128
