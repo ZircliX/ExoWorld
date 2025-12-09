@@ -10,6 +10,7 @@ namespace OverBang.GameName.Debugging
     [DefaultExecutionOrder(-10)]
     public class DebugHubScene : MonoBehaviour
     {
+        [SerializeField] private string SessionName = "DebugHubSession";
         private async void Awake()
         {
             if (GameController.CurrentGameMode == null)
@@ -33,12 +34,12 @@ namespace OverBang.GameName.Debugging
                 
             SessionOptions options = new SessionOptions()
             {
-                Name = "Debug Hub Session",
+                Name = SessionName,
                 MaxPlayers = 2,
                 IsPrivate = false,
             }.WithRelayNetwork();
 
-            await SessionManager.Global.CreateOrJoinSession("DebugHubSession", options);
+            await SessionManager.Global.CreateOrJoinSession(SessionName, options);
         }
     }
 }

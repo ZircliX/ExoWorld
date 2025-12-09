@@ -11,5 +11,6 @@ namespace OverBang.GameName.Core
         [field: SerializeField] public CameraID PlayerSpectateCamera { get; private set; }
         [field: SerializeField] public CameraID DefaultCamera { get; private set; }
         [field: SerializeField] public CameraID LoadoutCamera { get; private set; }
+        [field: SerializeField] public CameraID UpgradeCamera { get; private set; }
     }
 }

@@ -9,5 +9,6 @@ namespace OverBang.GameName.Core
         public static CameraID PlayerSpectateCamera => CameraIDs.Global.PlayerSpectateCamera;
         public static CameraID DefaultCamera => CameraIDs.Global.DefaultCamera;
         public static CameraID LoadoutCamera => CameraIDs.Global.LoadoutCamera;
+        public static CameraID UpgradeCamera => CameraIDs.Global.UpgradeCamera;
     }
 }
