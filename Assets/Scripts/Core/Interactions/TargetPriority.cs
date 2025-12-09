@@ -1,4 +1,4 @@
-﻿namespace OverBang.GameName.Gameplay
+﻿namespace OverBang.GameName.Core
 {
     public enum TargetPriority
     {

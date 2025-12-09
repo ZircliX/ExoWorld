@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
-using OverBang.GameName.Gameplay.Interface;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.GameName.Core
 {
     [RequireComponent(typeof(SphereCollider))]
     public class PlayerInteraction : MonoBehaviour

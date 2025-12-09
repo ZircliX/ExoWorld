@@ -60,8 +60,12 @@ namespace OverBang.GameName.Gameplay
             
             if (!IsOwner)
             {
-                weaponHolder = context.playerAnimator.GetBoneTransform(HumanBodyBones.RightHand);
-                //weaponHolder.position = weaponHolder.position.Add(z: 0.2f)
+                Transform arm = context.playerAnimator.GetBoneTransform(HumanBodyBones.RightHand);
+                weaponHolder = Instantiate(new GameObject("WeaponHolder"), arm).transform;
+                
+                weaponHolder.localPosition = new Vector3(-0.067f, 0.212f, 0.034f);
+                weaponHolder.localRotation = Quaternion.Euler(-84.267f, 77.452f, 14.835f);
+                weaponHolder.localScale = new Vector3(1.50f, 1.50f, 1.50f);
             }
             
             RefreshLoadout();

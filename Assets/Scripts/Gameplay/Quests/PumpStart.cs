@@ -1,4 +1,4 @@
-﻿using OverBang.GameName.Gameplay.Interface;
+﻿using OverBang.GameName.Core;
 using UnityEngine;
 using UnityUtils;
 

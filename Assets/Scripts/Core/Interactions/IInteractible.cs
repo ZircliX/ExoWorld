@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.Interface
+namespace OverBang.GameName.Core
 {
     public interface IInteractable
     {

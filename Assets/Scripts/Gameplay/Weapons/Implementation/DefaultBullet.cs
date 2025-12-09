@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using KBCore.Refs;
 using OverBang.GameName.Core;
 using OverBang.Pooling;
@@ -17,8 +18,15 @@ namespace OverBang.GameName.Gameplay
         private RaycastHit[] results;
         private int currentPenetration;
         private float lifeTime;
+        
+        private List<GameObject> hitObjects = new List<GameObject>();
 
         private void OnValidate() => this.ValidateRefs();
+
+        private void Awake()
+        {
+            hitObjects = new List<GameObject>();
+        }
 
         public override void Fire(Vector3 origin, Vector3 direction, BulletData bulletData)
         {
@@ -48,7 +56,7 @@ namespace OverBang.GameName.Gameplay
             Vector3 direction = distance.normalized;
             LayerMask mask = GameMetrics.Global.HittableLayers;
             
-            int hitSize = Physics.SphereCastNonAlloc(previousPosition, sc.radius, direction, results, distance.magnitude, mask, QueryTriggerInteraction.Collide);
+            int hitSize = Physics.SphereCastNonAlloc(previousPosition, sc.radius * 0.25f, direction, results, distance.magnitude, mask, QueryTriggerInteraction.Collide);
 
             //Debug.DrawRay(previousPosition, direction * distance.magnitude, Color.red, 0.5f);
             //Debug.Log(hitSize);
@@ -58,6 +66,10 @@ namespace OverBang.GameName.Gameplay
                 RaycastHit hit = results[i];
                 //Debug.Log($"Bullet hit : {hit.collider.gameObject.name} with tag {hit.collider.tag}", hit.collider.gameObject);
 
+                // Skip already hit objects
+                if (hitObjects.Contains(hit.collider.gameObject))
+                    continue;
+                
                 if (!hit.collider.gameObject.CompareTag("LocalPlayer"))
                 {
                     if (hit.collider.TryGetComponent(out IDamageable damageable) && IsOwner)
@@ -65,7 +77,8 @@ namespace OverBang.GameName.Gameplay
                         Debug.Log($"Dealing damage to IDamageable {hit.collider.name}", hit.collider.gameObject);
                         damageable.TakeDamage(data.Damage);
                     }
-                    /*
+                    
+                    /* To push objects when hit - disabled for now
                     if(hit.collider.attachedRigidbody != null)
                     {
                         hit.collider.attachedRigidbody.AddForce(rb.velocity * data.ImpactForce, ForceMode.Impulse);
@@ -73,6 +86,7 @@ namespace OverBang.GameName.Gameplay
                     */
                     
                     currentPenetration++;
+                    hitObjects.Add(hit.collider.gameObject);
                 }
                 
                 if (currentPenetration >= data.Penetration)
