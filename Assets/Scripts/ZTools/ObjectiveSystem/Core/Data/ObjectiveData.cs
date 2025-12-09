@@ -24,6 +24,9 @@ namespace ZTools.ObjectiveSystem.Core
         [field: SerializeField, TextArea] public string ObjectiveDescription { get; protected set; }
         public string GetObjectiveDescription() => ObjectiveDescription;
 
+        [field: SerializeField, TextArea] public string[] ObjectiveSteps { get; protected set; }
+        public string[] GetObjectiveSteps() => ObjectiveSteps;
+        
         /// <summary>
         /// An array of <see cref="RewardData"/> assets that are granted when the objective is completed.
         /// </summary>

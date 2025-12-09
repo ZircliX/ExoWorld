@@ -20,7 +20,7 @@ namespace OverBang.GameName.Gameplay
             }, CancellationToken.None);
         }
 
-        protected override async Awaitable<LevelManager> CreateLevelManager()
+        protected override LevelManager CreateLevelManager()
         {
             Debug.Log("Creating level manager");
             
@@ -30,12 +30,6 @@ namespace OverBang.GameName.Gameplay
             };
             
             LevelManager = levelManager.AddComponent<LevelManager>();
-
-            if (LevelManager != null)
-            {
-                await LevelManager.Initialize(this);
-                LevelManager.StartLevel();
-            }
 
             return LevelManager;
         }

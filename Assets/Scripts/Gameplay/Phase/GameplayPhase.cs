@@ -37,8 +37,14 @@ namespace OverBang.GameName.Gameplay
             await SessionManager.Global.CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyPhaseStatus, nameof(PhaseStatus.None));
             SceneManager.sceneLoaded += OnSceneLoaded;
             
+            LevelManager = CreateLevelManager();
             await LoadScene();
-            LevelManager = await CreateLevelManager();
+            
+            if (LevelManager != null)
+            {
+                await LevelManager.Initialize(this);
+                LevelManager.StartLevel();
+            }
         }
 
         protected virtual async Awaitable Execute()
@@ -56,7 +62,7 @@ namespace OverBang.GameName.Gameplay
         {
             await SessionManager.Global.CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyPhaseStatus, nameof(PhaseStatus.None));
             LevelManager.Dispose();
-            
+            Object.DestroyImmediate(LevelManager);
             
             await AwaitableUtils.CompletedAwaitable;
         }
@@ -73,7 +79,7 @@ namespace OverBang.GameName.Gameplay
         public void SetIsDone() => IsDone = true;
         
         protected abstract Awaitable LoadScene();
-        protected abstract Awaitable<LevelManager> CreateLevelManager();
+        protected abstract LevelManager CreateLevelManager();
         
         Awaitable IPhase.OnBegin() => OnBegin();
         Awaitable IPhase.OnEnd() => OnEnd();

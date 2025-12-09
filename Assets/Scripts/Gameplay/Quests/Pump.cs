@@ -11,8 +11,8 @@ namespace OverBang.GameName.Gameplay
         #region Quest
 
         [SerializeField] private PumpQuestData pumpQuestData;
+        private PumpQuestHandler handler;
 
-        public event Action<float, float> OnProgressChanged;
         public bool IsCompleted { get; private set; }
         public bool IsStarted { get; private set; }
         public float CurrentRepairTime { get; private set; }
@@ -35,7 +35,7 @@ namespace OverBang.GameName.Gameplay
 
         #endregion
 
-        private void Start()
+        private void Awake()
         {
             Health = MaxHealth;
         }
@@ -44,6 +44,9 @@ namespace OverBang.GameName.Gameplay
         {
             if (IsOwner)
             {
+                handler = pumpQuestData.GetHandlerByData<PumpQuestHandler>();
+                handler.SetStepIndex(1);
+                
                 SetIsStarted(true);
                 LevelManager.Instance.EnemySpawnerManager.SpawnEnemies(pumpQuestData.EnemySpawnScenario);
             }
@@ -118,9 +121,9 @@ namespace OverBang.GameName.Gameplay
                 IsCompleted = true;
 
                 current = target;
+                handler.SetStepIndex(2);
             }
             
-            OnProgressChanged?.Invoke(current, target);
             ObjectivesManager.DispatchGameEvent(new PumpEvent(current, target));
         }
     }
