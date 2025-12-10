@@ -21,7 +21,7 @@ namespace OverBang.GameName.Gameplay
             upgradeDescription.text = data.upgradeData.UpgradeDesc;
             upgradeLevel.text = $"Niveau : {data.level}";
             upgradePrice.text = $"Prix : {data.cost}";
-            upgradeBonus.text = $"Bonus Actuel : {data.bonus}";
+            upgradeBonus.text = $"Bonus Actuel : {data.finalBonus}";
         }
     }
 }

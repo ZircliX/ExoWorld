@@ -25,7 +25,7 @@ namespace OverBang.GameName.Core
         
         public readonly SelectionSettings Settings;
         
-        public event Action<IPlayer, CharacterData> OnCharacterSelected;
+        public event Action<IPlayer, CharacterData, bool> OnCharacterSelected;
         
         public CharacterData SelectedCharacter { get; private set; }
         public IPlayer CurrentPlayer => SessionManager.Global.CurrentPlayer;
@@ -67,7 +67,7 @@ namespace OverBang.GameName.Core
             await AwaitableUtils.CompletedAwaitable;
         }
 
-        public void SelectCharacter(CharacterData characterData)
+        public void SelectCharacter(CharacterData characterData, bool characterChanged)
         {
             if (characterData == null)
                 return;
@@ -77,7 +77,7 @@ namespace OverBang.GameName.Core
             aw.Run();
             
             SelectedCharacter = characterData;
-            OnCharacterSelected?.Invoke(CurrentPlayer, characterData);
+            OnCharacterSelected?.Invoke(CurrentPlayer, characterData, characterChanged);
         }
 
         private void LoadCharactersData()

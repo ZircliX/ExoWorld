@@ -55,7 +55,7 @@ namespace OverBang.GameName.Hub
                 if (currentPlayer.TryGetCharacterDataByPlayer(out CharacterData character))
                 {
                     //Debug.Log($"PLayer {currentPlayer} got character {character.AgentName}");
-                    SelectCharacter(character);
+                    SelectCharacter(character, false);
                 }
             }
         }

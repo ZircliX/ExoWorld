@@ -7,10 +7,12 @@ namespace OverBang.GameName.Gameplay
 {
     public class UpgradeTable : MonoBehaviour, IInteractable
     {
-        [SerializeField] private CanvasGroup upgradeGroup;
         public string InteractionText => string.Empty;
         public int Priority => (int)TargetPriority.High;
         public bool CanInteract { get; private set; } = true;
+        
+        public event Action<bool> OnUpgradePanelRequest;
+        
         public void Interact(PlayerInteraction playerInteraction)
         {
             StartUpgradeSelection();
@@ -18,24 +20,16 @@ namespace OverBang.GameName.Gameplay
 
         public void StartUpgradeSelection()
         {
-            upgradeGroup.alpha = 1;
-            upgradeGroup.blocksRaycasts = true;
-            upgradeGroup.interactable = true;
             CanInteract = false;
+            OnUpgradePanelRequest?.Invoke(true);
             CameraManager.Instance.RequestCameraChange(CameraIDs.Global.UpgradeCamera);
-            HUD.Instance.ChangeHudState(true);
-            UpgradeManager.Instance.RefreshTable();
         }
         
         public void StopUpgradeSelection()
         {
-            upgradeGroup.alpha = 0;
-            upgradeGroup.blocksRaycasts = false;
-            upgradeGroup.interactable = false;
             CanInteract = true;
+            OnUpgradePanelRequest?.Invoke(false);
             CameraManager.Instance.RequestCameraChange(CameraIDs.Global.PlayerViewCamera);
-            HUD.Instance.ChangeHudState(false);
-            
         }
     }
 }

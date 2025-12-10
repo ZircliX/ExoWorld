@@ -1,5 +1,6 @@
 ﻿using System;
 using Ami.BroAudio;
+using OverBang.GameName.Core;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -25,7 +26,8 @@ namespace OverBang.GameName.Gameplay
 
         public void Initialize(float maxHealth,  float resistance)
         {
-            MaxHealth = maxHealth;
+            float bonusHealth = UpgradeManager.Instance.GetRuntimeUpgrade(UpgradeType.Health);
+            MaxHealth = maxHealth + bonusHealth;
             Resistance = resistance;
         }
 

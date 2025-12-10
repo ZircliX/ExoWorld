@@ -7,12 +7,14 @@
         public float bonus;
         public float finalBonus;
         public int cost;
+        public int initialCost;
 
 
         public void Initialize()
         {
             bonus = upgradeData.Bonus;
             cost = upgradeData.Cost;
+            initialCost = cost;
         }
         
         

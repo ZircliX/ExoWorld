@@ -10,9 +10,11 @@ namespace OverBang.GameName.Gameplay
     public class UpgradeManager : MonoSingleton<UpgradeManager>
     {
         private Dictionary<UpgradeType, Upgrade> upgrades;
-        private List<RuntimeUpgradeData> playerUpgradesDatas;
-
+        private Dictionary<UpgradeType, RuntimeUpgradeData> playerUpgradesDatas;
         
+        public event Action<int> OnPlayerTritiniteAmountChange;
+
+
         private void OnEnable()
         {
             upgrades = new Dictionary<UpgradeType, Upgrade>();
@@ -22,7 +24,7 @@ namespace OverBang.GameName.Gameplay
         public void InitializeUpgrades(IPlayer player)
         {
             
-            playerUpgradesDatas = new List<RuntimeUpgradeData>(4);
+            playerUpgradesDatas = new Dictionary<UpgradeType, RuntimeUpgradeData>(4);
             
             if (player.TryGetCharacterDataByPlayer(out CharacterData characterData))
             {
@@ -33,7 +35,7 @@ namespace OverBang.GameName.Gameplay
                         upgradeData = upgrade,
                     };
                     run.Initialize();
-                    playerUpgradesDatas.Add(run);
+                    playerUpgradesDatas.Add(run.upgradeData.UpgradeType, run);
                 }
 
                 RefreshTable();
@@ -45,43 +47,52 @@ namespace OverBang.GameName.Gameplay
             
         }
 
+        public float GetRuntimeUpgrade(UpgradeType type)
+        {
+            RuntimeUpgradeData data =  playerUpgradesDatas[type];
+            
+            return data.finalBonus;
+        }
+
         public void RefreshTable()
         {
-            foreach (RuntimeUpgradeData runtimeUpgradeData in playerUpgradesDatas)
+            foreach (KeyValuePair<UpgradeType, RuntimeUpgradeData> runtimeUpgradeData in playerUpgradesDatas)
             {
-                Upgrade upgrade = upgrades[runtimeUpgradeData.upgradeData.UpgradeType];
-                upgrade.ui.Refresh(runtimeUpgradeData);
+                RuntimeUpgradeData runtimeData = runtimeUpgradeData.Value;
+                Debug.Log($"{runtimeData.upgradeData.UpgradeName}, {runtimeData.finalBonus}");
+
+                Upgrade upgrade = upgrades[runtimeData.upgradeData.UpgradeType];
+                upgrade.ui.Refresh(runtimeData);
             }
         }
         
         public bool TryToUpgrade(UpgradeType type, Upgrade upgrade)
         {
-            foreach (RuntimeUpgradeData data in playerUpgradesDatas)
+            foreach (KeyValuePair<UpgradeType, RuntimeUpgradeData> data in playerUpgradesDatas)
             {
-                if (data.upgradeData.UpgradeType == type)
+                RuntimeUpgradeData  runtimeData = data.Value; 
+                if (runtimeData.upgradeData.UpgradeType == type)
                 {
-                        Debug.Log($"Before Upgrade for {data.upgradeData.name} : level : {data.level} : cost :  {data.cost} : bonus :  {data.bonus} ");
-                    if (PlayerInventory.Trinitite >= data.cost)
+                    if (PlayerInventory.Trinitite >= runtimeData.cost)
                     {
-                        PlayerInventory.DecrementTrinitite(data.cost);
-                        Debug.Log(data.level);
-                        int newLevel = data.level + 1 ;
-                        Debug.Log($"New Level: {newLevel}");
-                        float newBonus = data.finalBonus + data.bonus * newLevel ;
-                        Debug.Log(newBonus);
-                        int newCost = data.cost * newLevel;
+                        int newtriniAmount = PlayerInventory.DecrementTrinitite(runtimeData.cost);
+                        OnPlayerTritiniteAmountChange?.Invoke(newtriniAmount);
                         
-                        data.SetValue(newBonus, newLevel, newCost);
+                        int newLevel = runtimeData.level + 1 ;
                         
-                        upgrade.ui.Refresh(data);
+                        float newBonus = runtimeData.finalBonus + runtimeData.bonus * newLevel ;
                         
-                        Debug.Log($"Upgrade Complete for {data.upgradeData.name} : level : {data.level} : cost :  {data.cost} : bonus :  {data.bonus}");
+                        int newCost = runtimeData.initialCost * newLevel;
+                        
+                        runtimeData.SetValue(newBonus, newLevel, newCost);
+                        playerUpgradesDatas[data.Key] = runtimeData;
+                        
+                        upgrade.ui.Refresh(runtimeData);
+                        
                         return true;
                     }
                     else
                     {
-                        Debug.Log($"not enough Trinitite, Upgrade Cost : {data.cost}, need {data.cost - PlayerInventory.Trinitite} more !!");
-                
                         return false;
                     }
                 }
@@ -103,7 +114,7 @@ namespace OverBang.GameName.Gameplay
             upgrades.Remove(upgrade.UpgradeType);
         }
         
-        #endregion Register / unregister upgrades
+        #endregion
         
     }
 }

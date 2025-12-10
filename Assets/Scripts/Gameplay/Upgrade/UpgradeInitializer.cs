@@ -18,8 +18,10 @@ namespace OverBang.GameName.Gameplay
             phase.OnCharacterSelected += OnCharacterSelected;
         }
 
-        private void OnCharacterSelected(IPlayer character, CharacterData data)
+        private void OnCharacterSelected(IPlayer character, CharacterData data, bool characterChanged)
         {
+            if (!characterChanged) return; 
+            
             UpgradeManager.Instance.InitializeUpgrades(character);
             Debug.Log("Character selected, Initialize Upgrades");
         }

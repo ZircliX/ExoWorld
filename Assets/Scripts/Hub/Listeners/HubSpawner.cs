@@ -13,7 +13,7 @@ namespace OverBang.GameName.Hub
             phase.OnCharacterSelected += SpawnPlayer;
             
             if (phase.SelectedCharacter != null)
-                SpawnPlayer(phase.CurrentPlayer, phase.SelectedCharacter);
+                SpawnPlayer(phase.CurrentPlayer, phase.SelectedCharacter, false);
         }
 
         protected override void OnEnd(HubPhase phase)
@@ -22,7 +22,7 @@ namespace OverBang.GameName.Hub
             phase.OnCharacterSelected -= SpawnPlayer;
         }
 
-        private void SpawnPlayer(IPlayer player, CharacterData characterData)
+        private void SpawnPlayer(IPlayer player, CharacterData characterData, bool characterChanged)
         {
             //Debug.Log($"Spawn player {player.Id} with character {characterData.AgentName}");
             ulong clientID = NetworkManager.Singleton.LocalClient.ClientId;
