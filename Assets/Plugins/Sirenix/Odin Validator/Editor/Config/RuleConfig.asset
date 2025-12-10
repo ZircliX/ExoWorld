@@ -28,3 +28,15 @@ MonoBehaviour:
     Type: Sirenix.OdinValidator.Editor.Validators.ShaderCompilerErrorsValidator,
       Sirenix.OdinValidator.Editor
     Override: 
+  - Enabled: 0
+    EnabledOverridden: 1
+    Type: Sirenix.OdinValidator.Editor.Validators.SerializeReferenceValidator, Sirenix.OdinValidator.Editor
+    Override: 
+  - Enabled: 0
+    EnabledOverridden: 1
+    Type: Sirenix.OdinValidator.Editor.Validators.MeshRendererValidator, Sirenix.OdinValidator.Editor
+    Override: 
+  - Enabled: 0
+    EnabledOverridden: 1
+    Type: Sirenix.OdinValidator.Editor.Validators.MaterialValidator, Sirenix.OdinValidator.Editor
+    Override: 
