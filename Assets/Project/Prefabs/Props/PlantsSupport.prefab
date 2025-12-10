@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6138246020987219842}
   - component: {fileID: 7439486657162109765}
   - component: {fileID: 8761490449322571883}
-  - component: {fileID: 4296279905970864690}
+  - component: {fileID: 6838875082821428040}
   m_Layer: 8
   m_Name: PlantsSupport
   m_TagString: Untagged
@@ -574,8 +574,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6495234446764122916}
   m_Mesh: {fileID: 0}
---- !u!64 &4296279905970864690
-MeshCollider:
+--- !u!65 &6838875082821428040
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -592,10 +592,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 3
+  m_Size: {x: 2, y: 1.0000088, z: 1}
+  m_Center: {x: 0, y: 0.0000044107437, z: 0}
 --- !u!1001 &1357262744749526871
 PrefabInstance:
   m_ObjectHideFlags: 0
