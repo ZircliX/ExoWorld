@@ -48,7 +48,6 @@ namespace OverBang.GameName.Gameplay
                 handler.SetStepIndex(1);
                 
                 SetIsStarted(true);
-                LevelManager.Instance.EnemySpawnerManager.SpawnEnemies(pumpQuestData.EnemySpawnScenario);
             }
             else
             {
@@ -65,6 +64,7 @@ namespace OverBang.GameName.Gameplay
         private void SetIsStarted(bool isStarted)
         {
             if (!IsOwner) return;
+            LevelManager.Instance.EnemySpawnerManager.SpawnEnemies(pumpQuestData.EnemySpawnScenario);
             IsStarted = isStarted;
         }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using Unity.Services.Multiplayer;
 using UnityEngine;
 
@@ -70,5 +71,61 @@ namespace OverBang.GameName.Core
             phaseStatus = PhaseStatus.None;
             return false;
         }
+        
+        // IReadOnlyPlayer version
+        
+        public static bool TryGetPlayerProperty(this IReadOnlyPlayer player, string propertyName, out string propertyValue)
+        {
+            if (player?.Properties != null &&
+                player.Properties.TryGetValue(propertyName, out PlayerProperty prop) &&
+                !string.IsNullOrEmpty(prop.Value))
+            {
+                propertyValue = prop.Value;
+                return true;
+            }
+
+            propertyValue = string.Empty;
+            return false;
+        }
+        
+        public static bool TryGetPhaseStatusByPlayer(this IReadOnlyPlayer player, out PhaseStatus phaseStatus)
+        {
+            string propertyName = ConstID.Global.PlayerPropertyPhaseStatus;
+            if (player.TryGetPlayerProperty(propertyName, out string propertyValue))
+            {
+                if (Enum.TryParse(propertyValue, out phaseStatus))
+                {
+                    return true;
+                }
+            }
+
+            phaseStatus = PhaseStatus.None;
+            return false;
+        }
+        
+        // Await until players properties reaches a specific value
+
+        public static async Awaitable AwaitableUntilAllPlayers(PhaseStatus targetStatus)
+        {
+            await AwaitableUtils.AwaitableUntil(() =>
+            {
+                bool allReady = true;
+                    
+                foreach (IReadOnlyPlayer player in SessionManager.Global.ActiveSession.Players)
+                {
+                    if (player.TryGetPhaseStatusByPlayer(out PhaseStatus status))
+                    {
+                        if (status != targetStatus)
+                            allReady = false;
+                    }
+                    else
+                    {
+                        allReady = false;
+                    }
+                }
+                    
+                return allReady;
+            }, CancellationToken.None);
+        } 
     }
 }
