@@ -1,8 +1,12 @@
 {
-    "name": "InterfaceAttributes",
-    "rootNamespace": "InterfaceAttributes",
-    "references": [],
-    "includePlatforms": [],
+    "name": "InterfaceAttributes.Editor",
+    "rootNamespace": "InterfaceAttributes.Editor",
+    "references": [
+        "GUID:5817760fa92c2c043bb07415cc1f962a"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
