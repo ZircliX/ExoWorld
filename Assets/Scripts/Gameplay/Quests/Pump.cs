@@ -44,9 +44,6 @@ namespace OverBang.GameName.Gameplay
         {
             if (IsOwner)
             {
-                handler = pumpQuestData.GetHandlerByData<PumpQuestHandler>();
-                handler.SetStepIndex(1);
-                
                 SetIsStarted(true);
             }
             else
@@ -59,6 +56,14 @@ namespace OverBang.GameName.Gameplay
         private void CallStartRepairRpc(bool isStarted)
         {
             SetIsStarted(isStarted);
+            UpdateUIRpc();
+        }
+        
+        [Rpc(SendTo.Everyone)]
+        private void UpdateUIRpc()
+        {
+            handler = pumpQuestData.GetHandlerByData<PumpQuestHandler>();
+            handler.SetStepIndex(1);
         }
 
         private void SetIsStarted(bool isStarted)
@@ -80,7 +85,7 @@ namespace OverBang.GameName.Gameplay
             }
         }
 
-        [Rpc(SendTo.Owner)]
+        [Rpc(SendTo.Everyone)]
         private void CallHitPumpRpc()
         {
             DamagePump();

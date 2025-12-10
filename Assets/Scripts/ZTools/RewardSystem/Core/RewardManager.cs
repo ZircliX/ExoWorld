@@ -20,7 +20,7 @@ namespace ZTools.RewardSystem.Core
             LogProvider.Log("Cleared all registered reward processors.");
         }
 
-        public static void RegisterRewardProcessor<T>(this RewardProcessor<T> processor)
+        public static void RegisterRewardProcessor<T>(this MonoRewardProcessor<T> processor)
             where T : RewardData
         {
             if (processor == null)
@@ -33,7 +33,39 @@ namespace ZTools.RewardSystem.Core
             LogProvider.Log($"Registered reward processor: {processor}");
         }
         
-        public static void UnregisterRewardProcessor<T>(this RewardProcessor<T> processor)
+        public static void UnregisterRewardProcessor<T>(this MonoRewardProcessor<T> processor)
+            where T : RewardData
+        {
+            if (processor == null)
+            {
+                LogProvider.LogError("Attempted to unregister a null reward processor.");
+                return;
+            }
+
+            if (RewardProcessors.Remove(processor))
+            {
+                LogProvider.Log($"Unregistered reward processor: {processor}");
+            }
+            else
+            {
+                LogProvider.LogWarning($"Reward processor with ID '{processor}' not found.");
+            }
+        }
+        
+        public static void RegisterRewardProcessor<T>(this NetworkRewardProcessor<T> processor)
+            where T : RewardData
+        {
+            if (processor == null)
+            {
+                LogProvider.LogError("Attempted to register a null reward processor.");
+                return;
+            }
+
+            RewardProcessors.Add(processor);
+            LogProvider.Log($"Registered reward processor: {processor}");
+        }
+        
+        public static void UnregisterRewardProcessor<T>(this NetworkRewardProcessor<T> processor)
             where T : RewardData
         {
             if (processor == null)

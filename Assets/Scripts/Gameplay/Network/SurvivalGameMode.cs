@@ -32,6 +32,7 @@ namespace OverBang.GameName.Gameplay
 
                 // Gameplay
                 GameplayPhase gameplayPhase = await HandleGameplayPhase();
+                gameplayEndInfos = gameplayPhase.CurrentEndInfos;
 
                 if(gameplayPhase.CurrentEndInfos.isFinished)
                     isRunning = false;

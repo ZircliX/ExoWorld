@@ -16,6 +16,7 @@ namespace OverBang.GameName.Gameplay
         [field: SerializeField] public string EnemyName { get; private set; }
         [field: SerializeField] public EnemyType EnemyType { get; private set; }
         [field: SerializeField] public DamageInfo DamageInfo { get; private set; }
+        [field: SerializeField] public float BaseHealth { get; private set; }
         
         [field: SerializeField] 
         public GameObject ModelPrefab { get; private set; }

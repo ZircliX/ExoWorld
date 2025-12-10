@@ -16,8 +16,14 @@ namespace OverBang.GameName.Gameplay
         [System.Serializable]
         public struct GameplayEndInfos
         {
-            public int score;
+            public GameplayRewards rewards;
             public bool isFinished;
+        }
+
+        [System.Serializable]
+        public struct GameplayRewards
+        {
+            public int trinititeReward;
         }
         
         public readonly GameplaySettings Settings;
@@ -54,7 +60,10 @@ namespace OverBang.GameName.Gameplay
             CurrentEndInfos = new GameplayEndInfos()
             {
                 isFinished = false,
-                score = 1,
+                rewards = new GameplayRewards()
+                {
+                    trinititeReward = PlayerInventory.Trinitite,
+                }
             };
         }
         
