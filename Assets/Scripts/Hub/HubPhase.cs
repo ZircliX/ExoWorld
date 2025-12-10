@@ -1,3 +1,4 @@
+using System.Threading;
 using Eflatun.SceneReference;
 using OverBang.GameName.Core;
 using OverBang.Pooling;
@@ -19,9 +20,13 @@ namespace OverBang.GameName.Hub
         {
             SceneManager.sceneLoaded += OnSceneLoaded;
             await base.OnBegin();
+            await SessionManager.Global.CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyPhaseStatus, nameof(PhaseStatus.ReadyForSceneLoad));
 
             if (SessionManager.Global.IsHost())
             {
+                // Await all players ready
+                await NetworkPropertiesUtils.AwaitableUntilAllPlayers(PhaseStatus.ReadyForSceneLoad);
+                
                 SceneReference hubSceneRef = SceneCollection.Global.HubSceneRef;
                 Scene currentScene = SceneLoader.GetCurrentScene();
     
@@ -38,7 +43,7 @@ namespace OverBang.GameName.Hub
         {
             await base.OnEnd();
             PoolManager.Instance.ClearPools();
-            SessionManager.Global.CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyPhaseStatus, nameof(PhaseStatus.None));
+            await SessionManager.Global.CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyPhaseStatus, nameof(PhaseStatus.None));
         }
 
         public void Validate()
@@ -64,7 +69,8 @@ namespace OverBang.GameName.Hub
         {
             if (scene.name == GameMetrics.Global.SceneCollection.HubSceneRef.Name)
             {
-                SessionManager.Global.CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyPhaseStatus, nameof(PhaseStatus.SceneLoaded));
+                Awaitable aw = SessionManager.Global.CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyPhaseStatus, nameof(PhaseStatus.SceneLoaded));
+                aw.Run();
             }
         }
     }

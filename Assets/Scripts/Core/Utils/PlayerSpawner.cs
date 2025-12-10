@@ -18,9 +18,6 @@ namespace OverBang.GameName.Core
                 playerController.SetDataRpc(characterData.ID);
             }
             
-            Awaitable aw = player.UpdatePlayerProperty(ConstID.Global.PlayerPropertyPhaseStatus, nameof(PhaseStatus.PlayerSetup));
-            aw.Run();
-            
             return playerObject;
         }
     }

@@ -8,12 +8,7 @@
     
             PhaseStatus[] phases = new[]
             {
-                PhaseStatus.SceneLoaded,
-                PhaseStatus.LevelLoaded,
-                PhaseStatus.PlayerSetup,
-                PhaseStatus.EnemiesSetup,
-                PhaseStatus.UISetup,
-                PhaseStatus.PoolsLoaded
+                PhaseStatus.ReadyForSceneLoad
             };
     
             foreach (PhaseStatus phase in phases)

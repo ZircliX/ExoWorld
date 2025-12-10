@@ -167,7 +167,26 @@ namespace OverBang.GameName.Gameplay
         protected void OnDeath()
         {
             EnemyManager.Instance.Unregister(this);
-            //TODO : Fix network spawn -> removes from pool 
+            
+            if (IsOwner)
+            {
+                OnDeathOwner();
+            }
+            else
+            {
+                gameObject.SetActive(false);
+                OnDeathRpc();
+            }
+        }
+
+        [Rpc(SendTo.Owner)]
+        private void OnDeathRpc()
+        {
+            OnDeathOwner();
+        }
+
+        private void OnDeathOwner()
+        {
             EnemyNetworkObject.Despawn();
         }
         
