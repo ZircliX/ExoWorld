@@ -33,8 +33,6 @@ namespace OverBang.GameName.Gameplay
 
         [field: SerializeField] public float patrolRadius { get; private set; } = 10f;
 
-        [field : SerializeField] public float stopDistance { get; private set; } = 1f;
-        
         private List<Transform> currentPlayersInRange;
         
         private Vector3 targetPoint;
@@ -98,7 +96,7 @@ namespace OverBang.GameName.Gameplay
         {
             if (!IsOwner) return;
             
-            if (currentPlayersInRange.Count <= 0 && !Agent.pathPending && Agent.remainingDistance <= stopDistance)
+            if (currentPlayersInRange.Count <= 0 && !Agent.pathPending && Agent.remainingDistance <= Agent.stoppingDistance)
             {
                 ChooseNewDestination();
             }
@@ -196,6 +194,7 @@ namespace OverBang.GameName.Gameplay
         public void OnSpawn(IPool pool)
         {
             Pool = pool;
+            DahComponent.Initialize(enemyData.BaseHealth, 0);
             //TODO : Reset runtime enemies datas 
         }
         

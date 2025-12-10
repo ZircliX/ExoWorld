@@ -3,7 +3,7 @@ using ZTools.RewardSystem.Core;
 
 namespace OverBang.GameName.Gameplay
 {
-    public class ShipRewardProcessor : RewardProcessor<ShipRewardData>
+    public class ShipMonoRewardProcessor : MonoRewardProcessor<ShipRewardData>
     {
         [SerializeField] private GameObject ship;
 

@@ -1,6 +1,6 @@
 namespace ZTools.RewardSystem.Core
 {
-    internal interface IRewardProcessor
+    public interface IRewardProcessor
     {
         bool TryProcess(RewardData reward);
     }

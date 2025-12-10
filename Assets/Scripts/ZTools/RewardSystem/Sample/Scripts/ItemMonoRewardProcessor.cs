@@ -2,7 +2,7 @@ using ZTools.RewardSystem.Core;
 
 namespace ZTools.RewardSystem.Sample
 {
-    public class ItemRewardProcessor : RewardProcessor<InventoryItemRewardData>
+    public class ItemMonoRewardProcessor : MonoRewardProcessor<InventoryItemRewardData>
     {
         protected override bool TryProcess(InventoryItemRewardData reward)
         {

@@ -8,6 +8,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2194053612006079565, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2194053612006079565, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2194053612006079565, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2264398050847694425, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
       propertyPath: playerInteraction
       value: 
@@ -142,6 +154,5 @@ MonoBehaviour:
   damagedSound:
     ID: 0
     _sourceAsset: {fileID: 0}
-    <DebugObject>k__BackingField: {fileID: 0}
+    <DebugObject>k__BackingField: {fileID: 2389321229845195512}
   <Health>k__BackingField: 0
-  <MaxHealth>k__BackingField: 100

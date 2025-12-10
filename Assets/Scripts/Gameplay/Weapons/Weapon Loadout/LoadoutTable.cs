@@ -47,10 +47,9 @@ namespace OverBang.GameName.Gameplay
         public void ConfirmSelection()
         {
             // Assign default weapons
-            
-            if (selectedPrimary == null || PlayerLoadout.Loadout.primaryWeapon == null)
+            if ((selectedPrimary == null && PlayerLoadout.Loadout.primaryWeapon == null) || selectedPrimary == null)
                 selectedPrimary = primaryWeaponData[0];
-            if (selectedSecondary == null || PlayerLoadout.Loadout.secondaryWeapon == null)
+            if ((selectedSecondary == null && PlayerLoadout.Loadout.secondaryWeapon == null) || selectedSecondary == null)
                 selectedSecondary = secondaryWeaponData[0];
             
             OnRankSelectionUIRequested?.Invoke(false);
