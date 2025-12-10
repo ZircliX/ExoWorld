@@ -1,0 +1,13 @@
+﻿namespace OverBang.GameName.Core
+{
+    public interface IUpgrade
+    {
+        
+        float Bonus { get; }
+        int Level {  get;}
+        int Cost { get; }
+        
+        
+       
+    }
+}

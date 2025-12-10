@@ -18,7 +18,6 @@ namespace OverBang.GameName.Gameplay
         public void RegisterPlayer(PlayerController player)
         {
             players.Add(player);
-            Debug.Log($"Registered player {player.name}");
         }
 
         public void UnregisterPlayer(PlayerController player)

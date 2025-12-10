@@ -1,5 +1,6 @@
 ﻿using System;
 using Ami.BroAudio;
+using OverBang.GameName.Core;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -13,13 +14,21 @@ namespace OverBang.GameName.Gameplay
         public event Action OnHealed;
         
         [field: SerializeField, ReadOnly] public float Health { get; private set; }
-        [field: SerializeField] public float MaxHealth { get; private set; }
+        public float MaxHealth { get; private set; }
+        public float Resistance { get; private set; }
         public bool IsAlive => Health > 0;
 
         private void OnEnable()
         {
             if (Health < MaxHealth)
                 Heal(MaxHealth);
+        }
+
+        public void Initialize(float maxHealth,  float resistance)
+        {
+            float bonusHealth = UpgradeManager.Instance.GetRuntimeUpgrade(UpgradeType.Health);
+            MaxHealth = maxHealth + bonusHealth;
+            Resistance = resistance;
         }
 
         public void Heal(float amount)
