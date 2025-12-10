@@ -597,8 +597,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 50
   gravityAlignSpeed: 5000
-  xModifier: 0.4
-  yModifier: 0.4
+  xModifier: 0.2
+  yModifier: 0.2
   yRange: 75
   pm: {fileID: 4862076419946111438}
   cameraRoot: {fileID: 6943655484419672877}
@@ -1988,7 +1988,6 @@ MonoBehaviour:
     _sourceAsset: {fileID: 11400000, guid: 1e98a9d7d89afe544803e95a716644ff, type: 2}
     <DebugObject>k__BackingField: {fileID: 6684921334843441845}
   <Health>k__BackingField: 0
-  <MaxHealth>k__BackingField: 100
 --- !u!114 &4862076419946111438
 MonoBehaviour:
   m_ObjectHideFlags: 0
