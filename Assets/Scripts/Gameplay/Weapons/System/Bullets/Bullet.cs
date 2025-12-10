@@ -1,10 +1,11 @@
 ﻿using OverBang.Pooling;
 using OverBang.Pooling.Resource;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace OverBang.GameName.Gameplay
 {
-    public abstract class Bullet : MonoBehaviour, IPoolInstanceListener
+    public abstract class Bullet : NetworkBehaviour, IPoolInstanceListener
     {
         public abstract IPool Pool { get; protected set; }
         

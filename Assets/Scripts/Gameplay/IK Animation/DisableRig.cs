@@ -1,0 +1,28 @@
+using UnityEngine;
+using UnityEngine.Animations.Rigging;
+
+namespace OverBang.GameName.Gameplay
+{
+    public class DisableRig : MonoBehaviour
+    {
+        [SerializeField] private WeaponController wc;
+
+        private void OnEnable()
+        {
+            wc.OnRigBuilderAccessed += OnDisableRig;
+        }
+
+        private void OnDisable()
+        {
+            wc.OnRigBuilderAccessed -= OnDisableRig;
+        }
+
+        private void OnDisableRig(RigBuilder rigBuilder)
+        {
+            foreach (RigLayer layer in rigBuilder.layers)
+            {
+                layer.rig.weight = 0;
+            }
+        }
+    }
+}

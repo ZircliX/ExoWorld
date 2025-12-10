@@ -23,7 +23,14 @@ namespace ZTools.ObjectiveSystem.Core
         /// Gets the base <see cref="ObjectiveData"/> associated with this objective.
         /// </summary>
         public ObjectiveData ObjectiveData { get; protected set; }
+
+        public int StepIndex { get; protected set; }
         public ObjectiveData GetObjectiveData() => ObjectiveData;
+        
+        public void SetStepIndex(int stepIndex)
+        {
+            StepIndex = stepIndex;
+        }
 
         /// <summary>
         /// Gets a value indicating whether the objective has met its completion criteria.

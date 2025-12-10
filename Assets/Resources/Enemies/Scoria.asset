@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Scoria
   m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.EnemyData
   <EnemyName>k__BackingField: Scoria
-  <Health>k__BackingField: 120
-  <Damage>k__BackingField: 80
   <EnemyType>k__BackingField: 2
+  <DamageInfo>k__BackingField:
+    baseDamage: 0
+    weakSpotMultiplier: 0
   <ModelPrefab>k__BackingField: {fileID: 1989156855183828598, guid: 03cf94dbe51604f4690650afdddb71e8, type: 3}
-  <EnemyResource>k__BackingField: {fileID: 11400000, guid: 8a9c6c0523685f84481a36802dbab533, type: 2}
+  <EnemyPrefab>k__BackingField: {fileID: 827771057727792807, guid: f615e6bd2f350664a9f5d3e82c0f415c, type: 3}
   <Dependencies>k__BackingField:
   - <PoolSize>k__BackingField: 15
     <PoolResource>k__BackingField: {fileID: 11400000, guid: 8a9c6c0523685f84481a36802dbab533, type: 2}

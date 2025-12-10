@@ -1,63 +1,34 @@
 using System;
-using System.Collections.Generic;
 using Helteix.ChanneledProperties.Priorities;
-using Helteix.Singletons.SceneServices;
 using OverBang.GameName.Core;
 using OverBang.Pooling;
-using OverBang.Pooling.Dependencies;
-using OverBang.Pooling.Resource;
 using Unity.Netcode;
 using Unity.Services.Multiplayer;
 using UnityEngine;
 
 namespace OverBang.GameName.Gameplay
 {
-    public sealed class LevelManager : SceneService<LevelManager>
+    public sealed class LevelManager : MonoBehaviour
     {
-        public event Action<List<IPoolDependencyProvider>> OnCollectSceneProviders;
+        public static LevelManager Instance { get; private set; }
         public LevelState State { get; private set; }
+        public event Action<LevelState> OnStateChanged; 
         
         private GameplayPhase currentPhase;
         private GameplayPhase.GameplaySettings Settings => currentPhase.Settings;
         public EnemySpawnerManager EnemySpawnerManager { get; private set; }
 
-        protected override void Activate()
+        private void Awake()
         {
-            PoolManager.Instance.OnPoolAssetRegistered += OnPoolAssetRegistered;
-            PoolManager.Instance.OnPoolAssetUnregistered += OnPoolAssetUnregistered;
+            DontDestroyOnLoad(gameObject);
+            Instance = this;
             EnemySpawnerManager = new EnemySpawnerManager();
             EnemySpawnerManager.Register();
         }
-
-        protected override void Deactivate()
-        {
-            base.Deactivate();
-            PoolManager.Instance.OnPoolAssetRegistered -= OnPoolAssetRegistered;
-            PoolManager.Instance.OnPoolAssetUnregistered -= OnPoolAssetUnregistered;
-            EnemySpawnerManager.Unregister();
-        }
         
-        private void OnPoolAssetRegistered(PoolResource resource)
+        private void OnDisable()
         {
-            switch (resource.Asset)
-            {
-                case PrefabPoolAsset prefabPoolAsset:
-                    if (!prefabPoolAsset.Prefab.TryGetComponent(out NetworkObject networkObject))
-                        return;
-                    
-                    PoolingNetworkPrefabHandler networkPrefabHandler = new PoolingNetworkPrefabHandler(resource);
-                    NetworkManager.Singleton.PrefabHandler.AddHandler(prefabPoolAsset.Prefab, networkPrefabHandler);
-                    break;
-            }
-        }
-        private void OnPoolAssetUnregistered(PoolResource resource)
-        {
-            switch (resource.Asset)
-            {
-                case PrefabPoolAsset prefabPoolAsset:
-                    NetworkManager.Singleton.PrefabHandler.RemoveHandler(prefabPoolAsset.Prefab);
-                    break;
-            }
+            EnemySpawnerManager.Unregister();
         }
 
         public async Awaitable Initialize(GameplayPhase phase)
@@ -68,21 +39,21 @@ namespace OverBang.GameName.Gameplay
                 return;
             }
             
-            State = LevelState.Initializing;
+            SetState(LevelState.Initializing);
             currentPhase = phase;
 
             await SetupGameMap();
             SetupPlayer();
             await SetupEnemies();
-            await SetupUI();
             await SetupPooling();
+            await SetupUI();
             
-            State = LevelState.Ready;
+            SetState(LevelState.Ready);
         }
 
         public void StartLevel()
         {
-            State = LevelState.Running;
+            SetState(LevelState.Running);
         }
 
         public void Dispose()
@@ -91,7 +62,7 @@ namespace OverBang.GameName.Gameplay
             
             PoolManager.Instance.ClearPools();
             
-            State = LevelState.Disposed;
+            SetState(LevelState.Disposed);
         }
 
         private async Awaitable SetupGameMap()
@@ -125,12 +96,19 @@ namespace OverBang.GameName.Gameplay
         {
             GameController.CursorLockModePriority.AddPriority(this, PriorityTags.High, CursorLockMode.Locked);
             GameController.CursorVisibleStatePriority.AddPriority(this, PriorityTags.High, false);
+            
             await AwaitableUtils.CompletedAwaitable;
         }
         
         private async Awaitable SetupPooling()
         {
-            await PoolUtils.SetupPooling(OnCollectSceneProviders);
+            await PoolUtils.SetupPooling();
+        }
+
+        private void SetState(LevelState state)
+        {
+            State = state;
+            OnStateChanged?.Invoke(state);
         }
     }
 }

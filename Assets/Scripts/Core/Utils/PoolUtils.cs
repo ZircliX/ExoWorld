@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using OverBang.GameName.Gameplay;
 using OverBang.Pooling;
 using OverBang.Pooling.Dependencies;
-using Unity.Services.Multiplayer;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -11,7 +10,7 @@ namespace OverBang.GameName.Core
 {
     public static class PoolUtils
     {
-        public static async Awaitable SetupPooling(Action<List<IPoolDependencyProvider>> OnCollectSceneProviders)
+        public static async Awaitable SetupPooling(Action<List<IPoolDependencyProvider>> OnCollectSceneProviders = null)
         {
             using (ListPool<IPoolDependencyProvider>.Get(out List<IPoolDependencyProvider> providers))
             {

@@ -1,9 +1,8 @@
 ﻿using DG.Tweening;
-using OverBang.GameName.Gameplay.Interface;
 using TMPro;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.GameName.Core
 {
     public class PlayerInteractionUI : MonoBehaviour
     {

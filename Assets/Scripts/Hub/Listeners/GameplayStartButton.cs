@@ -1,35 +1,27 @@
 using OverBang.GameName.Core;
 using Unity.Netcode;
 using UnityEngine;
+using UnityUtils;
 
 namespace OverBang.GameName.Hub
 {
-    public class GameplayStartButton : NetworkPhaseListener<HubPhase>
+    public class GameplayStartButton : NetworkPhaseListener<HubPhase>, IInteractable
     {
-        private bool canBeTriggered = false;
-        
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.CompareTag("Player") && canBeTriggered)
-            {
-                ExitHubPhaseRpc();
-            }
-        }
+        public string InteractionText => "Start Ship";
+        public int Priority => (int)TargetPriority.High;
+        public bool CanInteract { get; private set; } = true;
+        Vector3 IInteractable.UIPosition => transform.position.Add(y: 0.6f);
 
         [Rpc(SendTo.Everyone)]
         private void ExitHubPhaseRpc()
         {
             CurrentPhase.Validate();
         }
-
-        protected override void OnBegin(HubPhase phase)
+        
+        public void Interact(PlayerInteraction playerInteraction)
         {
-            canBeTriggered = true;
-        }
-
-        protected override void OnEnd(HubPhase phase)
-        {
-            canBeTriggered = false;
+            CanInteract = false;
+            ExitHubPhaseRpc();
         }
     }
 }

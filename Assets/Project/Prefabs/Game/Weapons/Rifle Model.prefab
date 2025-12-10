@@ -371,6 +371,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3092788691708449625}
   - component: {fileID: 3610373250367334629}
+  - component: {fileID: 819990362365788736}
   m_Layer: 14
   m_Name: Rifle Model
   m_TagString: Player
@@ -410,6 +411,20 @@ MonoBehaviour:
   <shootPoint>k__BackingField: {fileID: 7311605902124411379}
   <targetHandR>k__BackingField: {fileID: 7526209055330336351}
   <targetHandL>k__BackingField: {fileID: 556218349484461159}
+--- !u!114 &819990362365788736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3356263050659617615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3baf1667c87c431db39a7ed44eec4b72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.Weapon
+  <WeaponData>k__BackingField: {fileID: 0}
+  <Rig>k__BackingField: {fileID: 3610373250367334629}
 --- !u!1 &3549599825926312503
 GameObject:
   m_ObjectHideFlags: 0

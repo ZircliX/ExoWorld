@@ -88,7 +88,8 @@ namespace OverBang.GameName.Gameplay
             weaponShootRate.text = w.FireCooldown.ToString(CultureInfo.InvariantCulture);
             weaponMagCapacity.text = w.MagCapacity.ToString();
 
-            currentDisplayedWeapon = Instantiate(w.ModelPrefab, weaponHolder);
+            Weapon weapon = Instantiate(w.Prefab, weaponHolder);
+            currentDisplayedWeapon = weapon.gameObject;
         }
 
         private void ShowWeaponPanel(bool visible)

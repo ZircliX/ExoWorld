@@ -1,5 +1,5 @@
 ﻿using System;
-using Sirenix.OdinInspector;
+using KBCore.Refs;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -7,11 +7,11 @@ using Random = UnityEngine.Random;
 
 namespace OverBang.GameName.Gameplay
 {
-    public abstract class Weapon : MonoBehaviour
+    public class Weapon : MonoBehaviour
     {
-        [field: SerializeField, Required] public WeaponData WeaponData { get; protected set; }
+        public WeaponData WeaponData { get; protected set; }
         public RuntimeWeaponState State { get; protected set; }
-        public WeaponRig Rig { get; private set; }
+        [field: SerializeField, Self] public WeaponRig Rig { get; private set; }
 
         protected Camera playerCamera;
         
@@ -20,7 +20,12 @@ namespace OverBang.GameName.Gameplay
         
         public event Action OnWeaponFired;
         public event Action OnWeaponReloaded;
-        
+
+        private void OnValidate()
+        {
+            this.ValidateRefs();
+        }
+
         public virtual void Initialize(WeaponData weaponData, Camera cam)
         {
             WeaponData = weaponData;
@@ -33,8 +38,7 @@ namespace OverBang.GameName.Gameplay
             fireBehaviour?.OnInitialize(this);
             reloadBehaviour?.OnInitialize(this);
 
-            GameObject weaponModel = Instantiate(WeaponData.ModelPrefab, transform);
-            Rig = weaponModel.GetComponent<WeaponRig>();
+            gameObject.SetActive(false);
         }
         
         protected virtual void Update()
@@ -49,8 +53,29 @@ namespace OverBang.GameName.Gameplay
             reloadBehaviour.Tick(deltaTime);
         }
 
-        public abstract void Fire();
-        public abstract void FireWithDirection(Vector3 origin, Vector3 direction);
+        public void Fire()
+        {
+            Vector3 dir = this.GetBulletDirection(Rig.shootPoint) + playerCamera.transform.forward;
+            
+            NetworkSpawnManager spawnManager = NetworkManager.Singleton.SpawnManager;
+            NetworkObject bulletInstance = spawnManager.InstantiateAndSpawn(
+                WeaponData.BulletData.BulletPrefab, 
+                NetworkManager.Singleton.LocalClientId, 
+                true, 
+                true,
+                false,
+                Rig.shootPoint.position,
+                Quaternion.LookRotation(dir, Vector3.up));
+
+            if (bulletInstance.TryGetComponent(out Bullet bullet))
+            {
+                bullet.Fire(Rig.shootPoint.position, dir, WeaponData.BulletData);
+            }
+            else
+            {
+                Debug.LogWarning($"Could not get component {nameof(DefaultBullet)} from bullet.", bullet);
+            }
+        }
 
         public virtual void OnShootInput(InputAction.CallbackContext context)
         {

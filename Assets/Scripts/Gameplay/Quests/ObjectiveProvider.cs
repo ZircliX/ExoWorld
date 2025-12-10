@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using Helteix.Singletons.SceneServices;
 using UnityEngine;
 using ZTools.Logger.Core;
+using ZTools.ObjectiveSystem.Core;
 using ZTools.RewardSystem.Core;
 
-namespace ZTools.ObjectiveSystem.Core
+namespace OverBang.GameName.Gameplay
 {
     /// <summary>
     /// Manages the sequential queuing of objectives from predefined collections.
@@ -36,21 +38,32 @@ namespace ZTools.ObjectiveSystem.Core
         
         private void OnEnable()
         {
+            LevelManager.Instance.OnStateChanged += OnStateChanged;
             ObjectivesManager.OnWantsToChangeObjective += QueueObjective;
         }
         
         private void OnDisable()
         {
+            LevelManager.Instance.OnStateChanged -= OnStateChanged;
             ObjectivesManager.OnWantsToChangeObjective -= QueueObjective;
         }
-        
+
+        private void OnStateChanged(LevelState obj)
+        {
+            if (obj == LevelState.Running)
+            {
+                QueueObjective();
+            }
+        }
+
+        /*
         /// <summary>
         /// This is a temporary method to kick off the queuing process.
         /// </summary>
         private void Start()
         {
             QueueObjective();
-        }
+        }*/
 
         /// <summary>
         /// Advances to the next <see cref="ObjectiveCollectionData"/> in the sequence.
@@ -78,7 +91,7 @@ namespace ZTools.ObjectiveSystem.Core
         /// <param name="objectiveHandler">
         /// This parameter is ignored if simply queueing the next objective.
         /// </param>
-        private void QueueObjective(IObjectiveHandler objectiveHandler = null)
+        public void QueueObjective(IObjectiveHandler objectiveHandler = null)
         {
             ObjectiveCollectionData currentCollection = objectiveCollections[currentCollectionIndex];
             if (currentCollection == null || currentCollection.Objectives == null)

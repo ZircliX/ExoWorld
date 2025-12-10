@@ -12,6 +12,7 @@ namespace ZTools.ObjectiveSystem.Core
         /// Gets the base objective data (polymorphic access to common properties).
         /// </summary>
         ObjectiveData ObjectiveData { get; }
+        int StepIndex { get; }
 
         /// <summary>
         /// Gets the current progress towards objective completion.

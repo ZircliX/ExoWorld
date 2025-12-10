@@ -42,15 +42,13 @@ namespace OverBang.GameName.Core
 
         protected virtual async Awaitable OnBegin()
         {
-            CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyPhaseStatus, nameof(PhaseStatus.None));
+            await CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyPhaseStatus, nameof(PhaseStatus.None));
             
-            /* Not sure if it's useful and prob creates bugs
             if (!CurrentPlayer.Properties.ContainsKey(ConstID.Global.PlayerPropertyCharacterData))
             {
-                CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyCharacterData,
+                await CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyCharacterData,
                     new PlayerProperty(string.Empty));
             }
-            */
 
             LoadCharactersData();
             

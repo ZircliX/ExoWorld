@@ -34,6 +34,10 @@ namespace OverBang.GameName.Gameplay
             int bulletsToFire = data.BulletsPerShot;
             if (!state.TryConsume(ref bulletsToFire))
             {
+                if (Weapon.State.CurrentBullets <= 0 && !Weapon.State.IsReloading)
+                {
+                    Weapon.reloadBehaviour.Reload();
+                }
                 //Debug.LogWarning($"Could not consume {bulletsToFire} bullet(s).");
                 return;
             }

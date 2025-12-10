@@ -28,7 +28,7 @@ namespace OverBang.GameName.Hub
             ulong clientID = NetworkManager.Singleton.LocalClient.ClientId;
             PlayerSpawner.SpawnPlayerObject(characterData, clientID, SessionManager.Global.CurrentPlayer);
             
-            Awaitable awaitable = PoolUtils.SetupPooling(null);
+            Awaitable awaitable = PoolUtils.SetupPooling();
             awaitable.Run();
         }
     }

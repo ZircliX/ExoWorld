@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8356690981054086367}
   - component: {fileID: 6832205349958254884}
   - component: {fileID: 32712809209801333}
+  - component: {fileID: 405126053214583494}
   - component: {fileID: 5595694122421850043}
   - component: {fileID: 4102952217086634157}
   - component: {fileID: 6397739680540297778}
@@ -113,7 +114,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 0.25
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &32712809209801333
 Rigidbody:
@@ -142,6 +143,31 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &405126053214583494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6605403738642720898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
+  GlobalObjectIdHash: 3381426381
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 0
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!114 &5595694122421850043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,6 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e817c0d6b95c4834d9578ef842abfd84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.PistolBullet
+  ShowTopMostFoldoutHeaderGroup: 1
   rb: {fileID: 32712809209801333}
   sc: {fileID: 6832205349958254884}
 --- !u!114 &4102952217086634157
@@ -218,4 +245,4 @@ MonoBehaviour:
   NetworkRigidbodyBaseExpanded: 0
   UseRigidBodyForMotion: 1
   AutoUpdateKinematicState: 1
-  AutoSetKinematicOnDespawn: 1
+  AutoSetKinematicOnDespawn: 0
