@@ -42,6 +42,8 @@ namespace OverBang.GameName.Gameplay
 
         public void CallStartRepair()
         {
+            UpdateUIRpc();
+            
             if (IsOwner)
             {
                 SetIsStarted(true);
@@ -56,7 +58,6 @@ namespace OverBang.GameName.Gameplay
         private void CallStartRepairRpc(bool isStarted)
         {
             SetIsStarted(isStarted);
-            UpdateUIRpc();
         }
         
         [Rpc(SendTo.Everyone)]

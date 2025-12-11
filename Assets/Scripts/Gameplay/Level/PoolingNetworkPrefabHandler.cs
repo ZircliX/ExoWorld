@@ -19,7 +19,7 @@ namespace OverBang.GameName.Gameplay
             GameObject go = resource.Spawn<GameObject>();
             if (go != null && go.TryGetComponent(out NetworkObject networkObject))
             {
-                Debug.Log($"Spawning  {networkObject.name} network object from pool", networkObject);
+                //Debug.Log($"Spawning  {networkObject.name} network object from pool", networkObject);
                 networkObject.ActiveSceneSynchronization = true;
                 networkObject.transform.position = position;
                 networkObject.transform.rotation = rotation;
@@ -33,7 +33,7 @@ namespace OverBang.GameName.Gameplay
         public void Destroy(NetworkObject networkObject)
         {
             GameObject instance = networkObject.gameObject;
-            Debug.Log($"Return {instance.name} network object to pool", instance);
+            //Debug.Log($"Return {instance.name} network object to pool", instance);
             PoolManager.Instance.Despawn(instance);
         }
     }
