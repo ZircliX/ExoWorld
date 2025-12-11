@@ -1,5 +1,6 @@
 ﻿using System;
 using OverBang.GameName.Core;
+using TMPro;
 using Unity.Netcode;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
@@ -10,7 +11,7 @@ namespace OverBang.GameName.Gameplay.Sessions
 {
     public class Session : NetworkBehaviour
     {
-        [SerializeField] private string sessionId;
+        [SerializeField] private TMP_InputField inputField;
         public ISession CurrentSession { get; private set; }
 
         public event Action OnJoinedSession;
@@ -38,12 +39,12 @@ namespace OverBang.GameName.Gameplay.Sessions
                 
                 SessionOptions options = new SessionOptions()
                 {
-                    Name = sessionId,
+                    Name = inputField.text,
                     MaxPlayers = 4,
                     IsPrivate = false,
                 }.WithRelayNetwork();
 
-                CurrentSession = await SessionManager.Global.CreateOrJoinSession(sessionId, options);
+                CurrentSession = await SessionManager.Global.CreateOrJoinSession(inputField.text, options);
                 PlayerJoinedSessionRpc();
             }
             catch (Exception e)
