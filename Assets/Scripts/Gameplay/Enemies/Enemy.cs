@@ -29,15 +29,20 @@ namespace OverBang.GameName.Gameplay
         [field : SerializeField] public Transform enemyModelContainer { get; private set; }
         
         [field : Header("Patrol Parameters :")]
-        [field : SerializeField, Child] public TriggerComponent TriggerComponent { get; private set; }
+        [field : SerializeField] public TriggerComponent GetTriggeredComponent { get; private set; }
+        //[field : SerializeField] public TriggerComponent AttackTriggerComponent { get; private set; }
 
         [field: SerializeField] public float patrolRadius { get; private set; } = 10f;
 
         private List<Transform> currentPlayersInRange;
-        
+
+        private EnemyAnimator enemyAnimator;
         private Vector3 targetPoint;
         private bool isPatrol;
-        private bool isTargetting;
+        private bool isAttacking;
+        
+        private const string IsPatrol = "isWalking";
+        private const string IsPunching = "PlayerDetected";
 
         #region Initialization
         
@@ -49,15 +54,21 @@ namespace OverBang.GameName.Gameplay
         private void OnEnable()
         {
             DahComponent.OnDamaged += Damaged;
-            TriggerComponent.OnEntered += OnEntered;
-            TriggerComponent.OnExited += OnExited;
+            GetTriggeredComponent.OnEntered += OnEntered;
+            GetTriggeredComponent.OnExited += OnExited;
+            
+            // AttackTriggerComponent.OnEntered += OnAttackEnter;
+            // AttackTriggerComponent.OnExited += OnAttackExit;
         }
 
         private void OnDisable()
         {
             DahComponent.OnDamaged -= Damaged;
-            TriggerComponent.OnEntered -= OnEntered;
-            TriggerComponent.OnExited -= OnExited;
+            GetTriggeredComponent.OnEntered -= OnEntered;
+            GetTriggeredComponent.OnExited -= OnExited;
+            
+            // AttackTriggerComponent.OnEntered -= OnAttackEnter;
+            // AttackTriggerComponent.OnExited -= OnAttackExit;
         }
 
         private void Damaged()
@@ -81,12 +92,21 @@ namespace OverBang.GameName.Gameplay
             }
         }
         
+        
         [Rpc(SendTo.Everyone)]
         private void SetEnemyModelRpc(string enemyDataId)
         {
             if (enemyDataId.TryGetAssetByID(out enemyData))
             {
-                GameObject playerModel = Instantiate(enemyData.ModelPrefab, enemyModelContainer);
+                DahComponent.SetHealth(enemyData.BaseHealth);
+                
+                GameObject enemyModel = Instantiate(enemyData.ModelPrefab, enemyModelContainer);
+                if (enemyModel.TryGetComponent(out EnemyAnimator animator))
+                {
+                    enemyAnimator = animator;
+                    isPatrol = true;
+                    enemyAnimator.SetBool(IsPatrol, isPatrol);
+                }
             }
         }
         
@@ -107,6 +127,8 @@ namespace OverBang.GameName.Gameplay
             }
             
         }
+        
+        
         private void ChooseNewDestination()
         {
             Vector3 randomDirection = Random.insideUnitSphere * patrolRadius;
@@ -159,6 +181,26 @@ namespace OverBang.GameName.Gameplay
             currentPlayersInRange.Remove(playerTransform);
         }
         
+        /*private void OnAttackEnter(Transform playerTransform)
+        {
+            Debug.Log("player entered, attacking !!!!!!!!!");
+            isPatrol = false;
+            enemyAnimator.SetBool(IsPatrol, isPatrol);
+            
+            isAttacking = true;
+            enemyAnimator.SetBool(IsPunching,  isAttacking);
+        }
+        
+        private void OnAttackExit(Transform playerTransform)
+        {
+            Debug.Log("player leaving..., chasing !!!!!!!!!!");
+            isAttacking = false;
+            enemyAnimator.SetBool(IsPunching,  isAttacking);
+            
+            isPatrol = true;
+            enemyAnimator.SetBool(IsPatrol, isPatrol);
+        }*/
+        
         #endregion detection
         
 
@@ -194,12 +236,13 @@ namespace OverBang.GameName.Gameplay
         public void OnSpawn(IPool pool)
         {
             Pool = pool;
-            DahComponent.Initialize(enemyData.BaseHealth, 0);
+            //DahComponent.Initialize(enemyData.BaseHealth, 0);
             //TODO : Reset runtime enemies datas 
         }
         
         public void OnDespawn(IPool pool)
         {
+            
         }
         
         #endregion Pooling Implementation

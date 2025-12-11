@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6978556470544028484}
+  - component: {fileID: 7080899992651019886}
   m_Layer: 0
   m_Name: Brutor
   m_TagString: Untagged
@@ -32,6 +33,19 @@ Transform:
   - {fileID: 7597219540294402608}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7080899992651019886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6050217233775909602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f7540e8abb14f78a7277cbc32cd54bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.EnemyAnimator
+  <ModelAnimator>k__BackingField: {fileID: 4579758670607964234}
 --- !u!1001 &7990519983804966363
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -93,6 +107,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3ddce99604be8648b207c37d2b57b99, type: 3}
+--- !u!95 &4579758670607964234 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: e3ddce99604be8648b207c37d2b57b99, type: 3}
+  m_PrefabInstance: {fileID: 7990519983804966363}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7597219540294402608 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e3ddce99604be8648b207c37d2b57b99, type: 3}
