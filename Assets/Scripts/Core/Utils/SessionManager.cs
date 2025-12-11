@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Unity.Services.Multiplayer;
 using UnityEngine;
 
@@ -7,6 +8,8 @@ namespace OverBang.GameName.Core
     public class SessionManager
     {
         public static SessionManager Global => GameController.SessionManager;
+        
+        public event Action<ISession> OnSessionChanged; 
         
         public ISession ActiveSession {get; private set;}
         
@@ -21,25 +24,41 @@ namespace OverBang.GameName.Core
 
         public async Awaitable<ISession> CreateOrJoinSession(string sessionId, SessionOptions options)
         {
+            if (ActiveSession != null)
+                return ActiveSession;
+            
             ActiveSession = await MultiplayerService.Instance.CreateOrJoinSessionAsync(sessionId, options);
+            OnSessionChanged?.Invoke(ActiveSession);
             return ActiveSession;
         }
         
         public async Awaitable<IHostSession> CreateSession(SessionOptions options)
         {
+            if (ActiveSession != null)
+                return null;
+            
             ActiveSession = await MultiplayerService.Instance.CreateSessionAsync(options);
+            OnSessionChanged?.Invoke(ActiveSession);
             return (IHostSession)ActiveSession;
         }
         
         public async Awaitable<ISession> JoinSessionByID(string sessionID)
         {
+            if (ActiveSession != null)
+                return ActiveSession;
+            
             ActiveSession = await MultiplayerService.Instance.JoinSessionByIdAsync(sessionID);
+            OnSessionChanged?.Invoke(ActiveSession);
             return ActiveSession;
         }
         
         public async Awaitable<ISession> JoinSessionByCode(string code)
         {
+            if (ActiveSession != null)
+                return ActiveSession;
+            
             ActiveSession = await MultiplayerService.Instance.JoinSessionByCodeAsync(code);
+            OnSessionChanged?.Invoke(ActiveSession);
             return ActiveSession;
         }
         

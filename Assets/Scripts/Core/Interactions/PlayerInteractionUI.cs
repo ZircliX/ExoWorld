@@ -34,7 +34,7 @@ namespace OverBang.GameName.Core
             canvasGroup.DOKill();
             canvasGroup.DOFade(1, .2f);
             
-            interactionText.text = interactable.InteractionText == string.Empty ? "Interact" : interactable.InteractionText;
+            interactionText.text = interactable.InteractionText == string.Empty ? "Intéragir" : interactable.InteractionText;
         }
 
         private void LateUpdate()

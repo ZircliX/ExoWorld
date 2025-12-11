@@ -12,8 +12,10 @@ namespace OverBang.GameName.Gameplay.Sessions
     public class Session : NetworkBehaviour
     {
         [SerializeField] private TMP_InputField inputField;
-        public ISession CurrentSession { get; private set; }
+        [SerializeField] private TMP_Dropdown maxPlayers;
 
+        private bool isStarted = false;
+        
         public event Action OnJoinedSession;
         
         private async void Awake()
@@ -37,14 +39,19 @@ namespace OverBang.GameName.Gameplay.Sessions
                 if (UnityServices.Instance.State != ServicesInitializationState.Initialized)
                     return;
                 
+                string raw = inputField.text;
+                string sessionId = string.IsNullOrWhiteSpace(raw) ? "DefaultSession" : raw.Trim();
+                sessionId = sessionId.Replace(" ", string.Empty);
+                inputField.text = sessionId;
+                
                 SessionOptions options = new SessionOptions()
                 {
-                    Name = inputField.text == string.Empty ? "Default Session" : inputField.text,
-                    MaxPlayers = 4,
+                    Name = sessionId,
+                    MaxPlayers = maxPlayers.value + 2,
                     IsPrivate = false,
                 }.WithRelayNetwork();
 
-                CurrentSession = await SessionManager.Global.CreateOrJoinSession(inputField.text, options);
+                await SessionManager.Global.CreateOrJoinSession(sessionId, options);
                 PlayerJoinedSessionRpc();
             }
             catch (Exception e)
@@ -55,9 +62,10 @@ namespace OverBang.GameName.Gameplay.Sessions
 
         public void StartGame()
         {
-            if (!SessionManager.Global.IsHost())
+            if (!SessionManager.Global.IsHost() || isStarted)
                 return;
-            
+
+            isStarted = true;
             StartGameRpc();
         }
 

@@ -13,17 +13,14 @@ namespace OverBang.GameName.Gameplay
         private Dictionary<UpgradeType, RuntimeUpgradeData> playerUpgradesDatas;
         
         public event Action<int> OnPlayerTritiniteAmountChange;
-
-
+        
         private void OnEnable()
         {
             upgrades = new Dictionary<UpgradeType, Upgrade>();
-            
         }
         
         public void InitializeUpgrades(IPlayer player)
         {
-            
             playerUpgradesDatas = new Dictionary<UpgradeType, RuntimeUpgradeData>(4);
             
             if (player.TryGetCharacterDataByPlayer(out CharacterData characterData))
@@ -61,7 +58,7 @@ namespace OverBang.GameName.Gameplay
                 RuntimeUpgradeData runtimeData = runtimeUpgradeData.Value;
                 Debug.Log($"{runtimeData.upgradeData.UpgradeName}, {runtimeData.finalBonus}");
 
-                Upgrade upgrade = upgrades[runtimeData.upgradeData.UpgradeType];
+                Upgrade upgrade = upgrades[runtimeUpgradeData.Key];
                 upgrade.ui.Refresh(runtimeData);
             }
         }

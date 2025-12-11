@@ -13,21 +13,28 @@ namespace OverBang.GameName.Gameplay.Sessions
         [SerializeField] private Session session;
         [SerializeField] private SessionCardUI sessionCardPrefab;
         [SerializeField] private Transform root;
+        
+        [SerializeField] private GameObject startGameButton;
+        [SerializeField] private GameObject waitingForHost;
 
         private List<SessionCardUI> lobbies;
+        
+        private float refreshTimer = 0f;
+        private const float RefreshInterval = 2.5f;
 
         private void Awake()
         {
+            refreshTimer = RefreshInterval;
             lobbies = new List<SessionCardUI>(4);
         }
 
         private void OnEnable()
         {
+            SessionManager.Global.OnSessionChanged += OnSessionsChanged;
+            
             if (UnityServices.Instance.State == ServicesInitializationState.Initialized)
             {
                 OnServicesInitialized();
-                MultiplayerService.Instance.SessionAdded += OnSessionsChanged;
-                MultiplayerService.Instance.SessionRemoved += OnSessionsChanged;
                 session.OnJoinedSession += Refresh;
             }
             else
@@ -38,8 +45,7 @@ namespace OverBang.GameName.Gameplay.Sessions
 
         private void OnDisable()
         {
-            MultiplayerService.Instance.SessionAdded -= OnSessionsChanged;
-            MultiplayerService.Instance.SessionRemoved -= OnSessionsChanged;
+            SessionManager.Global.OnSessionChanged -= OnSessionsChanged;
             session.OnJoinedSession -= Refresh;
         }
 
@@ -53,15 +59,34 @@ namespace OverBang.GameName.Gameplay.Sessions
             UnityServices.Initialized -= OnServicesInitialized;
             AuthenticationService.Instance.SignedIn -= OnServicesInitialized;
             
-            MultiplayerService.Instance.SessionAdded += OnSessionsChanged;
-            MultiplayerService.Instance.SessionRemoved += OnSessionsChanged;
-            
             Refresh();
         }
         
         private void OnSessionsChanged(ISession session)
         {
+            if (session.IsHost)
+            {
+                startGameButton.SetActive(true);
+            }
+            else
+            {
+                waitingForHost.SetActive(true);
+            }
+            
             Refresh();
+        }
+
+        private void Update()
+        {
+            if (UnityServices.Instance.State != ServicesInitializationState.Initialized
+                && !AuthenticationService.Instance.IsSignedIn)
+                return;
+            
+            refreshTimer -= Time.deltaTime;
+            if (refreshTimer <= 0f)
+            {
+                Refresh();
+            }
         }
         
         private void AddSession(ISessionInfo sessionInfo)
@@ -81,12 +106,18 @@ namespace OverBang.GameName.Gameplay.Sessions
 
         public async void Refresh()
         {
+            refreshTimer = RefreshInterval;
+            
             try
             {
                 // Query for available sessions
                 QuerySessionsOptions queryOptions = new QuerySessionsOptions()
                 {
-                    Count = 20,
+                    Count = 5,
+                    FilterOptions = new List<FilterOption>()
+                    {
+                        new FilterOption(FilterField.AvailableSlots, "1", FilterOperation.GreaterOrEqual)
+                    }
                 };
 
                 IList<ISessionInfo> availableSessions = await SessionManager.Global.QuerySessions(queryOptions);

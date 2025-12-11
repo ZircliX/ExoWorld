@@ -42,36 +42,23 @@ namespace OverBang.GameName.Gameplay
 
         public void CallStartRepair()
         {
-            UpdateUIRpc();
-            
-            if (IsOwner)
-            {
-                SetIsStarted(true);
-            }
-            else
-            {
-                CallStartRepairRpc(true);
-            }
+            CallStartRepairRpc(true);
+            InvokePumpStartRpc();
         }
 
         [Rpc(SendTo.Owner)]
         private void CallStartRepairRpc(bool isStarted)
         {
-            SetIsStarted(isStarted);
+            LevelManager.Instance.EnemySpawnerManager.SpawnEnemies(pumpQuestData.EnemySpawnScenario);
         }
         
         [Rpc(SendTo.Everyone)]
-        private void UpdateUIRpc()
+        private void InvokePumpStartRpc()
         {
+            IsStarted = true;
+            
             handler = pumpQuestData.GetHandlerByData<PumpQuestHandler>();
             handler.SetStepIndex(1);
-        }
-
-        private void SetIsStarted(bool isStarted)
-        {
-            if (!IsOwner) return;
-            LevelManager.Instance.EnemySpawnerManager.SpawnEnemies(pumpQuestData.EnemySpawnScenario);
-            IsStarted = isStarted;
         }
 
         public void TakeDamage(DamageInfo damage)
@@ -123,7 +110,7 @@ namespace OverBang.GameName.Gameplay
         {
             if (current >= target)
             {
-                SetIsStarted(false);
+                IsStarted = false;
                 IsCompleted = true;
 
                 current = target;

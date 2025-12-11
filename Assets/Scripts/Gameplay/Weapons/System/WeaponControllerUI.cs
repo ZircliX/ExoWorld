@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -76,7 +77,16 @@ namespace OverBang.GameName.Gameplay
             int magSize = data.MagCapacity / data.BulletsPerShot;
 
             if (ammoText != null)
+            {
+                if (currentAmmo == 0)
+                {
+                    ammoText.DOColor(Color.red, 0.2f).OnComplete(() =>
+                    {
+                        ammoText.DOColor(Color.white, 1.5f);
+                    });
+                }
                 ammoText.text = $"{currentAmmo}/{magSize}";
+            }
         }
 
         private void ClearUI()
