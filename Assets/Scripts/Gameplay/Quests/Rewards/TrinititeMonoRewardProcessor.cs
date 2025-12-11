@@ -11,7 +11,8 @@ namespace OverBang.GameName.Gameplay
         
         protected override bool TryProcess(TrinititeRewardData rewardData)
         {
-            ProcessRpc();
+            if (IsOwner)
+                ProcessRpc();
             return true;
         }
 

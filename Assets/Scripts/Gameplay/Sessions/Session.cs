@@ -39,7 +39,7 @@ namespace OverBang.GameName.Gameplay.Sessions
                 
                 SessionOptions options = new SessionOptions()
                 {
-                    Name = inputField.text,
+                    Name = inputField.text == string.Empty ? "Default Session" : inputField.text,
                     MaxPlayers = 4,
                     IsPrivate = false,
                 }.WithRelayNetwork();

@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using OverBang.GameName.Core;
 using TMPro;
 using UnityEngine;
 
@@ -29,7 +30,7 @@ namespace OverBang.GameName.Gameplay
             FadePanel(upgradeGroup, visible);
             HUD.Instance.ChangeHudState(visible);
             UpgradeManager.Instance.RefreshTable();
-            
+            UpdateValue(PlayerInventory.Trinitite);
         }
         
         private void FadePanel(CanvasGroup group, bool visible)
