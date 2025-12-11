@@ -6,9 +6,7 @@ namespace OverBang.GameName.Gameplay
 {
     public class UpgradeUi : MonoBehaviour
     {
-        
         [Header("ui to assign :")]
-        
         [SerializeField] private TextMeshProUGUI upgradeName;
         [SerializeField] private TextMeshProUGUI upgradeDescription;
         [SerializeField] private TextMeshProUGUI upgradeLevel;

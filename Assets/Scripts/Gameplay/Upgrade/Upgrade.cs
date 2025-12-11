@@ -1,5 +1,4 @@
 ﻿using OverBang.GameName.Core;
-using TMPro;
 using UnityEngine;
 
 namespace OverBang.GameName.Gameplay
@@ -22,11 +21,7 @@ namespace OverBang.GameName.Gameplay
         {
             if (UpgradeManager.Instance.TryToUpgrade(UpgradeType, this))
             {
-                
-            }
-            else
-            {
-                
+                Debug.Log($"{UpgradeType} upgraded!");
             }
         }
     }

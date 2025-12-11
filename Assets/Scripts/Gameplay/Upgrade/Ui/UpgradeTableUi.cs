@@ -11,7 +11,7 @@ namespace OverBang.GameName.Gameplay
         [SerializeField] private CanvasGroup upgradeGroup;
         [SerializeField] private UpgradeTable upgradeTable;
         
-        [SerializeField] private TextMeshProUGUI playerTrinititeAmount;
+        [SerializeField] private TMP_Text playerTrinititeAmount;
 
         private void OnEnable()
         {
@@ -25,10 +25,11 @@ namespace OverBang.GameName.Gameplay
             UpgradeManager.Instance.OnPlayerTritiniteAmountChange -= UpdateValue;
         }
 
-        public void ShowUi(bool visible)
+        private void ShowUi(bool visible)
         {
             FadePanel(upgradeGroup, visible);
             HUD.Instance.ChangeHudState(visible);
+            
             UpgradeManager.Instance.RefreshTable();
             UpdateValue(PlayerInventory.Trinitite);
         }
