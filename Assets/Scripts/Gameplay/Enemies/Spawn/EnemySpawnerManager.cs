@@ -66,7 +66,7 @@ namespace OverBang.GameName.Gameplay
                 int currentSpawnedEnemies = 0;
 
                 HashSet<Area> spawnableZones = AreaManager.Instance.GetSpawnableAreas();
-                Debug.Log($"Wave {currentWave} started with {spawnableZones.Count} areas");
+                //Debug.Log($"Wave {currentWave} started with {spawnableZones.Count} areas");
 
                 //Single wave loop
                 while (currentSpawnedEnemies <= enemyToSpawnInWave && IsWaving)
@@ -88,7 +88,7 @@ namespace OverBang.GameName.Gameplay
                         previousSpawnableAreas = spawnableAreas;
                 }
 
-                Debug.Log($"Wave{currentWave} spawned, waiting {enemySpawnScenario.TimeBetweenWaves} for the next one !");
+                //Debug.Log($"Wave{currentWave} spawned, waiting {enemySpawnScenario.TimeBetweenWaves} for the next one !");
                 await Awaitable.WaitForSecondsAsync(enemySpawnScenario.TimeBetweenWaves);
                 currentWave++;
             }
