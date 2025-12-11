@@ -30,7 +30,7 @@ namespace OverBang.GameName.Gameplay
         
         [field : Header("Patrol Parameters :")]
         [field : SerializeField] public TriggerComponent GetTriggeredComponent { get; private set; }
-        //[field : SerializeField] public TriggerComponent AttackTriggerComponent { get; private set; }
+        [field : SerializeField] public TriggerComponent AttackTriggerComponent { get; private set; }
 
         [field: SerializeField] public float patrolRadius { get; private set; } = 10f;
 
@@ -57,8 +57,8 @@ namespace OverBang.GameName.Gameplay
             GetTriggeredComponent.OnEntered += OnEntered;
             GetTriggeredComponent.OnExited += OnExited;
             
-            // AttackTriggerComponent.OnEntered += OnAttackEnter;
-            // AttackTriggerComponent.OnExited += OnAttackExit;
+            AttackTriggerComponent.OnEntered += OnAttackEnter;
+            AttackTriggerComponent.OnExited += OnAttackExit;
         }
 
         private void OnDisable()
@@ -67,8 +67,8 @@ namespace OverBang.GameName.Gameplay
             GetTriggeredComponent.OnEntered -= OnEntered;
             GetTriggeredComponent.OnExited -= OnExited;
             
-            // AttackTriggerComponent.OnEntered -= OnAttackEnter;
-            // AttackTriggerComponent.OnExited -= OnAttackExit;
+            AttackTriggerComponent.OnEntered -= OnAttackEnter;
+            AttackTriggerComponent.OnExited -= OnAttackExit;
         }
 
         private void Damaged()
@@ -116,11 +116,11 @@ namespace OverBang.GameName.Gameplay
         {
             if (!IsOwner) return;
             
-            if (currentPlayersInRange.Count <= 0 && !Agent.pathPending && Agent.remainingDistance <= Agent.stoppingDistance)
+            if (currentPlayersInRange.Count <= 0 && !Agent.pathPending && Agent.remainingDistance <= Agent.stoppingDistance && !isAttacking)
             {
                 ChooseNewDestination();
             }
-            else if (currentPlayersInRange.Count > 0)
+            else if (currentPlayersInRange.Count > 0 && !isAttacking)
             {
                 Vector3 target = GetClosestPlayer();
                 Agent.SetDestination(target);
@@ -181,7 +181,7 @@ namespace OverBang.GameName.Gameplay
             currentPlayersInRange.Remove(playerTransform);
         }
         
-        /*private void OnAttackEnter(Transform playerTransform)
+        private void OnAttackEnter(Transform playerTransform)
         {
             Debug.Log("player entered, attacking !!!!!!!!!");
             isPatrol = false;
@@ -199,7 +199,7 @@ namespace OverBang.GameName.Gameplay
             
             isPatrol = true;
             enemyAnimator.SetBool(IsPatrol, isPatrol);
-        }*/
+        }
         
         #endregion detection
         
