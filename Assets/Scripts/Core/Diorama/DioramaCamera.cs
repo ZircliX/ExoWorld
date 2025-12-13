@@ -9,11 +9,9 @@ namespace OverBang.GameName.Core
 {
     public class DioramaCamera : MonoBehaviour
     {
-        [field: SerializeField, Self] public CinemachineCamera Cam;
-        [field: SerializeField, Self] public Animator animator;
-        [SerializeField] private PlayableDirector director;
+        [field : SerializeField] public Animator animator { get; private set; }
+        [field : SerializeField] public PlayableDirector director { get; private set; }
 
-        private void OnValidate() => this.ValidateRefs();
         
         
         
@@ -21,14 +19,20 @@ namespace OverBang.GameName.Core
         {
             if (Keyboard.current.fKey.wasPressedThisFrame)
             {
-                animator.SetTrigger("isScreaming");
+                //play screaming animation
+                animator.SetBool("isScreaming", true);
             }
-
+                //Start rotate camera
             if (Keyboard.current.pKey.wasPressedThisFrame)
             {
                 director.Play();
 
             }
+        }
+
+        public void StopScreaming()
+        {
+            animator.SetBool("isScreaming", false);
         }
     }
 }
