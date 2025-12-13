@@ -15,6 +15,7 @@ namespace OverBang.GameName.Gameplay.Sessions
         [SerializeField] private Transform root;
         
         [SerializeField] private GameObject startGameButton;
+        [SerializeField] private GameObject quitSessionButton;
         [SerializeField] private GameObject waitingForHost;
 
         private List<SessionCardUI> lobbies;
@@ -64,6 +65,16 @@ namespace OverBang.GameName.Gameplay.Sessions
         
         private void OnSessionsChanged(ISession session)
         {
+            if (session == null)
+            {
+                quitSessionButton.SetActive(false);
+                startGameButton.SetActive(false);
+                waitingForHost.SetActive(false);
+
+                return;
+            }
+            
+            quitSessionButton.SetActive(true);
             if (session.IsHost)
             {
                 startGameButton.SetActive(true);
@@ -78,8 +89,7 @@ namespace OverBang.GameName.Gameplay.Sessions
 
         private void Update()
         {
-            if (UnityServices.Instance.State != ServicesInitializationState.Initialized
-                && !AuthenticationService.Instance.IsSignedIn)
+            if (SessionManager.Global.IsAllowed)
                 return;
             
             refreshTimer -= Time.deltaTime;

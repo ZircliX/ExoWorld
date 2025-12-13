@@ -6,12 +6,11 @@ namespace OverBang.GameName.Gameplay
 {
     public class Ship : NetworkPhaseListener<GameplayPhase>
     {
-        [SerializeField] private GameObject go;
-        private bool canBeTriggered = false;
+        private bool canBeTriggered;
         
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player") || other.CompareTag("LocalPlayer") && canBeTriggered && go.activeSelf)
+            if ((other.CompareTag("Player") || other.CompareTag("LocalPlayer")) && canBeTriggered)
             {
                 ExitHubPhaseRpc();
             }
@@ -24,17 +23,13 @@ namespace OverBang.GameName.Gameplay
                 return;
             
             Debug.Log("Exiting hub phase on client : " + SessionManager.Global.CurrentPlayer.Id);
+            canBeTriggered = false;
             CurrentPhase.SetIsDone();
         }
-        
-        protected override void OnBegin(GameplayPhase phase)
-        {
-            canBeTriggered = true;
-        }
 
-        protected override void OnEnd(GameplayPhase phase)
+        public void SetCanBeTriggered(bool value)
         {
-            canBeTriggered = false;
+            canBeTriggered = value;
         }
     }
 }

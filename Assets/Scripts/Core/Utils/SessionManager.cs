@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Unity.Services.Authentication;
+using Unity.Services.Core;
 using Unity.Services.Multiplayer;
 using UnityEngine;
 
@@ -21,6 +23,9 @@ namespace OverBang.GameName.Core
             
             return ActiveSession.IsHost;
         }
+
+        public bool IsAllowed => UnityServices.Instance.State != ServicesInitializationState.Initialized
+                                 && !AuthenticationService.Instance.IsSignedIn;
 
         public async Awaitable<ISession> CreateOrJoinSession(string sessionId, SessionOptions options)
         {
@@ -82,6 +87,7 @@ namespace OverBang.GameName.Core
                 try
                 {
                     await ActiveSession.LeaveAsync();
+                    OnSessionChanged?.Invoke(null);
                 }
                 catch
                 {
