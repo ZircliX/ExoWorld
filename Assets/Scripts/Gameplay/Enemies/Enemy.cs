@@ -73,7 +73,7 @@ namespace OverBang.GameName.Gameplay
 
         private void Damaged()
         {
-            Debug.Log($"Remaining Health : {DahComponent.Health}");
+            //Debug.Log($"Remaining Health : {DahComponent.Health}");
             if (DahComponent.Health <= 0)
             {
                 OnDeath();

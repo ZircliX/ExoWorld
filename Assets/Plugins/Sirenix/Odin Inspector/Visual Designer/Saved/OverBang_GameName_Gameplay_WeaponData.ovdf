@@ -10,14 +10,14 @@ Position: $root:0
 	Subtitle = ""
 
 # $2P8G3Qb7cWashAVKtrXQtB
-Position: $root:22
+Position: $root:21
 + [Sirenix.OdinInspector.TitleGroupAttribute]
 	Indent = True
 	GroupName = "Bullet Data"
 	Subtitle = "Choose what bullet this weapon fires"
 
 # $Q6RMpRgePS92s5toDpNQDx
-Position: $root:21
+Position: $root:20
 + [Sirenix.OdinInspector.TitleGroupAttribute]
 	GroupName = "Behaviour Data"
 	Indent = False
@@ -54,7 +54,7 @@ Position: $Q6RMpRgePS92s5toDpNQDx:1
 	Indent = True
 
 # $Nv1rLGWbqNgQRv2TZZRwhY
-Position: $6wAoQ3N5eCGSmbxcPbbYMx:2
+Position: $6wAoQ3N5eCGSmbxcPbbYMx:3
 + [Sirenix.OdinInspector.HorizontalGroupAttribute]
 	GroupName = "Previews"
 
@@ -97,7 +97,7 @@ Position: $Nv1rLGWbqNgQRv2TZZRwhY:1
 	Text = "Prefab"
 
 # <WeaponDescription>k__BackingField
-Position: $6wAoQ3N5eCGSmbxcPbbYMx:1
+Position: $6wAoQ3N5eCGSmbxcPbbYMx:2
 + [UnityEngine.TextAreaAttribute]
 	minLines = 5
 	maxLines = 15
@@ -152,3 +152,6 @@ Position: $U8eL52n4uVwZmbgX6XDe25:1
 
 # <BulletsPerShot>k__BackingField
 Position: $U8eL52n4uVwZmbgX6XDe25:2
+
+# <WeaponType>k__BackingField
+Position: $6wAoQ3N5eCGSmbxcPbbYMx:1
