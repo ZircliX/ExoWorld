@@ -36,7 +36,7 @@ namespace OverBang.GameName.Gameplay.Sessions
         {
             try
             {
-                if (UnityServices.Instance.State != ServicesInitializationState.Initialized)
+                if (SessionManager.Global.IsAllowed)
                     return;
                 
                 string raw = inputField.text;
@@ -53,6 +53,21 @@ namespace OverBang.GameName.Gameplay.Sessions
 
                 await SessionManager.Global.CreateOrJoinSession(sessionId, options);
                 PlayerJoinedSessionRpc();
+            }
+            catch (Exception e)
+            {
+                Debug.LogException(e);
+            }
+        }
+        
+        public async void QuitSession()
+        {
+            try
+            {
+                if (SessionManager.Global.IsAllowed)
+                    return;
+
+                await SessionManager.Global.LeaveCurrentSession();
             }
             catch (Exception e)
             {

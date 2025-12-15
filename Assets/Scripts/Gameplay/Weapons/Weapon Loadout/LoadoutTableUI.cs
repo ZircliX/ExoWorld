@@ -83,10 +83,12 @@ namespace OverBang.GameName.Gameplay
             weaponIcon.sprite = w.WeaponSprite;
             weaponName.text = w.WeaponName;
             weaponDescription.text = w.WeaponDescription;
-            weaponType.text = w.name;
+            weaponType.text = w.WeaponType;
             weaponDamage.text = (w.BulletData.Damage.baseDamage * w.BulletsPerShot).ToString(CultureInfo.InvariantCulture);
-            weaponShootRate.text = w.FireCooldown.ToString(CultureInfo.InvariantCulture);
-            weaponMagCapacity.text = w.MagCapacity.ToString();
+            
+            float fireCooldown = 1 / w.FireCooldown;
+            weaponShootRate.text = $"{fireCooldown:F1}/s";
+            weaponMagCapacity.text = (w.MagCapacity / w.BulletsPerShot).ToString();
 
             Weapon weapon = Instantiate(w.Prefab, weaponHolder);
             currentDisplayedWeapon = weapon.gameObject;

@@ -80,6 +80,8 @@ namespace OverBang.GameName.Gameplay
                 ulong clientID = NetworkManager.Singleton.LocalClient.ClientId;
                 //Debug.Log($"Player {clientID} has CharacterData {characterData.AgentName}");
                 NetworkObject player = PlayerSpawner.SpawnPlayerObject(characterData, clientID, SessionManager.Global.CurrentPlayer);
+                player.transform.position = new Vector3(11f, 1f, 24f);
+                player.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
             }
             else
             {

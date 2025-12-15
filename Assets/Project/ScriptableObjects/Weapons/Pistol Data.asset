@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Pistol Data
   m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.WeaponData
   <BulletData>k__BackingField: {fileID: 11400000, guid: 2f05b2fdbfddd914f8008d629ae521d8, type: 2}
-  <WeaponName>k__BackingField: Pistol
-  <WeaponDescription>k__BackingField: 'A compact sidearm engineered for reliability
-    in hostile environments.
-
-    Its reinforced barrel channels excess heat outward,
-    stabilizing recoil across rapid shots.'
+  <WeaponName>k__BackingField: SR 12
+  <WeaponType>k__BackingField: Revolver
+  <WeaponDescription>k__BackingField: "Arme l\xE9g\xE8re et fiable, id\xE9ale pour
+    les combats rapides. Pr\xE9cise et facile \xE0 manier, elle permet d\u2019\xE9liminer
+    des ennemis \xE0 courte et moyenne port\xE9e tout en conservant une bonne mobilit\xE9.
+    Parfaite comme arme de secours ou pour les affrontements nerveux."
   <WeaponSprite>k__BackingField: {fileID: 21300000, guid: 66a4dfc0343ebfc4d833b2b24b1ca141, type: 3}
   <Prefab>k__BackingField: {fileID: 2363746963960901663, guid: 3194a76f21c80cb4daa5bb53e264024e, type: 3}
   <FireSound>k__BackingField:
@@ -139,4 +139,4 @@ MonoBehaviour:
   <ResetLerpSpeed>k__BackingField: 15
   <ReloadBehaviour>k__BackingField: 1
   <MagCapacity>k__BackingField: 5
-  <ReloadTime>k__BackingField: 1
+  <ReloadTime>k__BackingField: 3
