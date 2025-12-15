@@ -99,11 +99,10 @@ namespace OverBang.GameName.Gameplay.Sessions
 
         public void StartGame()
         {
-            Debug.Log(SessionManager.Global.IsHost());
             if (!SessionManager.Global.IsHost() || isStarted)
                 return;
 
-            Debug.Log("Starting game");
+            Debug.Log("Starting game input");
             isStarted = true;
             StartGameRpc();
         }

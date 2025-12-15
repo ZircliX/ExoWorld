@@ -20,6 +20,7 @@ namespace OverBang.GameName.Gameplay
 
         public async Awaitable Run()
         {
+            Debug.Log("Run GameMode: SurvivalGameMode");
             bool isRunning = true;
             hasCharacter = false;
             
@@ -55,7 +56,7 @@ namespace OverBang.GameName.Gameplay
                 selectionType = hasCharacter ? SelectionPhase.SelectionType.None : SelectionPhase.SelectionType.Pick,
                 availableClasses = CharacterClasses.All,
             };
-                
+            
             HubPhase hubPhase = new HubPhase(selectionSettings);
             await hubPhase.RunAsync();
         }
