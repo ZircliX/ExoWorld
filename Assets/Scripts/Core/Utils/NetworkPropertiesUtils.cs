@@ -109,8 +109,9 @@ namespace OverBang.GameName.Core
         {
             await AwaitableUtils.AwaitableUntil(() =>
             {
+                if (SessionManager.Global.ActiveSession == null) return false;
                 bool allReady = true;
-                    
+                
                 foreach (IReadOnlyPlayer player in SessionManager.Global.ActiveSession.Players)
                 {
                     if (player.TryGetPhaseStatusByPlayer(out PhaseStatus status))

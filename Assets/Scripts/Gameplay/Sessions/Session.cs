@@ -1,5 +1,6 @@
 ﻿using System;
 using OverBang.GameName.Core;
+using Sirenix.OdinInspector;
 using TMPro;
 using Unity.Netcode;
 using Unity.Services.Authentication;
@@ -11,10 +12,11 @@ namespace OverBang.GameName.Gameplay.Sessions
 {
     public class Session : NetworkBehaviour
     {
-        [SerializeField] private TMP_InputField inputField;
+        [SerializeField] private TMP_InputField createSession;
+        [SerializeField] private TMP_InputField joinSession;
         [SerializeField] private TMP_Dropdown maxPlayers;
 
-        private bool isStarted = false;
+        [SerializeField, ReadOnly] private bool isStarted;
         
         public event Action OnJoinedSession;
         
@@ -31,27 +33,45 @@ namespace OverBang.GameName.Gameplay.Sessions
                 Debug.LogException(e);
             }
         }
+
+        public async void JoinSession()
+        {
+            string raw = joinSession.text;
+            string sessionId = raw.Trim();
+            sessionId = sessionId.Replace(" ", string.Empty);
+            joinSession.text = sessionId;
+            
+            if (sessionId == string.Empty)
+                return;
+            
+            StartSession(sessionId);
+        }
+
+        public async void CreateSession()
+        {
+            string raw = createSession.text;
+            string sessionId = string.IsNullOrWhiteSpace(raw) ? "DefaultSession" : raw.Trim();
+            sessionId = sessionId.Replace(" ", string.Empty);
+            createSession.text = sessionId;
+            
+            StartSession(sessionId);
+        }
         
-        public async void StartSession()
+        private async void StartSession(string sessionID)
         {
             try
             {
                 if (SessionManager.Global.IsAllowed)
                     return;
                 
-                string raw = inputField.text;
-                string sessionId = string.IsNullOrWhiteSpace(raw) ? "DefaultSession" : raw.Trim();
-                sessionId = sessionId.Replace(" ", string.Empty);
-                inputField.text = sessionId;
-                
                 SessionOptions options = new SessionOptions()
                 {
-                    Name = sessionId,
+                    Name = sessionID,
                     MaxPlayers = maxPlayers.value + 2,
                     IsPrivate = false,
                 }.WithRelayNetwork();
 
-                await SessionManager.Global.CreateOrJoinSession(sessionId, options);
+                await SessionManager.Global.CreateOrJoinSession(sessionID, options);
                 PlayerJoinedSessionRpc();
             }
             catch (Exception e)
@@ -67,6 +87,8 @@ namespace OverBang.GameName.Gameplay.Sessions
                 if (SessionManager.Global.IsAllowed)
                     return;
 
+                isStarted = false;
+
                 await SessionManager.Global.LeaveCurrentSession();
             }
             catch (Exception e)
@@ -77,9 +99,11 @@ namespace OverBang.GameName.Gameplay.Sessions
 
         public void StartGame()
         {
+            Debug.Log(SessionManager.Global.IsHost());
             if (!SessionManager.Global.IsHost() || isStarted)
                 return;
 
+            Debug.Log("Starting game");
             isStarted = true;
             StartGameRpc();
         }
@@ -93,6 +117,7 @@ namespace OverBang.GameName.Gameplay.Sessions
         [Rpc(SendTo.Everyone)]
         private void StartGameRpc()
         {
+            Debug.Log("Starting game RPC");
             SurvivalGameMode survivalGameMode = SurvivalGameMode.Create();
             survivalGameMode.SetGameMode();
         }
