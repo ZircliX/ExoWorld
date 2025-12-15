@@ -38,13 +38,15 @@ namespace OverBang.GameName.Gameplay
         
         private void OnEnable()
         {
-            LevelManager.Instance.OnStateChanged += OnStateChanged;
+            if (LevelManager.Instance != null)
+                LevelManager.Instance.OnStateChanged += OnStateChanged;
             ObjectivesManager.OnWantsToChangeObjective += QueueObjective;
         }
         
         private void OnDisable()
         {
-            LevelManager.Instance.OnStateChanged -= OnStateChanged;
+            if (LevelManager.Instance != null)
+                LevelManager.Instance.OnStateChanged -= OnStateChanged;
             ObjectivesManager.OnWantsToChangeObjective -= QueueObjective;
         }
 
