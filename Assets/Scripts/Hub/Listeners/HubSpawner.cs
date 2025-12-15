@@ -26,7 +26,9 @@ namespace OverBang.GameName.Hub
         {
             //Debug.Log($"Spawn player {player.Id} with character {characterData.AgentName}");
             ulong clientID = NetworkManager.Singleton.LocalClient.ClientId;
-            PlayerSpawner.SpawnPlayerObject(characterData, clientID, SessionManager.Global.CurrentPlayer);
+            Vector3 position = new Vector3(0f, 0f, 0);
+            Quaternion rotation = Quaternion.Euler(0f, 0, 0f);
+            PlayerSpawner.SpawnPlayerObject(characterData, clientID, position, rotation);
             
             Awaitable awaitable = PoolUtils.SetupPooling();
             awaitable.Run();

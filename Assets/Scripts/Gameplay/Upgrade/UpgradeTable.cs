@@ -1,5 +1,6 @@
 ﻿using System;
 using OverBang.GameName.Core;
+using Unity.Netcode;
 using UnityEngine;
 using UnityUtils;
 
@@ -21,6 +22,10 @@ namespace OverBang.GameName.Gameplay
 
         private void StartUpgradeSelection()
         {
+            Debug.Log("Starting upgrade selection");
+            UpgradeManager.Instance.InitializeUpgrades(SessionManager.Global.CurrentPlayer);
+            Debug.Log(SessionManager.Global.CurrentPlayer);
+            
             CanInteract = false;
             OnUpgradePanelRequest?.Invoke(true);
             CameraManager.Instance.RequestCameraChange(CameraIDs.Global.UpgradeCamera);

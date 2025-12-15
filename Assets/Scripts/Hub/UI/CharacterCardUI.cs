@@ -40,7 +40,7 @@ namespace OverBang.GameName.Hub
         
         public void SetAvailability(bool availability)
         {
-            CardAvailability.text = availability ? "Available" : "Unavailable";
+            CardAvailability.text = availability ? "Disponible" : "Indisponible";
             
             CardCanvasGroup.alpha = availability ? 1f : 0.5f;
             CardCanvasGroup.interactable = availability;

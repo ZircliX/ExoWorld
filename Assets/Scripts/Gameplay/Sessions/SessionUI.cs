@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using OverBang.GameName.Core;
+using Sirenix.OdinInspector;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
 using Unity.Services.Multiplayer;
@@ -18,10 +19,10 @@ namespace OverBang.GameName.Gameplay.Sessions
         [SerializeField] private GameObject quitSessionButton;
         [SerializeField] private GameObject waitingForHost;
 
-        private List<SessionCardUI> lobbies;
+        [SerializeField, ReadOnly] private List<SessionCardUI> lobbies;
         
         private float refreshTimer = 0f;
-        private const float RefreshInterval = 2.5f;
+        private const float RefreshInterval = 2f;
 
         private void Awake()
         {
@@ -124,22 +125,31 @@ namespace OverBang.GameName.Gameplay.Sessions
                 QuerySessionsOptions queryOptions = new QuerySessionsOptions()
                 {
                     Count = 5,
+                    /*
                     FilterOptions = new List<FilterOption>()
                     {
                         new FilterOption(FilterField.AvailableSlots, "1", FilterOperation.GreaterOrEqual)
                     }
+                    */
                 };
 
                 IList<ISessionInfo> availableSessions = await SessionManager.Global.QuerySessions(queryOptions);
         
-                //Debug.Log($"Found {availableSessions.Count} available sessions");
-        
+                Debug.Log($"Found {availableSessions.Count} available sessions \n lobbies count: {lobbies.Count} \n lobbies null count: {lobbies.FindAll(l => l == null).Count}");
+                
                 for (int i = 0; i < availableSessions.Count; i++)
                 {
                     ISessionInfo sessionInfo = availableSessions[i];
             
                     if (i < lobbies.Count)
                     {
+                        if (lobbies[i] == null)
+                        {
+                            lobbies.Remove(lobbies[i]);
+                            AddSession(sessionInfo);
+                            continue;
+                        }
+                        
                         // Reuse existing lobby UI
                         lobbies[i].Initialize(sessionInfo);
                     }
@@ -152,7 +162,13 @@ namespace OverBang.GameName.Gameplay.Sessions
         
                 for (int i = availableSessions.Count; i < lobbies.Count; i++)
                 {
-                    lobbies[i]?.Dispose(); // Destroy the excess lobby UI
+                    if (lobbies[i] == null)
+                    {
+                        lobbies.Remove(lobbies[i]);
+                        continue;
+                    }
+                    
+                    lobbies[i].Dispose(); // Destroy the excess lobby UI
                 }
             }
             catch (Exception e)
