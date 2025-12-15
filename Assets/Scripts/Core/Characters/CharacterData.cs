@@ -26,6 +26,8 @@ namespace OverBang.GameName.Core
         
         [field: SerializeField] 
         public UpgradeData[] UpgradeDatas { get; private set; }
+
+        [field : SerializeField] public CharacterBaseStats CharacterBaseStats { get; private set; }
         
         [field: SerializeField, Space] 
         public SimplePoolConfig[] Dependencies { get; private set; }
