@@ -10,13 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3193b8db1f7b418ca8740d7e5ab9e491, type: 3}
-  m_Name: Agent 2
+  m_Name: Ophius
   m_EditorClassIdentifier: 
-  <AgentName>k__BackingField: Spikey
+  <AgentName>k__BackingField: Ophius
   <AgentSprite>k__BackingField: {fileID: 0}
-  <CharacterClass>k__BackingField: 1
-  <ModelPrefab>k__BackingField: {fileID: 1310389387751144827, guid: cf7cf68024dc8df44818d51f3228442a, type: 3}
+  <CharacterClass>k__BackingField: 4
+  <ModelPrefab>k__BackingField: {fileID: 1310389387751144827, guid: ce42240c878f7be429333e6250a6c464, type: 3}
+  <UpgradeDatas>k__BackingField:
+  - {fileID: 11400000, guid: 73b03225330c59c4ebf39ea56490a451, type: 2}
+  - {fileID: 11400000, guid: b40cfaed2d5e95142b232fb7a5fddfe3, type: 2}
+  - {fileID: 11400000, guid: 23762b7d5c9b49148986b014ffc1d1ea, type: 2}
+  - {fileID: 11400000, guid: a2cf16698fa0c2d44a90020ff546fbf3, type: 2}
   <Dependencies>k__BackingField:
   - <PoolSize>k__BackingField: 5
     <PoolResource>k__BackingField: {fileID: 11400000, guid: 369e6753a4c4cd749a3b2309af60e11d, type: 2}
-  <ID>k__BackingField: 47af7224-caaf-4000-bb89-72dbb73f4839
+  <ID>k__BackingField: dea65fd9-a971-4382-9893-79c480540e89

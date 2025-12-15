@@ -10,13 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3193b8db1f7b418ca8740d7e5ab9e491, type: 3}
-  m_Name: Agent 3
+  m_Name: Spikey
   m_EditorClassIdentifier: 
-  <AgentName>k__BackingField: "Pa\xEF-nam"
+  <AgentName>k__BackingField: Spikey
   <AgentSprite>k__BackingField: {fileID: 0}
-  <CharacterClass>k__BackingField: 1
-  <ModelPrefab>k__BackingField: {fileID: 1310389387751144827, guid: 5ba0654319dcec746a790d59a3022afb, type: 3}
+  <CharacterClass>k__BackingField: 2
+  <ModelPrefab>k__BackingField: {fileID: 1310389387751144827, guid: cf7cf68024dc8df44818d51f3228442a, type: 3}
+  <UpgradeDatas>k__BackingField:
+  - {fileID: 11400000, guid: fbe8325c8b3e35f42b2de200bb16ff2c, type: 2}
+  - {fileID: 11400000, guid: 88f993ea5738eac46bf3ae4ae47561fa, type: 2}
+  - {fileID: 11400000, guid: 6836992716433fd4da1547e19de0e1a6, type: 2}
+  - {fileID: 11400000, guid: 7b1ce1e510684b24baca547fd3b97fed, type: 2}
   <Dependencies>k__BackingField:
   - <PoolSize>k__BackingField: 5
     <PoolResource>k__BackingField: {fileID: 11400000, guid: 369e6753a4c4cd749a3b2309af60e11d, type: 2}
-  <ID>k__BackingField: 43ace5a7-3035-49b6-9bb6-29b21cd46a73
+  <ID>k__BackingField: 47af7224-caaf-4000-bb89-72dbb73f4839
