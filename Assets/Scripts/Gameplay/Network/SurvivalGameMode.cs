@@ -51,6 +51,7 @@ namespace OverBang.GameName.Gameplay
 
         private async Awaitable HandleHubPhase()
         {
+            Debug.Log("Creating Hub Phase");
             SelectionPhase.SelectionSettings selectionSettings = new SelectionPhase.SelectionSettings
             {
                 selectionType = hasCharacter ? SelectionPhase.SelectionType.None : SelectionPhase.SelectionType.Pick,

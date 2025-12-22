@@ -12,6 +12,12 @@ namespace OverBang.GameName.Gameplay.Sessions
 {
     public class Session : NetworkBehaviour
     {
+        private enum SessionAction
+        {
+            Create,
+            Join
+        }
+        
         [SerializeField] private TMP_InputField createSession;
         [SerializeField] private TMP_InputField joinSession;
         [SerializeField] private TMP_Dropdown maxPlayers;
@@ -34,7 +40,7 @@ namespace OverBang.GameName.Gameplay.Sessions
             }
         }
 
-        public async void JoinSession()
+        public async void JoinSessionInput()
         {
             string raw = joinSession.text;
             string sessionId = raw.Trim();
@@ -44,34 +50,48 @@ namespace OverBang.GameName.Gameplay.Sessions
             if (sessionId == string.Empty)
                 return;
             
-            StartSession(sessionId);
+            StartSession(SessionAction.Join, sessionId);
         }
 
-        public async void CreateSession()
+        public async void CreateSessionInput()
         {
             string raw = createSession.text;
             string sessionId = string.IsNullOrWhiteSpace(raw) ? "DefaultSession" : raw.Trim();
             sessionId = sessionId.Replace(" ", string.Empty);
             createSession.text = sessionId;
             
-            StartSession(sessionId);
+            StartSession(SessionAction.Create, sessionId);
         }
         
-        private async void StartSession(string sessionID)
+        private async void StartSession(SessionAction action, string sessionID)
         {
             try
             {
                 if (SessionManager.Global.IsAllowed)
                     return;
-                
-                SessionOptions options = new SessionOptions()
-                {
-                    Name = sessionID,
-                    MaxPlayers = maxPlayers.value + 2,
-                    IsPrivate = false,
-                }.WithRelayNetwork();
 
-                await SessionManager.Global.CreateOrJoinSession(sessionID, options);
+                if (MultiplayerService.Instance.Sessions.ContainsKey(sessionID))
+                    action = SessionAction.Join;
+                
+                switch (action)
+                {
+                    case SessionAction.Create:
+                        SessionOptions options = new SessionOptions()
+                        {
+                            Name = sessionID,
+                            MaxPlayers = maxPlayers.value + 2,
+                            IsPrivate = false,
+                        }.WithRelayNetwork();
+                        
+                        await SessionManager.Global.CreateSession(options);
+                        break;
+                    
+                    case SessionAction.Join:
+                        await SessionManager.Global.JoinSessionByID(sessionID);
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(action), action, null);
+                }
                 PlayerJoinedSessionRpc();
             }
             catch (Exception e)
@@ -97,6 +117,12 @@ namespace OverBang.GameName.Gameplay.Sessions
             }
         }
 
+        [Rpc(SendTo.Everyone)]
+        private void PlayerJoinedSessionRpc()
+        {
+            OnJoinedSession?.Invoke();
+        }
+        
         public void StartGame()
         {
             if (!SessionManager.Global.IsHost() || isStarted)
@@ -106,13 +132,7 @@ namespace OverBang.GameName.Gameplay.Sessions
             isStarted = true;
             StartGameRpc();
         }
-
-        [Rpc(SendTo.Everyone)]
-        private void PlayerJoinedSessionRpc()
-        {
-            OnJoinedSession?.Invoke();
-        }
-
+        
         [Rpc(SendTo.Everyone)]
         private void StartGameRpc()
         {

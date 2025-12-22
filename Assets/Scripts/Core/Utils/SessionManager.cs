@@ -14,8 +14,16 @@ namespace OverBang.GameName.Core
         public event Action<ISession> OnSessionChanged; 
         
         public ISession ActiveSession {get; private set;}
+
+        public IPlayer CurrentPlayer
+        {
+            get
+            {
+                if (ActiveSession == null) return null;
+                return ActiveSession.CurrentPlayer;
+            }
+        }
         
-        public IPlayer CurrentPlayer => ActiveSession.CurrentPlayer;
         public bool IsHost()
         {
             if (ActiveSession == null)

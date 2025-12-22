@@ -42,6 +42,7 @@ namespace OverBang.GameName.Core
 
         protected virtual async Awaitable OnBegin()
         {
+            Debug.Log("Starting Selection Phase");
             if (!CurrentPlayer.Properties.ContainsKey(ConstID.Global.PlayerPropertyCharacterData))
             {
                 await CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyCharacterData,
