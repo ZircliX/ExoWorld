@@ -45,7 +45,7 @@ namespace OverBang.GameName.Gameplay
         private void FixedUpdate()
         {
             lifeTime += Time.fixedDeltaTime;
-            if (lifeTime >= 10f)
+            if (lifeTime >= data.BulletLifeTime)
             {
                 ReturnBullet();
                 return;
