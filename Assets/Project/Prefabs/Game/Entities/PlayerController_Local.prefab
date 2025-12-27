@@ -5059,6 +5059,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7218111507029689259}
   - component: {fileID: 6522341107633415678}
+  - component: {fileID: 1404244958576547444}
   - component: {fileID: 8973511709967392776}
   - component: {fileID: 5248633824829772109}
   - component: {fileID: 6016904456671023715}
@@ -5100,7 +5101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 1576227847
+  GlobalObjectIdHash: 2994845136
   InScenePlacedSourceGlobalObjectIdHash: 1576227847
   DeferredDespawnTick: 0
   Ownership: 1
@@ -5113,6 +5114,20 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &1404244958576547444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8985065719729054035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 475a8e12d0da4100a4e047139eb8fc94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.AbilityController
+  startingAbilities:
+  - {fileID: 11400000, guid: de420dd5ff5a8514fbfb4a12c6dcbf7e, type: 2}
 --- !u!114 &8973511709967392776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5416,6 +5431,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ac8c1ea3-2443-4f2b-a8b2-dedf5ddcc373
     m_ActionName: 'Gameplay/Tab[/Keyboard/tab]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1404244958576547444}
+        m_TargetAssemblyTypeName: OverBang.GameName.Gameplay.AbilityController, OverBang.GameName.Gameplay
+        m_MethodName: UsePrimary
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 93839a51-5f93-4fe4-8cec-b019308bd8cd
+    m_ActionName: 'Gameplay/Ability1[/Keyboard/a]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1404244958576547444}
+        m_TargetAssemblyTypeName: OverBang.GameName.Gameplay.AbilityController, OverBang.GameName.Gameplay
+        m_MethodName: UseSecondary
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b8aee3dd-61b1-4599-815d-a4f48c4938b3
+    m_ActionName: 'Gameplay/Ability2[/Keyboard/e]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard and Mouse
   m_DefaultActionMap: Gameplay
