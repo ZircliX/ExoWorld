@@ -4,63 +4,57 @@ using UnityEngine.InputSystem;
 
 namespace OverBang.GameName.Gameplay
 {
-    public class AbilityController : MonoBehaviour
+    public class AbilityController : MonoBehaviour, IPlayerComponent
     {
         [SerializeField] private List<AbilityData> startingAbilities;
-
-        private IAbility Primary;
-        private IAbility Secondary;
-
-        private void Awake()
-        {
-            foreach (AbilityData ability in startingAbilities)
-            {
-                if (ability != null)
-                {
-                    IAbility abilityInstance = ability.CreateInstance(gameObject);
-                    if (Primary == null) Primary = abilityInstance;
-                    else if (Secondary == null) Secondary = abilityInstance;
-                }
-            }
-        }
+        public PlayerController Controller { get; set; }
+        
+        private IAbility primary;
+        private IAbility secondary;
 
         private void Update()
         {
             float deltaTime = Time.deltaTime;
             
-            if (Primary == null) return;
-            Primary.OnTick(deltaTime);
+            if (primary is null) return;
+            primary.Tick(deltaTime);
             
-            if (Secondary == null) return;
-            Secondary.OnTick(deltaTime);
-        }
-
-        public T GetAbility<T>(IAbility ability) where T : class, IAbility
-        {
-            if (ability is T typedAbility) return typedAbility;
-            return null;
+            if (secondary is null) return;
+            secondary.Tick(deltaTime);
         }
         
         public void UsePrimary(InputAction.CallbackContext context)
         {
-            if (!context.performed && CanUseAbility()) return;
+            if (!context.performed || !CanUseAbility(primary)) return;
 
-            Debug.Log("Primary Ability");
-            Primary.Begin();
+            primary.Begin();
         }
         
         public void UseSecondary(InputAction.CallbackContext context)
         {
-            if (!context.performed && CanUseAbility()) return;
+            if (!context.performed || !CanUseAbility(secondary)) return;
 
-            Debug.Log("Secondary Ability");
-            Secondary.Begin();
+            secondary.Begin();
         }
 
-        private bool CanUseAbility()
+        private bool CanUseAbility(IAbility ability)
         {
-            if (Primary is { IsActive: false } && Secondary is { IsActive: false }) return true;
-            return false;
+            bool condition = ability is { IsActive: false } and { Cooldown: { IsReady: true } };
+            return condition;
+        }
+
+        public void OnSync(PlayerRuntimeContext context)
+        {
+            Controller = context.playerController;
+            
+            foreach (AbilityData ability in startingAbilities)
+            {
+                if (ability == null) continue;
+                
+                IAbility abilityInstance = ability.CreateInstance(Controller.PlayerTransform.gameObject);
+                if (primary == null) primary = abilityInstance;
+                else if (secondary == null) secondary = abilityInstance;
+            }
         }
     }
 }

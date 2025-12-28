@@ -22,12 +22,6 @@ namespace OverBang.GameName.Gameplay
 
         private void Start()
         {
-            for (int i = 0; i < playerComponents.Length; i++)
-            {
-                IPlayerComponent playerComponent = playerComponents[i];
-                playerComponent.Controller = this;
-            }
-
             PlayerManager.Instance.RegisterPlayer(this);
 
             if (IsOwner)
@@ -59,6 +53,7 @@ namespace OverBang.GameName.Gameplay
                     IPlayerComponent  playerComponent = playerComponents[i];
                     PlayerRuntimeContext context = new PlayerRuntimeContext()
                     {
+                        playerController = this,
                         playerCharacterData = characterData,
                         playerAnimator = playerAnimator,
                         PlayerRig = playerRig,

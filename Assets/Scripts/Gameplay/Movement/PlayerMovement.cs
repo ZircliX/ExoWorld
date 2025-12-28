@@ -25,6 +25,7 @@ namespace OverBang.GameName.Gameplay
         
         public void OnSync(PlayerRuntimeContext context)
         {
+            Controller = context.playerController;
             PlayerAnimator = context.playerAnimator;
         }
         

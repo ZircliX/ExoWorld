@@ -5,19 +5,17 @@ namespace OverBang.GameName.Gameplay
     public interface IAbility
     {
         bool IsActive { get; }
-        float CooldownTimer { get; }
+        CooldownComponent Cooldown { get; }
 
         void Begin();
-        void OnTick(float deltaTime);
+        void Tick(float deltaTime);
         void End();
     }
 
     public interface IAbility<out TData> : IAbility
         where TData : AbilityData
     {
-        TData TypedData { get; }
+        TData Data { get; }
         GameObject Owner { get; }
-
-        bool Initialize(AbilityData data, GameObject owner);
     }
 }

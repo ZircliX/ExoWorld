@@ -115,7 +115,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Ability1",
+                    "name": "PrimaryAbility",
                     "type": "Button",
                     "id": "93839a51-5f93-4fe4-8cec-b019308bd8cd",
                     "expectedControlType": "",
@@ -124,7 +124,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Ability2",
+                    "name": "SecondaryAbility",
                     "type": "Button",
                     "id": "b8aee3dd-61b1-4599-815d-a4f48c4938b3",
                     "expectedControlType": "",
@@ -526,7 +526,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard and Mouse",
-                    "action": "Ability1",
+                    "action": "PrimaryAbility",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -537,7 +537,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard and Mouse",
-                    "action": "Ability2",
+                    "action": "SecondaryAbility",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -5059,9 +5059,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7218111507029689259}
   - component: {fileID: 6522341107633415678}
+  - component: {fileID: 5248633824829772109}
   - component: {fileID: 1404244958576547444}
   - component: {fileID: 8973511709967392776}
-  - component: {fileID: 5248633824829772109}
   - component: {fileID: 6016904456671023715}
   - component: {fileID: -5202455698350677450}
   m_Layer: 0
@@ -5101,7 +5101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 2994845136
+  GlobalObjectIdHash: 1576227847
   InScenePlacedSourceGlobalObjectIdHash: 1576227847
   DeferredDespawnTick: 0
   Ownership: 1
@@ -5114,6 +5114,21 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &5248633824829772109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8985065719729054035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5020a99b6a514844b448fe8f6dbda072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  <PlayerTransform>k__BackingField: {fileID: 1518980571670799238}
+  playerModelContainer: {fileID: 2748755101925067747}
 --- !u!114 &1404244958576547444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5146,21 +5161,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 809e1cc872852744095949b9f3db0e65, type: 2}
   - {fileID: 11400000, guid: ae083bb006b256b4499ab1878499bbff, type: 2}
   weaponHolder: {fileID: 289793016013458955}
---- !u!114 &5248633824829772109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8985065719729054035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5020a99b6a514844b448fe8f6dbda072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
-  <PlayerTransform>k__BackingField: {fileID: 1518980571670799238}
-  playerModelContainer: {fileID: 2748755101925067747}
 --- !u!114 &6016904456671023715
 MonoBehaviour:
   m_ObjectHideFlags: 0

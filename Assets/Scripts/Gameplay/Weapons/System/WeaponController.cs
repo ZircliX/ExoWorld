@@ -51,6 +51,7 @@ namespace OverBang.GameName.Gameplay
 
         public void OnSync(PlayerRuntimeContext context)
         {
+            Controller = context.playerController;
             playerRig = context.PlayerRig;
 
             if (playerRig.TryGetComponent(out RigBuilder builder))
