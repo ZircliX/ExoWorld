@@ -1,3 +1,4 @@
+using OverBang.GameName.Core;
 using UnityEngine;
 
 namespace OverBang.GameName.Gameplay

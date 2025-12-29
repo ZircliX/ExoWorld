@@ -1,3 +1,4 @@
+using System;
 using Ami.BroAudio;
 using KBCore.Refs;
 using OverBang.GameName.Core;
@@ -11,6 +12,8 @@ namespace OverBang.GameName.Gameplay
         [SerializeField, Self] private Rigidbody rb;
         [SerializeField] private ParticleSystem sparks;
         [SerializeField] private ParticleSystem smoke;
+        
+        public event Action<Missile> OnDetonate;
         
         private DfoData data;
         private RaycastHit[] results;
@@ -30,6 +33,11 @@ namespace OverBang.GameName.Gameplay
             {
                 preview = Instantiate(data.PreviewPrefab, hit.point.Add(y: 0.25f), Quaternion.identity);
             }
+        }
+
+        public void OnTick(float deltaTime)
+        {
+            
         }
 
         private void OnCollisionEnter(Collision other)
@@ -73,8 +81,10 @@ namespace OverBang.GameName.Gameplay
             smoke.Stop();
             Destroy(smoke.gameObject, smoke.main.duration);
             
-            Destroy(preview.gameObject);
+            if (preview != null)
+                Destroy(preview.gameObject);
             
+            OnDetonate?.Invoke(this);
             Destroy(gameObject, 0.1f);
         }
     }

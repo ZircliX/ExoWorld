@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f5e789e903b0f24ca09610c5f7c5f3b, type: 3}
-  m_Name: MissileExplosion_Spatial
+  m_Name: MissileWhisle_Spatial
   m_EditorClassIdentifier: BroAudio::Ami.BroAudio.Data.SpatialSetting
   StereoPan: 0
-  DopplerLevel: 0.2
+  DopplerLevel: 0
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 150
   HasLowPassFilter: 0
   LowpassLevelCustomCurve:
     serializedVersion: 2
@@ -43,13 +43,13 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 1.1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -58,7 +58,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -73,18 +73,27 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
-      inSlope: -1.4250757
-      outSlope: -1.4250757
+      value: 0.6
+      inSlope: -1.3222357
+      outSlope: -1.3222357
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.5539748
+      inWeight: 0
+      outWeight: 0.37857458
     - serializedVersion: 3
-      time: 0.2397565
-      value: 0.27283078
-      inSlope: -1.4502203
-      outSlope: -1.4502203
+      time: 0.28632644
+      value: 0.21973795
+      inSlope: -1.0554383
+      outSlope: -2.065922
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.33257085
+      outWeight: 0.2595439
+    - serializedVersion: 3
+      time: 0.49162936
+      value: 0
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
@@ -92,12 +101,12 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.11238104
-      outSlope: -0.11238104
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.2017098
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.GameName.Core
 {
     public interface IAbility
     {

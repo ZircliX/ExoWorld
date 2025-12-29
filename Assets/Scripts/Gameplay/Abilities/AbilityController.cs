@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using OverBang.GameName.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,7 +6,6 @@ namespace OverBang.GameName.Gameplay
 {
     public class AbilityController : MonoBehaviour, IPlayerComponent
     {
-        [SerializeField] private List<AbilityData> startingAbilities;
         public PlayerController Controller { get; set; }
         
         private IAbility primary;
@@ -46,15 +45,12 @@ namespace OverBang.GameName.Gameplay
         public void OnSync(PlayerRuntimeContext context)
         {
             Controller = context.playerController;
-            
-            foreach (AbilityData ability in startingAbilities)
-            {
-                if (ability == null) continue;
-                
-                IAbility abilityInstance = ability.CreateInstance(Controller.PlayerTransform.gameObject);
-                if (primary == null) primary = abilityInstance;
-                else if (secondary == null) secondary = abilityInstance;
-            }
+
+            //Initialize abilities
+            if (context.playerCharacterData.PrimaryAbility != null)
+                primary = context.playerCharacterData.PrimaryAbility.CreateInstance(Controller.PlayerTransform.gameObject);
+            if (context.playerCharacterData.SecondaryAbility != null)
+                secondary = context.playerCharacterData.SecondaryAbility.CreateInstance(Controller.PlayerTransform.gameObject);
         }
     }
 }

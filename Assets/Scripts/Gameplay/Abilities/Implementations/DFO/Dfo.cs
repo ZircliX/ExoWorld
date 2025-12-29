@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using Helteix.Tools;
+using OverBang.GameName.Core;
 using UnityEngine;
 
 namespace OverBang.GameName.Gameplay
@@ -6,11 +9,13 @@ namespace OverBang.GameName.Gameplay
     {
         private float currentDuration;
         private float currentActivationTime;
+        private float elapsedSpawnTime;
+        private int missilesLaunched;
+        private float DeltaSec => (Data.Duration - Data.ActivationTime) / Data.MissileCount;
         
-        private float currentDelta;
         private Transform baliseTransform;
-        
-        private float DeltaSec => Data.Duration / Data.MissileCount;
+        private List<Missile> missiles;
+        private DynamicBuffer<Missile> missilesBuffer;
         
         public Dfo(DfoData data, GameObject owner) : base(data, owner)
         {
@@ -20,8 +25,13 @@ namespace OverBang.GameName.Gameplay
         protected override void OnBegin()
         {
             Debug.Log("Dfo BEGIN");
+            
+            missiles = new List<Missile>(Data.MissileCount);
+            missilesBuffer = new DynamicBuffer<Missile>(Data.MissileCount);
             currentDuration = Data.Duration;
             currentActivationTime = Data.ActivationTime;
+            elapsedSpawnTime = 0;
+            missilesLaunched = 0;
             
             Balise balise = Object.Instantiate(Data.BalisePrefab, Owner.transform.position + Owner.transform.forward * 3.5f, Quaternion.identity);
             balise.Initialize(Data, Owner.transform.forward);
@@ -47,22 +57,34 @@ namespace OverBang.GameName.Gameplay
 
         protected override void OnEnd()
         {
-            Debug.Log("Dfo END");
+            Debug.Log($"Dfo END");
         }
-        
+
         private void HandleMissiles(float deltaTime)
         {
-            currentDelta += deltaTime;
-            if (currentDelta >= DeltaSec)
+            elapsedSpawnTime += deltaTime;
+        
+            int shouldHaveLaunched = Mathf.FloorToInt(elapsedSpawnTime / DeltaSec);
+        
+            while (missilesLaunched < shouldHaveLaunched && missilesLaunched < Data.MissileCount)
             {
-                currentDelta = 0;
                 LaunchMissile();
+                missilesLaunched++;
+            }
+
+
+            
+            //Handle Missiles
+            missilesBuffer.CopyFrom(missiles);
+            for (int i = 0; i < missilesBuffer.Length; i++)
+            {
+                Missile missile = missilesBuffer[i];
+                missile.OnTick(deltaTime);
             }
         }
         
         private void LaunchMissile()
         {
-            Debug.Log(Data);
             Vector2 randomCircle = Random.insideUnitCircle * Data.DiameterSpawn;
             
             Vector3 pos = new Vector3(
@@ -72,8 +94,17 @@ namespace OverBang.GameName.Gameplay
             
             Missile missile = 
                 Object.Instantiate(Data.MissilePrefab, pos, Quaternion.identity);
+            missiles.Add(missile);
+            
+            missile.OnDetonate += OnMissileDetonate;
             
             missile.Initialize(Data);
+        }
+
+        private void OnMissileDetonate(Missile missile)
+        {
+            missiles.Remove(missile);
+            missile.OnDetonate -= OnMissileDetonate;
         }
     }
 }

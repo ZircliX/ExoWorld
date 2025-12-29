@@ -109,44 +109,8 @@ MonoBehaviour:
       _id: 1048514426
     name: Weapons Data
     _id: 1018732353
-  - items:
-    - globalId:
-        globalObjectIdString: GlobalObjectId_V1-3-8538becf3d7dff243b44f593a4e788a8-11400000-0
-      _typeString: OverBang.GameName.Core.CharacterData, OverBang.GameName.Core,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      _obj: {fileID: 11400000, guid: 8538becf3d7dff243b44f593a4e788a8, type: 2}
-      isSceneGameObject: 0
-      isFolder: 0
-      isAsset: 1
-      _id: 1041358513
-    - globalId:
-        globalObjectIdString: GlobalObjectId_V1-3-bed7478a90a81034487b01a6fbd270ea-11400000-0
-      _typeString: OverBang.GameName.Core.CharacterData, OverBang.GameName.Core,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      _obj: {fileID: 11400000, guid: bed7478a90a81034487b01a6fbd270ea, type: 2}
-      isSceneGameObject: 0
-      isFolder: 0
-      isAsset: 1
-      _id: 1061276524
-    - globalId:
-        globalObjectIdString: GlobalObjectId_V1-3-464e9e9c5413d1340bd1934a0c4149f5-11400000-0
-      _typeString: OverBang.GameName.Core.CharacterData, OverBang.GameName.Core,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      _obj: {fileID: 11400000, guid: 464e9e9c5413d1340bd1934a0c4149f5, type: 2}
-      isSceneGameObject: 0
-      isFolder: 0
-      isAsset: 1
-      _id: 1034483089
-    - globalId:
-        globalObjectIdString: GlobalObjectId_V1-3-6907ab4dd1948334eabe022b53c8b49d-11400000-0
-      _typeString: OverBang.GameName.Core.CharacterData, OverBang.GameName.Core,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      _obj: {fileID: 11400000, guid: 6907ab4dd1948334eabe022b53c8b49d, type: 2}
-      isSceneGameObject: 0
-      isFolder: 0
-      isAsset: 1
-      _id: 1049381049
-    name: Characters
+  - items: []
+    name: Page 3
     _id: 1057673773
   - items:
     - globalId:
@@ -203,9 +167,27 @@ MonoBehaviour:
       isFolder: 0
       isAsset: 1
       _id: 1058442929
+    - globalId:
+        globalObjectIdString: GlobalObjectId_V1-3-e28da9b0a8db01542a3770b3e1a28e1c-11400000-0
+      _typeString: OverBang.GameName.Gameplay.States.DashState, OverBang.GameName.Gameplay,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _obj: {fileID: 11400000, guid: e28da9b0a8db01542a3770b3e1a28e1c, type: 2}
+      isSceneGameObject: 0
+      isFolder: 0
+      isAsset: 1
+      _id: 1058696579
     name: Movement
     _id: 1052105637
   - items:
+    - globalId:
+        globalObjectIdString: GlobalObjectId_V1-3-8538becf3d7dff243b44f593a4e788a8-11400000-0
+      _typeString: OverBang.GameName.Core.CharacterData, OverBang.GameName.Core,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _obj: {fileID: 11400000, guid: 8538becf3d7dff243b44f593a4e788a8, type: 2}
+      isSceneGameObject: 0
+      isFolder: 0
+      isAsset: 1
+      _id: 1055802542
     - globalId:
         globalObjectIdString: GlobalObjectId_V1-3-de420dd5ff5a8514fbfb4a12c6dcbf7e-11400000-0
       _typeString: OverBang.GameName.Gameplay.DfoData, OverBang.GameName.Gameplay,
@@ -214,7 +196,7 @@ MonoBehaviour:
       isSceneGameObject: 0
       isFolder: 0
       isAsset: 1
-      _id: 1061650426
+      _id: 1051006981
     - globalId:
         globalObjectIdString: GlobalObjectId_V1-1-d04ad76036f15414b8bd8f9f6ad39d88-4280587836592571279-0
       _typeString: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
@@ -242,12 +224,51 @@ MonoBehaviour:
       isFolder: 0
       isAsset: 1
       _id: 1058296129
-    name: DFO
+    name: Pearl
     _id: 1046197706
-  - items: []
-    name: Page 6
+  - items:
+    - globalId:
+        globalObjectIdString: GlobalObjectId_V1-3-bed7478a90a81034487b01a6fbd270ea-11400000-0
+      _typeString: OverBang.GameName.Core.CharacterData, OverBang.GameName.Core,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _obj: {fileID: 11400000, guid: bed7478a90a81034487b01a6fbd270ea, type: 2}
+      isSceneGameObject: 0
+      isFolder: 0
+      isAsset: 1
+      _id: 1054392846
+    name: Ophius
     _id: 1065060526
+  - items:
+    - globalId:
+        globalObjectIdString: GlobalObjectId_V1-3-464e9e9c5413d1340bd1934a0c4149f5-11400000-0
+      _typeString: OverBang.GameName.Core.CharacterData, OverBang.GameName.Core,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _obj: {fileID: 11400000, guid: 464e9e9c5413d1340bd1934a0c4149f5, type: 2}
+      isSceneGameObject: 0
+      isFolder: 0
+      isAsset: 1
+      _id: 1046217962
+    name: Spikey
+    _id: 1019932354
+  - items:
+    - globalId:
+        globalObjectIdString: GlobalObjectId_V1-3-6907ab4dd1948334eabe022b53c8b49d-11400000-0
+      _typeString: OverBang.GameName.Core.CharacterData, OverBang.GameName.Core,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _obj: {fileID: 11400000, guid: 6907ab4dd1948334eabe022b53c8b49d, type: 2}
+      isSceneGameObject: 0
+      isFolder: 0
+      isAsset: 1
+      _id: 1054118430
+    name: "Pa\xEF-nam"
+    _id: 1037246514
   - items: []
-    name: Page 7
+    name: Page 9
+    _id: 1065194568
+  - items: []
+    name: Page 10
+    _id: 1044272953
+  - items: []
+    name: Page 11
     _id: 0
   rowScale: 1
