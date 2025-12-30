@@ -26,6 +26,7 @@ namespace OverBang.GameName.Gameplay
         {
             if (!context.performed || !CanUseAbility(primary)) return;
 
+            //Debug.Log("Primary Ability Input");
             primary.Begin();
         }
         
@@ -33,12 +34,13 @@ namespace OverBang.GameName.Gameplay
         {
             if (!context.performed || !CanUseAbility(secondary)) return;
 
+            Debug.Log("Secondary Ability Input");
             secondary.Begin();
         }
 
         private bool CanUseAbility(IAbility ability)
         {
-            bool condition = ability is { IsActive: false } and { Cooldown: { IsReady: true } };
+            bool condition = ability is { CanBeUsed: true };
             return condition;
         }
 
@@ -48,9 +50,16 @@ namespace OverBang.GameName.Gameplay
 
             //Initialize abilities
             if (context.playerCharacterData.PrimaryAbility != null)
+            {
                 primary = context.playerCharacterData.PrimaryAbility.CreateInstance(Controller.PlayerTransform.gameObject);
+                Debug.Log("Initialize primary ability");
+            }
+
             if (context.playerCharacterData.SecondaryAbility != null)
+            {
+                Debug.Log("Initialize secondary ability");
                 secondary = context.playerCharacterData.SecondaryAbility.CreateInstance(Controller.PlayerTransform.gameObject);
+            }
         }
     }
 }

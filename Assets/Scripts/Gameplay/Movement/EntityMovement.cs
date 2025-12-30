@@ -52,9 +52,6 @@ namespace OverBang.GameName.Gameplay
         public bool IsTouchingCeiling { get; protected set; }
 
         #endregion
-        
-        [Header("Dash Settings")]
-        [SerializeField] protected float dashCooldown = 2.5f;
 
         #region Walls Detection
         
@@ -143,12 +140,13 @@ namespace OverBang.GameName.Gameplay
         }
 
         public bool DashInput { get; protected set; }
-        protected float currentDashCooldown;
-        public bool CanDash()
+
+        public void SetDash(bool state)
         {
-            return DashInput
-                   && currentDashCooldown <= 0;
+            Debug.Log("Setting dash to " + state);
+            DashInput = state;
         }
+        public bool CanDash() => DashInput;
 
         #endregion
         
@@ -220,12 +218,6 @@ namespace OverBang.GameName.Gameplay
                 currentWallrunExitTime -= Time.deltaTime;
             else
                 currentWallrunExitTime = 0;
-
-            //Dash Cooldown
-            if (currentDashCooldown > 0)
-                currentDashCooldown -= Time.deltaTime;
-            else
-                currentDashCooldown = 0;
             
             //Set Buffers
             if (jumpInput > 0)
@@ -635,11 +627,6 @@ namespace OverBang.GameName.Gameplay
         public void ExitWallrun()
         {
             currentWallrunExitTime = wallrunExitTime;
-        }
-
-        public void DashCooldown()
-        {
-            currentDashCooldown = dashCooldown;
         }
         
         #endregion

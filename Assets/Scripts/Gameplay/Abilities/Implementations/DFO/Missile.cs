@@ -31,7 +31,7 @@ namespace OverBang.GameName.Gameplay
             if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 1000f,
                     GameMetrics.Global.HittableLayers, QueryTriggerInteraction.Ignore))
             {
-                preview = Instantiate(data.PreviewPrefab, hit.point.Add(y: 0.25f), Quaternion.identity);
+                preview = Instantiate(data.PreviewPrefab, hit.point.Add(y: 0.1f), Quaternion.identity);
             }
         }
 

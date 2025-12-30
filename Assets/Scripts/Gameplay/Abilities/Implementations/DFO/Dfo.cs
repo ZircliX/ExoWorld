@@ -1,13 +1,12 @@
 using System.Collections.Generic;
 using Helteix.Tools;
-using OverBang.GameName.Core;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace OverBang.GameName.Gameplay
 {
     public class Dfo : BaseAbility<DfoData>
     {
-        private float currentDuration;
         private float currentActivationTime;
         private float elapsedSpawnTime;
         private int missilesLaunched;
@@ -17,14 +16,11 @@ namespace OverBang.GameName.Gameplay
         private List<Missile> missiles;
         private DynamicBuffer<Missile> missilesBuffer;
         
-        public Dfo(DfoData data, GameObject owner) : base(data, owner)
-        {
-            Cooldown = new CooldownComponent(data.Cooldown);
-        }
+        public Dfo(DfoData data, GameObject owner) : base(data, owner) { }
 
         protected override void OnBegin()
         {
-            Debug.Log("Dfo BEGIN");
+            //Debug.Log("Dfo BEGIN");
             
             missiles = new List<Missile>(Data.MissileCount);
             missilesBuffer = new DynamicBuffer<Missile>(Data.MissileCount);
@@ -40,10 +36,6 @@ namespace OverBang.GameName.Gameplay
 
         protected override void OnTick(float deltaTime)
         {
-            //Debug.Log("#UPDATE# Dfo UPDATE");
-            currentDuration -= deltaTime;
-            if (currentDuration <= 0) End();
-            
             //Debug.Log($"ActivationTime remaining: {currentActivationTime}");
             if (currentActivationTime > 0)
             {
@@ -51,13 +43,11 @@ namespace OverBang.GameName.Gameplay
                 return;
             }
 
-            Debug.Log("Launching missiles");
             HandleMissiles(deltaTime);
         }
 
         protected override void OnEnd()
         {
-            Debug.Log($"Dfo END");
         }
 
         private void HandleMissiles(float deltaTime)
@@ -71,8 +61,6 @@ namespace OverBang.GameName.Gameplay
                 LaunchMissile();
                 missilesLaunched++;
             }
-
-
             
             //Handle Missiles
             missilesBuffer.CopyFrom(missiles);
@@ -92,13 +80,21 @@ namespace OverBang.GameName.Gameplay
                 Data.HeightSpawn, 
                 randomCircle.y + baliseTransform.position.z);
             
-            Missile missile = 
-                Object.Instantiate(Data.MissilePrefab, pos, Quaternion.identity);
-            missiles.Add(missile);
-            
-            missile.OnDetonate += OnMissileDetonate;
-            
-            missile.Initialize(Data);
+            NetworkSpawnManager spawnManager = NetworkManager.Singleton.SpawnManager;
+            NetworkObject missileNetwork = spawnManager.InstantiateAndSpawn(
+                Data.MissilePrefab,
+                NetworkManager.Singleton.LocalClientId,
+                true,
+                true,
+                false,
+                pos);
+
+            if (missileNetwork.TryGetComponent(out Missile missile))
+            {
+                missile.Initialize(Data);
+                missile.OnDetonate += OnMissileDetonate;
+                missiles.Add(missile);
+            }
         }
 
         private void OnMissileDetonate(Missile missile)

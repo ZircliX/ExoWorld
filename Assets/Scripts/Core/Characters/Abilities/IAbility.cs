@@ -6,6 +6,7 @@ namespace OverBang.GameName.Core
     {
         bool IsActive { get; }
         CooldownComponent Cooldown { get; }
+        bool CanBeUsed => !IsActive && Cooldown.IsReady;
 
         void Begin();
         void Tick(float deltaTime);
