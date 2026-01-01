@@ -24,18 +24,24 @@ namespace OverBang.GameName.Gameplay
         
         public void UsePrimary(InputAction.CallbackContext context)
         {
-            if (!context.performed || !CanUseAbility(primary)) return;
+            if (!context.performed) return;
 
             //Debug.Log("Primary Ability Input");
-            primary.Begin();
+            UseAbility(primary);
         }
         
         public void UseSecondary(InputAction.CallbackContext context)
         {
-            if (!context.performed || !CanUseAbility(secondary)) return;
+            if (!context.performed) return;
 
             Debug.Log("Secondary Ability Input");
-            secondary.Begin();
+            UseAbility(secondary);
+        }
+
+        private void UseAbility(IAbility ability)
+        {
+            if (!CanUseAbility(ability)) return;
+            ability.Begin();
         }
 
         private bool CanUseAbility(IAbility ability)

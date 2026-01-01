@@ -8,21 +8,22 @@ namespace OverBang.GameName.Gameplay
     {
         public TData Data { get; protected set; }
         public GameObject Owner { get; protected set; }
-        public bool IsActive { get; protected set; }
+        public bool IsActive { get; private set; }
 
-        public CooldownComponent Cooldown { get; protected set; }
-        protected float currentDuration;
+        public CooldownComponent Cooldown => cooldown;
+        private readonly CooldownComponent cooldown;
+        private float currentDuration;
 
         protected BaseAbility(TData data, GameObject owner)
         {
             Data = data;
             Owner = owner;
-            Cooldown = new CooldownComponent(data.Cooldown);
+            cooldown = new CooldownComponent(data.Cooldown);
         }
 
         public virtual void Begin()
         {
-            if (!Cooldown.IsReady)
+            if (!cooldown.IsReady)
                 return;
             
             currentDuration = Data.Duration;
@@ -33,7 +34,7 @@ namespace OverBang.GameName.Gameplay
 
         public virtual void Tick(float deltaTime)
         {
-            Cooldown.Tick(deltaTime);
+            cooldown.Tick(deltaTime);
 
             if (!IsActive)
                 return;
@@ -51,7 +52,7 @@ namespace OverBang.GameName.Gameplay
         {
             IsActive = false;
             OnEnd();
-            Cooldown.Start();
+            cooldown.Start();
         }
 
         protected abstract void OnBegin();

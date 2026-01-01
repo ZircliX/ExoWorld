@@ -130,6 +130,12 @@ namespace OverBang.Pooling
             Debug.LogError($"No pool registered for resource {resource.name}");
             return null;
         }
+        
+        public async Awaitable Despawn<T>(T instance, float time) where T : Object
+        {
+            await Awaitable.WaitForSecondsAsync(time);
+            Despawn(instance);
+        }
 
         public void Despawn<T>(T instance) where T : Object
         {

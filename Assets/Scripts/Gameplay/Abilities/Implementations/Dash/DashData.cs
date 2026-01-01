@@ -1,16 +1,16 @@
 using OverBang.GameName.Core;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.Dash
+namespace OverBang.GameName.Gameplay
 {
-    [CreateAssetMenu(fileName = "DashData", menuName = "OverBang/Abilities/DashData")]
+    [CreateAssetMenu(fileName = "Dash Ability Data", menuName = "OverBang/Abilities/DashData")]
     public class DashData : AbilityData
     {
-        [field: SerializeField] public DamageInfo Damages { get; private set; }
+        [field: SerializeField] public DamageInfo Damage { get; private set; }
         
         public override IAbility CreateInstance(GameObject owner)
         {
-            return new Dash(this, owner);
+            return new DashAbility(this, owner);
         }
     }
 }

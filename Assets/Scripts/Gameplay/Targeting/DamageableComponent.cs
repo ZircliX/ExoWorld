@@ -10,7 +10,8 @@ namespace OverBang.GameName.Gameplay
         public float Health { get; private set; }
         [field: SerializeField] public float MaxHealth { get; private set; }
         public bool IsAlive => Health > 0;
-        
+        public bool IsInvincible { get; set; }
+
         public void TakeDamage(DamageInfo damage)
         {
             Health -= damage.baseDamage;
