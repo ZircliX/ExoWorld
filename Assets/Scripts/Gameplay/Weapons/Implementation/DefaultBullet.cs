@@ -75,7 +75,7 @@ namespace OverBang.GameName.Gameplay
                     if (hit.collider.TryGetComponent(out IDamageable damageable) && IsOwner)
                     {
                         //Debug.Log($"Dealing damage to IDamageable {hit.collider.name}", hit.collider.gameObject);
-                        damageable.TakeDamage(data.Damage);
+                        damageable.TakeDamage(data.Damage.WithBonusDamage(UpgradeManager.Instance.GetRuntimeUpgrade(UpgradeType.Damage)));
                     }
                     
                     /* To push objects when hit - disabled for now

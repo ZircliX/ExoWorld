@@ -20,8 +20,7 @@ namespace OverBang.GameName.Gameplay
 
         public void Initialize(float maxHealth,  float resistance)
         {
-            float bonusHealth = UpgradeManager.Instance.GetRuntimeUpgrade(UpgradeType.Health);
-            MaxHealth = maxHealth + bonusHealth;
+            MaxHealth = maxHealth;
             Health = MaxHealth;
             Resistance = resistance;
         }
