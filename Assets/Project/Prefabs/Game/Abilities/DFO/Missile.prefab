@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.Missile
   rb: {fileID: 7107918231339447845}
-  no: {fileID: 8738834175512621160}
+  networkObject: {fileID: 8738834175512621160}
   soundSource: {fileID: 6862638128149311006}
   missileSmoke: {fileID: 3027264713068179249}
 --- !u!54 &7107918231339447845
@@ -148,7 +148,7 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
+  SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1

@@ -1,3 +1,4 @@
+using InterfaceAttributes;
 using UnityEngine;
 
 namespace OverBang.GameName.Core
@@ -12,7 +13,10 @@ namespace OverBang.GameName.Core
         [field: Header("Specific Data")]
         [field: SerializeField] public float Cooldown { get; private set; }
         [field: SerializeField] public float Duration { get; private set; }
-        
-        public abstract IAbility CreateInstance(GameObject owner);
+       
+        [field: Header("Strategy Data")]
+        [field: SerializeReference] public IAbilityStrategyData MainData { get; private set; }
+        [field: SerializeReference] public IAbilityStrategyData AugmentData1 { get; private set; }
+        [field: SerializeReference] public IAbilityStrategyData AugmentData2 { get; private set; }
     }
 }

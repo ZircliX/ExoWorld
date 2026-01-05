@@ -7,10 +7,5 @@ namespace OverBang.GameName.Gameplay
     public class DashData : AbilityData
     {
         [field: SerializeField] public DamageInfo Damage { get; private set; }
-        
-        public override IAbility CreateInstance(GameObject owner)
-        {
-            return new DashAbility(this, owner);
-        }
     }
 }

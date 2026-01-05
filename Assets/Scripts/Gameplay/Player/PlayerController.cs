@@ -11,7 +11,7 @@ namespace OverBang.GameName.Gameplay
         public NetworkVariable<PlayerNetworkTransform> PlayerState { get; private set; } =
             new NetworkVariable<PlayerNetworkTransform>(writePerm: NetworkVariableWritePermission.Owner);
 
-        [field : SerializeField] public Transform PlayerTransform {get ; private set;}
+        [field : SerializeField] public IAbilityCaster AbilityCaster {get ; private set;}
         [SerializeField] private Transform playerModelContainer;
         private IPlayerComponent[] playerComponents;
         

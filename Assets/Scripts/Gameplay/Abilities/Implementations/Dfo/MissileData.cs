@@ -10,7 +10,6 @@ namespace OverBang.GameName.Gameplay
         public float LifeTime;
         public float DetonationRadius;
         public float DetonationTime;
-        public DamageInfo Damage;
         
         [Header("Feedbacks")]
         public ParticleSystem PreviewPrefab;

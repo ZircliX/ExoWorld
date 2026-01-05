@@ -51,6 +51,7 @@ namespace OverBang.GameName.Gameplay
             this.ValidateRefs();
         }
 
+        /*
         private void OnEnable()
         {
             DahComponent.OnHealthChanged += Damaged;
@@ -70,6 +71,7 @@ namespace OverBang.GameName.Gameplay
             AttackDetectionArea.OnEnter -= OnAttackEnter;
             AttackDetectionArea.OnExit -= OnAttackExit;
         }
+        */
 
         private void Damaged(float previousHealth, float currentHealth)
         {

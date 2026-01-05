@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 namespace OverBang.GameName.Gameplay
 {
-    public class AbilityController : MonoBehaviour, IPlayerComponent
+    public class AbilityController : MonoBehaviour, IPlayerComponent, IAbilityCaster
     {
         public PlayerController Controller { get; set; }
         
@@ -26,7 +26,7 @@ namespace OverBang.GameName.Gameplay
         {
             if (!context.performed) return;
 
-            //Debug.Log("Primary Ability Input");
+            Debug.Log("Primary Ability Input");
             UseAbility(primary);
         }
         
@@ -57,14 +57,14 @@ namespace OverBang.GameName.Gameplay
             //Initialize abilities
             if (context.playerCharacterData.PrimaryAbility != null)
             {
-                primary = context.playerCharacterData.PrimaryAbility.CreateInstance(Controller.PlayerTransform.gameObject);
+                primary = context.playerCharacterData.PrimaryAbility.CreateAbilityFor(this);
                 Debug.Log("Initialize primary ability");
             }
 
             if (context.playerCharacterData.SecondaryAbility != null)
             {
                 Debug.Log("Initialize secondary ability");
-                secondary = context.playerCharacterData.SecondaryAbility.CreateInstance(Controller.PlayerTransform.gameObject);
+                secondary = context.playerCharacterData.SecondaryAbility.CreateAbilityFor(this);
             }
         }
     }

@@ -3563,6 +3563,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1518980571670799238}
+  - component: {fileID: 4877312307657521551}
   - component: {fileID: 4225862939240760527}
   - component: {fileID: 4862076419946111438}
   - component: {fileID: 7499400410501169703}
@@ -3596,6 +3597,18 @@ Transform:
   - {fileID: 1895274584272249732}
   m_Father: {fileID: 7218111507029689259}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4877312307657521551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6684921334843441845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 475a8e12d0da4100a4e047139eb8fc94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.AbilityController
 --- !u!114 &4225862939240760527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3648,7 +3661,6 @@ MonoBehaviour:
     m_Bits: 256
   ceilingCheckDistance: 0.5
   ceilingCrouchCheckDistance: 0.75
-  dashCooldown: 1
   wallCastSample: 20
   wallCastDistance: 1
   wallRunCastExpension: 2
@@ -5061,7 +5073,6 @@ GameObject:
   - component: {fileID: 7218111507029689259}
   - component: {fileID: 6522341107633415678}
   - component: {fileID: 5248633824829772109}
-  - component: {fileID: 1404244958576547444}
   - component: {fileID: 8973511709967392776}
   - component: {fileID: 6016904456671023715}
   - component: {fileID: -5202455698350677450}
@@ -5128,20 +5139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  <PlayerTransform>k__BackingField: {fileID: 1518980571670799238}
   playerModelContainer: {fileID: 2748755101925067747}
---- !u!114 &1404244958576547444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8985065719729054035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 475a8e12d0da4100a4e047139eb8fc94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.AbilityController
 --- !u!114 &8973511709967392776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5432,7 +5430,7 @@ MonoBehaviour:
     m_ActionName: 'Gameplay/Tab[/Keyboard/tab]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1404244958576547444}
+      - m_Target: {fileID: 4877312307657521551}
         m_TargetAssemblyTypeName: OverBang.GameName.Gameplay.AbilityController, OverBang.GameName.Gameplay
         m_MethodName: UsePrimary
         m_Mode: 0
@@ -5448,7 +5446,7 @@ MonoBehaviour:
     m_ActionName: 'Gameplay/Ability1[/Keyboard/a]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1404244958576547444}
+      - m_Target: {fileID: 4877312307657521551}
         m_TargetAssemblyTypeName: OverBang.GameName.Gameplay.AbilityController, OverBang.GameName.Gameplay
         m_MethodName: UseSecondary
         m_Mode: 0

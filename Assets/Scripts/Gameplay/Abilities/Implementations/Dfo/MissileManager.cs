@@ -12,18 +12,20 @@ namespace OverBang.GameName.Gameplay
         private int currentLaunchCount;
         private float elapsedSpawnTime;
         
-        private float DeltaSec => (data.Duration - data.ActivationTime) / data.MissileCount;
+        private float DeltaSec => (data.Duration - strategyData.ActivationTime) / strategyData.MissileCount;
+        private readonly DfoStrategyData strategyData;
         private readonly DfoData data;
         private readonly Transform baliseTransform;
 
-        public MissileManager(DfoData data, Transform balise)
+        public MissileManager(DfoData data, DfoStrategyData strategyData, Transform balise)
         {
             baliseTransform = balise;
-            missiles = new List<Missile>(data.MissileCount);
-            buffer = new DynamicBuffer<Missile>(data.MissileCount);
+            missiles = new List<Missile>(strategyData.MissileCount);
+            buffer = new DynamicBuffer<Missile>(strategyData.MissileCount);
 
             elapsedSpawnTime = 0;
             this.data = data;
+            this.strategyData = strategyData;
         }
 
         public void AddMissile(Missile missile)
@@ -41,7 +43,7 @@ namespace OverBang.GameName.Gameplay
             int shouldHaveLaunched = Mathf.FloorToInt(elapsedSpawnTime / DeltaSec);
         
             while (currentLaunchCount < shouldHaveLaunched && 
-                   currentLaunchCount < data.MissileCount)
+                   currentLaunchCount < strategyData.MissileCount)
             {
                 LaunchMissile();
             }
@@ -53,7 +55,7 @@ namespace OverBang.GameName.Gameplay
 
         private void LaunchMissile()
         {
-            Vector2 randomCircle = Random.insideUnitCircle * data.DiameterSpawn;
+            Vector2 randomCircle = Random.insideUnitCircle * strategyData.DiameterSpawn;
 
             Vector3 pos = new Vector3(
                 randomCircle.x + baliseTransform.position.x,
@@ -71,7 +73,7 @@ namespace OverBang.GameName.Gameplay
 
             if (missileNetwork.TryGetComponent(out Missile missile))
             {
-                missile.Initialize(data.MissileData, this);
+                missile.Initialize(data.MissileData, this, strategyData.Damage);
                 AddMissile(missile);
             }
         }
