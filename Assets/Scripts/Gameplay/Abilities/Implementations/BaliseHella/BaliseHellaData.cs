@@ -10,7 +10,7 @@ namespace OverBang.GameName.Gameplay
         [field: SerializeField] public ParticleSystem HealingCircle { get; private set; }
         [field: SerializeField] public float ThrowForce { get; private set; }
         [field: SerializeField] public float Radius { get; private set; }
-        [field: SerializeField] public float MinHP { get; private set; }
+        [field: SerializeField] public float MinHp { get; private set; }
         
         public override IAbility CreateInstance(GameObject owner)
         {

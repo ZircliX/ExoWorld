@@ -22,7 +22,6 @@ namespace OverBang.GameName.Gameplay
 
         protected override void OnEnd()
         {
-            Debug.LogError("Stop Hella Balise");
             balise.Stop();
             balise = null;
         }

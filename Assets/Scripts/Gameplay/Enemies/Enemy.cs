@@ -29,8 +29,8 @@ namespace OverBang.GameName.Gameplay
         [field : SerializeField] public Transform enemyModelContainer { get; private set; }
         
         [field : Header("Patrol Parameters :")]
-        [field : SerializeField] public TriggerComponent GetTriggeredComponent { get; private set; }
-        [field : SerializeField] public TriggerComponent AttackTriggerComponent { get; private set; }
+        [field : SerializeField] public DetectionArea FocusDetectionArea { get; private set; }
+        [field : SerializeField] public DetectionArea AttackDetectionArea { get; private set; }
 
         [field: SerializeField] public float patrolRadius { get; private set; } = 10f;
 
@@ -53,28 +53,28 @@ namespace OverBang.GameName.Gameplay
 
         private void OnEnable()
         {
-            DahComponent.OnDamaged += Damaged;
-            GetTriggeredComponent.OnEntered += OnEntered;
-            GetTriggeredComponent.OnExited += OnExited;
+            DahComponent.OnHealthChanged += Damaged;
+            FocusDetectionArea.OnEnter += OnEntered;
+            FocusDetectionArea.OnExit += OnExited;
             
-            AttackTriggerComponent.OnEntered += OnAttackEnter;
-            AttackTriggerComponent.OnExited += OnAttackExit;
+            AttackDetectionArea.OnEnter += OnAttackEnter;
+            AttackDetectionArea.OnExit += OnAttackExit;
         }
 
         private void OnDisable()
         {
-            DahComponent.OnDamaged -= Damaged;
-            GetTriggeredComponent.OnEntered -= OnEntered;
-            GetTriggeredComponent.OnExited -= OnExited;
+            DahComponent.OnHealthChanged -= Damaged;
+            FocusDetectionArea.OnEnter -= OnEntered;
+            FocusDetectionArea.OnExit -= OnExited;
             
-            AttackTriggerComponent.OnEntered -= OnAttackEnter;
-            AttackTriggerComponent.OnExited -= OnAttackExit;
+            AttackDetectionArea.OnEnter -= OnAttackEnter;
+            AttackDetectionArea.OnExit -= OnAttackExit;
         }
 
-        private void Damaged()
+        private void Damaged(float previousHealth, float currentHealth)
         {
             //Debug.Log($"Remaining Health : {DahComponent.Health}");
-            if (DahComponent.Health <= 0)
+            if (currentHealth <= 0)
             {
                 OnDeath();
             }
