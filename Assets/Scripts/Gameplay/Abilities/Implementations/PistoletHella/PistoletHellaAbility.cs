@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace OverBang.GameName.Gameplay
 {
-    public class PistoletHellaAbility : BaseAbility<PistoletHellaData>
+    public class PistoletHellaAbility : CooldownAbility<,>
     {
         public PistoletHellaAbility(PistoletHellaData data, GameObject owner) : base(data, owner)
         {

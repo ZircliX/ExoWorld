@@ -1,22 +1,21 @@
-using UnityEngine;
+using OverBang.GameName.Gameplay;
 
 namespace OverBang.GameName.Core
 {
     public interface IAbility
     {
+        IAbilityCaster Caster { get; }
         bool IsActive { get; }
-        CooldownComponent Cooldown { get; }
-        bool CanBeUsed => !IsActive && Cooldown.IsReady;
+        bool CanBeUsed { get; }
 
         void Begin();
         void Tick(float deltaTime);
         void End();
     }
-
-    public interface IAbility<out TData> : IAbility
+    
+    public interface IAbility<out TData> : IAbility 
         where TData : AbilityData
     {
         TData Data { get; }
-        GameObject Owner { get; }
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace OverBang.GameName.Gameplay
 {
-    public class MinesWaxAbility : BaseAbility<MinesWaxData>
+    public class MinesWaxAbility : CooldownAbility<,>
     {
         public MinesWaxAbility(MinesWaxData data, GameObject owner) : base(data, owner) { }
 

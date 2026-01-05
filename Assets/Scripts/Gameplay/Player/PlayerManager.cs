@@ -1,8 +1,5 @@
-using System;
 using System.Collections.Generic;
 using Helteix.Singletons.MonoSingletons;
-using Unity.Netcode;
-using UnityEngine;
 
 namespace OverBang.GameName.Gameplay
 {
@@ -24,24 +21,5 @@ namespace OverBang.GameName.Gameplay
         {
             players.Remove(player);
         }
-
-        public IEnumerator<Transform> GetPlayerPosition()
-        {
-            foreach (PlayerController playerController in players)
-            {
-                yield return playerController.PlayerTransform;
-            }
-        }
-
-        public Transform[] GetPlayerTransforms()
-        {
-            List<Transform> transforms = new List<Transform>();
-            foreach (PlayerController playerController in players)
-            {
-                transforms.Add(playerController.PlayerTransform);
-            }
-            return transforms.ToArray();
-        }
-        
     }
 }

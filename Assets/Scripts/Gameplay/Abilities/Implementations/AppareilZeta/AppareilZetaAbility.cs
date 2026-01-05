@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace OverBang.GameName.Gameplay
 {
-    public class AppareilZetaAbility : BaseAbility<AppareilZetaData>
+    public class AppareilZetaAbility : CooldownAbility<,>
     {
         public AppareilZetaAbility(AppareilZetaData data, GameObject owner) : base(data, owner) { }
 

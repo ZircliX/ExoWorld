@@ -17,21 +17,21 @@ MonoBehaviour:
   <Icon>k__BackingField: {fileID: 0}
   <Cooldown>k__BackingField: 3
   <Duration>k__BackingField: 7.5
+  <MainData>k__BackingField:
+    rid: 402416982411968634
+  <AugmentData1>k__BackingField:
+    rid: 402416982411968635
+  <AugmentData2>k__BackingField:
+    rid: 402416982411968636
   <DfoBalisePrefab>k__BackingField: {fileID: 3770112181033685132, guid: a106b40561ba7764b9fb7b47542b86d1, type: 3}
   <ThrowForce>k__BackingField: 350
-  <ActivationTime>k__BackingField: 2.5
   <MissilePrefab>k__BackingField: {fileID: 8738834175512621160, guid: d04ad76036f15414b8bd8f9f6ad39d88, type: 3}
-  <MissileCount>k__BackingField: 25
-  <DiameterSpawn>k__BackingField: 15
   <HeightSpawn>k__BackingField: 150
   <MissileData>k__BackingField:
     Speed: 3000
     LifeTime: 10
     DetonationRadius: 5
     DetonationTime: 0
-    Damage:
-      baseDamage: 200
-      weakSpotMultiplier: 1.5
     PreviewPrefab: {fileID: 5599410838726473928, guid: 4c09fa66049c71a448edd43755444bf9, type: 3}
     ExplosionPrefab: {fileID: 4596544553357837919, guid: 776b18aa0a0c1d3468b940f5d2206ce2, type: 3}
     ImpactPrefab: {fileID: 4238007098874307032, guid: 6fce6d0fe291a0247b51e565d3fc01aa, type: 3}
@@ -39,3 +39,36 @@ MonoBehaviour:
       ID: 1073741849
       _sourceAsset: {fileID: 11400000, guid: 1e98a9d7d89afe544803e95a716644ff, type: 2}
       <DebugObject>k__BackingField: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: 402416982411968634
+      type: {class: DfoStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
+      data:
+        <ActivationTime>k__BackingField: 1.5
+        <MissileCount>k__BackingField: 25
+        <DiameterSpawn>k__BackingField: 10
+        <Damage>k__BackingField:
+          baseDamage: 200
+          weakSpotMultiplier: 1.5
+          bonusDamage: 0
+    - rid: 402416982411968635
+      type: {class: DfoStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
+      data:
+        <ActivationTime>k__BackingField: 0
+        <MissileCount>k__BackingField: 0
+        <DiameterSpawn>k__BackingField: 0
+        <Damage>k__BackingField:
+          baseDamage: 0
+          weakSpotMultiplier: 0
+          bonusDamage: 0
+    - rid: 402416982411968636
+      type: {class: DfoStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
+      data:
+        <ActivationTime>k__BackingField: 0
+        <MissileCount>k__BackingField: 0
+        <DiameterSpawn>k__BackingField: 0
+        <Damage>k__BackingField:
+          baseDamage: 0
+          weakSpotMultiplier: 0
+          bonusDamage: 0

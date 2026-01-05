@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ namespace OverBang.GameName.Gameplay
     [DisallowMultipleComponent]
     public class DetectionArea : MonoBehaviour
     {
-        [field: SerializeField] public Collider DetectionCollider { get; private set; }
+        [field: SerializeField, Required] public Collider DetectionCollider { get; private set; }
         
         private readonly HashSet<string> allowedTags = new HashSet<string>();
         private LayerMask allowedLayers;

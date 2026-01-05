@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace OverBang.GameName.Gameplay
 {
-    public class BaliseHellaAbility : BaseAbility<BaliseHellaData>
+    public class BaliseHellaAbility : CooldownAbility<,>
     {
         private BaliseHella balise;
         
@@ -22,7 +22,6 @@ namespace OverBang.GameName.Gameplay
 
         protected override void OnEnd()
         {
-            Debug.LogError("Stop Hella Balise");
             balise.Stop();
             balise = null;
         }

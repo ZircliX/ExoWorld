@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace OverBang.GameName.Gameplay
 {
-    public class GraineDeChanuiAbility : BaseAbility<GraineDeChanuiData>
+    public class GraineDeChanuiAbility : CooldownAbility<,>
     {
         public GraineDeChanuiAbility(GraineDeChanuiData data, GameObject owner) : base(data, owner)
         {

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace OverBang.GameName.Gameplay
 {
-    public class RobotBokiAbility : BaseAbility<RobotBokiData>
+    public class RobotBokiAbility : CooldownAbility<,>
     {
         public RobotBokiAbility(RobotBokiData data, GameObject owner) : base(data, owner)
         {

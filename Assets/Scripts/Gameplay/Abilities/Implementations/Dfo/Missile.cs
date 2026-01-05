@@ -16,6 +16,7 @@ namespace OverBang.GameName.Gameplay
 
         private MissileManager manager;
         private float lifeTime;
+        private DamageInfo damageInfo;
         
         private MissileData data;
         private RaycastHit[] results;
@@ -28,10 +29,11 @@ namespace OverBang.GameName.Gameplay
             results = new RaycastHit[10];
         }
 
-        public void Initialize(MissileData data, MissileManager manager)
+        public void Initialize(MissileData data, MissileManager manager, DamageInfo damageInfo)
         {
             this.data = data;
             this.manager = manager;
+            this.damageInfo = damageInfo;
             
             rb.AddForce(Vector3.down * (data.Speed * Time.deltaTime), ForceMode.Impulse);
             soundSource.Play();
@@ -76,7 +78,7 @@ namespace OverBang.GameName.Gameplay
                 RaycastHit hit = results[i];
                 if (hit.collider.TryGetComponent(out IDamageable damageable))
                 {
-                    damageable.TakeDamage(data.Damage);
+                    damageable.TakeDamage(damageInfo);
                 }
             }
         }
@@ -94,8 +96,6 @@ namespace OverBang.GameName.Gameplay
             
             //Audio
             BroAudio.Play(data.DetonationSound, transform.position);
-            
-            Cleanup();
         }
 
         private void Cleanup()

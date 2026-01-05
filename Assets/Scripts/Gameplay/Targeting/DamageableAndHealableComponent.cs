@@ -6,13 +6,11 @@ using UnityEngine;
 
 namespace OverBang.GameName.Gameplay
 {
-    public class DamageableAndHealableComponent : MonoBehaviour, IDamageable, IHealable
+    public class DamageableAndHealableComponent : MonoBehaviour, IDamageable, IHealable, IHealth
     {
         [SerializeField] protected SoundID damagedSound;
         
-        public event Action OnDamaged;
-        public event Action OnHealed;
-        
+        public event Action<float, float> OnHealthChanged;
         [field: SerializeField, ReadOnly] public float Health { get; private set; }
         public float MaxHealth { get; private set; }
         public float Resistance { get; private set; }
@@ -28,21 +26,20 @@ namespace OverBang.GameName.Gameplay
 
         public void SetHealth(float health)
         {
+            float previousHealth = Health;
             Health = health;
-            OnHealed?.Invoke();
+            OnHealthChanged?.Invoke(previousHealth, Health);
         }
 
         public void Heal(float amount)
         {
-            Health += amount;
-            OnHealed?.Invoke();
+            SetHealth(Mathf.Min(Health + amount, MaxHealth));
         }
 
         public void TakeDamage(DamageInfo damage)
         {
-            Health -= damage.baseDamage;
             BroAudio.Play(damagedSound, transform.position);
-            OnDamaged?.Invoke();
+            SetHealth(Mathf.Max(Health - damage.baseDamage * (1f - Resistance), 0f));
         }
     }
 }
