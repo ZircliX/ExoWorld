@@ -1,4 +1,4 @@
-using System.Threading;
+using DG.DemiLib;
 using Eflatun.SceneReference;
 using OverBang.GameName.Core;
 using OverBang.Pooling;
@@ -20,13 +20,18 @@ namespace OverBang.GameName.Hub
         {
             SceneManager.sceneLoaded += OnSceneLoaded;
             await base.OnBegin();
+            
+            //Debug.Log("Starting Hub Phase");
+            //Debug.Log("Updating player phase status to ReadyForSceneLoad");
             await SessionManager.Global.CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyPhaseStatus, nameof(PhaseStatus.ReadyForSceneLoad));
-
+            //Debug.Log("Player phase status updated to ReadyForSceneLoad");
+            
+            //Debug.Log("Waiting for all players to be ready for scene load...");
+            await NetworkPropertiesUtils.AwaitableUntilAllPlayers(PhaseStatus.ReadyForSceneLoad);
+            
             if (SessionManager.Global.IsHost())
             {
-                // Await all players ready
-                await NetworkPropertiesUtils.AwaitableUntilAllPlayers(PhaseStatus.ReadyForSceneLoad);
-                
+                //Debug.Log("Load scene Hub for all players");
                 SceneReference hubSceneRef = SceneCollection.Global.HubSceneRef;
                 Scene currentScene = SceneLoader.GetCurrentScene();
     

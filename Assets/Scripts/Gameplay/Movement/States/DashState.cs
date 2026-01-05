@@ -33,7 +33,6 @@ namespace OverBang.GameName.Gameplay.States
         public override void Exit(EntityMovement movement)
         {
             currentDashTime = 0;
-            movement.DashCooldown();
             //Debug.Log("Exit Dash");
         }
 

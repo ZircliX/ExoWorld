@@ -24,7 +24,7 @@ namespace OverBang.GameName.Gameplay.States
         {
             movement.PlayerHeight.Write(this, (movement.BaseCapsuleHeight, movement.BaseHeadHeight));
             
-            if (movement is PlayerMovement playerMovement)
+            if (movement is PlayerMovement playerMovement && playerMovement.PlayerAnimator != null)
             {
                 playerMovement.PlayerAnimator.SetBool("Run", true);
             }
@@ -33,7 +33,7 @@ namespace OverBang.GameName.Gameplay.States
         public override void Exit(EntityMovement movement)
         {
             base.Exit(movement);
-            if (movement is PlayerMovement playerMovement)
+            if (movement is PlayerMovement playerMovement && playerMovement.PlayerAnimator != null)
             {
                 playerMovement.PlayerAnimator.SetBool("Run", false);
             }

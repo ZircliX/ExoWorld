@@ -30,6 +30,7 @@ namespace OverBang.GameName.Gameplay
         public float Health { get; private set; }
         public float MaxHealth => pumpQuestData.TotalRepairHealth;
         public bool IsAlive => Health > 0;
+        public bool IsInvincible { get; set; }
         public event Action OnTargeted;
         public event Action OnDamaged;
 

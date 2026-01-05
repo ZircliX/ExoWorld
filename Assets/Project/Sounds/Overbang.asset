@@ -365,6 +365,62 @@ MonoBehaviour:
       BPM: 0
       Beats: 0
     SnapToFullVolume: 0
+  - <Name>k__BackingField: MissileExplosion
+    <ID>k__BackingField: 1073741849
+    MulticlipsPlayMode: 0
+    _group: {fileID: 11400000, guid: 1cd1f0ef37ae91e4b8cadab6793c668d, type: 2}
+    Clips:
+    - AudioClip: {fileID: 8300000, guid: fc3ac9a46a34da74586d1a1d65177593, type: 3}
+      Volume: 1
+      Delay: 0
+      StartPosition: 0
+      EndPosition: 0
+      FadeIn: 0
+      FadeOut: 0
+      Weight: 0
+    <MasterVolume>k__BackingField: 0.3144299
+    <Loop>k__BackingField: 0
+    <SeamlessLoop>k__BackingField: 0
+    <TransitionTime>k__BackingField: 0.1
+    <SpatialSetting>k__BackingField: {fileID: 11400000, guid: 4e4bb98eca84e874e969b4e2050ff07d, type: 2}
+    <Priority>k__BackingField: 128
+    <Pitch>k__BackingField: 1
+    <PitchRandomRange>k__BackingField: 0.29999995
+    <VolumeRandomRange>k__BackingField: 0
+    <RandomFlags>k__BackingField: 1
+    SeamlessTransitionType: 1
+    TransitionTempo:
+      BPM: 0
+      Beats: 0
+    SnapToFullVolume: 0
+  - <Name>k__BackingField: MissileWhisle
+    <ID>k__BackingField: 1073741850
+    MulticlipsPlayMode: 0
+    _group: {fileID: 0}
+    Clips:
+    - AudioClip: {fileID: 8300000, guid: 733d77d3c5f887a44985f8d2f2bc4011, type: 3}
+      Volume: 1
+      Delay: 0
+      StartPosition: 0
+      EndPosition: 0
+      FadeIn: 0
+      FadeOut: 0
+      Weight: 0
+    <MasterVolume>k__BackingField: 0.3560518
+    <Loop>k__BackingField: 0
+    <SeamlessLoop>k__BackingField: 0
+    <TransitionTime>k__BackingField: 0.1
+    <SpatialSetting>k__BackingField: {fileID: 11400000, guid: 8f7085637cbefda45af71b8f0c429062, type: 2}
+    <Priority>k__BackingField: 128
+    <Pitch>k__BackingField: 1
+    <PitchRandomRange>k__BackingField: 0.29999995
+    <VolumeRandomRange>k__BackingField: 0
+    <RandomFlags>k__BackingField: 1
+    SeamlessTransitionType: 1
+    TransitionTempo:
+      BPM: 0
+      Beats: 0
+    SnapToFullVolume: 0
   Group: {fileID: 0}
   <AssetName>k__BackingField: Overbang
   _assetGUID: 1e98a9d7d89afe544803e95a716644ff

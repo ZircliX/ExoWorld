@@ -21,7 +21,7 @@ namespace OverBang.GameName.Gameplay.States
             
             currentJumpTime = 0;
             
-            if (movement is PlayerMovement playerMovement)
+            if (movement is PlayerMovement playerMovement && playerMovement.PlayerAnimator != null)
             {
                 playerMovement.PlayerAnimator.SetBool("Jump", true);
             }
@@ -32,7 +32,7 @@ namespace OverBang.GameName.Gameplay.States
             base.Exit(movement);
             currentJumpTime = 0;
             
-            if (movement is PlayerMovement playerMovement)
+            if (movement is PlayerMovement playerMovement && playerMovement.PlayerAnimator != null)
             {
                 playerMovement.PlayerAnimator.SetBool("Jump", false);
             }

@@ -17,6 +17,7 @@ namespace OverBang.GameName.Gameplay
         public float MaxHealth { get; private set; }
         public float Resistance { get; private set; }
         public bool IsAlive => Health > 0;
+        public bool IsInvincible { get; set; }
 
         public void Initialize(float maxHealth,  float resistance)
         {

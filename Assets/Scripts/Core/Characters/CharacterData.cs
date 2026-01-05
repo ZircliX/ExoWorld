@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using OverBang.GameName.Gameplay;
 using OverBang.Pooling;
 using OverBang.Pooling.Dependencies;
 using OverBang.Pooling.Resource;
@@ -28,6 +27,11 @@ namespace OverBang.GameName.Core
         public UpgradeData[] UpgradeDatas { get; private set; }
 
         [field : SerializeField] public CharacterBaseStats CharacterBaseStats { get; private set; }
+        
+        [field: SerializeField]
+        public AbilityData PrimaryAbility { get; private set; }
+        [field: SerializeField]
+        public AbilityData SecondaryAbility { get; private set; }
         
         [field: SerializeField, Space] 
         public SimplePoolConfig[] Dependencies { get; private set; }

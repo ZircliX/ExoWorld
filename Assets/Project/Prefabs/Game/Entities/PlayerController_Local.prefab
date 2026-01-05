@@ -3640,6 +3640,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1584499b6b911c740bb388239cf6a091, type: 2}
   - {fileID: 11400000, guid: cd52e72197f988043b0af1aea128d259, type: 2}
   - {fileID: 11400000, guid: 649c7c004de1d384e894f458425a1d59, type: 2}
+  - {fileID: 11400000, guid: e28da9b0a8db01542a3770b3e1a28e1c, type: 2}
   groundCheckDistance: 0.2
   groundCheckMaxAngle: 50
   <GroundLayer>k__BackingField:
@@ -5059,8 +5060,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7218111507029689259}
   - component: {fileID: 6522341107633415678}
-  - component: {fileID: 8973511709967392776}
   - component: {fileID: 5248633824829772109}
+  - component: {fileID: 1404244958576547444}
+  - component: {fileID: 8973511709967392776}
   - component: {fileID: 6016904456671023715}
   - component: {fileID: -5202455698350677450}
   m_Layer: 0
@@ -5113,6 +5115,33 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &5248633824829772109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8985065719729054035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5020a99b6a514844b448fe8f6dbda072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  <PlayerTransform>k__BackingField: {fileID: 1518980571670799238}
+  playerModelContainer: {fileID: 2748755101925067747}
+--- !u!114 &1404244958576547444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8985065719729054035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 475a8e12d0da4100a4e047139eb8fc94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.AbilityController
 --- !u!114 &8973511709967392776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5131,21 +5160,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 809e1cc872852744095949b9f3db0e65, type: 2}
   - {fileID: 11400000, guid: ae083bb006b256b4499ab1878499bbff, type: 2}
   weaponHolder: {fileID: 289793016013458955}
---- !u!114 &5248633824829772109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8985065719729054035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5020a99b6a514844b448fe8f6dbda072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
-  <PlayerTransform>k__BackingField: {fileID: 1518980571670799238}
-  playerModelContainer: {fileID: 2748755101925067747}
 --- !u!114 &6016904456671023715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5416,6 +5430,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ac8c1ea3-2443-4f2b-a8b2-dedf5ddcc373
     m_ActionName: 'Gameplay/Tab[/Keyboard/tab]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1404244958576547444}
+        m_TargetAssemblyTypeName: OverBang.GameName.Gameplay.AbilityController, OverBang.GameName.Gameplay
+        m_MethodName: UsePrimary
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 93839a51-5f93-4fe4-8cec-b019308bd8cd
+    m_ActionName: 'Gameplay/Ability1[/Keyboard/a]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1404244958576547444}
+        m_TargetAssemblyTypeName: OverBang.GameName.Gameplay.AbilityController, OverBang.GameName.Gameplay
+        m_MethodName: UseSecondary
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b8aee3dd-61b1-4599-815d-a4f48c4938b3
+    m_ActionName: 'Gameplay/Ability2[/Keyboard/e]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard and Mouse
   m_DefaultActionMap: Gameplay

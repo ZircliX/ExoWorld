@@ -31,7 +31,7 @@ namespace OverBang.GameName.Core
         
         public static async Awaitable RunAsync<T>(this T phase)  where T : IPhase
         {
-            using (ListPool<IPhaseListener<T>>.Get(out var compatibles))
+            using (ListPool<IPhaseListener<T>>.Get(out List<IPhaseListener<T>> compatibles))
             {
                 currentPhases[typeof(T)] = phase;
                 

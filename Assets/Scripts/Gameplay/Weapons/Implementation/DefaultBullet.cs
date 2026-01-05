@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Ami.BroAudio;
 using KBCore.Refs;
 using OverBang.GameName.Core;
 using OverBang.Pooling;
@@ -45,7 +46,7 @@ namespace OverBang.GameName.Gameplay
         private void FixedUpdate()
         {
             lifeTime += Time.fixedDeltaTime;
-            if (lifeTime >= 10f)
+            if (lifeTime >= data.BulletLifeTime)
             {
                 ReturnBullet();
                 return;
