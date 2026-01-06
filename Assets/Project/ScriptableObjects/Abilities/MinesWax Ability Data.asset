@@ -17,6 +17,12 @@ MonoBehaviour:
   <Icon>k__BackingField: {fileID: 0}
   <Cooldown>k__BackingField: 0
   <Duration>k__BackingField: 0
+  <MainData>k__BackingField:
+    rid: 402417008147955833
+  <AugmentData1>k__BackingField:
+    rid: 402417008147955834
+  <AugmentData2>k__BackingField:
+    rid: 402417008147955835
   <ThrowForce>k__BackingField: 0
   <MineWaxPrefab>k__BackingField: {fileID: 0}
   <DetectionRadius>k__BackingField: 0
@@ -24,3 +30,16 @@ MonoBehaviour:
   <DamageInfo>k__BackingField:
     baseDamage: 0
     weakSpotMultiplier: 0
+    bonusDamage: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 402417008147955833
+      type: {class: MinesWaxStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
+      data: 
+    - rid: 402417008147955834
+      type: {class: MinesWaxCryoStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
+      data: 
+    - rid: 402417008147955835
+      type: {class: MinesWaxNovaStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
+      data: 

@@ -17,3 +17,21 @@ MonoBehaviour:
   <Icon>k__BackingField: {fileID: 0}
   <Cooldown>k__BackingField: 0
   <Duration>k__BackingField: 0
+  <MainData>k__BackingField:
+    rid: 402417008147955830
+  <AugmentData1>k__BackingField:
+    rid: 402417008147955831
+  <AugmentData2>k__BackingField:
+    rid: 402417008147955832
+  references:
+    version: 2
+    RefIds:
+    - rid: 402417008147955830
+      type: {class: PistoletHellaStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
+      data: 
+    - rid: 402417008147955831
+      type: {class: PistoletHellaAreaStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
+      data: 
+    - rid: 402417008147955832
+      type: {class: PistoletHellaFrozenStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
+      data: 

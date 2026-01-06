@@ -18,7 +18,7 @@ MonoBehaviour:
   <Cooldown>k__BackingField: 3
   <Duration>k__BackingField: 0.25
   <MainData>k__BackingField:
-    rid: 402416982411968631
+    rid: 402417008147955829
   <AugmentData1>k__BackingField:
     rid: 402416982411968632
   <AugmentData2>k__BackingField:
@@ -27,24 +27,26 @@ MonoBehaviour:
     baseDamage: 200
     weakSpotMultiplier: 1.5
     bonusDamage: 0
+  <CastDistanceThreshold>k__BackingField: 0.2
   references:
     version: 2
     RefIds:
-    - rid: 402416982411968631
-      type: {class: AssaultDashStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
-      data:
-        <FlameDamage>k__BackingField:
-          baseDamage: 20
-          weakSpotMultiplier: 0
-          bonusDamage: 0
     - rid: 402416982411968632
       type: {class: ElectricDashStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
       data:
-        <BaseSpectralDamage>k__BackingField:
-          baseDamage: 100
+        <ElectricDamage>k__BackingField:
+          baseDamage: 0
           weakSpotMultiplier: 0
           bonusDamage: 0
+        <ExplosionRadius>k__BackingField: 0
     - rid: 402416982411968633
       type: {class: SpectralDashStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
       data:
         <DashCount>k__BackingField: 2
+    - rid: 402417008147955829
+      type: {class: DashStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
+      data:
+        <FlameDamage>k__BackingField:
+          baseDamage: 200
+          weakSpotMultiplier: 1.5
+          bonusDamage: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace OverBang.GameName.Gameplay
 {
     [System.Serializable]
-    public class AssaultDashStrategyData : IAbilityStrategyData, IDashAbilityStrategyData
+    public class DashStrategyData : IAbilityStrategyData, IDashAbilityStrategyData
     {
         [field: SerializeField] public DamageInfo FlameDamage { get; private set; }
     }
@@ -12,7 +12,8 @@ namespace OverBang.GameName.Gameplay
     [System.Serializable]
     public class ElectricDashStrategyData : IAbilityStrategyData, IDashAbilityStrategyData
     {
-        [field: SerializeField] public DamageInfo BaseSpectralDamage { get; private set; }
+        [field: SerializeField] public DamageInfo ElectricDamage { get; private set; }
+        [field: SerializeField] public float ExplosionRadius { get; private set; }
     }
     
     [System.Serializable]

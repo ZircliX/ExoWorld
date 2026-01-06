@@ -1,26 +1,46 @@
-using UnityEngine;
+using OverBang.GameName.Core;
 
 namespace OverBang.GameName.Gameplay
 {
-    public class PistoletHellaAbility : CooldownAbility<,>
+    public class PistoletHellaAbilityStrategy<TData> : IAbilityStrategy<PistoletHellaData, TData>
+        where TData : IPistoletHellaAbilityStrategyData, IAbilityStrategyData
     {
-        public PistoletHellaAbility(PistoletHellaData data, GameObject owner) : base(data, owner)
+        public void Initialize(IAbility<PistoletHellaData> ability, IAbilityCaster caster, TData data)
+        {
+        }
+        
+        public virtual void Begin(IAbility<PistoletHellaData> ability)
         {
         }
 
-        protected override void OnBegin()
+        public virtual void Tick(IAbility<PistoletHellaData> ability, float deltaTime)
         {
-            
         }
 
-        protected override void OnTick(float deltaTime)
+        public virtual void End(IAbility<PistoletHellaData> ability)
         {
-            
         }
 
-        protected override void OnEnd()
+        public void Dispose(IAbility<PistoletHellaData> ability)
         {
-            
         }
+    }
+
+    [CreateStrategyFor(typeof(PistoletHellaStrategyData))]
+    public class PistoletHellaAbilityStrategy : PistoletHellaAbilityStrategy<PistoletHellaStrategyData>
+    {
+        
+    }
+
+    [CreateStrategyFor(typeof(PistoletHellaAreaStrategyData))]
+    public class PistoletHellaAreaAbilityStrategy : PistoletHellaAbilityStrategy<PistoletHellaAreaStrategyData>
+    {
+        
+    }
+    
+    [CreateStrategyFor(typeof(PistoletHellaFrozenStrategyData))]
+    public class PistoletHellaFrozenAbilityStrategy : PistoletHellaAbilityStrategy<PistoletHellaFrozenStrategyData>
+    {
+        
     }
 }

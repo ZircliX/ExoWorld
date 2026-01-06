@@ -1,6 +1,5 @@
 ﻿using System;
 using Ami.BroAudio;
-using OverBang.GameName.Core;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -11,10 +10,16 @@ namespace OverBang.GameName.Gameplay
         [SerializeField] protected SoundID damagedSound;
         
         public event Action<float, float> OnHealthChanged;
+        public float MinHealth { get; private set; }
         [field: SerializeField, ReadOnly] public float Health { get; private set; }
         public float MaxHealth { get; private set; }
         public float Resistance { get; private set; }
-        public bool IsAlive => Health > 0;
+        public bool IsAlive => Health > MinHealth;
+        public void SetMinHealth(float minHealth)
+        {
+            MinHealth = minHealth;
+        }
+
         public bool IsInvincible { get; set; }
 
         public void Initialize(float maxHealth,  float resistance)
@@ -28,6 +33,7 @@ namespace OverBang.GameName.Gameplay
         {
             float previousHealth = Health;
             Health = health;
+            if (Health <= MinHealth) Health = MinHealth;
             OnHealthChanged?.Invoke(previousHealth, Health);
         }
 
