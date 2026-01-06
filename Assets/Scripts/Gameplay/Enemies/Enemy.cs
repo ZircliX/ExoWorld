@@ -51,13 +51,23 @@ namespace OverBang.GameName.Gameplay
             this.ValidateRefs();
         }
 
+        private void OnEnable()
+        {
+            DahComponent.OnHealthChanged += Damaged;
+        }
+
+        private void OnDisable()
+        {
+            DahComponent.OnHealthChanged -= Damaged;
+        }
+
         /*
         private void OnEnable()
         {
             DahComponent.OnHealthChanged += Damaged;
             FocusDetectionArea.OnEnter += OnEntered;
             FocusDetectionArea.OnExit += OnExited;
-            
+
             AttackDetectionArea.OnEnter += OnAttackEnter;
             AttackDetectionArea.OnExit += OnAttackExit;
         }
@@ -67,7 +77,7 @@ namespace OverBang.GameName.Gameplay
             DahComponent.OnHealthChanged -= Damaged;
             FocusDetectionArea.OnEnter -= OnEntered;
             FocusDetectionArea.OnExit -= OnExited;
-            
+
             AttackDetectionArea.OnEnter -= OnAttackEnter;
             AttackDetectionArea.OnExit -= OnAttackExit;
         }

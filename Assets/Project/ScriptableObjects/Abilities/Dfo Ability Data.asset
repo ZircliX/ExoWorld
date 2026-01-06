@@ -24,7 +24,7 @@ MonoBehaviour:
   <AugmentData2>k__BackingField:
     rid: 402416982411968636
   <DfoBalisePrefab>k__BackingField: {fileID: 3770112181033685132, guid: a106b40561ba7764b9fb7b47542b86d1, type: 3}
-  <ThrowForce>k__BackingField: 350
+  <ThrowForce>k__BackingField: 200
   <MissilePrefab>k__BackingField: {fileID: 8738834175512621160, guid: d04ad76036f15414b8bd8f9f6ad39d88, type: 3}
   <HeightSpawn>k__BackingField: 150
   <MissileData>k__BackingField:
@@ -45,7 +45,7 @@ MonoBehaviour:
     - rid: 402416982411968634
       type: {class: DfoStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
       data:
-        <ActivationTime>k__BackingField: 1.5
+        <ActivationTime>k__BackingField: 3
         <MissileCount>k__BackingField: 25
         <DiameterSpawn>k__BackingField: 10
         <Damage>k__BackingField:
