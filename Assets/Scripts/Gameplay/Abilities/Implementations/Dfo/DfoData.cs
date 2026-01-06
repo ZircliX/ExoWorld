@@ -7,6 +7,7 @@ namespace OverBang.GameName.Gameplay
     [CreateAssetMenu(fileName = "Dfo Ability Data", menuName = "OverBang/Abilities/DfoData")]
     public class DfoData : AbilityData
     {
+        [field: Space]
         [field: Header("Balise")]
         [field: SerializeField] public DfoBalise DfoBalisePrefab { get; private set; }
         [field: SerializeField] public float ThrowForce { get; private set; }

@@ -6,8 +6,11 @@ namespace OverBang.GameName.Gameplay
     {
         event Action<float, float> OnHealthChanged;
         
+        float MinHealth { get; }
         float Health { get; }
         float MaxHealth { get; }
         bool IsAlive { get; }
+        
+        void SetMinHealth(float minHealth);
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Cryptography;
+﻿using System.Collections.Generic;
 using KBCore.Refs;
 using UnityEngine;
 using Random = UnityEngine.Random;

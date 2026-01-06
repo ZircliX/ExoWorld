@@ -26,7 +26,8 @@ namespace OverBang.GameName.Gameplay
 
         public Transform Transform => transform;
         public TargetPriority Priority => TargetPriority.High;
-        public bool IsTargetable => IsAlive;
+        public bool IsTargetable => IsAlive && isTargetable;
+        private bool isTargetable = true;
         public float Health { get; private set; }
         public float MaxHealth => pumpQuestData.TotalRepairHealth;
         public bool IsAlive => Health > 0;
@@ -90,6 +91,11 @@ namespace OverBang.GameName.Gameplay
         public void Target()
         {
             OnTargeted?.Invoke();
+        }
+
+        public void SetTargetable(bool state)
+        {
+            isTargetable = state;
         }
 
         private void Update()

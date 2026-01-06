@@ -17,8 +17,34 @@ MonoBehaviour:
   <Icon>k__BackingField: {fileID: 0}
   <Cooldown>k__BackingField: 3
   <Duration>k__BackingField: 5
+  <MainData>k__BackingField:
+    rid: 402417008147955823
+  <AugmentData1>k__BackingField:
+    rid: 402417008147955824
+  <AugmentData2>k__BackingField:
+    rid: 402417008147955825
   <BalisePrefab>k__BackingField: {fileID: 689287734001234153, guid: 19eee50d44e89574096d417fe1fbc91e, type: 3}
   <HealingCircle>k__BackingField: {fileID: 6211125795773073634, guid: 1125ead0acdd6494694a51d488daa494, type: 3}
   <ThrowForce>k__BackingField: 350
-  <Radius>k__BackingField: 10
-  <MinHP>k__BackingField: 1
+  <MinHp>k__BackingField: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 402417008147955823
+      type: {class: BaliseHellaStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
+      data:
+        <Radius>k__BackingField: 5
+        <Duration>k__BackingField: 5
+        <MinHealth>k__BackingField: 5
+    - rid: 402417008147955824
+      type: {class: BaliseSecondChanceStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
+      data:
+        <Radius>k__BackingField: 0
+        <Duration>k__BackingField: 0
+        <MinHealth>k__BackingField: 0
+        <HealingPerSecond>k__BackingField: 0
+    - rid: 402417008147955825
+      type: {class: BaliseInvisibilityStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
+      data:
+        <Radius>k__BackingField: 0
+        <Duration>k__BackingField: 0

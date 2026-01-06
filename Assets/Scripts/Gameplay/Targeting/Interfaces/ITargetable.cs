@@ -12,5 +12,6 @@ namespace OverBang.GameName.Gameplay
         bool IsTargetable { get; }
 
         void Target();
+        void SetTargetable(bool state);
     }
 }

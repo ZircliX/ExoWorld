@@ -73,7 +73,7 @@ namespace OverBang.GameName.Gameplay
             if (requiredInterface == null)
                 return true;
 
-            var component = other.GetComponent(requiredInterface);
+            Component component = other.GetComponent(requiredInterface);
             if (component == null)
                 return false;
 

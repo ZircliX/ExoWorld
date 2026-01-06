@@ -1,4 +1,3 @@
-using InterfaceAttributes;
 using UnityEngine;
 
 namespace OverBang.GameName.Core
