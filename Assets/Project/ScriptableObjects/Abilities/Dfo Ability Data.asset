@@ -16,7 +16,7 @@ MonoBehaviour:
   <Description>k__BackingField: 
   <Icon>k__BackingField: {fileID: 0}
   <Cooldown>k__BackingField: 3
-  <Duration>k__BackingField: 7.5
+  <Duration>k__BackingField: -1
   <MainData>k__BackingField:
     rid: 402416982411968634
   <AugmentData1>k__BackingField:
@@ -24,9 +24,10 @@ MonoBehaviour:
   <AugmentData2>k__BackingField:
     rid: 402416982411968636
   <DfoBalisePrefab>k__BackingField: {fileID: 3770112181033685132, guid: a106b40561ba7764b9fb7b47542b86d1, type: 3}
-  <ThrowForce>k__BackingField: 350
+  <ThrowForce>k__BackingField: 200
   <MissilePrefab>k__BackingField: {fileID: 8738834175512621160, guid: d04ad76036f15414b8bd8f9f6ad39d88, type: 3}
   <HeightSpawn>k__BackingField: 150
+  <SpawnDuration>k__BackingField: 5
   <MissileData>k__BackingField:
     Speed: 3000
     LifeTime: 10
@@ -45,30 +46,30 @@ MonoBehaviour:
     - rid: 402416982411968634
       type: {class: DfoStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
       data:
-        <ActivationTime>k__BackingField: 1.5
-        <MissileCount>k__BackingField: 25
+        <ActivationTime>k__BackingField: 5
+        <MissileCount>k__BackingField: 20
         <DiameterSpawn>k__BackingField: 10
         <Damage>k__BackingField:
-          baseDamage: 200
+          baseDamage: 75
           weakSpotMultiplier: 1.5
           bonusDamage: 0
     - rid: 402416982411968635
       type: {class: DfoStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
       data:
-        <ActivationTime>k__BackingField: 0
-        <MissileCount>k__BackingField: 0
-        <DiameterSpawn>k__BackingField: 0
+        <ActivationTime>k__BackingField: 1
+        <MissileCount>k__BackingField: 20
+        <DiameterSpawn>k__BackingField: 5
         <Damage>k__BackingField:
           baseDamage: 0
-          weakSpotMultiplier: 0
+          weakSpotMultiplier: 1.5
           bonusDamage: 0
     - rid: 402416982411968636
       type: {class: DfoStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
       data:
-        <ActivationTime>k__BackingField: 0
-        <MissileCount>k__BackingField: 0
-        <DiameterSpawn>k__BackingField: 0
+        <ActivationTime>k__BackingField: 10
+        <MissileCount>k__BackingField: 20
+        <DiameterSpawn>k__BackingField: 20
         <Damage>k__BackingField:
-          baseDamage: 0
-          weakSpotMultiplier: 0
+          baseDamage: 100
+          weakSpotMultiplier: 1.5
           bonusDamage: 0

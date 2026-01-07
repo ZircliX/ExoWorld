@@ -14,8 +14,11 @@ namespace OverBang.GameName.Core
         [field: SerializeField] public float Duration { get; private set; }
        
         [field: Header("Strategy Data")]
+        [field: Space]
         [field: SerializeReference] public IAbilityStrategyData MainData { get; private set; }
+        [field: Space]
         [field: SerializeReference] public IAbilityStrategyData AugmentData1 { get; private set; }
+        [field: Space]
         [field: SerializeReference] public IAbilityStrategyData AugmentData2 { get; private set; }
     }
 }

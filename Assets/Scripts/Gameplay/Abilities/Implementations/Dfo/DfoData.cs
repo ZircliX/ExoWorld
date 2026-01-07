@@ -15,6 +15,7 @@ namespace OverBang.GameName.Gameplay
         [field: Header("Missile Spawn")]
         [field: SerializeField] public NetworkObject MissilePrefab { get; private set; }
         [field: SerializeField] public float HeightSpawn { get; private set; }
+        [field: SerializeField] public float SpawnDuration { get; private set; }
         
         [field: Header("Missile Data")]
         [field: SerializeField] public MissileData MissileData { get; private set; }

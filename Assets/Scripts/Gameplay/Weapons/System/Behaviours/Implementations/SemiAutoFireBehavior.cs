@@ -8,11 +8,6 @@ namespace OverBang.GameName.Gameplay
         {
             if (!context.performed)
                 return;
-
-            if (Weapon.State.CurrentBullets <= 0)
-            {
-                // TODO : Reload when no bullets
-            }
             
             HandleFire();
         }

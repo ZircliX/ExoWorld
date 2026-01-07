@@ -15,8 +15,8 @@ MonoBehaviour:
   <Name>k__BackingField: 
   <Description>k__BackingField: 
   <Icon>k__BackingField: {fileID: 0}
-  <Cooldown>k__BackingField: 0
-  <Duration>k__BackingField: 0
+  <Cooldown>k__BackingField: 3
+  <Duration>k__BackingField: 1
   <MainData>k__BackingField:
     rid: 402417008147955836
   <AugmentData1>k__BackingField:
@@ -28,10 +28,20 @@ MonoBehaviour:
     RefIds:
     - rid: 402417008147955836
       type: {class: RobotBokiStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
-      data: 
+      data:
+        <Damage>k__BackingField:
+          baseDamage: 300
+          weakSpotMultiplier: 1.5
+          bonusDamage: 0
+        <ExplosionRadius>k__BackingField: 3
     - rid: 402417008147955837
       type: {class: RobotBokiLeurreStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
       data: 
     - rid: 402417008147955838
       type: {class: RobotBokiImpulsionStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
-      data: 
+      data:
+        <Damage>k__BackingField:
+          baseDamage: 100
+          weakSpotMultiplier: 1.5
+          bonusDamage: 0
+        <ExplosionRadius>k__BackingField: 3

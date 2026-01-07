@@ -12,6 +12,7 @@ namespace OverBang.GameName.Gameplay
         protected IAbilityCaster Caster { get; private set; }
 
         protected HashSet<IDamageable> damagedEnemies;
+        protected Collider[] bumpColliders;
         
         public void Initialize(IAbility<DashData> ability, IAbilityCaster caster, TData data)
         {
@@ -22,6 +23,7 @@ namespace OverBang.GameName.Gameplay
 
             Data = data;
             damagedEnemies = new HashSet<IDamageable>(8);
+            bumpColliders = new Collider[8];
         }
 
         public virtual void Begin(IAbility<DashData> ability)
@@ -33,16 +35,18 @@ namespace OverBang.GameName.Gameplay
         {
             // Vérifier les collisions pendant le dash
             Vector3 capsulePos = Caster.transform.position + Vector3.up * PlayerMovement.CapsuleCollider.height / 2;
-    
-            Collider[] colliders = Physics.OverlapCapsule(
-                capsulePos,
+
+            int size = Physics.OverlapCapsuleNonAlloc(capsulePos,
                 capsulePos + Vector3.up * PlayerMovement.CapsuleCollider.height,
                 PlayerMovement.CapsuleCollider.radius + ability.Data.CastDistanceThreshold,
+                bumpColliders,
                 GameMetrics.Global.HittableLayers,
                 QueryTriggerInteraction.Collide);
 
-            foreach (Collider col in colliders)
+            for (int index = 0; index < size; index++)
             {
+                Collider col = bumpColliders[index];
+                
                 if (col.TryGetComponent(out IDamageable damageable) &&
                     !damagedEnemies.Contains(damageable))
                 {
@@ -67,6 +71,8 @@ namespace OverBang.GameName.Gameplay
         public override void End(IAbility<DashData> ability)
         {
             base.End(ability);
+            
+            //Flame Damages
             foreach (IDamageable enemy in damagedEnemies)
             {
                 enemy.TakeDamage(Data.FlameDamage);
@@ -77,21 +83,30 @@ namespace OverBang.GameName.Gameplay
     [CreateStrategyFor(typeof(ElectricDashStrategyData))]
     public class ElectricDashAbilityStrategy : DashAbilityStrategy<ElectricDashStrategyData>
     {
+        private Collider[] colliders;
+
+        public override void Begin(IAbility<DashData> ability)
+        {
+            base.Begin(ability);
+            colliders = new Collider[8];
+        }
+
         public override void End(IAbility<DashData> ability)
         {
             base.End(ability);
 
             // Cast for Electric Damage
-            Collider[] colliders = Physics.OverlapCapsule(
-                Caster.transform.position, 
-                Caster.transform.forward * Data.ExplosionRadius, 
-                Data.ExplosionRadius,
-                GameMetrics.Global.HittableLayers, 
+            int size = Physics.OverlapCapsuleNonAlloc(Caster.transform.position,
+                Caster.Forward * Data.ExplosionRadius, 
+                Data.ExplosionRadius, 
+                colliders,
+                GameMetrics.Global.HittableLayers,
                 QueryTriggerInteraction.Collide);
             
-            for (int i = 0; i < colliders.Length; i++)
+            for (int i = 0; i < size; i++)
             {
                 Collider col = colliders[i];
+                
                 if (col.gameObject.TryGetComponent(out IDamageable damageable) && 
                     col.CompareTag("Enemy"))
                 {
