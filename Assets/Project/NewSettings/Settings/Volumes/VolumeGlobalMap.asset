@@ -118,10 +118,10 @@ MonoBehaviour:
     m_Value: 1
   m_MinSmoothness:
     m_OverrideState: 1
-    m_Value: 0.9
+    m_Value: 0.25
   m_SmoothnessFadeStart:
     m_OverrideState: 1
-    m_Value: 0.9
+    m_Value: 0.75
   reflectSky:
     m_OverrideState: 1
     m_Value: 1
@@ -148,7 +148,7 @@ MonoBehaviour:
     m_Value: 0.2
   speedSmoothReject:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   speedSurfaceOnly:
     m_OverrideState: 1
     m_Value: 1
@@ -157,7 +157,7 @@ MonoBehaviour:
     m_Value: 1
   enableWorldSpeedRejection:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   m_RayMaxIterations:
     m_OverrideState: 1
     m_Value: 200
@@ -790,16 +790,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a6b00fcf518bb94a90b408492e07b44, type: 3}
   m_Name: FilmGrain
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   type:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.1
+    m_Value: 0.2
   response:
     m_OverrideState: 0
-    m_Value: 0.8
+    m_Value: 0.834
   texture:
     m_OverrideState: 0
     m_Value: {fileID: 0}
@@ -908,6 +908,7 @@ MonoBehaviour:
   m_Name: VolumeGlobalMap
   m_EditorClassIdentifier: 
   components:
+  - {fileID: -8329760910578711194}
   - {fileID: 6858582513394993016}
   - {fileID: -3984294907015349067}
   - {fileID: 4952925422168057108}
@@ -915,7 +916,6 @@ MonoBehaviour:
   - {fileID: 2485448172324021586}
   - {fileID: -8377327667785838005}
   - {fileID: 558024947465833017}
-  - {fileID: -8329760910578711194}
   - {fileID: 2006913907709053228}
   - {fileID: 4182098696967935062}
   - {fileID: -6968864554478855678}
@@ -1352,8 +1352,8 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: {r: 0, g: 0, b: 0, a: 1}
   center:
-    m_OverrideState: 0
-    m_Value: {x: 0.5, y: 0.5}
+    m_OverrideState: 1
+    m_Value: {x: 0.5, y: 0.25}
   intensity:
     m_OverrideState: 1
     m_Value: 0.2
@@ -1694,7 +1694,7 @@ MonoBehaviour:
     m_Value: 0
   saturation:
     m_OverrideState: 1
-    m_Value: 25
+    m_Value: 0
 --- !u!114 &4182098696967935062
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -2229,7 +2229,7 @@ MonoBehaviour:
     m_Value: 2
   useFullACES:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   toeStrength:
     m_OverrideState: 1
     m_Value: 0
