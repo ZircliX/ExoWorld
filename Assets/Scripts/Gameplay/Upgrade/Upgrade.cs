@@ -23,6 +23,10 @@ namespace OverBang.GameName.Gameplay
             {
                 Debug.Log($"{UpgradeType} upgraded!");
             }
+            else
+            {
+                Debug.Log("Upgrade failed! Level max or not enough !");
+            }
         }
     }
 }

@@ -4,7 +4,7 @@ namespace OverBang.GameName.Core
 {
     public static class PlayerInventory
     {
-        public static int Trinitite;
+        public static int Trinitite = 100000;
 
         public static void ReceiveTrinitite(int amount)
         {

@@ -1,4 +1,5 @@
-﻿using OverBang.GameName.Core;
+﻿using System;
+using OverBang.GameName.Core;
 using UnityEngine;
 
 namespace OverBang.GameName.Gameplay
@@ -9,13 +10,23 @@ namespace OverBang.GameName.Gameplay
         [field: SerializeField] public DamageableAndHealableComponent DamageableAndHealableComponent { get; private set; }
         public PlayerController Controller { get; set; }
         private CharacterData characterData { get; set; }
-        
+
+        private void OnEnable()
+        {
+            UpgradeManager.Instance.OnUpgrade += Initialize;
+        }
+
+        private void OnDisable()
+        {
+            UpgradeManager.Instance.OnUpgrade -= Initialize;
+            
+        }
+
         public void OnSync(PlayerRuntimeContext context)
         {
             characterData = context.playerCharacterData;
             Initialize();
         }
-        
         
         private void Initialize()
         {

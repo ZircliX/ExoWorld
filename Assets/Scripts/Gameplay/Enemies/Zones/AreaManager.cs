@@ -26,6 +26,7 @@ namespace OverBang.GameName.Gameplay
 
         public HashSet<Area> GetSpawnableAreas()
         {
+            
             HashSet<Area> availableSpawnAreas = new HashSet<Area>(areas.Count);
             
             foreach (Area area in areas)

@@ -1,6 +1,5 @@
 ﻿using System;
 using OverBang.GameName.Core;
-using Unity.Netcode;
 using UnityEngine;
 using UnityUtils;
 
@@ -14,18 +13,22 @@ namespace OverBang.GameName.Gameplay
         Vector3 IInteractable.UIPosition => transform.position.Add(y: 0.5f);
         
         public event Action<bool> OnUpgradePanelRequest;
-        
+
+        private void Start()
+        {
+            Debug.Log("!!! !!!! !!!!! !!! Initializing upgrades !!!! !!!! !!!!! !!!! !!!!");
+        }
+
         public void Interact(PlayerInteraction playerInteraction)
         {
+            UpgradeManager.Instance.RefreshTable();
             StartUpgradeSelection();
         }
 
         private void StartUpgradeSelection()
         {
             Debug.Log("Starting upgrade selection");
-            UpgradeManager.Instance.InitializeUpgrades(SessionManager.Global.CurrentPlayer);
             Debug.Log(SessionManager.Global.CurrentPlayer);
-            
             CanInteract = false;
             OnUpgradePanelRequest?.Invoke(true);
             CameraManager.Instance.RequestCameraChange(CameraIDs.Global.UpgradeCamera);
