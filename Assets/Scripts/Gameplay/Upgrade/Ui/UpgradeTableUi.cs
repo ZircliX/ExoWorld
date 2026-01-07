@@ -29,7 +29,6 @@ namespace OverBang.GameName.Gameplay
         {
             FadePanel(upgradeGroup, visible);
             HUD.Instance.ChangeHudState(visible);
-            
             UpgradeManager.Instance.RefreshTable();
             UpdateValue(PlayerInventory.Trinitite);
         }

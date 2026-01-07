@@ -1,4 +1,7 @@
-﻿namespace OverBang.GameName.Gameplay
+﻿using OverBang.GameName.Core;
+using UnityEngine;
+
+namespace OverBang.GameName.Gameplay
 {
     public class RuntimeWeaponState
     {
@@ -12,7 +15,7 @@
         public RuntimeWeaponState(Weapon weapon)
         {
             this.weapon = weapon;
-            CurrentBullets = weapon.WeaponData.MagCapacity;
+            CurrentBullets = weapon.WeaponData.MagCapacity + weapon.WeaponData.UpgradeMagCap;
         }
         
         public bool TryConsume(ref int amount)

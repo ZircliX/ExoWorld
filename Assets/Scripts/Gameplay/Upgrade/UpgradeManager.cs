@@ -10,21 +10,23 @@ namespace OverBang.GameName.Gameplay
     public class UpgradeManager : MonoSingleton<UpgradeManager>
     {
         private Dictionary<UpgradeType, Upgrade> upgrades;
-        private Dictionary<UpgradeType, RuntimeUpgradeData> playerUpgradesDatas;
+        [field : SerializeField] public Dictionary<UpgradeType, RuntimeUpgradeData> playerUpgradesDatas { get; private set; }
         
         public event Action<int> OnPlayerTritiniteAmountChange;
+        public event Action OnUpgrade;
         
         private void OnEnable()
         {
             upgrades = new Dictionary<UpgradeType, Upgrade>();
         }
-        
+
         public void InitializeUpgrades(IPlayer player)
         {
             playerUpgradesDatas = new Dictionary<UpgradeType, RuntimeUpgradeData>(4);
             
             if (player.TryGetCharacterDataByPlayer(out CharacterData characterData))
             {
+                Debug.Log($"Data Loaded with {playerUpgradesDatas.Count} upgrades");
                 foreach (UpgradeData upgrade in characterData.UpgradeDatas)
                 {
                     RuntimeUpgradeData run = new RuntimeUpgradeData()
@@ -59,6 +61,7 @@ namespace OverBang.GameName.Gameplay
                 Debug.Log($"{runtimeData.upgradeData.UpgradeName}, {runtimeData.finalBonus}");
 
                 Upgrade upgrade = upgrades[runtimeUpgradeData.Key];
+                
                 upgrade.ui.Refresh(runtimeData);
             }
         }
@@ -70,7 +73,7 @@ namespace OverBang.GameName.Gameplay
                 RuntimeUpgradeData  runtimeData = data.Value; 
                 if (runtimeData.upgradeData.UpgradeType == type)
                 {
-                    if (PlayerInventory.Trinitite >= runtimeData.cost)
+                    if (PlayerInventory.Trinitite >= runtimeData.cost && runtimeData.level < 3)
                     {
                         int newtriniAmount = PlayerInventory.DecrementTrinitite(runtimeData.cost);
                         OnPlayerTritiniteAmountChange?.Invoke(newtriniAmount);
@@ -86,6 +89,7 @@ namespace OverBang.GameName.Gameplay
                         
                         upgrade.ui.Refresh(runtimeData);
                         
+                        OnUpgrade?.Invoke();
                         return true;
                     }
                     else

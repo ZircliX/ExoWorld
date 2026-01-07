@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using OverBang.GameName.Core;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,6 +19,7 @@ namespace OverBang.GameName.Gameplay
         private void OnEnable()
         {
             controller.OnWeaponChanged += OnWeaponChanged;
+            UpgradeManager.Instance.OnUpgrade += HandleUpgrade;
 
             // If a weapon is already equipped when HUD appears
             if (controller.CurrentWeapon != null)
@@ -27,6 +29,7 @@ namespace OverBang.GameName.Gameplay
         private void OnDisable()
         {
             controller.OnWeaponChanged -= OnWeaponChanged;
+            UpgradeManager.Instance.OnUpgrade -= HandleUpgrade;
             UnsubscribeCurrentWeapon();
         }
 
@@ -60,6 +63,14 @@ namespace OverBang.GameName.Gameplay
             UpdateWeaponUI();
         }
 
+
+        private void HandleUpgrade()
+        {
+            WeaponData data = currentWeapon.WeaponData;
+            currentWeapon.State.SetBullets((data.MagCapacity + data.UpgradeMagCap) / data.BulletsPerShot, false);
+            UpdateWeaponUI();
+        }
+
         private void UpdateWeaponUI()
         {
             if (currentWeapon == null)
@@ -74,7 +85,7 @@ namespace OverBang.GameName.Gameplay
                 weaponIcon.sprite = data.WeaponSprite;
 
             int currentAmmo = currentWeapon.State.CurrentBullets / currentWeapon.WeaponData.BulletsPerShot;
-            int magSize = data.MagCapacity / data.BulletsPerShot;
+            int magSize = (data.MagCapacity + data.UpgradeMagCap) / data.BulletsPerShot;
 
             if (ammoText != null)
             {

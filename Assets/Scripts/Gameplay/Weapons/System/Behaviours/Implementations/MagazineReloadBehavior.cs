@@ -1,4 +1,5 @@
 ﻿using System;
+using OverBang.GameName.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,7 +21,7 @@ namespace OverBang.GameName.Gameplay
                 if (!context.performed)
                     return;
 
-                if (weapon.State.CurrentBullets >= weapon.WeaponData.MagCapacity)
+                if (weapon.State.CurrentBullets >= weapon.WeaponData.MagCapacity + weapon.WeaponData.UpgradeMagCap)
                     return;
 
                 await Reload();
@@ -35,7 +36,7 @@ namespace OverBang.GameName.Gameplay
         {
             weapon.State.SetBullets(0, true);
             await Awaitable.WaitForSecondsAsync(weapon.WeaponData.ReloadTime);
-            weapon.State.SetBullets(weapon.WeaponData.MagCapacity, false);
+            weapon.State.SetBullets(Mathf.RoundToInt(weapon.WeaponData.MagCapacity + weapon.WeaponData.UpgradeMagCap), false);
             weapon.RequestOnWeaponReloaded();
         }
 

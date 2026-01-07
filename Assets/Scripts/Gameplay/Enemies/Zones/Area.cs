@@ -77,7 +77,8 @@ namespace OverBang.GameName.Gameplay
                 if (enemy == null)
                     break;
                 
-                enemy.name = $"{enemy.enemyData.name} | Wave {wave} | Area : {gameObject.name} | EnemyLeft : {enemyToSpawn - spawnedEnemies} | ";
+                enemy.name = $"{enemy.enemyData.name} | Wave {wave} | Area : {gameObject.name} & Spawner : {spawner.name}| EnemyLeft : {enemyToSpawn - spawnedEnemies} | ";
+                enemy.transform.position = spawner.transform.position;
                 spawnedEnemies++;
 
                 await Awaitable.WaitForSecondsAsync(Random.Range(enemySpawnScenario.MinMaxSpawnIntervals.x, enemySpawnScenario.MinMaxSpawnIntervals.y));

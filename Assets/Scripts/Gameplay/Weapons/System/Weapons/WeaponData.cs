@@ -1,4 +1,5 @@
 ﻿using Ami.BroAudio;
+using OverBang.GameName.Core;
 using UnityEngine;
 
 namespace OverBang.GameName.Gameplay
@@ -38,6 +39,10 @@ namespace OverBang.GameName.Gameplay
         // RELOAD DATA
         [field: SerializeField] public WeaponReloadBehaviour ReloadBehaviour { get; protected set; }
         [field: SerializeField] public int MagCapacity { get; protected set; }
+
+        public int UpgradeMagCap => Mathf.CeilToInt(MagCapacity *
+                                    (UpgradeManager.Instance.GetRuntimeUpgrade(UpgradeType.MaxMagCap)/
+                                     100));
         [field: SerializeField] public float ReloadTime { get; protected set; }
     }
 }
