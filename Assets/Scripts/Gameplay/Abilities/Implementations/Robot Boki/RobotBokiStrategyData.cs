@@ -1,11 +1,13 @@
 using OverBang.GameName.Core;
+using UnityEngine;
 
 namespace OverBang.GameName.Gameplay
 {
     [System.Serializable]
     public class RobotBokiStrategyData : IAbilityStrategyData, IRobotBokiAbilityStrategyData
     {
-        
+        [field: SerializeField] public DamageInfo Damage { get; private set; }
+        [field: SerializeField] public float ExplosionRadius { get; private set; }
     }
     
     [System.Serializable]
@@ -17,7 +19,8 @@ namespace OverBang.GameName.Gameplay
     [System.Serializable]
     public class RobotBokiImpulsionStrategyData : IAbilityStrategyData, IRobotBokiAbilityStrategyData
     {
-        
+        [field: SerializeField] public DamageInfo Damage { get; private set; }
+        [field: SerializeField] public float ExplosionRadius { get; private set; }
     }
     
     public interface IRobotBokiAbilityStrategyData { }

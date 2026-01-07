@@ -10,6 +10,5 @@ namespace OverBang.GameName.Gameplay
         [field: SerializeField] public BaliseHella BalisePrefab { get; private set; }
         [field: SerializeField] public ParticleSystem HealingCircle { get; private set; }
         [field: SerializeField] public float ThrowForce { get; private set; }
-        [field: SerializeField] public float MinHp { get; private set; }
     }
 }

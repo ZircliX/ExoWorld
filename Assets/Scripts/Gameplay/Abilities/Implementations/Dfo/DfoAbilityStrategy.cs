@@ -13,6 +13,15 @@ namespace OverBang.GameName.Gameplay
         private IAbilityCaster caster;
         
         private float currentActivationTime;
+        private IAbility<DfoData> ability;
+        
+        public void Initialize(IAbility<DfoData> ability, IAbilityCaster caster, DfoStrategyData data)
+        {
+            this.caster = caster;
+            this.data = ability.Data;
+            this.ability = ability;
+            strategyData = data;
+        }
         
         public void Begin(IAbility<DfoData> ability)
         {
@@ -20,9 +29,11 @@ namespace OverBang.GameName.Gameplay
             
             currentActivationTime = strategyData.ActivationTime;
             
-            DfoBalise balise = Object.Instantiate(ability.Data.DfoBalisePrefab, caster.transform.position + caster.transform.forward * 3.5f, Quaternion.identity);
-            balise.Initialize(data, caster.transform.forward);
+            DfoBalise balise = Object.Instantiate(ability.Data.DfoBalisePrefab, caster.transform.position + caster.Forward * 3.5f, Quaternion.identity);
+            balise.Initialize(data, caster.Forward);
+            
             missileManager = new MissileManager(data, strategyData, balise.transform);
+            missileManager.OnEndMissiles += OnEndMissiles;
         }
 
         public void Tick(IAbility<DfoData> ability, float deltaTime)
@@ -39,17 +50,16 @@ namespace OverBang.GameName.Gameplay
 
         public void End(IAbility<DfoData> ability)
         {
-        }
-
-        public void Initialize(IAbility<DfoData> ability, IAbilityCaster caster, DfoStrategyData data)
-        {
-            this.caster = caster;
-            this.data = ability.Data;
-            strategyData = data;
+            missileManager.OnEndMissiles -= OnEndMissiles;
         }
         
         public void Dispose(IAbility<DfoData> ability)
         {
+        }
+
+        private void OnEndMissiles()
+        {
+            ability.End();
         }
     }
 }

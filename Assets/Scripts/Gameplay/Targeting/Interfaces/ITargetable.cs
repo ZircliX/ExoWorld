@@ -6,12 +6,11 @@ namespace OverBang.GameName.Gameplay
 {
     public interface ITargetable
     {
-        event Action OnTargeted;
+        event Action<bool> OnTargetableChanged;
         Transform Transform { get; }
         TargetPriority Priority { get; }
         bool IsTargetable { get; }
 
-        void Target();
         void SetTargetable(bool state);
     }
 }

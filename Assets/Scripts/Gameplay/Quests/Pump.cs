@@ -24,6 +24,7 @@ namespace OverBang.GameName.Gameplay
 
         #region Interfaces
 
+        public event Action<bool> OnTargetableChanged;
         public Transform Transform => transform;
         public TargetPriority Priority => TargetPriority.High;
         public bool IsTargetable => IsAlive && isTargetable;
@@ -32,7 +33,6 @@ namespace OverBang.GameName.Gameplay
         public float MaxHealth => pumpQuestData.TotalRepairHealth;
         public bool IsAlive => Health > 0;
         public bool IsInvincible { get; set; }
-        public event Action OnTargeted;
         public event Action OnDamaged;
 
         #endregion
@@ -87,15 +87,11 @@ namespace OverBang.GameName.Gameplay
             Health--;
             OnDamaged?.Invoke();
         }
-
-        public void Target()
-        {
-            OnTargeted?.Invoke();
-        }
-
+        
         public void SetTargetable(bool state)
         {
             isTargetable = state;
+            OnTargetableChanged?.Invoke(state);
         }
 
         private void Update()

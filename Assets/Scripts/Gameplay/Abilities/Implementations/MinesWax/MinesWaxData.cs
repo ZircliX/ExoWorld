@@ -11,6 +11,5 @@ namespace OverBang.GameName.Gameplay
         [field: SerializeField] public MineWax MineWaxPrefab { get; private set; }
         [field: SerializeField] public float DetectionRadius { get; private set; }
         [field: SerializeField] public float ExplosionRadius { get; private set; }
-        [field: SerializeField] public DamageInfo DamageInfo { get; private set; }
     }
 }

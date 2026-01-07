@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Helteix.Singletons.SceneServices;
- 
- namespace OverBang.GameName.Gameplay
+using UnityEngine;
+
+namespace OverBang.GameName.Gameplay
  {
      public class EnemyManager : SceneService<EnemyManager>
      {
@@ -22,7 +22,26 @@ using Helteix.Singletons.SceneServices;
          {
              enemies.Remove(enemy);
          }
-         
-         
+
+         public bool TryGetClosest(Vector3 position, out ITargetable closest)
+         {
+             closest = null;
+             
+             if (enemies.Count == 0)
+                 return false;
+             
+             float closestDistance = Vector3.Distance(position, enemies[0].transform.position);
+             foreach (Enemy enemy in enemies)
+             {
+                 float distance = Vector3.Distance(position, enemy.transform.position);
+                 if (distance < closestDistance)
+                 {
+                     closestDistance = distance;
+                     closest = enemy;
+                 }
+             }
+
+             return true;
+         }
      }
  }

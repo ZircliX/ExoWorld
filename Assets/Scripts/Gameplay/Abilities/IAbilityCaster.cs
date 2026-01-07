@@ -6,5 +6,6 @@ namespace OverBang.GameName.Gameplay
     {
         Transform transform { get; }
         GameObject gameObject { get; }
+        Vector3 Forward { get; }
     }
 }

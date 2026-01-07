@@ -6,21 +6,16 @@ namespace OverBang.GameName.Gameplay
 {
     public class TargetableComponent : MonoBehaviour, ITargetable
     {
-        public event Action OnTargeted;
-        
-        public Transform Transform { get; }
-        public TargetPriority Priority { get; }
-        public bool IsTargetable => isTargetable;
-        private bool isTargetable = true;
-        
-        public void Target()
-        {
-            OnTargeted?.Invoke();
-        }
+        public event Action<bool> OnTargetableChanged;
 
+        public Transform Transform => transform;
+        public TargetPriority Priority { get; private set; } = TargetPriority.Medium;
+        public bool IsTargetable { get; private set; } = true;
+        
         public void SetTargetable(bool state)
         {
-            isTargetable = state;
+            IsTargetable = state;
+            OnTargetableChanged?.Invoke(state);
         }
     }
 }

@@ -54,9 +54,8 @@ namespace OverBang.GameName.Gameplay
         
         public virtual void Begin(IAbility<BaliseHellaData> ability)
         {
-            Vector3 forward = Caster.transform.forward;
-            Balise = Object.Instantiate(ability.Data.BalisePrefab, Caster.transform.position + forward * 3.5f, Quaternion.identity);
-            Balise.Initialize(ability.Data, forward, Data.Radius);
+            Balise = Object.Instantiate(ability.Data.BalisePrefab, Caster.transform.position + Caster.Forward * 3.5f, Quaternion.identity);
+            Balise.Initialize(ability.Data, Caster.Forward, Data.Radius);
             
             Balise.DetectionArea.OnEnter += OnEnter;
             Balise.DetectionArea.OnExit += OnExit;

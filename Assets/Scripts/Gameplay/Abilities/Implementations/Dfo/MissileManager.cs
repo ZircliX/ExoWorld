@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using Helteix.Tools;
 using Unity.Netcode;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace OverBang.GameName.Gameplay
 {
@@ -12,10 +14,12 @@ namespace OverBang.GameName.Gameplay
         private int currentLaunchCount;
         private float elapsedSpawnTime;
         
-        private float DeltaSec => (data.Duration - strategyData.ActivationTime) / strategyData.MissileCount;
+        private float DeltaSec => data.SpawnDuration / strategyData.MissileCount;
         private readonly DfoStrategyData strategyData;
         private readonly DfoData data;
         private readonly Transform baliseTransform;
+
+        public event Action OnEndMissiles;
 
         public MissileManager(DfoData data, DfoStrategyData strategyData, Transform balise)
         {
@@ -34,7 +38,14 @@ namespace OverBang.GameName.Gameplay
             currentLaunchCount++;
         }
         
-        public void RemoveMissile(Missile missile) => missiles.Remove(missile);
+        public void RemoveMissile(Missile missile)
+        {
+            missiles.Remove(missile);
+            if (missiles.Count == 0)
+            {
+                OnEndMissiles?.Invoke();
+            }
+        }
 
         public void Tick(float deltaTime)
         {

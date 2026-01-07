@@ -12,7 +12,7 @@ using Random = UnityEngine.Random;
 namespace OverBang.GameName.Gameplay
 {
     [RequireComponent(typeof(DamageableAndHealableComponent))]
-    public class Enemy : NetworkBehaviour, IPoolInstanceListener, IDamageSource
+    public class Enemy : NetworkBehaviour, IPoolInstanceListener, IDamageSource, ITargetable
     {
         [field : Header("Datas")]
         [field : SerializeField, Self, HideInInspector] public NetworkObject EnemyNetworkObject { get; private set; }
@@ -249,7 +249,7 @@ namespace OverBang.GameName.Gameplay
         {
             Pool = pool;
             //DahComponent.Initialize(enemyData.BaseHealth, 0);
-            //TODO : Reset runtime enemies datas 
+            // TODO : Reset runtime enemies datas 
         }
         
         public void OnDespawn(IPool pool)
@@ -262,6 +262,17 @@ namespace OverBang.GameName.Gameplay
         public void Damage(IDamageable damageable)
         {
             
+        }
+        
+        public event Action<bool> OnTargetableChanged;
+        public Transform Transform => transform;
+        public TargetPriority Priority { get; private set; } = TargetPriority.Medium;
+        public bool IsTargetable { get; private set; }
+        
+        public void SetTargetable(bool state)
+        {
+            IsTargetable = state;
+            OnTargetableChanged?.Invoke(state);
         }
     }
 }

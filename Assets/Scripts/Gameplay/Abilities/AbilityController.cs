@@ -7,9 +7,16 @@ namespace OverBang.GameName.Gameplay
     public class AbilityController : MonoBehaviour, IPlayerComponent, IAbilityCaster
     {
         public PlayerController Controller { get; set; }
+        public Vector3 Forward => pm.CameraController.transform.forward;
+        private PlayerMovement pm;
         
         private IAbility primary;
         private IAbility secondary;
+
+        private void Awake()
+        {
+            pm = GetComponent<PlayerMovement>();
+        }
 
         private void Update()
         {
