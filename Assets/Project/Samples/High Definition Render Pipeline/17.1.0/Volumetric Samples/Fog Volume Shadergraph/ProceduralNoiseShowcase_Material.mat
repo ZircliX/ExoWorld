@@ -28,7 +28,7 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _NOISE_TYPE_PERLIN_FBM
+  - _NOISE_TYPE_VALUE
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -73,11 +73,11 @@ Material:
     - _FogVolumeColorBlendOp: 0
     - _FogVolumeDstAlphaBlend: 1
     - _FogVolumeDstColorBlend: 1
-    - _FogVolumeFogDistanceProperty: 2
+    - _FogVolumeFogDistanceProperty: 3
     - _FogVolumeSrcAlphaBlend: 1
     - _FogVolumeSrcColorBlend: 1
     - _Frequency: 3
-    - _NOISE_TYPE: 3
+    - _NOISE_TYPE: 1
     - _OpaqueCullMode: 2
     - _Perlin_Octaves: 6
     - _RenderQueueType: 1
@@ -100,6 +100,6 @@ Material:
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _FogVolumeSingleScatteringAlbedo: {r: 1, g: 1, b: 1, a: 1}
-    - _Range: {r: 0, g: 1, b: 0, a: 0}
+    - _Range: {r: 0, g: 3, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
