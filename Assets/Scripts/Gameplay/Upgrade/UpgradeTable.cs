@@ -13,12 +13,7 @@ namespace OverBang.GameName.Gameplay
         Vector3 IInteractable.UIPosition => transform.position.Add(y: 0.5f);
         
         public event Action<bool> OnUpgradePanelRequest;
-
-        private void Start()
-        {
-            Debug.Log("!!! !!!! !!!!! !!! Initializing upgrades !!!! !!!! !!!!! !!!! !!!!");
-        }
-
+        
         public void Interact(PlayerInteraction playerInteraction)
         {
             UpgradeManager.Instance.RefreshTable();

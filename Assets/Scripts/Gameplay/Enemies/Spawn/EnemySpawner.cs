@@ -9,18 +9,18 @@ namespace OverBang.GameName.Gameplay
         public Enemy SpawnEnemy(EnemyData enemyData)
         {
             NetworkSpawnManager spawnManager = NetworkManager.Singleton.SpawnManager;
-            NetworkObject enemyInstance = spawnManager.InstantiateAndSpawn(
-                enemyData.EnemyPrefab,
-                NetworkManager.Singleton.LocalClientId,
-                true,
-                false,
-                false,
-                transform.position);
 
-            if (enemyInstance == null)
+            NetworkObject instance = Instantiate(enemyData.EnemyPrefab,
+                transform.position,
+                Quaternion.identity);
+            
+            
+            instance.SpawnWithOwnership(NetworkManager.Singleton.LocalClientId, true);
+
+            if (instance == null)
                 return null;
 
-            if (enemyInstance.TryGetComponent(out Enemy enemy))
+            if (instance.TryGetComponent(out Enemy enemy))
             {
                 enemy.Initialize(enemyData.ID);
             }
