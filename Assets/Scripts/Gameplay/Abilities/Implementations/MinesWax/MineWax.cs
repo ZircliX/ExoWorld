@@ -10,6 +10,8 @@ namespace OverBang.GameName.Gameplay
         private IMineExplosionStrategy explosionStrategy;
         private MinesWaxData data;
 
+        private bool canDetonate;
+
         private void OnValidate()
         {
             this.ValidateRefs();
@@ -27,11 +29,19 @@ namespace OverBang.GameName.Gameplay
             rb.AddForce(Vector3.up * 0.5f + direction * data.ThrowForce * Time.deltaTime, ForceMode.Impulse);
 
             explosionStrategy.OnExploded += OnExploded;
+            Invoke(nameof(SetDetonate), data.DetonateDelay);
+        }
+
+        private void SetDetonate()
+        {
+            canDetonate = true;
         }
         
         private void OnExploded(bool endedExplosions)
         {
             // TODO : Add Sound & VFX
+            ParticleSystem ps = Instantiate(data.ExplosionVfx, transform.position, Quaternion.identity);
+            Destroy(ps.gameObject, ps.main.duration);
             
             if (endedExplosions)
                 Destroy(gameObject);
@@ -39,7 +49,10 @@ namespace OverBang.GameName.Gameplay
 
         protected override void OnEnter(Collider other, object target)
         {
+            if (!canDetonate) return;
+            
             Detonate();
+            canDetonate = false;
         }
 
         private void Detonate()

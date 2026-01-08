@@ -29,7 +29,7 @@ namespace OverBang.GameName.Gameplay
         {
             int explosionCount = 0;
             
-            for (int i = 1; i < targetExplostionCount; i++)
+            for (int i = 0; i < targetExplostionCount; i++)
             {
                 Collider[] colliders = getOverlapColliders();
                 
@@ -46,6 +46,8 @@ namespace OverBang.GameName.Gameplay
                 
                 await Awaitable.WaitForSecondsAsync(explosionInterval);
             }
+            
+            Debug.Log(explosionCount);
         }
     }
 }

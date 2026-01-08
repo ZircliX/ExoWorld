@@ -8,7 +8,7 @@ using Unity.Services.Core;
 using Unity.Services.Multiplayer;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.Sessions
+namespace OverBang.GameName.Gameplay
 {
     public class Session : NetworkBehaviour
     {
