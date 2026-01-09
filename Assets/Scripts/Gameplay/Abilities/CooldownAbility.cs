@@ -37,7 +37,7 @@ namespace OverBang.GameName.Gameplay
         public IAbilityCaster Caster { get; }
         public bool IsActive { get; private set; }
         public bool CanBeUsed => !IsActive && cooldown.IsReady;
-        public AbilityAugmentState AugmentState { get; private set; } = AbilityAugmentState.Augment1;
+        public AbilityAugmentState AugmentState { get; private set; } = AbilityAugmentState.Main;
 
         public IAbilityStrategy<TData> ActiveStrategy => AugmentState switch
         {

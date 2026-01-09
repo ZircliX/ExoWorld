@@ -87,8 +87,10 @@ namespace OverBang.GameName.Gameplay
             if (IsOwner)
             {
                 Agent.speed = enemyData.BaseSpeed;
-                FocusDetectionArea.SetRequireInterface<ITargetable>();
-                AttackDetectionArea.SetRequireInterface<ITargetable>();
+                //FocusDetectionArea.SetRequireInterface<ITargetable>();
+                FocusDetectionArea.SetAllowedTags("Player", "LocalPlayer");
+                //AttackDetectionArea.SetRequireInterface<ITargetable>();
+                AttackDetectionArea.SetAllowedTags("Player", "LocalPlayer");
                 
                 // TODO : Setup Health based on enemy data
                 currentPlayersInRange = new List<Transform>();
@@ -173,6 +175,7 @@ namespace OverBang.GameName.Gameplay
         private void OnEntered(Collider col, object target)
         {
             if (!IsOwner) return;
+            Debug.Log("player entered !!!!!!!!!");
             currentPlayersInRange.Add(col.transform);
         }
 

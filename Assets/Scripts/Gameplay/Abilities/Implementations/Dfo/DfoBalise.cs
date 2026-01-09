@@ -15,7 +15,7 @@ namespace OverBang.GameName.Gameplay
         public void Initialize(DfoData data, Vector3 direction)
         {
             rb.AddForce(Vector3.up * 0.5f + direction * data.ThrowForce * Time.deltaTime, ForceMode.Impulse);
-            Destroy(gameObject, data.Duration);
+            Destroy(gameObject, data.LifeTime);
         }
     }
 }

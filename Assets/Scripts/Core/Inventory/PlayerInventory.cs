@@ -1,10 +1,8 @@
-﻿using UnityEngine;
-
-namespace OverBang.GameName.Core
+﻿namespace OverBang.GameName.Core
 {
     public static class PlayerInventory
     {
-        public static int Trinitite = 100000;
+        public static int Trinitite;
 
         public static void ReceiveTrinitite(int amount)
         {
@@ -15,8 +13,5 @@ namespace OverBang.GameName.Core
         {
             return Trinitite -= amount;
         }
-        
-        
-        
     }
 }
