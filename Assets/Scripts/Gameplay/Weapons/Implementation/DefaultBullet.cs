@@ -68,7 +68,7 @@ namespace OverBang.GameName.Gameplay
                 //Debug.Log($"Bullet hit : {hit.collider.gameObject.name} with tag {hit.collider.tag}", hit.collider.gameObject);
 
                 // Skip already hit objects
-                if (hitObjects.Contains(hit.collider.gameObject))
+                if (hitObjects.Contains(hit.collider.gameObject) || hit.collider.isTrigger)
                     continue;
                 
                 if (!hit.collider.gameObject.CompareTag("LocalPlayer"))

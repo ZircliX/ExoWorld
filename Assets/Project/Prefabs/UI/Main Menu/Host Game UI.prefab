@@ -774,6 +774,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8855723891632779320}
+  - component: {fileID: 3572348760041699711}
   m_Layer: 5
   m_Name: Host Game UI
   m_TagString: Untagged
@@ -803,6 +804,18 @@ RectTransform:
   m_AnchoredPosition: {x: 235.7073, y: -8.849976}
   m_SizeDelta: {x: 1422.4146, y: 1062.3}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &3572348760041699711
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854315894996022333}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1931122456380395830
 GameObject:
   m_ObjectHideFlags: 0

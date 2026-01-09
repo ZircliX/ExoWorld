@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 1753838713554727774}
   m_Layer: 11
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,8 +114,8 @@ MonoBehaviour:
   <DahComponent>k__BackingField: {fileID: 2641663678897118583}
   enemyData: {fileID: 0}
   <enemyModelContainer>k__BackingField: {fileID: 7473997488970608723}
-  <GetTriggeredComponent>k__BackingField: {fileID: 4249110270004385719}
-  <AttackTriggerComponent>k__BackingField: {fileID: 8210832708329671000}
+  <FocusDetectionArea>k__BackingField: {fileID: 4240668120309789052}
+  <AttackDetectionArea>k__BackingField: {fileID: 5123218484393456302}
   <patrolRadius>k__BackingField: 10
 --- !u!195 &6307496961718370695
 NavMeshAgent:
@@ -235,8 +235,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8851027337331684442}
   - component: {fileID: 6844058314773871737}
-  - component: {fileID: 8210832708329671000}
-  m_Layer: 2
+  - component: {fileID: 5123218484393456302}
+  m_Layer: 0
   m_Name: AttackTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8210832708329671000
+--- !u!114 &5123218484393456302
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -288,11 +288,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4171101995375336604}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23604574e714443ebaf0b3bd04d97c4a, type: 3}
+  m_Script: {fileID: 11500000, guid: 068b9d5265934c399bf30b707ade917d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.TriggerComponent
-  <TriggerCollider>k__BackingField: {fileID: 6844058314773871737}
-  <TriggerRadius>k__BackingField: 5
+  m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.DetectionArea
+  <DetectionCollider>k__BackingField: {fileID: 6844058314773871737}
 --- !u!1 &8569898657867337544
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,8 +302,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5543645050160963184}
   - component: {fileID: 3635136003686820902}
-  - component: {fileID: 4249110270004385719}
-  m_Layer: 2
+  - component: {fileID: 4240668120309789052}
+  m_Layer: 0
   m_Name: PatrolTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,7 +346,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 20
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4249110270004385719
+--- !u!114 &4240668120309789052
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -356,8 +355,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8569898657867337544}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23604574e714443ebaf0b3bd04d97c4a, type: 3}
+  m_Script: {fileID: 11500000, guid: 068b9d5265934c399bf30b707ade917d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.TriggerComponent
-  <TriggerCollider>k__BackingField: {fileID: 3635136003686820902}
-  <TriggerRadius>k__BackingField: 20
+  m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.DetectionArea
+  <DetectionCollider>k__BackingField: {fileID: 3635136003686820902}

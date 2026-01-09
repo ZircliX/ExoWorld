@@ -29,7 +29,7 @@ namespace OverBang.GameName.Gameplay
             
             currentActivationTime = strategyData.ActivationTime;
             
-            DfoBalise balise = Object.Instantiate(ability.Data.DfoBalisePrefab, caster.transform.position + caster.Forward * 3.5f, Quaternion.identity);
+            DfoBalise balise = Object.Instantiate(ability.Data.DfoBalisePrefab, caster.transform.position + caster.Forward, Quaternion.identity);
             balise.Initialize(data, caster.Forward);
             
             missileManager = new MissileManager(data, strategyData, balise.transform);

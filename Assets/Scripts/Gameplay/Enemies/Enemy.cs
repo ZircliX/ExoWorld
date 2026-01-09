@@ -12,7 +12,7 @@ using Random = UnityEngine.Random;
 namespace OverBang.GameName.Gameplay
 {
     [RequireComponent(typeof(DamageableAndHealableComponent))]
-    public class Enemy : NetworkBehaviour, IPoolInstanceListener, IDamageSource, ITargetable
+    public class Enemy : NetworkBehaviour, IPoolInstanceListener, IDamageSource, ITargetable, ISlowable
     {
         [field : Header("Datas")]
         [field : SerializeField, Self, HideInInspector] public NetworkObject EnemyNetworkObject { get; private set; }
@@ -50,18 +50,7 @@ namespace OverBang.GameName.Gameplay
         {
             this.ValidateRefs();
         }
-
-        private void OnEnable()
-        {
-            DahComponent.OnHealthChanged += Damaged;
-        }
-
-        private void OnDisable()
-        {
-            DahComponent.OnHealthChanged -= Damaged;
-        }
-
-        /*
+        
         private void OnEnable()
         {
             DahComponent.OnHealthChanged += Damaged;
@@ -81,7 +70,6 @@ namespace OverBang.GameName.Gameplay
             AttackDetectionArea.OnEnter -= OnAttackEnter;
             AttackDetectionArea.OnExit -= OnAttackExit;
         }
-        */
 
         private void Damaged(float previousHealth, float currentHealth)
         {
@@ -98,12 +86,17 @@ namespace OverBang.GameName.Gameplay
             
             if (IsOwner)
             {
+                Agent.speed = enemyData.BaseSpeed;
+                //FocusDetectionArea.SetRequireInterface<ITargetable>();
+                FocusDetectionArea.SetAllowedTags("Player", "LocalPlayer");
+                //AttackDetectionArea.SetRequireInterface<ITargetable>();
+                AttackDetectionArea.SetAllowedTags("Player", "LocalPlayer");
+                
                 // TODO : Setup Health based on enemy data
                 currentPlayersInRange = new List<Transform>();
                 EnemyManager.Instance.Register(this);
             }
         }
-        
         
         [Rpc(SendTo.Everyone)]
         private void SetEnemyModelRpc(string enemyDataId)
@@ -137,9 +130,7 @@ namespace OverBang.GameName.Gameplay
                 Vector3 target = GetClosestPlayer();
                 Agent.SetDestination(target);
             }
-            
         }
-        
         
         private void ChooseNewDestination()
         {
@@ -181,19 +172,20 @@ namespace OverBang.GameName.Gameplay
             return closest.position;
         }
         
-        private void OnEntered(Transform playerTransform)
+        private void OnEntered(Collider col, object target)
         {
             if (!IsOwner) return;
-            currentPlayersInRange.Add(playerTransform);
+            Debug.Log("player entered !!!!!!!!!");
+            currentPlayersInRange.Add(col.transform);
         }
 
-        private void OnExited(Transform playerTransform)
+        private void OnExited(Collider col, object target)
         {
             if (!IsOwner) return;
-            currentPlayersInRange.Remove(playerTransform);
+            currentPlayersInRange.Remove(col.transform);
         }
         
-        private void OnAttackEnter(Transform playerTransform)
+        private void OnAttackEnter(Collider col, object target)
         {
             Debug.Log("player entered, attacking !!!!!!!!!");
             isPatrol = false;
@@ -203,7 +195,7 @@ namespace OverBang.GameName.Gameplay
             enemyAnimator.SetBool(IsPunching,  isAttacking);
         }
         
-        private void OnAttackExit(Transform playerTransform)
+        private void OnAttackExit(Collider col, object target)
         {
             Debug.Log("player leaving..., chasing !!!!!!!!!!");
             isAttacking = false;
@@ -273,6 +265,17 @@ namespace OverBang.GameName.Gameplay
         {
             IsTargetable = state;
             OnTargetableChanged?.Invoke(state);
+        }
+
+        public void ApplySlow(float slowPercentage, float slowDuration)
+        {
+            Agent.speed *= 1f - slowPercentage;
+            Invoke(nameof(RemoveSlow), slowDuration);
+        }
+
+        private void RemoveSlow()
+        {
+            Agent.speed = enemyData.BaseSpeed;
         }
     }
 }

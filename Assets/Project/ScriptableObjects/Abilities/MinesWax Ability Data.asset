@@ -24,9 +24,11 @@ MonoBehaviour:
   <AugmentData2>k__BackingField:
     rid: 402417008147955835
   <ThrowForce>k__BackingField: 200
-  <MineWaxPrefab>k__BackingField: {fileID: 1722344932486769144, guid: ab65c8d257466e5459a5e58799acec40, type: 3}
-  <DetectionRadius>k__BackingField: 1
-  <ExplosionRadius>k__BackingField: 2
+  <MineWaxPrefab>k__BackingField: {fileID: 1722344932486769144, guid: c1bef74aa15af604aa5a1de2ff03d747, type: 3}
+  <DetectionRadius>k__BackingField: 1.5
+  <ExplosionRadius>k__BackingField: 3
+  <DetonateDelay>k__BackingField: 1.5
+  <ExplosionVfx>k__BackingField: {fileID: 4596544553357837919, guid: 776b18aa0a0c1d3468b940f5d2206ce2, type: 3}
   references:
     version: 2
     RefIds:
@@ -45,7 +47,7 @@ MonoBehaviour:
           weakSpotMultiplier: 1.5
           bonusDamage: 0
         <SlowDuration>k__BackingField: 3
-        <SlowPercentage>k__BackingField: 50
+        <SlowPercentage>k__BackingField: 0.5
     - rid: 402417008147955835
       type: {class: MinesWaxNovaStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
       data:

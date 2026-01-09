@@ -1,7 +1,4 @@
-﻿using OverBang.GameName.Core;
-using UnityEngine;
-
-namespace OverBang.GameName.Gameplay
+﻿namespace OverBang.GameName.Gameplay
 {
     public class RuntimeWeaponState
     {
