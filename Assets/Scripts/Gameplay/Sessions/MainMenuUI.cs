@@ -1,38 +1,37 @@
-using System;
 using DG.Tweening;
 using UnityEngine;
 
 namespace OverBang.GameName.Gameplay
 {
-    public class MainMenu : MonoBehaviour
+    public class MainMenuUI : MonoBehaviour
     {
-        [SerializeField] private CanvasGroup mainMenu;
-        [SerializeField] private CanvasGroup join;
-        [SerializeField] private CanvasGroup create;
+        [SerializeField] private CanvasGroup mainMenuCanvas;
+        [SerializeField] private CanvasGroup joinCanvas;
+        [SerializeField] private CanvasGroup createCanvas;
         
         private CanvasGroup currentCanvas;
 
         private void Awake()
         {
-            currentCanvas = mainMenu;
+            currentCanvas = mainMenuCanvas;
         }
 
         public void OpenMenu()
         {
-            OpenCanvas(mainMenu, true);
-            currentCanvas = mainMenu;
+            OpenCanvas(mainMenuCanvas, true);
+            currentCanvas = mainMenuCanvas;
         }
         
         public void OpenJoin()
         {
-            OpenCanvas(join, true);
-            currentCanvas = join;
+            OpenCanvas(joinCanvas, true);
+            currentCanvas = joinCanvas;
         }
         
         public void OpenCreate()
         {
-            OpenCanvas(create, true);
-            currentCanvas = create;
+            OpenCanvas(createCanvas, true);
+            currentCanvas = createCanvas;
         }
         
         private void OpenCanvas(CanvasGroup canvas, bool state)

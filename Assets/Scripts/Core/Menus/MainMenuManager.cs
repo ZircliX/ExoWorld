@@ -1,0 +1,61 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace OverBang.GameName.Core.Menus
+{
+    public class MainMenuManager : MonoBehaviour
+    {
+        [SerializeField] private MainMenuPanel mainMenuPanel;
+        [SerializeField] private HostGameUI hostGameUI;
+        [SerializeField] private JoinGameUI joinGameUI;
+        [SerializeField] private SettingsUI settingsUI;
+
+        private IPanel currentPanel;
+        private readonly Stack<IPanel> panelHistory = new Stack<IPanel>();
+
+        private void Start()
+        {
+            InitializeListeners();
+            
+            ShowPanel(mainMenuPanel);
+            panelHistory.Push(mainMenuPanel);
+        }
+
+        private void InitializeListeners()
+        {
+            mainMenuPanel.OnHostClicked += () => ShowPanel(hostGameUI);
+            mainMenuPanel.OnJoinClicked += () => ShowPanel(joinGameUI);
+            mainMenuPanel.OnSettingsClicked += () => ShowPanel(settingsUI);
+
+            hostGameUI.OnBackClicked += GoBack;
+            //hostGameUI.OnHostCreated += () => ShowPanel(inGameUI);
+
+            joinGameUI.OnBackClicked += GoBack;
+            //joinGameUI.OnJoinGame += () => ShowPanel(inGameUI);
+
+            settingsUI.OnBackClicked += GoBack;
+        }
+
+        private void ShowPanel(IPanel panel)
+        {
+            if (currentPanel != null)
+            {
+                panelHistory.Push(currentPanel);
+                currentPanel.Hide();
+            }
+
+            currentPanel = panel;
+            currentPanel.Show();
+        }
+
+        private void GoBack()
+        {
+            if (panelHistory.Count <= 0)
+                return;
+            
+            currentPanel.Hide();
+            currentPanel = panelHistory.Pop();
+            currentPanel.Show();
+        }
+    }
+}

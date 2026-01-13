@@ -4,7 +4,7 @@ using Unity.Services.Multiplayer;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace OverBang.GameName.Core
+namespace OverBang.GameName.Core.Menus
 {
     public class SessionCardUI : MonoBehaviour
     {
