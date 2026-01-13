@@ -10,6 +10,10 @@ namespace OverBang.GameName.Core.Menus
         [SerializeField] private Button joinButton;
         [SerializeField] private RectTransform contentList;
         [SerializeField] private LobbyListItem lobbyItemPrefab;
+        
+        [SerializeField, Space] private ServerVisibilityToggle visibilityToggle;
+        [SerializeField] private CanvasGroup publicCanvas;
+        [SerializeField] private CanvasGroup privateCanvas;
 
         private LobbyInfo  selectedLobby;
         private List<LobbyListItem> lobbyItems;
@@ -20,13 +24,29 @@ namespace OverBang.GameName.Core.Menus
         {
             base.Awake();
             OnBackClicked += Hide;
+            visibilityToggle.OnFilterChanged += OnFilterChanged;
             
             joinButton.onClick.AddListener(HandleJoinGame);
             joinButton.interactable = false;
             
             lobbyItems = new List<LobbyListItem>();
         }
-      
+
+        private void OnDestroy()
+        {
+            visibilityToggle.OnFilterChanged -= OnFilterChanged;
+        }
+
+        private void OnFilterChanged(ServerVisibility visibility)
+        {
+            publicCanvas.gameObject.SetActive(visibility == ServerVisibility.Public);
+            privateCanvas.gameObject.SetActive(visibility != ServerVisibility.Public);
+
+            return;
+            OpenCanvas(publicCanvas, visibility == ServerVisibility.Public);
+            OpenCanvas(privateCanvas, visibility != ServerVisibility.Public);
+        }
+
         public void DisplayLobbies(LobbyInfo[] lobbies)
         {
             ClearLobbies();

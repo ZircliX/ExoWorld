@@ -300,10 +300,10 @@ RectTransform:
   - {fileID: 6019267277555065542}
   m_Father: {fileID: 2757581089425281290}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -35}
-  m_SizeDelta: {x: 0, y: -70}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 166.75}
+  m_SizeDelta: {x: 0, y: 333.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &873548705317815699
 MonoBehaviour:
@@ -323,7 +323,7 @@ MonoBehaviour:
     m_Top: 10
     m_Bottom: 0
   m_ChildAlignment: 1
-  m_Spacing: 25
+  m_Spacing: 10
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -4335,7 +4335,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 615, y: -926.86}
+  m_AnchoredPosition: {x: 615, y: -935.86}
   m_SizeDelta: {x: 1202, y: 189.86}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &4416280268609111541
@@ -4600,23 +4600,9 @@ MonoBehaviour:
   joinButton: {fileID: 3996163065789797901}
   contentList: {fileID: 1842915853273521865}
   lobbyItemPrefab: {fileID: 858909966988103477, guid: 8f8ee4a5a68817b4490f3a2340adeca6, type: 3}
-  passwordInput: {fileID: 2776305057361191259}
   visibilityToggle: {fileID: 923407590420607376}
   publicCanvas: {fileID: 7557170310546782253}
   privateCanvas: {fileID: 3455382580165873888}
---- !u!114 &3211090418380319890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8601375702186688021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d28e9345f5d48f6a7ced8c70f114d67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: OverBang.GameName.Core::OverBang.GameName.Core.Menus.JoinGame
-  joinGameUI: {fileID: 7740625271145610453}
 --- !u!1 &8624619332673258130
 GameObject:
   m_ObjectHideFlags: 0
