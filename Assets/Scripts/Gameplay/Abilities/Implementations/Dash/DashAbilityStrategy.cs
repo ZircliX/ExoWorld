@@ -16,6 +16,8 @@ namespace OverBang.GameName.Gameplay
         
         public void Initialize(IAbility<DashData> ability, IAbilityCaster caster, TData data)
         {
+            Caster = caster;
+            
             if (caster.gameObject.TryGetComponent(out PlayerMovement pm))
             {
                 PlayerMovement = pm;
@@ -33,7 +35,6 @@ namespace OverBang.GameName.Gameplay
 
         public virtual void Tick(IAbility<DashData> ability, float deltaTime)
         {
-            // Vérifier les collisions pendant le dash
             Vector3 capsulePos = Caster.transform.position + Vector3.up * PlayerMovement.CapsuleCollider.height / 2;
 
             int size = Physics.OverlapCapsuleNonAlloc(capsulePos,

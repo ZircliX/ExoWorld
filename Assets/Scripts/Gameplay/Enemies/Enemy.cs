@@ -37,6 +37,7 @@ namespace OverBang.GameName.Gameplay
         private List<Transform> currentPlayersInRange;
 
         private EnemyAnimator enemyAnimator;
+        [SerializeField, Self] private CapsuleCollider collider; 
         private Vector3 targetPoint;
         private bool isPatrol;
         private bool isAttacking;
@@ -83,7 +84,9 @@ namespace OverBang.GameName.Gameplay
         public void Initialize(string enemyDataId)
         {
             SetEnemyModelRpc(enemyDataId);
-            
+            collider.enabled = true;
+            enemyAnimator.Ragdoll(false);
+
             if (IsOwner)
             {
                 Agent.speed = enemyData.BaseSpeed;
@@ -120,6 +123,7 @@ namespace OverBang.GameName.Gameplay
         private void Update()
         {
             if (!IsOwner) return;
+            if (Agent.enabled == false) return;
             
             if (currentPlayersInRange.Count <= 0 && !Agent.pathPending && Agent.remainingDistance <= Agent.stoppingDistance && !isAttacking)
             {
@@ -209,6 +213,14 @@ namespace OverBang.GameName.Gameplay
         
 
         protected void OnDeath()
+        {
+            collider.enabled = false;
+            Agent.enabled = false;
+            enemyAnimator.Ragdoll(true);
+            Invoke(nameof(WaitUntilRagdoll), 2f);
+        }
+
+        private void WaitUntilRagdoll()
         {
             EnemyManager.Instance.Unregister(this);
             
