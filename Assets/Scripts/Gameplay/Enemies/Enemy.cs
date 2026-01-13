@@ -179,7 +179,7 @@ namespace OverBang.GameName.Gameplay
         private void OnEntered(Collider col, object target)
         {
             if (!IsOwner) return;
-            Debug.Log("player entered !!!!!!!!!");
+            //Debug.Log("player entered !!!!!!!!!");
             currentPlayersInRange.Add(col.transform);
         }
 
@@ -191,7 +191,7 @@ namespace OverBang.GameName.Gameplay
         
         private void OnAttackEnter(Collider col, object target)
         {
-            Debug.Log("player entered, attacking !!!!!!!!!");
+            //Debug.Log("player entered, attacking !!!!!!!!!");
             isPatrol = false;
             enemyAnimator.SetBool(IsPatrol, isPatrol);
             
@@ -201,7 +201,7 @@ namespace OverBang.GameName.Gameplay
         
         private void OnAttackExit(Collider col, object target)
         {
-            Debug.Log("player leaving..., chasing !!!!!!!!!!");
+            //Debug.Log("player leaving..., chasing !!!!!!!!!!");
             isAttacking = false;
             enemyAnimator.SetBool(IsPunching,  isAttacking);
             

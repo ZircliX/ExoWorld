@@ -17,6 +17,7 @@ namespace OverBang.GameName.Gameplay
         private MissileManager manager;
         private float lifeTime;
         private DamageInfo damageInfo;
+        private bool isDetonated;
         
         private MissileData data;
         private RaycastHit[] results;
@@ -47,11 +48,15 @@ namespace OverBang.GameName.Gameplay
 
         public void OnTick(float deltaTime)
         {
+            if (isDetonated)
+                return;
+            
             lifeTime += deltaTime;
             
             if (lifeTime >= data.LifeTime)
             {
                 Cleanup();
+                isDetonated = true;
             }
         }
 
