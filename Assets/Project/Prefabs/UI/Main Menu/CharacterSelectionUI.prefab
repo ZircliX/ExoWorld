@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: 7205974585612971964}
   - component: {fileID: 6653627456440023239}
   m_Layer: 5
-  m_Name: RightPanel
+  m_Name: LeftPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1870,7 +1870,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8723995747136399341}
   - component: {fileID: 3723751960033037975}
-  - component: {fileID: 5217449253215586971}
   m_Layer: 5
   m_Name: CharacterSelectionUI
   m_TagString: Untagged
@@ -1911,21 +1910,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &5217449253215586971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8293733898597151971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
-  m_EffectColor: {r: 1, g: 1, b: 1, a: 1}
-  m_EffectDistance: {x: 169.7, y: 28.15}
-  m_UseGraphicAlpha: 1
 --- !u!1 &8482367505876220488
 GameObject:
   m_ObjectHideFlags: 0
