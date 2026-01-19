@@ -17,7 +17,7 @@ namespace OverBang.GameName.Debugging
         {
             get
             {
-                mode ??= mode.GetOrCreateGameMode(SurvivalGameMode.Create);
+                mode ??= mode.GetOrCreateGameMode(() => new SurvivalGameMode());
                 return mode;
             }
         }

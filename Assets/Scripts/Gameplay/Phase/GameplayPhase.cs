@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using System.Threading.Tasks;
 using OverBang.GameName.Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -73,7 +74,7 @@ namespace OverBang.GameName.Gameplay
             LevelManager.Dispose();
             Object.DestroyImmediate(LevelManager);
             
-            await AwaitableUtils.CompletedAwaitable;
+            await Task.CompletedTask;
         }
         
         private void OnSceneLoaded(Scene scene, LoadSceneMode loadMode)

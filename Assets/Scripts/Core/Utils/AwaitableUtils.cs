@@ -49,16 +49,5 @@ namespace OverBang.GameName.Core
                 await Awaitable.NextFrameAsync(cancellationToken);
             }
         }
-    
-        public static Awaitable CompletedAwaitable
-        {
-            get
-            {
-                completionSource.SetResult();
-                Awaitable awaitable = completionSource.Awaitable;
-                completionSource.Reset();
-                return awaitable;
-            }
-        }
     }
 }

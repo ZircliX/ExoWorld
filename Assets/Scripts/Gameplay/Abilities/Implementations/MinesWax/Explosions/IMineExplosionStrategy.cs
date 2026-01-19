@@ -5,7 +5,7 @@ namespace OverBang.GameName.Gameplay
 {
     public interface IMineExplosionStrategy
     {
-        event Action<bool> OnExploded; 
+        event Action<bool> OnExploded;
         void Explode(Func<Collider[]> getOverlapColliders);
     }
 }

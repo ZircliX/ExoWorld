@@ -8,15 +8,15 @@ namespace OverBang.GameName.Gameplay
     {
         private readonly DamageInfo damage;
         private readonly float explosionInterval;
-        private readonly int targetExplostionCount;
+        private readonly int targetExplosionCount;
         
         public event Action<bool> OnExploded;
 
-        public NovaExplosion(DamageInfo damage, float explosionInterval, int targetExplostionCount)
+        public NovaExplosion(DamageInfo damage, float explosionInterval, int targetExplosionCount)
         {
             this.damage = damage;
             this.explosionInterval = explosionInterval;
-            this.targetExplostionCount = targetExplostionCount;
+            this.targetExplosionCount = targetExplosionCount;
         }
 
         public void Explode(Func<Collider[]> getOverlapColliders)
@@ -29,7 +29,7 @@ namespace OverBang.GameName.Gameplay
         {
             int explosionCount = 0;
             
-            for (int i = 0; i < targetExplostionCount; i++)
+            for (int i = 0; i < targetExplosionCount; i++)
             {
                 Collider[] colliders = getOverlapColliders();
                 
@@ -42,7 +42,7 @@ namespace OverBang.GameName.Gameplay
                 }
 
                 explosionCount++;
-                OnExploded?.Invoke(explosionCount == targetExplostionCount);
+                OnExploded?.Invoke(explosionCount == targetExplosionCount);
                 
                 await Awaitable.WaitForSecondsAsync(explosionInterval);
             }

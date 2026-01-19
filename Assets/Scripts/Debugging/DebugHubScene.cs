@@ -18,7 +18,7 @@ namespace OverBang.GameName.Debugging
                 Debug.LogWarning($"No gamemode selected, Starting SurvivalGameMode from {nameof(DebugHubScene)}");
                 await LogIn();
                 
-                SurvivalGameMode survivalGameMode = SurvivalGameMode.Create();
+                SurvivalGameMode survivalGameMode = new SurvivalGameMode();
                 survivalGameMode.SetGameMode();
             }
             else
