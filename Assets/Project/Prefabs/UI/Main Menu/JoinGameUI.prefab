@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5124619403326510899}
   - component: {fileID: 6752962384523856590}
   m_Layer: 5
-  m_Name: Text Area
+  m_Name: TextArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,7 +65,7 @@ GameObject:
   - component: {fileID: 5242557750131266724}
   - component: {fileID: 719535607151908746}
   m_Layer: 5
-  m_Name: Title Text
+  m_Name: TitleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,7 +88,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 116.28, y: -35}
-  m_SizeDelta: {x: 192.56, y: 50}
+  m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &896845950647897622
 CanvasRenderer:
@@ -726,7 +726,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 55.9225, y: -18.5}
-  m_SizeDelta: {x: 129.77, y: 37}
+  m_SizeDelta: {x: 0, y: 37}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &6005680484709718910
 CanvasRenderer:
@@ -1697,7 +1697,7 @@ GameObject:
   - component: {fileID: 8478956078057250481}
   - component: {fileID: 2428071641677730290}
   m_Layer: 5
-  m_Name: Join Text
+  m_Name: JoinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1720,7 +1720,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 182.86499, y: -23.5}
-  m_SizeDelta: {x: 215.73, y: 37}
+  m_SizeDelta: {x: 0, y: 37}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8567616772196664950
 CanvasRenderer:
@@ -2083,7 +2083,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 54.0175, y: -18.499998}
-  m_SizeDelta: {x: 65.31, y: 37}
+  m_SizeDelta: {x: 0, y: 37}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &7411979145009466618
 CanvasRenderer:
@@ -3228,7 +3228,7 @@ GameObject:
   - component: {fileID: 2005244139752472819}
   - component: {fileID: 5197110477508513757}
   m_Layer: 5
-  m_Name: Back Text
+  m_Name: BackText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
