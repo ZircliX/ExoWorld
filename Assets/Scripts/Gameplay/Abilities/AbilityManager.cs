@@ -22,8 +22,9 @@ namespace OverBang.GameName.Gameplay
                     continue;
                 
                 Type[] classes = asm.GetTypes();
-                foreach (Type type in classes)
+                for (int index = 0; index < classes.Length; index++)
                 {
+                    Type type = classes[index];
                     ScanForStrategies(type);
                 }
             }

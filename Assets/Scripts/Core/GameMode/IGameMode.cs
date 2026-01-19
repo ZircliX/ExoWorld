@@ -1,9 +1,6 @@
-using UnityEngine;
-
 namespace OverBang.GameName.Core
 {
-    public interface IGameMode
+    public interface IGameMode : IPhase
     {
-        Awaitable Run();
     }
 }

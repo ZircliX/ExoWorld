@@ -10,12 +10,13 @@ namespace OverBang.GameName.Core.Menus
         public Sprite icon;
     }
 
-    public struct LobbyInfo
+    public struct SessionInfo
     {
-        public string lobbyId;
-        public string lobbyName;
-        public int playerCount;
+        public string sessionId;
+        public string sessionName;
+        public int currentPlayers;
         public int maxPlayers;
+        public bool isPrivate;
     }
 
     public enum ServerVisibility

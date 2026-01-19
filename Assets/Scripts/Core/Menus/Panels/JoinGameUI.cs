@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
+using Unity.Services.Multiplayer;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,18 +9,24 @@ namespace OverBang.GameName.Core.Menus
 {
     public class JoinGameUI : InteractivePanel
     {
+        // Public UI
         [SerializeField] private Button joinButton;
         [SerializeField] private RectTransform contentList;
         [SerializeField] private LobbyListItem lobbyItemPrefab;
         
+        // Private UI
+        [SerializeField, Space] private TMP_InputField passwordInput;
+        
         [SerializeField, Space] private ServerVisibilityToggle visibilityToggle;
         [SerializeField] private CanvasGroup publicCanvas;
         [SerializeField] private CanvasGroup privateCanvas;
-
-        private LobbyInfo  selectedLobby;
+        
+        private SessionInfo selectedSession;
         private List<LobbyListItem> lobbyItems;
 
-        public event Action OnJoinGame;
+        public Action OnJoinedGame;
+        public event JoinGameEvent OnJoinGameRequested;
+        public delegate void JoinGameEvent(string serverName, string password);
 
         protected override void Awake()
         {
@@ -29,57 +37,97 @@ namespace OverBang.GameName.Core.Menus
             joinButton.onClick.AddListener(HandleJoinGame);
             joinButton.interactable = false;
             
+            passwordInput.onValueChanged.AddListener(HandlePasswordChanged);
+            
             lobbyItems = new List<LobbyListItem>();
         }
 
         private void OnDestroy()
         {
             visibilityToggle.OnFilterChanged -= OnFilterChanged;
+            joinButton.onClick.RemoveAllListeners();
+            passwordInput.onValueChanged.RemoveAllListeners();
         }
 
         private void OnFilterChanged(ServerVisibility visibility)
         {
             publicCanvas.gameObject.SetActive(visibility == ServerVisibility.Public);
             privateCanvas.gameObject.SetActive(visibility != ServerVisibility.Public);
+            
+            joinButton.interactable = false;
+            selectedSession = default;
 
-            return;
-            OpenCanvas(publicCanvas, visibility == ServerVisibility.Public);
-            OpenCanvas(privateCanvas, visibility != ServerVisibility.Public);
-        }
-
-        public void DisplayLobbies(LobbyInfo[] lobbies)
-        {
-            ClearLobbies();
-
-            foreach (LobbyInfo lobbyInfo in lobbies)
+            if (visibility == ServerVisibility.Public)
             {
-                LobbyListItem item = CreateLobbyItem(lobbyInfo);
-                lobbyItems.Add(item);
+                DisplayLobbies();
             }
-
-            return;
-            if (lobbyItems.Count > 0)
-                firstSelectable = lobbyItems[0].GetComponent<Button>();
         }
 
-        private LobbyListItem CreateLobbyItem(LobbyInfo lobby)
+        private async void DisplayLobbies()
+        {
+            try
+            {
+                // Query for available sessions
+                QuerySessionsOptions queryOptions = new QuerySessionsOptions()
+                {
+                    Count = 10,
+                };
+
+                IList<ISessionInfo> availableSessions = await SessionManager.Global.QuerySessions(queryOptions);
+
+                // Convert ISession to LobbyInfo
+                List<SessionInfo> filteredLobbies = new List<SessionInfo>(availableSessions.Count);
+                foreach (ISessionInfo session in availableSessions)
+                {
+                    SessionInfo info = new SessionInfo()
+                    {
+                        sessionId = session.Id,
+                        sessionName = session.Name,
+                        currentPlayers = session.MaxPlayers - session.AvailableSlots,
+                        maxPlayers = session.MaxPlayers,
+                        isPrivate = session.IsLocked
+                    };
+                    filteredLobbies.Add(info);
+                }
+            
+                // Display sessions
+                ClearLobbies();
+
+                foreach (SessionInfo lobbyInfo in filteredLobbies)
+                {
+                    LobbyListItem item = CreateLobbyItem(lobbyInfo);
+                    lobbyItems.Add(item);
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"Failed to query sessions: {e}");
+            }
+        }
+
+        private LobbyListItem CreateLobbyItem(SessionInfo session)
         {
             LobbyListItem itemGameObject = Instantiate(lobbyItemPrefab, contentList);
-            itemGameObject.Setup(lobby, OnLobbySelected);
+            itemGameObject.Initialize(session, OnSessionSelected);
 
             return itemGameObject;
         }
 
-        private void OnLobbySelected(LobbyInfo lobby)
+        private void OnSessionSelected(SessionInfo session)
         {
-            selectedLobby = lobby;
+            selectedSession = session;
             joinButton.interactable = true;
         }
 
         private void HandleJoinGame()
         {
-            if (!string.IsNullOrEmpty(selectedLobby.lobbyId))
-                OnJoinGame?.Invoke();
+            if (!string.IsNullOrEmpty(selectedSession.sessionId))
+                OnJoinGameRequested?.Invoke(selectedSession.sessionId, passwordInput.text);
+        }
+
+        private void HandlePasswordChanged(string current)
+        {
+            joinButton.interactable = !string.IsNullOrEmpty(current) && current.Length == 8;
         }
 
         private void ClearLobbies()
@@ -88,6 +136,12 @@ namespace OverBang.GameName.Core.Menus
                 Destroy(item.gameObject);
 
             lobbyItems.Clear();
+            joinButton.interactable = false;
+        }
+
+        protected override void OnShow()
+        {
+            DisplayLobbies();
         }
 
         protected override void OnHide()

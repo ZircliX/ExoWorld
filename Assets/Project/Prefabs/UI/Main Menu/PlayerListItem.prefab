@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2431963952822392400}
   - component: {fileID: 4600148128461073095}
   m_Layer: 0
-  m_Name: Slider
+  m_Name: Volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -716,8 +716,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2400817706150159967}
   - component: {fileID: 969475724356871056}
+  - component: {fileID: 2704943042413218564}
   m_Layer: 0
-  m_Name: PlayerName
+  m_Name: PlayerListItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -771,3 +772,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &2704943042413218564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9168136765801872610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b9230224c4845be8c16cad0caac6d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: OverBang.GameName.Core::OverBang.GameName.Core.Menus.PlayerListItem
+  playerNameText: {fileID: 4387548630155651692}
+  volumeSlider: {fileID: 2431963952822392400}
+  muteButton: {fileID: 7700723760718723284}

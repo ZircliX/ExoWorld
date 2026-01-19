@@ -12,18 +12,18 @@ namespace OverBang.GameName.Core.Menus
         [SerializeField] private TMP_Text playerCount;
         [SerializeField] private Button selectButton;
 
-        private LobbyInfo lobbyInfo;
-        private Action<LobbyInfo> onSelected;
+        private SessionInfo sessionInfo;
+        private Action<SessionInfo> onSelected;
 
-        public void Setup(LobbyInfo lobby, Action<LobbyInfo> callback)
+        public void Initialize(SessionInfo session, Action<SessionInfo> callback)
         {
-            lobbyInfo = lobby;
+            sessionInfo = session;
             onSelected = callback;
             
-            lobbyName.text = lobby.lobbyName;
-            playerCount.text = $"{lobby.playerCount}/{lobby.maxPlayers}";
+            lobbyName.text = session.sessionName;
+            playerCount.text = $"{session.currentPlayers}/{session.maxPlayers}";
             
-            selectButton.onClick.AddListener(() => onSelected?.Invoke(lobbyInfo));
+            selectButton.onClick.AddListener(() => onSelected?.Invoke(sessionInfo));
         }
 
         public void OnSelect(BaseEventData eventData) => selectButton.onClick.Invoke();

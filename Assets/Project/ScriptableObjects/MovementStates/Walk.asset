@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0342c04d4235429ca0e0d9fdef82def4, type: 3}
   m_Name: Walk
   m_EditorClassIdentifier: 
-  maxSpeed: 4
+  maxSpeed: 2.75
   directionControl: 15
   accelerationCurve:
     serializedVersion: 2
@@ -67,4 +67,5 @@ MonoBehaviour:
   decelerationDuration: 0.25
   deceleration: 15
   maxStepHeight: 0.3
+  footStepTime: 0
   <CameraEffectData>k__BackingField: {fileID: 11400000, guid: bcf1cd98da5d62a4e9874af552bae81e, type: 2}

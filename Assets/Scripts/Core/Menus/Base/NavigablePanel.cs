@@ -8,7 +8,7 @@ namespace OverBang.GameName.Core.Menus
     {
         [SerializeField] protected Button backButton;
 
-        public event Action OnBackClicked;
+        public Action OnBackClicked { get; protected internal set; }
 
         protected override void Awake()
         {
@@ -17,7 +17,7 @@ namespace OverBang.GameName.Core.Menus
                 backButton.onClick.AddListener(InvokeBackClicked);
         }
 
-        public void InvokeBackClicked()
+        public virtual void InvokeBackClicked()
         {
             OnBackClicked?.Invoke();
         }

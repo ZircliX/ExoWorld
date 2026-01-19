@@ -1,24 +1,31 @@
+using System.Threading.Tasks;
 using OverBang.GameName.Core;
 using OverBang.GameName.Hub;
 using UnityEngine;
 
 namespace OverBang.GameName.Gameplay
 {
+    [CreateGameMode(GameModeUtils.SurvivalGameModeName)]
     public class SurvivalGameMode : IGameMode
     {
-        public static SurvivalGameMode Create()
-        {
-            return new SurvivalGameMode();
-        }
-
         private GameplayPhase.GameplayEndInfos gameplayEndInfos;
         private bool hasCharacter;
 
-        private SurvivalGameMode()
+        public SurvivalGameMode()
         {
         }
+        
+        public async Awaitable OnBegin()
+        {
+            await Task.CompletedTask;
+        }
 
-        public async Awaitable Run()
+        public async Awaitable OnEnd()
+        {
+            await Task.CompletedTask;
+        }
+
+        public async Awaitable Execute()
         {
             Debug.Log("Run GameMode: SurvivalGameMode");
             bool isRunning = true;
@@ -82,6 +89,5 @@ namespace OverBang.GameName.Gameplay
             
             return gameplayPhase;
         }
-
     }
 }

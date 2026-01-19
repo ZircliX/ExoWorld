@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Helteix.ChanneledProperties.Priorities;
 using OverBang.GameName.Core;
 using OverBang.Pooling;
@@ -67,7 +68,7 @@ namespace OverBang.GameName.Gameplay
 
         private async Awaitable SetupGameMap()
         {
-            await AwaitableUtils.CompletedAwaitable;
+            await Task.CompletedTask;
         }
 
         private void SetupPlayer()
@@ -92,7 +93,7 @@ namespace OverBang.GameName.Gameplay
 
         private async Awaitable SetupEnemies()
         {
-            await AwaitableUtils.CompletedAwaitable;
+            await Task.CompletedTask;
         }
 
         private async Awaitable SetupUI()
@@ -100,7 +101,7 @@ namespace OverBang.GameName.Gameplay
             GameController.CursorLockModePriority.AddPriority(this, PriorityTags.High, CursorLockMode.Locked);
             GameController.CursorVisibleStatePriority.AddPriority(this, PriorityTags.High, false);
             
-            await AwaitableUtils.CompletedAwaitable;
+            await Task.CompletedTask;
         }
         
         private async Awaitable SetupPooling()

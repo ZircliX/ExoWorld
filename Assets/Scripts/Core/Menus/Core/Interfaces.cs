@@ -13,7 +13,7 @@ namespace OverBang.GameName.Core.Menus
     
     public interface INavigablePanel : IPanel
     {
-        event Action OnBackClicked;
+        Action OnBackClicked { get; }
         void InvokeBackClicked();
     }
 

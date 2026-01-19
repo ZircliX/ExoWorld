@@ -11,31 +11,21 @@ namespace OverBang.GameName.Core
     {
         public static SessionManager Global => GameController.SessionManager;
         
-        public event Action<ISession> OnSessionChanged; 
+        public event Action<ISession> OnSessionChanged;
         
         public ISession ActiveSession {get; private set;}
 
-        public IPlayer CurrentPlayer
-        {
-            get
-            {
-                if (ActiveSession == null) return null;
-                return ActiveSession.CurrentPlayer;
-            }
-        }
-        
+        public IPlayer CurrentPlayer => ActiveSession?.CurrentPlayer;
+
         public bool IsHost()
         {
-            if (ActiveSession == null)
-                return false;
-            
-            return ActiveSession.IsHost;
+            return ActiveSession is { IsHost: true };
         }
 
-        public bool IsAllowed => UnityServices.Instance.State != ServicesInitializationState.Initialized
-                                 && !AuthenticationService.Instance.IsSignedIn;
+        public static bool IsAllowed => UnityServices.Instance.State == ServicesInitializationState.Initialized
+                                        && AuthenticationService.Instance.IsSignedIn;
 
-        public async Awaitable<ISession> CreateOrJoinSession(string sessionId, SessionOptions options)
+        public async Awaitable<ISession> CreateOrJoinSession(string sessionId, SessionOptions options, string playerName = null)
         {
             if (ActiveSession != null)
                 return ActiveSession;
@@ -45,7 +35,7 @@ namespace OverBang.GameName.Core
             return ActiveSession;
         }
         
-        public async Awaitable<IHostSession> CreateSession(SessionOptions options)
+        public async Awaitable<IHostSession> CreateSession(SessionOptions options, string playerName = null)
         {
             if (ActiveSession != null)
                 return null;
@@ -55,22 +45,27 @@ namespace OverBang.GameName.Core
             return (IHostSession)ActiveSession;
         }
         
-        public async Awaitable<ISession> JoinSessionByID(string sessionID)
+        public async Awaitable<ISession> JoinSessionByID(string sessionID, string playerName = null)
         {
             if (ActiveSession != null)
                 return ActiveSession;
             
+            JoinSessionOptions options = new JoinSessionOptions();
+            
             ActiveSession = await MultiplayerService.Instance.JoinSessionByIdAsync(sessionID);
+            await ActiveSession.CurrentPlayer.UpdatePlayerProperty(GameMetrics.Global.ConstID.PlayerPropertyPlayerName,
+                "Player");
+                
             OnSessionChanged?.Invoke(ActiveSession);
             return ActiveSession;
         }
         
-        public async Awaitable<ISession> JoinSessionByCode(string code)
+        public async Awaitable<ISession> JoinSessionByPassword(string password, string playerName = null)
         {
             if (ActiveSession != null)
                 return ActiveSession;
             
-            ActiveSession = await MultiplayerService.Instance.JoinSessionByCodeAsync(code);
+            ActiveSession = await MultiplayerService.Instance.JoinSessionByCodeAsync(password);
             OnSessionChanged?.Invoke(ActiveSession);
             return ActiveSession;
         }

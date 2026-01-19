@@ -8,9 +8,6 @@ namespace OverBang.GameName.Gameplay
 {
     public class PlayerController : NetworkBehaviour, IPlayerController
     {
-        public NetworkVariable<PlayerNetworkTransform> PlayerState { get; private set; } =
-            new NetworkVariable<PlayerNetworkTransform>(writePerm: NetworkVariableWritePermission.Owner);
-
         [SerializeField] private Transform playerModelContainer;
         private IPlayerComponent[] playerComponents;
         

@@ -8,6 +8,7 @@ namespace OverBang.GameName.Core.Menus
         [SerializeField] private MainMenuPanel mainMenuPanel;
         [SerializeField] private HostGameUI hostGameUI;
         [SerializeField] private JoinGameUI joinGameUI;
+        [SerializeField] private WaitingScreenUI waitingScreenUI;
         [SerializeField] private SettingsUI settingsUI;
 
         private IPanel currentPanel;
@@ -28,10 +29,12 @@ namespace OverBang.GameName.Core.Menus
             mainMenuPanel.OnSettingsClicked += () => ShowPanel(settingsUI);
 
             hostGameUI.OnBackClicked += GoBack;
-            //hostGameUI.OnHostCreated += () => ShowPanel(inGameUI);
+            hostGameUI.OnHostCreated += () => ShowPanel(waitingScreenUI);
 
             joinGameUI.OnBackClicked += GoBack;
-            //joinGameUI.OnJoinGame += () => ShowPanel(inGameUI);
+            joinGameUI.OnJoinedGame += () => ShowPanel(waitingScreenUI);
+            
+            waitingScreenUI.OnBackClicked += GoBack;
 
             settingsUI.OnBackClicked += GoBack;
         }

@@ -1,4 +1,6 @@
 using System;
+using System.Text;
+using Ami.Extension;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,21 +9,56 @@ namespace OverBang.GameName.Core.Menus
 {
     public class HostGameUI : InteractivePanel
     {
-        [SerializeField] private TMP_InputField gameNameInput;
-        [SerializeField] private Button createButton;
+        [SerializeField, Space] private TMP_InputField gameNameInput;
+        [SerializeField] private IntSelector maxPlayersSelector;
+        [SerializeField] private ServerVisibilitySelector serverVisibilitySelector;
+        [SerializeField] private TMP_Text passwordText;
+        
+        [SerializeField, Space] private Button createButton;
+        [SerializeField] private Button copyButton;
 
-        public event Action OnHostCreated;
+        public Action OnHostCreated;
+        public event HostCreatedEvent OnCreateHostClicked;
+        public delegate void HostCreatedEvent(string serverName, int maxPlayers, ServerVisibility visibility, string password);
+
+        private string currentPassword;
 
         protected override void Awake()
         {
             base.Awake();
             OnBackClicked += Hide;
-            createButton.onClick.AddListener(() => HandleHostCreate(gameNameInput.text));
+            
+            copyButton.onClick.AddListener(() => GUIUtility.systemCopyBuffer = currentPassword);
+            
+            createButton.onClick.AddListener(
+                () => HandleHostCreate(gameNameInput.text, 
+                    maxPlayersSelector.CurrentValue, 
+                    serverVisibilitySelector.CurrentValue, 
+                    currentPassword)
+                );
         }
 
-        private void HandleHostCreate(string gameName)
+        private void HandleHostCreate(string serverName, int maxPlayers, ServerVisibility visibility, string password)
         {
-            OnHostCreated?.Invoke();
+            serverName = serverName.Trim().Replace(" ", string.Empty);
+            gameNameInput.text = serverName;
+            
+            OnCreateHostClicked?.Invoke(serverName, maxPlayers, visibility, password);
+        }
+
+        private static readonly StringBuilder builder = new StringBuilder();
+        protected override void OnShow()
+        {
+            // Generate a random password
+
+            for (int i = 0; i < GameMetrics.Global.MaxPasswordLenght; i++)
+            {
+                char c = (char)UnityEngine.Random.Range(65, 91);
+                builder.Append(char.ToUpper(c));
+            }
+
+            currentPassword = builder.ToString();
+            passwordText.text = currentPassword;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 using Unity.Services.Multiplayer;
 using UnityEngine;
 
@@ -45,7 +46,7 @@ namespace OverBang.GameName.Core
             Debug.Log("Starting Selection Phase");
             LoadCharactersData();
             
-            await AwaitableUtils.CompletedAwaitable;
+            await Task.CompletedTask;
         }
 
         protected virtual async Awaitable Execute()
@@ -55,7 +56,7 @@ namespace OverBang.GameName.Core
         
         protected virtual async Awaitable OnEnd()
         {
-            await AwaitableUtils.CompletedAwaitable;
+            await Task.CompletedTask;
         }
 
         public void SelectCharacter(CharacterData characterData, bool characterChanged)
