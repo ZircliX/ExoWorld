@@ -36,6 +36,7 @@ namespace OverBang.GameName.Core.Menus
             try
             {
                 await SessionManager.Global.CreateSession(gameOptions);
+                await Awaitable.WaitForSecondsAsync(0.2f);
                 hostGameUI.OnHostCreated?.Invoke();
                 //Debug.Log($"Host session {gameOptions.Name} created");
             }

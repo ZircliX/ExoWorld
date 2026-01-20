@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Unity.Services.Authentication;
-using Unity.Services.Core;
 using Unity.Services.Multiplayer;
 using UnityEngine;
 
@@ -22,30 +20,31 @@ namespace OverBang.GameName.Core
             return ActiveSession is { IsHost: true };
         }
 
-        public static bool IsAllowed => UnityServices.Instance.State == ServicesInitializationState.Initialized
-                                        && AuthenticationService.Instance.IsSignedIn;
-
-        public async Awaitable<ISession> CreateOrJoinSession(string sessionId, SessionOptions options, string playerName = null)
+        public async Awaitable<ISession> CreateOrJoinSession(string sessionId, SessionOptions options)
         {
             if (ActiveSession != null)
                 return ActiveSession;
             
             ActiveSession = await MultiplayerService.Instance.CreateOrJoinSessionAsync(sessionId, options);
+            await SetPlayerName();
+            
             OnSessionChanged?.Invoke(ActiveSession);
             return ActiveSession;
         }
         
-        public async Awaitable<IHostSession> CreateSession(SessionOptions options, string playerName = null)
+        public async Awaitable<IHostSession> CreateSession(SessionOptions options)
         {
             if (ActiveSession != null)
                 return null;
             
             ActiveSession = await MultiplayerService.Instance.CreateSessionAsync(options);
+            await SetPlayerName();
+            
             OnSessionChanged?.Invoke(ActiveSession);
             return (IHostSession)ActiveSession;
         }
         
-        public async Awaitable<ISession> JoinSessionByID(string sessionID, string playerName = null)
+        public async Awaitable<ISession> JoinSessionByID(string sessionID)
         {
             if (ActiveSession != null)
                 return ActiveSession;
@@ -53,19 +52,20 @@ namespace OverBang.GameName.Core
             JoinSessionOptions options = new JoinSessionOptions();
             
             ActiveSession = await MultiplayerService.Instance.JoinSessionByIdAsync(sessionID);
-            await ActiveSession.CurrentPlayer.UpdatePlayerProperty(GameMetrics.Global.ConstID.PlayerPropertyPlayerName,
-                "Player");
+            await SetPlayerName();
                 
             OnSessionChanged?.Invoke(ActiveSession);
             return ActiveSession;
         }
         
-        public async Awaitable<ISession> JoinSessionByPassword(string password, string playerName = null)
+        public async Awaitable<ISession> JoinSessionByPassword(string password)
         {
             if (ActiveSession != null)
                 return ActiveSession;
             
             ActiveSession = await MultiplayerService.Instance.JoinSessionByCodeAsync(password);
+            await SetPlayerName();
+                
             OnSessionChanged?.Invoke(ActiveSession);
             return ActiveSession;
         }
@@ -75,6 +75,11 @@ namespace OverBang.GameName.Core
             options ??= new QuerySessionsOptions();
             QuerySessionsResults results = await MultiplayerService.Instance.QuerySessionsAsync(options);
             return results.Sessions;
+        }
+
+        public async Awaitable SetPlayerName()
+        {
+            await ActiveSession.CurrentPlayer.UpdatePlayerProperty(GameMetrics.Global.ConstID.PlayerPropertyPlayerName, PlayerPrefs.GetString(GameMetrics.Global.ConstID.PlayerPropertyPlayerName));
         }
         
         public async Awaitable KickPlayer(string playerID)

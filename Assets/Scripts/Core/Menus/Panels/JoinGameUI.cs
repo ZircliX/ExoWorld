@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace OverBang.GameName.Core.Menus
 {
-    public class JoinGameUI : InteractivePanel
+    public class JoinGameUI : NavigablePanel
     {
         // Public UI
         [SerializeField] private Button joinButton;
@@ -38,6 +38,7 @@ namespace OverBang.GameName.Core.Menus
             joinButton.interactable = false;
             
             passwordInput.onValueChanged.AddListener(HandlePasswordChanged);
+            passwordInput.characterLimit = GameMetrics.Global.MaxPasswordLenght;
             
             lobbyItems = new List<LobbyListItem>();
         }

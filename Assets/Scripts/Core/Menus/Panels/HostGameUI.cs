@@ -1,13 +1,12 @@
 using System;
 using System.Text;
-using Ami.Extension;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace OverBang.GameName.Core.Menus
 {
-    public class HostGameUI : InteractivePanel
+    public class HostGameUI : NavigablePanel
     {
         [SerializeField, Space] private TMP_InputField gameNameInput;
         [SerializeField] private IntSelector maxPlayersSelector;
@@ -50,6 +49,7 @@ namespace OverBang.GameName.Core.Menus
         protected override void OnShow()
         {
             // Generate a random password
+            builder.Clear();
 
             for (int i = 0; i < GameMetrics.Global.MaxPasswordLenght; i++)
             {
