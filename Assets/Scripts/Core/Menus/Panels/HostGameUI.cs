@@ -35,6 +35,9 @@ namespace OverBang.GameName.Core.Menus
                     serverVisibilitySelector.CurrentValue, 
                     currentPassword)
                 );
+
+            createButton.interactable = false;
+            gameNameInput.onValueChanged.AddListener(text => createButton.interactable = !string.IsNullOrEmpty(text));
         }
 
         private void HandleHostCreate(string serverName, int maxPlayers, ServerVisibility visibility, string password)

@@ -11,7 +11,8 @@ namespace OverBang.GameName.Hub
         {
             //Debug.Log("OnBegin");
             phase.OnCharacterSelected += SpawnPlayer;
-            
+
+            //return; // No spawn at first hub phase
             if (phase.SelectedCharacter != null)
                 SpawnPlayer(phase.CurrentPlayer, phase.SelectedCharacter, false);
         }

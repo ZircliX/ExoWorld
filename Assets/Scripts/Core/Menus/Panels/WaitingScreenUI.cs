@@ -30,7 +30,7 @@ namespace OverBang.GameName.Core.Menus
             startButton.interactable = SessionManager.Global.IsHost();
 
             NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
-            OnClientConnected(0);
+            OnClientConnected();
         }
 
         protected override void OnHide()
@@ -38,7 +38,7 @@ namespace OverBang.GameName.Core.Menus
             ClearPlayerList();
         }
 
-        private void OnClientConnected(ulong obj)
+        private void OnClientConnected(ulong obj = 0)
         {
             ClearPlayerList();
 

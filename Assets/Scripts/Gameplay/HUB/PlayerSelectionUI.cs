@@ -1,0 +1,100 @@
+using DG.Tweening;
+using Helteix.ChanneledProperties.Priorities;
+using OverBang.GameName.Hub;
+using Sirenix.OdinInspector;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace OverBang.GameName.Core.Menus
+{
+    public class PlayerSelectionUI : BasePanel
+    {
+        [SerializeField, Required] private PlayerSelection playerSelection;
+        
+        [Header("Navigation Buttons")]
+        [SerializeField, Space] private Button selectButton;
+        [SerializeField] private Button previousButton;
+        [SerializeField] private Button nextButton;
+        
+        [Header("Character Infos")]
+        [SerializeField, Space] private TMP_Text characterNameText;
+        [SerializeField] private TMP_Text characterCategoryText;
+        [SerializeField] private Image characterImage;
+        [SerializeField] private TMP_Text characterDescriptionText;
+        
+        [Header("Ability Infos")]
+        [SerializeField, Space] private Button primaryAbilityButton;
+        [SerializeField] private Button secondaryAbilityButton;
+        [SerializeField] private TMP_Text abilityNameText;
+        [SerializeField] private TMP_Text abilityDescriptionText;
+        
+        private CharacterData currentCharacterData;
+        private int currentCharacterIndex = 0;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            GameController.CursorLockModePriority.AddPriority(this, PriorityTags.High, CursorLockMode.Locked);
+            GameController.CursorVisibleStatePriority.AddPriority(this, PriorityTags.High, false);
+            
+            playerSelection.OnCharactersLoaded += OnLoaded;
+            
+            selectButton.onClick.AddListener(ConfirmSelection);
+            previousButton.onClick.AddListener(() => SwitchCharacter(-1));
+            nextButton.onClick.AddListener(() => SwitchCharacter(1));
+        }
+
+        private void OnLoaded()
+        {
+            playerSelection.OnCharactersLoaded -= OnLoaded;
+            ChangeEnabledState(true);
+            currentCharacterData = playerSelection.characterDatas[currentCharacterIndex];
+            UpdateCharacterUI();
+        }
+
+        private void ChangeEnabledState(bool enabled)
+        {
+            GameController.CursorLockModePriority.Write(this, enabled ? CursorLockMode.None : CursorLockMode.Confined);
+            GameController.CursorVisibleStatePriority.Write(this, enabled);
+            
+            canvasGroup.DOFade(enabled ? 1f : 0f, 0.5f);
+            canvasGroup.interactable = enabled;
+            canvasGroup.blocksRaycasts = enabled;
+        }
+
+        private void SwitchCharacter(int direction)
+        {
+            int characterCount = playerSelection.characterDatas.Count;
+            currentCharacterIndex = (currentCharacterIndex + direction) % characterCount;
+    
+            if (currentCharacterIndex < 0)
+                currentCharacterIndex += characterCount;
+            
+            currentCharacterData = playerSelection.characterDatas[currentCharacterIndex];
+            UpdateCharacterUI();
+        }
+
+        private void UpdateCharacterUI()
+        {
+            characterNameText.text = currentCharacterData.Name;
+            characterCategoryText.text = currentCharacterData.CharacterClass.ToString();
+            characterImage.sprite = currentCharacterData.Sprite;
+            characterDescriptionText.text = currentCharacterData.Description;
+            
+            primaryAbilityButton.image.sprite = currentCharacterData.PrimaryAbility.Icon;
+            secondaryAbilityButton.image.sprite = currentCharacterData.SecondaryAbility.Icon;
+            
+            abilityNameText.text = currentCharacterData.PrimaryAbility.Name;
+            abilityDescriptionText.text = currentCharacterData.PrimaryAbility.Description;
+        }
+
+        private void ConfirmSelection()
+        {
+            ChangeEnabledState(false);
+            GameController.CursorLockModePriority.RemovePriority(this);
+            GameController.CursorVisibleStatePriority.RemovePriority(this);
+            playerSelection.ConfirmSelection(currentCharacterData);
+        }
+    }
+}
