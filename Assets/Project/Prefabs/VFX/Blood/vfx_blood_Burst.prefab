@@ -14,11 +14,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3359096921018386719, guid: 80f6c013811ca51408caf792990587ba, type: 3}
       propertyPath: m_Name
-      value: vfx_blood_Burst Variant
+      value: vfx_blood_Burst
       objectReference: {fileID: 0}
     - target: {fileID: 3359096921018386719, guid: 80f6c013811ca51408caf792990587ba, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947567381842050221, guid: 80f6c013811ca51408caf792990587ba, type: 3}
+      propertyPath: m_PropertySheet.m_Bool.m_Array.Array.data[0].m_Value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947567381842050221, guid: 80f6c013811ca51408caf792990587ba, type: 3}
+      propertyPath: m_PropertySheet.m_Bool.m_Array.Array.data[0].m_Overridden
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197494894110450277, guid: 80f6c013811ca51408caf792990587ba, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7438357182095330294, guid: 80f6c013811ca51408caf792990587ba, type: 3}
       propertyPath: m_LocalPosition.x
