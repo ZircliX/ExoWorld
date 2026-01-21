@@ -1,6 +1,5 @@
 using Helteix.Tools;
 using OverBang.GameName.Core;
-using OverBang.GameName.Gameplay.Data;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -15,17 +14,7 @@ namespace OverBang.GameName.Gameplay
         {
             playerComponents = GetComponentsInChildren<IPlayerComponent>();
         }
-
-        private void Start()
-        {
-            PlayerManager.Instance.RegisterPlayer(this);
-
-            if (IsOwner)
-            {
-                CameraManager.Instance.RequestCameraChange(CameraIDs.Global.PlayerViewCamera);
-            }
-        }
-
+        
         [Rpc(SendTo.Everyone)]
         public void SetDataRpc(string characterDataID)
         {
@@ -55,6 +44,13 @@ namespace OverBang.GameName.Gameplay
                         PlayerRig = playerRig,
                     };
                     playerComponent.OnSync(context);
+                }
+                
+                PlayerManager.Instance.RegisterPlayer(this);
+
+                if (IsOwner)
+                {
+                    CameraManager.Instance.RequestCameraChange(CameraIDs.Global.PlayerViewCamera);
                 }
             }
         }

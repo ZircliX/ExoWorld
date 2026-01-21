@@ -12,10 +12,13 @@ namespace OverBang.GameName.Core
     public class CharacterData : ScriptableObject, IPoolDependencyProvider, IDatabaseAsset
     {
         [field: SerializeField] 
-        public string AgentName { get; private set; }
+        public string Name { get; private set; }
+        
+        [field: SerializeField] 
+        public string Description { get; private set; }
         
         [field: SerializeField]
-        public Sprite AgentSprite { get; private set; }
+        public Sprite Sprite { get; private set; }
         
         [field: SerializeField] 
         public CharacterClasses CharacterClass { get; private set; }
@@ -26,7 +29,7 @@ namespace OverBang.GameName.Core
         [field: SerializeField] 
         public UpgradeData[] UpgradeDatas { get; private set; }
 
-        [field : SerializeField] public CharacterBaseStats CharacterBaseStats { get; private set; }
+        [field : SerializeField] public CharacterBaseStats BaseStats { get; private set; }
         
         [field: SerializeField]
         public AbilityData PrimaryAbility { get; private set; }

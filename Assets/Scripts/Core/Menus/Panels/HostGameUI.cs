@@ -1,13 +1,12 @@
 using System;
 using System.Text;
-using Ami.Extension;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace OverBang.GameName.Core.Menus
 {
-    public class HostGameUI : InteractivePanel
+    public class HostGameUI : NavigablePanel
     {
         [SerializeField, Space] private TMP_InputField gameNameInput;
         [SerializeField] private IntSelector maxPlayersSelector;
@@ -36,6 +35,9 @@ namespace OverBang.GameName.Core.Menus
                     serverVisibilitySelector.CurrentValue, 
                     currentPassword)
                 );
+
+            createButton.interactable = false;
+            gameNameInput.onValueChanged.AddListener(text => createButton.interactable = !string.IsNullOrEmpty(text));
         }
 
         private void HandleHostCreate(string serverName, int maxPlayers, ServerVisibility visibility, string password)
@@ -50,6 +52,7 @@ namespace OverBang.GameName.Core.Menus
         protected override void OnShow()
         {
             // Generate a random password
+            builder.Clear();
 
             for (int i = 0; i < GameMetrics.Global.MaxPasswordLenght; i++)
             {

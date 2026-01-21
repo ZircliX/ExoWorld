@@ -7,6 +7,9 @@ namespace OverBang.GameName.Core
     {
         public static ConstID Global => GameMetrics.Global.ConstID;
         
+        [field: SerializeField] public string DiscordLink { get; private set; }
+        [field: SerializeField] public string InstagramLink { get; private set; }
+        
         [field: SerializeField] public string PlayerPropertyPlayerName { get; private set; }
         [field: SerializeField] public string PlayerPropertyCharacterData { get; private set; }
         [field: SerializeField] public string PlayerPropertyPhaseStatus { get; private set; }

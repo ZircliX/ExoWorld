@@ -1,5 +1,6 @@
 ﻿namespace OverBang.GameName.Core
 {
+    [System.Serializable]
     public struct CharacterBaseStats
     {
         public float Health { get; set; }

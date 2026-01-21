@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using Unity.Netcode;
 using Unity.Services.Multiplayer;
 using UnityEngine;
@@ -9,31 +10,89 @@ namespace OverBang.GameName.Core.Menus
 {
     public class WaitingScreenUI : NavigablePanel
     {
-        [SerializeField] private Button startButton;
-        [SerializeField] private PlayerListItem playerListItemPrefab;
-        [SerializeField] private Transform playersContainer;
+        [SerializeField, Required] private Button startButton;
+        [SerializeField, Required] private PlayerListItem playerListItemPrefab;
+        [SerializeField, Required] private Transform playersContainer;
+        [SerializeField, Required] private LayoutGroup playersContainerLayoutGroup;
+        [SerializeField, Required] private ContentSizeFitter playersContainerContentSizeFitter;
         
         private List<PlayerListItem> playerListItems;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            playerListItems = new List<PlayerListItem>(4);
+        }
 
         protected override void OnShow()
         {
             startButton.onClick.AddListener(OnCreateGame);
+            startButton.interactable = SessionManager.Global.IsHost();
 
             NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
+            OnClientConnected();
         }
 
-        private void OnClientConnected(ulong obj)
+        protected override void OnHide()
+        {
+            ClearPlayerList();
+        }
+
+        private void OnClientConnected(ulong obj = 0)
+        {
+            ClearPlayerList();
+
+            IReadOnlyList<IReadOnlyPlayer> players = SessionManager.Global.ActiveSession.Players;
+            
+            if (players.Count == 0)
+            {
+                Debug.LogWarning("No players in session");
+                return;
+            }
+
+            foreach (IReadOnlyPlayer player in players)
+            {
+                if (player == null)
+                    continue;
+
+                PlayerListItem item = Instantiate(playerListItemPrefab, playersContainer);
+                
+                string playerName = GetPlayerName(player);
+                item.Initialize(playerName);
+                
+                playerListItems.Add(item);
+            }
+            
+            if (playersContainerLayoutGroup != null)
+            {
+                playersContainerLayoutGroup.SetLayoutHorizontal();
+                playersContainerLayoutGroup.SetLayoutVertical();
+            }
+
+            if (playersContainerContentSizeFitter != null)
+            {
+                LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)playersContainer);
+            }
+        }
+        
+        private void ClearPlayerList()
         {
             foreach (PlayerListItem playerListItem in playerListItems)
             {
                 Destroy(playerListItem.gameObject);
             }
-            
-            foreach (IReadOnlyPlayer player in SessionManager.Global.ActiveSession.Players)
-            {
-                PlayerListItem item = Instantiate(playerListItemPrefab, playersContainer);
-                item.Initialize(player.Id);
-            }
+            playerListItems.Clear();
+        }
+        
+        private string GetPlayerName(IReadOnlyPlayer player)
+        {
+            bool hasName = player.TryGetPlayerProperty(
+                GameMetrics.Global.ConstID.PlayerPropertyPlayerName, 
+                out string playerName);
+
+            return hasName && !string.IsNullOrEmpty(playerName) 
+                ? playerName 
+                : $"Player_{player.Id[..6]}";
         }
 
         public override async void InvokeBackClicked()

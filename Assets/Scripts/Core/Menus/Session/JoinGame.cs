@@ -30,6 +30,7 @@ namespace OverBang.GameName.Core.Menus
                 if (!string.IsNullOrEmpty(sessionID))
                 {
                     await SessionManager.Global.JoinSessionByID(sessionID);
+                    await Awaitable.WaitForSecondsAsync(0.2f);
                     joinGameUI.OnJoinedGame?.Invoke();
                 }
 
@@ -37,6 +38,7 @@ namespace OverBang.GameName.Core.Menus
                 if (!string.IsNullOrEmpty(sessionPassword))
                 {
                     await SessionManager.Global.JoinSessionByPassword(sessionPassword);
+                    await Awaitable.WaitForSecondsAsync(0.2f);
                     joinGameUI.OnJoinedGame?.Invoke();
                 }
                 

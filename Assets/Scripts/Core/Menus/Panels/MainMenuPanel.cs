@@ -8,6 +8,7 @@ namespace OverBang.GameName.Core.Menus
     {
         [SerializeField] private Button hostButton;
         [SerializeField] private Button joinButton;
+        [SerializeField] private Button contactButton;
         [SerializeField] private Button settingsButton;
         [SerializeField] private Button quitButton;
         
@@ -16,6 +17,7 @@ namespace OverBang.GameName.Core.Menus
 
         public event Action OnHostClicked;
         public event Action OnJoinClicked;
+        public event Action OnContactClicked;
         public event Action OnSettingsClicked;
 
         protected override void Awake()
@@ -29,11 +31,12 @@ namespace OverBang.GameName.Core.Menus
         {
             hostButton.onClick.AddListener(() => OnHostClicked?.Invoke());
             joinButton.onClick.AddListener(() => OnJoinClicked?.Invoke());
+            contactButton.onClick.AddListener(() => OnContactClicked?.Invoke());
             settingsButton.onClick.AddListener(() => OnSettingsClicked?.Invoke());
             quitButton.onClick.AddListener(Application.Quit);
             
-            discordButton.onClick.AddListener(() => Application.OpenURL("https://discord.gg/WsxzTKC2uU"));
-            instagramButton.onClick.AddListener(() => Application.OpenURL("https://www.instagram.com/overbangstudio"));
+            discordButton.onClick.AddListener(() => Application.OpenURL(GameMetrics.Global.ConstID.DiscordLink));
+            instagramButton.onClick.AddListener(() => Application.OpenURL(GameMetrics.Global.ConstID.InstagramLink));
         }
 
         private void ConfigureNavigation()
