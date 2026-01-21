@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-#if ENABLED_UNITY_URP
+﻿#if ENABLED_UNITY_URP
 using UnityEngine.Rendering;
 #endif
 

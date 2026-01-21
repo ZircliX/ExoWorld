@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace OverBang.GameName.Core.Menus
+namespace OverBang.ExoWorld.Core
 {
     [System.Serializable]
     public struct SelectorOption<T>

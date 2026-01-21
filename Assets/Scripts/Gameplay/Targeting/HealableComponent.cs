@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     public class HealableComponent : MonoBehaviour, IHealable
     {

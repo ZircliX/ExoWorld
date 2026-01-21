@@ -1,11 +1,11 @@
-using OverBang.GameName.Core;
+using OverBang.ExoWorld.Core;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     public class GraineDeChanuiAbilityStrategy<TData> : IAbilityStrategy<GraineDeChanuiData, TData>
         where TData : IGraineDeChanuiAbilityStrategyData, IAbilityStrategyData
     {
-        public void Initialize(IAbility<GraineDeChanuiData> ability, IAbilityCaster caster, TData data)
+        public void Initialize(IAbility<GraineDeChanuiData> ability, ICaster caster, TData data)
         {
         }
         

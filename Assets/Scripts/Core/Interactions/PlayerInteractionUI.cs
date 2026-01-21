@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace OverBang.GameName.Core
+namespace OverBang.ExoWorld.Core
 {
     public class PlayerInteractionUI : MonoBehaviour
     {

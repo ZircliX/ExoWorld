@@ -1,20 +1,20 @@
 using System.Collections.Generic;
-using OverBang.GameName.Core;
+using OverBang.ExoWorld.Core;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     public abstract class DashAbilityStrategy<TData> : IAbilityStrategy<DashData, TData>
         where TData : IDashAbilityStrategyData, IAbilityStrategyData
     {
         protected PlayerMovement PlayerMovement { get; private set; }
         protected TData Data { get; private set; }
-        protected IAbilityCaster Caster { get; private set; }
+        protected ICaster Caster { get; private set; }
 
         protected HashSet<IDamageable> damagedEnemies;
         protected Collider[] bumpColliders;
         
-        public void Initialize(IAbility<DashData> ability, IAbilityCaster caster, TData data)
+        public void Initialize(IAbility<DashData> ability, ICaster caster, TData data)
         {
             Caster = caster;
             

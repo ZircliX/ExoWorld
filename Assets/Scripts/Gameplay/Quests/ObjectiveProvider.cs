@@ -1,11 +1,10 @@
 using System.Collections.Generic;
-using Helteix.Singletons.SceneServices;
 using UnityEngine;
 using ZTools.Logger.Core;
 using ZTools.ObjectiveSystem.Core;
 using ZTools.RewardSystem.Core;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     /// <summary>
     /// Manages the sequential queuing of objectives from predefined collections.

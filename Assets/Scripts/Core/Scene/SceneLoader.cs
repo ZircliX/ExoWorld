@@ -6,14 +6,14 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace OverBang.GameName.Core
+namespace OverBang.ExoWorld.Core
 {
     public static class SceneLoader
     {
         public static event Action OnPreSceneLoad;
         public static event Action OnPostSceneLoad;
         
-        public static Scene GetCurrentScene() => SceneManager.GetActiveScene();
+        public static UnityEngine.SceneManagement.Scene GetCurrentScene() => SceneManager.GetActiveScene();
         
         static async Awaitable AwaitSceneEvent(SceneEventType eventType, string sceneName, Func<SceneEventProgressStatus> op)
         {
@@ -56,7 +56,7 @@ namespace OverBang.GameName.Core
         
         public static async Awaitable LoadSceneAsync(string sceneName, LoadSceneMode mode = LoadSceneMode.Single)
         {
-            Scene current = SceneManager.GetActiveScene();
+            UnityEngine.SceneManagement.Scene current = SceneManager.GetActiveScene();
             if (current.name == sceneName) return;
 
             // Server waits for all clients; clients wait for themselves.
@@ -67,7 +67,7 @@ namespace OverBang.GameName.Core
             await AwaitSceneEvent(eventType, sceneName, () => NetworkLoadScene(sceneName, mode));
         }
 
-        public static async Awaitable UnloadSceneAsync(Scene scene)
+        public static async Awaitable UnloadSceneAsync(UnityEngine.SceneManagement.Scene scene)
         {
             if (!scene.isLoaded) return;
 

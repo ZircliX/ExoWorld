@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using KBCore.Refs;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.Gravity
+namespace OverBang.ExoWorld.Gameplay
 {
     [RequireComponent(typeof(Collider))]
     public abstract class GravityZone : MonoBehaviour

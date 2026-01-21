@@ -1,8 +1,8 @@
-using OverBang.GameName.Core;
+using OverBang.ExoWorld.Core;
 using UnityEditor;
 using UnityEngine;
 
-namespace OverBang.GameName.Editor
+namespace OverBang.ExoWorld.Editor
 {
     [CustomEditor(typeof(WorldPositionDisplay))]
     public class WorldPositionInspector : UnityEditor.Editor

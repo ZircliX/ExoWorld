@@ -1,13 +1,13 @@
 using KBCore.Refs;
-using OverBang.GameName.Core;
+using OverBang.ExoWorld.Core;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     public class MineWax : BaseDetector
     {
         [SerializeField, Self] private Rigidbody rb;
-        private IMineExplosionStrategy explosionStrategy;
+        private IExplosionStrategy explosionStrategy;
         private MinesWaxData data;
 
         private bool canDetonate;
@@ -17,7 +17,7 @@ namespace OverBang.GameName.Gameplay
             this.ValidateRefs();
         }
 
-        public void Initialize(MinesWaxData data, Vector3 direction, IMineExplosionStrategy explosionStrategy)
+        public void Initialize(MinesWaxData data, Vector3 direction, IExplosionStrategy explosionStrategy)
         {
             this.data = data;
             this.explosionStrategy = explosionStrategy;
@@ -42,9 +42,12 @@ namespace OverBang.GameName.Gameplay
             // TODO : Add Sound & VFX
             ParticleSystem ps = Instantiate(data.ExplosionVfx, transform.position, Quaternion.identity);
             Destroy(ps.gameObject, ps.main.duration);
-            
+
             if (endedExplosions)
+            {
+                explosionStrategy.OnExploded -= OnExploded;
                 Destroy(gameObject);
+            }
         }
 
         protected override void OnEnter(Collider other, object target)

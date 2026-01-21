@@ -1,11 +1,11 @@
-using OverBang.GameName.Core;
+using OverBang.ExoWorld.Core;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     public class PistoletHellaAbilityStrategy<TData> : IAbilityStrategy<PistoletHellaData, TData>
         where TData : IPistoletHellaAbilityStrategyData, IAbilityStrategyData
     {
-        public void Initialize(IAbility<PistoletHellaData> ability, IAbilityCaster caster, TData data)
+        public void Initialize(IAbility<PistoletHellaData> ability, ICaster caster, TData data)
         {
         }
         

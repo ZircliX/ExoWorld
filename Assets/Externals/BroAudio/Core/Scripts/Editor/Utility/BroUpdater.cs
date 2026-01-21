@@ -8,8 +8,6 @@ using UnityEditor;
 using static Ami.BroAudio.Editor.BroEditorUtility;
 using static Ami.BroAudio.Tools.BroName;
 using System.Collections.Generic;
-using Ami.BroAudio.Tools;
-using Ami.BroAudio.Editor.Setting;
 
 public class BroUpdater
 {

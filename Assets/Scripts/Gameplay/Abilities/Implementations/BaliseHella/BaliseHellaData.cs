@@ -1,7 +1,7 @@
-using OverBang.GameName.Core;
+using OverBang.ExoWorld.Core;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     [CreateAssetMenu(menuName = "OverBang/Abilities/Balise Hella", fileName = "BaliseHella Ability Data")]
     public class BaliseHellaData : AbilityData

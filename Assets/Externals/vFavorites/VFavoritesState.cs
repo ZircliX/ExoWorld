@@ -1,18 +1,6 @@
 #if UNITY_EDITOR
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEditor;
-using UnityEditor.ShortcutManagement;
-using System.Reflection;
-using System.Linq;
-using UnityEngine.UIElements;
-using UnityEngine.SceneManagement;
-using UnityEditor.SceneManagement;
-using Type = System.Type;
 using static VFavorites.Libs.VUtils;
-using static VFavorites.Libs.VGUI;
 
 
 namespace VFavorites

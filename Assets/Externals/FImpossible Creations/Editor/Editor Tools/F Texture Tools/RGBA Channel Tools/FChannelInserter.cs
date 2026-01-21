@@ -1,5 +1,4 @@
 ﻿using FIMSpace.FTextureTools;
-using System.Diagnostics;
 using UnityEditor;
 using UnityEngine;
 

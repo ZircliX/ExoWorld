@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace OverBang.GameName.Core.Menus
+namespace OverBang.ExoWorld.Core
 {
     public class PlayerListItem : MonoBehaviour
     {

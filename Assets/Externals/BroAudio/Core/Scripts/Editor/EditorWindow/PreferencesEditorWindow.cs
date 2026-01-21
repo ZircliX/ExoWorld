@@ -3,13 +3,11 @@ using Ami.Extension.Reflection;
 using System.IO;
 using System.Linq;
 using UnityEditor;
-using UnityEditor.Compilation;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Audio;
 using Ami.BroAudio.Data;
 #if UNITY_2022_3_OR_NEWER
-using UnityEditor.Build;
 #endif
 using static Ami.BroAudio.Editor.IconConstant;
 using static Ami.BroAudio.Editor.Section;

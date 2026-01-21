@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace OverBang.GameName.Core.Menus
+namespace OverBang.ExoWorld.Core
 {
     public class IntSelector : BaseSelector<int>
     {

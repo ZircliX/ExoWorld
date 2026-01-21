@@ -1,9 +1,8 @@
-﻿using System;
-using OverBang.GameName.Core;
+﻿using OverBang.ExoWorld.Core;
 using OverBang.GameName.Hub;
 using Unity.Services.Multiplayer;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     public class UpgradeListener : MonoPhaseListener<HubPhase>
     {

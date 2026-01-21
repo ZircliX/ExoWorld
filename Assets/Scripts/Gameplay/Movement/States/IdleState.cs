@@ -1,8 +1,8 @@
-using OverBang.GameName.Gameplay.Composits;
-using OverBang.GameName.Gameplay.Data;
+using OverBang.ExoWorld.Gameplay.Composits;
+using OverBang.ExoWorld.Gameplay.Data;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.States
+namespace OverBang.ExoWorld.Gameplay
 {
     [CreateAssetMenu(menuName = "OverBang/Movement/Idle")]
     public class IdleState : MovementStateBehavior

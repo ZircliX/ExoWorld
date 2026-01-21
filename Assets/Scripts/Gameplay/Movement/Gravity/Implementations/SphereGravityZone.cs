@@ -1,7 +1,7 @@
 using KBCore.Refs;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.Gravity.Implementations
+namespace OverBang.ExoWorld.Gameplay
 {
     [RequireComponent(typeof(SphereCollider)), AddComponentMenu("OverBang/Gravity/Sphere")]
     public class SphereGravityZone : GravityZone

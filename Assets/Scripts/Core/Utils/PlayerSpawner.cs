@@ -2,7 +2,7 @@
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace OverBang.GameName.Core
+namespace OverBang.ExoWorld.Core
 {
     public static class PlayerSpawner
     {

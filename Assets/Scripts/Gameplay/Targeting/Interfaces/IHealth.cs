@@ -1,6 +1,6 @@
 using System;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     public interface IHealth
     {

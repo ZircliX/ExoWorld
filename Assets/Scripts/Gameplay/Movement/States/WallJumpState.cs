@@ -1,7 +1,7 @@
-using OverBang.GameName.Gameplay.Composits;
+using OverBang.ExoWorld.Gameplay.Composits;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.States
+namespace OverBang.ExoWorld.Gameplay
 {
     [CreateAssetMenu(menuName = "OverBang/Movement/WallJump")]
     public class WallJumpState : JumpState

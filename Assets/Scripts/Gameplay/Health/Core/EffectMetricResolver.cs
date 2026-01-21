@@ -1,7 +1,4 @@
-using OverBang.GameName.Gameplay.Core.Interfaces;
-using OverBang.GameName.Gameplay.Core.Structs;
-
-namespace OverBang.GameName.Gameplay.Core
+namespace OverBang.ExoWorld.Gameplay
 {
     public struct PercentageMetricResolver  : IEffectMetricResolver
     {

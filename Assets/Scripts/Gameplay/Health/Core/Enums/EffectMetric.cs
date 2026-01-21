@@ -1,4 +1,4 @@
-namespace OverBang.GameName.Gameplay.Core.Enums
+namespace OverBang.ExoWorld.Gameplay
 {
     public enum EffectMetric
     {

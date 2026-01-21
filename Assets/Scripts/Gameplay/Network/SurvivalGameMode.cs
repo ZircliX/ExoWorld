@@ -1,9 +1,9 @@
 using System.Threading.Tasks;
-using OverBang.GameName.Core;
+using OverBang.ExoWorld.Core;
 using OverBang.GameName.Hub;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     [CreateGameMode(GameModeUtils.SurvivalGameModeName)]
     public class SurvivalGameMode : IGameMode

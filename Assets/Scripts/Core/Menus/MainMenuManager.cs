@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace OverBang.GameName.Core.Menus
+namespace OverBang.ExoWorld.Core
 {
     public class MainMenuManager : MonoBehaviour
     {

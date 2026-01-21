@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace OverBang.GameName.Core
+namespace OverBang.ExoWorld.Core
 {
     public interface IInteractable
     {

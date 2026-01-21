@@ -5,7 +5,7 @@ using Unity.Services.Multiplayer;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace OverBang.GameName.Core.Menus
+namespace OverBang.ExoWorld.Core
 {
     public class JoinGameUI : NavigablePanel
     {

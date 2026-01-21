@@ -1,13 +1,13 @@
 using System;
 using System.Threading.Tasks;
 using Helteix.ChanneledProperties.Priorities;
-using OverBang.GameName.Core;
+using OverBang.ExoWorld.Core;
 using OverBang.Pooling;
 using Unity.Netcode;
 using Unity.Services.Multiplayer;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     public sealed class LevelManager : MonoBehaviour
     {

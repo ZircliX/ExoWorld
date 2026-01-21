@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 using Helteix.Singletons.MonoSingletons;
-using Helteix.Singletons.SceneServices;
-using UnityEngine;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     public class AreaManager : MonoSingleton<AreaManager>
     {

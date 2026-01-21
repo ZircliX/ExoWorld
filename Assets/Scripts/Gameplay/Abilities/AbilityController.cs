@@ -1,10 +1,9 @@
-using OverBang.GameName.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
-    public class AbilityController : MonoBehaviour, IPlayerComponent, IAbilityCaster
+    public class AbilityController : MonoBehaviour, IPlayerComponent, ICaster
     {
         public PlayerController Controller { get; set; }
         public Vector3 Forward => pm.CameraController.transform.forward;

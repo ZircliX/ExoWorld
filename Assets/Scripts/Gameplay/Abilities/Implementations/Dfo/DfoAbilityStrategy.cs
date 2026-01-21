@@ -1,7 +1,6 @@
-using OverBang.GameName.Core;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     [CreateStrategyFor(typeof(DfoStrategyData))]
     public class DfoAbilityStrategy : IAbilityStrategy<DfoData, DfoStrategyData>
@@ -10,12 +9,12 @@ namespace OverBang.GameName.Gameplay
         private DfoData data;
         
         private MissileManager missileManager;
-        private IAbilityCaster caster;
+        private ICaster caster;
         
         private float currentActivationTime;
         private IAbility<DfoData> ability;
         
-        public void Initialize(IAbility<DfoData> ability, IAbilityCaster caster, DfoStrategyData data)
+        public void Initialize(IAbility<DfoData> ability, ICaster caster, DfoStrategyData data)
         {
             this.caster = caster;
             this.data = ability.Data;

@@ -1,11 +1,8 @@
-﻿using System;
-using KBCore.Refs;
-using Unity.Cinemachine;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Playables;
 
-namespace OverBang.GameName.Core
+namespace OverBang.ExoWorld.Core
 {
     public class DioramaCamera : MonoBehaviour
     {

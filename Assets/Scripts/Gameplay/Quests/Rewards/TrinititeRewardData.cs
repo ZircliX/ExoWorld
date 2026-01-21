@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using ZTools.RewardSystem.Core;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     [CreateAssetMenu(menuName = "OverBang/RewardData/TrinititeRewardData",  fileName = "TrinititeRewardData")]
     public class TrinititeRewardData : RewardData

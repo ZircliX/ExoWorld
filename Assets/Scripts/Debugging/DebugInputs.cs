@@ -1,10 +1,9 @@
-using OverBang.GameName.Core;
-using OverBang.GameName.Gameplay;
+using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Gameplay;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
-namespace OverBang.GameName.Debugging
+namespace OverBang.ExoWorld.Debugging
 {
     public class DebugInputs : MonoBehaviour
     {

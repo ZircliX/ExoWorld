@@ -2,7 +2,6 @@ using UnityEngine;
 using Ami.BroAudio.Runtime;
 using Ami.Extension;
 using System;
-using System.Collections.Generic;
 using Ami.BroAudio.Data;
 
 namespace Ami.BroAudio

@@ -1,8 +1,8 @@
 using Helteix.ChanneledProperties.Priorities;
-using OverBang.GameName.Core;
+using OverBang.ExoWorld.Core;
 using UnityEngine;
 
-namespace OverBang.GameName.Debugging.Mouse
+namespace OverBang.ExoWorld.Debugging
 {
     public class DisableMouse : MonoBehaviour
     {

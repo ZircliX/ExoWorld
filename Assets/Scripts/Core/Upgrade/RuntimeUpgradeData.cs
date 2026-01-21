@@ -1,4 +1,4 @@
-﻿namespace OverBang.GameName.Core
+﻿namespace OverBang.ExoWorld.Core
 {
     public struct RuntimeUpgradeData
     {

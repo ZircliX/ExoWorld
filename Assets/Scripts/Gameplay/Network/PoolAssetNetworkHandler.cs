@@ -1,10 +1,10 @@
 using Helteix.Singletons.MonoSingletons;
-using OverBang.GameName.Core;
-using OverBang.GameName.Gameplay;
+using OverBang.ExoWorld.Core;
+using OverBang.Pooling;
 using OverBang.Pooling.Resource;
 using Unity.Netcode;
 
-namespace OverBang.Pooling
+namespace OverBang.ExoWorld.Gameplay
 {
     public class PoolAssetNetworkHandler : MonoSingleton<PoolAssetNetworkHandler>
     {

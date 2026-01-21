@@ -1,10 +1,10 @@
 using System;
 using KBCore.Refs;
-using OverBang.GameName.Core;
+using OverBang.ExoWorld.Core;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     public class RobotBoki : MonoBehaviour, ITargetable
     {

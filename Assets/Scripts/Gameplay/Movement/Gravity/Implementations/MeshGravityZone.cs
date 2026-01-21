@@ -2,7 +2,7 @@ using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace OverBang.GameName.Gameplay.Gravity.Implementations
+namespace OverBang.ExoWorld.Gameplay
 {
     [AddComponentMenu("OverBang/Gravity/Mesh")]
     public class MeshGravityZone : GravityZone

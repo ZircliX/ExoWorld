@@ -1,12 +1,12 @@
 using System.Collections;
 using Helteix.ChanneledProperties.Priorities;
 using KBCore.Refs;
-using OverBang.GameName.Gameplay.Composits;
+using OverBang.ExoWorld.Gameplay.Composits;
 using Unity.Cinemachine;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     public class CameraController : MonoBehaviour
     {

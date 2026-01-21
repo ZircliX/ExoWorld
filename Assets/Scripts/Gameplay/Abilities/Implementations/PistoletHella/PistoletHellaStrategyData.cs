@@ -1,6 +1,6 @@
-using OverBang.GameName.Core;
+using OverBang.ExoWorld.Core;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     [System.Serializable]
     public class PistoletHellaStrategyData : IAbilityStrategyData, IPistoletHellaAbilityStrategyData

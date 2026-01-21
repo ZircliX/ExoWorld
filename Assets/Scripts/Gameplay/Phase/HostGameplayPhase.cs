@@ -1,10 +1,10 @@
 ﻿using Eflatun.SceneReference;
-using OverBang.GameName.Core;
+using OverBang.ExoWorld.Core;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     public class HostGameplayPhase : GameplayPhase
     {

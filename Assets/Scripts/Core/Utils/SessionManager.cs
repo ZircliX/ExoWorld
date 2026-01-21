@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.Services.Multiplayer;
 using UnityEngine;
 
-namespace OverBang.GameName.Core
+namespace OverBang.ExoWorld.Core
 {
     public class SessionManager
     {

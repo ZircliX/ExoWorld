@@ -1,10 +1,10 @@
 using System;
-using OverBang.GameName.Core;
+using OverBang.ExoWorld.Core;
 using Unity.Netcode;
 using UnityEngine;
 using ZTools.ObjectiveSystem.Core;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     public class Pump : NetworkBehaviour, ITargetable, IDamageable
     {

@@ -1,10 +1,10 @@
-using OverBang.GameName.Gameplay;
+using OverBang.ExoWorld.Core;
 
-namespace OverBang.GameName.Core
+namespace OverBang.ExoWorld.Gameplay
 {
     public interface IAbilityStrategy<in TData> where TData : AbilityData
     {
-        void Initialize(IAbility<TData> ability, IAbilityCaster caster, IAbilityStrategyData data);
+        void Initialize(IAbility<TData> ability, ICaster caster, IAbilityStrategyData data);
         
         void Begin(IAbility<TData> ability);
         void Tick(IAbility<TData> ability, float deltaTime);
@@ -17,7 +17,7 @@ namespace OverBang.GameName.Core
         where TData : AbilityData
         where TStrategyData : IAbilityStrategyData
     {
-        void IAbilityStrategy<TData>.Initialize(IAbility<TData> ability, IAbilityCaster caster, IAbilityStrategyData data)
+        void IAbilityStrategy<TData>.Initialize(IAbility<TData> ability, ICaster caster, IAbilityStrategyData data)
         {
             if (data is TStrategyData typedData)
             {
@@ -25,6 +25,6 @@ namespace OverBang.GameName.Core
             }
         }
         
-        void Initialize(IAbility<TData> ability, IAbilityCaster caster, TStrategyData data);
+        void Initialize(IAbility<TData> ability, ICaster caster, TStrategyData data);
     }
 }

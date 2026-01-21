@@ -1,6 +1,6 @@
 using ZTools.ObjectiveSystem.Core;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     public class PumpQuestHandler : ObjectiveHandler<PumpQuestData, PumpEvent>
     {

@@ -1,11 +1,11 @@
 using Ami.BroAudio;
 using KBCore.Refs;
-using OverBang.GameName.Core;
+using OverBang.ExoWorld.Core;
 using Unity.Netcode;
 using UnityEngine;
 using UnityUtils;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     public class Missile : MonoBehaviour
     {

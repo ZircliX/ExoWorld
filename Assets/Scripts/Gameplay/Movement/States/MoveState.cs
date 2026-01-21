@@ -1,9 +1,8 @@
 using Ami.BroAudio;
 using Unity.Cinemachine;
-using UnityEditor;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.States
+namespace OverBang.ExoWorld.Gameplay
 {
     public abstract class MoveState : MovementStateBehavior
     {

@@ -1,5 +1,5 @@
 using Eflatun.SceneReference;
-using OverBang.GameName.Core;
+using OverBang.ExoWorld.Core;
 using OverBang.Pooling;
 using Unity.Netcode;
 using Unity.Services.Multiplayer;

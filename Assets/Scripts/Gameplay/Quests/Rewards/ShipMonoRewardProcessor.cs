@@ -1,6 +1,6 @@
 ﻿using ZTools.RewardSystem.Core;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     public class ShipMonoRewardProcessor : MonoRewardProcessor<ShipRewardData>
     {

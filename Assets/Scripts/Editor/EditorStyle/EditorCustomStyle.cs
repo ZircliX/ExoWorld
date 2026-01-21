@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace OverBang.GameName.Editor.EditorStyle
+namespace OverBang.ExoWorld.Editor
 {
     public class EditorCustomStyle
     {
