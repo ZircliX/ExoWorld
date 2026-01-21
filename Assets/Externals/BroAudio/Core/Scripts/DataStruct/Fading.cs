@@ -1,7 +1,4 @@
 using Ami.Extension;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace Ami.BroAudio
 {

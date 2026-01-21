@@ -1,11 +1,11 @@
-using OverBang.GameName.Core;
+using OverBang.ExoWorld.Core;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     public abstract class AppareilZetaAbilityStrategy<TData> : IAbilityStrategy<AppareilZetaData, TData>
         where TData : IAppareilZetaAbilityStrategyData, IAbilityStrategyData
     {
-        public void Initialize(IAbility<AppareilZetaData> ability, IAbilityCaster caster, TData data)
+        public void Initialize(IAbility<AppareilZetaData> ability, ICaster caster, TData data)
         {
         }
         

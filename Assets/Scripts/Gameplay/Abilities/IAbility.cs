@@ -1,10 +1,10 @@
-using OverBang.GameName.Gameplay;
+using OverBang.ExoWorld.Core;
 
-namespace OverBang.GameName.Core
+namespace OverBang.ExoWorld.Gameplay
 {
     public interface IAbility
     {
-        IAbilityCaster Caster { get; }
+        ICaster Caster { get; }
         bool IsActive { get; }
         bool CanBeUsed { get; }
 

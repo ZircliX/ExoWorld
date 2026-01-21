@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace OverBang.GameName.Editor
+namespace OverBang.ExoWorld.Editor
 {
     public class FindMissingScriptsRecursively : EditorWindow
     {

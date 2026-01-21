@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEditor;
 using Ami.Extension;
-using System;
 using System.IO;
 using static Ami.BroAudio.Editor.Setting.BroAudioGUISetting;
 using static Ami.Extension.EditorScriptingExtension;

@@ -1,17 +1,17 @@
 using System.Collections.Generic;
-using OverBang.GameName.Core;
+using OverBang.ExoWorld.Core;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     public abstract class MinesWaxAbilityStrategy<TData> : IAbilityStrategy<MinesWaxData, TData>
         where TData : IMinesWaxStrategyData, IAbilityStrategyData
     {
-        protected IAbilityCaster Caster { get; private set; }
+        protected ICaster Caster { get; private set; }
         protected TData Data { get; private set; }
         protected List<MineWax> activeMines;
         
-        public void Initialize(IAbility<MinesWaxData> ability, IAbilityCaster caster, TData data)
+        public void Initialize(IAbility<MinesWaxData> ability, ICaster caster, TData data)
         {
             Caster = caster;
             Data = data;
@@ -20,7 +20,7 @@ namespace OverBang.GameName.Gameplay
         
         public virtual void Begin(IAbility<MinesWaxData> ability)
         {
-            IMineExplosionStrategy explosionStrategy = GetExplosionStrategy();
+            IExplosionStrategy explosionStrategy = GetExplosionStrategy();
             
             MineWax mine = Object.Instantiate(ability.Data.MineWaxPrefab, Caster.transform.position + Caster.Forward, Quaternion.identity);
             mine.Initialize(ability.Data, Caster.Forward, explosionStrategy);
@@ -40,13 +40,13 @@ namespace OverBang.GameName.Gameplay
         {
         }
 
-        protected abstract IMineExplosionStrategy GetExplosionStrategy();
+        protected abstract IExplosionStrategy GetExplosionStrategy();
     }
     
     [CreateStrategyFor(typeof(MinesWaxStrategyData))]
     public class MinesWaxAbilityStrategy : MinesWaxAbilityStrategy<MinesWaxStrategyData>
     {
-        protected override IMineExplosionStrategy GetExplosionStrategy()
+        protected override IExplosionStrategy GetExplosionStrategy()
         {
             return new StandardExplosion(Data.Damage);
         }
@@ -55,7 +55,7 @@ namespace OverBang.GameName.Gameplay
     [CreateStrategyFor(typeof(MinesWaxCryoStrategyData))]
     public class MinesWaxCryoAbilityStrategy : MinesWaxAbilityStrategy<MinesWaxCryoStrategyData>
     {
-        protected override IMineExplosionStrategy GetExplosionStrategy()
+        protected override IExplosionStrategy GetExplosionStrategy()
         {
             return new CryoExplosion(Data.Damage, Data.SlowDuration, Data.SlowPercentage);
         }
@@ -64,7 +64,7 @@ namespace OverBang.GameName.Gameplay
     [CreateStrategyFor(typeof(MinesWaxNovaStrategyData))]
     public class MinesWaxNovaAbilityStrategy : MinesWaxAbilityStrategy<MinesWaxNovaStrategyData>
     {
-        protected override IMineExplosionStrategy GetExplosionStrategy()
+        protected override IExplosionStrategy GetExplosionStrategy()
         {
             return new NovaExplosion(Data.Damage, Data.ExplosionInterval, Data.ExplosionCount);
         }

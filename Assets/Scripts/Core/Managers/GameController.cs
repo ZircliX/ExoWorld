@@ -2,7 +2,7 @@ using System;
 using Helteix.ChanneledProperties.Priorities;
 using UnityEngine;
 
-namespace OverBang.GameName.Core
+namespace OverBang.ExoWorld.Core
 {
     public static partial class GameController
     {

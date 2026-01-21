@@ -1,9 +1,7 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Ami.Extension;
-using UnityEngine.InputSystem;
 
 namespace Ami.BroAudio.Demo
 {

@@ -2,12 +2,9 @@ using System;
 using System.Collections.Generic;
 using Helteix.ChanneledProperties.Priorities;
 using Helteix.Tools;
-using OverBang.GameName.Gameplay.Core.Enums;
-using OverBang.GameName.Gameplay.Core.Interfaces;
-using OverBang.GameName.Gameplay.Core.Structs;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.Core
+namespace OverBang.ExoWorld.Gameplay
 {
     public class HealthComponent : MonoBehaviour, IEffectReceiver
     {

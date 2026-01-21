@@ -1,6 +1,6 @@
 ﻿using Unity.Netcode;
 
-namespace OverBang.GameName.Core
+namespace OverBang.ExoWorld.Core
 {
     public abstract class NetworkPhaseListener<T> : NetworkBehaviour, IPhaseListener<T> 
         where T : class, IPhase

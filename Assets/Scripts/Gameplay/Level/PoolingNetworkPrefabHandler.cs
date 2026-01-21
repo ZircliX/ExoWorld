@@ -3,7 +3,7 @@ using OverBang.Pooling.Resource;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     public class PoolingNetworkPrefabHandler : INetworkPrefabInstanceHandler
     {

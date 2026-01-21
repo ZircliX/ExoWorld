@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Unity.Services.Multiplayer;
 using UnityEngine;
 
-namespace OverBang.GameName.Core
+namespace OverBang.ExoWorld.Core
 {
     public abstract class SelectionPhase : IPhase
     {

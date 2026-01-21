@@ -1,6 +1,6 @@
 using System;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class CreateStrategyForAttribute : System.Attribute

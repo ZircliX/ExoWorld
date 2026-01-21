@@ -1,17 +1,7 @@
 #if UNITY_EDITOR
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection;
 using UnityEngine;
 using UnityEditor;
-using UnityEditor.ShortcutManagement;
-using UnityEngine.UIElements;
-using UnityEngine.SceneManagement;
-using UnityEditor.SceneManagement;
-using UnityEditor.IMGUI.Controls;
-using Type = System.Type;
 using static VHierarchy.Libs.VUtils;
 using static VHierarchy.Libs.VGUI;
 // using static VTools.VDebug;

@@ -1,16 +1,8 @@
 #if UNITY_EDITOR
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using UnityEditor.ShortcutManagement;
-using System.Reflection;
 using System.Linq;
-using UnityEngine.UIElements;
-using UnityEngine.SceneManagement;
-using UnityEditor.SceneManagement;
-using Type = System.Type;
-using static VFolders.VFolders;
 using static VFolders.VFoldersData;
 using static VFolders.VFoldersPalette;
 using static VFolders.VFoldersCache;

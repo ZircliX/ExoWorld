@@ -1,8 +1,8 @@
-﻿using OverBang.GameName.Core;
+﻿using OverBang.ExoWorld.Core;
 using UnityEngine;
 using UnityUtils;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     public class PumpStart : MonoBehaviour, IInteractable
     {

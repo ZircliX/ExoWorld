@@ -1,4 +1,6 @@
-﻿namespace OverBang.GameName.Gameplay
+﻿using OverBang.ExoWorld.Core;
+
+namespace OverBang.ExoWorld.Gameplay
 {
     public interface IDamageable
     {

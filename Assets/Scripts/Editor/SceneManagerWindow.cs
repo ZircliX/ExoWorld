@@ -1,12 +1,11 @@
-using OverBang.GameName.Core;
-using OverBang.GameName.Editor.EditorStyle;
+using OverBang.ExoWorld.Core;
 using Unity.Netcode;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-namespace OverBang.GameName.Editor
+namespace OverBang.ExoWorld.Editor
 {
     public class SceneManagerWindow : EditorWindow
     {

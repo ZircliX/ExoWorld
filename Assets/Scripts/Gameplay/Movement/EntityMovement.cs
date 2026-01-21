@@ -1,4 +1,3 @@
-using System;
 using Ami.BroAudio;
 using DG.Tweening;
 using Helteix.ChanneledProperties;
@@ -7,7 +6,7 @@ using Helteix.ChanneledProperties.Priorities;
 using KBCore.Refs;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     public class EntityMovement : MonoBehaviour
     {

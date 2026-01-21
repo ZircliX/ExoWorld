@@ -7,7 +7,6 @@ using System.IO;
 using System.Reflection;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace WingmanInspector {
 

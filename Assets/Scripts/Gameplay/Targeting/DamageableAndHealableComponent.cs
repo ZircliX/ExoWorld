@@ -1,9 +1,10 @@
 ﻿using System;
 using Ami.BroAudio;
+using OverBang.ExoWorld.Core;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     public class DamageableAndHealableComponent : MonoBehaviour, IDamageable, IHealable, IHealth
     {

@@ -1,9 +1,9 @@
 using KBCore.Refs;
-using OverBang.GameName.Core;
+using OverBang.ExoWorld.Core;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace OverBang.GameName.TechArt
+namespace OverBang.ExoWorld.Gameplay
 {
     [ExecuteInEditMode]
     public class FlickeringLight : MonoBehaviour

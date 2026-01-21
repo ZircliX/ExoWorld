@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Ami.Extension
@@ -17,7 +15,7 @@ namespace Ami.Extension
 
 		public static void Loop(Func<Statement> method, bool showErrorWhenInfiniteLoopOccurs = true)
 		{
-			// ¬Û·í©óWhile(true);
+			// ï¿½Û·ï¿½ï¿½ï¿½While(true);
 			Predicate<object> predicate = (obj) => true;
 
 			MainLoopLogic(predicate,method,showErrorWhenInfiniteLoopOccurs);

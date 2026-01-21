@@ -1,11 +1,11 @@
 ﻿using DG.Tweening;
 using Helteix.ChanneledProperties.Priorities;
 using Helteix.Singletons.SceneServices;
-using OverBang.GameName.Core;
+using OverBang.ExoWorld.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     public class HUD : SceneService<HUD>
     {

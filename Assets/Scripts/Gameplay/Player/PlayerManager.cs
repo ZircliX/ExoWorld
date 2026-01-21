@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Helteix.Singletons.MonoSingletons;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     public class PlayerManager : MonoSingleton<PlayerManager>
     {

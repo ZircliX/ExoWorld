@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using KBCore.Refs;
-using OverBang.GameName.Core;
+using OverBang.ExoWorld.Core;
 using OverBang.Pooling;
 using OverBang.Pooling.Resource;
 using Unity.Netcode;
@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     [RequireComponent(typeof(DamageableAndHealableComponent))]
     public class Enemy : NetworkBehaviour, IPoolInstanceListener, IDamageSource, ITargetable, ISlowable

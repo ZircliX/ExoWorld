@@ -2,7 +2,7 @@ using System;
 using Unity.Services.Multiplayer;
 using UnityEngine;
 
-namespace OverBang.GameName.Core.Menus
+namespace OverBang.ExoWorld.Core
 {
     public class HostGame : MonoBehaviour
     {

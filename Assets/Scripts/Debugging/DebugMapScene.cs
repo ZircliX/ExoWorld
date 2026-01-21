@@ -1,11 +1,11 @@
-using OverBang.GameName.Core;
-using OverBang.GameName.Gameplay;
+using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Gameplay;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
 using Unity.Services.Multiplayer;
 using UnityEngine;
 
-namespace OverBang.GameName.Debugging
+namespace OverBang.ExoWorld.Debugging
 {
     [DefaultExecutionOrder(-10)]
     public class DebugMapScene : MonoBehaviour

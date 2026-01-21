@@ -1,9 +1,10 @@
 using System;
+using OverBang.ExoWorld.Core;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
-    public class StandardExplosion : IMineExplosionStrategy
+    public class StandardExplosion : IExplosionStrategy
     {
         private readonly DamageInfo damage;
         

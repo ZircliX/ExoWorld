@@ -1,6 +1,5 @@
 // Auto-generated code
 using UnityEngine;
-using System;
 
 namespace Ami.Extension
 {

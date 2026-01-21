@@ -1,6 +1,4 @@
-﻿using Ami.BroAudio.Data;
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEditor;
 
 namespace Ami.BroAudio.Editor.Setting
 {

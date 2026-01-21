@@ -1,8 +1,8 @@
 using System;
-using OverBang.GameName.Core;
+using OverBang.ExoWorld.Core;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     public sealed class CooldownAbility<TData> : IAbility<TData>
         where TData : AbilityData
@@ -34,7 +34,7 @@ namespace OverBang.GameName.Gameplay
         }
         
         public TData Data { get; private set; }
-        public IAbilityCaster Caster { get; }
+        public ICaster Caster { get; }
         public bool IsActive { get; private set; }
         public bool CanBeUsed => !IsActive && cooldown.IsReady;
         public AbilityAugmentState AugmentState { get; private set; } = AbilityAugmentState.Main;
@@ -54,7 +54,7 @@ namespace OverBang.GameName.Gameplay
         private readonly CooldownComponent cooldown;
         private float currentDuration;
 
-        public CooldownAbility(TData data, IAbilityCaster caster)
+        public CooldownAbility(TData data, ICaster caster)
         {
             Caster = caster;
             Data = data;

@@ -1,4 +1,4 @@
-﻿namespace OverBang.GameName.Gameplay
+﻿namespace OverBang.ExoWorld.Core
 {
     public enum EnemyType
     {

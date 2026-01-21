@@ -2,7 +2,7 @@
 using Helteix.Singletons.SceneServices;
 using Helteix.Tools;
 
-namespace OverBang.GameName.TechArt
+namespace OverBang.ExoWorld.Gameplay
 {
     public class FlickerLightManager : SceneService<FlickerLightManager>
     {

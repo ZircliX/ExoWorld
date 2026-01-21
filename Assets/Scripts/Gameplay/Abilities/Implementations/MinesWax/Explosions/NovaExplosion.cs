@@ -1,10 +1,10 @@
 using System;
-using OverBang.GameName.Core;
+using OverBang.ExoWorld.Core;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
-    public class NovaExplosion : IMineExplosionStrategy
+    public class NovaExplosion : IExplosionStrategy
     {
         private readonly DamageInfo damage;
         private readonly float explosionInterval;

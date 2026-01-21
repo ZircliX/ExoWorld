@@ -1,9 +1,9 @@
-using OverBang.GameName.Gameplay.Composits;
-using OverBang.GameName.Gameplay.Data;
+using OverBang.ExoWorld.Gameplay.Composits;
+using OverBang.ExoWorld.Gameplay.Data;
 using Unity.Cinemachine;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.States
+namespace OverBang.ExoWorld.Gameplay
 {
     [CreateAssetMenu(menuName = "OverBang/Movement/WallRun")]
     public class WallRunState : MovementStateBehavior

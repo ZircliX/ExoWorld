@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using Ami.BroAudio.Data;
 using Ami.Extension;
 using UnityEngine;
 using Ami.BroAudio.Runtime;

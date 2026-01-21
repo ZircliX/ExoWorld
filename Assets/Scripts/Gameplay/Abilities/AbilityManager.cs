@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using OverBang.GameName.Core;
-using OverBang.GameName.Gameplay;
+using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Gameplay;
 using UnityEngine;
 
 [assembly:LookForAbilityStrategies]
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     public static class AbilityManager
     {
@@ -59,7 +59,7 @@ namespace OverBang.GameName.Gameplay
             return null;
         }
 
-        public static IAbility CreateAbilityFor<TData>(this TData data, IAbilityCaster caster)
+        public static IAbility CreateAbilityFor<TData>(this TData data, ICaster caster)
             where TData : AbilityData
         {
             Type abilityDataType = data.GetType();

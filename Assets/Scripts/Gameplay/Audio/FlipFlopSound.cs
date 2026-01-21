@@ -2,7 +2,7 @@ using Ami.BroAudio;
 using Ami.BroAudio.Demo;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.Audio
+namespace OverBang.ExoWorld.Gameplay
 {
     public class FlipFlopSound : InteractiveComponent
     {

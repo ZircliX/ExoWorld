@@ -1,6 +1,4 @@
-﻿using Ami.Extension;
-
-namespace Ami.Extension
+﻿namespace Ami.Extension
 {
 	public class GapDrawingHelper : IEditorDrawLineCounter
 	{

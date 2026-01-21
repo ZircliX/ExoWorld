@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using KBCore.Refs;
+using OverBang.ExoWorld.Core;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     [RequireComponent(typeof(BoxCollider))]
     public class Area : MonoBehaviour

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using OverBang.GameName.Core;
 using OverBang.Pooling;
 using OverBang.Pooling.Dependencies;
 using OverBang.Pooling.Resource;
@@ -8,7 +7,7 @@ using Sirenix.OdinInspector;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Core
 {
     [CreateAssetMenu(menuName = "OverBang/Enemy/EnemyData")]
     public class EnemyData : ScriptableObject, IPoolDependencyProvider, IDatabaseAsset

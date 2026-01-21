@@ -1,6 +1,6 @@
 using System;
 
-namespace OverBang.GameName.Core
+namespace OverBang.ExoWorld.Core
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class CreateGameModeAttribute : Attribute

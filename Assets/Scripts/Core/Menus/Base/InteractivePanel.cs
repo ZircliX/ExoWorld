@@ -1,4 +1,4 @@
-namespace OverBang.GameName.Core.Menus
+namespace OverBang.ExoWorld.Core
 {
     public abstract class InteractivePanel : NavigablePanel
     {

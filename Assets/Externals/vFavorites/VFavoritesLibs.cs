@@ -3,13 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using UnityEditor.ShortcutManagement;
 using System.Reflection;
 using System.IO;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Linq;
-using UnityEngine.UIElements;
 using Type = System.Type;
 using static VFavorites.Libs.VUtils;
 

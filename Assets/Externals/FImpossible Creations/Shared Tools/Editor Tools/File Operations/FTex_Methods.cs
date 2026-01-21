@@ -1,5 +1,4 @@
-﻿using FIMSpace.FTex;
-using System.IO;
+﻿using System.IO;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif

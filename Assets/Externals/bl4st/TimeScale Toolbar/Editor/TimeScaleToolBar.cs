@@ -1,6 +1,5 @@
 using UnityEditor;
 using UnityEngine;
-using System;
 using UnityToolbarExtender;
 
 namespace bl4st.TimeScaleToolbar

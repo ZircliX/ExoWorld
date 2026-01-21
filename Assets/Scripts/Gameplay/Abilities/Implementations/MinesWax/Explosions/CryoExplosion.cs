@@ -1,9 +1,10 @@
 using System;
+using OverBang.ExoWorld.Core;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
-    public class CryoExplosion : IMineExplosionStrategy
+    public class CryoExplosion : IExplosionStrategy
     {
         private readonly DamageInfo damage;
         private readonly float slowDuration;

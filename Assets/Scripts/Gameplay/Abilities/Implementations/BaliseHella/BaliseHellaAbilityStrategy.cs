@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using OverBang.GameName.Core;
+using OverBang.ExoWorld.Core;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     public abstract class BaliseHellaAbilityStrategy<TData> : IAbilityStrategy<BaliseHellaData, TData>
         where TData : IBaliseHellaAbilityStrategyData, IAbilityStrategyData
@@ -40,11 +40,11 @@ namespace OverBang.GameName.Gameplay
         
         protected BaliseHella Balise { get; private set; }
         protected TData Data { get; private set; }
-        protected IAbilityCaster Caster { get; private set; }
+        protected ICaster Caster { get; private set; }
 
         protected Dictionary<GameObject, DetectedPlayer> players;
 
-        public void Initialize(IAbility<BaliseHellaData> ability, IAbilityCaster caster, TData data)
+        public void Initialize(IAbility<BaliseHellaData> ability, ICaster caster, TData data)
         {
             Caster = caster;
             Data = data;

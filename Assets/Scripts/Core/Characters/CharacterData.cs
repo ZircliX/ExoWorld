@@ -6,7 +6,7 @@ using OverBang.Pooling.Resource;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace OverBang.GameName.Core
+namespace OverBang.ExoWorld.Core
 {
     [CreateAssetMenu(fileName = "New Agent Data", menuName = "OverBang/Agent Data", order = 0)]
     public class CharacterData : ScriptableObject, IPoolDependencyProvider, IDatabaseAsset

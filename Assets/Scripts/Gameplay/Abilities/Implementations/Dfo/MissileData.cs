@@ -1,7 +1,7 @@
 using Ami.BroAudio;
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     [System.Serializable]
     public struct MissileData

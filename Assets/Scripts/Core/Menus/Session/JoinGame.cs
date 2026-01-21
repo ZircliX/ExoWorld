@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace OverBang.GameName.Core.Menus
+namespace OverBang.ExoWorld.Core
 {
     public class JoinGame : MonoBehaviour
     {

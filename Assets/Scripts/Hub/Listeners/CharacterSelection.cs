@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Helteix.ChanneledProperties.Priorities;
 using Helteix.Tools;
-using OverBang.GameName.Core;
+using OverBang.ExoWorld.Core;
 using UnityEngine;
 
 namespace OverBang.GameName.Hub

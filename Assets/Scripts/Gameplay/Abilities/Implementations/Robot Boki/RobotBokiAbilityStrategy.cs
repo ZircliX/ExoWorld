@@ -1,11 +1,11 @@
-using OverBang.GameName.Core;
+using OverBang.ExoWorld.Core;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     public class RobotBokiAbilityStrategy<TData> : IAbilityStrategy<RobotBokiData, TData>
         where TData : IRobotBokiAbilityStrategyData, IAbilityStrategyData
     {
-        public void Initialize(IAbility<RobotBokiData> ability, IAbilityCaster caster, TData data)
+        public void Initialize(IAbility<RobotBokiData> ability, ICaster caster, TData data)
         {
         }
         

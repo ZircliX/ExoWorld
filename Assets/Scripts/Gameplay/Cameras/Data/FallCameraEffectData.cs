@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace OverBang.GameName.Gameplay.Data
+namespace OverBang.ExoWorld.Gameplay.Data
 {
     [CreateAssetMenu(menuName = "OverBang/Camera/FallCameraEffectData")]
     public class FallCameraEffectData : CameraEffectData

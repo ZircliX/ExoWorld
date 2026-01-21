@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEditor.IMGUI.Controls;
 using System;
-using System.Collections.Generic;
 using static Ami.BroAudio.Editor.BroEditorUtility;
 using UnityEditor;
 

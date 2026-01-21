@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace OverBang.GameName.Gameplay
+namespace OverBang.ExoWorld.Gameplay
 {
     public class PlayerRig : MonoBehaviour
     {

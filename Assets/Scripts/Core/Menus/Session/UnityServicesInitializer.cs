@@ -3,7 +3,7 @@ using Unity.Services.Authentication;
 using Unity.Services.Core;
 using UnityEngine;
 
-namespace OverBang.GameName.Core
+namespace OverBang.ExoWorld.Core
 {
     public class UnityServicesInitializer : MonoBehaviour
     {

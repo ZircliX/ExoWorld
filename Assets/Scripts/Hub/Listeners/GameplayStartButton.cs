@@ -1,4 +1,4 @@
-using OverBang.GameName.Core;
+using OverBang.ExoWorld.Core;
 using Unity.Netcode;
 using UnityEngine;
 using UnityUtils;
