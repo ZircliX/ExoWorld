@@ -1,5 +1,4 @@
 ﻿using OverBang.ExoWorld.Core;
-using OverBang.GameName.Hub;
 using Unity.Services.Multiplayer;
 
 namespace OverBang.ExoWorld.Gameplay

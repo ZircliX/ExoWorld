@@ -1,12 +1,13 @@
 using DG.Tweening;
 using Helteix.ChanneledProperties.Priorities;
-using OverBang.GameName.Hub;
+using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Gameplay.HUB.Listeners;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace OverBang.GameName.Core.Menus
+namespace OverBang.ExoWorld.Gameplay.HUB
 {
     public class PlayerSelectionUI : BasePanel
     {

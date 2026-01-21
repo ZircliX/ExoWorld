@@ -1,5 +1,6 @@
 ﻿using System;
 using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Gameplay.PlayerHUD;
 using UnityEngine;
 using UnityUtils;
 
