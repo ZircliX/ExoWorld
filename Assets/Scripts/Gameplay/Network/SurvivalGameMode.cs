@@ -1,6 +1,5 @@
 using System.Threading.Tasks;
 using OverBang.ExoWorld.Core;
-using OverBang.GameName.Hub;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay

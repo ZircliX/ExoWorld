@@ -3,7 +3,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityUtils;
 
-namespace OverBang.GameName.Hub
+namespace OverBang.ExoWorld.Gameplay.HUB.Listeners
 {
     public class GameplayStartButton : NetworkPhaseListener<HubPhase>, IInteractable
     {

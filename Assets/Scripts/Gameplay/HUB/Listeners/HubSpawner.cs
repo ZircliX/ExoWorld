@@ -3,7 +3,7 @@ using Unity.Netcode;
 using Unity.Services.Multiplayer;
 using UnityEngine;
 
-namespace OverBang.GameName.Hub
+namespace OverBang.ExoWorld.Gameplay.HUB.Listeners
 {
     public class HubSpawner : MonoPhaseListener<HubPhase>
     {

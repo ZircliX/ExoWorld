@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
-using OverBang.GameName.Core;
-using OverBang.GameName.Gameplay;
+using OverBang.ExoWorld.Core;
 using UnityEngine;
 
-namespace OverBang.GameName.Hub
+namespace OverBang.ExoWorld.Gameplay.HUB.Listeners
 {
     public class PlayerSelection : MonoPhaseListener<HubPhase>
     {

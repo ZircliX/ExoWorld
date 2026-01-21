@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Scene = UnityEngine.SceneManagement.Scene;
 
-namespace OverBang.GameName.Hub
+namespace OverBang.ExoWorld.Gameplay
 {
     public class HubPhase : SelectionPhase
     {
