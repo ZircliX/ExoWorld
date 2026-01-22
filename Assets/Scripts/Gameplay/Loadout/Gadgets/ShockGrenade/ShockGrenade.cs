@@ -1,4 +1,5 @@
 ﻿using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Gameplay.Abilities;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay

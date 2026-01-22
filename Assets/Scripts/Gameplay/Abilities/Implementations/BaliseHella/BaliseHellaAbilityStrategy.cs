@@ -4,7 +4,7 @@ using OverBang.ExoWorld.Core;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Abilities
 {
     public abstract class BaliseHellaAbilityStrategy<TData> : IAbilityStrategy<BaliseHellaData, TData>
         where TData : IBaliseHellaAbilityStrategyData, IAbilityStrategyData

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using KBCore.Refs;
 using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Gameplay.Abilities;
 using OverBang.Pooling;
 using OverBang.Pooling.Resource;
 using Unity.Netcode;

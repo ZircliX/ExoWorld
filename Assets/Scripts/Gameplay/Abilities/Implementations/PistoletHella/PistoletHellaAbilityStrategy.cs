@@ -1,6 +1,6 @@
 using OverBang.ExoWorld.Core;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Abilities
 {
     public class PistoletHellaAbilityStrategy<TData> : IAbilityStrategy<PistoletHellaData, TData>
         where TData : IPistoletHellaAbilityStrategyData, IAbilityStrategyData

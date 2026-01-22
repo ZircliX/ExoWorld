@@ -30,11 +30,14 @@ namespace OverBang.ExoWorld.Core
             copyButton.onClick.AddListener(() => GUIUtility.systemCopyBuffer = currentPassword);
             
             createButton.onClick.AddListener(
-                () => HandleHostCreate(gameNameInput.text, 
-                    maxPlayersSelector.CurrentValue, 
-                    serverVisibilitySelector.CurrentValue, 
-                    currentPassword)
-                );
+                () =>
+                {
+                    HandleHostCreate(gameNameInput.text,
+                        maxPlayersSelector.CurrentValue,
+                        serverVisibilitySelector.CurrentValue,
+                        currentPassword);
+                    createButton.interactable = false;
+                });
 
             createButton.interactable = false;
             gameNameInput.onValueChanged.AddListener(text => createButton.interactable = !string.IsNullOrEmpty(text));

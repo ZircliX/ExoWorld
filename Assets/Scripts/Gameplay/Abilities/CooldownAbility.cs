@@ -2,7 +2,7 @@ using System;
 using OverBang.ExoWorld.Core;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Abilities
 {
     public sealed class CooldownAbility<TData> : IAbility<TData>
         where TData : AbilityData

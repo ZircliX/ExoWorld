@@ -4,7 +4,7 @@ using OverBang.ExoWorld.Core;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Abilities
 {
     public class RobotBoki : MonoBehaviour, ITargetable
     {

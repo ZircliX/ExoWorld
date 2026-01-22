@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using OverBang.ExoWorld.Core;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Abilities
 {
     public abstract class DashAbilityStrategy<TData> : IAbilityStrategy<DashData, TData>
         where TData : IDashAbilityStrategyData, IAbilityStrategyData
