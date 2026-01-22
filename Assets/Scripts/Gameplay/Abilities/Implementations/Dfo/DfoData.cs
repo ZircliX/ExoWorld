@@ -2,7 +2,7 @@ using OverBang.ExoWorld.Core;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Abilities
 {
     [CreateAssetMenu(fileName = "Dfo Ability Data", menuName = "OverBang/Abilities/DfoData")]
     public class DfoData : AbilityData

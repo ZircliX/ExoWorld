@@ -4,7 +4,7 @@ using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Abilities
 {
     [DisallowMultipleComponent]
     public class DetectionArea : MonoBehaviour

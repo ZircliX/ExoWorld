@@ -1,7 +1,7 @@
 using OverBang.ExoWorld.Core;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Abilities
 {
     [CreateAssetMenu(fileName = "RobotBoki Ability Data", menuName = "OverBang/Abilities/Robot Boki")]
     public class RobotBokiData : AbilityData

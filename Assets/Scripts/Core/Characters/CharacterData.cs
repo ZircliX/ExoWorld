@@ -29,7 +29,8 @@ namespace OverBang.ExoWorld.Core
         [field: SerializeField] 
         public UpgradeData[] UpgradeDatas { get; private set; }
 
-        [field : SerializeField] public CharacterBaseStats BaseStats { get; private set; }
+        [field : SerializeField] 
+        public CharacterBaseStats BaseStats { get; private set; }
         
         [field: SerializeField]
         public AbilityData PrimaryAbility { get; private set; }

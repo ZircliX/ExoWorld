@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a97d0c009c53480b8dd72fc01c6eacb1, type: 3}
   m_Name: GraineDeChanui Ability Data
-  m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.GraineDeChanuiData
+  m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.Abilities.GraineDeChanuiData
   <Name>k__BackingField: Graine de Chanui
   <Description>k__BackingField: 
   <Icon>k__BackingField: {fileID: 21300000, guid: 00f1ee42d90f7a04ca444a5fbd25908d, type: 3}
@@ -26,12 +26,11 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 402417008147955845
-      type: {class: GraineDeChanuiStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
-      data: 
+      type: {class: GraineDeChanuiStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}
     - rid: 402417008147955846
-      type: {class: GraineDeChanuiChaotiquesStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
-      data: 
+      type: {class: GraineDeChanuiChaotiquesStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}
     - rid: 402417008147955847
-      type: {class: GraineDeChanuiSoporifiquesStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
-      data: 
+      type: {class: GraineDeChanuiSoporifiquesStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}

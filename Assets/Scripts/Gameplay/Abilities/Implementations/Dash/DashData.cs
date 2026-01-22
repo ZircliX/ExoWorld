@@ -1,7 +1,7 @@
 using OverBang.ExoWorld.Core;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Abilities
 {
     [CreateAssetMenu(fileName = "Dash Ability Data", menuName = "OverBang/Abilities/DashData")]
     public class DashData : AbilityData

@@ -1,6 +1,6 @@
 using OverBang.ExoWorld.Core;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Abilities
 {
     public abstract class AppareilZetaAbilityStrategy<TData> : IAbilityStrategy<AppareilZetaData, TData>
         where TData : IAppareilZetaAbilityStrategyData, IAbilityStrategyData

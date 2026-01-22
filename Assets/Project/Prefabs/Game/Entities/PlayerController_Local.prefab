@@ -5354,7 +5354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 2994845136
+  GlobalObjectIdHash: 1576227847
   InScenePlacedSourceGlobalObjectIdHash: 1576227847
   DeferredDespawnTick: 0
   Ownership: 1
@@ -5524,8 +5524,8 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8973511709967392776}
-        m_TargetAssemblyTypeName: OverBang.GameName.Gameplay.WeaponController, OverBang.GameName.Gameplay
-        m_MethodName: OnShootInput
+        m_TargetAssemblyTypeName: OverBang.ExoWorld.Gameplay.WeaponController, OverBang.ExoWorld.Gameplay
+        m_MethodName: OnLeftInput
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5540,8 +5540,8 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8973511709967392776}
-        m_TargetAssemblyTypeName: OverBang.GameName.Gameplay.WeaponController, OverBang.GameName.Gameplay
-        m_MethodName: OnWeaponSwitch
+        m_TargetAssemblyTypeName: OverBang.ExoWorld.Gameplay.WeaponController, OverBang.ExoWorld.Gameplay
+        m_MethodName: OnMiddleDragInput
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5572,8 +5572,8 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8973511709967392776}
-        m_TargetAssemblyTypeName: OverBang.GameName.Gameplay.WeaponController, OverBang.GameName.Gameplay
-        m_MethodName: OnReloadInput
+        m_TargetAssemblyTypeName: OverBang.ExoWorld.Gameplay.WeaponController, OverBang.ExoWorld.Gameplay
+        m_MethodName: OnRInput
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

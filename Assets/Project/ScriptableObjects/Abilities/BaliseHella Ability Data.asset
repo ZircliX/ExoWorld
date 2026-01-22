@@ -11,14 +11,14 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16f842b167d846a19653d4944ada9e4e, type: 3}
   m_Name: BaliseHella Ability Data
-  m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.BaliseHellaData
+  m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.Abilities.BaliseHellaData
   <Name>k__BackingField: Balise Hella
   <Description>k__BackingField: 
   <Icon>k__BackingField: {fileID: 21300000, guid: 1190e3bb57b46f54d9a102824edef2bb, type: 3}
   <Cooldown>k__BackingField: 3
   <Duration>k__BackingField: -1
   <MainData>k__BackingField:
-    rid: 402417008147955823
+    rid: 402417374115397765
   <AugmentData1>k__BackingField:
     rid: 402417008147955824
   <AugmentData2>k__BackingField:
@@ -29,21 +29,21 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 402417008147955823
-      type: {class: BaliseHellaStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
-      data:
-        <Radius>k__BackingField: 3
-        <Duration>k__BackingField: 10
-        <MinHealth>k__BackingField: 1
     - rid: 402417008147955824
-      type: {class: BaliseSecondChanceStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
+      type: {class: BaliseSecondChanceStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}
       data:
         <Radius>k__BackingField: 1.5
         <Duration>k__BackingField: 10
         <MinHealth>k__BackingField: 1
         <HealingPerSecond>k__BackingField: 5
     - rid: 402417008147955825
-      type: {class: BaliseInvisibilityStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
+      type: {class: BaliseInvisibilityStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}
       data:
         <Radius>k__BackingField: 3
         <Duration>k__BackingField: 4
+    - rid: 402417374115397765
+      type: {class: BaliseHellaStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}
+      data:
+        <Radius>k__BackingField: 10
+        <Duration>k__BackingField: 3
+        <MinHealth>k__BackingField: 5

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Abilities
 {
     [CreateStrategyFor(typeof(DfoStrategyData))]
     public class DfoAbilityStrategy : IAbilityStrategy<DfoData, DfoStrategyData>

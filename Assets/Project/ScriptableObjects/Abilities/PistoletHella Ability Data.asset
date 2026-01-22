@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cfd72bd764a44ed6999449b5d8be688d, type: 3}
   m_Name: PistoletHella Ability Data
-  m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.PistoletHellaData
+  m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.Abilities.PistoletHellaData
   <Name>k__BackingField: Pistolet Hella
   <Description>k__BackingField: 
   <Icon>k__BackingField: {fileID: 21300000, guid: cacf36893ef2f2f4fb1328555d29300c, type: 3}
@@ -26,12 +26,11 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 402417008147955830
-      type: {class: PistoletHellaStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
-      data: 
+      type: {class: PistoletHellaStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}
     - rid: 402417008147955831
-      type: {class: PistoletHellaAreaStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
-      data: 
+      type: {class: PistoletHellaAreaStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}
     - rid: 402417008147955832
-      type: {class: PistoletHellaFrozenStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
-      data: 
+      type: {class: PistoletHellaFrozenStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}

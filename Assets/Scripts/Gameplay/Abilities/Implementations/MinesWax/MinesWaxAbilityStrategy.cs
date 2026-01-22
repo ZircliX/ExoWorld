@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using OverBang.ExoWorld.Core;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Abilities
 {
     public abstract class MinesWaxAbilityStrategy<TData> : IAbilityStrategy<MinesWaxData, TData>
         where TData : IMinesWaxStrategyData, IAbilityStrategyData

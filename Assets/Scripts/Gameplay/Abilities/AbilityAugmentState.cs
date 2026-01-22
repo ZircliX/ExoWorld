@@ -1,4 +1,4 @@
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Abilities
 {
     public enum AbilityAugmentState
     {

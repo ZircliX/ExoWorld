@@ -11,14 +11,14 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ec5421b33943594292aa2a5f1f13a1c, type: 3}
   m_Name: Dfo Ability Data
-  m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.DfoData
+  m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.Abilities.DfoData
   <Name>k__BackingField: DFO
   <Description>k__BackingField: 
   <Icon>k__BackingField: {fileID: 21300000, guid: 89019a37d0c257f4f86a8205fc67e0f7, type: 3}
   <Cooldown>k__BackingField: 3
   <Duration>k__BackingField: -1
   <MainData>k__BackingField:
-    rid: 402416982411968634
+    rid: 402417374115397759
   <AugmentData1>k__BackingField:
     rid: 402416982411968635
   <AugmentData2>k__BackingField:
@@ -44,18 +44,10 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 402416982411968634
-      type: {class: DfoStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
-      data:
-        <ActivationTime>k__BackingField: 5
-        <MissileCount>k__BackingField: 20
-        <DiameterSpawn>k__BackingField: 10
-        <Damage>k__BackingField:
-          baseDamage: 75
-          weakSpotMultiplier: 1.5
-          bonusDamage: 0
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 402416982411968635
-      type: {class: DfoStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
+      type: {class: DfoStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}
       data:
         <ActivationTime>k__BackingField: 1
         <MissileCount>k__BackingField: 20
@@ -65,7 +57,7 @@ MonoBehaviour:
           weakSpotMultiplier: 1.5
           bonusDamage: 0
     - rid: 402416982411968636
-      type: {class: DfoStrategyData, ns: OverBang.GameName.Gameplay, asm: OverBang.GameName.Gameplay}
+      type: {class: DfoStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}
       data:
         <ActivationTime>k__BackingField: 10
         <MissileCount>k__BackingField: 20
@@ -73,4 +65,14 @@ MonoBehaviour:
         <Damage>k__BackingField:
           baseDamage: 100
           weakSpotMultiplier: 1.5
+          bonusDamage: 0
+    - rid: 402417374115397759
+      type: {class: DfoStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}
+      data:
+        <ActivationTime>k__BackingField: 5
+        <MissileCount>k__BackingField: 15
+        <DiameterSpawn>k__BackingField: 10
+        <Damage>k__BackingField:
+          baseDamage: 150
+          weakSpotMultiplier: 0
           bonusDamage: 0

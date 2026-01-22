@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Reflection;
 using OverBang.ExoWorld.Core;
 using OverBang.ExoWorld.Gameplay;
+using OverBang.ExoWorld.Gameplay.Abilities;
 using UnityEngine;
 
 [assembly:LookForAbilityStrategies]
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Abilities
 {
     public static class AbilityManager
     {
