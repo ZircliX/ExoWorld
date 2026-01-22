@@ -515,6 +515,10 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 123483132ff58bc42a903ce03aca9105, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 123483132ff58bc42a903ce03aca9105, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 123
       objectReference: {fileID: 0}
@@ -779,17 +783,9 @@ MonoBehaviour:
   m_Mesh: {fileID: 0}
   m_VersionIndex: 12
   m_IsSelectable: 1
-  m_SelectedFaces: 04000000
-  m_SelectedEdges:
-  - a: 17
-    b: 16
-  - a: 16
-    b: 18
-  - a: 18
-    b: 19
-  - a: 19
-    b: 17
-  m_SelectedVertices: 12000000110000001000000013000000
+  m_SelectedFaces: 
+  m_SelectedEdges: []
+  m_SelectedVertices: 
 --- !u!4 &8922225414207322889 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 123483132ff58bc42a903ce03aca9105, type: 3}
