@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: MinesWax Ability Data
   m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.Abilities.MinesWaxData
   <Name>k__BackingField: Mines WAX
-  <Description>k__BackingField: 
+  <Description>k__BackingField: "D\xE9ploie des mines WAX qu\u2019il peut projeter
+    \xE0 distance, celles-ci d\xE9tonnent automatiquement lorsqu\u2019un ennemi s\u2019en
+    approche."
   <Icon>k__BackingField: {fileID: 21300000, guid: 8e5528c5e9c5413438b0b2826ecdf565, type: 3}
   <Cooldown>k__BackingField: 3
   <Duration>k__BackingField: -1
@@ -32,8 +34,6 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
     - rid: 402417008147955834
       type: {class: MinesWaxCryoStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}
       data:

@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Dfo Ability Data
   m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.Abilities.DfoData
   <Name>k__BackingField: DFO
-  <Description>k__BackingField: 
+  <Description>k__BackingField: "Lance un DFO (d\xE9clencheur de frappe orbital)
+    [le DFO est similaire \xE0 une grenade sauf qu\u2019il n\u2019explose pas, elle
+    fait tomber une frappe orbitale \xE0 ce dit endroit]."
   <Icon>k__BackingField: {fileID: 21300000, guid: 89019a37d0c257f4f86a8205fc67e0f7, type: 3}
   <Cooldown>k__BackingField: 3
   <Duration>k__BackingField: -1
@@ -44,8 +46,6 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
     - rid: 402416982411968635
       type: {class: DfoStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}
       data:

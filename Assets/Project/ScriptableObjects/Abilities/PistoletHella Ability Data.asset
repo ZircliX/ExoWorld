@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: PistoletHella Ability Data
   m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.Abilities.PistoletHellaData
   <Name>k__BackingField: Pistolet Hella
-  <Description>k__BackingField: 
+  <Description>k__BackingField: "Choisis un alli\xE9 \xE0 proximit\xE9 \xE0 qui il
+    peut r\xE9g\xE9n\xE9rer la sant\xE9 en lui tirant dessus."
   <Icon>k__BackingField: {fileID: 21300000, guid: cacf36893ef2f2f4fb1328555d29300c, type: 3}
   <Cooldown>k__BackingField: 0
   <Duration>k__BackingField: 0
@@ -26,11 +27,12 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
     - rid: 402417008147955830
       type: {class: PistoletHellaStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}
+      data: 
     - rid: 402417008147955831
       type: {class: PistoletHellaAreaStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}
+      data: 
     - rid: 402417008147955832
       type: {class: PistoletHellaFrozenStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}
+      data: 

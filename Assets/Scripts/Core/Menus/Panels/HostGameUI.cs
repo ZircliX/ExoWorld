@@ -21,6 +21,7 @@ namespace OverBang.ExoWorld.Core
         public delegate void HostCreatedEvent(string serverName, int maxPlayers, ServerVisibility visibility, string password);
 
         private string currentPassword;
+        private bool started;
 
         protected override void Awake()
         {
@@ -37,10 +38,11 @@ namespace OverBang.ExoWorld.Core
                         serverVisibilitySelector.CurrentValue,
                         currentPassword);
                     createButton.interactable = false;
+                    started = true;
                 });
 
             createButton.interactable = false;
-            gameNameInput.onValueChanged.AddListener(text => createButton.interactable = !string.IsNullOrEmpty(text));
+            gameNameInput.onValueChanged.AddListener(text => createButton.interactable = !string.IsNullOrEmpty(text) && !started);
         }
 
         private void HandleHostCreate(string serverName, int maxPlayers, ServerVisibility visibility, string password)
