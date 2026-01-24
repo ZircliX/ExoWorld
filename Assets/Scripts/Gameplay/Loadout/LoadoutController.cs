@@ -1,31 +1,48 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using KBCore.Refs;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace OverBang.ExoWorld.Gameplay
 {
     public class LoadoutController : MonoBehaviour, IInputReceiver
     {
-        [SerializeField] private WeaponController weaponController;
-        [SerializeField] private GadgetController gadgetController;
+        [SerializeField, Self] private WeaponController weaponController;
+        [SerializeField, Self] private GadgetController gadgetController;
 
+        private Stack<IInputReceiver> receivers;
         private IInputReceiver current;
 
 
+        private void OnValidate()
+        {
+            this.ValidateRefs();
+        }
+
         private void Awake()
         {
+            receivers = new Stack<IInputReceiver>();
+            receivers.Push(weaponController);
+            current = receivers.Peek();
             weaponController.Initialize(this);
             gadgetController.Initialize(this);
         }
 
         public void SwitchReceiver(IInputReceiver receiver)
         {
+            receivers.Push(receiver);
             current = receiver; 
         }
-        
-        
-        
-        
-        
+
+        public void RemoveReceiver(IInputReceiver receiver)
+        {
+            if (receivers.Peek() == receiver)
+            {
+                receivers.Pop();
+                current = receivers.Peek();
+            }
+        }
         
         #region Inputs
         public void OnLeftInput(InputAction.CallbackContext context)
@@ -50,7 +67,8 @@ namespace OverBang.ExoWorld.Gameplay
 
         public void OnCInput(InputAction.CallbackContext context)
         {
-            SwitchReceiver(gadgetController);
+            if (context.performed) SwitchReceiver(gadgetController);
+            
             current.OnCInput(context);
         }
 

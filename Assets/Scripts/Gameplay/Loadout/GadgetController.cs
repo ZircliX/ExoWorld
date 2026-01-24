@@ -1,4 +1,5 @@
-﻿using OverBang.ExoWorld.Gameplay.Abilities;
+﻿using System;
+using OverBang.ExoWorld.Gameplay.Abilities;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,9 +10,10 @@ namespace OverBang.ExoWorld.Gameplay
     {
         public Vector3 Forward => transform.forward;
         private LoadoutController loadoutController;
-        
         private IGadget currentGadget;
-        
+
+        public event Action OnGadgetSelectionBegin; 
+        public event Action OnGadgetSelectionEnd; 
         
         
         public void Initialize(LoadoutController loadoutController)
@@ -26,12 +28,25 @@ namespace OverBang.ExoWorld.Gameplay
 
         public void OnCInput(InputAction.CallbackContext context)
         {
-            
+            if (context.performed) StartGadgetSelection();
+            if (context.canceled) StopGadgetSelection();
         }
 
-        public void OnEnd()
+        
+        private void StartGadgetSelection()
         {
-            
+            OnGadgetSelectionBegin?.Invoke();
+        }
+
+        private void StopGadgetSelection()
+        {
+            OnGadgetSelectionEnd?.Invoke();
+            OnEnd();
+        }
+        
+        private void OnEnd()
+        {
+            loadoutController.RemoveReceiver(this);
         }
 
     }
