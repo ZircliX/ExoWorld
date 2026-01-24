@@ -2,7 +2,7 @@ using OverBang.ExoWorld.Core;
 
 namespace OverBang.ExoWorld.Gameplay.Abilities
 {
-    public class GraineDeChanuiAbilityStrategy<TData> : IAbilityStrategy<GraineDeChanuiData, TData>
+    public abstract class GraineDeChanuiAbilityStrategy<TData> : IAbilityStrategy<GraineDeChanuiData, TData>
         where TData : IGraineDeChanuiAbilityStrategyData, IAbilityStrategyData
     {
         public void Initialize(IAbility<GraineDeChanuiData> ability, ICaster caster, TData data)

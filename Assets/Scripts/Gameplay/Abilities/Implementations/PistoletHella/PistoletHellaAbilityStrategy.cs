@@ -2,7 +2,7 @@ using OverBang.ExoWorld.Core;
 
 namespace OverBang.ExoWorld.Gameplay.Abilities
 {
-    public class PistoletHellaAbilityStrategy<TData> : IAbilityStrategy<PistoletHellaData, TData>
+    public abstract class PistoletHellaAbilityStrategy<TData> : IAbilityStrategy<PistoletHellaData, TData>
         where TData : IPistoletHellaAbilityStrategyData, IAbilityStrategyData
     {
         public void Initialize(IAbility<PistoletHellaData> ability, ICaster caster, TData data)

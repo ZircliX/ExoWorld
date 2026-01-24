@@ -99,8 +99,8 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
                     return;
                 }
             }
-            
-            ActiveStrategy.Tick(this, deltaTime);
+
+            ActiveStrategy?.Tick(this, deltaTime);
         }
 
         public void End()

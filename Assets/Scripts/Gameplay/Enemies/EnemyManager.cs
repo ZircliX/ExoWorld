@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Helteix.Singletons.SceneServices;
 using UnityEngine;
 
@@ -8,6 +9,9 @@ namespace OverBang.ExoWorld.Gameplay
      {
         private List<Enemy> enemies;
 
+        public event Action<Enemy> OnEnemyRegistered; 
+        public event Action<Enemy> OnEnemyUnregistered; 
+
         private void Start()
         {
             enemies = new List<Enemy>();
@@ -16,14 +20,16 @@ namespace OverBang.ExoWorld.Gameplay
         public void Register(Enemy enemy)
          {
              enemies.Add(enemy);
+             OnEnemyRegistered?.Invoke(enemy);
          }
 
          public void Unregister(Enemy enemy)
          {
              enemies.Remove(enemy);
+             OnEnemyUnregistered?.Invoke(enemy);
          }
 
-         public bool TryGetClosest(Vector3 position, out ITargetable closest)
+         public bool TryGetClosest(Vector3 position, float maxDistance, out ITargetable closest)
          {
              closest = null;
              
@@ -31,10 +37,16 @@ namespace OverBang.ExoWorld.Gameplay
                  return false;
              
              float closestDistance = Vector3.Distance(position, enemies[0].transform.position);
-             foreach (Enemy enemy in enemies)
+             closest = enemies[0];
+             
+             for (int index = 1; index < enemies.Count; index++)
              {
+                 Enemy enemy = enemies[index];
+                 if (!enemy.IsTargetable)
+                     continue;
+                 
                  float distance = Vector3.Distance(position, enemy.transform.position);
-                 if (distance < closestDistance)
+                 if (distance < closestDistance && distance <= maxDistance)
                  {
                      closestDistance = distance;
                      closest = enemy;

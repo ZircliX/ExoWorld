@@ -124,7 +124,7 @@ namespace OverBang.ExoWorld.Gameplay
         private void Update()
         {
             if (!IsOwner) return;
-            if (Agent.enabled == false) return;
+            if (!Agent.enabled) return;
             
             if (currentPlayersInRange.Count <= 0 && !Agent.pathPending && Agent.remainingDistance <= Agent.stoppingDistance && !isAttacking)
             {
@@ -272,11 +272,12 @@ namespace OverBang.ExoWorld.Gameplay
         public event Action<bool> OnTargetableChanged;
         public Transform Transform => transform;
         public TargetPriority Priority { get; private set; } = TargetPriority.Medium;
-        public bool IsTargetable { get; private set; }
+        public bool IsTargetable => isTargetable && Agent.enabled;
+        private bool isTargetable = false;
         
         public void SetTargetable(bool state)
         {
-            IsTargetable = state;
+            isTargetable = state;
             OnTargetableChanged?.Invoke(state);
         }
 
