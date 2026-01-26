@@ -1,5 +1,6 @@
 ﻿using System;
 using OverBang.ExoWorld.Gameplay.Abilities;
+using OverBang.ExoWorld.Gameplay.PlayerHUD;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -35,11 +36,13 @@ namespace OverBang.ExoWorld.Gameplay
         
         private void StartGadgetSelection()
         {
+            HUD.Instance.SetCursorState(true);
             OnGadgetSelectionBegin?.Invoke();
         }
 
         private void StopGadgetSelection()
         {
+            HUD.Instance.SetCursorState(false);
             OnGadgetSelectionEnd?.Invoke();
             OnEnd();
         }

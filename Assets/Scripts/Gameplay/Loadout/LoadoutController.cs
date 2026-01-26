@@ -13,7 +13,7 @@ namespace OverBang.ExoWorld.Gameplay
 
         private Stack<IInputReceiver> receivers;
         private IInputReceiver current;
-
+		
 
         private void OnValidate()
         {
