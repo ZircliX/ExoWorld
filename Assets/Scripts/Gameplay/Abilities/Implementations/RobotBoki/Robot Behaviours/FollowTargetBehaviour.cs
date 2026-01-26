@@ -8,9 +8,9 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
     {
         private ITargetable currentTarget;
         private float targetSearchTimer;
-        private const float TARGET_SEARCH_INTERVAL = 0.5f; // Search for targets every 0.5 seconds
+        private const float TARGET_SEARCH_INTERVAL = 0.5f;
         private const float EXPLOSION_DISTANCE = 2f;
-        private const float NAVMESH_SEARCH_RADIUS = 100f;
+        private const float ROTATION_SPEED = 5f;
 
         public FollowTargetBehaviour(IRobotBokiAbilityStrategyData strategyData, IExplosionStrategy explosionStrategy)
             : base(strategyData, explosionStrategy) { }
@@ -36,16 +36,28 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
                 targetSearchTimer = TARGET_SEARCH_INTERVAL;
             }
 
-            // Only set destination if we have a valid target
+            if (agent == null)
+                return;
+
+            // Move in a direction
             if (currentTarget != null)
             {
-                agent.SetDestination(currentTarget.Transform.position);
+                // Move towards target
+                Vector3 directionToTarget = (currentTarget.Transform.position - agent.transform.position).normalized;
+                agent.transform.rotation = Quaternion.LookRotation(directionToTarget);
+                agent.Move(directionToTarget * (agent.speed * deltaTime));
 
                 // Check if we've reached the target
-                if (!agent.pathPending && agent.remainingDistance < EXPLOSION_DISTANCE)
+                float distanceToTarget = Vector3.Distance(agent.transform.position, currentTarget.Transform.position);
+                if (distanceToTarget < EXPLOSION_DISTANCE)
                 {
                     Explode();
                 }
+            }
+            else
+            {
+                // Move straight forward
+                agent.Move(agent.transform.forward * (agent.speed * deltaTime));
             }
         }
 
@@ -55,27 +67,8 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
                     StrategyData.DetectionRadius, 
                     out ITargetable closest))
             {
+                Debug.DrawLine(agent.transform.position, closest.Transform.position, Color.red, 0.2f);
                 currentTarget = closest;
-            }
-            else
-            {
-                // No target found, set roaming destination
-                SetRoamingDestination();
-            }
-        }
-
-        private void SetRoamingDestination()
-        {
-            Vector3 forwardTarget = agent.transform.position + agent.transform.forward * NAVMESH_SEARCH_RADIUS;
-    
-            if (NavMesh.SamplePosition(forwardTarget, out NavMeshHit hit, NAVMESH_SEARCH_RADIUS, NavMesh.AllAreas))
-            {
-                currentTarget = null; // Clear target to indicate roaming
-                agent.SetDestination(hit.position);
-            }
-            else
-            {
-                Debug.LogWarning("No valid NavMesh point found for roaming");
             }
         }
 

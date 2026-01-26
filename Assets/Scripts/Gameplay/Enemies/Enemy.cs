@@ -273,7 +273,7 @@ namespace OverBang.ExoWorld.Gameplay
         public Transform Transform => transform;
         public TargetPriority Priority { get; private set; } = TargetPriority.Medium;
         public bool IsTargetable => isTargetable && Agent.enabled;
-        private bool isTargetable = false;
+        private bool isTargetable = true;
         
         public void SetTargetable(bool state)
         {

@@ -6,7 +6,7 @@ namespace Ami.BroAudio.Demo
     [RequireComponent(typeof(Collider))]
     public class InteractiveZone : MonoBehaviour
     {
-        public event Action<bool> OnInZoneStateChanged;
+        public event Action<InteractiveZone, bool> OnInZoneStateChanged;
 
         public bool IsInZone { get; private set; } = false;
         public GameObject InZoneObject { get; private set; }
@@ -17,7 +17,7 @@ namespace Ami.BroAudio.Demo
             {
                 IsInZone = true;
                 InZoneObject = other.gameObject;
-                OnInZoneStateChanged?.Invoke(true);
+                OnInZoneStateChanged?.Invoke(this, true);
             }
         }
 
@@ -27,7 +27,7 @@ namespace Ami.BroAudio.Demo
             {
                 IsInZone = false;
                 InZoneObject = null;
-                OnInZoneStateChanged?.Invoke(false);
+                OnInZoneStateChanged?.Invoke(this, false);
             }
         }
     }

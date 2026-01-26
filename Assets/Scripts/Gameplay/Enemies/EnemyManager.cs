@@ -32,19 +32,18 @@ namespace OverBang.ExoWorld.Gameplay
          public bool TryGetClosest(Vector3 position, float maxDistance, out ITargetable closest)
          {
              closest = null;
-             
+    
              if (enemies.Count == 0)
                  return false;
-             
-             float closestDistance = Vector3.Distance(position, enemies[0].transform.position);
-             closest = enemies[0];
-             
-             for (int index = 1; index < enemies.Count; index++)
+    
+             float closestDistance = float.MaxValue;
+    
+             for (int index = 0; index < enemies.Count; index++)
              {
                  Enemy enemy = enemies[index];
                  if (!enemy.IsTargetable)
                      continue;
-                 
+        
                  float distance = Vector3.Distance(position, enemy.transform.position);
                  if (distance < closestDistance && distance <= maxDistance)
                  {
@@ -53,7 +52,7 @@ namespace OverBang.ExoWorld.Gameplay
                  }
              }
 
-             return true;
+             return closest != null;
          }
      }
  }
