@@ -27,11 +27,15 @@ namespace OverBang.ExoWorld.Gameplay.HUB
         [Header("Ability Infos")]
         [SerializeField, Space] private Button primaryAbilityButton;
         [SerializeField] private Button secondaryAbilityButton;
+        [SerializeField] private Color selectedColor;
+        [SerializeField] private Color unselectedColor;
+        
         [SerializeField] private TMP_Text abilityNameText;
         [SerializeField] private TMP_Text abilityDescriptionText;
         
         private CharacterData currentCharacterData;
         private int currentCharacterIndex = 0;
+        private bool abilitySelected = true; // true = primary, false = secondary
 
         protected override void Awake()
         {
@@ -44,13 +48,16 @@ namespace OverBang.ExoWorld.Gameplay.HUB
             selectButton.onClick.AddListener(ConfirmSelection);
             previousButton.onClick.AddListener(() => SwitchCharacter(-1));
             nextButton.onClick.AddListener(() => SwitchCharacter(1));
+            
+            primaryAbilityButton.onClick.AddListener( () => UpdateAbility(true));
+            secondaryAbilityButton.onClick.AddListener( () => UpdateAbility(false));
         }
 
         private void OnLoaded()
         {
             playerSelection.OnCharactersLoaded -= OnLoaded;
-            ChangeEnabledState(true);
             currentCharacterData = playerSelection.characterDatas[currentCharacterIndex];
+            ChangeEnabledState(true);
             UpdateCharacterUI();
         }
 
@@ -86,8 +93,19 @@ namespace OverBang.ExoWorld.Gameplay.HUB
             primaryAbilityButton.image.sprite = currentCharacterData.PrimaryAbility.Icon;
             secondaryAbilityButton.image.sprite = currentCharacterData.SecondaryAbility.Icon;
             
-            abilityNameText.text = currentCharacterData.PrimaryAbility.Name;
-            abilityDescriptionText.text = currentCharacterData.PrimaryAbility.Description;
+            UpdateAbility(abilitySelected);
+        }
+
+        private void UpdateAbility(bool primary)
+        {
+            abilitySelected = primary;
+            AbilityData abilityData = primary ? currentCharacterData.PrimaryAbility : currentCharacterData.SecondaryAbility;
+            
+            primaryAbilityButton.image.color = primary ? selectedColor : unselectedColor;
+            secondaryAbilityButton.image.color = primary ? unselectedColor : selectedColor;
+            
+            abilityNameText.text = abilityData.Name;
+            abilityDescriptionText.text = abilityData.Description;
         }
 
         private void ConfirmSelection()

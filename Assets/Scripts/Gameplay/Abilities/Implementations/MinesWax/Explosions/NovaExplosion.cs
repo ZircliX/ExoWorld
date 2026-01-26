@@ -46,8 +46,6 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
                 
                 await Awaitable.WaitForSecondsAsync(explosionInterval);
             }
-            
-            Debug.Log(explosionCount);
         }
     }
 }

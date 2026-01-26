@@ -13,17 +13,23 @@ MonoBehaviour:
   m_Name: RobotBoki Ability Data
   m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.Abilities.RobotBokiData
   <Name>k__BackingField: Robot BOKI
-  <Description>k__BackingField: 
+  <Description>k__BackingField: "Il l\xE2che 1 petit robot B.O.K.I. bricol\xE9 \xE0
+    la h\xE2te. Celui-ci suit les ennemis et explose \xE0 proximit\xE9 du plus proche.
+    Il ne peut pas changer de cible quand il prend en chasse un ennemi sauf si ce
+    dit ennemi meurt, il change alors de cible. Il explose au bout de 10 secondes
+    s'il n\u2019a toujours pas explos\xE9."
   <Icon>k__BackingField: {fileID: 21300000, guid: c78c47b5f99bfcf44a47efa4fb23afd1, type: 3}
   <Cooldown>k__BackingField: 3
-  <Duration>k__BackingField: 1
+  <Duration>k__BackingField: 12
   <MainData>k__BackingField:
     rid: 402417008147955836
   <AugmentData1>k__BackingField:
     rid: 402417008147955837
   <AugmentData2>k__BackingField:
     rid: 402417008147955838
-  <Speed>k__BackingField: 50
+  <Prefab>k__BackingField: {fileID: 927251557724093997, guid: 8f4eb982071258c4eac306e0e484705c, type: 3}
+  <Speed>k__BackingField: 5
+  <MaxLifeTime>k__BackingField: 10
   references:
     version: 2
     RefIds:
@@ -35,9 +41,14 @@ MonoBehaviour:
           weakSpotMultiplier: 1.5
           bonusDamage: 0
         <ExplosionRadius>k__BackingField: 3
+        <DetectionRadius>k__BackingField: 3
+        <MaxDistance>k__BackingField: 15
     - rid: 402417008147955837
       type: {class: RobotBokiLeurreStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}
-      data: 
+      data:
+        <ExplosionRadius>k__BackingField: 0
+        <DetectionRadius>k__BackingField: 5
+        <MaxDistance>k__BackingField: 100
     - rid: 402417008147955838
       type: {class: RobotBokiImpulsionStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}
       data:
@@ -46,3 +57,6 @@ MonoBehaviour:
           weakSpotMultiplier: 1.5
           bonusDamage: 0
         <ExplosionRadius>k__BackingField: 3
+        <DetectionRadius>k__BackingField: 3
+        <MaxDistance>k__BackingField: 15
+        <FreezeDuration>k__BackingField: 5

@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: GraineDeChanui Ability Data
   m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.Abilities.GraineDeChanuiData
   <Name>k__BackingField: Graine de Chanui
-  <Description>k__BackingField: 
+  <Description>k__BackingField: "D\xE9pose des graines de champignons hallucinog\xE8nes
+    (graines de chanu\xEF) sur n\u2019importe quelle surface. Les champignons \xE9closent
+    instantan\xE9ment lorsque les graines touchent le sol, attirant les ennemis vers
+    ceux-ci et cr\xE9ant une explosion quand les graines disparaissent."
   <Icon>k__BackingField: {fileID: 21300000, guid: 00f1ee42d90f7a04ca444a5fbd25908d, type: 3}
   <Cooldown>k__BackingField: 0
   <Duration>k__BackingField: 0
@@ -26,11 +29,12 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
     - rid: 402417008147955845
       type: {class: GraineDeChanuiStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}
+      data: 
     - rid: 402417008147955846
       type: {class: GraineDeChanuiChaotiquesStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}
+      data: 
     - rid: 402417008147955847
       type: {class: GraineDeChanuiSoporifiquesStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}
+      data: 

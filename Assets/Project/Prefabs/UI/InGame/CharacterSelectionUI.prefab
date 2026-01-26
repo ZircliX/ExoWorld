@@ -67,7 +67,6 @@ GameObject:
   m_Component:
   - component: {fileID: 176425157181106021}
   - component: {fileID: 8616679423225685612}
-  - component: {fileID: 3021489042626692603}
   - component: {fileID: 8441938558057418581}
   m_Layer: 5
   m_Name: Skills
@@ -92,10 +91,10 @@ RectTransform:
   - {fileID: 8836397773895114453}
   m_Father: {fileID: 6837335297255010292}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 322, y: -459.45}
-  m_SizeDelta: {x: 604, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 148}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8616679423225685612
 MonoBehaviour:
@@ -123,20 +122,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &3021489042626692603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1120749287276100382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
-  m_HorizontalFit: 0
-  m_VerticalFit: 2
 --- !u!114 &8441938558057418581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,7 +179,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0.000061035156, y: 36.5}
+  m_AnchoredPosition: {x: 0, y: 36.5}
   m_SizeDelta: {x: 0, y: 73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2729039354596789620
@@ -877,7 +862,6 @@ GameObject:
   - component: {fileID: 33300070428240719}
   - component: {fileID: 9134550467811661306}
   - component: {fileID: 6521037925459197410}
-  - component: {fileID: 8282047630601344825}
   m_Layer: 5
   m_Name: LoreText
   m_TagString: Untagged
@@ -899,10 +883,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6888016502940032354}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 302, y: -58.405}
-  m_SizeDelta: {x: 604, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 116.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9134550467811661306
 CanvasRenderer:
@@ -1005,20 +989,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &8282047630601344825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2788168129204104129}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
-  m_HorizontalFit: 0
-  m_VerticalFit: 2
 --- !u!1 &2901177014419007139
 GameObject:
   m_ObjectHideFlags: 0
@@ -1332,7 +1302,6 @@ GameObject:
   m_Component:
   - component: {fileID: 474241453228684560}
   - component: {fileID: 6101459854806938369}
-  - component: {fileID: 8749815193985747605}
   - component: {fileID: 5562482800855757821}
   m_Layer: 5
   m_Name: SkillsDetails
@@ -1357,10 +1326,10 @@ RectTransform:
   - {fileID: 3796401704772922691}
   m_Father: {fileID: 6837335297255010292}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 322, y: -636.855}
-  m_SizeDelta: {x: 604, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 480.8223}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6101459854806938369
 MonoBehaviour:
@@ -1381,27 +1350,13 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 0
   m_Spacing: 10
-  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &8749815193985747605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4040809521960032782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
-  m_HorizontalFit: 0
-  m_VerticalFit: 2
 --- !u!114 &5562482800855757821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1713,9 +1668,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1746,7 +1701,6 @@ GameObject:
   - component: {fileID: 3364922848081129416}
   - component: {fileID: 7028509880432880189}
   - component: {fileID: 6472397612271104331}
-  - component: {fileID: 6258369770332279441}
   m_Layer: 5
   m_Name: CharacterNameText
   m_TagString: Untagged
@@ -1768,10 +1722,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1678301291270892793}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 98.63, y: -35.755}
-  m_SizeDelta: {x: 197.26, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 197.26, y: 71.51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7028509880432880189
 CanvasRenderer:
@@ -1872,20 +1826,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &6258369770332279441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6464080325345061059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
-  m_HorizontalFit: 2
-  m_VerticalFit: 2
 --- !u!1 &6849728082948046422
 GameObject:
   m_ObjectHideFlags: 0
@@ -1896,7 +1836,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6888016502940032354}
   - component: {fileID: 193755252993755786}
-  - component: {fileID: 260051615948397475}
   - component: {fileID: 6476415312825243656}
   m_Layer: 5
   m_Name: Lore
@@ -1920,10 +1859,10 @@ RectTransform:
   - {fileID: 33300070428240719}
   m_Father: {fileID: 6837335297255010292}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 322, y: -297.04498}
-  m_SizeDelta: {x: 604, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 116.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &193755252993755786
 MonoBehaviour:
@@ -1951,20 +1890,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &260051615948397475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6849728082948046422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
-  m_HorizontalFit: 0
-  m_VerticalFit: 2
 --- !u!114 &6476415312825243656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2053,7 +1978,6 @@ GameObject:
   - component: {fileID: 3796401704772922691}
   - component: {fileID: 3563536135650291931}
   - component: {fileID: 7884330935460264621}
-  - component: {fileID: 2745708827870298980}
   m_Layer: 5
   m_Name: SkillDescriptionText
   m_TagString: Untagged
@@ -2075,10 +1999,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 474241453228684560}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 302, y: -103.405}
-  m_SizeDelta: {x: 604, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 420.82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3563536135650291931
 CanvasRenderer:
@@ -2180,20 +2104,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &2745708827870298980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7198421282357791506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
-  m_HorizontalFit: 0
-  m_VerticalFit: 2
 --- !u!1 &7265253956242552752
 GameObject:
   m_ObjectHideFlags: 0
@@ -2409,6 +2319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48bc9508047240b08d42e7144cb426d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: OverBang.GameName.Hub::OverBang.GameName.Hub.PlayerSelection
+  loadoutTable: {fileID: 0}
 --- !u!114 &5902361712639480163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2433,6 +2344,8 @@ MonoBehaviour:
   characterDescriptionText: {fileID: 6521037925459197410}
   primaryAbilityButton: {fileID: 8359672863495590460}
   secondaryAbilityButton: {fileID: 7964497898216017361}
+  selectedColor: {r: 1, g: 1, b: 1, a: 1}
+  unselectedColor: {r: 1, g: 1, b: 1, a: 0.19607843}
   abilityNameText: {fileID: 2697060517912662763}
   abilityDescriptionText: {fileID: 7884330935460264621}
 --- !u!1 &8482367505876220488
@@ -2669,9 +2582,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
