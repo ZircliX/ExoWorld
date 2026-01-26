@@ -4,16 +4,17 @@ using OverBang.ExoWorld.Gameplay.Abilities;
 using OverBang.ExoWorld.Gameplay.PlayerHUD;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace OverBang.ExoWorld.Gameplay
 {
     public class GadgetController : NetworkBehaviour, ICaster, IInputReceiver
     {
-        
-        [SerializeField] private RadialMenu gadgetMenuUi;
+        [SerializeField] private GadgetControllerUI gadgetControllerUI;
         public Vector3 Forward => transform.forward;
         private LoadoutController loadoutController;
+        
         private IGadget currentGadget;
 
         public event Action OnGadgetSelectionBegin; 
@@ -25,31 +26,25 @@ namespace OverBang.ExoWorld.Gameplay
             this.loadoutController = loadoutController;
         }
 
-        public void OnLeftInput(InputAction.CallbackContext context)
-        {
-            
-        }
 
-        public void OnCInput(InputAction.CallbackContext context)
-        {
-            if (context.performed) StartGadgetSelection();
-            if (context.canceled) StopGadgetSelection();
-        }
-
-        
         private void StartGadgetSelection()
         {
             HUD.Instance.SetCursorState(true);
-            gadgetMenuUi.TestFunction();
             OnGadgetSelectionBegin?.Invoke();
         }
 
+        public void SelectCurrentGadget(IGadget gadget)
+        {
+            currentGadget = gadget;
+        }
+        
         private void StopGadgetSelection()
         {
             HUD.Instance.SetCursorState(false);
-            gadgetMenuUi.ClearMenu();
             OnGadgetSelectionEnd?.Invoke();
-            OnEnd();
+            
+            //currentGadget.Initialize();
+            //currentGadget.Begin();
         }
         
         private void OnEnd()
@@ -57,5 +52,19 @@ namespace OverBang.ExoWorld.Gameplay
             loadoutController.RemoveReceiver(this);
         }
 
+        #region Inputs
+        
+            public void OnLeftInput(InputAction.CallbackContext context)
+            {
+                
+            }
+
+            public void OnCInput(InputAction.CallbackContext context)
+            {
+                if (context.performed) StartGadgetSelection();
+                if (context.canceled) StopGadgetSelection();
+            }
+            
+        #endregion
     }
 }

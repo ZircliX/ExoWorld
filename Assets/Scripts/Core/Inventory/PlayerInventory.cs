@@ -1,4 +1,5 @@
-﻿namespace OverBang.ExoWorld.Core
+﻿
+namespace OverBang.ExoWorld.Core
 {
     public static class PlayerInventory
     {
