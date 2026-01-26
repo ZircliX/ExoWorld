@@ -32,7 +32,6 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         {
             if (!context.performed) return;
 
-            Debug.Log("Primary Ability Input");
             UseAbility(primary);
         }
         
@@ -40,7 +39,6 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         {
             if (!context.performed) return;
 
-            Debug.Log("Secondary Ability Input");
             UseAbility(secondary);
         }
 
@@ -64,12 +62,10 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             if (context.playerCharacterData.PrimaryAbility != null)
             {
                 primary = context.playerCharacterData.PrimaryAbility.CreateAbilityFor(this);
-                Debug.Log("Initialize primary ability");
             }
 
             if (context.playerCharacterData.SecondaryAbility != null)
             {
-                Debug.Log("Initialize secondary ability");
                 secondary = context.playerCharacterData.SecondaryAbility.CreateAbilityFor(this);
             }
         }

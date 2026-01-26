@@ -5384,6 +5384,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.LoadoutController
   weaponController: {fileID: 8973511709967392776}
   gadgetController: {fileID: 1400611726766071219}
+  map: {fileID: -944628639613478452, guid: 44348a6ac7064ba489224b87689963b3, type: 3}
+  actionToDisable:
+  - Gameplay/LookX
+  - Gameplay/LookY
 --- !u!114 &1400611726766071219
 MonoBehaviour:
   m_ObjectHideFlags: 0
