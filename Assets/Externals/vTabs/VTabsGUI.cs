@@ -1,9 +1,18 @@
 #if UNITY_EDITOR
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.ShortcutManagement;
+using System.Reflection;
 using System.Linq;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
+using UnityEditor.SceneManagement;
+using System.Diagnostics;
+using Type = System.Type;
+using Delegate = System.Delegate;
+using Action = System.Action;
 using static VTabs.VTabs;
 using static VTabs.Libs.VUtils;
 using static VTabs.Libs.VGUI;
@@ -588,7 +597,11 @@ namespace VTabs
 
                     var iid = AssetDatabase.LoadAssetAtPath<Object>(AssetDatabase.GUIDToAssetPath(tabInfo.folderGuid)).GetInstanceID();
 
+#if UNITY_6000_3_OR_NEWER
+                    window.GetFieldValue("m_ListAreaState").SetFieldValue("m_SelectedInstanceIDs", new List<EntityId> { (EntityId)iid });
+#else
                     window.GetFieldValue("m_ListAreaState").SetFieldValue("m_SelectedInstanceIDs", new List<int> { iid });
+#endif
 
                     t_ProjectBrowser.InvokeMethod("OpenSelectedFolders");
 
@@ -609,7 +622,11 @@ namespace VTabs
                     var folderPath = tabInfo.folderGuid.ToPath();
                     var folderIid = AssetDatabase.LoadAssetAtPath<Object>(folderPath).GetInstanceID();
 
+#if UNITY_6000_3_OR_NEWER
+                    data.SetMemberValue("m_rootInstanceID", (EntityId)folderIid);
+#else
                     data.SetMemberValue("m_rootInstanceID", folderIid);
+#endif
 
                     m_AssetTree.InvokeMethod("ReloadData");
 
@@ -640,7 +657,6 @@ namespace VTabs
             void setupPropertyEditor()
             {
                 if (!tabInfo.isPropertyEditor) return;
-                if (tabInfo.globalId.isNull) return;
 
 
                 var lockTo = tabInfo.globalId.GetObject();
@@ -653,7 +669,15 @@ namespace VTabs
 
                 window.GetMemberValue("tracker").InvokeMethod("SetObjectsLockedByThisTracker", (new List<Object> { lockTo }));
 
-                window.SetMemberValue("m_GlobalObjectId", tabInfo.globalId.ToString());
+
+                if (StageUtility.GetCurrentStage() is PrefabStage && tabInfo.globalId.isNull)
+                    window.SetMemberValue("m_GlobalObjectId", GlobalID.GetForPrefabStageObject(lockTo).ToString());
+                else
+                    window.SetMemberValue("m_GlobalObjectId", tabInfo.globalId.ToString());
+
+
+
+
                 window.SetMemberValue("m_InspectedObject", lockTo);
 
                 VTabs.UpdateTitle(window);

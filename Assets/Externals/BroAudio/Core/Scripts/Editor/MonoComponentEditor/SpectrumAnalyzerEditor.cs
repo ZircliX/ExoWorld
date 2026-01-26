@@ -6,6 +6,7 @@ using static Ami.BroAudio.SpectrumAnalyzer;
 using static Ami.Extension.EditorScriptingExtension;
 using static Ami.Extension.AudioConstant;
 using System.Collections.Generic;
+using System;
 
 namespace Ami.BroAudio.Editor
 {

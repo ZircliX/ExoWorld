@@ -6,8 +6,11 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.ShortcutManagement;
+using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 using UnityEditor.SceneManagement;
+using UnityEditor.IMGUI.Controls;
 using Type = System.Type;
 using static VHierarchy.Libs.VUtils;
 using static VHierarchy.Libs.VGUI;
@@ -19,6 +22,7 @@ using static VHierarchy.VHierarchyCache;
 using TreeViewItem = UnityEditor.IMGUI.Controls.TreeViewItem<UnityEngine.EntityId>;
 using TreeViewState = UnityEditor.IMGUI.Controls.TreeViewState<UnityEngine.EntityId>;
 #elif UNITY_6000_2_OR_NEWER
+using TreeViewItem = UnityEditor.IMGUI.Controls.TreeViewItem<int>;
 using TreeViewState = UnityEditor.IMGUI.Controls.TreeViewState<int>;
 #endif
 
@@ -431,6 +435,21 @@ namespace VHierarchy
 
         public static void SetIcon(GameObject gameObject, string iconName, bool recursive = false)
         {
+            if (!data)
+                data = AssetDatabase.LoadAssetAtPath<VHierarchyData>(ProjectPrefs.GetString("vHierarchy-lastKnownDataPath"));
+
+            if (!data)
+                data = AssetDatabase.FindAssets("t:VHierarchyData").Select(guid => AssetDatabase.LoadAssetAtPath<VHierarchyData>(guid.ToPath())).FirstOrDefault();
+
+            if (!data)
+            {
+                data = ScriptableObject.CreateInstance<VHierarchyData>();
+
+                AssetDatabase.CreateAsset(data, GetScriptPath("VHierarchy").GetParentPath().CombinePath("vHierarchy Data.asset"));
+            }
+
+
+
             goDataCache.Clear();
 
             var goData = GetGameObjectData(gameObject, createDataIfDoesntExist: true);
@@ -443,9 +462,29 @@ namespace VHierarchy
 
             EditorApplication.RepaintHierarchyWindow();
 
+
+
+            data.Dirty();
+
         }
         public static void SetColor(GameObject gameObject, int colorIndex, bool recursive = false)
         {
+            if (!data)
+                data = AssetDatabase.LoadAssetAtPath<VHierarchyData>(ProjectPrefs.GetString("vHierarchy-lastKnownDataPath"));
+
+            if (!data)
+                data = AssetDatabase.FindAssets("t:VHierarchyData").Select(guid => AssetDatabase.LoadAssetAtPath<VHierarchyData>(guid.ToPath())).FirstOrDefault();
+
+            if (!data)
+            {
+                data = ScriptableObject.CreateInstance<VHierarchyData>();
+
+                AssetDatabase.CreateAsset(data, GetScriptPath("VHierarchy").GetParentPath().CombinePath("vHierarchy Data.asset"));
+            }
+
+
+
+
             goDataCache.Clear();
 
             var goData = GetGameObjectData(gameObject, createDataIfDoesntExist: true);
@@ -457,6 +496,10 @@ namespace VHierarchy
             goInfoCache.Clear();
 
             EditorApplication.RepaintHierarchyWindow();
+
+
+
+            data.Dirty();
 
         }
 
@@ -1820,7 +1863,7 @@ namespace VHierarchy
 
 
 
-        public const string version = "2.1.6";
+        public const string version = "2.1.8";
 
     }
 

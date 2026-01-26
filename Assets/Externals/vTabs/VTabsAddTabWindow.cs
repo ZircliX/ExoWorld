@@ -1,11 +1,19 @@
 #if UNITY_EDITOR
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.ShortcutManagement;
 using System.Reflection;
 using System.Linq;
+using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
+using UnityEditor.SceneManagement;
 using UnityEditor.IMGUI.Controls;
+using System.Diagnostics;
 using Type = System.Type;
+using Delegate = System.Delegate;
+using Action = System.Action;
 using static VTabs.VTabsCache;
 using static VTabs.VTabs;
 using static VTabs.Libs.VUtils;
@@ -813,6 +821,8 @@ namespace VTabs
                 allEntries.Add(new TabEntry() { name = "Build Profiles", iconName = "", typeString = "UnityEditor.Build.Profile.BuildProfileWindow, UnityEditor.BuildProfileModule, Version = 0.0.0.0, Culture = neutral, PublicKeyToken = null" });
 
                 allEntries.Add(new TabEntry() { name = "Shortcuts", iconName = "", typeString = "UnityEditor.ShortcutManagement.ShortcutManagerWindow, UnityEditor.CoreModule, Version = 0.0.0.0, Culture = neutral, PublicKeyToken = null" });
+
+                allEntries.Add(new TabEntry() { name = "IMGUI Debugger", iconName = "", typeString = "UnityEditor.GUIViewDebuggerWindow, UnityEditor.CoreModule, Version = 0.0.0.0, Culture = neutral, PublicKeyToken = null" });
 
 
 

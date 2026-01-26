@@ -3,10 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.ShortcutManagement;
 using System.Reflection;
 using System.IO;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Linq;
+using UnityEngine.UIElements;
 using Type = System.Type;
 using static VFavorites.Libs.VUtils;
 
@@ -1200,9 +1203,18 @@ namespace VFavorites.Libs
         static void _GlobalObjectId_GlobalObjectIdentifiersToInstanceIDsSlow(GlobalObjectId[] identifiers, int[] outputInstanceIDs)
         {
 #if UNITY_6000_3_OR_NEWER
-            GlobalObjectId.GlobalObjectIdentifiersToEntityIdsSlow(identifiers, outputInstanceIDs.Select(r => (EntityId)r).ToArray());
+
+            var outputEntityIds = new EntityId[outputInstanceIDs.Length];
+
+            GlobalObjectId.GlobalObjectIdentifiersToEntityIdsSlow(identifiers, outputEntityIds);
+
+            for (int i = 0; i < outputEntityIds.Length; i++)
+                outputInstanceIDs[i] = (int)outputEntityIds[i];
+
 #else
+
             GlobalObjectId.GlobalObjectIdentifiersToInstanceIDsSlow(identifiers, outputInstanceIDs);
+
 #endif
 
         }

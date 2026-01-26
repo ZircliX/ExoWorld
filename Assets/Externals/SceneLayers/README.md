@@ -240,6 +240,17 @@ For issues, feature requests, or questions:
 
 ## Changelog
 
+### Version 1.2.0
+
+- Added camera position saving to Layer Views - save and restore Scene View camera position, rotation, and zoom
+- Camera toggle button in View Manager for quick camera data management
+- Visual indicators show which views have camera data saved
+- Virtual scrolling implementation for massive performance boost with large layers (1000+ objects)
+- Fixed object reordering bug on first drag after loading preset or switching scenes
+- Fixed erratic drag behavior when dragging objects at different positions in large layers
+- Improved order synchronization system for consistent object ordering
+- Enhanced drag-and-drop reliability across all layer sizes
+
 ### Version 1.1.0
 - Added Views Panel - compact dockable panel for quick view switching
 - Added Floating Toolbar - minimal floating window for rapid view access

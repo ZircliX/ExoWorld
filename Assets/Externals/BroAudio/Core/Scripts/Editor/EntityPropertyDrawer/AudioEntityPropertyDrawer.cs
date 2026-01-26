@@ -8,6 +8,7 @@ using Ami.BroAudio.Runtime;
 using System;
 using static Ami.Extension.EditorScriptingExtension;
 using static Ami.BroAudio.Editor.BroEditorUtility;
+using Decision = Ami.BroAudio.Editor.EditorSetting.ReferenceConversionDecision;
 
 namespace Ami.BroAudio.Editor
 {

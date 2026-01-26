@@ -24,9 +24,9 @@ namespace OverBang.ExoWorld.Gameplay
             BroAudio.Play(currentSound);
         }
 
-        protected override void OnInZoneChanged(InteractiveZone zone, bool isInZone)
+        public override void OnInZoneChanged(bool isInZone)
         {
-            base.OnInZoneChanged(zone, isInZone);
+            base.OnInZoneChanged(isInZone);
             
             if (isInZone)
             {

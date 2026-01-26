@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Ami.Extension;
 
@@ -98,7 +99,6 @@ namespace Ami.BroAudio.Demo
 
         private void CameraRotation()
         {
-            return;
             float mouseX = Input.GetAxis("Mouse X") * _yawRotationSensitivity;
             float mouseY = Input.GetAxis("Mouse Y") * _pitchRotationSensitivity;
 
@@ -118,7 +118,6 @@ namespace Ami.BroAudio.Demo
 
         private void Moving()
         {
-            return;
             float moveForward = Input.GetAxis("Vertical");
             float moveX = Input.GetAxis("Horizontal");
             float currMotionSpeed = Mathf.Clamp01(Mathf.Abs(moveForward) + Mathf.Abs(moveX));

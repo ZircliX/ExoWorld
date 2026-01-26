@@ -26,7 +26,7 @@ MonoBehaviour:
     - componentTypeName: UnityEngine.MeshRenderer
     - componentTypeName: UnityEngine.Terrain
     autoAssignLive: 0
-    defaultVisible: 0
+    defaultVisible: 1
     defaultPickable: 1
     objectOrder: []
   - guid: 716259c4-f38a-408f-8640-d530f09a8266
@@ -41,7 +41,7 @@ MonoBehaviour:
     - componentTypeName: UnityEngine.LightProbeGroup
     - componentTypeName: UnityEngine.ReflectionProbe
     autoAssignLive: 0
-    defaultVisible: 0
+    defaultVisible: 1
     defaultPickable: 1
     objectOrder: []
   - guid: 44d135f1-60e9-4043-824c-110e854da32c
@@ -52,7 +52,7 @@ MonoBehaviour:
     autoRules:
     - componentTypeName: UnityEngine.Camera
     autoAssignLive: 0
-    defaultVisible: 0
+    defaultVisible: 1
     defaultPickable: 1
     objectOrder: []
   - guid: 9ec636cd-e0df-4cf2-bee3-82a2f2ca6ba1
@@ -66,7 +66,7 @@ MonoBehaviour:
     - componentTypeName: UnityEngine.TrailRenderer
     - componentTypeName: UnityEngine.LineRenderer
     autoAssignLive: 0
-    defaultVisible: 0
+    defaultVisible: 1
     defaultPickable: 1
     objectOrder: []
   - guid: 72b9a389-bbf2-4db8-93c1-31ab3506d2d8
@@ -79,7 +79,7 @@ MonoBehaviour:
     - componentTypeName: UnityEngine.AudioSource
     - componentTypeName: UnityEngine.AudioReverbZone
     autoAssignLive: 0
-    defaultVisible: 0
+    defaultVisible: 1
     defaultPickable: 1
     objectOrder: []
   - guid: 336e7280-6dac-4788-ac0d-80d2e8b4f090
@@ -123,7 +123,7 @@ MonoBehaviour:
     objectGlobalIds: []
     autoRules: []
     autoAssignLive: 0
-    defaultVisible: 0
+    defaultVisible: 1
     defaultPickable: 1
     objectOrder: []
   views:
@@ -162,6 +162,10 @@ MonoBehaviour:
       visible: 1
       pickable: 1
       expanded: 0
+    hasCameraData: 1
+    cameraPosition: {x: -0.4225707, y: 5.3178897, z: -0.78819984}
+    cameraRotation: {x: 0.13993368, y: -0.007426127, z: 0.0010493824, w: 0.99013424}
+    cameraSize: 6.980178
   - viewName: Environment
     color: {r: 0.36439258, g: 0.6320754, b: 0.23553754, a: 1}
     states:
@@ -197,6 +201,10 @@ MonoBehaviour:
       visible: 0
       pickable: 1
       expanded: 0
+    hasCameraData: 1
+    cameraPosition: {x: 0.33304173, y: 3.2953176, z: -1.3602755}
+    cameraRotation: {x: 0.13993368, y: -0.007426127, z: 0.0010493824, w: 0.99013424}
+    cameraSize: 3.6636481
   - viewName: Lighting
     color: {r: 0.69803923, g: 0.5529412, b: 0.29803923, a: 1}
     states:
@@ -232,6 +240,10 @@ MonoBehaviour:
       visible: 0
       pickable: 1
       expanded: 0
+    hasCameraData: 1
+    cameraPosition: {x: 5.1537514, y: 7.301212, z: -3.0721247}
+    cameraRotation: {x: 0.3347523, y: -0.3818366, z: 0.15069905, w: 0.8481973}
+    cameraSize: 3.6636481
   - viewName: Gameplay
     color: {r: 0.69803923, g: 0.29803923, b: 0.37770423, a: 1}
     states:
@@ -267,6 +279,10 @@ MonoBehaviour:
       visible: 0
       pickable: 1
       expanded: 0
+    hasCameraData: 1
+    cameraPosition: {x: 1.3470296, y: 2.481965, z: -1.6121976}
+    cameraRotation: {x: 0.11584747, y: -0.4979804, z: 0.06733379, w: 0.8567774}
+    cameraSize: 3.6636481
   - viewName: Polish
     color: {r: 0.40541095, g: 0.29803923, b: 0.69803923, a: 1}
     states:
@@ -302,6 +318,10 @@ MonoBehaviour:
       visible: 0
       pickable: 1
       expanded: 0
+    hasCameraData: 1
+    cameraPosition: {x: 0.33304173, y: 3.2953176, z: -1.3602755}
+    cameraRotation: {x: 0.13993368, y: -0.007426127, z: 0.0010493824, w: 0.99013424}
+    cameraSize: 7.7126617
   - viewName: Perfomance
     color: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
     states:
@@ -337,3 +357,7 @@ MonoBehaviour:
       visible: 0
       pickable: 1
       expanded: 0
+    hasCameraData: 1
+    cameraPosition: {x: 0.33304173, y: 3.2953176, z: -1.3602755}
+    cameraRotation: {x: 0.13993368, y: -0.007426127, z: 0.0010493824, w: 0.99013424}
+    cameraSize: 7.7126617

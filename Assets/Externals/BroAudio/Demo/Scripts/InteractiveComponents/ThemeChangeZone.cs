@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -33,7 +34,7 @@ namespace Ami.BroAudio.Demo
             SceneManager.activeSceneChanged -= OnSceneChanged;
         }
 
-        protected override void OnInZoneChanged(InteractiveZone zone, bool isInZone)
+        public override void OnInZoneChanged(bool isInZone)
 		{
 			if(isInZone && _canChange)
 			{

@@ -33,6 +33,11 @@ namespace SceneLayers
             public string viewName = "New View";
             public Color color = new Color(0.3f, 0.50f, 0.7f, 1f);
             public List<LayerState> states = new List<LayerState>();
+
+            public bool hasCameraData = false;
+            public Vector3 cameraPosition;
+            public Quaternion cameraRotation;
+            public float cameraSize;
         }
 
         [Serializable]
