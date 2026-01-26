@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 using Ami.Extension;
+using System;
 using System.IO;
 using static Ami.BroAudio.Editor.Setting.BroAudioGUISetting;
 using static Ami.Extension.EditorScriptingExtension;
@@ -338,7 +339,9 @@ namespace Ami.BroAudio.Editor
 			if(GUI.Button(saveAsButton,new GUIContent("Save As")))
 			{
                 string lastSavePath = SessionState.GetString(PrefKey, string.Empty);
-                lastSavePath = string.IsNullOrEmpty(lastSavePath) ? "Assets" : lastSavePath;
+                string assetPath = AssetDatabase.GetAssetPath(TargetClip);
+                string assetDirectory = Path.GetDirectoryName(assetPath);
+                lastSavePath = string.IsNullOrEmpty(lastSavePath) ? assetDirectory : lastSavePath;
 				string newPath = EditorUtility.SaveFilePanelInProject(SaveFilePanelTitle, TargetClip.name, DefaultFileExt, SaveFilePanelTitle, lastSavePath);
 				if(!string.IsNullOrEmpty(newPath))
 				{

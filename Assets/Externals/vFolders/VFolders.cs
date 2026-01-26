@@ -6,6 +6,11 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.ShortcutManagement;
+using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
+using UnityEditor.SceneManagement;
+using UnityEditor.IMGUI.Controls;
 using Type = System.Type;
 using static VFolders.Libs.VUtils;
 using static VFolders.Libs.VGUI;
@@ -1669,7 +1674,7 @@ namespace VFolders
 
 
 
-        const string version = "2.1.10";
+        const string version = "2.1.13";
 
     }
 

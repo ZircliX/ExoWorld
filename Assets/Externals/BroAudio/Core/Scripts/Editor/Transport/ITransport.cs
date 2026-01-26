@@ -1,4 +1,6 @@
-﻿namespace Ami.BroAudio.Editor
+﻿using System;
+
+namespace Ami.BroAudio.Editor
 {
 	public interface ITransport : IClip
 	{

@@ -3,9 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 using UnityEditor.SceneManagement;
+using UnityEditor.ShortcutManagement;
 using System.Reflection;
 using System.Linq;
+using UnityEngine.UIElements;
 using Type = System.Type;
 using static VFavorites.Libs.VUtils;
 using static VFavorites.Libs.VGUI;
@@ -1013,7 +1016,11 @@ namespace VFavorites
                 {
                     Selection.activeObject = folderAsset;
 
+#if UNITY_6000_3_OR_NEWER
+                    browser.GetMemberValue("m_AssetTree")?.GetPropertyValue("data")?.InvokeMethod("SetExpanded", (EntityId)folderAsset.GetInstanceID(), true);
+#else
                     browser.GetMemberValue("m_AssetTree")?.GetPropertyValue("data")?.InvokeMethod("SetExpanded", folderAsset.GetInstanceID(), true);
+#endif
 
                 }
 
@@ -1101,6 +1108,7 @@ namespace VFavorites
             void openScene()
             {
                 if (item.type != typeof(SceneAsset)) return;
+                if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) return; // if clicked cancel
 
                 EditorSceneManager.SaveOpenScenes();
                 EditorSceneManager.OpenScene(item.assetPath);
@@ -1362,7 +1370,7 @@ namespace VFavorites
 
         static float currentOpacity;
         static float currentOpacityDerivative;
-        static float targetOpacity => curEvent.holdingAlt || renamingPage || draggingItemFromPageToOutside || isWrappedBrowserLocked ? 1 : 0; // holdingAlt instead of shortcutPressed to prevent unwrapping due to incorrect event modifiers on key down on mac
+        static float targetOpacity => isAltPressed || renamingPage || draggingItemFromPageToOutside || isWrappedBrowserLocked ? 1 : 0; // holdingAlt instead of shortcutPressed to prevent unwrapping due to incorrect event modifiers on key down on mac
         static bool animatingOpacity => currentOpacity.DistanceTo(targetOpacity) > .01f;
 
 
@@ -1671,7 +1679,7 @@ namespace VFavorites
             get
             {
                 if (VFavoritesMenu.activeOnAltEnabled)
-                    return curEvent.holdingAlt;
+                    return isAltPressed;
 
                 if (VFavoritesMenu.activeOnAltShiftEnabled)
                     return curEvent.modifiers == (EventModifiers.Alt | EventModifiers.Shift);
@@ -1682,9 +1690,40 @@ namespace VFavorites
                     else
                         return curEvent.modifiers == (EventModifiers.Control | EventModifiers.Alt);
 
+
                 return false;
+
             }
         }
+
+
+
+
+        static bool isAltPressed
+        {
+            get
+            {
+#if !UNITY_EDITOR_LINUX
+                return curEvent.holdingAlt;
+#else
+
+                if (curEvent.holdingAlt)
+                    _isAltPressed_cachedForLinux = true;
+
+                else if (curEvent.keyCode == KeyCode.LeftAlt)
+                    if (curEvent.isKeyDown)
+                        _isAltPressed_cachedForLinux = true;
+
+                    else if (curEvent.isKeyUp)
+                        _isAltPressed_cachedForLinux = false;
+
+
+                return _isAltPressed_cachedForLinux;
+
+#endif
+            }
+        }
+        static bool _isAltPressed_cachedForLinux;
 
 
 
@@ -1995,7 +2034,7 @@ namespace VFavorites
 
 
 
-        const string version = "2.0.12";
+        const string version = "2.0.14";
 
     }
 }

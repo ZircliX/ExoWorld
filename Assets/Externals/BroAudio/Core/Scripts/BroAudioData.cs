@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Ami.Extension;
@@ -11,7 +12,7 @@ namespace Ami.BroAudio.Data
 #endif
     public class BroAudioData : ScriptableObject
     {
-        public const string CodeBaseVersion = "2.2.1";
+        public const string CodeBaseVersion = "2.2.2";
 
         [SerializeField, ReadOnly] string _version;
         [SerializeField] List<AudioAsset> _assets = new List<AudioAsset>();
@@ -33,7 +34,7 @@ namespace Ami.BroAudio.Data
 
         public void AddAsset(AudioAsset asset)
         {
-            if(asset)
+            if(asset && !_assets.Contains(asset))
             {
                 _assets.Add(asset);
             }	

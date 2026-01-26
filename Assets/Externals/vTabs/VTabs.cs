@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.ShortcutManagement;
 using System.Reflection;
 using System.Linq;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 using UnityEditor.SceneManagement;
+using System.Diagnostics;
 using Type = System.Type;
 using Delegate = System.Delegate;
 using Action = System.Action;
@@ -546,7 +548,12 @@ namespace VTabs
                 if (browser.GetMemberValue("m_AssetTree") is not object m_AssetTree) return;
                 if (m_AssetTree.GetMemberValue("data") is not object data) return;
 
+#if UNITY_6000_3_OR_NEWER
+                var m_rootInstanceID = data.GetMemberValue<EntityId>("m_rootInstanceID");
+#else
                 var m_rootInstanceID = data.GetMemberValue<int>("m_rootInstanceID");
+#endif
+
 
                 void setInitial()
                 {
@@ -555,7 +562,11 @@ namespace VTabs
                     var folderPath = browser.GetLockedFolderPath_oneColumn();
                     var folderIid = AssetDatabase.LoadAssetAtPath<Object>(folderPath).GetInstanceID();
 
+#if UNITY_6000_3_OR_NEWER
+                    data.SetMemberValue("m_rootInstanceID", (EntityId)folderIid);
+#else
                     data.SetMemberValue("m_rootInstanceID", folderIid);
+#endif
 
                     m_AssetTree.InvokeMethod("ReloadData");
 
@@ -576,7 +587,11 @@ namespace VTabs
                 {
                     if (browser.GetMemberValue<bool>("isLocked")) return;
 
+#if UNITY_6000_3_OR_NEWER
+                    data.SetMemberValue("m_rootInstanceID", (EntityId)0);
+#else
                     data.SetMemberValue("m_rootInstanceID", 0);
+#endif
                     browser.SetLockedFolderPath_oneColumn("Assets");
 
                     m_AssetTree.InvokeMethod("ReloadData");
@@ -633,7 +648,11 @@ namespace VTabs
 
                         var folderIid = AssetDatabase.LoadAssetAtPath<Object>(AssetDatabase.GUIDToAssetPath(delayedFolderGuid)).GetInstanceID();
 
+#if UNITY_6000_3_OR_NEWER
+                        browser.InvokeMethod("SetFolderSelection", new[] { (EntityId)folderIid }, false);
+#else
                         browser.InvokeMethod("SetFolderSelection", new[] { folderIid }, false);
+#endif
 
                         UpdateBrowserTitle(browser);
 
@@ -935,11 +954,13 @@ namespace VTabs
 
 
 
-        static void ClosePropertyEditorsWithNonLoadableObjects()
+        static void ReplaceUnloadedPropertyEditors_withPlaceholderWIndows()
         {
             foreach (var propertyEditor in allPropertyEditors)
                 if (propertyEditor.GetMemberValue<Object>("m_InspectedObject") == null)
-                    propertyEditor.Close();
+
+                    ScriptableObject.CreateInstance<VTabsPlaceholderWindow>()
+                                    .Open_andReplacePropertyEditor(propertyEditor);
 
         }
 
@@ -1002,9 +1023,14 @@ namespace VTabs
         static void OnSceneOpened(Scene _, OpenSceneMode __)
         {
             LoadPropertyEditorInspectedObjects();
-            ClosePropertyEditorsWithNonLoadableObjects();
+            ReplaceUnloadedPropertyEditors_withPlaceholderWIndows();
             UpdateAllPropertyEditorTitles();
 
+        }
+
+        static void OnPrefabStageClosing(PrefabStage _)
+        {
+            ReplaceUnloadedPropertyEditors_withPlaceholderWIndows();
         }
 
         static void OnProjectLoaded()
@@ -1467,6 +1493,9 @@ namespace VTabs
             EditorApplication.quitting += VTabsCache.Save;
 
 
+            PrefabStage.prefabStageClosing += OnPrefabStageClosing;
+
+
 
             // EditorApplication.delayCall += () => VTabsAddTabWindow.UpdateAllEntries();
 
@@ -1528,7 +1557,7 @@ namespace VTabs
 
 
 
-        const string version = "2.1.4";
+        const string version = "2.1.5";
 
     }
 }

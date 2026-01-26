@@ -1,12 +1,23 @@
 #if UNITY_EDITOR
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.ShortcutManagement;
+using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
+using UnityEditor.SceneManagement;
+using UnityEditor.IMGUI.Controls;
+using Type = System.Type;
 using static VFolders.Libs.VUtils;
 using static VFolders.Libs.VGUI;
 // using static VTools.VDebug;
 using static VFolders.VFolders;
+using static VFolders.VFoldersData;
+using static VFolders.VFoldersCache;
 
 #if UNITY_6000_3_OR_NEWER
 using TreeViewItem = UnityEditor.IMGUI.Controls.TreeViewItem<UnityEngine.EntityId>;
@@ -76,8 +87,8 @@ namespace VFolders
                     var rowIndex = ((rowRect.y + offest) / 16).ToInt();
 
 
-                    if (rowIndex < 0 || rowIndex >= rows.Count) return;
                     if (rows == null) return;
+                    if (rowIndex < 0 || rowIndex >= rows.Count) return;
 
                     treeItem = rows[rowIndex];
 
@@ -663,15 +674,22 @@ namespace VFolders
                     if (!curEvent.isMouseUp) return;
 
                     var selectedGuids = isListArea
-                                               ?
-                                               Selection.objects.Where(r => r is DefaultAsset).Select(r => r.GetPath().ToGuid())
-                                               :
+                                        ?
+                                        Selection.objects.Where(r => r is DefaultAsset).Select(r => r.GetPath().ToGuid())
+                                        :
 #if UNITY_2021_1_OR_NEWER
-                                               treeViewController.GetFieldValue("m_CachedSelection").GetFieldValue<List<int>>("m_List")
+                                        treeViewController.GetFieldValue("m_CachedSelection").GetIdList("m_List")
 #else
-                                               treeViewController?.GetMemberValue("state").GetMemberValue<List<int>>("selectedIDs")
+                                        treeViewController?.GetMemberValue("state").GetMemberValue<List<int>>("selectedIDs")
 #endif
+
+
+#if UNITY_6000_3_OR_NEWER
+                                 .Select(id => treeViewController.InvokeMethod("FindItem", (EntityId)id))
+#else
                                  .Select(id => treeViewController.InvokeMethod("FindItem", id))
+#endif
+
                                  .Where(r => r?.GetType().Name == "FolderTreeItem")
                                  .Select(r => r.GetPropertyValue<string>("Guid"))
                                  .Where(r => r != null);

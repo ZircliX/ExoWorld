@@ -7,8 +7,11 @@ using UnityEngine;
 using UnityEditor;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Diagnostics;
 using System.Reflection;
+using UnityEngine.Experimental.Rendering;
 using static VHierarchy.Libs.VUtils;
+using static VHierarchy.Libs.VGUI;
 
 
 namespace VHierarchy.Libs
@@ -1421,7 +1424,11 @@ namespace VHierarchy.Libs
             }
             public static EditorWindow OpenColorPicker(System.Action<Color> colorChangedCallback, Color color, bool showAlpha = true, bool hdr = false)
             {
+#if UNITY_6000_3_OR_NEWER
+                typeof(Editor).Assembly.GetType("UnityEditor.ColorPicker").InvokeMethod("Show", colorChangedCallback, color, showAlpha, hdr, false);
+#else
                 typeof(Editor).Assembly.GetType("UnityEditor.ColorPicker").InvokeMethod("Show", colorChangedCallback, color, showAlpha, hdr);
+#endif
 
                 return typeof(Editor).Assembly.GetType("UnityEditor.ColorPicker").GetPropertyValue<EditorWindow>("instance");
 
@@ -1885,9 +1892,18 @@ namespace VHierarchy.Libs
         static void _GlobalObjectId_GlobalObjectIdentifiersToInstanceIDsSlow(GlobalObjectId[] identifiers, int[] outputInstanceIDs)
         {
 #if UNITY_6000_3_OR_NEWER
-            GlobalObjectId.GlobalObjectIdentifiersToEntityIdsSlow(identifiers, outputInstanceIDs.Select(r => (EntityId)r).ToArray());
+
+            var outputEntityIds = new EntityId[outputInstanceIDs.Length];
+
+            GlobalObjectId.GlobalObjectIdentifiersToEntityIdsSlow(identifiers, outputEntityIds);
+
+            for (int i = 0; i < outputEntityIds.Length; i++)
+                outputInstanceIDs[i] = (int)outputEntityIds[i];
+
 #else
+
             GlobalObjectId.GlobalObjectIdentifiersToInstanceIDsSlow(identifiers, outputInstanceIDs);
+
 #endif
 
         }

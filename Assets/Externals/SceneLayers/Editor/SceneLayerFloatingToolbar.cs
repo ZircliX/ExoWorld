@@ -36,7 +36,7 @@ namespace SceneLayers.Editor
             return (SIDE_PADDING * 2) + MIN_BUTTON_WIDTH;
         }
 
-        [MenuItem("Window/Scene Layers/Views Overlay", false, 1002)]
+        [MenuItem("Tools/Scene Layers/Views Overlay", false, 1002)]
         public static void ShowWindow()
         {
             var existingWindows = Resources.FindObjectsOfTypeAll<SceneLayerFloatingToolbar>();
@@ -462,6 +462,18 @@ namespace SceneLayers.Editor
                 layer.defaultPickable = state.pickable;
                 SceneLayerController.SetLayerVisibility(m_database, layer, state.visible);
                 SceneLayerController.SetLayerPickable(m_database, layer, state.pickable);
+            }
+
+            if (view.hasCameraData)
+            {
+                var sceneView = SceneView.lastActiveSceneView;
+                if (sceneView != null)
+                {
+                    sceneView.pivot = view.cameraPosition;
+                    sceneView.rotation = view.cameraRotation;
+                    sceneView.size = view.cameraSize;
+                    sceneView.Repaint();
+                }
             }
 
             EditorUtility.SetDirty(m_database);

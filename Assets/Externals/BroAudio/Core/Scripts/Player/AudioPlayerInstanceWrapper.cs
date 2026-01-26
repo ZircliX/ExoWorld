@@ -2,6 +2,7 @@ using UnityEngine;
 using Ami.BroAudio.Runtime;
 using Ami.Extension;
 using System;
+using System.Collections.Generic;
 using Ami.BroAudio.Data;
 
 namespace Ami.BroAudio
@@ -13,13 +14,6 @@ namespace Ami.BroAudio
     {
         public AudioPlayerInstanceWrapper(AudioPlayer instance) : base(instance)
         {
-        }
-
-        [Obsolete("Use " + nameof(IAudioPlayer.OnEnd) + " instead")]
-        public event Action<SoundID> OnEndPlaying
-        {
-            add { if (IsAvailable()) Instance.OnEndPlaying += value; }
-            remove { if(IsAvailable()) Instance.OnEndPlaying -= value; }
         }
 
         protected override void LogInstanceIsNull()
@@ -55,6 +49,7 @@ namespace Ami.BroAudio
 
         IAudioPlayer IAudioPlayer.OnStart(Action<IAudioPlayer> onStart) => IsAvailable() ? Wrap(Instance.OnStart(onStart)) : Empty.AudioPlayer;
         IAudioPlayer IAudioPlayer.OnUpdate(Action<IAudioPlayer> onUpdate) => IsAvailable() ? Wrap(Instance.OnUpdate(onUpdate)) : Empty.AudioPlayer;
+        IAudioPlayer IAudioPlayer.OnPause(Action<IAudioPlayer> onPause) => IsAvailable() ? Wrap(Instance.OnPause(onPause)) : Empty.AudioPlayer;
         IAudioPlayer IAudioPlayer.OnEnd(Action<SoundID> onEnd) => IsAvailable() ? Wrap(Instance.OnEnd(onEnd)) : Empty.AudioPlayer;
         
         public IAudioPlayer SetFadeInEase(Ease ease) => IsAvailable() ? Wrap(Instance.SetFadeInEase(ease)) : Empty.AudioPlayer;
@@ -132,6 +127,14 @@ namespace Ami.BroAudio
                 foreach (var onEnd in onEndDelegates)
                 {
                     newInstance.OnEnd(onEnd as Action<SoundID>);
+                }
+            }
+
+            if (Instance.TransferOnPauses(out var onPauseDelegates))
+            {
+                foreach (var onPause in onPauseDelegates)
+                {
+                    newInstance.OnPause(onPause as Action<IAudioPlayer>);
                 }
             }
 

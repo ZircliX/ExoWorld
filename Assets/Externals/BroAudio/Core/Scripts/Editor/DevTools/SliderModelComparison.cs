@@ -3,7 +3,9 @@ using UnityEditor;
 using Ami.Extension;
 using System;
 using Ami.Extension.Reflection;
+using static Ami.BroAudio.Tools.BroName;
 using System.Reflection;
+using static Ami.BroAudio.Editor.Setting.BroAudioGUISetting;
 
 namespace Ami.BroAudio.Editor.DevTool
 {

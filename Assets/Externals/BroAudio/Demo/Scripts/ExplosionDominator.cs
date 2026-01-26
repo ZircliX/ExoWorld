@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Ami.BroAudio.Demo
@@ -24,7 +25,7 @@ namespace Ami.BroAudio.Demo
 #endif
 		}
 
-        protected override void OnInZoneChanged(InteractiveZone zone, bool isInZone)
+        public override void OnInZoneChanged(bool isInZone)
 		{
 			if(_coroutine != null)
 			{

@@ -14,7 +14,7 @@ namespace SceneLayers.Editor
         private string m_currentScenePath = "";
         private Vector2 m_scrollPosition;
 
-        [MenuItem("Window/Scene Layers/Views Panel", false, 1001)]
+        [MenuItem("Tools/Scene Layers/Views Panel", false, 1001)]
         public static void ShowWindow()
         {
             var win = GetWindow<SceneLayerViewsPanel>();
@@ -264,6 +264,18 @@ namespace SceneLayers.Editor
                 layer.defaultPickable = state.pickable;
                 SceneLayerController.SetLayerVisibility(m_database, layer, state.visible);
                 SceneLayerController.SetLayerPickable(m_database, layer, state.pickable);
+            }
+
+            if (view.hasCameraData)
+            {
+                var sceneView = SceneView.lastActiveSceneView;
+                if (sceneView != null)
+                {
+                    sceneView.pivot = view.cameraPosition;
+                    sceneView.rotation = view.cameraRotation;
+                    sceneView.size = view.cameraSize;
+                    sceneView.Repaint();
+                }
             }
 
             EditorUtility.SetDirty(m_database);
