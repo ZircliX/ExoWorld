@@ -1,4 +1,5 @@
 ﻿using System;
+using OverBang.ExoWorld.Core;
 using OverBang.ExoWorld.Gameplay.Abilities;
 using OverBang.ExoWorld.Gameplay.PlayerHUD;
 using Unity.Netcode;
@@ -9,6 +10,8 @@ namespace OverBang.ExoWorld.Gameplay
 {
     public class GadgetController : NetworkBehaviour, ICaster, IInputReceiver
     {
+        
+        [SerializeField] private RadialMenu gadgetMenuUi;
         public Vector3 Forward => transform.forward;
         private LoadoutController loadoutController;
         private IGadget currentGadget;
@@ -37,12 +40,14 @@ namespace OverBang.ExoWorld.Gameplay
         private void StartGadgetSelection()
         {
             HUD.Instance.SetCursorState(true);
+            gadgetMenuUi.TestFunction();
             OnGadgetSelectionBegin?.Invoke();
         }
 
         private void StopGadgetSelection()
         {
             HUD.Instance.SetCursorState(false);
+            gadgetMenuUi.ClearMenu();
             OnGadgetSelectionEnd?.Invoke();
             OnEnd();
         }
