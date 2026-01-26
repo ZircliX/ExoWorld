@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using KBCore.Refs;
+using OverBang.ExoWorld.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,14 +11,32 @@ namespace OverBang.ExoWorld.Gameplay
     {
         [SerializeField, Self] private WeaponController weaponController;
         [SerializeField, Self] private GadgetController gadgetController;
-
+        
+        [SerializeField] private InputActionAsset map;
+        [SerializeField] private List<string> actionToDisable;
+        
         private Stack<IInputReceiver> receivers;
+        private List<InputAction> actions;
         private IInputReceiver current;
 		
 
         private void OnValidate()
         {
             this.ValidateRefs();
+        }
+
+        private void Start()
+        {
+            actions = new List<InputAction>();
+
+            foreach (string action in actionToDisable)
+            {
+                InputAction Results = map.FindAction(action);
+                if (Results != null)
+                {
+                    actions.Add(Results);
+                }
+            }
         }
 
         private void Awake()
@@ -41,6 +60,11 @@ namespace OverBang.ExoWorld.Gameplay
             {
                 receivers.Pop();
                 current = receivers.Peek();
+
+                foreach (InputAction action in actions)
+                {
+                    action.Enable();
+                }
             }
         }
         
@@ -67,8 +91,14 @@ namespace OverBang.ExoWorld.Gameplay
 
         public void OnCInput(InputAction.CallbackContext context)
         {
-            if (context.performed) SwitchReceiver(gadgetController);
-            
+            if (context.performed)
+            {
+                SwitchReceiver(gadgetController);
+                foreach (InputAction action in actions)
+                {
+                    action.Disable();
+                }
+            }
             current.OnCInput(context);
         }
 

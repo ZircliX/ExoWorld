@@ -58,7 +58,6 @@ namespace OverBang.ExoWorld.Gameplay
             foreach (KeyValuePair<UpgradeType, RuntimeUpgradeData> runtimeUpgradeData in playerUpgradesDatas)
             {
                 RuntimeUpgradeData runtimeData = runtimeUpgradeData.Value;
-                Debug.Log($"{runtimeData.upgradeData.UpgradeName}, {runtimeData.finalBonus}");
 
                 Upgrade upgrade = upgrades[runtimeUpgradeData.Key];
                 
