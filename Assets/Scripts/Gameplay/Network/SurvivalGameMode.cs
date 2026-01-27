@@ -1,14 +1,28 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Characters;
+using OverBang.ExoWorld.Core.GameMode;
+using OverBang.ExoWorld.Core.GameMode.Players;
+using OverBang.ExoWorld.Core.Metrics;
+using OverBang.ExoWorld.Core.Phases;
+using OverBang.ExoWorld.Core.Utils;
+using OverBang.ExoWorld.Gameplay.Phase;
+using Unity.Services.Multiplayer;
 using UnityEngine;
+using UnityEngine.Pool;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Network
 {
     [CreateGameMode(GameModeUtils.SurvivalGameModeName)]
     public class SurvivalGameMode : IGameMode
     {
         private GameplayPhase.GameplayEndInfos gameplayEndInfos;
         private bool hasCharacter;
+        
+        public IReadOnlyCollection<IGamePlayer> GamePlayers => gamePlayerManager.Players;
+        
+        private GamePlayerManager gamePlayerManager;
+        
 
         public SurvivalGameMode()
         {
@@ -16,12 +30,18 @@ namespace OverBang.ExoWorld.Gameplay
         
         public async Awaitable OnBegin()
         {
+            gamePlayerManager = new GameObject(nameof(GamePlayerManager)).AddComponent<GamePlayerManager>();
+            gamePlayerManager.hideFlags = HideFlags.NotEditable;
+            
+            Object.DontDestroyOnLoad(gamePlayerManager.gameObject);
+            
             await Task.CompletedTask;
         }
 
         public async Awaitable OnEnd()
         {
             await Task.CompletedTask;
+            Object.Destroy(gamePlayerManager.gameObject);
         }
 
         public async Awaitable Execute()
@@ -29,7 +49,29 @@ namespace OverBang.ExoWorld.Gameplay
             Debug.Log("Run GameMode: SurvivalGameMode");
             bool isRunning = true;
             hasCharacter = false;
-            
+
+            ISession session = SessionManager.Global.ActiveSession;
+            IPlayer currentPlayer = SessionManager.Global.CurrentPlayer;
+            using (ListPool<IGamePlayer>.Get(out var gamePlayers))
+            {
+                foreach (IReadOnlyPlayer player in session.Players)
+                {
+                    //Local pour lois
+                    if (player.Id == currentPlayer.Id)
+                    {
+                        LocalGamePlayer localGamePlayer = new LocalGamePlayer();
+                        gamePlayers.Add(localGamePlayer);
+                    }
+                    else
+                    {
+                        RemoteGamePlayer remoteGamePlayer = new RemoteGamePlayer(player.Id);
+                        gamePlayers.Add(remoteGamePlayer);
+                    }
+                }
+                
+                gamePlayerManager.Initialize(gamePlayers);
+            }
+
             while (isRunning)
             {
                 CheckForCharacter();
@@ -72,17 +114,14 @@ namespace OverBang.ExoWorld.Gameplay
         {
             GameplayPhase.GameplaySettings gameplaySettings = new GameplayPhase.GameplaySettings
             {
+                
             };
 
             GameplayPhase gameplayPhase;
             if (SessionManager.Global.IsHost())
-            {
                 gameplayPhase = new HostGameplayPhase(gameplaySettings);
-            }
             else
-            {
                 gameplayPhase = new ClientGameplayPhase(gameplaySettings);
-            }
                 
             await gameplayPhase.RunAsync();
             

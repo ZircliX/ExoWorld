@@ -1,8 +1,8 @@
 ﻿using KBCore.Refs;
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Utils;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public class WeaponInitialize : MonoBehaviour
     {

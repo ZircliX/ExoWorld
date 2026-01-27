@@ -1,4 +1,6 @@
 using System;
+using OverBang.ExoWorld.Gameplay.Enemies;
+using OverBang.ExoWorld.Gameplay.Targeting;
 using UnityEngine;
 using UnityEngine.AI;
 

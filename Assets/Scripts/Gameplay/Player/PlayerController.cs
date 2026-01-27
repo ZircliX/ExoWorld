@@ -1,9 +1,13 @@
 using Helteix.Tools;
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Characters;
+using OverBang.ExoWorld.Core.GameMode.Players;
+using OverBang.ExoWorld.Core.Metrics;
+using OverBang.ExoWorld.Gameplay.Cameras;
+using OverBang.ExoWorld.Gameplay.IK_Animation;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Player
 {
     public class PlayerController : NetworkBehaviour, IPlayerController
     {
@@ -15,11 +19,18 @@ namespace OverBang.ExoWorld.Gameplay
             playerComponents = GetComponentsInChildren<IPlayerComponent>();
         }
         
-        [Rpc(SendTo.Everyone)]
-        public void SetDataRpc(string characterDataID)
+        public void Connect(LocalGamePlayer localGamePlayer)
         {
-            if (characterDataID.TryGetAssetByID(out CharacterData characterData))
+            SetDataRpc(localGamePlayer.SessionPlayer.Id);
+        }
+        
+        [Rpc(SendTo.Everyone)]
+        public void SetDataRpc(string sessionPlayer)
+        {
+
+            if (GamePlayerManager.Instance.TryGetPlayerWithSessionId(sessionPlayer, out IGamePlayer gamePlayer))
             {
+                CharacterData characterData = gamePlayer.CharacterData;
                 playerModelContainer.ClearChildren();
                 GameObject playerModel = Instantiate(characterData.ModelPrefab, playerModelContainer);
                 
@@ -60,5 +71,6 @@ namespace OverBang.ExoWorld.Gameplay
             base.OnDestroy();
             PlayerManager.Instance.UnregisterPlayer(this);
         }
+
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-namespace OverBang.ExoWorld.Core
+namespace OverBang.ExoWorld.Core.Phases
 {
     public static class PhaseManager
     {

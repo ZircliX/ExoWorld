@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using Helteix.Singletons.MonoSingletons;
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Metrics;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Cameras
 {
     public class CameraManager : MonoSingleton<CameraManager>
     {

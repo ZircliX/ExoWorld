@@ -1,8 +1,10 @@
 using Helteix.ChanneledProperties.Priorities;
+using OverBang.ExoWorld.Gameplay.Cameras;
+using OverBang.ExoWorld.Gameplay.Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Movement
 {
     public class PlayerMovement : EntityMovement, IPlayerComponent
     {

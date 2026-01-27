@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Helteix.Singletons.MonoSingletons;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Enemies
 {
     public class AreaManager : MonoSingleton<AreaManager>
     {

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68dd5de6cd214e32980224717bd660dc, type: 3}
+  m_Name: 2_QuestTwo
+  m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.QuestTwoData
+  <ObjectiveName>k__BackingField: REMISE SOUS TENSION
+  <ObjectiveDescription>k__BackingField: "R\xE9cup\xE9rez les fusibles pour r\xE9activer
+    le syst\xE8me d'alimentation afin d'acc\xE9der \xE0 la salle des machines."
+  <ObjectiveSteps>k__BackingField:
+  - Trouvez un fusible.
+  - Ramassez un fusible
+  - Amenez un fusible au dijoncteur
+  - Trouvez, ramassez et amenez les autres fusibles au dijoncteur
+  <Rewards>k__BackingField: []
+  <TotalPieces>k__BackingField: 4
+  <InteractionRange>k__BackingField: 2
+  <CarryingSlowForce>k__BackingField: 0.6
+  <InteractionText>k__BackingField: Ajouter le fusible
+  <InteractionTextEmpty>k__BackingField: "N\xE9cessite un fusible"

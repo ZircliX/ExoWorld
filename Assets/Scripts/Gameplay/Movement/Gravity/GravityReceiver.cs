@@ -1,7 +1,7 @@
 using Helteix.ChanneledProperties.Priorities;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Movement
 {
     public abstract class GravityReceiver : MonoBehaviour
     {

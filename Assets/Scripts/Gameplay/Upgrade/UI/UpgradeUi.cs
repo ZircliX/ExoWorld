@@ -1,8 +1,8 @@
-﻿using OverBang.ExoWorld.Core;
+﻿using OverBang.ExoWorld.Core.Upgrade;
 using TMPro;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Upgrade
 {
     public class UpgradeUi : MonoBehaviour
     {

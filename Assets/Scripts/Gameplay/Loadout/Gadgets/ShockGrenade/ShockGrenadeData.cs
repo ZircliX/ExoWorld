@@ -1,7 +1,7 @@
-﻿using OverBang.ExoWorld.Core;
+﻿using OverBang.ExoWorld.Core.Damage;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public class ShockGrenadeData : GadgetData
     {

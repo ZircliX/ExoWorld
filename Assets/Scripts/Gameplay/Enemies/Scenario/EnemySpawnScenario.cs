@@ -1,8 +1,8 @@
-﻿using OverBang.ExoWorld.Core;
+﻿using OverBang.ExoWorld.Core.Enemies;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Enemies
 {
     [CreateAssetMenu(menuName = "OverBang/Enemy/EnemySpawnScenario")]
     public class EnemySpawnScenario : ScriptableObject

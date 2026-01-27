@@ -1,7 +1,7 @@
-using OverBang.ExoWorld.Gameplay.Composits;
+using OverBang.ExoWorld.Gameplay.Cameras.Composits;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Movement
 {
     public abstract class MovementStateBehavior : ScriptableObject
     {

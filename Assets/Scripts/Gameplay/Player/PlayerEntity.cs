@@ -1,10 +1,14 @@
 ﻿using System;
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Characters;
+using OverBang.ExoWorld.Core.Interactions;
+using OverBang.ExoWorld.Core.Upgrade;
+using OverBang.ExoWorld.Gameplay.Targeting;
+using OverBang.ExoWorld.Gameplay.Upgrade;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Player
 {
-    public class PlayerEntity : MonoBehaviour, IPlayerComponent, ITargetable
+    public class PlayerEntity : MonoBehaviour, IPlayerComponent, ITargetable, ISlowable
     {
         [field: SerializeField] public DamageableAndHealableComponent DamageableAndHealableComponent { get; private set; }
         public PlayerController Controller { get; set; }
@@ -30,11 +34,16 @@ namespace OverBang.ExoWorld.Gameplay
         public event Action<bool> OnTargetableChanged;
         public Transform Transform => transform;
         public TargetPriority Priority => TargetPriority.High;
-        public bool IsTargetable { get; private set; }
+        public bool IsTargetable { get; private set; } = true;
         public void SetTargetable(bool state)
         {
             IsTargetable = state;
             OnTargetableChanged?.Invoke(IsTargetable);
+        }
+
+        public void ApplySlow(float slowPercentage, float slowDuration)
+        {
+            throw new NotImplementedException();
         }
     }
 }

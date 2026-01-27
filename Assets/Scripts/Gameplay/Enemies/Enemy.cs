@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using KBCore.Refs;
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Damage;
+using OverBang.ExoWorld.Core.Enemies;
+using OverBang.ExoWorld.Core.Interactions;
+using OverBang.ExoWorld.Core.Utils;
 using OverBang.ExoWorld.Gameplay.Abilities;
+using OverBang.ExoWorld.Gameplay.Targeting;
 using OverBang.Pooling;
 using OverBang.Pooling.Resource;
 using Unity.Netcode;
@@ -10,7 +14,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Enemies
 {
     [RequireComponent(typeof(DamageableAndHealableComponent))]
     public class Enemy : NetworkBehaviour, IPoolInstanceListener, IDamageSource, ITargetable, ISlowable
@@ -91,9 +95,9 @@ namespace OverBang.ExoWorld.Gameplay
             if (IsOwner)
             {
                 Agent.speed = enemyData.BaseSpeed;
-                //FocusDetectionArea.SetRequireInterface<ITargetable>();
+                FocusDetectionArea.SetRequireInterface<ITargetable>();
                 FocusDetectionArea.SetAllowedTags("Player", "LocalPlayer");
-                //AttackDetectionArea.SetRequireInterface<ITargetable>();
+                AttackDetectionArea.SetRequireInterface<ITargetable>();
                 AttackDetectionArea.SetAllowedTags("Player", "LocalPlayer");
                 
                 // TODO : Setup Health based on enemy data

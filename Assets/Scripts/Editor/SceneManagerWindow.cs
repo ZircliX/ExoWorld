@@ -1,4 +1,5 @@
 using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Scene;
 using Unity.Netcode;
 using UnityEditor;
 using UnityEngine;

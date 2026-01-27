@@ -4,7 +4,7 @@ using Helteix.ChanneledProperties.Priorities;
 using Helteix.Tools;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Health
 {
     public class HealthComponent : MonoBehaviour, IEffectReceiver
     {

@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Characters;
+using OverBang.ExoWorld.Core.Phases;
+using OverBang.ExoWorld.Gameplay.Loadout;
+using OverBang.ExoWorld.Gameplay.Phase;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.HUB.Listeners

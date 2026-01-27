@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using Helteix.Singletons.MonoSingletons;
-using OverBang.ExoWorld.Core;
-using Unity.Services.Multiplayer;
+using OverBang.ExoWorld.Core.Characters;
+using OverBang.ExoWorld.Core.GameMode.Players;
+using OverBang.ExoWorld.Core.Inventory;
+using OverBang.ExoWorld.Core.Upgrade;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Upgrade
 {
     public class UpgradeManager : MonoSingleton<UpgradeManager>
     {
         private Dictionary<UpgradeType, Upgrade> upgrades;
-        [field : SerializeField] public Dictionary<UpgradeType, RuntimeUpgradeData> playerUpgradesDatas { get; private set; }
+        
+        public Dictionary<UpgradeType, RuntimeUpgradeData> playerUpgradesDatas { get; private set; }
         
         public event Action<int> OnPlayerTritiniteAmountChange;
         public event Action OnUpgrade;
@@ -20,29 +23,23 @@ namespace OverBang.ExoWorld.Gameplay
             upgrades = new Dictionary<UpgradeType, Upgrade>();
         }
 
-        public void InitializeUpgrades(IPlayer player)
+        public void InitializeUpgrades(IGamePlayer player)
         {
             playerUpgradesDatas = new Dictionary<UpgradeType, RuntimeUpgradeData>(4);
+            CharacterData characterData = player.CharacterData;
+            Debug.Log($"Data Loaded with {playerUpgradesDatas.Count} upgrades");
             
-            if (player.TryGetCharacterDataByPlayer(out CharacterData characterData))
+            foreach (UpgradeData upgrade in characterData.UpgradeDatas)
             {
-                Debug.Log($"Data Loaded with {playerUpgradesDatas.Count} upgrades");
-                foreach (UpgradeData upgrade in characterData.UpgradeDatas)
+                RuntimeUpgradeData run = new RuntimeUpgradeData()
                 {
-                    RuntimeUpgradeData run = new RuntimeUpgradeData()
-                    {
-                        upgradeData = upgrade,
-                    };
-                    run.Initialize();
-                    playerUpgradesDatas.Add(run.upgradeData.UpgradeType, run);
-                }
+                    upgradeData = upgrade,
+                };
+                run.Initialize();
+                playerUpgradesDatas.Add(run.upgradeData.UpgradeType, run);
+            }
 
-                RefreshTable();
-            }
-            else
-            {
-                Debug.LogError("Could not find CharacterData !!");
-            }
+            RefreshTable();
             
         }
 

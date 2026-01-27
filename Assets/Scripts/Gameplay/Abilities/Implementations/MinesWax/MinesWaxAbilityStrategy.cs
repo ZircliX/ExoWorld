@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Characters;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Abilities

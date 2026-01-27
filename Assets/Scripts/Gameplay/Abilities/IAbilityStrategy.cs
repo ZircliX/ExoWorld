@@ -1,4 +1,4 @@
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Characters;
 
 namespace OverBang.ExoWorld.Gameplay.Abilities
 {

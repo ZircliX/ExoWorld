@@ -1,10 +1,14 @@
-﻿namespace OverBang.ExoWorld.Core
+﻿using UnityEngine;
+
+namespace OverBang.ExoWorld.Core.Characters
 {
     [System.Serializable]
     public struct CharacterBaseStats
     {
-        public float Health { get; set; }
-        public float Resistance { get; set; }
+        [field: SerializeField]
+        public float Health { get; private set; }
+        [field: SerializeField]
+        public float Resistance { get; private set; }
         
     }
 }

@@ -1,12 +1,13 @@
 using System;
 using System.Threading;
 using Ami.BroAudio;
+using OverBang.ExoWorld.Core.Utils;
 using OverBang.Pooling;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace OverBang.ExoWorld.Core
+namespace OverBang.ExoWorld.Core.Scene
 {
     public static class SceneLoader
     {

@@ -1,8 +1,8 @@
-﻿using OverBang.ExoWorld.Core;
+﻿using OverBang.ExoWorld.Core.Enemies;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Enemies
 {
     public class EnemySpawner : MonoBehaviour
     {

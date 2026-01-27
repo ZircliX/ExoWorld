@@ -1,6 +1,6 @@
 using System;
 
-namespace OverBang.ExoWorld.Core
+namespace OverBang.ExoWorld.Core.Menus
 {
     public class EnumSelector<T> : BaseSelector<T> where T : System.Enum
     {

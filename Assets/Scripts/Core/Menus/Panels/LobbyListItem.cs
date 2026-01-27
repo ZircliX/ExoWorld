@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace OverBang.ExoWorld.Core
+namespace OverBang.ExoWorld.Core.Menus
 {
     public class LobbyListItem : MonoBehaviour, ISelectHandler, IDeselectHandler
     {

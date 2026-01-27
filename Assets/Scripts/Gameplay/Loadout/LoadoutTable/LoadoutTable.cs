@@ -1,10 +1,12 @@
 ﻿using System;
-using OverBang.ExoWorld.Core;
-using OverBang.ExoWorld.Gameplay.PlayerHUD;
+using OverBang.ExoWorld.Core.Interactions;
+using OverBang.ExoWorld.Core.Metrics;
+using OverBang.ExoWorld.Gameplay.Cameras;
+using OverBang.ExoWorld.Gameplay.Player.PlayerHUD;
 using UnityEngine;
 using UnityUtils;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public class LoadoutTable : MonoBehaviour, IInteractable
     {

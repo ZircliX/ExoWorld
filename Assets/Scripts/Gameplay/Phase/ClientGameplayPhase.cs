@@ -1,8 +1,9 @@
 ﻿using System.Threading;
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Phases;
+using OverBang.ExoWorld.Core.Utils;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Phase
 {
     public class ClientGameplayPhase : GameplayPhase
     {
@@ -18,20 +19,6 @@ namespace OverBang.ExoWorld.Gameplay
                 SessionManager.Global.CurrentPlayer.TryGetPhaseStatusByPlayer(out PhaseStatus status);
                 return status == PhaseStatus.SceneLoaded;
             }, CancellationToken.None);
-        }
-
-        protected override LevelManager CreateLevelManager()
-        {
-            Debug.Log("Creating level manager");
-            
-            GameObject levelManager = new GameObject("LevelManager")
-            {
-                hideFlags = HideFlags.NotEditable
-            };
-            
-            LevelManager = levelManager.AddComponent<LevelManager>();
-
-            return LevelManager;
         }
     }
 }

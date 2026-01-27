@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Health
 {
     public interface IEffectReceiver
     {

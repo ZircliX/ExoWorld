@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using OverBang.ExoWorld.Core;
-using OverBang.ExoWorld.Gameplay;
+using OverBang.ExoWorld.Core.Characters;
 using OverBang.ExoWorld.Gameplay.Abilities;
 using UnityEngine;
 

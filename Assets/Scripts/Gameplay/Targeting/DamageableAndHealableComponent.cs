@@ -1,10 +1,10 @@
 ﻿using System;
 using Ami.BroAudio;
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Damage;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Targeting
 {
     public class DamageableAndHealableComponent : MonoBehaviour, IDamageable, IHealable, IHealth
     {

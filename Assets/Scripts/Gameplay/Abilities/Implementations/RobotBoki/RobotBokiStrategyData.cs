@@ -1,4 +1,5 @@
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Characters;
+using OverBang.ExoWorld.Core.Damage;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Abilities

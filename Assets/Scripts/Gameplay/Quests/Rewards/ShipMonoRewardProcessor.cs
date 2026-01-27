@@ -1,7 +1,7 @@
 ﻿using OverBang.ExoWorld.Gameplay.HUB;
 using ZTools.RewardSystem.Core;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Quests
 {
     public class ShipMonoRewardProcessor : MonoRewardProcessor<ShipRewardData>
     {

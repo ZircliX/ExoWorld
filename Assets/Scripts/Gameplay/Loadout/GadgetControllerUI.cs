@@ -1,10 +1,8 @@
-﻿using System;
-using DG.Tweening;
+﻿using DG.Tweening;
 using Sirenix.OdinInspector;
-using TMPro;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public class GadgetControllerUI : MonoBehaviour
     {

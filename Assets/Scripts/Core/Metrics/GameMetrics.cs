@@ -1,8 +1,9 @@
+using OverBang.ExoWorld.Core.Scene;
 using Sirenix.OdinInspector;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Core
+namespace OverBang.ExoWorld.Core.Metrics
 {
     [CreateAssetMenu(menuName = "OverBang/Metrics/GameMetrics")]
     public partial class GameMetrics : ScriptableObject
@@ -12,8 +13,6 @@ namespace OverBang.ExoWorld.Core
         [field: SerializeField, FoldoutGroup("Scenes")] public SceneCollection SceneCollection { get; private set; }
         
         [field: SerializeField, FoldoutGroup("Camera")] public CameraIDs CameraIDs { get; private set; }
-        
-        [field: SerializeField, FoldoutGroup("UI")] public GameObject CharacterSelectionPrefab { get; private set; }
         
         [field: SerializeField, FoldoutGroup("Const ID")] public ConstID ConstID { get; private set; }
 

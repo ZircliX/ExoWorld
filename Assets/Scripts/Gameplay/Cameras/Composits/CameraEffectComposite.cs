@@ -1,4 +1,4 @@
-namespace OverBang.ExoWorld.Gameplay.Composits
+namespace OverBang.ExoWorld.Gameplay.Cameras.Composits
 {
     [System.Serializable]
     public struct CameraEffectComposite

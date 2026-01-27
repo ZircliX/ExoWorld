@@ -1,4 +1,4 @@
-﻿namespace OverBang.ExoWorld.Core
+﻿namespace OverBang.ExoWorld.Core.Upgrade
 {
     [System.Serializable]
     public enum ResourceType

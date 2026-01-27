@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
+using OverBang.ExoWorld.Core.Metrics;
+using OverBang.ExoWorld.Core.Utils;
 using TMPro;
 using Unity.Services.Multiplayer;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace OverBang.ExoWorld.Core
+namespace OverBang.ExoWorld.Core.Menus
 {
     public class JoinGameUI : NavigablePanel
     {

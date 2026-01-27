@@ -1,10 +1,9 @@
-﻿using OverBang.ExoWorld.Core;
+﻿using OverBang.ExoWorld.Core.Damage;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Targeting
 {
     public interface IDamageable
     {
-        bool IsInvincible { get; set; }
         void TakeDamage(DamageInfo damage);
     }
 }

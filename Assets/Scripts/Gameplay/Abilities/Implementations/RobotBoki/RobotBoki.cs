@@ -1,6 +1,8 @@
 using System;
 using KBCore.Refs;
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Interactions;
+using OverBang.ExoWorld.Core.Metrics;
+using OverBang.ExoWorld.Gameplay.Targeting;
 using UnityEngine;
 using UnityEngine.AI;
 

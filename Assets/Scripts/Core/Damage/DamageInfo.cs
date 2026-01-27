@@ -1,4 +1,4 @@
-namespace OverBang.ExoWorld.Core
+namespace OverBang.ExoWorld.Core.Damage
 {
     [System.Serializable]
     public struct DamageInfo

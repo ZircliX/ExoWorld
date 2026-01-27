@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Enemies;
+using OverBang.ExoWorld.Core.Phases;
+using OverBang.ExoWorld.Core.Utils;
+using OverBang.ExoWorld.Gameplay.Phase;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Enemies
 {
     public class EnemySpawnerManager : PhaseListener<GameplayPhase>
     {

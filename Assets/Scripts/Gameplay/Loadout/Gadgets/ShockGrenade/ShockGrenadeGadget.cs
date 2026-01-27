@@ -3,7 +3,7 @@ using OverBang.ExoWorld.Gameplay.Abilities;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public class ShockGrenadeGadget : IGadget<ShockGrenadeData>
     {

@@ -2,7 +2,7 @@
 using UnityEngine.InputSystem;
 using UnityEngine.Playables;
 
-namespace OverBang.ExoWorld.Core
+namespace OverBang.ExoWorld.Core.Diorama
 {
     public class DioramaCamera : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using OverBang.ExoWorld.Gameplay.Abilities;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public interface IGadget
     {

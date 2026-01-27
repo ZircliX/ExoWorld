@@ -3,7 +3,7 @@ using Unity.Services.Authentication;
 using Unity.Services.Core;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Core
+namespace OverBang.ExoWorld.Core.Menus
 {
     public class UnityServicesInitializer : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 ﻿using InterfaceAttributes;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Core
+namespace OverBang.ExoWorld.Core.Database
 {
     [CreateAssetMenu(fileName = "New GameDatabase", menuName = "OverBang/GameDatabase", order = 0)]
     public class GameDatabase : ScriptableObject

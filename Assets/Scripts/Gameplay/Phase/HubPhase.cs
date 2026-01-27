@@ -1,13 +1,17 @@
 using Eflatun.SceneReference;
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Characters;
+using OverBang.ExoWorld.Core.GameMode.Players;
+using OverBang.ExoWorld.Core.Metrics;
+using OverBang.ExoWorld.Core.Phases;
+using OverBang.ExoWorld.Core.Scene;
+using OverBang.ExoWorld.Core.Utils;
 using OverBang.Pooling;
 using Unity.Netcode;
-using Unity.Services.Multiplayer;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Scene = UnityEngine.SceneManagement.Scene;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Phase
 {
     public class HubPhase : SelectionPhase
     {
@@ -54,21 +58,16 @@ namespace OverBang.ExoWorld.Gameplay
         {
             IsDone = true;
         }
-        
+
         private void StartSelection()
         {
-            if (Settings.selectionType == SelectionType.None)
-            {
-                IPlayer currentPlayer = SessionManager.Global.CurrentPlayer;
-                
-                if (currentPlayer.TryGetCharacterDataByPlayer(out CharacterData character))
-                {
-                    //Debug.Log($"PLayer {currentPlayer} got character {character.AgentName}");
-                    SelectCharacter(character, false);
-                }
-            }
+            if (Settings.selectionType != SelectionType.None) return;
+
+            LocalGamePlayer localPlayer = GamePlayerManager.Instance.GetLocalPlayer();
+            SelectCharacter(localPlayer.CharacterData, false);
+
         }
-        
+
         private void OnSceneLoaded(Scene scene, LoadSceneMode loadMode)
         {
             if (scene.name == GameMetrics.Global.SceneCollection.HubSceneRef.Name)

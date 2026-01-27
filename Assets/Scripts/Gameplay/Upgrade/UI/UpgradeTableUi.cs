@@ -1,10 +1,10 @@
 ﻿using DG.Tweening;
-using OverBang.ExoWorld.Core;
-using OverBang.ExoWorld.Gameplay.PlayerHUD;
+using OverBang.ExoWorld.Core.Inventory;
+using OverBang.ExoWorld.Gameplay.Player.PlayerHUD;
 using TMPro;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Upgrade
 {
     public class UpgradeTableUi : MonoBehaviour
     {

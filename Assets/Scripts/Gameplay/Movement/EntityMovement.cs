@@ -6,7 +6,7 @@ using Helteix.ChanneledProperties.Priorities;
 using KBCore.Refs;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Movement
 {
     public class EntityMovement : MonoBehaviour
     {

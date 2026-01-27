@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using KBCore.Refs;
-using OverBang.ExoWorld.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public class LoadoutController : MonoBehaviour, IInputReceiver
     {

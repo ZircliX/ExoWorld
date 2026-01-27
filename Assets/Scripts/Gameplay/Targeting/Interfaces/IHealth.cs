@@ -1,6 +1,6 @@
 using System;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Targeting
 {
     public interface IHealth
     {
@@ -9,7 +9,6 @@ namespace OverBang.ExoWorld.Gameplay
         float MinHealth { get; }
         float Health { get; }
         float MaxHealth { get; }
-        bool IsAlive { get; }
         
         void SetMinHealth(float minHealth);
     }

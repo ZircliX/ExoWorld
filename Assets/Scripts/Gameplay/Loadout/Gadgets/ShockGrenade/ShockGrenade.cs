@@ -1,8 +1,8 @@
-﻿using OverBang.ExoWorld.Core;
+﻿using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Gameplay.Abilities;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public class ShockGrenade : MonoBehaviour
     {

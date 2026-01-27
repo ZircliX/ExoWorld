@@ -1,9 +1,10 @@
 ﻿using DG.Tweening;
+using OverBang.ExoWorld.Gameplay.Upgrade;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public class WeaponControllerUI : MonoBehaviour
     {

@@ -1,4 +1,4 @@
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Loadout
 {
 	[System.Serializable]
     public struct Loadout

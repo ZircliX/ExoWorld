@@ -1,6 +1,8 @@
-﻿using OverBang.ExoWorld.Core;
+﻿using OverBang.ExoWorld.Core.GameMode.Players;
+using OverBang.ExoWorld.Core.Phases;
+using OverBang.ExoWorld.Core.Utils;
+using OverBang.ExoWorld.Gameplay.Phase;
 using Unity.Netcode;
-using Unity.Services.Multiplayer;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.HUB.Listeners
@@ -14,7 +16,7 @@ namespace OverBang.ExoWorld.Gameplay.HUB.Listeners
 
             //return; // No spawn at first hub phase
             if (phase.SelectedCharacter != null)
-                SpawnPlayer(phase.CurrentPlayer, phase.SelectedCharacter, false);
+                SpawnPlayer(GamePlayerManager.Instance.GetLocalPlayer(), false);
         }
 
         protected override void OnEnd(HubPhase phase)
@@ -23,13 +25,15 @@ namespace OverBang.ExoWorld.Gameplay.HUB.Listeners
             phase.OnCharacterSelected -= SpawnPlayer;
         }
 
-        private void SpawnPlayer(IPlayer player, CharacterData characterData, bool characterChanged)
+        private void SpawnPlayer(LocalGamePlayer player, bool characterChanged)
         {
             //Debug.Log($"Spawn player {player.Id} with character {characterData.AgentName}");
             ulong clientID = NetworkManager.Singleton.LocalClient.ClientId;
+            
+            //TODO : FOUDROYER LOIS
             Vector3 position = new Vector3(0f, 0f, 0);
             Quaternion rotation = Quaternion.Euler(0f, 0, 0f);
-            PlayerSpawner.SpawnPlayerObject(characterData, clientID, position, rotation);
+            player.Spawn(position, rotation);
             
             Awaitable awaitable = PoolUtils.SetupPooling();
             awaitable.Run();

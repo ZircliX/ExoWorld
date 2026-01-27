@@ -1,4 +1,6 @@
-﻿namespace OverBang.ExoWorld.Core
+﻿using OverBang.ExoWorld.Core.Database;
+
+namespace OverBang.ExoWorld.Core.Utils
 {
     public static class GameDatabaseUtils
     {

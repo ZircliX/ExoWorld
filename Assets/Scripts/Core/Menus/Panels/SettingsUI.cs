@@ -1,6 +1,6 @@
 using System;
 
-namespace OverBang.ExoWorld.Core
+namespace OverBang.ExoWorld.Core.Menus
 {
     public class SettingsUI : NavigablePanel
     {

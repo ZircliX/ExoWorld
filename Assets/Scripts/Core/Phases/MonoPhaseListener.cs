@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace OverBang.ExoWorld.Core
+namespace OverBang.ExoWorld.Core.Phases
 {
     public abstract class MonoPhaseListener<T> : MonoBehaviour, IPhaseListener<T> 
         where T : class, IPhase

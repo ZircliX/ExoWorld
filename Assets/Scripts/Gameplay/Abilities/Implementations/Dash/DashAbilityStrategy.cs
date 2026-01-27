@@ -1,5 +1,8 @@
 using System.Collections.Generic;
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Characters;
+using OverBang.ExoWorld.Core.Metrics;
+using OverBang.ExoWorld.Gameplay.Movement;
+using OverBang.ExoWorld.Gameplay.Targeting;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Abilities

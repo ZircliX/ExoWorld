@@ -1,4 +1,4 @@
-namespace OverBang.ExoWorld.Core
+namespace OverBang.ExoWorld.Core.Characters
 {
     [System.Flags]
     public enum CharacterClasses
@@ -6,9 +6,9 @@ namespace OverBang.ExoWorld.Core
         None = 0,
         All = -1,
         
-        Attack = 1 << 0,
-        Defense = 1 << 1,
+        Attaque = 1 << 0,
+        Défense = 1 << 1,
         Support = 1 << 2,
-        Tactical = 1 << 3
+        Tactique = 1 << 3
     }
 }

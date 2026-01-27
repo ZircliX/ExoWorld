@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Helteix.Singletons.SceneServices;
+using OverBang.ExoWorld.Gameplay.Targeting;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Enemies
  {
      public class EnemyManager : SceneService<EnemyManager>
      {

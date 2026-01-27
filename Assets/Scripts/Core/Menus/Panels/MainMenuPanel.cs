@@ -1,8 +1,9 @@
 using System;
+using OverBang.ExoWorld.Core.Metrics;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace OverBang.ExoWorld.Core
+namespace OverBang.ExoWorld.Core.Menus
 {
     public class MainMenuPanel : BasePanel
     {

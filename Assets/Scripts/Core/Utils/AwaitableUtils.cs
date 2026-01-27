@@ -2,7 +2,7 @@
 using System.Threading;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Core
+namespace OverBang.ExoWorld.Core.Utils
 {
     public static class AwaitableUtils
     {
