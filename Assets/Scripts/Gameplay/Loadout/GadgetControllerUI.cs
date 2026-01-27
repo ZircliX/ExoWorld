@@ -21,6 +21,7 @@ namespace OverBang.ExoWorld.Gameplay
         private void Start()
         {
             menuItems  = new List<GadgetUi>();
+            gadgetWheel.alpha = 0;
         }
 
         private void OnEnable()
