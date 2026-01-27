@@ -6,6 +6,7 @@ namespace OverBang.ExoWorld.Gameplay
     public interface IGadget
     {
         ICaster Caster { get; }
+        GadgetData Data { get; }
         
         Action OnGadgetEnded { get; }
         void Begin();
@@ -15,7 +16,7 @@ namespace OverBang.ExoWorld.Gameplay
 
     public interface IGadget<TData> : IGadget where TData : GadgetData
     {
-        TData Data { get; }
+        TData DataT { get; }
         void Initialize(TData data, ICaster caster);
         
     }

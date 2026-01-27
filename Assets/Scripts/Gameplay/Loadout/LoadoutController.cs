@@ -48,25 +48,30 @@ namespace OverBang.ExoWorld.Gameplay
             gadgetController.Initialize(this);
         }
 
-        public void SwitchReceiver(IInputReceiver receiver)
-        {
-            receivers.Push(receiver);
-            current = receiver; 
-        }
 
-        public void RemoveReceiver(IInputReceiver receiver)
-        {
-            if (receivers.Peek() == receiver)
+        #region Receivers
+
+            public void SwitchReceiver(IInputReceiver receiver)
             {
-                receivers.Pop();
-                current = receivers.Peek();
+                receivers.Push(receiver);
+                current = receiver; 
+            }
 
-                foreach (InputAction action in actions)
+            public void RemoveReceiver(IInputReceiver receiver)
+            {
+                if (receivers.Peek() == receiver)
                 {
-                    action.Enable();
+                    receivers.Pop();
+                    current = receivers.Peek();
+
+                    foreach (InputAction action in actions)
+                    {
+                        action.Enable();
+                    }
                 }
             }
-        }
+
+        #endregion
         
         #region Inputs
         public void OnLeftInput(InputAction.CallbackContext context)

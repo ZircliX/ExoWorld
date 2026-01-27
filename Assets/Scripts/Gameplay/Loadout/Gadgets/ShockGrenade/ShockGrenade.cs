@@ -1,65 +1,42 @@
-﻿using OverBang.ExoWorld.Core;
+﻿using System;
 using OverBang.ExoWorld.Gameplay.Abilities;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace OverBang.ExoWorld.Gameplay
 {
-    public class ShockGrenade : MonoBehaviour
+    public class ShockGrenade : IGadget<ShockGrenadeData>
     {
-        [SerializeField] private Rigidbody rb;
-        
-        private IExplosionStrategy strategy;
+        public ShockGrenadeData DataT { get; private set; }
+        public GadgetData Data { get; private set; }
+        public ICaster Caster { get; private set; }
+        public Action OnGadgetEnded { get; }
 
-        private ShockGrenadeData data;
-        private float time;
-        private bool isDetonated;
+        private ShockGrenadeEntity grenadeEntity;
         
-        public void Initialize(ShockGrenadeData data, Vector3 direction)
+        public void Initialize(ShockGrenadeData data, ICaster caster)
         {
-            strategy = new StandardExplosion(data.DamageInfo);
-            this.data = data;
-            strategy.OnExploded += OnExploded;
-            
-            rb.AddForce(Vector3.up * 0.5f + direction * data.ThrowForce * Time.deltaTime, ForceMode.Impulse);
-            
+            DataT = data;
+            Caster = caster;
         }
-
-        private void OnExploded(bool terminated)
+        
+        public void Begin()
         {
-            if (terminated)
-            {
-                strategy.OnExploded -= OnExploded;
-                End();
-            }
+            grenadeEntity = Object.Instantiate(DataT.Prefab, Caster.transform.position, Quaternion.identity);
+            grenadeEntity.Initialize(DataT, Caster.Forward);
         }
 
         public void Tick(float deltaTime)
         {
-            if (time < data.ExplosionDelay)
+            if (grenadeEntity != null)
             {
-                time += deltaTime;
-            }
-            else if (!isDetonated)
-            {
-                strategy.Explode(() =>
-                {
-                    Collider[] colliders = Physics.OverlapSphere(
-                        transform.position,
-                        data.ExplosionRadius,
-                        GameMetrics.Global.HittableLayers,
-                        QueryTriggerInteraction.Collide);
-
-                    return colliders;
-                });
-                
-                isDetonated = true;
+                grenadeEntity.Tick(deltaTime);
             }
         }
 
-        private void End()
+        public void End()
         {
-            Destroy(gameObject);
-            
+            OnGadgetEnded?.Invoke();
         }
     }
 }
