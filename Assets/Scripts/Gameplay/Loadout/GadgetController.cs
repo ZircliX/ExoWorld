@@ -42,7 +42,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         {
             HUD.Instance.SetCursorState(false);
             OnGadgetSelectionEnd?.Invoke();
-            
+            OnEnd();
             //currentGadget.Initialize();
             //currentGadget.Begin();
         }
