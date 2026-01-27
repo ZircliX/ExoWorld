@@ -1,4 +1,4 @@
-﻿namespace OverBang.ExoWorld.Gameplay
+﻿namespace OverBang.ExoWorld.Gameplay.Targeting
 {
     public interface IHealable
     {

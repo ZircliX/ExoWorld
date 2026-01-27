@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Helteix.Singletons.MonoSingletons;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Movement
 {
     public class GravityManager : MonoSingleton<GravityManager>
     {

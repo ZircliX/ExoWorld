@@ -12,7 +12,7 @@ namespace Ami.BroAudio.Demo
 		[SerializeField, Frequency] float _lowPassFreq = 800f;
 		[SerializeField] float _fadeTime = 1f;
 #pragma warning restore 414
-        public override void OnInZoneChanged(bool isInZone)
+        public override void OnInZoneChanged(InteractiveZone zone, bool isInZone)
 		{
 			BroAudio.Play(_enterExitSound);
 

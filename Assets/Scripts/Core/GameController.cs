@@ -1,5 +1,10 @@
 using System;
 using Helteix.ChanneledProperties.Priorities;
+using OverBang.ExoWorld.Core.Database;
+using OverBang.ExoWorld.Core.GameMode;
+using OverBang.ExoWorld.Core.Metrics;
+using OverBang.ExoWorld.Core.Phases;
+using OverBang.ExoWorld.Core.Utils;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Core

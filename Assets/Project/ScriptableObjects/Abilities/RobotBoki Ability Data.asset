@@ -40,15 +40,13 @@ MonoBehaviour:
           baseDamage: 300
           weakSpotMultiplier: 1.5
           bonusDamage: 0
-        <ExplosionRadius>k__BackingField: 3
-        <DetectionRadius>k__BackingField: 3
-        <MaxDistance>k__BackingField: 15
+        <ExplosionRadius>k__BackingField: 5
+        <DetectionRadius>k__BackingField: 15
     - rid: 402417008147955837
       type: {class: RobotBokiLeurreStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}
       data:
         <ExplosionRadius>k__BackingField: 0
         <DetectionRadius>k__BackingField: 5
-        <MaxDistance>k__BackingField: 100
     - rid: 402417008147955838
       type: {class: RobotBokiImpulsionStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}
       data:
@@ -56,7 +54,6 @@ MonoBehaviour:
           baseDamage: 100
           weakSpotMultiplier: 1.5
           bonusDamage: 0
-        <ExplosionRadius>k__BackingField: 3
-        <DetectionRadius>k__BackingField: 3
-        <MaxDistance>k__BackingField: 15
+        <ExplosionRadius>k__BackingField: 5
+        <DetectionRadius>k__BackingField: 15
         <FreezeDuration>k__BackingField: 5

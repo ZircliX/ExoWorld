@@ -1,9 +1,9 @@
-﻿using System;
+using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Gameplay.Abilities;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public class ShockGrenade : IGadget<ShockGrenadeData>
     {

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace OverBang.ExoWorld.Core
+namespace OverBang.ExoWorld.Core.GameMode
 {
     public static class GameModeUtils
     {

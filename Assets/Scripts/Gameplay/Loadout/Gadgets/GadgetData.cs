@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public abstract class GadgetData : ScriptableObject
     {

@@ -6,7 +6,7 @@ using Helteix.ChanneledProperties.Priorities;
 using KBCore.Refs;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Movement
 {
     public class EntityMovement : MonoBehaviour
     {
@@ -476,7 +476,7 @@ namespace OverBang.ExoWorld.Gameplay
             {
                 RaycastHit hit = raycastHitsBuffer[i];
 
-                if (closestHit.colliderInstanceID == 0 || closestHit.distance > hit.distance)
+                if (closestHit.colliderEntityId == 0 || closestHit.distance > hit.distance)
                 {
                     float angle = Vector3.Angle(hit.normal, -rayDirection);
                     if (angle > groundCheckMaxAngle)
@@ -502,7 +502,7 @@ namespace OverBang.ExoWorld.Gameplay
                 }
             }
 
-            if (closestHit.colliderInstanceID != 0)
+            if (closestHit.colliderEntityId != 0)
             {
                 GroundNormal = closestHit.normal;
                 GroundPosition = closestHit.point;

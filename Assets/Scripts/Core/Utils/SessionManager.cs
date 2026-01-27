@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using OverBang.ExoWorld.Core.Metrics;
 using Unity.Services.Multiplayer;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Core
+namespace OverBang.ExoWorld.Core.Utils
 {
     public class SessionManager
     {

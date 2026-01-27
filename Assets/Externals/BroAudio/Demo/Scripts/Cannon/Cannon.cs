@@ -61,10 +61,6 @@ namespace Ami.BroAudio.Demo
             {
                 return;
             }
-            else if (!InteractiveZone.IsInZone)
-            {
-                return;
-            }
 
             if (Input.GetKey(KeyCode.Space))
             {

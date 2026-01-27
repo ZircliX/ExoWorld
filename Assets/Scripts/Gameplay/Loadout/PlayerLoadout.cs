@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public static class PlayerLoadout
     {

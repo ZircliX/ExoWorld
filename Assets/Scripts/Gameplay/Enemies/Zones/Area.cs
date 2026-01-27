@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using KBCore.Refs;
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Enemies;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Enemies
 {
     [RequireComponent(typeof(BoxCollider))]
     public class Area : MonoBehaviour

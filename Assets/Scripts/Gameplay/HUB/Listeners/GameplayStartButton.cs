@@ -1,4 +1,6 @@
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Interactions;
+using OverBang.ExoWorld.Core.Phases;
+using OverBang.ExoWorld.Gameplay.Phase;
 using Unity.Netcode;
 using UnityEngine;
 using UnityUtils;

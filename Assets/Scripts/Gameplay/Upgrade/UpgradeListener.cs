@@ -1,7 +1,8 @@
-﻿using OverBang.ExoWorld.Core;
-using Unity.Services.Multiplayer;
+﻿using OverBang.ExoWorld.Core.GameMode.Players;
+using OverBang.ExoWorld.Core.Phases;
+using OverBang.ExoWorld.Gameplay.Phase;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Upgrade
 {
     public class UpgradeListener : MonoPhaseListener<HubPhase>
     {
@@ -15,7 +16,7 @@ namespace OverBang.ExoWorld.Gameplay
             phase.OnCharacterSelected -= InitializeUpgrades;
         }
 
-        private void InitializeUpgrades(IPlayer player, CharacterData character, bool changed)
+        private void InitializeUpgrades(LocalGamePlayer player, bool changed)
         {
             if(changed) UpgradeManager.Instance.InitializeUpgrades(player);
         }

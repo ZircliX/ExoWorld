@@ -1,8 +1,8 @@
 ﻿using System;
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Damage;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Targeting
 {
     public class DamageableComponent : MonoBehaviour, IDamageable, IHealth
     {

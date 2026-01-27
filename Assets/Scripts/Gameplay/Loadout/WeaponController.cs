@@ -1,10 +1,12 @@
 ﻿using System;
+using OverBang.ExoWorld.Gameplay.IK_Animation;
+using OverBang.ExoWorld.Gameplay.Player;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 using UnityEngine.InputSystem;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public class WeaponController : NetworkBehaviour, IPlayerComponent, IInputReceiver
     {

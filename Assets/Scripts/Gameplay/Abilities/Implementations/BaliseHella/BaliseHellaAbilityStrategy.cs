@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Characters;
+using OverBang.ExoWorld.Gameplay.Targeting;
 using UnityEngine;
 using Object = UnityEngine.Object;
 

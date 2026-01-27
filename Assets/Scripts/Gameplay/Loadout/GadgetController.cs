@@ -1,13 +1,13 @@
 ﻿using System;
 using OverBang.ExoWorld.Core;
 using OverBang.ExoWorld.Gameplay.Abilities;
-using OverBang.ExoWorld.Gameplay.PlayerHUD;
+using OverBang.ExoWorld.Gameplay.Player.PlayerHUD;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public class GadgetController : NetworkBehaviour, ICaster, IInputReceiver
     {

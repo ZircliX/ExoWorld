@@ -1,6 +1,6 @@
-﻿
-namespace OverBang.ExoWorld.Core
+namespace OverBang.ExoWorld.Core.Inventory
 {
+    //NUKE
     public static class PlayerInventory
     {
         public static int Trinitite;

@@ -1,5 +1,7 @@
 using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Characters;
 using OverBang.ExoWorld.Gameplay;
+using OverBang.ExoWorld.Gameplay.Network;
 using UnityEngine;
 using UnityEngine.InputSystem;
 

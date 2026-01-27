@@ -42,9 +42,9 @@ namespace Ami.BroAudio.Demo
             SwitchPauseState();
         }
 
-        public override void OnInZoneChanged(bool isInZone)
+        public override void OnInZoneChanged(InteractiveZone zone, bool isInZone)
         {
-            base.OnInZoneChanged(isInZone);
+            base.OnInZoneChanged(zone, isInZone);
 
             if(isInZone)
             {

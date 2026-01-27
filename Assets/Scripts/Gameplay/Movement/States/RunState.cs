@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Movement
 {
     [CreateAssetMenu(menuName = "OverBang/Movement/Run")]
     public class RunState : WalkState

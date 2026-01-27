@@ -1,8 +1,8 @@
-﻿using OverBang.ExoWorld.Core;
+﻿using OverBang.ExoWorld.Core.Damage;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     [CreateAssetMenu(fileName = "BulletData", menuName = "OverBang/Weapons/BulletData")]
     public class BulletData : ScriptableObject

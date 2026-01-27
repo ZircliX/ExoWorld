@@ -1,8 +1,8 @@
-using OverBang.ExoWorld.Gameplay.Composits;
-using OverBang.ExoWorld.Gameplay.Data;
+using OverBang.ExoWorld.Gameplay.Cameras.Composits;
+using OverBang.ExoWorld.Gameplay.Cameras.Data;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Movement
 {
     [CreateAssetMenu(menuName = "OverBang/Movement/Dash")]
     public class DashState : MovementStateBehavior

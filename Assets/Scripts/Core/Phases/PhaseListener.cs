@@ -1,4 +1,4 @@
-﻿namespace OverBang.ExoWorld.Core
+﻿namespace OverBang.ExoWorld.Core.Phases
 {
     public abstract class PhaseListener<T> : IPhaseListener<T> where T : class, IPhase
     {

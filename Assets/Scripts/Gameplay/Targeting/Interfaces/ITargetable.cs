@@ -1,8 +1,8 @@
 ﻿using System;
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Interactions;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Targeting
 {
     public interface ITargetable
     {

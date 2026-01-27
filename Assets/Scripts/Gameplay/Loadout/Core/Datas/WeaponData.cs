@@ -1,8 +1,9 @@
 ﻿using Ami.BroAudio;
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Upgrade;
+using OverBang.ExoWorld.Gameplay.Upgrade;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     [CreateAssetMenu(menuName = "OverBang/Weapons/WeaponData", fileName = "Weapon Data")]
     public class WeaponData : ScriptableObject

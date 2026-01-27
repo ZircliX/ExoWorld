@@ -1,4 +1,4 @@
-namespace OverBang.ExoWorld.Core
+namespace OverBang.ExoWorld.Core.Characters
 {
     public static class CharacterClassExtension
     {

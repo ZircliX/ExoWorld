@@ -1,10 +1,11 @@
 using System.Collections.Generic;
+using OverBang.ExoWorld.Gameplay.Level;
 using UnityEngine;
 using ZTools.Logger.Core;
 using ZTools.ObjectiveSystem.Core;
 using ZTools.RewardSystem.Core;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Quests
 {
     /// <summary>
     /// Manages the sequential queuing of objectives from predefined collections.

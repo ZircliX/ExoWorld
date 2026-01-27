@@ -1,7 +1,8 @@
+using OverBang.ExoWorld.Gameplay.Movement;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Cameras
 {
     public class PlayerCamera : MonoBehaviour
     {

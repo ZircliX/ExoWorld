@@ -1,11 +1,12 @@
 ﻿using System;
 using KBCore.Refs;
+using OverBang.ExoWorld.Gameplay.IK_Animation;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public class Weapon : MonoBehaviour
     {

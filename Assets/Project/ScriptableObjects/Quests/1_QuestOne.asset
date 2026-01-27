@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22ec12bb91524888887fa9dceebd2fc3, type: 3}
+  m_Name: 1_QuestOne
+  m_EditorClassIdentifier: 
+  <ObjectiveName>k__BackingField: "LE SANG D\u2019ADONIS"
+  <ObjectiveDescription>k__BackingField: "Activez la pompe pour extraire des ressources
+    en la prot\xE9geant des monstres."
+  <ObjectiveSteps>k__BackingField:
+  - "Trouver la pompe dans le hall d'entr\xE9e et activez la."
+  - "Prot\xE9gez la pompe des monstres."
+  - Retournez au vaisseau.
+  <Rewards>k__BackingField: []
+  <RepairTimeRequired>k__BackingField: 60
+  <TotalRepairHealth>k__BackingField: 10
+  <EnemySpawnScenario>k__BackingField: {fileID: 11400000, guid: efaa846c609a0144f9050669ab508e6c, type: 2}

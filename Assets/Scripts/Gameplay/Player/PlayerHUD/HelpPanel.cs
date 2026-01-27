@@ -2,7 +2,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace OverBang.ExoWorld.Gameplay.PlayerHUD
+namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
 {
     public class HelpPanel : MonoBehaviour
     {

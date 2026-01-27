@@ -1,5 +1,6 @@
 using System;
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Damage;
+using OverBang.ExoWorld.Gameplay.Targeting;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Abilities

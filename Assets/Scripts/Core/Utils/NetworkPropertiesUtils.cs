@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Threading;
+using OverBang.ExoWorld.Core.Database;
+using OverBang.ExoWorld.Core.Metrics;
+using OverBang.ExoWorld.Core.Phases;
 using Unity.Services.Multiplayer;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Core
+namespace OverBang.ExoWorld.Core.Utils
 {
     public static class NetworkPropertiesUtils
     {
@@ -49,12 +52,6 @@ namespace OverBang.ExoWorld.Core
             {
                 OnPropertyChanged?.Invoke(propertyName, value);
             }
-        }
-        
-        public static bool TryGetCharacterDataByPlayer(this IPlayer player, out CharacterData characterData)
-        {
-            string propertyName = ConstID.Global.PlayerPropertyCharacterData;
-            return player.TryGetAssetByPlayerProperty(propertyName, out characterData);
         }
 
         public static bool TryGetPhaseStatusByPlayer(this IPlayer player, out PhaseStatus phaseStatus)

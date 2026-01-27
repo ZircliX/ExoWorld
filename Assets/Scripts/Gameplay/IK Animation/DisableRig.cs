@@ -1,7 +1,8 @@
+using OverBang.ExoWorld.Gameplay.Loadout;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.IK_Animation
 {
     public class DisableRig : MonoBehaviour
     {

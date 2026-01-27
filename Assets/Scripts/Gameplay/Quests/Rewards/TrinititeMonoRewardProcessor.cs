@@ -1,9 +1,9 @@
-﻿using OverBang.ExoWorld.Core;
+﻿using OverBang.ExoWorld.Core.Inventory;
 using Unity.Netcode;
 using UnityEngine;
 using ZTools.RewardSystem.Core;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Quests
 {
     public class TrinititeMonoRewardProcessor : NetworkRewardProcessor<TrinititeRewardData>
     {

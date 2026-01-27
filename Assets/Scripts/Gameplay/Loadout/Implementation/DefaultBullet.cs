@@ -1,10 +1,13 @@
 using System.Collections.Generic;
 using KBCore.Refs;
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Metrics;
+using OverBang.ExoWorld.Core.Upgrade;
+using OverBang.ExoWorld.Gameplay.Targeting;
+using OverBang.ExoWorld.Gameplay.Upgrade;
 using OverBang.Pooling;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public class DefaultBullet : Bullet
     {

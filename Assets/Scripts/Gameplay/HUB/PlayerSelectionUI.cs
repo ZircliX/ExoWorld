@@ -1,6 +1,8 @@
 using DG.Tweening;
 using Helteix.ChanneledProperties.Priorities;
 using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Characters;
+using OverBang.ExoWorld.Core.Menus;
 using OverBang.ExoWorld.Gameplay.HUB.Listeners;
 using Sirenix.OdinInspector;
 using TMPro;

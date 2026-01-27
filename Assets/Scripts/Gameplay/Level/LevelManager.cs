@@ -2,12 +2,16 @@ using System;
 using System.Threading.Tasks;
 using Helteix.ChanneledProperties.Priorities;
 using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.GameMode.Players;
+using OverBang.ExoWorld.Core.Phases;
+using OverBang.ExoWorld.Core.Utils;
+using OverBang.ExoWorld.Gameplay.Enemies;
+using OverBang.ExoWorld.Gameplay.Phase;
 using OverBang.Pooling;
 using Unity.Netcode;
-using Unity.Services.Multiplayer;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Level
 {
     public sealed class LevelManager : MonoBehaviour
     {
@@ -21,7 +25,6 @@ namespace OverBang.ExoWorld.Gameplay
 
         private void Awake()
         {
-            DontDestroyOnLoad(gameObject);
             Instance = this;
             EnemySpawnerManager = new EnemySpawnerManager();
             EnemySpawnerManager.Register();
@@ -44,7 +47,7 @@ namespace OverBang.ExoWorld.Gameplay
             currentPhase = phase;
 
             await SetupGameMap();
-            SetupPlayer();
+            SetupPlayer(GamePlayerManager.Instance.GetLocalPlayer());
             await SetupEnemies();
             await SetupPooling();
             await SetupUI();
@@ -71,24 +74,16 @@ namespace OverBang.ExoWorld.Gameplay
             await Task.CompletedTask;
         }
 
-        private void SetupPlayer()
+        private void SetupPlayer(LocalGamePlayer gamePlayer)
         {
-            IPlayer currentPlayer = SessionManager.Global.CurrentPlayer;
             //Debug.Log("SetupPlayer : " + currentPlayer.Id);
 
-            if (currentPlayer.TryGetCharacterDataByPlayer(out CharacterData characterData))
-            {
-                ulong clientID = NetworkManager.Singleton.LocalClient.ClientId;
-                //Debug.Log($"Player {clientID} has CharacterData {characterData.AgentName}");
-                
-                Vector3 position = new Vector3(11f, 1f, 24f);
-                Quaternion rotation = Quaternion.Euler(0f, 180f, 0f);
-                NetworkObject player = PlayerSpawner.SpawnPlayerObject(characterData, clientID, position, rotation);
-            }
-            else
-            {
-                Debug.LogError($"Player {currentPlayer.Id} does not have CharacterData");
-            }
+            ulong clientID = NetworkManager.Singleton.LocalClient.ClientId;
+            //Debug.Log($"Player {clientID} has CharacterData {characterData.AgentName}");
+
+            Vector3 position = new Vector3(11f, 1f, 24f);
+            Quaternion rotation = Quaternion.Euler(0f, 180f, 0f);
+            gamePlayer.Spawn(position, rotation);
         }
 
         private async Awaitable SetupEnemies()

@@ -2,7 +2,7 @@ using Ami.BroAudio;
 using Ami.BroAudio.Demo;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Audio
 {
     public class FlipFlopSound : InteractiveComponent
     {
@@ -24,9 +24,9 @@ namespace OverBang.ExoWorld.Gameplay
             BroAudio.Play(currentSound);
         }
 
-        public override void OnInZoneChanged(bool isInZone)
+        public override void OnInZoneChanged(InteractiveZone zone, bool isInZone)
         {
-            base.OnInZoneChanged(isInZone);
+            base.OnInZoneChanged(zone, isInZone);
             
             if (isInZone)
             {

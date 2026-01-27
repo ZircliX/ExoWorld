@@ -1,4 +1,4 @@
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Characters;
 using Unity.Netcode;
 using UnityEngine;
 

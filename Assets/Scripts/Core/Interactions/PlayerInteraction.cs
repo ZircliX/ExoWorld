@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace OverBang.ExoWorld.Core
+namespace OverBang.ExoWorld.Core.Interactions
 {
     [RequireComponent(typeof(SphereCollider))]
     public class PlayerInteraction : MonoBehaviour

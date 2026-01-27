@@ -1,9 +1,9 @@
 using KBCore.Refs;
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Metrics;
 using Unity.Cinemachine;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Cameras
 {
     public class CameraRegister : MonoBehaviour
     {

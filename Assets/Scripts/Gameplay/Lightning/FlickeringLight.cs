@@ -1,9 +1,9 @@
 using KBCore.Refs;
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Metrics;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Lightning
 {
     [ExecuteInEditMode]
     public class FlickeringLight : MonoBehaviour

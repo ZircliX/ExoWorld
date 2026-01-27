@@ -1,17 +1,20 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Inventory;
+using OverBang.ExoWorld.Core.Metrics;
+using OverBang.ExoWorld.Core.Phases;
+using OverBang.ExoWorld.Core.Utils;
+using OverBang.ExoWorld.Gameplay.Level;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Phase
 {
     public abstract class GameplayPhase : IPhase
     {
         [System.Serializable]
         public struct GameplaySettings
         {
- 
         }
 
         [System.Serializable]
@@ -43,8 +46,8 @@ namespace OverBang.ExoWorld.Gameplay
         {
             await SessionManager.Global.CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyPhaseStatus, nameof(PhaseStatus.None));
             SceneManager.sceneLoaded += OnSceneLoaded;
-            
             LevelManager = CreateLevelManager();
+
             await LoadScene();
             
             if (LevelManager != null)
@@ -72,7 +75,10 @@ namespace OverBang.ExoWorld.Gameplay
         {
             await SessionManager.Global.CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyPhaseStatus, nameof(PhaseStatus.None));
             LevelManager.Dispose();
-            Object.DestroyImmediate(LevelManager);
+            if(Application.isPlaying)
+                Object.Destroy(LevelManager.gameObject);
+            else
+                Object.DestroyImmediate(LevelManager.gameObject);
             
             await Task.CompletedTask;
         }
@@ -89,11 +95,24 @@ namespace OverBang.ExoWorld.Gameplay
         public void SetIsDone() => IsDone = true;
         
         protected abstract Awaitable LoadScene();
-        protected abstract LevelManager CreateLevelManager();
+
+        protected LevelManager CreateLevelManager()
+        {
+            //Debug.Log("Creating level manager");
+            
+            GameObject levelManager = new GameObject("LevelManager")
+            {
+                hideFlags = HideFlags.NotEditable
+            };
+            
+            LevelManager = levelManager.AddComponent<LevelManager>();
+
+            Object.DontDestroyOnLoad(LevelManager);
+            return LevelManager;
+        }
         
         Awaitable IPhase.OnBegin() => OnBegin();
         Awaitable IPhase.OnEnd() => OnEnd();
         Awaitable IPhase.Execute() => Execute();
-
     }
 }

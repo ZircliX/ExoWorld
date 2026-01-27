@@ -1,9 +1,12 @@
 ﻿using System;
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Interactions;
+using OverBang.ExoWorld.Core.Metrics;
+using OverBang.ExoWorld.Core.Utils;
+using OverBang.ExoWorld.Gameplay.Cameras;
 using UnityEngine;
 using UnityUtils;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Upgrade
 {
     public class UpgradeTable : MonoBehaviour, IInteractable
     {

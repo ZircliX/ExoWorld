@@ -1,4 +1,5 @@
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Characters;
+using OverBang.ExoWorld.Core.Damage;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Abilities
@@ -9,7 +10,6 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         [field: SerializeField] public DamageInfo Damage { get; private set; }
         [field: SerializeField] public float ExplosionRadius { get; private set; }
         [field: SerializeField] public float DetectionRadius { get; private set; }
-        [field: SerializeField] public float MaxDistance { get; private set; }
     }
     
     [System.Serializable]
@@ -17,7 +17,6 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
     {
         [field: SerializeField] public float ExplosionRadius { get; private set; }
         [field: SerializeField] public float DetectionRadius { get; private set; }
-        [field: SerializeField] public float MaxDistance { get; private set; }
     }
     
     [System.Serializable]
@@ -26,13 +25,12 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         [field: SerializeField] public DamageInfo Damage { get; private set; }
         [field: SerializeField] public float ExplosionRadius { get; private set; }
         [field: SerializeField] public float DetectionRadius { get; private set; }
-        [field: SerializeField] public float MaxDistance { get; private set; }
         [field: SerializeField] public float FreezeDuration { get; private set; }
     }
 
     public interface IRobotBokiAbilityStrategyData
     {
-        float DetectionRadius { get; }
         float ExplosionRadius { get; }
+        float DetectionRadius { get; }
     }
 }

@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Health
 {
     public class HealthComponentWithUI : HealthComponent
     {

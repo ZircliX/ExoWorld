@@ -1,10 +1,10 @@
 ﻿using Eflatun.SceneReference;
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Scene;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Phase
 {
     public class HostGameplayPhase : GameplayPhase
     {
@@ -23,18 +23,5 @@ namespace OverBang.ExoWorld.Gameplay
             }
         }
 
-        protected override LevelManager CreateLevelManager()
-        {
-            //Debug.Log("Creating level manager");
-            
-            GameObject levelManager = new GameObject("LevelManager")
-            {
-                hideFlags = HideFlags.NotEditable
-            };
-            
-            LevelManager = levelManager.AddComponent<LevelManager>();
-
-            return LevelManager;
-        }
     }
 }

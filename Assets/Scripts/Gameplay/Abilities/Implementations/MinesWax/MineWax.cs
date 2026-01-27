@@ -1,5 +1,6 @@
 using KBCore.Refs;
-using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Metrics;
+using OverBang.ExoWorld.Gameplay.Targeting;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Abilities

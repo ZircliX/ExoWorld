@@ -1,7 +1,7 @@
 using KBCore.Refs;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Movement
 {
     [RequireComponent(typeof(MeshCollider)), AddComponentMenu("OverBang/Gravity/Tube")]
     public class TubeGravityZone : GravityZone

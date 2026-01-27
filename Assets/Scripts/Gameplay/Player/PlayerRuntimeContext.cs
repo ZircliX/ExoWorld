@@ -1,7 +1,8 @@
-﻿using OverBang.ExoWorld.Core;
+﻿using OverBang.ExoWorld.Core.Characters;
+using OverBang.ExoWorld.Gameplay.IK_Animation;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Player
 {
     public struct PlayerRuntimeContext
     {

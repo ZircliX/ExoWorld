@@ -1,4 +1,4 @@
-﻿namespace OverBang.ExoWorld.Core
+﻿namespace OverBang.ExoWorld.Core.Phases
 {
     public interface IPhaseListener<in T> : IPhaseListener where T : IPhase
     {

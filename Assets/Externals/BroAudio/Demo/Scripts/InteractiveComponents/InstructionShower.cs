@@ -22,18 +22,14 @@ namespace Ami.BroAudio.Demo
 
         private void Update()
         {
-            if(_lookAtPlayer && InteractiveZone.IsInZone && InteractiveZone.InZoneObject)
+            if(_lookAtPlayer)
             {
                 _instTransform ??= _instruction.transform;
 
-                Vector3 playerPos = InteractiveZone.InZoneObject.transform.position;
-                Vector3 opppsitePos = _instTransform.position + (_instTransform.position - playerPos);
-                _instTransform.LookAt(opppsitePos, Vector3.up);
-                _instTransform.eulerAngles = new Vector3(0f, _instTransform.eulerAngles.y, _instTransform.eulerAngles.z);
             }
         }
 
-        public override void OnInZoneChanged(bool isInZone)
+        public override void OnInZoneChanged(InteractiveZone zone, bool isInZone)
         {
             if(_coroutine != null)
             {

@@ -1,6 +1,6 @@
-﻿using OverBang.ExoWorld.Core;
+﻿using OverBang.ExoWorld.Core.Characters;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Level
 {
     [System.Serializable]
     public struct LevelDefinition

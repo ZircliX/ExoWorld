@@ -1,8 +1,9 @@
 using System;
+using OverBang.ExoWorld.Core.Utils;
 using Unity.Services.Multiplayer;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Core
+namespace OverBang.ExoWorld.Core.Menus
 {
     public class HostGame : MonoBehaviour
     {

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using OverBang.ExoWorld.Core.Characters;
+using OverBang.ExoWorld.Core.Enemies;
 using OverBang.Pooling;
 using OverBang.Pooling.Dependencies;
 using UnityEngine;
 using UnityEngine.Pool;
 
-namespace OverBang.ExoWorld.Core
+namespace OverBang.ExoWorld.Core.Utils
 {
     public static class PoolUtils
     {

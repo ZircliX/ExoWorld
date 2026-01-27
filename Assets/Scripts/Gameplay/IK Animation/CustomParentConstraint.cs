@@ -1,7 +1,7 @@
 ﻿using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.IK_Animation
 {
     [ExecuteInEditMode]
     public class CustomParentConstraint : MonoBehaviour

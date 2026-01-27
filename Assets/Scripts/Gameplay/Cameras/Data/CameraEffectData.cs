@@ -1,7 +1,7 @@
-using OverBang.ExoWorld.Gameplay.Composits;
+using OverBang.ExoWorld.Gameplay.Cameras.Composits;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay.Data
+namespace OverBang.ExoWorld.Gameplay.Cameras.Data
 {
     [CreateAssetMenu(menuName = "OverBang/Camera/CameraEffectData")]
     public class CameraEffectData : ScriptableObject
