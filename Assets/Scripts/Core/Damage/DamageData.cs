@@ -1,16 +1,21 @@
 namespace OverBang.ExoWorld.Core.Damage
 {
     [System.Serializable]
-    public struct DamageInfo
+    public struct DamageData
     {
         public float baseDamage;
         public float weakSpotMultiplier;
-        public float bonusDamage;
+        private float bonusDamage;
         
-        public DamageInfo WithBonusDamage(float bonus)
+        public DamageData WithBonusDamage(float bonus)
         {
             bonusDamage = bonus;
             return this;
         }
+    }
+
+    public struct RuntimeDamageData
+    {
+        
     }
 }

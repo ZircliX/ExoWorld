@@ -7,7 +7,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
     [System.Serializable]
     public class RobotBokiStrategyData : IAbilityStrategyData, IRobotBokiAbilityStrategyData
     {
-        [field: SerializeField] public DamageInfo Damage { get; private set; }
+        [field: SerializeField] public DamageData Damage { get; private set; }
         [field: SerializeField] public float ExplosionRadius { get; private set; }
         [field: SerializeField] public float DetectionRadius { get; private set; }
     }
@@ -22,7 +22,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
     [System.Serializable]
     public class RobotBokiImpulsionStrategyData : IAbilityStrategyData, IRobotBokiAbilityStrategyData
     {
-        [field: SerializeField] public DamageInfo Damage { get; private set; }
+        [field: SerializeField] public DamageData Damage { get; private set; }
         [field: SerializeField] public float ExplosionRadius { get; private set; }
         [field: SerializeField] public float DetectionRadius { get; private set; }
         [field: SerializeField] public float FreezeDuration { get; private set; }

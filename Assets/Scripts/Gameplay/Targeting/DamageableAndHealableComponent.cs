@@ -43,7 +43,7 @@ namespace OverBang.ExoWorld.Gameplay.Targeting
             SetHealth(Mathf.Min(Health + amount, MaxHealth));
         }
 
-        public void TakeDamage(DamageInfo damage)
+        public void TakeDamage(DamageData damage)
         {
             BroAudio.Play(damagedSound, transform.position);
             SetHealth(Mathf.Max(Health - damage.baseDamage * (1f - Resistance), 0f));

@@ -7,11 +7,11 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
 {
     public class StandardExplosion : IExplosionStrategy
     {
-        private readonly DamageInfo damage;
+        private readonly DamageData damage;
         
         public event Action<bool> OnExploded;
 
-        public StandardExplosion(DamageInfo damage)
+        public StandardExplosion(DamageData damage)
         {
             this.damage = damage;
         }

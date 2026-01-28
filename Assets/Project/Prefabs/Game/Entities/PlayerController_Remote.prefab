@@ -86,9 +86,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6016904456671023715, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
-    - {fileID: 6553042826902567377, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
+    - {fileID: 0}
     - {fileID: 4862076419946111438, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
     - {fileID: 2674150274775296948, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
+    - {fileID: 1186234965293078507, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
+    - {fileID: 1400611726766071219, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
     m_RemovedGameObjects:
     - {fileID: 992906681163127405, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
     - {fileID: 3316059015117000691, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
@@ -99,11 +101,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8985065719729054035, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
-      insertIndex: 3
+      insertIndex: 2
       addedObject: {fileID: 7936958548436890689}
-    - targetCorrespondingSourceObject: {fileID: 6684921334843441845, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3045526657594356826}
   m_SourcePrefab: {fileID: 100100000, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
 --- !u!1 &98045497159420190 stripped
 GameObject:
@@ -134,25 +133,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 267065aeca4843d3905050e0d9f49c34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.WeaponController
---- !u!1 &2389321229845195512 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6684921334843441845, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
-  m_PrefabInstance: {fileID: 9073924728451688525}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3045526657594356826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2389321229845195512}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4ecf37cc7574919987aa2df07f3a2fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.DamageableAndHealableComponent
-  damagedSound:
-    ID: 0
-    _sourceAsset: {fileID: 0}
-    <DebugObject>k__BackingField: {fileID: 2389321229845195512}
-  <Health>k__BackingField: 0

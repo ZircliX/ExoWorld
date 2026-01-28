@@ -18,7 +18,7 @@ namespace OverBang.ExoWorld.Gameplay.Targeting
             MinHealth = minHealth;
         }
 
-        public void TakeDamage(DamageInfo damage)
+        public void TakeDamage(DamageData damage)
         {
             float previousHealth = Health;
             Health -= damage.baseDamage;

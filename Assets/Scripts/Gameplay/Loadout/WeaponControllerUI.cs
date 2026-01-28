@@ -67,7 +67,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private void HandleUpgrade()
         {
             WeaponData data = currentWeapon.WeaponData;
-            currentWeapon.State.SetBullets((data.MagCapacity + data.UpgradeMagCap) / data.BulletsPerShot, false);
+            currentWeapon.State.SetBullets((data.MagCapacity + data.UpgradeMagCap) / data.BulletsPerShot);
             UpdateWeaponUI();
         }
 
