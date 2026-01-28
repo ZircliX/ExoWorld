@@ -1,8 +1,8 @@
-﻿using OverBang.ExoWorld.Core;
+﻿using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Gameplay.Abilities;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay
+namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public class ShockGrenadeEntity : MonoBehaviour
     {
@@ -16,7 +16,7 @@ namespace OverBang.ExoWorld.Gameplay
         
         public void Initialize(ShockGrenadeData data, Vector3 direction)
         {
-            strategy = new StandardExplosion(data.DamageInfo);
+            strategy = new StandardExplosion(data.DamageData);
             this.data = data;
             strategy.OnExploded += OnExploded;
             

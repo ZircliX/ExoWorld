@@ -10,6 +10,6 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         [field: SerializeField] public float ActivationTime { get; private set; }
         [field: SerializeField] public int MissileCount { get; private set; }
         [field: SerializeField] public float DiameterSpawn { get; private set; }
-        [field: SerializeField] public DamageInfo Damage { get; private set; }
+        [field: SerializeField] public DamageData Damage { get; private set; }
     }
 }

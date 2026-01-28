@@ -8,7 +8,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         
         public override void OnShootInput(InputAction.CallbackContext context)
         {
-            if (context.started)
+            if (context.started && !Weapon.State.IsReloading)
                 isFiring = true;
             else if (context.canceled)
                 isFiring = false;

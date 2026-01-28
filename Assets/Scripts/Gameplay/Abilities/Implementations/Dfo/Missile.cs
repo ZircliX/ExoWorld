@@ -18,7 +18,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
 
         private MissileManager manager;
         private float lifeTime;
-        private DamageInfo damageInfo;
+        private DamageData damageData;
         private bool isDetonated;
         
         private MissileData data;
@@ -32,11 +32,11 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             results = new RaycastHit[10];
         }
 
-        public void Initialize(MissileData data, MissileManager manager, DamageInfo damageInfo)
+        public void Initialize(MissileData data, MissileManager manager, DamageData damageData)
         {
             this.data = data;
             this.manager = manager;
-            this.damageInfo = damageInfo;
+            this.damageData = damageData;
             
             rb.AddForce(Vector3.down * (data.Speed * Time.deltaTime), ForceMode.Impulse);
             soundSource.Play();
@@ -85,7 +85,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
                 RaycastHit hit = results[i];
                 if (hit.collider.TryGetComponent(out IDamageable damageable))
                 {
-                    damageable.TakeDamage(damageInfo);
+                    damageable.TakeDamage(damageData);
                 }
             }
         }

@@ -4,7 +4,7 @@ namespace OverBang.ExoWorld.Gameplay.Targeting
 {
     public interface IDamageSource
     {
-        DamageInfo DamageInfo { get; }
+        DamageData DamageData { get; }
 
         void Damage(IDamageable damageable);
     }

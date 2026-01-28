@@ -7,13 +7,13 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
 {
     public class CryoExplosion : IExplosionStrategy
     {
-        private readonly DamageInfo damage;
+        private readonly DamageData damage;
         private readonly float slowDuration;
         private readonly float slowPercentage;
         
         public event Action<bool> OnExploded;
 
-        public CryoExplosion(DamageInfo damage, float slowDuration, float slowPercentage)
+        public CryoExplosion(DamageData damage, float slowDuration, float slowPercentage)
         {
             this.damage = damage;
             this.slowDuration = slowDuration;

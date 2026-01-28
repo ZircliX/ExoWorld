@@ -28,7 +28,7 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
         [SerializeField] public EnemyData enemyData;
         public IPool Pool { get; protected set; }
         
-        public DamageInfo DamageInfo => enemyData.DamageInfo;
+        public DamageData DamageData => enemyData.DamageData;
         
         [field : Header("Informations :")]
         [field : SerializeField] public Transform enemyModelContainer { get; private set; }

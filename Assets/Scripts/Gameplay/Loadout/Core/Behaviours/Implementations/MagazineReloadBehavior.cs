@@ -6,6 +6,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public class MagazineReloadBehavior : IReloadBehaviour
     {
+        public bool IsReloading { get; private set; }
         private Weapon weapon;
         
         public void OnInitialize(Weapon weapon)
@@ -20,7 +21,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
                 if (!context.performed)
                     return;
 
-                if (weapon.State.CurrentBullets >= weapon.WeaponData.MagCapacity + weapon.WeaponData.UpgradeMagCap)
+                if (!ShouldReload())
                     return;
 
                 await Reload();
@@ -31,12 +32,21 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             }
         }
 
+        private bool ShouldReload()
+        {
+            return (weapon.State.CurrentBullets < weapon.WeaponData.MagCapacity + weapon.WeaponData.UpgradeMagCap) && !IsReloading;
+        }
+
         public async Awaitable Reload()
         {
-            weapon.State.SetBullets(0, true);
+            IsReloading = true;
+            weapon.State.SetBullets(0);
+            
             await Awaitable.WaitForSecondsAsync(weapon.WeaponData.ReloadTime);
-            weapon.State.SetBullets(Mathf.RoundToInt(weapon.WeaponData.MagCapacity + weapon.WeaponData.UpgradeMagCap), false);
+            
+            weapon.State.SetBullets(Mathf.RoundToInt(weapon.WeaponData.MagCapacity + weapon.WeaponData.UpgradeMagCap));
             weapon.RequestOnWeaponReloaded();
+            IsReloading = false;
         }
 
         public void Tick(float dt) { }

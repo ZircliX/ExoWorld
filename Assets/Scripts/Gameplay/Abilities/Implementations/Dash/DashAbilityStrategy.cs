@@ -52,7 +52,8 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
                 Collider col = bumpColliders[index];
                 
                 if (col.TryGetComponent(out IDamageable damageable) &&
-                    !damagedEnemies.Contains(damageable))
+                    !damagedEnemies.Contains(damageable) &&
+                    col.gameObject != Caster.gameObject)
                 {
                     damageable.TakeDamage(ability.Data.Damage);
                 }

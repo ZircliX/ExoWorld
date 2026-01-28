@@ -4,7 +4,7 @@
     {
         public int CurrentBullets { get; private set; }
         public bool CanShoot => !IsReloading && CurrentBullets > 0 && TimeForNextShot <= 0f;
-        public bool IsReloading  { get; private set; }
+        public bool IsReloading => weapon.reloadBehaviour.IsReloading;
         public float TimeForNextShot;
 
         private readonly Weapon weapon;
@@ -33,9 +33,8 @@
             return true;
         }
 
-        public void SetBullets(int amount, bool reloading)
+        public void SetBullets(int amount)
         {
-            IsReloading = reloading;
             CurrentBullets = amount;
         }
 

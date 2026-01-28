@@ -5,6 +5,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public class PerShellReloadBehavior : IReloadBehaviour
     {
+        public bool IsReloading { get; private set; }
+        
         public void OnInitialize(Weapon weapon)
         {
             throw new System.NotImplementedException();

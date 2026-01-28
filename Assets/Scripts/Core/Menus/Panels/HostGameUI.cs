@@ -12,6 +12,8 @@ namespace OverBang.ExoWorld.Core.Menus
         [SerializeField, Space] private TMP_InputField gameNameInput;
         [SerializeField] private IntSelector maxPlayersSelector;
         [SerializeField] private ServerVisibilitySelector serverVisibilitySelector;
+        
+        [SerializeField] private GameObject passwordContainer;
         [SerializeField] private TMP_Text passwordText;
         
         [SerializeField, Space] private Button createButton;
@@ -44,12 +46,17 @@ namespace OverBang.ExoWorld.Core.Menus
 
             createButton.interactable = false;
             gameNameInput.onValueChanged.AddListener(text => createButton.interactable = !string.IsNullOrEmpty(text) && !started);
+            
+            serverVisibilitySelector.OnValueChanged += visibility => passwordContainer.SetActive(visibility == ServerVisibility.Private);
         }
 
         private void HandleHostCreate(string serverName, int maxPlayers, ServerVisibility visibility, string password)
         {
             serverName = serverName.Trim().Replace(" ", string.Empty);
             gameNameInput.text = serverName;
+            
+            if (visibility != ServerVisibility.Private)
+                password = string.Empty;
             
             OnCreateHostClicked?.Invoke(serverName, maxPlayers, visibility, password);
         }
@@ -65,6 +72,8 @@ namespace OverBang.ExoWorld.Core.Menus
                 char c = (char)UnityEngine.Random.Range(65, 91);
                 builder.Append(char.ToUpper(c));
             }
+            
+            started = false;
 
             currentPassword = builder.ToString();
             passwordText.text = currentPassword;

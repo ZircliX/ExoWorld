@@ -8,13 +8,13 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
 {
     public class NovaExplosion : IExplosionStrategy
     {
-        private readonly DamageInfo damage;
+        private readonly DamageData damage;
         private readonly float explosionInterval;
         private readonly int targetExplosionCount;
         
         public event Action<bool> OnExploded;
 
-        public NovaExplosion(DamageInfo damage, float explosionInterval, int targetExplosionCount)
+        public NovaExplosion(DamageData damage, float explosionInterval, int targetExplosionCount)
         {
             this.damage = damage;
             this.explosionInterval = explosionInterval;
