@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using OverBang.ExoWorld.Core.Abilities;
 using OverBang.ExoWorld.Core.Characters;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Gameplay.Movement;

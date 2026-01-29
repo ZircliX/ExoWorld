@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay.Abilities
+namespace OverBang.ExoWorld.Core.Abilities
 {
     public interface ICaster
     {

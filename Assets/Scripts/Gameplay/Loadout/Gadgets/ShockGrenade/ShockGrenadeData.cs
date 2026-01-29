@@ -1,4 +1,5 @@
-﻿using OverBang.ExoWorld.Core.Damage;
+﻿using OverBang.ExoWorld.Core.Abilities.Gadgets;
+using OverBang.ExoWorld.Core.Damage;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout

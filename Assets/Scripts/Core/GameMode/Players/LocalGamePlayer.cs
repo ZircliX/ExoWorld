@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using OverBang.ExoWorld.Core.Abilities.Gadgets;
 using OverBang.ExoWorld.Core.Characters;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Core.Utils;
@@ -104,5 +105,52 @@ namespace OverBang.ExoWorld.Core.GameMode.Players
             
             return playerObject;
         }
+
+        #region Gadgets
+
+        private Dictionary<GadgetData, Stack<IGadget>> gadgets;
+
+        protected void OnAwake() 
+        {
+            gadgets =  new Dictionary<GadgetData, Stack<IGadget>>();
+        }
+
+        public void AddGadget(GadgetData data, IGadget gadgetType, int amount)
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                if (gadgets.TryGetValue(data, out Stack<IGadget> gadget))
+                {
+                    gadgetType.Initialize(data);
+                    gadget.Push(gadgetType);
+                }
+            }
+        }
+    
+        public bool GetGadgetCount(GadgetData data, out int amount)
+        {
+            if (gadgets.TryGetValue(data, out Stack<IGadget> stack))
+            {
+                amount = stack.Count;
+                return true;
+            }
+            
+            amount = 0;
+            return false;
+        }
+    
+        public bool TryGetGadget(GadgetData data, out IGadget gadget)
+        {
+            if (gadgets.TryGetValue(data, out Stack<IGadget> stack))
+            {
+                return stack.TryPop(out gadget);
+            }
+            
+            gadget = null;
+            return false;
+        }
+        
+        #endregion
+        
     }
 }

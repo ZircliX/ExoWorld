@@ -1,5 +1,7 @@
 ﻿using System;
-using OverBang.ExoWorld.Gameplay.Abilities;
+using OverBang.ExoWorld.Core.Abilities;
+using OverBang.ExoWorld.Core.Abilities.Gadgets;
+using OverBang.ExoWorld.Core.GameMode.Players;
 using OverBang.ExoWorld.Gameplay.Player.PlayerHUD;
 using Unity.Netcode;
 using UnityEngine;
@@ -13,7 +15,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         public Vector3 Forward => transform.forward;
         private LoadoutController loadoutController;
         
-        private IGadget currentGadget;
+        private GadgetData currentGadgetData;
 
         public event Action OnGadgetSelectionBegin; 
         public event Action OnGadgetSelectionEnd; 
@@ -31,18 +33,22 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             OnGadgetSelectionBegin?.Invoke();
         }
 
-        public void SelectCurrentGadget(IGadget gadget)
+        public void SelectCurrentGadget(GadgetData data)
         {
-            currentGadget = gadget;
+            currentGadgetData = data;
         }
         
         private void StopGadgetSelection()
         {
             HUD.Instance.SetCursorState(false);
             OnGadgetSelectionEnd?.Invoke();
-            OnEnd();
-            //currentGadget.Initialize();
-            //currentGadget.Begin();
+
+            LocalGamePlayer player = GamePlayerManager.Instance.GetLocalPlayer();
+            
+            if (player.TryGetGadget(currentGadgetData, out IGadget gadget))
+            {
+                gadget.Begin(this);
+            }
         }
         
         private void OnEnd()
