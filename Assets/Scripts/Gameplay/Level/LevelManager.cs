@@ -76,14 +76,8 @@ namespace OverBang.ExoWorld.Gameplay.Level
 
         private void SetupPlayer(LocalGamePlayer gamePlayer)
         {
-            //Debug.Log("SetupPlayer : " + currentPlayer.Id);
-
-            ulong clientID = NetworkManager.Singleton.LocalClient.ClientId;
-            //Debug.Log($"Player {clientID} has CharacterData {characterData.AgentName}");
-
-            Vector3 position = new Vector3(11f, 1f, 24f);
-            Quaternion rotation = Quaternion.Euler(0f, 180f, 0f);
-            gamePlayer.Spawn(position, rotation);
+            Transform spawnPoint = GameObject.FindGameObjectWithTag("Respawn").transform;
+            gamePlayer.Spawn(spawnPoint.position, spawnPoint.rotation);
         }
 
         private async Awaitable SetupEnemies()
@@ -101,7 +95,7 @@ namespace OverBang.ExoWorld.Gameplay.Level
         
         private async Awaitable SetupPooling()
         {
-            await PoolUtils.SetupPooling();
+            await PoolUtils.SetupPooling(PoolUtils.PoolType.All);
         }
 
         private void SetState(LevelState state)
