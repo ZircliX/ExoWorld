@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using OverBang.ExoWorld.Core.Abilities.Gadgets;
 using OverBang.ExoWorld.Core.Characters;
+using OverBang.ExoWorld.Core.Inventory;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Core.Utils;
 using Unity.Netcode;
@@ -25,10 +26,12 @@ namespace OverBang.ExoWorld.Core.GameMode.Players
 
         public string SessionPlayerID => LocalSessionPlayer.Id;
         public ulong ClientID => NetworkManager.Singleton.LocalClientId;
+        
         public IPlayer LocalSessionPlayer => SessionManager.Global.CurrentPlayer;
-
+        public GadgetInventory GadgetInventory {get; private set;} = new GadgetInventory();
+        
         private bool isDirty;
-
+        
         /// <summary>
         /// Called every x frame to apply changes to the player properties
         /// </summary>
@@ -105,52 +108,6 @@ namespace OverBang.ExoWorld.Core.GameMode.Players
             
             return playerObject;
         }
-
-        #region Gadgets
-
-        private Dictionary<GadgetData, Stack<IGadget>> gadgets;
-
-        protected void OnAwake() 
-        {
-            gadgets =  new Dictionary<GadgetData, Stack<IGadget>>();
-        }
-
-        public void AddGadget(GadgetData data, IGadget gadgetType, int amount)
-        {
-            for (int i = 0; i < amount; i++)
-            {
-                if (gadgets.TryGetValue(data, out Stack<IGadget> gadget))
-                {
-                    gadgetType.Initialize(data);
-                    gadget.Push(gadgetType);
-                }
-            }
-        }
-    
-        public bool GetGadgetCount(GadgetData data, out int amount)
-        {
-            if (gadgets.TryGetValue(data, out Stack<IGadget> stack))
-            {
-                amount = stack.Count;
-                return true;
-            }
-            
-            amount = 0;
-            return false;
-        }
-    
-        public bool TryGetGadget(GadgetData data, out IGadget gadget)
-        {
-            if (gadgets.TryGetValue(data, out Stack<IGadget> stack))
-            {
-                return stack.TryPop(out gadget);
-            }
-            
-            gadget = null;
-            return false;
-        }
-        
-        #endregion
         
     }
 }

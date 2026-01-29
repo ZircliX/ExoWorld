@@ -1,0 +1,15 @@
+﻿using OverBang.ExoWorld.Core.Abilities.Gadgets;
+using OverBang.ExoWorld.Core.Damage;
+using OverBang.ExoWorld.Gameplay.Loadout.ShockGadget;
+using UnityEngine;
+
+namespace OverBang.ExoWorld.Gameplay.Loadout.ParalixGadget
+{
+    [CreateAssetMenu(menuName =  "OverBang/Gadgets/ParalixGrenadeData")]
+    public class ParalixGrenadeData : GadgetData
+    {
+        [field: SerializeField] public ParalixGrenadeEntity Prefab { get; private set; }
+        [field: SerializeField] public DamageData DamageData { get; private set; }
+        [field: SerializeField] public float ThrowForce { get; private set; }
+    }
+}
