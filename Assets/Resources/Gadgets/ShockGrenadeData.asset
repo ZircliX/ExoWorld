@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f9fc43fb1ba46af970c04cba08db494, type: 3}
   m_Name: ShockGrenadeData
   m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.Loadout.ShockGrenadeData
-  <Name>k__BackingField: 
-  <Description>k__BackingField: 
-  <Icon>k__BackingField: {fileID: 0}
-  <ExplosionDelay>k__BackingField: 0
-  <ExplosionRadius>k__BackingField: 0
+  <Name>k__BackingField: Grenade Shock
+  <Description>k__BackingField: "inflige des d\xE9g\xE2ts dans la zone d\u2019explosion."
+  <Icon>k__BackingField: {fileID: 21300000, guid: a25c67d94417521449a2c50bdb46d67e, type: 3}
+  <ExplosionDelay>k__BackingField: 3
+  <ExplosionRadius>k__BackingField: 20
   <Prefab>k__BackingField: {fileID: 0}
   <DamageData>k__BackingField:
-    baseDamage: 0
+    baseDamage: 300
     weakSpotMultiplier: 0
-  <ThrowForce>k__BackingField: 0
+  <ThrowForce>k__BackingField: 5
