@@ -31,7 +31,7 @@ namespace OverBang.ExoWorld.Gameplay.Upgrade
             FadePanel(upgradeGroup, visible);
             HUD.Instance.ChangeHudState(visible);
             UpgradeManager.Instance.RefreshTable();
-            UpdateValue(PlayerInventory.Trinitite);
+            UpdateValue(ResourcesInventory.Instance.GetItemQuantity("Trinitite"));
         }
         
         private void FadePanel(CanvasGroup group, bool visible)

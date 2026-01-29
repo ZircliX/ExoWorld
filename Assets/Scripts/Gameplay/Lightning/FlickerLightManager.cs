@@ -35,7 +35,7 @@ namespace OverBang.ExoWorld.Gameplay.Lightning
             buffer.Clear();
             buffer.CopyFrom(lights);
 
-            for (var index = 0; index < buffer.Length; index++)
+            for (int index = 0; index < buffer.Length; index++)
             {
                 FlickeringLight light = buffer[index];
                 light.FlickerLight();

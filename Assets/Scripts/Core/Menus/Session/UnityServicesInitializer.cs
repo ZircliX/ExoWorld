@@ -7,7 +7,7 @@ namespace OverBang.ExoWorld.Core.Menus
 {
     public class UnityServicesInitializer : MonoBehaviour
     {
-        private static bool isInitialized = false;
+        private static bool isInitialized;
 
         private void Awake()
         {

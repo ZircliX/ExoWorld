@@ -21,7 +21,7 @@ namespace OverBang.ExoWorld.Core.Interactions
             playerInteraction.OnNewInteractable -= UpdateInteractableUI;
         }
 
-        private void UpdateInteractableUI(IInteractable interactable)
+        private void UpdateInteractableUI(InteractableData interactable)
         {
             if (interactable == null)
             {
@@ -39,10 +39,10 @@ namespace OverBang.ExoWorld.Core.Interactions
 
         private void LateUpdate()
         {
-            IInteractable interactable = playerInteraction.CurrentInteractable;
+            InteractableData interactable = playerInteraction.CurrentInteractable;
             if (interactable != null)
             {
-                canvasGroup.transform.position = interactable.UIPosition;
+                canvasGroup.transform.position = interactable.Instance.UIPosition;
                 canvasGroup.transform.forward = playerInteraction.InteractionCamera.transform.forward;
             }
         }

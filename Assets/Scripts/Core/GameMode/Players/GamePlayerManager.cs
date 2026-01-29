@@ -65,7 +65,7 @@ namespace OverBang.ExoWorld.Core.GameMode.Players
 
         public LocalGamePlayer GetLocalPlayer()
         {
-            foreach (var playersValue in players.Values)
+            foreach (IGamePlayer playersValue in players.Values)
             {
                 if(playersValue is LocalGamePlayer player)
                     return player;

@@ -11,6 +11,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         public string InteractionText => string.Empty;
         public int Priority => (int)TargetPriority.High;
         public bool CanInteract => !pump.IsStarted && !pump.IsCompleted;
+        public InteractionType SupportedInteractions => InteractionType.Interact;
 
         Vector3 IInteractable.UIPosition => transform.position.Add(y: 1f, x: -1f);
 

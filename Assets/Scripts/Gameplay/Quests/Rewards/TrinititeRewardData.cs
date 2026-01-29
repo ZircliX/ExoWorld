@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using OverBang.ExoWorld.Core.Inventory;
+using UnityEngine;
 using ZTools.RewardSystem.Core;
 
 namespace OverBang.ExoWorld.Gameplay.Quests
@@ -6,7 +7,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
     [CreateAssetMenu(menuName = "OverBang/RewardData/TrinititeRewardData",  fileName = "TrinititeRewardData")]
     public class TrinititeRewardData : RewardData
     {
-        [field : SerializeField] public int TrinititeReward {get; private set;}
+        [field : SerializeField] public ItemData TrinititeData {get; private set;}
         
         
     }

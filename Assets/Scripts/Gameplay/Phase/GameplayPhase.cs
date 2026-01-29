@@ -63,11 +63,7 @@ namespace OverBang.ExoWorld.Gameplay.Phase
             
             CurrentEndInfos = new GameplayEndInfos()
             {
-                isFinished = false,
-                rewards = new GameplayRewards()
-                {
-                    trinititeReward = PlayerInventory.Trinitite,
-                }
+                isFinished = false
             };
         }
         

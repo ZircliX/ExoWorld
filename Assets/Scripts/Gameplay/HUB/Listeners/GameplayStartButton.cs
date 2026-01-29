@@ -12,6 +12,7 @@ namespace OverBang.ExoWorld.Gameplay.HUB.Listeners
         public string InteractionText => "Démarrer le vaisseau";
         public int Priority => (int)TargetPriority.High;
         public bool CanInteract { get; private set; } = true;
+        public InteractionType SupportedInteractions => InteractionType.Interact;
         Vector3 IInteractable.UIPosition => transform.position.Add(y: 0.6f);
 
         [Rpc(SendTo.Everyone)]

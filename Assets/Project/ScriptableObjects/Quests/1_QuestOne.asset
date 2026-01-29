@@ -19,7 +19,8 @@ MonoBehaviour:
   - "Trouver la pompe dans le hall d'entr\xE9e et activez la."
   - "Prot\xE9gez la pompe des monstres."
   - Retournez au vaisseau.
-  <Rewards>k__BackingField: []
+  <Rewards>k__BackingField:
+  - {fileID: 11400000, guid: 1307c5edfb012454599659cd36b4b13e, type: 2}
   <RepairTimeRequired>k__BackingField: 60
   <TotalRepairHealth>k__BackingField: 10
   <EnemySpawnScenario>k__BackingField: {fileID: 11400000, guid: efaa846c609a0144f9050669ab508e6c, type: 2}
