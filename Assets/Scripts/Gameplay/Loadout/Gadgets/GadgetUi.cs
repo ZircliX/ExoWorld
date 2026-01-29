@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using OverBang.ExoWorld.Core.Abilities.Gadgets;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -11,20 +12,20 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         [SerializeField] private TextMeshProUGUI text;
 
         private GadgetControllerUI gadgetControllerUI;
-        private IGadget gadget;
+        private GadgetData data;
         
-        public void Initialize(GadgetControllerUI gadgetControllerUI, IGadget gadget)
+        public void Initialize(GadgetControllerUI ControllerUI, GadgetData Data)
         {
-            this.gadgetControllerUI = gadgetControllerUI;
-            this.gadget = gadget;
+            gadgetControllerUI = ControllerUI;
+            data = Data;
             
-            image.sprite = gadget.Data.Icon;
-            text.text = gadget.Data.Name;
+            image.sprite = Data.Icon;
+            text.text = Data.Name;
         }
         
         public void OnPointerEnter(PointerEventData eventData)
         {
-            gadgetControllerUI.SetCurrentSelectedGadget(gadget);
+            gadgetControllerUI.SetCurrentSelectedGadget(data);
         }
 
         public void OnPointerExit(PointerEventData eventData)

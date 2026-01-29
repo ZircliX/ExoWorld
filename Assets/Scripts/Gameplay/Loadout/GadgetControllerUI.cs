@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using DG.Tweening;
+using OverBang.ExoWorld.Core.Abilities.Gadgets;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -44,9 +45,9 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             ChangeVisibility(false);
         }
         
-        public void SetCurrentSelectedGadget(IGadget gadget)
+        public void SetCurrentSelectedGadget(GadgetData data)
         {
-            controller.SelectCurrentGadget(gadget);
+            controller.SelectCurrentGadget(data);
         }
         
         private void ChangeVisibility(bool visible)
@@ -58,10 +59,10 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             });
         }
         
-        public void AddGadgetToWheel(IGadget gadget)
+        public void AddGadgetToWheel(GadgetData data)
         {
             GadgetUi gadgetUi = Instantiate(gadgetUiPrefab, transform);
-            gadgetUi.Initialize(this, gadget);
+            gadgetUi.Initialize(this, data);
         
             menuItems.Add(gadgetUi);
             RepositionItems();
