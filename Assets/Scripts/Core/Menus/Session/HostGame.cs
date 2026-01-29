@@ -21,13 +21,26 @@ namespace OverBang.ExoWorld.Core.Menus
 
         private void OnHostGame(string serverName, int maxPlayers, ServerVisibility visibility, string password)
         {
-            SessionOptions options = new SessionOptions()
+            SessionOptions options;
+            if (string.IsNullOrEmpty(password))
             {
-                Name = serverName,
-                MaxPlayers = maxPlayers,
-                IsPrivate = visibility != ServerVisibility.Public,
-                Password = password
-            }.WithRelayNetwork();
+                options = new SessionOptions()
+                {
+                    Name = serverName,
+                    MaxPlayers = maxPlayers,
+                    IsPrivate = visibility != ServerVisibility.Public,
+                }.WithRelayNetwork();
+            }
+            else
+            {
+                options = new SessionOptions()
+                {
+                    Name = serverName,
+                    MaxPlayers = maxPlayers,
+                    IsPrivate = visibility != ServerVisibility.Public,
+                    Password = password
+                }.WithRelayNetwork();
+            }
             
             CreateHostAsync(options);
         }
