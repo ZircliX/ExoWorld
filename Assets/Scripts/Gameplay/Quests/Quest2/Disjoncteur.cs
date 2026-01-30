@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using OverBang.ExoWorld.Core.Interactions;
 using OverBang.ExoWorld.Gameplay.Abilities;
 using Unity.Netcode;
@@ -12,20 +11,34 @@ namespace OverBang.ExoWorld.Gameplay.Quests
     {
         [SerializeField] private QuestTwoData questData;
         [SerializeField] private DetectionArea detectionArea;
-        [SerializeField] private List<Fusible> fusibles;
 
         private int fusiblesInserted = 0;
-
-        public string InteractionText => CanInteract ? questData.InteractionText : questData.InteractionTextEmpty;
+        private bool isHoldingFusible = false;
+        private QuestTwoHandler questTwoHandler;
+        
+        public string InteractionText => CanInteract && isHoldingFusible ? questData.InteractionText : questData.InteractionTextEmpty;
         public int Priority => (int)TargetPriority.High;
-        public bool CanInteract { get; private set; } = false;
+        public bool CanInteract { get; private set; } = true;
+        private void SetCanInteractTrue() => CanInteract = true;
         public InteractionType SupportedInteractions => InteractionType.Interact;
 
-        Vector3 IInteractable.UIPosition => transform.position.Add(y: 1f, x: -1f);
+        Vector3 IInteractable.UIPosition => transform.position.Add(y: 1f);
 
         public void Interact(PlayerInteraction playerInteraction)
         {
+            questTwoHandler ??= questData.GetHandlerByData<QuestTwoHandler>();
+            if (questTwoHandler is {StepIndex: < 2})
+                questTwoHandler.SetStepIndex(2);
+            
             AddFusible(playerInteraction);
+
+            CanInteract = false;
+            Invoke(nameof(SetCanInteractTrue), 1f);
+        }
+
+        public void OnPlayerEnter(PlayerInteraction playerInteraction)
+        {
+            isHoldingFusible = playerInteraction.GetHoldingItemType<IFusible>();
         }
 
         private void OnEnable()
@@ -51,8 +64,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             if (!playerInteraction.IsHoldingItem())
                 return;
 
-            InteractableData heldData = playerInteraction.HeldItem;
-            if (heldData.Instance is IFusible fusible)
+            if (playerInteraction.GetHoldingItemType<IFusible>())
             {
                 fusiblesInserted++;
                 playerInteraction.DropItem();
@@ -60,7 +72,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
                 QuestTwoEvent evt = new QuestTwoEvent(1);
                 ObjectivesManager.DispatchGameEvent(evt);
 
-                if (fusiblesInserted >= fusibles.Count)
+                if (fusiblesInserted >= questData.TotalPieces)
                 {
                     OnAllFusiblesInserted();
                 }

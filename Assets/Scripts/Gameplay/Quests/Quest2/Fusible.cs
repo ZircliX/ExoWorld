@@ -3,17 +3,21 @@ using OverBang.ExoWorld.Gameplay.Abilities;
 using Unity.Netcode;
 using UnityEngine;
 using UnityUtils;
+using ZTools.ObjectiveSystem.Core;
 
 namespace OverBang.ExoWorld.Gameplay.Quests
 {
     public class Fusible : NetworkBehaviour, IInteractable, IFusible
     {
+        [SerializeField] private QuestTwoData questTwoData;
         [SerializeField] private DetectionArea detectionArea;
         [SerializeField] private bool canBePickedUp = true;
         [SerializeField] private bool canBeDropped = true;
 
         private Vector3 originalPosition;
         private bool isPickedUp = false;
+
+        private QuestTwoHandler questTwoHandler;
 
         public string InteractionText => isPickedUp ? "Déposer le fusible" : "Ramasser le fusible";
         public int Priority => (int)TargetPriority.Medium;
@@ -29,23 +33,27 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             }
         }
 
-        Vector3 IInteractable.UIPosition => transform.position.Add(y: 1.25f);
-
-        public void Interact(PlayerInteraction playerInteraction)
-        {
-        }
-
+        Vector3 IInteractable.UIPosition => transform.position.Add(y: 1f);
+        
         public void OnPickup(PlayerInteraction playerInteraction)
         {
+            questTwoHandler ??= questTwoData.GetHandlerByData<QuestTwoHandler>();
+            if (questTwoHandler is { StepIndex: < 1 })
+            {
+                questTwoHandler.SetStepIndex(1);
+            }
+            
             isPickedUp = true;
+            CanInteract = false;
             gameObject.SetActive(false); // Hide or trigger pickup animation
         }
 
         public void OnDrop(PlayerInteraction playerInteraction)
         {
             isPickedUp = false;
+            CanInteract = true;
+            transform.position = playerInteraction.CurrentInteractable.Instance.transform.position;
             gameObject.SetActive(true); // Show or trigger drop animation
-            transform.position = playerInteraction.transform.position + Vector3.forward;
         }
 
         private void Awake()

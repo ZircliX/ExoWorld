@@ -183,5 +183,10 @@ namespace OverBang.ExoWorld.Core.Interactions
             interactableDataMap.TryGetValue(interactable, out InteractableData data);
             return data;
         }
+
+        public bool GetHoldingItemType<T>()
+        {
+            return HeldItem?.Instance is T;
+        }
     }
 }

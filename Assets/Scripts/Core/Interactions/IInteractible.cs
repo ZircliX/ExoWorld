@@ -15,7 +15,7 @@ namespace OverBang.ExoWorld.Core.Interactions
 
         void OnPlayerEnter(PlayerInteraction playerInteraction) { }
         void OnPlayerExit(PlayerInteraction playerInteraction) { }
-        void Interact(PlayerInteraction playerInteraction);
+        void Interact(PlayerInteraction playerInteraction) { }
         void OnPickup(PlayerInteraction playerInteraction) { }
         void OnDrop(PlayerInteraction playerInteraction) { }
     }

@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace ZTools.ObjectiveSystem.Core
 {
     public static class ObjectiveUtils
@@ -8,10 +10,10 @@ namespace ZTools.ObjectiveSystem.Core
 
             foreach (IObjectiveHandler obj in ObjectivesManager.ActiveObjectives)
             {
-                if (obj.GetType() == typeof(T))
-                {
-                    return (T)obj;
-                }
+                //Debug.Log(obj.ObjectiveData.Name + " / " + obj.GetType());
+                
+                if (obj is T objectiveHandler)
+                    return objectiveHandler;
             }
 
             throw new System.InvalidCastException($"Cannot cast handler of type {handler.GetType().Name} to type {typeof(T).Name}");

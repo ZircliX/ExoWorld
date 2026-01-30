@@ -8,7 +8,6 @@ using OverBang.ExoWorld.Core.Utils;
 using OverBang.ExoWorld.Gameplay.Enemies;
 using OverBang.ExoWorld.Gameplay.Phase;
 using OverBang.Pooling;
-using Unity.Netcode;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Level
