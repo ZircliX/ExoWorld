@@ -3685,6 +3685,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1518980571670799238}
   - component: {fileID: 4877312307657521551}
+  - component: {fileID: 202331387400008251}
   - component: {fileID: 4225862939240760527}
   - component: {fileID: 4862076419946111438}
   - component: {fileID: 7499400410501169703}
@@ -3731,6 +3732,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475a8e12d0da4100a4e047139eb8fc94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.AbilityController
+--- !u!114 &202331387400008251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6684921334843441845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9787965d32d48ff90acd49a99c26cba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.Player.PlayerEntity
+  <DamageableAndHealableComponent>k__BackingField: {fileID: 4225862939240760527}
 --- !u!114 &4225862939240760527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3769,12 +3783,11 @@ MonoBehaviour:
     _sourceAsset: {fileID: 11400000, guid: 1e98a9d7d89afe544803e95a716644ff, type: 2}
     <DebugObject>k__BackingField: {fileID: 6684921334843441845}
   movementStates:
-  - {fileID: 11400000, guid: 5e4bcd4b83c261443b9414fe80298e6b, type: 2}
   - {fileID: 11400000, guid: be1dcc172ba00724ea9b156b06ecc9da, type: 2}
   - {fileID: 11400000, guid: 9d3d4af720a56e642b1fdbd0543cb6e0, type: 2}
   - {fileID: 11400000, guid: 1584499b6b911c740bb388239cf6a091, type: 2}
-  - {fileID: 11400000, guid: cd52e72197f988043b0af1aea128d259, type: 2}
   - {fileID: 11400000, guid: 649c7c004de1d384e894f458425a1d59, type: 2}
+  - {fileID: 11400000, guid: cd52e72197f988043b0af1aea128d259, type: 2}
   - {fileID: 11400000, guid: e28da9b0a8db01542a3770b3e1a28e1c, type: 2}
   groundCheckDistance: 0.2
   groundCheckMaxAngle: 50
@@ -6169,7 +6182,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7599977413540709281, guid: 2f4656013e76de348b481aa70a0a030c, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 68.34
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7599977413540709281, guid: 2f4656013e76de348b481aa70a0a030c, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -6177,7 +6190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7599977413540709281, guid: 2f4656013e76de348b481aa70a0a030c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -239.17
+      value: -250.67
       objectReference: {fileID: 0}
     - target: {fileID: 7839171466693795577, guid: 2f4656013e76de348b481aa70a0a030c, type: 3}
       propertyPath: m_Sprite
@@ -6224,17 +6237,6 @@ PrefabInstance:
       addedObject: {fileID: 1150352265043640699}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f4656013e76de348b481aa70a0a030c, type: 3}
---- !u!114 &8838783402016482173 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5277977576125151402, guid: 2f4656013e76de348b481aa70a0a030c, type: 3}
-  m_PrefabInstance: {fileID: 3717314710247644119}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: daf529b1fbd14965bf06da103b5d0f56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.GadgetControllerUI
 --- !u!224 &9098849894630097345 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5607849934920489494, guid: 2f4656013e76de348b481aa70a0a030c, type: 3}

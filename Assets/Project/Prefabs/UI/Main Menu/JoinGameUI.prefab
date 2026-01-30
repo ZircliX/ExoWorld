@@ -1796,9 +1796,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8875317812154108085}
   - {fileID: 1214800066299604026}
   - {fileID: 7519798172078733400}
+  - {fileID: 9115189368907154544}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1832,8 +1832,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: OverBang.GameName.Core::OverBang.GameName.Core.Menus.JoinGameUI
   firstSelectable: {fileID: 5478564075400157403}
   canvasGroup: {fileID: 8806933820193310629}
-  backButton: {fileID: 0}
-  joinButton: {fileID: 0}
+  backButton: {fileID: 6751887746725236662}
+  joinButton: {fileID: 7980005143863997124}
   contentList: {fileID: 7667378479727510471}
   lobbyItemPrefab: {fileID: 858909966988103477, guid: 8f8ee4a5a68817b4490f3a2340adeca6, type: 3}
   passwordInput: {fileID: 7194472991569281467}
@@ -3771,7 +3771,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9090096778352979385}
   m_HandleRect: {fileID: 2169890125905047919}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
