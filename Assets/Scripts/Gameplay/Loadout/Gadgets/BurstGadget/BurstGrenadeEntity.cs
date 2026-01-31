@@ -2,37 +2,27 @@
 using OverBang.ExoWorld.Gameplay.Abilities;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay.Loadout
+namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
 {
-    public class ShockGrenadeEntity : MonoBehaviour
+    public class BurstGrenadeEntity : MonoBehaviour
     {
         [SerializeField] private Rigidbody rb;
         
         private IExplosionStrategy strategy;
 
-        private ShockGrenadeData data;
+        private BurstGrenadeData data;
         private float time;
         private bool isDetonated;
         
-        public void Initialize(ShockGrenadeData data, Vector3 direction)
+        public void Initialize(BurstGrenadeData data, Vector3 direction)
         {
             strategy = new StandardExplosion(data.DamageData);
             this.data = data;
             strategy.OnExploded += OnExploded;
             
             rb.AddForce(Vector3.up * 0.5f + direction * data.ThrowForce * Time.deltaTime, ForceMode.Impulse);
-            
         }
-
-        private void OnExploded(bool terminated)
-        {
-            if (terminated)
-            {
-                strategy.OnExploded -= OnExploded;
-                End();
-            }
-        }
-
+        
         public void Tick(float deltaTime)
         {
             if (time < data.ExplosionDelay)
@@ -55,7 +45,16 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
                 isDetonated = true;
             }
         }
-
+        
+        private void OnExploded(bool terminated)
+        {
+            if (terminated)
+            {
+                strategy.OnExploded -= OnExploded;
+                End();
+            }
+        }
+        
         private void End()
         {
             Destroy(gameObject);

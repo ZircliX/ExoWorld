@@ -1,29 +1,38 @@
-using System;
+﻿using System;
 using OverBang.ExoWorld.Core.Abilities;
 using OverBang.ExoWorld.Core.Abilities.Gadgets;
-using OverBang.ExoWorld.Gameplay.Abilities;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace OverBang.ExoWorld.Gameplay.Loadout
+namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
 {
-    public class ShockGrenade : IGadget
+    public class BurstGrenade : IGadget
     {
-        public ShockGrenadeData Data { get; private set; }
+        
+        public BurstGrenadeData Data { get; private set; }
+        
         public ICaster Caster { get; private set; }
+        
         public Action OnGadgetEnded { get; }
-
-        private ShockGrenadeEntity grenadeEntity;
+        
+        private BurstGrenadeEntity grenadeEntity;
+        
         
         public void Initialize(GadgetData data)
         {
-            Data = data as ShockGrenadeData;
+            Data = data as BurstGrenadeData;
+
         }
-        
+
         public void Begin(ICaster caster)
         {
             Caster = caster;
-            grenadeEntity = Object.Instantiate(Data.Prefab, Caster.transform.position, Quaternion.identity);
+            grenadeEntity = Object.Instantiate(Data.Prefab, Caster.CastAnchor.position, Quaternion.identity);
+        }
+
+        public void Launch(ICaster caster)
+        {
+            grenadeEntity.Initialize(Data, caster.Forward);
         }
 
         public void Tick(float deltaTime)

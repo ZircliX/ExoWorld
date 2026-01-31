@@ -1,26 +1,31 @@
 using System.Collections.Generic;
 using DG.Tweening;
 using OverBang.ExoWorld.Core.Abilities.Gadgets;
+using OverBang.ExoWorld.Core.GameMode.Players;
 using Sirenix.OdinInspector;
+using TMPro;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public class GadgetControllerUI : MonoBehaviour
     {
+        [field : SerializeField] public List<GadgetUi> gadgetUis { get; private set; }
         [SerializeField, Required] private GadgetController controller;
         
         [SerializeField] private CanvasGroup gadgetWheel;
-        [SerializeField] private float radius = 250f;
-        [SerializeField] private float startAngle;
-        [SerializeField] private GadgetUi gadgetUiPrefab;
+        [SerializeField] private GadgetUiSelector selector;
         
-        private List<GadgetUi> menuItems;
         
         private void Start()
         {
-            menuItems  = new List<GadgetUi>();
             gadgetWheel.alpha = 0;
+            foreach (GadgetUi gadgetUi in gadgetUis)
+            {
+                gadgetUi.Initialize(this);
+            }
+            
+            selector.Initialize(this);
         }
 
         private void OnEnable()
@@ -38,6 +43,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private void SelectionBegin()
         {
             ChangeVisibility(true);
+            selector.StartSelection();
         }
         
         private void SelectionEnd()
@@ -48,6 +54,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         public void SetCurrentSelectedGadget(GadgetData data)
         {
             controller.SelectCurrentGadget(data);
+            
         }
         
         private void ChangeVisibility(bool visible)
@@ -59,50 +66,25 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             });
         }
         
-        public void AddGadgetToWheel(GadgetData data)
+        public void RefreshGadgetInUI(LocalGamePlayer player)
         {
-            GadgetUi gadgetUi = Instantiate(gadgetUiPrefab, transform);
-            gadgetUi.Initialize(this, data);
-        
-            menuItems.Add(gadgetUi);
-            RepositionItems();
-        }
-
-        private void RepositionItems()
-        {
-            int itemCount = menuItems.Count;
-            if (itemCount == 0) return;
-
-            float angleStep = 360f / itemCount;
-
-            for (int i = 0; i < itemCount; i++)
-            {
-                float angle = (startAngle + angleStep * i) * Mathf.Deg2Rad;
+            int i = 0;
             
-                float x = Mathf.Cos(angle) * radius;
-                float y = Mathf.Sin(angle) * radius;
-
-                menuItems[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(x, y);
-            }
-        }
-
-        public void RemoveItem(int index)
-        {
-            if (index >= 0 && index < menuItems.Count)
+            foreach (GadgetData gadgetData in player.GadgetInventory.GadgetDatas)
             {
-                Destroy(menuItems[index]);
-                menuItems.RemoveAt(index);
-                RepositionItems();
+                GadgetUi gadgetUi = gadgetUis[i];
+                if (player.GadgetInventory.GetGadgetCount(gadgetData, out int amount))
+                { 
+                    gadgetUi.Refresh(gadgetData);
+                }
+                else
+                {
+                    gadgetUi.Clear();
+                }
+                i++;
             }
         }
-
-        public void ClearMenu()
-        {
-            foreach (GadgetUi item in menuItems)
-            {
-                Destroy(item);
-            }
-            menuItems.Clear();
-        }
+        
+        
     }
 }
