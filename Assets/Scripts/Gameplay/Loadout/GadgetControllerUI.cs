@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using DG.Tweening;
+using KBCore.Refs;
 using OverBang.ExoWorld.Core.Abilities.Gadgets;
 using OverBang.ExoWorld.Core.GameMode.Players;
 using Sirenix.OdinInspector;
@@ -11,12 +13,18 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
     public class GadgetControllerUI : MonoBehaviour
     {
         [field : SerializeField] public List<GadgetUi> gadgetUis { get; private set; }
+        [SerializeField, Self] private GadgetUiSelector selector;
         [SerializeField, Required] private GadgetController controller;
         
         [SerializeField] private CanvasGroup gadgetWheel;
-        [SerializeField] private GadgetUiSelector selector;
         
+        public event Action OnGadgetUiSelectionEnd;
         
+        private void OnValidate()
+        {
+            this.ValidateRefs();
+        }
+
         private void Start()
         {
             gadgetWheel.alpha = 0;
@@ -40,21 +48,22 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             controller.OnGadgetSelectionEnd -= SelectionEnd;
         }
 
-        private void SelectionBegin()
+        private void SelectionBegin(LocalGamePlayer player)
         {
+            RefreshGadgetInUI(player);
             ChangeVisibility(true);
             selector.StartSelection();
         }
         
         private void SelectionEnd()
         {
+            OnGadgetUiSelectionEnd?.Invoke();
             ChangeVisibility(false);
         }
         
         public void SetCurrentSelectedGadget(GadgetData data)
         {
             controller.SelectCurrentGadget(data);
-            
         }
         
         private void ChangeVisibility(bool visible)
@@ -73,18 +82,19 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             foreach (GadgetData gadgetData in player.GadgetInventory.GadgetDatas)
             {
                 GadgetUi gadgetUi = gadgetUis[i];
-                if (player.GadgetInventory.GetGadgetCount(gadgetData, out int amount))
+                if (player.GadgetInventory.GetGadgetCount(gadgetData, out int amount) && amount > 0)
                 { 
-                    gadgetUi.Refresh(gadgetData);
+                    gadgetUi.SetSelectable(true);
+                    gadgetUi.Refresh(gadgetData, amount);
                 }
                 else
                 {
+                    gadgetUi.SetSelectable(false);
                     gadgetUi.Clear();
                 }
+                Debug.Log($"player have {gadgetData.name} with {amount}");
                 i++;
             }
         }
-        
-        
     }
 }

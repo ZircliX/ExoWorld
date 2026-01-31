@@ -16,7 +16,9 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.ShockGadget
         
         public void Initialize(GadgetData data)
         {
+            Debug.Log(data.GetType() ==  typeof(ShockGrenadeData));
             Data = data as ShockGrenadeData;
+            grenadeEntity.FreezeGrenade(true);
         }
         
         public void Begin(ICaster caster)
@@ -27,7 +29,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.ShockGadget
 
         public void Launch(ICaster caster)
         {
-            grenadeEntity.Initialize(Data, caster.Forward);
+            grenadeEntity.Initialize(Data, caster.CastAnchor.forward);
         }
 
         public void Tick(float deltaTime)

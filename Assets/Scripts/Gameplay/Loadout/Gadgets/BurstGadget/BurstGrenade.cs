@@ -21,13 +21,14 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
         public void Initialize(GadgetData data)
         {
             Data = data as BurstGrenadeData;
-
+            grenadeEntity.FreezeGrenade(true);
         }
 
         public void Begin(ICaster caster)
         {
             Caster = caster;
             grenadeEntity = Object.Instantiate(Data.Prefab, Caster.CastAnchor.position, Quaternion.identity);
+            
         }
 
         public void Launch(ICaster caster)

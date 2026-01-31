@@ -11,7 +11,7 @@ namespace OverBang.ExoWorld.Core.Inventory
 
         public GadgetInventory()
         {
-            GadgetData[] gadgetDatas = Resources.LoadAll<GadgetData>("GadgetDatas");
+            GadgetData[] gadgetDatas = Resources.LoadAll<GadgetData>("Gadgets");
             for (int i = 0; i < gadgetDatas.Length; i++)
             {
                 gadgets.Add(gadgetDatas[i], new Stack<IGadget>());
@@ -25,7 +25,6 @@ namespace OverBang.ExoWorld.Core.Inventory
             {
                 if (gadgets.TryGetValue(data, out Stack<IGadget> gadget))
                 {
-                    gadgetType.Initialize(data);
                     gadget.Push(gadgetType);
                 }
             }
@@ -49,7 +48,6 @@ namespace OverBang.ExoWorld.Core.Inventory
             {
                 return stack.TryPop(out gadget);
             }
-            
             gadget = null;
             return false;
         }

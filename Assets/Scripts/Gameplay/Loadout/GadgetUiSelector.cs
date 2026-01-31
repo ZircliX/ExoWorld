@@ -25,15 +25,23 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         
         private GadgetControllerUI controllerUI;
         private GadgetUi currentSelectedGadget;
-
+        
         public void Initialize(GadgetControllerUI controllerUI)
         {
             this.controllerUI = controllerUI;
+            controllerUI.OnGadgetUiSelectionEnd += SelectItem;
+            currentSelectedGadget = GadgetUis[1];
         }
+        
+        private void OnDisable()
+        {
+            controllerUI.OnGadgetUiSelectionEnd -= SelectItem;
+        }
+        
         
         public void StartSelection()
         {
-            accumulatedDelta = Vector2.zero; 
+            accumulatedDelta = Vector2.zero;
             currentSelection = 1;
         }
         
@@ -45,7 +53,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
                 
             UpdateSelection();
         }
-        
+
+        private int selectedIndex;
         private void UpdateSelection()
         {
             // Check if mouse moved far enough from center
@@ -60,23 +69,21 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             
             // Find closest menu item
             float anglePerItem = 360f / itemCount;
-            int selectedIndex = Mathf.RoundToInt(angle / anglePerItem) % itemCount;
-            SelectItem(selectedIndex);
+            selectedIndex = Mathf.RoundToInt(angle / anglePerItem) % itemCount;
         }
         
         
-        private void SelectItem(int selectedIndex)
+        private void SelectItem()
         {
             if (selectedIndex >= 0 && selectedIndex < GadgetUis.Count)
             {
-                Debug.Log($"Selected: Item {selectedIndex}");
                 OnItemSelected(selectedIndex);
             }
         }
         
         private void OnItemSelected(int index)
         {
-            if (currentSelectedGadget == GadgetUis[index]) return;
+            if (currentSelectedGadget == GadgetUis[index] && !currentSelectedGadget.isSelectable) return;
             
             currentSelectedGadget.DeselectThisGadget();
             currentSelectedGadget = GadgetUis[index];

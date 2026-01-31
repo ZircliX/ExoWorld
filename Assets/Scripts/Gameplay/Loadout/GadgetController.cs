@@ -14,7 +14,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
     {
         [field: SerializeField] public Transform CastAnchor { get; private set; }
         
-        [SerializeField] private GadgetControllerUI gadgetControllerUI;
         [SerializeField] private List<GadgetData> debugGadgetData;
         
         public Vector3 Forward => transform.forward;
@@ -25,7 +24,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         
         private LocalGamePlayer player;
 
-        public event Action OnGadgetSelectionBegin; 
+        public event Action<LocalGamePlayer> OnGadgetSelectionBegin; 
         public event Action OnGadgetSelectionEnd; 
         
         
@@ -50,9 +49,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
         private void StartGadgetSelection()
         {
-            HUD.Instance.SetCursorState(true);
-            gadgetControllerUI.RefreshGadgetInUI(player);
-            OnGadgetSelectionBegin?.Invoke();
+            OnGadgetSelectionBegin?.Invoke(player);
         }
 
         public void SelectCurrentGadget(GadgetData data)
@@ -62,19 +59,24 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         
         private void StopGadgetSelection()
         {
-            HUD.Instance.SetCursorState(false);
             OnGadgetSelectionEnd?.Invoke();
             
-            if (player.GadgetInventory.TryGetGadget(currentGadgetData, out IGadget gadget))
+            if (currentGadgetData != null & player.GadgetInventory.TryGetGadget(currentGadgetData, out IGadget gadget))
             {
                 currentGadget = gadget;
                 currentGadget.Begin(this);
+                loadoutController.SwitchCameraInputs(true);
+            }
+            else
+            {
+                OnEnd();
             }
         }
 
         private void StartGadget()
         {
             currentGadget.Launch(this);
+            OnEnd();
         }
         
         private void OnEnd()
