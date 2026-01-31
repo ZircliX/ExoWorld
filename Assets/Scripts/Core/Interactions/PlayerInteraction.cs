@@ -42,6 +42,11 @@ namespace OverBang.ExoWorld.Core.Interactions
         {
             if (other.TryGetComponent(out IInteractable interactable))
             {
+                if (HeldItem != null && interactable.SupportedInteractions.HasFlag(InteractionType.Pickup))
+                {
+                    return;
+                }
+                
                 InteractableData data = new InteractableData(interactable);
                 interactables.Add(data);
                 interactableDataMap[interactable] = data;
@@ -53,6 +58,11 @@ namespace OverBang.ExoWorld.Core.Interactions
         {
             if (other.TryGetComponent(out IInteractable interactable))
             {
+                if (HeldItem != null && interactable.SupportedInteractions.HasFlag(InteractionType.Pickup))
+                {
+                    return;
+                }
+                
                 if (interactableDataMap.TryGetValue(interactable, out InteractableData data))
                 {
                     interactables.Remove(data);
@@ -128,7 +138,7 @@ namespace OverBang.ExoWorld.Core.Interactions
 
             if (HeldItem != null)
             {
-                DropItem();
+                //DropItem();
                 return;
             }
 

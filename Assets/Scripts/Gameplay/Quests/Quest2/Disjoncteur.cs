@@ -66,6 +66,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
 
             if (playerInteraction.GetHoldingItemType<IFusible>())
             {
+                isHoldingFusible = false;
                 fusiblesInserted++;
                 playerInteraction.DropItem();
 
