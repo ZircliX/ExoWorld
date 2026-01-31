@@ -90,11 +90,7 @@ namespace OverBang.ExoWorld.Gameplay.Network
 
         private void CheckForCharacter()
         {
-            if (SessionManager.Global.CurrentPlayer.TryGetPlayerProperty(
-                    ConstID.Global.PlayerPropertyCharacterData, out string propertyValue))
-            {
-                hasCharacter = propertyValue != string.Empty;
-            }
+            hasCharacter = gamePlayerManager.GetLocalPlayer().CharacterData != null;
         }
 
         private async Awaitable HandleHubPhase()
