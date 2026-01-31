@@ -1,6 +1,5 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using OverBang.ExoWorld.Core.Inventory;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Core.Phases;
 using OverBang.ExoWorld.Core.Utils;
@@ -63,11 +62,7 @@ namespace OverBang.ExoWorld.Gameplay.Phase
             
             CurrentEndInfos = new GameplayEndInfos()
             {
-                isFinished = false,
-                rewards = new GameplayRewards()
-                {
-                    trinititeReward = PlayerInventory.Trinitite,
-                }
+                isFinished = false
             };
         }
         

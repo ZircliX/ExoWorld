@@ -18,21 +18,39 @@ namespace OverBang.ExoWorld.Core.Interactions
             }
         }
 
-        public event Action<IInteractable> OnNewInteractable; 
-        
-        public IInteractable CurrentInteractable { get; private set; }
-        private List<IInteractable> interactables;
+        public event Action<InteractableData> OnNewInteractable;
+        public event Action<InteractableData> OnInteractableRemoved;
+        public event Action<InteractableData> OnItemPickup;
+        public event Action<InteractableData> OnItemDropped;
+
+        public InteractableData CurrentInteractable { get; private set; }
+        public InteractableData HeldItem { get; private set; }
+
+        private List<InteractableData> interactables;
+        private Dictionary<IInteractable, InteractableData> interactableDataMap;
+
+        private float updateTime = 0.25f;
+        private float currentUpdateTime;
 
         private void Awake()
         {
-            interactables = new List<IInteractable>();
+            interactables = new List<InteractableData>();
+            interactableDataMap = new Dictionary<IInteractable, InteractableData>();
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out IInteractable interactable))
             {
-                interactables.Add(interactable);
+                if (HeldItem != null && interactable.SupportedInteractions.HasFlag(InteractionType.Pickup))
+                {
+                    return;
+                }
+                
+                InteractableData data = new InteractableData(interactable);
+                interactables.Add(data);
+                interactableDataMap[interactable] = data;
+                interactable.OnPlayerEnter(this);
             }
         }
 
@@ -40,14 +58,51 @@ namespace OverBang.ExoWorld.Core.Interactions
         {
             if (other.TryGetComponent(out IInteractable interactable))
             {
-                interactables.Remove(interactable);
+                if (HeldItem != null && interactable.SupportedInteractions.HasFlag(InteractionType.Pickup))
+                {
+                    return;
+                }
+                
+                if (interactableDataMap.TryGetValue(interactable, out InteractableData data))
+                {
+                    interactables.Remove(data);
+                    interactableDataMap.Remove(interactable);
+                    interactable.OnPlayerExit(this);
+
+                    if (CurrentInteractable?.Instance == interactable)
+                    {
+                        CurrentInteractable = null;
+                        OnNewInteractable?.Invoke(null);
+                    }
+
+                    OnInteractableRemoved?.Invoke(data);
+                }
             }
         }
 
         private void Update()
         {
-            //Sort
-            IInteractable nextInteractable = null;
+            currentUpdateTime += Time.deltaTime;
+            if (!(currentUpdateTime < updateTime))
+            {
+                currentUpdateTime = 0;
+                UpdateInteractableData();
+                UpdateCurrentInteractable();
+            }
+        }
+
+        private void UpdateInteractableData()
+        {
+            foreach (InteractableData data in interactables)
+            {
+                data.UpdateData();
+            }
+        }
+
+        private void UpdateCurrentInteractable()
+        {
+            InteractableData nextInteractable = null;
+
             if (interactables.Count > 0)
             {
                 interactables.Sort((a, b) => a.Priority.CompareTo(b.Priority));
@@ -56,18 +111,10 @@ namespace OverBang.ExoWorld.Core.Interactions
                 if (nextInteractable.Priority < 0 || !nextInteractable.CanInteract)
                     nextInteractable = null;
             }
-            
-            // Update Current
+
             if (nextInteractable != CurrentInteractable)
             {
-                if (CurrentInteractable != null)
-                    CurrentInteractable.OnPlayerExit(this);
-                
                 CurrentInteractable = nextInteractable;
-                
-                if (CurrentInteractable != null)
-                    CurrentInteractable.OnPlayerEnter(this);
-                
                 OnNewInteractable?.Invoke(CurrentInteractable);
             }
         }
@@ -75,11 +122,81 @@ namespace OverBang.ExoWorld.Core.Interactions
         public void Interact(InputAction.CallbackContext ctx)
         {
             if (!ctx.performed) return;
-            
+
             if (CurrentInteractable is { CanInteract: true })
             {
-                CurrentInteractable.Interact(this);
+                if (CurrentInteractable.SupportsInteractionType(InteractionType.Interact))
+                {
+                    CurrentInteractable.Instance.Interact(this);
+                }
             }
+        }
+
+        public void PickupItem(InputAction.CallbackContext ctx)
+        {
+            if (!ctx.performed) return;
+
+            if (HeldItem != null)
+            {
+                //DropItem();
+                return;
+            }
+
+            if (CurrentInteractable is { CanInteract: true } &&
+                CurrentInteractable.SupportsInteractionType(InteractionType.Pickup))
+            {
+                PickupInteractable(CurrentInteractable);
+            }
+        }
+
+        public void PickupInteractable(InteractableData data)
+        {
+            if (data == null || !data.IsValid())
+                return;
+
+            if (HeldItem != null)
+            {
+                DropItem();
+            }
+
+            HeldItem = data;
+            HeldItem.IsHeld = true;
+            HeldItem.Instance.OnPickup(this);
+            OnItemPickup?.Invoke(HeldItem);
+        }
+
+        public void DropItem()
+        {
+            if (HeldItem == null)
+                return;
+
+            InteractableData previouslyHeld = HeldItem;
+            previouslyHeld.IsHeld = false;
+            HeldItem = null;
+
+            previouslyHeld.Instance.OnDrop(this);
+            OnItemDropped?.Invoke(previouslyHeld);
+        }
+
+        public bool CanDropCurrentItem()
+        {
+            return HeldItem != null && HeldItem.IsValid() && HeldItem.SupportsInteractionType(InteractionType.Drop);
+        }
+
+        public bool IsHoldingItem()
+        {
+            return HeldItem != null && HeldItem.IsValid();
+        }
+
+        public InteractableData GetInteractableData(IInteractable interactable)
+        {
+            interactableDataMap.TryGetValue(interactable, out InteractableData data);
+            return data;
+        }
+
+        public bool GetHoldingItemType<T>()
+        {
+            return HeldItem?.Instance is T;
         }
     }
 }

@@ -23,6 +23,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         public string InteractionText => string.Empty;
         public int Priority => (int)TargetPriority.High;
         public bool CanInteract { get; private set; } = true;
+        public InteractionType SupportedInteractions => InteractionType.Interact;
         Vector3 IInteractable.UIPosition => transform.position.Add(y: 0.5f);
 
         public void Interact(PlayerInteraction playerInteraction)

@@ -30,6 +30,7 @@ namespace ZTools.ObjectiveSystem.Core
         public void SetStepIndex(int stepIndex)
         {
             StepIndex = stepIndex;
+            OnObjectiveStepChanged?.Invoke(stepIndex);
         }
 
         /// <summary>
@@ -55,6 +56,8 @@ namespace ZTools.ObjectiveSystem.Core
         /// Subscribers can react to updates in the objective's completion status.
         /// </summary>
         public event Action<IObjectiveHandler> OnObjectiveProgressChanged = delegate { };
+
+        public event Action<int> OnObjectiveStepChanged;
 
         /// <summary>
         /// Invokes the <see cref="OnObjectiveProgressChanged"/> event.

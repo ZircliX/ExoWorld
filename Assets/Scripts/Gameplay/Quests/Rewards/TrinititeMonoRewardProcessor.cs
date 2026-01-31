@@ -19,7 +19,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         [Rpc(SendTo.Everyone)]
         private void ProcessRpc()
         {
-            PlayerInventory.ReceiveTrinitite(trinititeRewardData.TrinititeReward);
+            ResourcesInventory.Instance.AddItem(trinititeRewardData.TrinititeData);
         }
     }
 }

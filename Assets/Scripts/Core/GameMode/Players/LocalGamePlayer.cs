@@ -18,7 +18,7 @@ namespace OverBang.ExoWorld.Core.GameMode.Players
     {
         public IReadOnlyPlayer SessionPlayer => LocalSessionPlayer;
 
-        public CharacterData CharacterData { get; private set;} = null;
+        public CharacterData CharacterData { get; private set;}
 
         public float Health { get; private set; } = -1;
         public float MaxHealth { get; private set; } = -1;
@@ -28,6 +28,9 @@ namespace OverBang.ExoWorld.Core.GameMode.Players
         public ulong ClientID => NetworkManager.Singleton.LocalClientId;
         
         public IPlayer LocalSessionPlayer => SessionManager.Global.CurrentPlayer;
+        
+        public ResourcesInventory Inventory { get; private set; } = new ResourcesInventory();
+
         public GadgetInventory GadgetInventory {get; private set;} = new GadgetInventory();
         
         private bool isDirty;

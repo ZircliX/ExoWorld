@@ -31,11 +31,11 @@ namespace OverBang.ExoWorld.Gameplay.HUB.Listeners
             ulong clientID = NetworkManager.Singleton.LocalClient.ClientId;
             
             //TODO : FOUDROYER LOIS
-            Vector3 position = new Vector3(0f, 0f, 0);
-            Quaternion rotation = Quaternion.Euler(0f, 0, 0f);
-            player.Spawn(position, rotation);
+            Transform spawnPoint = GameObject.FindGameObjectWithTag("Respawn").transform;
+            player.Spawn(spawnPoint.position, spawnPoint.rotation);
             
-            Awaitable awaitable = PoolUtils.SetupPooling();
+            PoolUtils.PoolType poolType = PoolUtils.PoolType.Characters | PoolUtils.PoolType.Dependencies;
+            Awaitable awaitable = PoolUtils.SetupPooling(poolType);
             awaitable.Run();
         }
     }

@@ -13,16 +13,27 @@ namespace ZTools.ObjectiveSystem.Sample
         [SerializeField] private TMP_Text objectiveProgressText;
 
         private int previousStep;
+        private IObjectiveHandler currentObjectiveHandler;
 
         protected override void OnObjectiveChanged(IObjectiveHandler objectiveHandler)
         {
-            if (objectiveHandler == default)
+            if (currentObjectiveHandler != null)
+                currentObjectiveHandler.OnObjectiveStepChanged -= OnStepChanged;
+            
+            if (objectiveHandler == null)
             {
                 ClearObjective();
                 return;
             }
-            
+
+            currentObjectiveHandler = objectiveHandler;
+            objectiveHandler.OnObjectiveStepChanged += OnStepChanged;
             UpdateObjectiveUI(objectiveHandler);
+        }
+
+        private void OnStepChanged(int obj)
+        {
+            UpdateObjectiveUI(currentObjectiveHandler);
         }
 
         protected override void UpdateObjectiveUI(IObjectiveHandler objectiveHandler)

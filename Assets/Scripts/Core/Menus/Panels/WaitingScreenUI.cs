@@ -17,7 +17,6 @@ namespace OverBang.ExoWorld.Core.Menus
         [SerializeField, Required] private PlayerListItem playerListItemPrefab;
         [SerializeField, Required] private Transform playersContainer;
         [SerializeField, Required] private LayoutGroup playersContainerLayoutGroup;
-        [SerializeField, Required] private ContentSizeFitter playersContainerContentSizeFitter;
         
         private List<PlayerListItem> playerListItems;
 
@@ -72,10 +71,7 @@ namespace OverBang.ExoWorld.Core.Menus
                 playersContainerLayoutGroup.SetLayoutVertical();
             }
 
-            if (playersContainerContentSizeFitter != null)
-            {
-                LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)playersContainer);
-            }
+            LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)playersContainer);
         }
         
         private void ClearPlayerList()

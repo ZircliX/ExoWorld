@@ -66,17 +66,17 @@ namespace OverBang.ExoWorld.Gameplay.Upgrade
         {
             foreach (KeyValuePair<UpgradeType, RuntimeUpgradeData> data in playerUpgradesDatas)
             {
-                RuntimeUpgradeData  runtimeData = data.Value; 
+                RuntimeUpgradeData  runtimeData = data.Value;
                 if (runtimeData.upgradeData.UpgradeType == type)
                 {
-                    if (PlayerInventory.Trinitite >= runtimeData.cost && runtimeData.level < 3)
+                    if (ResourcesInventory.Instance.GetItemQuantity("Trinitite") >= runtimeData.cost && runtimeData.level < 3)
                     {
-                        int newtriniAmount = PlayerInventory.DecrementTrinitite(runtimeData.cost);
-                        OnPlayerTritiniteAmountChange?.Invoke(newtriniAmount);
+                        int newTrinititeAmount = ResourcesInventory.Instance.RemoveItem("Trinitite", runtimeData.cost);
+                        OnPlayerTritiniteAmountChange?.Invoke(newTrinititeAmount);
                         
-                        int newLevel = runtimeData.level + 1 ;
+                        int newLevel = runtimeData.level + 1;
                         
-                        float newBonus = runtimeData.finalBonus + runtimeData.bonus * newLevel ;
+                        float newBonus = runtimeData.finalBonus + runtimeData.bonus * newLevel;
                         
                         int newCost = runtimeData.initialCost * newLevel;
                         

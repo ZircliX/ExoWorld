@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using OverBang.ExoWorld.Core.Interactions;
 using OverBang.ExoWorld.Gameplay.Abilities;
 using Unity.Netcode;
@@ -12,16 +11,34 @@ namespace OverBang.ExoWorld.Gameplay.Quests
     {
         [SerializeField] private QuestTwoData questData;
         [SerializeField] private DetectionArea detectionArea;
-        
-        [SerializeField] private List<Fusible> fusibles;
 
-        public string InteractionText => CanInteract ? questData.InteractionText : questData.InteractionTextEmpty;
+        private int fusiblesInserted = 0;
+        private bool isHoldingFusible = false;
+        private QuestTwoHandler questTwoHandler;
+        
+        public string InteractionText => CanInteract && isHoldingFusible ? questData.InteractionText : questData.InteractionTextEmpty;
         public int Priority => (int)TargetPriority.High;
         public bool CanInteract { get; private set; } = true;
-        Vector3 IInteractable.UIPosition => transform.position.Add(y: 1f, x: -1f);
+        private void SetCanInteractTrue() => CanInteract = true;
+        public InteractionType SupportedInteractions => InteractionType.Interact;
+
+        Vector3 IInteractable.UIPosition => transform.position.Add(y: 1f);
+
         public void Interact(PlayerInteraction playerInteraction)
         {
-            AddFusible();
+            questTwoHandler ??= questData.GetHandlerByData<QuestTwoHandler>();
+            if (questTwoHandler is {StepIndex: < 2})
+                questTwoHandler.SetStepIndex(2);
+            
+            AddFusible(playerInteraction);
+
+            CanInteract = false;
+            Invoke(nameof(SetCanInteractTrue), 1f);
+        }
+
+        public void OnPlayerEnter(PlayerInteraction playerInteraction)
+        {
+            isHoldingFusible = playerInteraction.GetHoldingItemType<IFusible>();
         }
 
         private void OnEnable()
@@ -42,10 +59,25 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             detectionArea.SetRequireInterface<IFusible>();
         }
 
-        private void AddFusible()
+        private void AddFusible(PlayerInteraction playerInteraction)
         {
-            QuestTwoEvent evt = new QuestTwoEvent(1); 
-            ObjectivesManager.DispatchGameEvent(evt);
+            if (!playerInteraction.IsHoldingItem())
+                return;
+
+            if (playerInteraction.GetHoldingItemType<IFusible>())
+            {
+                isHoldingFusible = false;
+                fusiblesInserted++;
+                playerInteraction.DropItem();
+
+                QuestTwoEvent evt = new QuestTwoEvent(1);
+                ObjectivesManager.DispatchGameEvent(evt);
+
+                if (fusiblesInserted >= questData.TotalPieces)
+                {
+                    OnAllFusiblesInserted();
+                }
+            }
         }
 
         private void OnEnter(Collider col, object target)
@@ -55,13 +87,19 @@ namespace OverBang.ExoWorld.Gameplay.Quests
                 CanInteract = true;
             }
         }
-        
+
         private void OnExit(Collider col, object target)
         {
             if (target is IFusible fusible)
             {
                 CanInteract = false;
             }
+        }
+
+        private void OnAllFusiblesInserted()
+        {
+            // Handle quest completion logic
+            Debug.Log("All fuses inserted!");
         }
     }
 }

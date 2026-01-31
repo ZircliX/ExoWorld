@@ -20,12 +20,12 @@ namespace OverBang.ExoWorld.Core.Enemies
         [field: SerializeField] public float BaseHealth { get; private set; }
         [field: SerializeField] public float BaseSpeed { get; private set; }
         
-        [field: SerializeField] 
+        [field: SerializeField]
         public GameObject ModelPrefab { get; private set; }
-        [field: SerializeField] 
+        [field: SerializeField]
         public NetworkObject EnemyPrefab { get; private set; }
         
-        [field: SerializeField, Space] 
+        [field: SerializeField, Space]
         public SimplePoolConfig[] Dependencies { get; private set; }
 
         [field: SerializeField, ReadOnly]

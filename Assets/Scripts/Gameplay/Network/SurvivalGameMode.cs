@@ -52,7 +52,7 @@ namespace OverBang.ExoWorld.Gameplay.Network
 
             ISession session = SessionManager.Global.ActiveSession;
             IPlayer currentPlayer = SessionManager.Global.CurrentPlayer;
-            using (ListPool<IGamePlayer>.Get(out var gamePlayers))
+            using (ListPool<IGamePlayer>.Get(out List<IGamePlayer> gamePlayers))
             {
                 foreach (IReadOnlyPlayer player in session.Players)
                 {
@@ -90,11 +90,7 @@ namespace OverBang.ExoWorld.Gameplay.Network
 
         private void CheckForCharacter()
         {
-            if (SessionManager.Global.CurrentPlayer.TryGetPlayerProperty(
-                    ConstID.Global.PlayerPropertyCharacterData, out string propertyValue))
-            {
-                hasCharacter = propertyValue != string.Empty;
-            }
+            hasCharacter = gamePlayerManager.GetLocalPlayer().CharacterData != null;
         }
 
         private async Awaitable HandleHubPhase()
