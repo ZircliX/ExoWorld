@@ -3,48 +3,56 @@ using OverBang.ExoWorld.Core.Abilities.Gadgets;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityUtils;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public class GadgetUi : MonoBehaviour
     {
+        [field : SerializeField] public bool isSelectable { get; private set; }
         [SerializeField] private Image icon;
         [SerializeField] private Image iconBackGround;
         [SerializeField] private TMP_Text amountTxt;
         [SerializeField] private TMP_Text gadgetTitle;
         [SerializeField] private TMP_Text gadgetDescription;
-        [SerializeField] private int amount;
-
-        [field : SerializeField] public GadgetData data { get; private set; }
+        public GadgetData data { get; private set; }
+        private int amount;
         private GadgetControllerUI gadgetControllerUI;
         
-        public void Initialize(GadgetControllerUI ControllerUI)
-        {
-            gadgetControllerUI = ControllerUI;
-        }
+       
 
-        public void Refresh(GadgetData Data)
+        public void Refresh(GadgetData Data, int gadgetAmount)
         {
             gameObject.SetActive(true);
             data = Data;
+            amount = gadgetAmount;
             icon.sprite = Data.Icon;
             icon.color = Color.white;
-            iconBackGround.color.SetAlpha(1.0f);
             gadgetTitle.text = Data.Name;
             gadgetDescription.text = Data.Description;
+            amountTxt.text = gadgetAmount.ToString();
         }
 
         public void SelectThisGadget()
         {
+            if (!isSelectable) return;
             HighLightBackGround(1f, Color.black);
-            gadgetControllerUI.SetCurrentSelectedGadget(data);
         }
 
         public void DeselectThisGadget()
         {
-            gadgetControllerUI.SetCurrentSelectedGadget(null);
             HighLightBackGround(0f, Color.white);
+        }
+
+        public void SetSelectable(bool selectability)
+        {
+            if (selectability)
+            {
+                isSelectable = true;
+            }
+            else
+            {
+                isSelectable = false;
+            }
         }
 
         public void Clear()
@@ -58,8 +66,13 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         
         private void HighLightBackGround(float visibility, Color color)
         {
+            iconBackGround.DOKill();
+            icon.DOKill();
+            
+            Refresh(data,amount);
             iconBackGround.DOFade(visibility, 0.15f);
             icon.DOColor(color, 0.15f);
+            
         }
 
     }

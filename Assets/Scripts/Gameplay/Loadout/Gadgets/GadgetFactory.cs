@@ -16,22 +16,34 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             switch (gadgetData.GetType())
             {
                 case { } t when t == typeof(ShockGrenadeData):
-                    return new ShockGrenade();
+                    ShockGrenade shockGrenade = new ShockGrenade();
+                    shockGrenade.Initialize(gadgetData);
+                    return shockGrenade;
                 
                 case { } t when t == typeof(BurstGrenadeData):
-                    return new BurstGrenade();
+                    BurstGrenade burstGrenade = new BurstGrenade();
+                    burstGrenade.Initialize(gadgetData);
+                    return burstGrenade;
                 
                 case { } t when t == typeof(ParalixGrenadeData):
-                    return new ParalixGrenade();
+                    ParalixGrenade paralixGrenade = new ParalixGrenade();
+                    paralixGrenade.Initialize(gadgetData);
+                    return paralixGrenade;
                 
                 case { } t when t == typeof(C4Data):
-                    return new C4();
+                    C4 c4 = new C4();
+                    c4.Initialize(gadgetData);
+                    return c4;
                 
                 case { } t when t == typeof(LifePulseData):
-                    return new LifePulse();
+                    LifePulse lifePulse = new LifePulse();
+                    lifePulse.Initialize(gadgetData);
+                    return lifePulse;
                 
                 case { } t when t == typeof(FrostBiteGrenadeData):
-                    return new FrostBiteGrenade();
+                    FrostBiteGrenade frostBiteGrenade = new FrostBiteGrenade();
+                    frostBiteGrenade.Initialize(gadgetData);
+                    return frostBiteGrenade;
                 
                 default:
                     return null;

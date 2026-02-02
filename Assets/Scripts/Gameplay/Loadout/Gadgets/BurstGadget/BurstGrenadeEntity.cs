@@ -13,13 +13,18 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
         private BurstGrenadeData data;
         private float time;
         private bool isDetonated;
+
+        public void FreezeGrenade(bool value)
+        {
+            rb.isKinematic = value;
+        }
         
         public void Initialize(BurstGrenadeData data, Vector3 direction)
         {
             strategy = new StandardExplosion(data.DamageData);
             this.data = data;
             strategy.OnExploded += OnExploded;
-            
+            FreezeGrenade(false);
             rb.AddForce(Vector3.up * 0.5f + direction * data.ThrowForce * Time.deltaTime, ForceMode.Impulse);
         }
         

@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using DG.Tweening;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout
 {
@@ -11,10 +11,11 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         [SerializeField, Space] private float radius = 150f;
         
         [Header("Selection Settings")]
-        [SerializeField, Space] private float selectionThreshold = 2f;
+        [SerializeField, Space] private float selectionThreshold = 0.5f;
         [SerializeField] private float deltaSensitivity = 1f; 
+        [SerializeField] private Image wheelPointerImage; 
 
-        private List<GadgetUi> GadgetUis => controllerUI.gadgetUis;
+        private List<GadgetUi> GadgetUis => controllerUI.GadgetUis;
         private int itemCount => GadgetUis.Count;
         private int currentSelection;
         private Vector2 centerPosition;
@@ -22,27 +23,39 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         
         private GadgetControllerUI controllerUI;
         private GadgetUi currentSelectedGadget;
-
+        
         public void Initialize(GadgetControllerUI controllerUI)
         {
             this.controllerUI = controllerUI;
+            controllerUI.OnGadgetUiSelectionEnd += SelectItem;
         }
+        
+        private void OnDisable()
+        {
+            controllerUI.OnGadgetUiSelectionEnd -= SelectItem;
+        }
+        
         
         public void StartSelection()
         {
-            accumulatedDelta = Vector2.zero; 
+            accumulatedDelta = Vector2.zero;
             currentSelection = 1;
         }
         
         private void Update()
         {
             // Accumulate delta movement
-            Vector2 mouseDelta = Mouse.current.delta.ReadValue();
-            accumulatedDelta += mouseDelta * deltaSensitivity;
+            Vector2 mouseDelta = Pointer.current.delta.ReadValue();
+            
+            if (mouseDelta.sqrMagnitude > selectionThreshold)
+            {
+                accumulatedDelta = mouseDelta * deltaSensitivity;
+                UpdateSelection();
+            }
                 
-            UpdateSelection();
         }
-        
+
+        private int selectedIndex;
         private void UpdateSelection()
         {
             // Check if mouse moved far enough from center
@@ -57,33 +70,36 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             
             // Find closest menu item
             float anglePerItem = 360f / itemCount;
-            int selectedIndex = Mathf.RoundToInt(angle / anglePerItem) % itemCount;
-            SelectItem(selectedIndex);
+            selectedIndex = Mathf.RoundToInt(angle / anglePerItem) % itemCount;
+            
+            float targetAngle = selectedIndex * anglePerItem;
+            wheelPointerImage.transform.rotation = Quaternion.Euler(0f, 0f, -targetAngle);
+            
+            SelectItem();
         }
         
         
-        private void SelectItem(int selectedIndex)
+        private void SelectItem()
         {
             if (selectedIndex >= 0 && selectedIndex < GadgetUis.Count)
             {
-                Debug.Log($"Selected: Item {selectedIndex}");
                 OnItemSelected(selectedIndex);
             }
         }
         
         private void OnItemSelected(int index)
         {
-            if (currentSelectedGadget == GadgetUis[index]) return;
+            GadgetUi maybeNewGadget = GadgetUis[index];
+            if (maybeNewGadget == currentSelectedGadget || !GadgetUis[index].isSelectable) return;
             
-            currentSelectedGadget.DeselectThisGadget();
-            currentSelectedGadget = GadgetUis[index];
+            if (currentSelectedGadget != null)
+                currentSelectedGadget.DeselectThisGadget();
+            
+            currentSelectedGadget = maybeNewGadget;
+            
             controllerUI.SetCurrentSelectedGadget(currentSelectedGadget.data);
-            
-            DOVirtual.DelayedCall(0.15f, () =>
-            {
-                currentSelectedGadget = GadgetUis[index];
-                currentSelectedGadget.SelectThisGadget();
-            });
+            currentSelectedGadget.SelectThisGadget();
+
         }
     }
 }

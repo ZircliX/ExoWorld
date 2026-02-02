@@ -11,7 +11,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         [SerializeField, Self] private GadgetController gadgetController;
         
         [SerializeField] private InputActionAsset map;
-        [SerializeField] private List<string> actionToDisable;
+        [SerializeField] private List<string> cameraInputActionName;
         
         private Stack<IInputReceiver> receivers;
         private List<InputAction> actions;
@@ -22,12 +22,12 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         {
             this.ValidateRefs();
         }
-
-        private void Start()
+        
+        private void Awake()
         {
             actions = new List<InputAction>();
 
-            foreach (string action in actionToDisable)
+            foreach (string action in cameraInputActionName)
             {
                 InputAction Results = map.FindAction(action);
                 if (Results != null)
@@ -35,10 +35,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
                     actions.Add(Results);
                 }
             }
-        }
-
-        private void Awake()
-        {
+            
             receivers = new Stack<IInputReceiver>();
             receivers.Push(weaponController);
             current = receivers.Peek();
@@ -46,6 +43,20 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             gadgetController.Initialize(this);
         }
 
+        public void SwitchCameraInputs(bool value)
+        {
+            foreach (InputAction action in actions)
+            {
+                if (value)
+                {
+                    action.Enable();
+                }
+                else
+                {
+                    action.Disable();
+                }
+            }
+        }
 
         #region Receivers
 
@@ -62,10 +73,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
                     receivers.Pop();
                     current = receivers.Peek();
 
-                    foreach (InputAction action in actions)
-                    {
-                        action.Enable();
-                    }
+                    SwitchCameraInputs(true);
                 }
             }
 
@@ -97,10 +105,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             if (context.performed)
             {
                 SwitchReceiver(gadgetController);
-                foreach (InputAction action in actions)
-                {
-                    action.Disable();
-                }
+                SwitchCameraInputs(false);
             }
             current.OnCInput(context);
         }
