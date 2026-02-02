@@ -1,4 +1,3 @@
-using DG.Tweening;
 using Helteix.ChanneledProperties.Priorities;
 using OverBang.ExoWorld.Core;
 using OverBang.ExoWorld.Core.Characters;
@@ -67,10 +66,15 @@ namespace OverBang.ExoWorld.Gameplay.HUB
         {
             GameController.CursorLockModePriority.Write(this, enabled ? CursorLockMode.None : CursorLockMode.Confined);
             GameController.CursorVisibleStatePriority.Write(this, enabled);
-            
-            canvasGroup.DOFade(enabled ? 1f : 0f, 0.5f);
-            canvasGroup.interactable = enabled;
-            canvasGroup.blocksRaycasts = enabled;
+
+            if (enabled)
+            {
+                canvasGroup.Open();
+            }
+            else
+            {
+                canvasGroup.Close();
+            }
         }
 
         private void SwitchCharacter(int direction)

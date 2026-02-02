@@ -1,5 +1,4 @@
 ﻿using OverBang.ExoWorld.Core.Abilities.Gadgets;
-using OverBang.ExoWorld.Gameplay.Loadout.ShockGadget;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout.LifePulseGadget

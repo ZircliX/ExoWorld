@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9106736954933987228}
   - component: {fileID: 5852629185496620114}
   - component: {fileID: 2307758987534041769}
+  - component: {fileID: 398448179163154937}
   m_Layer: 5
   m_Name: MainMenuUI
   m_TagString: Untagged
@@ -65,7 +66,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: OverBang.GameName.Core::OverBang.GameName.Core.Menus.MainMenuPanel
   firstSelectable: {fileID: 4197758124539028056}
-  canvasGroup: {fileID: 5852629185496620114}
+  canvasGroup: {fileID: 398448179163154937}
   hostButton: {fileID: 4197758124539028056}
   joinButton: {fileID: 6575001095342783653}
   contactButton: {fileID: 7834416988752730180}
@@ -73,6 +74,21 @@ MonoBehaviour:
   quitButton: {fileID: 6994726146339095802}
   discordButton: {fileID: 3677933064653273293}
   instagramButton: {fileID: 6168852474601124657}
+--- !u!114 &398448179163154937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401733609508861774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21d9a24453a7462ba0583a055f4cc0e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: OverBang.ExoWorld.Core::OverBang.ExoWorld.Core.Menus.CanvasPanelGroup
+  canvasGroup: {fileID: 5852629185496620114}
+  animationDuration: 0.3
+  closeOnAwake: 0
 --- !u!1 &633972104567375661
 GameObject:
   m_ObjectHideFlags: 0

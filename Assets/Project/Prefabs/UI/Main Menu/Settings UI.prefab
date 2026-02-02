@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 441062503490794272}
   - component: {fileID: 4658390831109687901}
   - component: {fileID: 7500164158320089217}
+  - component: {fileID: 9082844123189398177}
   m_Layer: 5
   m_Name: Settings UI
   m_TagString: Untagged
@@ -167,9 +168,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2290481733131125111}
   m_Enabled: 1
-  m_Alpha: 0
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!114 &7500164158320089217
 MonoBehaviour:
@@ -184,8 +185,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: OverBang.GameName.Core::OverBang.GameName.Core.Menus.SettingsUI
   firstSelectable: {fileID: 8027219492936467892}
-  canvasGroup: {fileID: 4658390831109687901}
+  canvasGroup: {fileID: 9082844123189398177}
   backButton: {fileID: 8027219492936467892}
+--- !u!114 &9082844123189398177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2290481733131125111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21d9a24453a7462ba0583a055f4cc0e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: OverBang.ExoWorld.Core::OverBang.ExoWorld.Core.Menus.CanvasPanelGroup
+  canvasGroup: {fileID: 4658390831109687901}
+  animationDuration: 0.3
+  closeOnAwake: 1
 --- !u!1 &2745141222191504148
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,6 +305,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Helteix.Tools;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Core.Utils;
 using TMPro;
@@ -43,6 +44,7 @@ namespace OverBang.ExoWorld.Core.Menus
             passwordInput.characterLimit = GameMetrics.Global.MaxPasswordLenght;
             
             lobbyItems = new List<LobbyListItem>();
+            contentList.ClearChildren();
         }
 
         private void OnDestroy()

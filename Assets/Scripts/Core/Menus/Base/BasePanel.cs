@@ -9,7 +9,7 @@ namespace OverBang.ExoWorld.Core.Menus
     public abstract class BasePanel : MonoBehaviour, IPanel, ISelectable
     {
         [SerializeField] protected Selectable firstSelectable;
-        [SerializeField, Self] protected CanvasGroup canvasGroup;
+        [SerializeField, Self] protected CanvasPanelGroup canvasGroup;
         protected EventSystem EventSystem { get; private set; }
 
         public bool IsActive => gameObject.activeSelf;
@@ -22,14 +22,14 @@ namespace OverBang.ExoWorld.Core.Menus
 
         public virtual void Show()
         {
-            OpenCanvas(canvasGroup, true);
+            canvasGroup.Open();
             OnShow();
             SetInitialFocus();
         }
 
         public virtual void Hide()
         {
-            OpenCanvas(canvasGroup, false);
+            canvasGroup.Close();
             OnHide();
             ClearFocus();
         }
@@ -48,14 +48,6 @@ namespace OverBang.ExoWorld.Core.Menus
 
         protected virtual void OnShow() { }
         protected virtual void OnHide() { }
-        
-        protected static void OpenCanvas(CanvasGroup canvas, bool state)
-        {
-            canvas.blocksRaycasts = state;
-            canvas.interactable = state;
-
-            canvas.DOFade(state ? 1 : 0, 0.3f);
-        }
         
         protected static Navigation CreateNavigation(Selectable up = null, Selectable down = null, 
             Selectable left = null, Selectable right = null)

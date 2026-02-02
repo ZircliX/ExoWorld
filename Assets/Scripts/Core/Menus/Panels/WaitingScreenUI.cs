@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Helteix.Tools;
 using OverBang.ExoWorld.Core.GameMode;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Core.Utils;
@@ -24,6 +25,7 @@ namespace OverBang.ExoWorld.Core.Menus
         {
             base.Awake();
             playerListItems = new List<PlayerListItem>(4);
+            playersContainer.ClearChildren();
         }
 
         protected override void OnShow()

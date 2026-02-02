@@ -1168,6 +1168,7 @@ GameObject:
   - component: {fileID: 2077849964886111520}
   - component: {fileID: 3067512866233939380}
   - component: {fileID: 2532975205143015414}
+  - component: {fileID: 753477416794888728}
   m_Layer: 5
   m_Name: Contact UI
   m_TagString: Untagged
@@ -1209,7 +1210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: OverBang.GameName.Core::OverBang.GameName.Core.Menus.ContactsUI
   firstSelectable: {fileID: 1143318287924119151}
-  canvasGroup: {fileID: 2532975205143015414}
+  canvasGroup: {fileID: 753477416794888728}
   backButton: {fileID: 8728913972467832056}
   saveButton: {fileID: 5345349743825447306}
   playerNameInput: {fileID: 1143318287924119151}
@@ -1221,10 +1222,25 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9010949013216760511}
   m_Enabled: 1
-  m_Alpha: 0
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &753477416794888728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9010949013216760511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21d9a24453a7462ba0583a055f4cc0e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: OverBang.ExoWorld.Core::OverBang.ExoWorld.Core.Menus.CanvasPanelGroup
+  canvasGroup: {fileID: 2532975205143015414}
+  animationDuration: 0.3
+  closeOnAwake: 1
 --- !u!1001 &1629568004622287421
 PrefabInstance:
   m_ObjectHideFlags: 0

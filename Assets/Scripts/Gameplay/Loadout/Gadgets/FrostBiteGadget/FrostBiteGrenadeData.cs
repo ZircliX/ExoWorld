@@ -1,6 +1,5 @@
 ﻿using OverBang.ExoWorld.Core.Abilities.Gadgets;
 using OverBang.ExoWorld.Core.Damage;
-using OverBang.ExoWorld.Gameplay.Loadout.ShockGadget;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
