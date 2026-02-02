@@ -1,5 +1,4 @@
-﻿using System;
-using OverBang.ExoWorld.Core.Abilities.Gadgets;
+﻿using OverBang.ExoWorld.Core.Abilities.Gadgets;
 using OverBang.ExoWorld.Gameplay.Loadout.BurstGadget;
 using OverBang.ExoWorld.Gameplay.Loadout.C4Gadget;
 using OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget;

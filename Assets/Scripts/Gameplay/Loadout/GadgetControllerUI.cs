@@ -3,7 +3,6 @@ using DG.Tweening;
 using OverBang.ExoWorld.Core.Abilities.Gadgets;
 using OverBang.ExoWorld.Core.GameMode.Players;
 using Sirenix.OdinInspector;
-using TMPro;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout

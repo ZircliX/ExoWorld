@@ -147,6 +147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7183344671933232308}
   - component: {fileID: 1021248389391574956}
+  - component: {fileID: 6501263614141747591}
   m_Layer: 0
   m_Name: PlayersList
   m_TagString: Untagged
@@ -203,6 +204,26 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &6501263614141747591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688420359420911806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
+  m_IgnoreLayout: 0
+  m_MinWidth: -1
+  m_MinHeight: 350
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &1172985547407466635
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,7 +259,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 70}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4226872575181571519
 MonoBehaviour:
@@ -340,6 +361,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6618976940048789765}
   - component: {fileID: 3956432057595950993}
+  - component: {fileID: 4138084196836332461}
   m_Layer: 0
   m_Name: PlayersChat
   m_TagString: Untagged
@@ -366,7 +388,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 541}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3956432057595950993
 MonoBehaviour:
@@ -394,6 +416,26 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &4138084196836332461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618303220467069896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
+  m_IgnoreLayout: 0
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: 1e+13
+  m_LayoutPriority: 1
 --- !u!1 &1981235012065195334
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,6 +559,7 @@ GameObject:
   - component: {fileID: 2022762534991819932}
   - component: {fileID: 5178265167265467008}
   - component: {fileID: 4711293042528163936}
+  - component: {fileID: 7987417828069689301}
   m_Layer: 0
   m_Name: WaitingScreenUI
   m_TagString: Untagged
@@ -555,8 +598,8 @@ CanvasGroup:
   m_GameObject: {fileID: 2324860761598648681}
   m_Enabled: 1
   m_Alpha: 1
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!114 &4711293042528163936
 MonoBehaviour:
@@ -571,12 +614,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: OverBang.GameName.Core::OverBang.GameName.Core.Menus.InGameUI
   firstSelectable: {fileID: 6376034599962355018}
-  canvasGroup: {fileID: 5178265167265467008}
+  canvasGroup: {fileID: 7987417828069689301}
   backButton: {fileID: 7741991122339649592}
   startButton: {fileID: 6376034599962355018}
   playerListItemPrefab: {fileID: 2704943042413218564, guid: 4a0940d5cb93f3c4ca522f162a66f919, type: 3}
   playersContainer: {fileID: 7183344671933232308}
   playersContainerLayoutGroup: {fileID: 1021248389391574956}
+--- !u!114 &7987417828069689301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2324860761598648681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21d9a24453a7462ba0583a055f4cc0e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: OverBang.ExoWorld.Core::OverBang.ExoWorld.Core.Menus.CanvasPanelGroup
+  canvasGroup: {fileID: 5178265167265467008}
+  animationDuration: 0.3
+  closeOnAwake: 1
 --- !u!1 &3250976272820470634
 GameObject:
   m_ObjectHideFlags: 0
@@ -1746,7 +1804,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 2}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3038621642801455361
 CanvasRenderer:
@@ -1802,7 +1860,7 @@ MonoBehaviour:
   m_MinWidth: 300
   m_MinHeight: -1
   m_PreferredWidth: 300
-  m_PreferredHeight: -1
+  m_PreferredHeight: 2
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
@@ -2190,9 +2248,9 @@ MonoBehaviour:
   m_ChildAlignment: 1
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 0
+  m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
-  m_ChildControlHeight: 0
+  m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
@@ -2382,6 +2440,28 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5508491939261390083, guid: 4626877894d51cf449a77e4f628e2075, type: 3}
   m_PrefabInstance: {fileID: 346537056101551869}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6376034599962355018 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6679713673598626743, guid: 4626877894d51cf449a77e4f628e2075, type: 3}
+  m_PrefabInstance: {fileID: 346537056101551869}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &7741991122339649592 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8051933064206030533, guid: 4626877894d51cf449a77e4f628e2075, type: 3}
+  m_PrefabInstance: {fileID: 346537056101551869}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1001 &1087429668187881227
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2917,6 +2997,10 @@ PrefabInstance:
     - target: {fileID: 9168136765801872610, guid: 4a0940d5cb93f3c4ca522f162a66f919, type: 3}
       propertyPath: m_Name
       value: PlayerListItem (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9168136765801872610, guid: 4a0940d5cb93f3c4ca522f162a66f919, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

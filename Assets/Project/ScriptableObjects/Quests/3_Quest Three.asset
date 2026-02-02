@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c13f0b52409943fc9cfbf82ae552937a, type: 3}
+  m_Name: 3_Quest Three
+  m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.Quests.QuestThreeData
+  <ObjectiveName>k__BackingField: DESINFECTION TOTALE
+  <ObjectiveDescription>k__BackingField: "Eliminez le gaz toxic pr\xE9sent dans l'entrep\xF4t
+    en d\xE9truisant les 10 spores situ\xE9 dans la salle des machines."
+  <ObjectiveSteps>k__BackingField:
+  - Entrez dans la salle des machines
+  - Eliminez les spores
+  <Rewards>k__BackingField:
+  - {fileID: 11400000, guid: 1307c5edfb012454599659cd36b4b13e, type: 2}
+  <TargetSporeToKill>k__BackingField: 10
+  <SporeHealth>k__BackingField: 150
+  <GazTickDamage>k__BackingField:
+    baseDamage: 10
+    weakSpotMultiplier: 0

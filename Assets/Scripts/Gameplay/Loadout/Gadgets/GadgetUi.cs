@@ -2,7 +2,6 @@
 using OverBang.ExoWorld.Core.Abilities.Gadgets;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityUtils;
 

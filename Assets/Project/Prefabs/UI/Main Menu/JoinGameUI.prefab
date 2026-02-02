@@ -1777,6 +1777,7 @@ GameObject:
   - component: {fileID: 8806933820193310629}
   - component: {fileID: 8694018526126816399}
   - component: {fileID: 6804867084958128328}
+  - component: {fileID: 6648829643952727482}
   m_Layer: 5
   m_Name: JoinGameUI
   m_TagString: Untagged
@@ -1814,9 +1815,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3814232459889186329}
   m_Enabled: 1
-  m_Alpha: 0
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!114 &8694018526126816399
 MonoBehaviour:
@@ -1831,7 +1832,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: OverBang.GameName.Core::OverBang.GameName.Core.Menus.JoinGameUI
   firstSelectable: {fileID: 5478564075400157403}
-  canvasGroup: {fileID: 8806933820193310629}
+  canvasGroup: {fileID: 6648829643952727482}
   backButton: {fileID: 6751887746725236662}
   joinButton: {fileID: 7980005143863997124}
   contentList: {fileID: 7667378479727510471}
@@ -1853,6 +1854,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: OverBang.GameName.Core::OverBang.GameName.Core.Menus.JoinGame
   joinGameUI: {fileID: 8694018526126816399}
+--- !u!114 &6648829643952727482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3814232459889186329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21d9a24453a7462ba0583a055f4cc0e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: OverBang.ExoWorld.Core::OverBang.ExoWorld.Core.Menus.CanvasPanelGroup
+  canvasGroup: {fileID: 8806933820193310629}
+  animationDuration: 0.3
+  closeOnAwake: 1
 --- !u!1 &4364551819339275824
 GameObject:
   m_ObjectHideFlags: 0
