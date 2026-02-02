@@ -115,6 +115,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8999784197029329680}
+  - {fileID: 2050597333404290599}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -146,10 +147,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daf529b1fbd14965bf06da103b5d0f56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.GadgetControllerUI
-  <gadgetUis>k__BackingField: []
+  selector: {fileID: 8201009885963097955}
   controller: {fileID: 0}
   gadgetWheel: {fileID: 8338379939896907046}
-  selector: {fileID: 0}
+  <GadgetUis>k__BackingField:
+  - {fileID: 3912212879582034473}
+  - {fileID: 7377060737704732527}
+  - {fileID: 6544427908904722678}
+  - {fileID: 3179221687534279404}
+  - {fileID: 636185861448508687}
+  - {fileID: 7178505632082581919}
 --- !u!114 &8201009885963097955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,9 +169,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e1eda9cd2754fdfb01f7b9e5c28ba86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.Loadout.GadgetUiSelector
-  radius: 0
-  selectionThreshold: 0
-  deltaSensitivity: 0
+  radius: 160
+  selectionThreshold: 0.15
+  deltaSensitivity: 0.005
+  wheelPointerImage: {fileID: 1618915682529087720}
 --- !u!1 &4227312146191495302
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,6 +246,81 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!1 &4302544957318386222
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2050597333404290599}
+  - component: {fileID: 1468200557046703392}
+  - component: {fileID: 69764665248407704}
+  m_Layer: 0
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &2050597333404290599
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4302544957318386222}
+  m_LocalRotation: {x: -0, y: -0, z: -0.9047442, w: 0.4259554}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5607849934920489494}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -129.578}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1468200557046703392
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4302544957318386222}
+  m_CullTransparentMesh: 1
+--- !u!114 &69764665248407704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4302544957318386222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 859059a053c85ee498161e31f1e11e60, type: 3}
+  m_Type: 3
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 0.18
+  m_FillClockwise: 1
+  m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!1001 &2150415200025622219
@@ -351,6 +434,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5222868690916912116, guid: 50ba5a0db12f7f845b1ce2345de7781b, type: 3}
   m_PrefabInstance: {fileID: 2150415200025622219}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7178505632082581919 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9099773658163638100, guid: 50ba5a0db12f7f845b1ce2345de7781b, type: 3}
+  m_PrefabInstance: {fileID: 2150415200025622219}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 101a7a01c61d4e6d903123e9e5cd884b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.Loadout.GadgetUi
 --- !u!1001 &2964582515737527616
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -630,6 +724,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf93d18c2c9c7564ca371e68516ec562, type: 3}
+--- !u!114 &6544427908904722678 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8203711039771628050, guid: cf93d18c2c9c7564ca371e68516ec562, type: 3}
+  m_PrefabInstance: {fileID: 3101596115244610276}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 101a7a01c61d4e6d903123e9e5cd884b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.Loadout.GadgetUi
 --- !u!224 &7845765367782401110 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5182190936701638322, guid: cf93d18c2c9c7564ca371e68516ec562, type: 3}
@@ -741,6 +846,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5b42bf0214a81d41af2cb2dfbacc698, type: 3}
+--- !u!114 &636185861448508687 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4730199035721100874, guid: e5b42bf0214a81d41af2cb2dfbacc698, type: 3}
+  m_PrefabInstance: {fileID: 5292052120710581061}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 101a7a01c61d4e6d903123e9e5cd884b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.Loadout.GadgetUi
 --- !u!224 &4532757719892091311 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8617271186706754282, guid: e5b42bf0214a81d41af2cb2dfbacc698, type: 3}
@@ -768,7 +884,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4310875127694795792, guid: 3ecb3410baffc8e47941275e81a8f968, type: 3}
       propertyPath: m_Name
-      value: GadgetItem
+      value: GadgetTopItem
       objectReference: {fileID: 0}
     - target: {fileID: 4873646694896720032, guid: 3ecb3410baffc8e47941275e81a8f968, type: 3}
       propertyPath: m_Color.a
@@ -884,6 +1000,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5405054454543578026, guid: 3ecb3410baffc8e47941275e81a8f968, type: 3}
   m_PrefabInstance: {fileID: 5439182917305093411}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3912212879582034473 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9021032113010784010, guid: 3ecb3410baffc8e47941275e81a8f968, type: 3}
+  m_PrefabInstance: {fileID: 5439182917305093411}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 101a7a01c61d4e6d903123e9e5cd884b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.Loadout.GadgetUi
 --- !u!1001 &5654481972811379306
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -995,6 +1122,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2174091041245417893, guid: 87aa1b8959616b941a3b828b4551e623, type: 3}
   m_PrefabInstance: {fileID: 5654481972811379306}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7377060737704732527 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2889152355693663493, guid: 87aa1b8959616b941a3b828b4551e623, type: 3}
+  m_PrefabInstance: {fileID: 5654481972811379306}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 101a7a01c61d4e6d903123e9e5cd884b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.Loadout.GadgetUi
 --- !u!1001 &6132059722995486207
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1106,3 +1244,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5707210924428022707, guid: 63b529e0c3049f84ab9f661a96807fe5, type: 3}
   m_PrefabInstance: {fileID: 6132059722995486207}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3179221687534279404 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8721131153719990035, guid: 63b529e0c3049f84ab9f661a96807fe5, type: 3}
+  m_PrefabInstance: {fileID: 6132059722995486207}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 101a7a01c61d4e6d903123e9e5cd884b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.Loadout.GadgetUi

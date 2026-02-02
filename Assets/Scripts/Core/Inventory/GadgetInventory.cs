@@ -6,7 +6,15 @@ namespace OverBang.ExoWorld.Core.Inventory
 {
     public class GadgetInventory
     {
-        private Dictionary<GadgetData, Stack<IGadget>> gadgets = new Dictionary<GadgetData, Stack<IGadget>>();
+        private class RuntimeGadgetInfo
+        {
+            public IGadget Gadget;
+            public int Amount;
+            
+            public bool IsUsable => Gadget != null &&  Amount > 0;
+        }
+        
+        private Dictionary<GadgetData, RuntimeGadgetInfo> gadgets = new Dictionary<GadgetData, RuntimeGadgetInfo>();
         public HashSet<GadgetData> GadgetDatas { get; private set; } = new HashSet<GadgetData>();
 
         public GadgetInventory()
@@ -14,27 +22,26 @@ namespace OverBang.ExoWorld.Core.Inventory
             GadgetData[] gadgetDatas = Resources.LoadAll<GadgetData>("Gadgets");
             for (int i = 0; i < gadgetDatas.Length; i++)
             {
-                gadgets.Add(gadgetDatas[i], new Stack<IGadget>());
+                Debug.Log($"Gadget data {i}: {gadgetDatas[i]}");
+                gadgets.Add(gadgetDatas[i], new RuntimeGadgetInfo());
                 GadgetDatas.Add(gadgetDatas[i]);
             }
         }
 
         public void AddGadget(GadgetData data, IGadget gadgetType, int amount)
         {
-            for (int i = 0; i < amount; i++)
+            if (gadgets.TryGetValue(data, out RuntimeGadgetInfo gadgetInfo))
             {
-                if (gadgets.TryGetValue(data, out Stack<IGadget> gadget))
-                {
-                    gadget.Push(gadgetType);
-                }
+                gadgetInfo.Gadget = gadgetType;
+                gadgetInfo.Amount += amount;
             }
         }
     
         public bool GetGadgetCount(GadgetData data, out int amount)
         {
-            if (gadgets.TryGetValue(data, out Stack<IGadget> stack))
+            if (gadgets.TryGetValue(data, out RuntimeGadgetInfo gadgetInfo))
             {
-                amount = stack.Count;
+                amount = gadgetInfo.Amount;
                 return true;
             }
             
@@ -44,10 +51,13 @@ namespace OverBang.ExoWorld.Core.Inventory
     
         public bool TryGetGadget(GadgetData data, out IGadget gadget)
         {
-            if (gadgets.TryGetValue(data, out Stack<IGadget> stack))
+            if (gadgets.TryGetValue(data, out RuntimeGadgetInfo gadgetInfo) && gadgetInfo.IsUsable)
             {
-                return stack.TryPop(out gadget);
+                gadget = gadgetInfo.Gadget;
+                gadgetInfo.Amount--;
+                return true;
             }
+            
             gadget = null;
             return false;
         }

@@ -1,34 +1,30 @@
 ﻿using DG.Tweening;
 using OverBang.ExoWorld.Core.Abilities.Gadgets;
-using OverBang.ExoWorld.Core.GameMode.Players;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityUtils;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public class GadgetUi : MonoBehaviour
     {
+        [field : SerializeField] public bool isSelectable { get; private set; }
         [SerializeField] private Image icon;
         [SerializeField] private Image iconBackGround;
         [SerializeField] private TMP_Text amountTxt;
         [SerializeField] private TMP_Text gadgetTitle;
         [SerializeField] private TMP_Text gadgetDescription;
-
-        [field : SerializeField] public GadgetData data { get; private set; }
+        public GadgetData data { get; private set; }
+        private int amount;
         private GadgetControllerUI gadgetControllerUI;
-        public bool isSelectable { get; private set; }
-        public void Initialize(GadgetControllerUI ControllerUI)
-        {
-            gadgetControllerUI = ControllerUI;
-        }
+        
+       
 
         public void Refresh(GadgetData Data, int gadgetAmount)
         {
             gameObject.SetActive(true);
             data = Data;
+            amount = gadgetAmount;
             icon.sprite = Data.Icon;
             icon.color = Color.white;
             gadgetTitle.text = Data.Name;
@@ -70,8 +66,13 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         
         private void HighLightBackGround(float visibility, Color color)
         {
+            iconBackGround.DOKill();
+            icon.DOKill();
+            
+            Refresh(data,amount);
             iconBackGround.DOFade(visibility, 0.15f);
             icon.DOColor(color, 0.15f);
+            
         }
 
     }

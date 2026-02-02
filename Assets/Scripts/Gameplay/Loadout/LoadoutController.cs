@@ -2,7 +2,6 @@
 using KBCore.Refs;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.TextCore.LowLevel;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout
 {

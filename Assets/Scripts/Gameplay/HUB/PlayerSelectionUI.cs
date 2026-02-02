@@ -46,7 +46,7 @@ namespace OverBang.ExoWorld.Gameplay.HUB
             GameController.CursorVisibleStatePriority.AddPriority(this, PriorityTags.High, false);
             
             playerSelection.OnCharactersLoaded += OnLoaded;
-            
+
             selectButton.onClick.AddListener(ConfirmSelection);
             previousButton.onClick.AddListener(() => SwitchCharacter(-1));
             nextButton.onClick.AddListener(() => SwitchCharacter(1));

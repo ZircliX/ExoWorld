@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using OverBang.ExoWorld.Core.Abilities;
 using OverBang.ExoWorld.Core.Abilities.Gadgets;
 using OverBang.ExoWorld.Core.GameMode.Players;
-using OverBang.ExoWorld.Gameplay.Player.PlayerHUD;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -43,6 +42,14 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             foreach (GadgetData gadgetDatas in debugGadgetData)
             {
                 player.GadgetInventory.AddGadget(gadgetDatas, GadgetFactory.CreateGadget(gadgetDatas), 10);
+            }
+        }
+
+        private void Update()
+        {
+            if (currentGadget != null)
+            {
+                currentGadget.Tick(Time.deltaTime);
             }
         }
 

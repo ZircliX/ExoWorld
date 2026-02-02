@@ -5,7 +5,7 @@ namespace OverBang.ExoWorld.Core.Abilities.Gadgets
 {
     public interface IGadget
     {
-        Action OnGadgetEnded { get; }
+        event Action OnGadgetEnded;
 
         void Initialize(GadgetData data);
         void Begin(ICaster caster);

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using DG.Tweening;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Controls;
 using UnityEngine.UI;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout
@@ -14,10 +11,11 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         [SerializeField, Space] private float radius = 150f;
         
         [Header("Selection Settings")]
-        [SerializeField, Space] private float selectionThreshold = 2f;
+        [SerializeField, Space] private float selectionThreshold = 0.5f;
         [SerializeField] private float deltaSensitivity = 1f; 
+        [SerializeField] private Image wheelPointerImage; 
 
-        private List<GadgetUi> GadgetUis => controllerUI.gadgetUis;
+        private List<GadgetUi> GadgetUis => controllerUI.GadgetUis;
         private int itemCount => GadgetUis.Count;
         private int currentSelection;
         private Vector2 centerPosition;
@@ -30,7 +28,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         {
             this.controllerUI = controllerUI;
             controllerUI.OnGadgetUiSelectionEnd += SelectItem;
-            currentSelectedGadget = GadgetUis[1];
         }
         
         private void OnDisable()
@@ -48,10 +45,14 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private void Update()
         {
             // Accumulate delta movement
-            Vector2 mouseDelta = Mouse.current.delta.ReadValue();
-            accumulatedDelta += mouseDelta * deltaSensitivity;
+            Vector2 mouseDelta = Pointer.current.delta.ReadValue();
+            
+            if (mouseDelta.sqrMagnitude > selectionThreshold)
+            {
+                accumulatedDelta = mouseDelta * deltaSensitivity;
+                UpdateSelection();
+            }
                 
-            UpdateSelection();
         }
 
         private int selectedIndex;
@@ -70,6 +71,11 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             // Find closest menu item
             float anglePerItem = 360f / itemCount;
             selectedIndex = Mathf.RoundToInt(angle / anglePerItem) % itemCount;
+            
+            float targetAngle = selectedIndex * anglePerItem;
+            wheelPointerImage.transform.rotation = Quaternion.Euler(0f, 0f, -targetAngle);
+            
+            SelectItem();
         }
         
         
@@ -83,17 +89,17 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         
         private void OnItemSelected(int index)
         {
-            if (currentSelectedGadget == GadgetUis[index] && !currentSelectedGadget.isSelectable) return;
+            GadgetUi maybeNewGadget = GadgetUis[index];
+            if (maybeNewGadget == currentSelectedGadget || !GadgetUis[index].isSelectable) return;
             
-            currentSelectedGadget.DeselectThisGadget();
-            currentSelectedGadget = GadgetUis[index];
+            if (currentSelectedGadget != null)
+                currentSelectedGadget.DeselectThisGadget();
+            
+            currentSelectedGadget = maybeNewGadget;
+            
             controllerUI.SetCurrentSelectedGadget(currentSelectedGadget.data);
-            
-            DOVirtual.DelayedCall(0.15f, () =>
-            {
-                currentSelectedGadget = GadgetUis[index];
-                currentSelectedGadget.SelectThisGadget();
-            });
+            currentSelectedGadget.SelectThisGadget();
+
         }
     }
 }

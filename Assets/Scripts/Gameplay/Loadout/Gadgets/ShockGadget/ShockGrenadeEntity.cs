@@ -1,5 +1,4 @@
-﻿using System;
-using KBCore.Refs;
+﻿using KBCore.Refs;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Gameplay.Abilities;
 using UnityEngine;
@@ -9,6 +8,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.ShockGadget
     public class ShockGrenadeEntity : MonoBehaviour
     {
         [SerializeField, Self] private Rigidbody rb;
+        [SerializeField] private Collider collider;
         
         private IExplosionStrategy strategy;
 
@@ -24,6 +24,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.ShockGadget
         public void FreezeGrenade(bool value)
         {
             rb.isKinematic = value;
+            collider.isTrigger = value;
         }
 
         public void Initialize(ShockGrenadeData data, Vector3 direction)

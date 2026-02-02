@@ -5,19 +5,18 @@ using KBCore.Refs;
 using OverBang.ExoWorld.Core.Abilities.Gadgets;
 using OverBang.ExoWorld.Core.GameMode.Players;
 using Sirenix.OdinInspector;
-using TMPro;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public class GadgetControllerUI : MonoBehaviour
     {
-        [field : SerializeField] public List<GadgetUi> gadgetUis { get; private set; }
         [SerializeField, Self] private GadgetUiSelector selector;
         [SerializeField, Required] private GadgetController controller;
         
-        [SerializeField] private CanvasGroup gadgetWheel;
+        [SerializeField, Self] private CanvasGroup gadgetWheel;
         
+        [field : SerializeField] public List<GadgetUi> GadgetUis { get; private set; }
         public event Action OnGadgetUiSelectionEnd;
         
         private void OnValidate()
@@ -28,11 +27,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private void Start()
         {
             gadgetWheel.alpha = 0;
-            foreach (GadgetUi gadgetUi in gadgetUis)
-            {
-                gadgetUi.Initialize(this);
-            }
-            
             selector.Initialize(this);
         }
 
@@ -81,7 +75,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             
             foreach (GadgetData gadgetData in player.GadgetInventory.GadgetDatas)
             {
-                GadgetUi gadgetUi = gadgetUis[i];
+                GadgetUi gadgetUi = GadgetUis[i];
                 if (player.GadgetInventory.GetGadgetCount(gadgetData, out int amount) && amount > 0)
                 { 
                     gadgetUi.SetSelectable(true);
@@ -92,7 +86,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
                     gadgetUi.SetSelectable(false);
                     gadgetUi.Clear();
                 }
-                Debug.Log($"player have {gadgetData.name} with {amount}");
                 i++;
             }
         }
