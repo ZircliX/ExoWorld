@@ -11,43 +11,16 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public static class GadgetFactory
     {
-        public static IGadget CreateGadget(GadgetData gadgetData)
-        {
-            switch (gadgetData.GetType())
+        public static IGadget CreateGadget(GadgetData gadgetData) => gadgetData
+            switch
             {
-                case { } t when t == typeof(ShockGrenadeData):
-                    ShockGrenade shockGrenade = new ShockGrenade();
-                    shockGrenade.Initialize(gadgetData);
-                    return shockGrenade;
-                
-                case { } t when t == typeof(BurstGrenadeData):
-                    BurstGrenade burstGrenade = new BurstGrenade();
-                    burstGrenade.Initialize(gadgetData);
-                    return burstGrenade;
-                
-                case { } t when t == typeof(ParalixGrenadeData):
-                    ParalixGrenade paralixGrenade = new ParalixGrenade();
-                    paralixGrenade.Initialize(gadgetData);
-                    return paralixGrenade;
-                
-                case { } t when t == typeof(C4Data):
-                    C4 c4 = new C4();
-                    c4.Initialize(gadgetData);
-                    return c4;
-                
-                case { } t when t == typeof(LifePulseData):
-                    LifePulse lifePulse = new LifePulse();
-                    lifePulse.Initialize(gadgetData);
-                    return lifePulse;
-                
-                case { } t when t == typeof(FrostBiteGrenadeData):
-                    FrostBiteGrenade frostBiteGrenade = new FrostBiteGrenade();
-                    frostBiteGrenade.Initialize(gadgetData);
-                    return frostBiteGrenade;
-                
-                default:
-                    return null;
-            }
-        }
+                ShockGrenadeData shockGrenadeData => new ShockGrenade(shockGrenadeData),
+                BurstGrenadeData burstGrenadeData => new BurstGrenade(burstGrenadeData),
+                ParalixGrenadeData paralixGrenadeData => new ParalixGrenade(paralixGrenadeData),
+                C4Data c4GadgetData => new C4(c4GadgetData),
+                LifePulseData lifePulseData => new LifePulse(lifePulseData),
+                FrostBiteGrenadeData frostBiteGrenadeData => new FrostBiteGrenade(frostBiteGrenadeData),
+                _ => null
+            };
     }
 }

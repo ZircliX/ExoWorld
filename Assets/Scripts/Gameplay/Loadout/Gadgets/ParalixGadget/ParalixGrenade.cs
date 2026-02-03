@@ -6,16 +6,25 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.ParalixGadget
 {
     public class ParalixGrenade : IGadget
     {
+        GadgetData IGadget.Data => Data;
+        
+        public ParalixGrenadeData Data { get; private set; }
+        
+        public bool IsEquiped { get; }
+        public bool IsCasting { get; }
         public event Action OnGadgetEnded;
-        public void Initialize(GadgetData data)
+        
+        public ParalixGrenade(ParalixGrenadeData paralixGrenadeData)
         {
+            Data = paralixGrenadeData;
         }
+        
 
         public void Begin(ICaster caster)
         {
         }
 
-        public void Launch(ICaster caster)
+        public void Cast(ICaster caster)
         {
             
         }

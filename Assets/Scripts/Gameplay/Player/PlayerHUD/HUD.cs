@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System.Collections.Generic;
+using DG.Tweening;
 using Helteix.ChanneledProperties.Priorities;
 using Helteix.Singletons.SceneServices;
 using OverBang.ExoWorld.Core;
@@ -44,6 +45,24 @@ namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
             Ath.DOFade(state ? 0 : 1, fadeDuration);
             
             SetCursorState(state);
+        }
+
+        public void ChangeGIStateWheelOpen(bool state, List<InputAction> actions)
+        {
+            if (state)
+            {
+                foreach (InputAction action in actions)
+                {
+                    action.Enable();
+                }
+            }
+            else
+            {
+                foreach (InputAction action in actions)
+                {
+                    action.Disable();
+                }
+            }
         }
 
         public void SetCursorState(bool state)

@@ -6,10 +6,16 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
 {
     public class FrostBiteGrenade : IGadget
     {
+        GadgetData IGadget.Data => data;
+
+        private readonly FrostBiteGrenadeData data;
+        public bool IsEquiped { get; }
+        public bool IsCasting { get; }
         public event Action OnGadgetEnded;
-        public void Initialize(GadgetData data)
+        
+        public FrostBiteGrenade(FrostBiteGrenadeData frostBiteGrenadeData)
         {
-            
+            data = frostBiteGrenadeData;
         }
 
         public void Begin(ICaster caster)
@@ -17,7 +23,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
             
         }
 
-        public void Launch(ICaster caster)
+        public void Cast(ICaster caster)
         {
             
         }

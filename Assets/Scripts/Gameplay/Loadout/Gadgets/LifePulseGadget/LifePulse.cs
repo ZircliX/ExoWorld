@@ -6,18 +6,25 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.LifePulseGadget
 {
     public class LifePulse : IGadget
     {
+        GadgetData IGadget.Data => data;
+        private readonly LifePulseData data;
+        public bool IsEquiped { get; }
+        public bool IsCasting { get; }
         public event Action OnGadgetEnded;
-        public void Initialize(GadgetData data)
+
+        public LifePulse(LifePulseData lifePulseData)
         {
-            
+            data = lifePulseData;
         }
+
+
 
         public void Begin(ICaster caster)
         {
             
         }
 
-        public void Launch(ICaster caster)
+        public void Cast(ICaster caster)
         {
             
         }
