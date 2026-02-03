@@ -27,7 +27,6 @@ namespace OverBang.ExoWorld.Gameplay.Upgrade
         {
             playerUpgradesDatas = new Dictionary<UpgradeType, RuntimeUpgradeData>(4);
             CharacterData characterData = player.CharacterData;
-            Debug.Log($"Data Loaded with {playerUpgradesDatas.Count} upgrades");
             
             foreach (UpgradeData upgrade in characterData.UpgradeDatas)
             {

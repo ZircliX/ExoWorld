@@ -22,7 +22,6 @@ namespace OverBang.ExoWorld.Core.Inventory
             GadgetData[] gadgetDatas = Resources.LoadAll<GadgetData>("Gadgets");
             for (int i = 0; i < gadgetDatas.Length; i++)
             {
-                Debug.Log($"Gadget data {i}: {gadgetDatas[i]}");
                 gadgets.Add(gadgetDatas[i], new RuntimeGadgetInfo());
                 GadgetDatas.Add(gadgetDatas[i]);
             }

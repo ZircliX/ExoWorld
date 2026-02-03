@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Xml;
 using KBCore.Refs;
+using OverBang.ExoWorld.Gameplay.Player.PlayerHUD;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Pool;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout
 {
@@ -12,9 +15,11 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         
         [SerializeField] private InputActionAsset map;
         [SerializeField] private List<string> cameraInputActionName;
+        [SerializeField] private List<string> gameplayInputActionName;
         
         private Stack<IInputReceiver> receivers;
         private List<InputAction> actions;
+        private List<InputAction> gameplayActions;
         private IInputReceiver current;
 		
 
@@ -25,22 +30,30 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         
         private void Awake()
         {
-            actions = new List<InputAction>();
-
-            foreach (string action in cameraInputActionName)
-            {
-                InputAction Results = map.FindAction(action);
-                if (Results != null)
-                {
-                    actions.Add(Results);
-                }
-            }
+            actions = SearchInputsActionByName(cameraInputActionName);
+            gameplayActions = SearchInputsActionByName(gameplayInputActionName);
             
             receivers = new Stack<IInputReceiver>();
             receivers.Push(weaponController);
             current = receivers.Peek();
             weaponController.Initialize(this);
             gadgetController.Initialize(this);
+        }
+
+        private List<InputAction> SearchInputsActionByName(List<string> inputsName)
+        {
+            using (ListPool<InputAction>.Get(out List<InputAction> inputs))
+            {
+                foreach (string action in inputsName)
+                {
+                    InputAction results = map.FindAction(action);
+                    if (results != null)
+                    {
+                        inputs.Add(results);
+                    }
+                }
+                return inputs;
+            }
         }
 
         public void SwitchCameraInputs(bool value)
@@ -56,6 +69,11 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
                     action.Disable();
                 }
             }
+        }
+
+        public void ChangeGameplayInputs(bool value)
+        {
+            HUD.Instance.ChangeGIStateWheelOpen(value, gameplayActions);
         }
 
         #region Receivers
@@ -105,6 +123,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             if (context.performed)
             {
                 SwitchReceiver(gadgetController);
+                HUD.Instance.ChangeGIStateWheelOpen(false, gameplayActions);
                 SwitchCameraInputs(false);
             }
             current.OnCInput(context);

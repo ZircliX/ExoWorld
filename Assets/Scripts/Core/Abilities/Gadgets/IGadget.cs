@@ -5,11 +5,14 @@ namespace OverBang.ExoWorld.Core.Abilities.Gadgets
 {
     public interface IGadget
     {
+        bool IsEquiped { get; }
+        bool IsCasting { get; }
         event Action OnGadgetEnded;
-
-        void Initialize(GadgetData data);
+        
+        
+        GadgetData Data { get; }
         void Begin(ICaster caster);
-        void Launch(ICaster caster);
+        void Cast(ICaster caster);
         void Tick(float deltaTime);
         void End();
     }
