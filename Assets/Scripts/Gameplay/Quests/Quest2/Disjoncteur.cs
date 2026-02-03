@@ -18,8 +18,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         
         public string InteractionText => CanInteract && isHoldingFusible ? questData.InteractionText : questData.InteractionTextEmpty;
         public int Priority => (int)TargetPriority.High;
-        public bool CanInteract { get; private set; } = true;
-        private void SetCanInteractTrue() => CanInteract = true;
+        public bool CanInteract { get; private set; } = false;
         public InteractionType SupportedInteractions => InteractionType.Interact;
 
         Vector3 IInteractable.UIPosition => transform.position.Add(y: 1f);
@@ -31,14 +30,12 @@ namespace OverBang.ExoWorld.Gameplay.Quests
                 questTwoHandler.SetStepIndex(2);
             
             AddFusible(playerInteraction);
-
-            CanInteract = false;
-            Invoke(nameof(SetCanInteractTrue), 1f);
         }
 
         public void OnPlayerEnter(PlayerInteraction playerInteraction)
         {
             isHoldingFusible = playerInteraction.GetHoldingItemType<IFusible>();
+            CanInteract = isHoldingFusible;
         }
 
         private void OnEnable()
@@ -64,11 +61,18 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             if (!playerInteraction.IsHoldingItem())
                 return;
 
-            if (playerInteraction.GetHoldingItemType<IFusible>())
+            if (isHoldingFusible)
             {
                 isHoldingFusible = false;
+                CanInteract = false;
                 fusiblesInserted++;
+
+                Fusible fusible = playerInteraction.HeldItem.Instance as Fusible;
+                if (fusible != null)
+                    fusible.SetUsable(false);
+                
                 playerInteraction.DropItem();
+                playerInteraction.RequestUpdateUI(this);
 
                 QuestTwoEvent evt = new QuestTwoEvent(1);
                 ObjectivesManager.DispatchGameEvent(evt);

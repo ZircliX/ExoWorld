@@ -10,8 +10,8 @@ namespace OverBang.ExoWorld.Core.Inventory
     {
         public static ResourcesInventory Instance => GamePlayerManager.Instance.GetLocalPlayer().Inventory;
         
-        private Dictionary<string, ItemData> inventory = new Dictionary<string, ItemData>();
-        private List<ItemData> orderedItems = new List<ItemData>(); // Maintains insertion order for UI
+        private readonly Dictionary<string, ItemData> inventory = new Dictionary<string, ItemData>();
+        private readonly List<ItemData> orderedItems = new List<ItemData>(); // Maintains insertion order for UI
         
         public IReadOnlyList<ItemData> Items => orderedItems.AsReadOnly();
         

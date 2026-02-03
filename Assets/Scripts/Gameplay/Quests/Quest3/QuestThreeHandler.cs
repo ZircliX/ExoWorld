@@ -1,4 +1,5 @@
 using ZTools.ObjectiveSystem.Core;
+using Object = UnityEngine.Object;
 
 namespace OverBang.ExoWorld.Gameplay.Quests
 {
@@ -14,7 +15,11 @@ namespace OverBang.ExoWorld.Gameplay.Quests
 
         protected override void ObjectiveCompleted()
         {
-            
+            GazDispenser gaz = Object.FindFirstObjectByType<GazDispenser>();
+            if (gaz != null)
+            {
+                gaz.SetActiveState(false);
+            }
         }
     }
 }

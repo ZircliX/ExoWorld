@@ -10,17 +10,15 @@ namespace OverBang.ExoWorld.Gameplay.Quests
     public class Fusible : NetworkBehaviour, IInteractable, IFusible
     {
         [SerializeField] private QuestTwoData questTwoData;
-        [SerializeField] private DetectionArea detectionArea;
         [SerializeField] private bool canBePickedUp = true;
         [SerializeField] private bool canBeDropped = true;
-
-        private Vector3 originalPosition;
+        
         private bool isPickedUp = false;
-
+        private bool isUsable = true;
         private QuestTwoHandler questTwoHandler;
 
-        public string InteractionText => isPickedUp ? "Déposer le fusible" : "Ramasser le fusible";
-        public int Priority => (int)TargetPriority.Medium;
+        public string InteractionText => "Ramasser le fusible";
+        public int Priority { get; private set; } = (int)TargetPriority.Medium;
         public bool CanInteract { get; private set; } = true;
         public InteractionType SupportedInteractions
         {
@@ -45,50 +43,30 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             
             isPickedUp = true;
             CanInteract = false;
+            SetPriority(-1);
             gameObject.SetActive(false); // Hide or trigger pickup animation
         }
 
         public void OnDrop(PlayerInteraction playerInteraction)
         {
+            if (!isUsable)
+                return;
+            
             isPickedUp = false;
             CanInteract = true;
+            SetPriority((int)TargetPriority.Medium);
             transform.position = playerInteraction.CurrentInteractable.Instance.transform.position;
             gameObject.SetActive(true); // Show or trigger drop animation
         }
 
-        private void Awake()
+        public void SetPriority(int prio)
         {
-            originalPosition = transform.position;
-            detectionArea.SetAllowedTags("Player", "LocalPlayer");
+            Priority = prio;
         }
-
-        private void OnEnable()
+        
+        public void SetUsable(bool usable)
         {
-            detectionArea.OnEnter += OnEnter;
-            detectionArea.OnExit += OnExit;
-        }
-
-        private void OnDisable()
-        {
-            detectionArea.OnEnter -= OnEnter;
-            detectionArea.OnExit -= OnExit;
-        }
-
-        private void OnEnter(Collider col, object target)
-        {
-            CanInteract = true;
-        }
-
-        private void OnExit(Collider col, object target)
-        {
-            CanInteract = false;
-        }
-
-        public void ResetPosition()
-        {
-            isPickedUp = false;
-            transform.position = originalPosition;
-            gameObject.SetActive(true);
+            isUsable = usable;
         }
     }
 }
