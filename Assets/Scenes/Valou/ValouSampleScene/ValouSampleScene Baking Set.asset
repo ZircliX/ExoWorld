@@ -18,7 +18,7 @@ MonoBehaviour:
     m_Version: 1
     dilationSettings:
       enableDilation: 0
-      dilationDistance: 5
+      dilationDistance: 20
       dilationValidityThreshold: 0.25
       dilationIterations: 1
       squaredDistWeighting: 1
@@ -70,11 +70,11 @@ MonoBehaviour:
       m_Values: []
     m_Asset: {fileID: 0}
   chunkSizeInBricks: 128
-  maxCellPosition: {x: 3, y: 1, z: 3}
-  minCellPosition: {x: -3, y: -1, z: -3}
+  maxCellPosition: {x: 1, y: 1, z: 1}
+  minCellPosition: {x: -2, y: -1, z: -2}
   globalBounds:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 1458, y: 486, z: 1458}
+    m_Center: {x: -243, y: 0, z: -243}
+    m_Extent: {x: 729, y: 486, z: 729}
   bakedSimplificationLevels: 4
   bakedMinDistanceBetweenProbes: 2
   bakedProbeOcclusion: 0
