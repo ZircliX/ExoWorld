@@ -18,9 +18,18 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         private float timer;
         private const float SECOND = 1f;
 
+        private bool isActive;
+
         private void Awake()
         {
+            if (!IsOwner)
+                this.enabled = false;
+
+            SetActiveState(true);
+            
             targets = new List<IDamageable>(4);
+            buffer = new DynamicBuffer<IDamageable>(4);
+            
             detectionArea.SetAllowedTags("Player", "LocalPlayer");
             detectionArea.SetRequireInterface<IDamageable>();
         }
@@ -39,6 +48,9 @@ namespace OverBang.ExoWorld.Gameplay.Quests
 
         private void Update()
         {
+            if (!isActive) 
+                return;
+            
             timer += Time.deltaTime;
             if (timer >= SECOND)
             {
@@ -47,12 +59,22 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             }
         }
 
+        public void SetActiveState(bool state)
+        {
+            if (!IsOwner) 
+                return;
+            
+            isActive = state;
+        }
+
         private void ApplyGazDamage()
         {
             buffer.CopyFrom(targets);
             for (int i = 0; i < buffer.Length; i++)
             {
                 IDamageable target = buffer[i];
+                
+                Debug.Log($"Applying {data.GazTickDamage} Damage to {target.GetType().Name}");
                 target.TakeDamage(data.GazTickDamage);
             }
         }

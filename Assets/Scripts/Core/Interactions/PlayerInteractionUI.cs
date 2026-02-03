@@ -8,17 +8,22 @@ namespace OverBang.ExoWorld.Core.Interactions
     {
         [SerializeField] private PlayerInteraction playerInteraction;
         [SerializeField] private TMP_Text interactionText;
+        [SerializeField] private GameObject inputKey;
         [SerializeField] private CanvasGroup canvasGroup;
 
         private void OnEnable()
         {
             playerInteraction.OnNewInteractable += UpdateInteractableUI;
+            playerInteraction.OnItemDropped += UpdateInteractableUI;
+            playerInteraction.OnItemPickup += UpdateInteractableUI;
             canvasGroup.alpha = 0;
         }
 
         private void OnDisable()
         {
             playerInteraction.OnNewInteractable -= UpdateInteractableUI;
+            playerInteraction.OnItemDropped -= UpdateInteractableUI;
+            playerInteraction.OnItemPickup -= UpdateInteractableUI;
         }
 
         private void UpdateInteractableUI(InteractableData interactable)
@@ -33,8 +38,9 @@ namespace OverBang.ExoWorld.Core.Interactions
 
             canvasGroup.DOKill();
             canvasGroup.DOFade(1, .2f);
-            
-            interactionText.text = interactable.InteractionText == string.Empty ? "Intéragir" : interactable.InteractionText;
+
+            inputKey.SetActive(interactable.Instance.CanInteract);
+            interactionText.text = interactable.Instance.InteractionText == string.Empty ? "Intéragir" : interactable.Instance.InteractionText;
         }
 
         private void LateUpdate()

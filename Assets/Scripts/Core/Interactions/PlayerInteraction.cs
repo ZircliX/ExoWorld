@@ -105,10 +105,10 @@ namespace OverBang.ExoWorld.Core.Interactions
 
             if (interactables.Count > 0)
             {
-                interactables.Sort((a, b) => a.Priority.CompareTo(b.Priority));
+                interactables.Sort((a, b) => a.Instance.Priority.CompareTo(b.Instance.Priority));
 
                 nextInteractable = interactables[^1];
-                if (nextInteractable.Priority < 0 || !nextInteractable.CanInteract)
+                if (nextInteractable.Instance.Priority < 0)
                     nextInteractable = null;
             }
 
@@ -119,11 +119,19 @@ namespace OverBang.ExoWorld.Core.Interactions
             }
         }
 
+        public void RequestUpdateUI(IInteractable interactable)
+        {
+            if (interactableDataMap.TryGetValue(interactable, out InteractableData data) && data.Instance == interactable)
+            {
+                OnNewInteractable?.Invoke(data);
+            }
+        }
+
         public void Interact(InputAction.CallbackContext ctx)
         {
             if (!ctx.performed) return;
 
-            if (CurrentInteractable is { CanInteract: true })
+            if (CurrentInteractable != null && CurrentInteractable.Instance.CanInteract)
             {
                 if (CurrentInteractable.SupportsInteractionType(InteractionType.Interact))
                 {
@@ -142,7 +150,7 @@ namespace OverBang.ExoWorld.Core.Interactions
                 return;
             }
 
-            if (CurrentInteractable is { CanInteract: true } &&
+            if (CurrentInteractable != null && CurrentInteractable.Instance.CanInteract &&
                 CurrentInteractable.SupportsInteractionType(InteractionType.Pickup))
             {
                 PickupInteractable(CurrentInteractable);
@@ -167,7 +175,7 @@ namespace OverBang.ExoWorld.Core.Interactions
 
         public void DropItem()
         {
-            if (HeldItem == null)
+            if (!CanDropCurrentItem())
                 return;
 
             InteractableData previouslyHeld = HeldItem;
@@ -175,7 +183,7 @@ namespace OverBang.ExoWorld.Core.Interactions
             HeldItem = null;
 
             previouslyHeld.Instance.OnDrop(this);
-            OnItemDropped?.Invoke(previouslyHeld);
+            OnItemDropped?.Invoke(CurrentInteractable);
         }
 
         public bool CanDropCurrentItem()
