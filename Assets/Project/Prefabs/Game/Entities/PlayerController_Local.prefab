@@ -205,8 +205,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4434545992771747307}
   - {fileID: 9098849894630097345}
+  - {fileID: 4434545992771747307}
   m_Father: {fileID: 7218111507029689259}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2219,6 +2219,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6001636676778254952, guid: 4f56e56d76eb55849871f002de085f31, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1518980571670799238}
     - target: {fileID: 6533880174571481942, guid: 4f56e56d76eb55849871f002de085f31, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

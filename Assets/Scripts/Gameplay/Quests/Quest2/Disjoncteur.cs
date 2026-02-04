@@ -12,13 +12,13 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         [SerializeField] private QuestTwoData questData;
         [SerializeField] private DetectionArea detectionArea;
 
-        private int fusiblesInserted = 0;
-        private bool isHoldingFusible = false;
+        private int fusiblesInserted;
+        private bool isHoldingFusible;
         private QuestTwoHandler questTwoHandler;
         
         public string InteractionText => CanInteract && isHoldingFusible ? questData.InteractionText : questData.InteractionTextEmpty;
         public int Priority => (int)TargetPriority.High;
-        public bool CanInteract { get; private set; } = false;
+        public bool CanInteract { get; private set; }
         public InteractionType SupportedInteractions => InteractionType.Interact;
 
         Vector3 IInteractable.UIPosition => transform.position.Add(y: 1f);

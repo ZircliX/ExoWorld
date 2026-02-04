@@ -12,7 +12,7 @@ namespace OverBang.ExoWorld.Gameplay.Movement
 
         [Header("Height")]
         [SerializeField] private float crouchCapsuleHeight = 0.5f;
-        [SerializeField] private  float crouchHeadHeight = 0f;
+        [SerializeField] private  float crouchHeadHeight;
 
         public override void Enter(EntityMovement movement)
         {

@@ -14,7 +14,7 @@ namespace OverBang.ExoWorld.Gameplay.Loots
         [SerializeField] private string lootDescription;
         [SerializeField] private ItemRarity rarity = ItemRarity.Common;
 
-        private bool hasBeenLooted = false;
+        private bool hasBeenLooted;
 
         public string LootId => lootId;
         Vector3 ILootable.LootPosition => transform.position.Add(y: 0.5f);

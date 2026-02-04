@@ -24,11 +24,11 @@ namespace OverBang.ExoWorld.Gameplay.Health
         
         public class Builder
         {
-            private float _amount = 0;
-            private float _percentageAmount = 0;
-            private float _delay = 0;
-            private float _duration = 0;
-            private float _steps = 0;
+            private float _amount;
+            private float _percentageAmount;
+            private float _delay;
+            private float _duration;
+            private float _steps;
 
             public Builder SetAmount(float amount)
             {
