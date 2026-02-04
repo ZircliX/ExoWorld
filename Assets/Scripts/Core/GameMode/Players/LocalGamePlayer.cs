@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using OverBang.ExoWorld.Core.Abilities.Gadgets;
 using OverBang.ExoWorld.Core.Characters;
 using OverBang.ExoWorld.Core.Inventory;
 using OverBang.ExoWorld.Core.Metrics;
@@ -22,12 +21,13 @@ namespace OverBang.ExoWorld.Core.GameMode.Players
 
         public float Health { get; private set; } = -1;
         public float MaxHealth { get; private set; } = -1;
+        public event Action<float, float> OnHealthChanged;
         public PlayerState State { get; private set; } = PlayerState.Uninitialized;
 
         public string SessionPlayerID => LocalSessionPlayer.Id;
         public ulong ClientID => NetworkManager.Singleton.LocalClientId;
         
-        public IPlayer LocalSessionPlayer => SessionManager.Global.CurrentPlayer;
+        private IPlayer LocalSessionPlayer => SessionManager.Global.CurrentPlayer;
         
         public ResourcesInventory Inventory { get; private set; } = new ResourcesInventory();
 
@@ -84,12 +84,14 @@ namespace OverBang.ExoWorld.Core.GameMode.Players
         {
             Health = newHealth;
             isDirty = true;
+            OnHealthChanged?.Invoke(Health, MaxHealth);
         }
 
         public void SetMaxHealth(float newMaxHealth)
         {
             MaxHealth = newMaxHealth;
             isDirty = true;
+            OnHealthChanged?.Invoke(Health, MaxHealth);
         }
         
         public void SetState(PlayerState newState)

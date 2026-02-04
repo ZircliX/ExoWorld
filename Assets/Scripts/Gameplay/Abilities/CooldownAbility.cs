@@ -34,7 +34,8 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             }
         }
         
-        public TData Data { get; private set; }
+        public TData DataT { get; private set; }
+        public AbilityData Data => DataT;
         public ICaster Caster { get; }
         public bool IsActive { get; private set; }
         public bool CanBeUsed => !IsActive && cooldown.IsReady;
@@ -58,12 +59,12 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         public CooldownAbility(TData data, ICaster caster)
         {
             Caster = caster;
-            Data = data;
+            DataT = data;
             cooldown = new CooldownComponent(data.Cooldown);
 
-            MainStrategy = CreateStrategy(Data.MainData);
-            AugmentStrategy1 = CreateStrategy(Data.AugmentData1);
-            AugmentStrategy2 = CreateStrategy(Data.AugmentData2);
+            MainStrategy = CreateStrategy(DataT.MainData);
+            AugmentStrategy1 = CreateStrategy(DataT.AugmentData1);
+            AugmentStrategy2 = CreateStrategy(DataT.AugmentData2);
         }
 
         private IAbilityStrategy<TData> CreateStrategy(IAbilityStrategyData strategyData)
@@ -78,7 +79,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             if (!cooldown.IsReady)
                 return;
             
-            currentDuration = Data.Duration;
+            currentDuration = DataT.Duration;
 
             IsActive = true;
             ActiveStrategy.Begin(this);
@@ -91,7 +92,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             if (!IsActive)
                 return;
             
-            if (Data.Duration > 0)
+            if (DataT.Duration > 0)
             {
                 currentDuration -= deltaTime;
                 if (currentDuration <= 0)

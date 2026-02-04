@@ -56,8 +56,8 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         
         public virtual void Begin(IAbility<BaliseHellaData> ability)
         {
-            Balise = Object.Instantiate(ability.Data.BalisePrefab, Caster.transform.position + Caster.Forward, Quaternion.identity);
-            Balise.Initialize(ability.Data, Caster.Forward, Data.Radius);
+            Balise = Object.Instantiate(ability.DataT.BalisePrefab, Caster.transform.position + Caster.Forward, Quaternion.identity);
+            Balise.Initialize(ability.DataT, Caster.Forward, Data.Radius);
             
             Balise.DetectionArea.OnEnter += OnEnter;
             Balise.DetectionArea.OnExit += OnExit;

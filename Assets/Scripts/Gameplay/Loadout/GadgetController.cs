@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using OverBang.ExoWorld.Core.Abilities;
 using OverBang.ExoWorld.Core.Abilities.Gadgets;
 using OverBang.ExoWorld.Core.GameMode.Players;
-using OverBang.ExoWorld.Gameplay.Player.PlayerHUD;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;

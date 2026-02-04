@@ -1,3 +1,4 @@
+using System;
 using OverBang.ExoWorld.Core.Abilities;
 using OverBang.ExoWorld.Gameplay.Movement;
 using OverBang.ExoWorld.Gameplay.Player;
@@ -15,6 +16,8 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         
         private IAbility primary;
         private IAbility secondary;
+        
+        public event Action<IAbility, IAbility> OnAbilitiesChanged;
 
         private void Awake()
         {
@@ -72,6 +75,8 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             {
                 secondary = context.playerCharacterData.SecondaryAbility.CreateAbilityFor(this);
             }
+            
+            OnAbilitiesChanged?.Invoke(primary, secondary);
         }
     }
 }

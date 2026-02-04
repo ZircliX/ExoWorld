@@ -1,23 +1,19 @@
-using System;
 using System.Collections.Generic;
-using Helteix.Singletons.MonoSingletons;
+using OverBang.ExoWorld.Core.Utils;
+using Unity.Services.Multiplayer;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Core.GameMode.Players
 {
     public class GamePlayerManager : MonoBehaviour
     {
+        [SerializeField] private float refreshRate = 0.3f;
+        
         public static GamePlayerManager Instance { get; private set; }
 
-        private Dictionary<string, IGamePlayer> players;
-        
-        public IReadOnlyCollection<IGamePlayer> Players => players.Values;
-        
-
-        [SerializeField]
-        private float refreshRate = .3f;
-        
         private float count;
+        private Dictionary<string, IGamePlayer> players;
+        public IReadOnlyCollection<IGamePlayer> Players => players.Values;
         
         private void Awake()
         {
@@ -25,7 +21,6 @@ namespace OverBang.ExoWorld.Core.GameMode.Players
                 Instance = this;
             else
                 Destroy(this);
-            
         }
         
         private void LateUpdate()
@@ -37,19 +32,19 @@ namespace OverBang.ExoWorld.Core.GameMode.Players
                 LocalGamePlayer local = GetLocalPlayer();
                 local?.ApplyIfDirty();
             }
-
         }
 
         public bool TryGetPlayerWithClientId(ulong clientId, out IGamePlayer player)
         {
             foreach ((string id, IGamePlayer gamePlayer) in players)
             {
-                if(gamePlayer.ClientID == clientId)
+                if (gamePlayer.ClientID == clientId)
                 {
                     player = gamePlayer;
                     return true;
                 }
             }
+            
             player = null;
             return false;
         }

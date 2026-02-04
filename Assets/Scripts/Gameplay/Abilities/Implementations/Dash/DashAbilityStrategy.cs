@@ -43,7 +43,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
 
             int size = Physics.OverlapCapsuleNonAlloc(capsulePos,
                 capsulePos + Vector3.up * PlayerMovement.CapsuleCollider.height,
-                PlayerMovement.CapsuleCollider.radius + ability.Data.CastDistanceThreshold,
+                PlayerMovement.CapsuleCollider.radius + ability.DataT.CastDistanceThreshold,
                 bumpColliders,
                 GameMetrics.Global.HittableLayers,
                 QueryTriggerInteraction.Collide);
@@ -56,7 +56,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
                     !damagedEnemies.Contains(damageable) &&
                     col.gameObject != Caster.gameObject)
                 {
-                    damageable.TakeDamage(ability.Data.Damage);
+                    damageable.TakeDamage(ability.DataT.Damage);
                 }
             }
         }

@@ -8,6 +8,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         ICaster Caster { get; }
         bool IsActive { get; }
         bool CanBeUsed { get; }
+        AbilityData Data { get; }
 
         void Begin();
         void Tick(float deltaTime);
@@ -17,6 +18,6 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
     public interface IAbility<out TData> : IAbility 
         where TData : AbilityData
     {
-        TData Data { get; }
+        TData DataT { get; }
     }
 }

@@ -23,8 +23,8 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         {
             IExplosionStrategy explosionStrategy = GetExplosionStrategy();
             
-            MineWax mine = Object.Instantiate(ability.Data.MineWaxPrefab, Caster.transform.position + Caster.Forward, Quaternion.identity);
-            mine.Initialize(ability.Data, Caster.Forward, explosionStrategy);
+            MineWax mine = Object.Instantiate(ability.DataT.MineWaxPrefab, Caster.transform.position + Caster.Forward, Quaternion.identity);
+            mine.Initialize(ability.DataT, Caster.Forward, explosionStrategy);
             
             activeMines.Add(mine);
         }
