@@ -1,5 +1,6 @@
 ﻿using OverBang.ExoWorld.Core.GameMode.Players;
 using OverBang.ExoWorld.Core.Phases;
+using OverBang.ExoWorld.Core.Player;
 using OverBang.ExoWorld.Core.Utils;
 using OverBang.ExoWorld.Gameplay.Phase;
 using Unity.Netcode;
@@ -28,11 +29,14 @@ namespace OverBang.ExoWorld.Gameplay.HUB.Listeners
         private void SpawnPlayer(LocalGamePlayer player, bool characterChanged)
         {
             //Debug.Log($"Spawn player {player.Id} with character {characterData.AgentName}");
-            ulong clientID = NetworkManager.Singleton.LocalClient.ClientId;
             
             //TODO : FOUDROYER LOIS
             Transform spawnPoint = GameObject.FindGameObjectWithTag("Respawn").transform;
-            player.Spawn(spawnPoint.position, spawnPoint.rotation);
+            NetworkObject playerObject = player.Spawn(spawnPoint.position, spawnPoint.rotation);
+            if (playerObject.TryGetComponent(out PlayerFlashLight flashLight))
+            {
+                flashLight.SetState(false);
+            }
             
             PoolUtils.PoolType poolType = PoolUtils.PoolType.Characters | PoolUtils.PoolType.Dependencies;
             Awaitable awaitable = PoolUtils.SetupPooling(poolType);

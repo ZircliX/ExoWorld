@@ -886,10 +886,10 @@ Light:
   serializedVersion: 12
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 164.56921
-  m_Range: 12
-  m_SpotAngle: 81.38407
-  m_InnerSpotAngle: 67.276596
+  m_Intensity: 2040.8357
+  m_Range: 18
+  m_SpotAngle: 80
+  m_InnerSpotAngle: 40
   m_CookieSize2D: {x: 10, y: 10}
   m_Shadows:
     m_Type: 1
@@ -917,7 +917,7 @@ Light:
       e32: 0
       e33: 1
     m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 0}
+  m_Cookie: {fileID: 2800000, guid: c3097fbf5286afe4692f9d336db11daa, type: 3}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
   m_RenderMode: 0
@@ -935,7 +935,7 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
-  m_ShadowRadius: 0.025
+  m_ShadowRadius: 2
   m_ShadowAngle: 0
   m_LightUnit: 0
   m_LuxAtDistance: 1
@@ -971,7 +971,7 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeRadius: 0.025
+  m_ShapeRadius: 2
   m_SoftnessScale: 1
   m_UseCustomSpotLightShadowCone: 0
   m_CustomSpotLightShadowCone: 30
@@ -1037,7 +1037,7 @@ MonoBehaviour:
   m_ShadowResolution:
     m_Override: 512
     m_UseOverride: 0
-    m_Level: 0
+    m_Level: 1
   m_ShadowDimmer: 0.75
   m_VolumetricShadowDimmer: 1
   m_ShadowFadeDistance: 50
@@ -1123,6 +1123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7218111507029689259}
   - component: {fileID: 6522341107633415678}
+  - component: {fileID: 2937561305450261851}
   - component: {fileID: 1186234965293078507}
   - component: {fileID: 1400611726766071219}
   - component: {fileID: 5248633824829772109}
@@ -1178,6 +1179,19 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &2937561305450261851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8985065719729054035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fcf529844ab4547ac867476615bec73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: OverBang.ExoWorld.Core::OverBang.ExoWorld.Core.Player.PlayerFlashLight
+  flashLight: {fileID: 6716395519171326867}
 --- !u!114 &1186234965293078507
 MonoBehaviour:
   m_ObjectHideFlags: 0
