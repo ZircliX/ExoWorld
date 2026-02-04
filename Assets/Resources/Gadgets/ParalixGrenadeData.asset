@@ -16,10 +16,14 @@ MonoBehaviour:
   <Description>k__BackingField: "Grenade \xE9lectrique qui inflige des d\xE9g\xE2ts
     et paralyse toute entit\xE9 pr\xE9sente dans la zone d\u2019explosion"
   <Icon>k__BackingField: {fileID: 21300000, guid: 0ca2007cb8cd8a4459d199714e70d315, type: 3}
-  <ExplosionDelay>k__BackingField: 0
-  <ExplosionRadius>k__BackingField: 0
+  <SoundID>k__BackingField:
+    ID: 1073741855
+    _sourceAsset: {fileID: 11400000, guid: a365ec0b28811d340aaadd4d2ce53a27, type: 2}
+    <DebugObject>k__BackingField: {fileID: 0}
+  <ExplosionDelay>k__BackingField: 2
+  <ExplosionRadius>k__BackingField: 5
   <Prefab>k__BackingField: {fileID: 0}
   <DamageData>k__BackingField:
-    baseDamage: 0
+    baseDamage: 200
     weakSpotMultiplier: 0
-  <ThrowForce>k__BackingField: 0
+  <ThrowForce>k__BackingField: 400

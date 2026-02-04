@@ -10,5 +10,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
         [field: SerializeField] public FrostBiteGrenadeEntity Prefab { get; private set; }
         [field: SerializeField] public DamageData DamageData { get; private set; }
         [field: SerializeField] public float ThrowForce { get; private set; }
+        [field: SerializeField] public float SlowDuration { get; private set; }
+        [field: SerializeField] public float SlowPercentage { get; private set; }
     }
 }

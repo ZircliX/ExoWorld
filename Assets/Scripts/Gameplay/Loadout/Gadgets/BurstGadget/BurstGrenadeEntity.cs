@@ -1,4 +1,7 @@
-﻿using OverBang.ExoWorld.Core.Metrics;
+﻿using System;
+using Ami.BroAudio;
+using KBCore.Refs;
+using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Gameplay.Abilities;
 using UnityEngine;
 
@@ -6,22 +9,31 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
 {
     public class BurstGrenadeEntity : MonoBehaviour
     {
-        [SerializeField] private Rigidbody rb;
+        [SerializeField, Self] private Rigidbody rb;
+        [SerializeField] private Collider collider;
         
         private IExplosionStrategy strategy;
 
         private BurstGrenadeData data;
+        private BurstGrenade burstGrenade;
         private float time;
         private bool isDetonated;
+
+        private void OnValidate()
+        {
+            this.ValidateRefs();
+        }
 
         public void FreezeGrenade(bool value)
         {
             rb.isKinematic = value;
+            collider.isTrigger = value;
         }
         
-        public void Initialize(BurstGrenadeData data, Vector3 direction)
+        public void Initialize(BurstGrenadeData data, Vector3 direction, BurstGrenade burstGrenade)
         {
             strategy = new StandardExplosion(data.DamageData);
+            this.burstGrenade = burstGrenade;
             this.data = data;
             strategy.OnExploded += OnExploded;
             FreezeGrenade(false);
@@ -53,6 +65,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
         
         private void OnExploded(bool terminated)
         {
+            BroAudio.Play(data.SoundID);
             if (terminated)
             {
                 strategy.OnExploded -= OnExploded;
@@ -62,8 +75,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
         
         private void End()
         {
+            burstGrenade.End();
             Destroy(gameObject);
-            
         }
     }
 }

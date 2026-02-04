@@ -27,12 +27,12 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         public void Initialize(GadgetControllerUI controllerUI)
         {
             this.controllerUI = controllerUI;
-            controllerUI.OnGadgetUiSelectionEnd += SelectItem;
+            controllerUI.OnGadgetUiSelectionEnd += OnItemSelected;
         }
         
         private void OnDisable()
         {
-            controllerUI.OnGadgetUiSelectionEnd -= SelectItem;
+            controllerUI.OnGadgetUiSelectionEnd -= OnItemSelected;
         }
         
         
@@ -58,48 +58,44 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private int selectedIndex;
         private void UpdateSelection()
         {
-            // Check if mouse moved far enough from center
             if (accumulatedDelta.magnitude < selectionThreshold)
             {
                 return;
             }
             
-            // Calculate angle from accumulated delta
             float angle = Mathf.Atan2(accumulatedDelta.x, accumulatedDelta.y) * Mathf.Rad2Deg;
             if (angle < 0) angle += 360f;
             
-            // Find closest menu item
             float anglePerItem = 360f / itemCount;
             selectedIndex = Mathf.RoundToInt(angle / anglePerItem) % itemCount;
             
             float targetAngle = selectedIndex * anglePerItem;
             wheelPointerImage.transform.rotation = Quaternion.Euler(0f, 0f, -targetAngle);
             
-            SelectItem();
+            SelectItemUI();
         }
         
         
-        private void SelectItem()
+        private void SelectItemUI()
         {
             if (selectedIndex >= 0 && selectedIndex < GadgetUis.Count)
             {
-                OnItemSelected(selectedIndex);
+                UpdateSelectedGadget(selectedIndex);
             }
         }
-        
-        private void OnItemSelected(int index)
+
+        private void UpdateSelectedGadget(int index)
         {
             GadgetUi maybeNewGadget = GadgetUis[index];
             if (maybeNewGadget == currentSelectedGadget || !GadgetUis[index].isSelectable) return;
-            
-            if (currentSelectedGadget != null)
-                currentSelectedGadget.DeselectThisGadget();
-            
+            if (currentSelectedGadget != null) currentSelectedGadget.DeselectThisGadget();
             currentSelectedGadget = maybeNewGadget;
-            
-            controllerUI.SetCurrentSelectedGadget(currentSelectedGadget.data);
             currentSelectedGadget.SelectThisGadget();
-
+        }
+        
+        private void OnItemSelected()
+        {
+            controllerUI.SetCurrentSelectedGadget(currentSelectedGadget.data);
         }
     }
 }
