@@ -38,43 +38,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             weaponController.Initialize(this);
             gadgetController.Initialize(this);
         }
-
-        private List<InputAction> SearchInputsActionByName(List<string> inputsName)
-        {
-            using (ListPool<InputAction>.Get(out List<InputAction> inputs))
-            {
-                foreach (string action in inputsName)
-                {
-                    InputAction results = map.FindAction(action);
-                    if (results != null)
-                    {
-                        inputs.Add(results);
-                    }
-                }
-                return inputs;
-            }
-        }
-
-        public void SwitchCameraInputs(bool value)
-        {
-            foreach (InputAction action in actions)
-            {
-                if (value)
-                {
-                    action.Enable();
-                }
-                else
-                {
-                    action.Disable();
-                }
-            }
-        }
-
-        public void ChangeGameplayInputs(bool value)
-        {
-            HUD.Instance.ChangeGIStateWheelOpen(value, gameplayActions);
-        }
-
+        
         #region Receivers
 
             public void SwitchReceiver(IInputReceiver receiver)
@@ -89,8 +53,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
                 {
                     receivers.Pop();
                     current = receivers.Peek();
-
-                    SwitchCameraInputs(true);
                 }
             }
 
@@ -126,6 +88,42 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
                 SwitchCameraInputs(false);
             }
             current.OnCInput(context);
+        }
+        
+        public void SwitchCameraInputs(bool value)
+        {
+            foreach (InputAction action in actions)
+            {
+                if (value)
+                {
+                    action.Enable();
+                }
+                else
+                {
+                    action.Disable();
+                }
+            }
+        }
+        
+        public void ChangeGameplayInputsState(bool value)
+        {
+            HUD.Instance.ChangeGIStateWheelOpen(value, gameplayActions);
+        }
+        
+        private List<InputAction> SearchInputsActionByName(List<string> inputsName)
+        {
+            using (ListPool<InputAction>.Get(out List<InputAction> inputs))
+            {
+                foreach (string action in inputsName)
+                {
+                    InputAction results = map.FindAction(action);
+                    if (results != null)
+                    {
+                        inputs.Add(results);
+                    }
+                }
+                return new List<InputAction>(inputs);
+            }
         }
 
         #endregion

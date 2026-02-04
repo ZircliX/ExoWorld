@@ -13,6 +13,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.ParalixGadget
         public bool IsEquiped { get; }
         public bool IsCasting { get; }
         public event Action OnGadgetEnded;
+        public event Action OnGadgetDiscarded;
+        public event Action OnGadgetBeingCasted;
         
         public ParalixGrenade(ParalixGrenadeData paralixGrenadeData)
         {
@@ -37,6 +39,11 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.ParalixGadget
         public void End()
         {
             
+        }
+
+        public void Discard()
+        {
+            throw new NotImplementedException();
         }
     }
 }

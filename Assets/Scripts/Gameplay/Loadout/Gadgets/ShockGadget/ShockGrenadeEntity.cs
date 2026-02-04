@@ -1,4 +1,5 @@
-﻿using Ami.BroAudio;
+﻿using System.Runtime.CompilerServices;
+using Ami.BroAudio;
 using KBCore.Refs;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Gameplay.Abilities;
@@ -32,15 +33,13 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.ShockGadget
         public void Initialize(ShockGrenadeData data, Vector3 direction, ShockGrenade shockGrenade)
         {
             strategy = new StandardExplosion(data.DamageData);
-            Debug.Log($"Initializing gadget {data.Name} with {data} ");
             this.shockGrenade = shockGrenade;
             this.data = data;
             strategy.OnExploded += OnExploded;
             FreezeGrenade(false);
             rb.AddForce(Vector3.up * 0.5f + direction * data.ThrowForce * Time.deltaTime, ForceMode.Impulse);
-            
         }
-        
+
         public void Tick(float deltaTime)
         {
             if (time < data.ExplosionDelay)
@@ -67,6 +66,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.ShockGadget
         private void OnExploded(bool terminated)
         {
             BroAudio.Play(data.SoundID);
+            
             if (terminated)
             {
                 strategy.OnExploded -= OnExploded;

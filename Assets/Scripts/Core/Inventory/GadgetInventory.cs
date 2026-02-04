@@ -35,6 +35,14 @@ namespace OverBang.ExoWorld.Core.Inventory
                 gadgetInfo.Amount += amount;
             }
         }
+
+        public void RemoveGadget(GadgetData data, int amount)
+        {
+            if (gadgets.TryGetValue(data, out RuntimeGadgetInfo gadgetInfo))
+            {
+                gadgetInfo.Amount -= amount;
+            }
+        }
     
         public bool GetGadgetCount(GadgetData data, out int amount)
         {
@@ -53,7 +61,6 @@ namespace OverBang.ExoWorld.Core.Inventory
             if (gadgets.TryGetValue(data, out RuntimeGadgetInfo gadgetInfo) && gadgetInfo.IsUsable)
             {
                 gadget = gadgetInfo.Gadget;
-                gadgetInfo.Amount--;
                 return true;
             }
             

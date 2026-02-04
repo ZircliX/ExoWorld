@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
 {
-    [CreateAssetMenu(menuName =  "OverBang/Gadgets/BurstGrenadeData")]
+    [CreateAssetMenu(menuName = "OverBang/Gadgets/BurstGrenadeData")]
     public class BurstGrenadeData : GadgetData
     {
         [field: SerializeField] public BurstGrenadeEntity Prefab { get; private set; }

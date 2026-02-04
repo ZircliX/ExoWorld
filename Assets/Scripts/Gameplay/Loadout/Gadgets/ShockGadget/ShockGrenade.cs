@@ -14,6 +14,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.ShockGadget
         public bool IsEquiped { get; private set; }
         public bool IsCasting { get; private set; }
         public event Action OnGadgetEnded;
+        public event Action OnGadgetBeingCasted;
 
         private ShockGrenadeEntity grenadeEntity;
         private bool isLaunched;
@@ -29,7 +30,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.ShockGadget
             Caster = caster;
             IsEquiped = true;
             IsCasting = false;
-
+            OnGadgetBeingCasted?.Invoke();
             grenadeEntity = Object.Instantiate(Data.Prefab, Caster.CastAnchor);
             grenadeEntity.FreezeGrenade(true);
         }
@@ -52,11 +53,18 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.ShockGadget
 
         public void End()
         {
-            Debug.Log($"ShockGrenade End");
             IsEquiped = false;
             IsCasting = false;
             isLaunched = false;
             OnGadgetEnded?.Invoke();
+        }
+
+        public void Discard()
+        {
+            Debug.Log("Discard");
+            Object.Destroy(grenadeEntity.gameObject);
+            grenadeEntity = null;
+            End();
         }
     }
 }

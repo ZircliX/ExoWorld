@@ -16,10 +16,16 @@ MonoBehaviour:
   <Description>k__BackingField: "Grenade givr\xE9e qui inflige des d\xE9g\xE2ts et
     ralentit toute entit\xE9 pr\xE9sente dans la zone d\u2019explosion."
   <Icon>k__BackingField: {fileID: 21300000, guid: b3dda9a27d555a344ad50cb438c8e270, type: 3}
-  <ExplosionDelay>k__BackingField: 0
-  <ExplosionRadius>k__BackingField: 0
-  <Prefab>k__BackingField: {fileID: 0}
+  <SoundID>k__BackingField:
+    ID: 1073741853
+    _sourceAsset: {fileID: 11400000, guid: a365ec0b28811d340aaadd4d2ce53a27, type: 2}
+    <DebugObject>k__BackingField: {fileID: 0}
+  <ExplosionDelay>k__BackingField: 2
+  <ExplosionRadius>k__BackingField: 5
+  <Prefab>k__BackingField: {fileID: 5934075118822392161, guid: f05460c739c74954f9c33104700976a2, type: 3}
   <DamageData>k__BackingField:
-    baseDamage: 0
+    baseDamage: 200
     weakSpotMultiplier: 0
-  <ThrowForce>k__BackingField: 0
+  <ThrowForce>k__BackingField: 300
+  <SlowDuration>k__BackingField: 5
+  <SlowPercentage>k__BackingField: 50

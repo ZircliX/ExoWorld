@@ -7,6 +7,7 @@ namespace OverBang.ExoWorld.Core.Abilities.Gadgets
         bool IsEquiped { get; }
         bool IsCasting { get; }
         event Action OnGadgetEnded;
+        event Action OnGadgetBeingCasted;
         
         
         GadgetData Data { get; }
@@ -14,5 +15,6 @@ namespace OverBang.ExoWorld.Core.Abilities.Gadgets
         void Cast(ICaster caster);
         void Tick(float deltaTime);
         void End();
+        void Discard();
     }
 }

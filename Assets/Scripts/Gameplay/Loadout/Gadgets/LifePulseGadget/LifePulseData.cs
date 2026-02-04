@@ -7,6 +7,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.LifePulseGadget
     public class LifePulseData : GadgetData
     {
         [field: SerializeField] public LifePulseEntity Prefab { get; private set; }
+        [field: SerializeField] public float HealthAmount { get; private set; }
         [field: SerializeField] public float ThrowForce { get; private set; }
+        
     }
 }

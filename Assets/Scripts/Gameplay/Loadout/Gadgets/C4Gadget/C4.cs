@@ -11,6 +11,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.C4Gadget
         private readonly C4Data data;
         public bool IsEquiped { get; }
         public bool IsCasting { get; }
+        public event Action OnGadgetDiscarded;
+        public event Action OnGadgetBeingCasted;
         public event Action OnGadgetEnded;
 
         public C4(C4Data c4GadgetData)
@@ -36,6 +38,11 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.C4Gadget
         }
 
         public void End()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Discard()
         {
             throw new NotImplementedException();
         }
