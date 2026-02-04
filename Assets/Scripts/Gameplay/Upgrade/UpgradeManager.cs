@@ -5,7 +5,6 @@ using OverBang.ExoWorld.Core.Characters;
 using OverBang.ExoWorld.Core.GameMode.Players;
 using OverBang.ExoWorld.Core.Inventory;
 using OverBang.ExoWorld.Core.Upgrade;
-using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Upgrade
 {

@@ -25,7 +25,7 @@ namespace OverBang.ExoWorld.Gameplay.Movement
         
         [Header("Height")]
         [SerializeField] private float crouchCapsuleHeight = 1f;
-        [SerializeField] private  float crouchHeadHeight = 0f;
+        [SerializeField] private  float crouchHeadHeight;
 
         private float currentSlideTime;
         private Vector3 direction;

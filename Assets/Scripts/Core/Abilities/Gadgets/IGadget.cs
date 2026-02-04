@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEngine;
 
 namespace OverBang.ExoWorld.Core.Abilities.Gadgets
 {

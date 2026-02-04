@@ -28,13 +28,13 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         /// <summary>
         /// The current index of the <see cref="ObjectiveCollectionData"/> being processed.
         /// </summary>
-        private int currentCollectionIndex = 0;
+        private int currentCollectionIndex;
 
         /// <summary>
         /// The current index of the <see cref="ObjectiveData"/> within the current
         /// <see cref="ObjectiveCollectionData"/> being processed.
         /// </summary>
-        private int currentObjectiveIndex = 0;
+        private int currentObjectiveIndex;
         
         private void OnEnable()
         {

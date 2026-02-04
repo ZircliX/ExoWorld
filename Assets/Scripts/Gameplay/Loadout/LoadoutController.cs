@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Xml;
 using KBCore.Refs;
 using OverBang.ExoWorld.Gameplay.Player.PlayerHUD;
 using UnityEngine;

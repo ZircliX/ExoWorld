@@ -8,6 +8,7 @@ using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Movement
 {
+    [DefaultExecutionOrder(10)]
     public class EntityMovement : MonoBehaviour
     {
         #region Public Properties
@@ -96,6 +97,8 @@ namespace OverBang.ExoWorld.Gameplay.Movement
         
         [field: Header("References")]
         [field: SerializeField] public Transform CameraTransform { get; private set; }
+        [field: SerializeField] public Transform PlayerModelContainer { get; private set; }
+        [field: SerializeField] public Transform PlayerModelCameraTransform { get; private set; }
         [field: SerializeField] public Transform Head { get; private set; }
         [field: SerializeField] public Transform Foot { get; private set; }
         [field: SerializeField, Child] public CapsuleCollider CapsuleCollider { get; private set; }
@@ -232,7 +235,7 @@ namespace OverBang.ExoWorld.Gameplay.Movement
 
         private void LateUpdate()
         {
-            HandleGravityOrientation();
+            UpdateVisualRotation();
         }
 
         protected virtual void FixedUpdate()
@@ -259,6 +262,7 @@ namespace OverBang.ExoWorld.Gameplay.Movement
             stateVelocity += Gravity.Value * (stateGravityScale * gravityScale * deltaTime);
             CurrentVelocity.Write(stateChannelKey, stateVelocity);
 
+            HandlePhysicsRotation();
             MovePlayer();
             HandleStateChange();
             
@@ -325,16 +329,33 @@ namespace OverBang.ExoWorld.Gameplay.Movement
             Rb.linearVelocity = velocity;
         }
         
-        private void HandleGravityOrientation()
+        private void HandlePhysicsRotation()
         {
             Vector3 targetUp = -Gravity.Value.normalized;
-            Vector3 right = CameraTransform.right;
+    
+            // For physics, use CameraRotations for direction
+            Vector3 right = PlayerModelCameraTransform.right; // Changed from CameraTransform
+            Vector3 forward = Vector3.Cross(right, targetUp);
+            Vector3 flatForward = Vector3.ProjectOnPlane(forward, transform.up).normalized;
+    
+            if (flatForward.sqrMagnitude > 0.01f)
+            {
+                Quaternion yawRotation = Quaternion.LookRotation(flatForward, transform.up);
+                Rb.MoveRotation(yawRotation);
+            }
+        }
+
+        private void UpdateVisualRotation()
+        {
+            Vector3 targetUp = -Gravity.Value.normalized;
+    
+            // Use CameraRotations which has BOTH pitch and yaw
+            Vector3 right = PlayerModelCameraTransform.right; // Changed from CameraTransform
             Vector3 forward = Vector3.Cross(right, targetUp);
 
-            Quaternion rotation = Quaternion.LookRotation(forward, targetUp);
-
-            //Rb.MoveRotation(Quaternion.Slerp(Rb.rotation, rotation, gravityAlignSpeed * Time.deltaTime));
-            Rb.rotation = rotation;
+            Quaternion fullRotation = Quaternion.LookRotation(forward, targetUp);
+            Quaternion localRotation = Quaternion.Inverse(Rb.rotation) * fullRotation;
+            PlayerModelContainer.localRotation = localRotation;
         }
         
         #region Detections

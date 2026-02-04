@@ -24,8 +24,8 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         {
             IRobotBehaviour behaviour = GetRobotBehaviour();
             
-            Robot = Object.Instantiate(ability.Data.Prefab, Caster.transform.position + Caster.Forward * 1.5f, Caster.transform.rotation);
-            Robot.Initialize(ability.Data, behaviour);
+            Robot = Object.Instantiate(ability.DataT.Prefab, Caster.transform.position + Caster.Forward * 1.5f, Caster.transform.rotation);
+            Robot.Initialize(ability.DataT, behaviour);
 
             Robot.OnExploded += OnRobotExploded;
         }

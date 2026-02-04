@@ -1,5 +1,4 @@
 using OverBang.ExoWorld.Core.Interactions;
-using OverBang.ExoWorld.Gameplay.Abilities;
 using Unity.Netcode;
 using UnityEngine;
 using UnityUtils;
@@ -13,7 +12,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         [SerializeField] private bool canBePickedUp = true;
         [SerializeField] private bool canBeDropped = true;
         
-        private bool isPickedUp = false;
+        private bool isPickedUp;
         private bool isUsable = true;
         private QuestTwoHandler questTwoHandler;
 

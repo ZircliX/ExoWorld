@@ -4,18 +4,19 @@ using UnityEngine.InputSystem;
 
 namespace OverBang.ExoWorld.Gameplay.Cameras
 {
+    [DefaultExecutionOrder(0)]
     public class PlayerCamera : MonoBehaviour
     {
         private Vector2 targetCamVelocity;
         private Vector2 camRotation;
 
         [SerializeField] private float speed = 150;
-        [SerializeField] private float gravityAlignSpeed;
         [SerializeField, Range(0,1)] private float xModifier = 1;
         [SerializeField, Range(0,1)] private float yModifier = 1;
         private float sens = 1f;
         [SerializeField] private int yRange = 70;
         [SerializeField] private PlayerMovement pm;
+        [SerializeField] private Transform playerHead;
 
         [SerializeField] private Transform cameraRoot;
         [SerializeField] private Transform cameraRotations;
@@ -29,6 +30,8 @@ namespace OverBang.ExoWorld.Gameplay.Cameras
 
         private void LateUpdate()
         {
+            cameraRoot.position = playerHead.position;
+            
             // --- Calculate Gravity Alignment ---
             Quaternion localYaw = Quaternion.AngleAxis(camRotation.y, Vector3.up);
             Quaternion localPitch = Quaternion.AngleAxis(-camRotation.x, Vector3.right);
@@ -37,7 +40,8 @@ namespace OverBang.ExoWorld.Gameplay.Cameras
             Vector3 forward = Vector3.ProjectOnPlane(cameraRoot.forward, up).normalized;
 
             Quaternion look = Quaternion.LookRotation(forward, up);
-            cameraRoot.rotation = Quaternion.Slerp(cameraRoot.rotation, look, gravityAlignSpeed * Time.deltaTime);
+            //cameraRoot.rotation = Quaternion.Slerp(cameraRoot.rotation, look, gravityAlignSpeed * Time.deltaTime);
+            cameraRoot.rotation = look;
             
             Quaternion rot = localYaw * localPitch;
             cameraRotations.localRotation = rot;

@@ -35,7 +35,7 @@ namespace OverBang.ExoWorld.Gameplay.HUB
         [SerializeField] private TMP_Text abilityDescriptionText;
         
         private CharacterData currentCharacterData;
-        private int currentCharacterIndex = 0;
+        private int currentCharacterIndex;
         private bool abilitySelected = true; // true = primary, false = secondary
 
         protected override void Awake()

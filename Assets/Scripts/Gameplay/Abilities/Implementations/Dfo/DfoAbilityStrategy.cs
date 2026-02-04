@@ -18,7 +18,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         public void Initialize(IAbility<DfoData> ability, ICaster caster, DfoStrategyData data)
         {
             this.caster = caster;
-            this.data = ability.Data;
+            this.data = ability.DataT;
             this.ability = ability;
             strategyData = data;
         }
@@ -29,7 +29,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             
             currentActivationTime = strategyData.ActivationTime;
             
-            DfoBalise balise = Object.Instantiate(ability.Data.DfoBalisePrefab, caster.transform.position + caster.Forward, Quaternion.identity);
+            DfoBalise balise = Object.Instantiate(ability.DataT.DfoBalisePrefab, caster.transform.position + caster.Forward, Quaternion.identity);
             balise.Initialize(data, caster.Forward);
             
             missileManager = new MissileManager(data, strategyData, balise.transform);

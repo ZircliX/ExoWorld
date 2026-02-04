@@ -4,6 +4,7 @@ using UnityEngine;
 namespace OverBang.ExoWorld.Gameplay.IK_Animation
 {
     [ExecuteInEditMode]
+    [DefaultExecutionOrder(20000)]
     public class CustomParentConstraint : MonoBehaviour
     {
         [System.Serializable]
@@ -13,7 +14,9 @@ namespace OverBang.ExoWorld.Gameplay.IK_Animation
         }
         
         [SerializeField] private bool rotationConstraint;
+        [SerializeField] private bool rotationSmooth;
         [SerializeField] private bool positionConstraint;
+        [SerializeField] private bool positionSmooth;
         [SerializeField] private float rotationLerp;
         [SerializeField] private float positionLerp;
         
@@ -22,9 +25,22 @@ namespace OverBang.ExoWorld.Gameplay.IK_Animation
 
         private void LateUpdate()
         {
+            // Debug visualization
+            if (target != null)
+            {
+                Debug.DrawLine(transform.position, target.position, Color.red, Time.deltaTime);
+            }
+            
             if (rotationConstraint && target != null)
             {
-                transform.rotation = Quaternion.Slerp(transform.rotation, target.rotation,rotationLerp * Time.deltaTime);
+                if (rotationSmooth)
+                {
+                    transform.rotation = Quaternion.Slerp(transform.rotation, target.rotation,rotationLerp * Time.deltaTime);
+                }
+                else
+                {
+                    transform.rotation = target.rotation;
+                }
             }
 
             if (positionConstraint && target != null)
@@ -34,7 +50,15 @@ namespace OverBang.ExoWorld.Gameplay.IK_Animation
                     target.position.y + targetProfile.offset.y, 
                     target.position.z + targetProfile.offset.z);
                 
-                transform.position = Vector3.Lerp(transform.position, targetPosition,positionLerp * Time.deltaTime);
+                if (positionSmooth)
+                {
+                    float t = Mathf.Clamp01(positionLerp * Time.deltaTime);
+                    transform.position = Vector3.Lerp(transform.position, targetPosition, t);
+                }
+                else
+                {
+                    transform.position = targetPosition;
+                }
             }
         }
 
