@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5667925982677316228}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.1377156, y: 2.3100224, z: 0.2537526}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1899104347
 MonoBehaviour:
@@ -59,10 +59,11 @@ MonoBehaviour:
     m_EditorPositiveFade: {x: 0.025, y: 0.025000002, z: 0.025}
     m_EditorNegativeFade: {x: 0.025, y: 0.025000002, z: 0.025}
     m_EditorAdvancedFade: 0
+    scaleMode: 0
     size: {x: 4, y: 4, z: 4}
     invertFade: 0
-    distanceFadeStart: 10000
-    distanceFadeEnd: 10000
+    distanceFadeStart: 70
+    distanceFadeEnd: 90
     textureOffset: {x: 0, y: 0, z: 0}
     falloffMode: 0
     maskMode: 1
