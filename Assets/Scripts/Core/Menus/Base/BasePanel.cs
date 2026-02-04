@@ -1,5 +1,3 @@
-using DG.Tweening;
-using KBCore.Refs;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -9,7 +7,7 @@ namespace OverBang.ExoWorld.Core.Menus
     public abstract class BasePanel : MonoBehaviour, IPanel, ISelectable
     {
         [SerializeField] protected Selectable firstSelectable;
-        [SerializeField, Self] protected CanvasPanelGroup canvasGroup;
+        [SerializeField] protected CanvasPanelGroup canvasGroup;
         protected EventSystem EventSystem { get; private set; }
 
         public bool IsActive => gameObject.activeSelf;

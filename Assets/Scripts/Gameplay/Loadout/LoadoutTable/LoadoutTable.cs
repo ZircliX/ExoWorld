@@ -14,11 +14,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         [SerializeField] private WeaponData[] primaryWeaponData;
         [SerializeField] private WeaponData[] secondaryWeaponData;
 
-        private WeaponData selectedPrimary;
-        private WeaponData selectedSecondary;
-
-        public event Action<bool> OnRankSelectionUIRequested;
-        public event Action<WeaponRank> OnWeaponSelectionUIRequested;
+        public event Action OnWeaponSelectionRequest;
 
         public string InteractionText => string.Empty;
         public int Priority => (int)TargetPriority.High;
@@ -36,41 +32,21 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             CanInteract = false;
             CameraManager.Instance.RequestCameraChange(CameraIDs.Global.LoadoutCamera);
             HUD.Instance.ChangeHudState(true);
-            OnRankSelectionUIRequested?.Invoke(true);
-        } 
-
-        public void OpenPrimary() =>
-            OnWeaponSelectionUIRequested?.Invoke(WeaponRank.Primary);
-
-        public void OpenSecondary() =>
-            OnWeaponSelectionUIRequested?.Invoke(WeaponRank.Secondary);
-
-        public WeaponData[] GetWeaponList(WeaponRank rank)
-            => rank == WeaponRank.Primary ? primaryWeaponData : secondaryWeaponData;
-
-        public void ConfirmSelection()
-        {
-            // Assign default weapons
-            if ((selectedPrimary == null && PlayerLoadout.Loadout.primaryWeapon == null) || selectedPrimary == null)
-                selectedPrimary = primaryWeaponData[0];
-            if ((selectedSecondary == null && PlayerLoadout.Loadout.secondaryWeapon == null) || selectedSecondary == null)
-                selectedSecondary = secondaryWeaponData[0];
-            
-            OnRankSelectionUIRequested?.Invoke(false);
-            HUD.Instance.ChangeHudState(false);
-            PlayerLoadout.SetWeapons(selectedPrimary, selectedSecondary);
-            CameraManager.Instance.RequestCameraChange(CameraIDs.Global.PlayerViewCamera);
-            CanInteract = true;
+            OnWeaponSelectionRequest?.Invoke();
         }
 
-        public void SelectWeapon(WeaponRank rank, WeaponData data)
+        public void ConfirmSelection(WeaponData primaryData, WeaponData secondaryData = null)
         {
-            if (rank == WeaponRank.Primary)
-                selectedPrimary = data;
-            else
-                selectedSecondary = data;
-
-            OnRankSelectionUIRequested?.Invoke(true);
+            // Assign default weapons
+            if ((primaryData == null && PlayerLoadout.Loadout.primaryWeapon == null) || primaryData == null)
+                primaryData = primaryWeaponData[0];
+            if ((secondaryData == null && PlayerLoadout.Loadout.secondaryWeapon == null) || secondaryData == null)
+                secondaryData = secondaryWeaponData[0];
+            
+            HUD.Instance.ChangeHudState(false);
+            PlayerLoadout.SetWeapons(primaryData, secondaryData);
+            CameraManager.Instance.RequestCameraChange(CameraIDs.Global.PlayerViewCamera);
+            CanInteract = true;
         }
     }
 }

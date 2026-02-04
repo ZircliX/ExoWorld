@@ -10,27 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2d01a8c707e4d989da02fe932e4c153, type: 3}
-  m_Name: Shotgun Data
+  m_Name: Sniper Data
   m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.WeaponData
   <BulletData>k__BackingField: {fileID: 11400000, guid: 5be247ec03bcd5b45a9b83ad70efbfaa, type: 2}
-  <WeaponName>k__BackingField: BARK 17 HeavenFall
-  <WeaponType>k__BackingField: "Fusil \xE0 pompe"
-  <WeaponDescription>k__BackingField: "Arme d\xE9vastatrice \xE0 courte port\xE9e,
-    infligeant de lourds d\xE9g\xE2ts en un seul tir. Id\xE9al pour le combat rapproch\xE9,
-    il r\xE9compense la pr\xE9cision et le bon timing, mais n\xE9cessite une gestion
-    attentive de la cadence et du rechargement."
-  <WeaponSprite>k__BackingField: {fileID: 21300000, guid: bb2f54a011ec88444b9781b4b0eab42d, type: 3}
+  <WeaponName>k__BackingField: ' S-1/B-5 StarBreaker'
+  <WeaponType>k__BackingField: "Fusil de pr\xE9cision"
+  <WeaponDescription>k__BackingField: "Premi\xE8re arme de longue distance introduite
+    sur le march\xE9 galactique, elle fut am\xE9lior\xE9e jusqu\u2019\xE0 devenir
+    la meilleure arme de tir au coup par coup de toute la galaxie."
+  <WeaponSprite>k__BackingField: {fileID: 21300000, guid: 56f6e748f7ee7e243be934a9c8aef89c, type: 3}
   <Prefab>k__BackingField: {fileID: 1447862212118204962, guid: 90128fa4a2bbcb04ead8e5ef5bae5eee, type: 3}
   <FireSound>k__BackingField:
     ID: 1073741838
     _sourceAsset: {fileID: 11400000, guid: 1e98a9d7d89afe544803e95a716644ff, type: 2}
     <DebugObject>k__BackingField: {fileID: 0}
   <FireBehaviour>k__BackingField: 0
-  <FireCooldown>k__BackingField: 0.75
-  <BulletsPerShot>k__BackingField: 6
-  <RecoilPatternShots>k__BackingField: 4
-  <MaxRecoilShots>k__BackingField: 4
-  <BulletDispersionX>k__BackingField: {x: -0.3, y: 0.3}
+  <FireCooldown>k__BackingField: 1.25
+  <BulletsPerShot>k__BackingField: 1
+  <RecoilPatternShots>k__BackingField: 1
+  <MaxRecoilShots>k__BackingField: 1
+  <BulletDispersionX>k__BackingField: {x: 0, y: 0}
   <RecoilPatternX>k__BackingField:
     serializedVersion: 2
     m_Curve:
@@ -81,8 +80,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   <CurveMultiplier>k__BackingField: 10
-  <RandomnessMultiplier>k__BackingField: 10
-  <ResetLerpSpeed>k__BackingField: 1.85
+  <RandomnessMultiplier>k__BackingField: 5
+  <ResetLerpSpeed>k__BackingField: 1
   <ReloadBehaviour>k__BackingField: 1
-  <MagCapacity>k__BackingField: 36
-  <ReloadTime>k__BackingField: 3
+  <MagCapacity>k__BackingField: 5
+  <ReloadTime>k__BackingField: 5
