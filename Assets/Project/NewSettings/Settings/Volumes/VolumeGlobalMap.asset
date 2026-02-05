@@ -985,6 +985,7 @@ MonoBehaviour:
   - {fileID: 6931036894127865697}
   - {fileID: -8820436812103182131}
   - {fileID: 6037809963329792612}
+  - {fileID: 8272015707425826764}
 --- !u!114 &111534945785832103
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1448,7 +1449,7 @@ MonoBehaviour:
     m_Value: 0.057142857
   cascadeShadowSplit2:
     m_OverrideState: 1
-    m_Value: 0.22857143
+    m_Value: 0.20440225
   cascadeShadowBorder0:
     m_OverrideState: 1
     m_Value: 0.13157895
@@ -1457,7 +1458,7 @@ MonoBehaviour:
     m_Value: 0.5673317
   cascadeShadowBorder2:
     m_OverrideState: 1
-    m_Value: 0.27924076
+    m_Value: 0.54982907
   cascadeShadowBorder3:
     m_OverrideState: 1
     m_Value: 0
@@ -1856,22 +1857,22 @@ MonoBehaviour:
     m_Value: 1
   length:
     m_OverrideState: 1
-    m_Value: 0.15
+    m_Value: 0.3
   opacity:
     m_OverrideState: 1
-    m_Value: 0.8
+    m_Value: 0.9
   distanceScaleFactor:
     m_OverrideState: 1
     m_Value: 0.5
   maxDistance:
     m_OverrideState: 1
-    m_Value: 50
+    m_Value: 20
   minDistance:
     m_OverrideState: 1
     m_Value: 0
   fadeDistance:
     m_OverrideState: 1
-    m_Value: 5
+    m_Value: 25
   fadeInDistance:
     m_OverrideState: 1
     m_Value: 0
@@ -1880,7 +1881,7 @@ MonoBehaviour:
     m_Value: 0.2
   thicknessScale:
     m_OverrideState: 1
-    m_Value: 0.15
+    m_Value: 0.25
   m_SampleCount:
     m_OverrideState: 1
     m_Value: 10
@@ -2475,3 +2476,25 @@ MonoBehaviour:
   tint:
     m_OverrideState: 1
     m_Value: -2
+--- !u!114 &8272015707425826764
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0775cbb206825d541bf6c0297ee524ca, type: 3}
+  m_Name: SplitToning
+  m_EditorClassIdentifier: Unity.RenderPipelines.HighDefinition.Runtime::UnityEngine.Rendering.HighDefinition.SplitToning
+  active: 1
+  shadows:
+    m_OverrideState: 1
+    m_Value: {r: 0.5597484, g: 0.5597484, b: 0.5597484, a: 1}
+  highlights:
+    m_OverrideState: 1
+    m_Value: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 1}
+  balance:
+    m_OverrideState: 1
+    m_Value: 10

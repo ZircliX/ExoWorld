@@ -28,6 +28,9 @@
             "m_Id": "fb0a66645fd54e1597bd7cea0758f8f6"
         },
         {
+            "m_Id": "3209ab13baf24d08a2115d00f039d969"
+        },
+        {
             "m_Id": "6035b2e837324471a4369f163bb33505"
         },
         {
@@ -387,6 +390,15 @@
         },
         {
             "m_Id": "38a1f9a8cd4543e7af23af6f67466e88"
+        },
+        {
+            "m_Id": "499bb694bf7e455ca1d2870cb5b88691"
+        },
+        {
+            "m_Id": "d38649502b164768822d7da9a8660a8e"
+        },
+        {
+            "m_Id": "247192ebb4b2489883994f8d05d12274"
         }
     ],
     "m_GroupDatas": [
@@ -449,6 +461,20 @@
                     "m_Id": "38a1f9a8cd4543e7af23af6f67466e88"
                 },
                 "m_SlotId": -937806597
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "247192ebb4b2489883994f8d05d12274"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "499bb694bf7e455ca1d2870cb5b88691"
+                },
+                "m_SlotId": 0
             }
         },
         {
@@ -1953,6 +1979,12 @@
             },
             {
                 "m_Id": "7828dc969a154cf6a540d344914aba02"
+            },
+            {
+                "m_Id": "499bb694bf7e455ca1d2870cb5b88691"
+            },
+            {
+                "m_Id": "d38649502b164768822d7da9a8660a8e"
             }
         ]
     },
@@ -2644,6 +2676,22 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "123e4d5a0c294b75924fdd64956c9060",
+    "m_Id": 0,
+    "m_DisplayName": "Alpha Clip Threshold Shadow",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": [],
+    "m_LiteralMode": false
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.SamplerStateMaterialSlot",
     "m_ObjectId": "12c7ea1c536c42b28cbd884cb83f3339",
     "m_Id": 3,
@@ -2819,8 +2867,8 @@
     "m_ObjectId": "18d2d5d05b434374bef16bb8042e6392",
     "m_Title": "Grass Wind",
     "m_Position": {
-        "x": -1117.333251953125,
-        "y": -833.3334350585938
+        "x": -1117.3333740234375,
+        "y": -833.3330688476563
     }
 }
 
@@ -3031,6 +3079,42 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "247192ebb4b2489883994f8d05d12274",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 1985.9998779296875,
+            "y": 1233.333251953125,
+            "width": 229.3333740234375,
+            "height": 36.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "123e4d5a0c294b75924fdd64956c9060"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "3209ab13baf24d08a2115d00f039d969"
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
     "m_ObjectId": "253e64f8a3374626a0cd363832f790c9",
     "m_Id": 1,
@@ -3066,7 +3150,7 @@
     "m_DepthOffset": true,
     "m_ConservativeDepthOffset": false,
     "m_TransparencyFog": true,
-    "m_AlphaTestShadow": false,
+    "m_AlphaTestShadow": true,
     "m_BackThenFrontRendering": false,
     "m_TransparentDepthPrepass": false,
     "m_TransparentDepthPostpass": false,
@@ -3562,6 +3646,50 @@
     "m_Property": {
         "m_Id": "a6983181c8dc4691ba6a28a34c4223a6"
     }
+}
+
+{
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
+    "m_ObjectId": "3209ab13baf24d08a2115d00f039d969",
+    "m_Guid": {
+        "m_GuidSerialized": "c935334f-d4a9-4a4e-8a29-f9ce0b8ec4df"
+    },
+    "promotedFromAssetID": "",
+    "promotedFromCategoryName": "",
+    "promotedOrdering": -1,
+    "m_Name": "Alpha Clip Threshold Shadow",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "Alpha Clip Threshold Shadow",
+    "m_DefaultReferenceName": "_Alpha_Clip_Threshold_Shadow",
+    "m_OverrideReferenceName": "Vector1_a5b8b09028ce49a39f4d090894c89e22_1",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_PerRendererData": false,
+    "m_customAttributes": [],
+    "m_Value": 0.5,
+    "m_FloatType": 1,
+    "m_LiteralFloatMode": false,
+    "m_RangeValues": {
+        "x": 0.0,
+        "y": 1.0
+    },
+    "m_SliderType": 0,
+    "m_SliderPower": 3.0,
+    "m_EnumType": 0,
+    "m_CSharpEnumString": "",
+    "m_EnumNames": [
+        "Default"
+    ],
+    "m_EnumValues": [
+        0
+    ]
 }
 
 {
@@ -4228,8 +4356,8 @@
     "m_ObjectId": "3c9760df8c854028a6e8cfa9e202be01",
     "m_Title": "Blend from Terrain",
     "m_Position": {
-        "x": 774.6666870117188,
-        "y": 11.999996185302735
+        "x": 774.6666259765625,
+        "y": 11.999820709228516
     }
 }
 
@@ -4969,6 +5097,40 @@
     "m_EnumValues": [
         0
     ]
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BlockNode",
+    "m_ObjectId": "499bb694bf7e455ca1d2870cb5b88691",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "SurfaceDescription.AlphaClipThresholdShadow",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 0.0,
+            "y": 0.0,
+            "width": 0.0,
+            "height": 0.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "d2e5b6ff1a7f47a79291f259ce879b5a"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_SerializedDescriptor": "SurfaceDescription.AlphaClipThresholdShadow"
 }
 
 {
@@ -7359,8 +7521,8 @@
     "m_ObjectId": "773df9adbd9445a1a8fec178310598ff",
     "m_Title": "Sky normals",
     "m_Position": {
-        "x": 1640.6666259765625,
-        "y": -973.3333129882813
+        "x": 1640.66650390625,
+        "y": -973.3330688476563
     }
 }
 
@@ -8035,10 +8197,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 2013.9998779296875,
-            "y": 1149.0,
-            "width": 183.0003662109375,
-            "height": 34.0
+            "x": 2016.66650390625,
+            "y": 1160.6666259765625,
+            "width": 184.666748046875,
+            "height": 36.0
         }
     },
     "m_Slots": [
@@ -8927,6 +9089,22 @@
     "m_StageCapability": 2,
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
+    "m_Labels": [],
+    "m_LiteralMode": false
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "9c6e2b1f44a54f6582dd9ab55fb24b09",
+    "m_Id": 0,
+    "m_DisplayName": "Transmission Mask",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "TransmissionMask",
+    "m_StageCapability": 2,
+    "m_Value": 1.0,
+    "m_DefaultValue": 1.0,
     "m_Labels": [],
     "m_LiteralMode": false
 }
@@ -10820,6 +10998,9 @@
             "m_Id": "a5b8b09028ce49a39f4d090894c89e22"
         },
         {
+            "m_Id": "3209ab13baf24d08a2115d00f039d969"
+        },
+        {
             "m_Id": "60c6f8fc51804b7097a4728d9661e226"
         },
         {
@@ -11101,6 +11282,56 @@
     "m_EnumValues": [
         0
     ]
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "d2e5b6ff1a7f47a79291f259ce879b5a",
+    "m_Id": 0,
+    "m_DisplayName": "Alpha Clip Threshold Shadow",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "AlphaClipThresholdShadow",
+    "m_StageCapability": 2,
+    "m_Value": 0.5,
+    "m_DefaultValue": 0.5,
+    "m_Labels": [],
+    "m_LiteralMode": false
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BlockNode",
+    "m_ObjectId": "d38649502b164768822d7da9a8660a8e",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "SurfaceDescription.TransmissionMask",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 0.0,
+            "y": 0.0,
+            "width": 0.0,
+            "height": 0.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "9c6e2b1f44a54f6582dd9ab55fb24b09"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_SerializedDescriptor": "SurfaceDescription.TransmissionMask"
 }
 
 {
@@ -11578,7 +11809,7 @@
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.Rendering.HighDefinition.ShaderGraph.SystemData",
     "m_ObjectId": "e03b13b3a7e847f6bae7187e61eb59ad",
-    "m_MaterialNeedsUpdateHash": 280400,
+    "m_MaterialNeedsUpdateHash": 292567,
     "m_SurfaceType": 0,
     "m_RenderingPass": 1,
     "m_BlendMode": 0,
