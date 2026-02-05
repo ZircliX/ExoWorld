@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using Ami.BroAudio;
+﻿using Ami.BroAudio;
 using KBCore.Refs;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Gameplay.Abilities;

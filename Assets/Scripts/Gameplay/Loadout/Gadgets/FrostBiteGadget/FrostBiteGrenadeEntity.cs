@@ -2,7 +2,6 @@
 using KBCore.Refs;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Gameplay.Abilities;
-using OverBang.ExoWorld.Gameplay.Loadout.BurstGadget;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
@@ -66,6 +65,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
         private void OnExploded(bool terminated)
         {
             BroAudio.Play(data.SoundID);
+            
             if (terminated)
             {
                 strategy.OnExploded -= OnExploded;

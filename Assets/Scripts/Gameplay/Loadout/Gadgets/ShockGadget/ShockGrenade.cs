@@ -1,7 +1,6 @@
 using System;
 using OverBang.ExoWorld.Core.Abilities;
 using OverBang.ExoWorld.Core.Abilities.Gadgets;
-using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout.ShockGadget
@@ -61,7 +60,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.ShockGadget
 
         public void Discard()
         {
-            Debug.Log("Discard");
             Object.Destroy(grenadeEntity.gameObject);
             grenadeEntity = null;
             End();
