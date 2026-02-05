@@ -117,7 +117,7 @@ namespace OverBang.ExoWorld.Core.Menus
             
             IHostSession session = (IHostSession)SessionManager.Global.ActiveSession;
             session.IsLocked = true;
-            
+            Debug.Log("Start Creating session");
             CreateGameModeRpc();
         }
 
@@ -129,6 +129,8 @@ namespace OverBang.ExoWorld.Core.Menus
                 object gameMode = Activator.CreateInstance(gameModeType);
                 if (gameMode is IGameMode gameModeInstance)
                     gameModeInstance.SetGameMode();
+                Debug.Log("create game mode RPC");
+                
             }
         }
     }

@@ -106,6 +106,7 @@ namespace OverBang.ExoWorld.Core.Utils
         {
             await AwaitableUtils.AwaitableUntil(() =>
             {
+                
                 if (SessionManager.Global.ActiveSession == null) return false;
                 bool allReady = true;
                 
@@ -113,15 +114,12 @@ namespace OverBang.ExoWorld.Core.Utils
                 {
                     if (player.TryGetPhaseStatusByPlayer(out PhaseStatus status))
                     {
+                        Debug.Log(status.ToString());
                         if (status != targetStatus)
                             allReady = false;
                     }
-                    else
-                    {
-                        allReady = false;
-                    }
                 }
-                    
+                Debug.Log(allReady);
                 return allReady;
             }, CancellationToken.None);
         } 
