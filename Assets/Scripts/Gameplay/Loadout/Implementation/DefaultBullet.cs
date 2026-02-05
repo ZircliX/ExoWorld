@@ -30,9 +30,25 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         {
             hitObjects = new List<GameObject>();
         }
+        
+        public override void OnNetworkSpawn()
+        {
+            base.OnNetworkSpawn();
+        
+            // Only owner simulates physics
+            if (!IsOwner)
+            {
+                rb.isKinematic = true;
+                rb.detectCollisions = false;
+                sc.enabled = false;
+            }
+        }
 
         public override void Fire(Vector3 origin, Vector3 direction, BulletData bulletData)
         {
+            if (!IsOwner) 
+                return;
+            
             transform.position = origin;
             transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
             
@@ -47,6 +63,9 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
         private void FixedUpdate()
         {
+            if (!IsOwner)
+                return;
+            
             lifeTime += Time.fixedDeltaTime;
             if (lifeTime >= data.BulletLifeTime)
             {

@@ -1,5 +1,6 @@
 using Helteix.Tools;
 using OverBang.ExoWorld.Core.Characters;
+using OverBang.ExoWorld.Core.Database;
 using OverBang.ExoWorld.Core.GameMode.Players;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Gameplay.Cameras;
@@ -21,18 +22,17 @@ namespace OverBang.ExoWorld.Gameplay.Player
         
         public void Connect(LocalGamePlayer localGamePlayer)
         {
-            SetDataRpc(localGamePlayer.SessionPlayer.Id);
+            SetDataRpc(localGamePlayer.SessionPlayerID, localGamePlayer.CharacterData.ID);
         }
         
         [Rpc(SendTo.Everyone)]
-        public void SetDataRpc(string sessionPlayer)
+        public void SetDataRpc(string sessionPlayer, string characterDataId)
         {
-
-            if (GamePlayerManager.Instance.TryGetPlayerWithSessionId(sessionPlayer, out IGamePlayer gamePlayer))
+            if (GamePlayerManager.Instance.TryGetPlayerWithSessionId(sessionPlayer, out IGamePlayer player) &&
+                GameDatabase.Global.TryGetAssetByID(characterDataId, out CharacterData data))
             {
-                CharacterData characterData = gamePlayer.CharacterData;
                 playerModelContainer.ClearChildren();
-                GameObject playerModel = Instantiate(characterData.ModelPrefab, playerModelContainer);
+                GameObject playerModel = Instantiate(data.ModelPrefab, playerModelContainer);
                 
                 if (!playerModel.TryGetComponent(out Animator playerAnimator))
                 {
@@ -50,7 +50,7 @@ namespace OverBang.ExoWorld.Gameplay.Player
                     PlayerRuntimeContext context = new PlayerRuntimeContext()
                     {
                         playerController = this,
-                        playerCharacterData = characterData,
+                        playerCharacterData = data,
                         playerAnimator = playerAnimator,
                         PlayerRig = playerRig,
                     };
@@ -71,6 +71,5 @@ namespace OverBang.ExoWorld.Gameplay.Player
             base.OnDestroy();
             PlayerManager.Instance.UnregisterPlayer(this);
         }
-
     }
 }

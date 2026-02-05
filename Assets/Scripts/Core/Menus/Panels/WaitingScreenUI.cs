@@ -24,6 +24,8 @@ namespace OverBang.ExoWorld.Core.Menus
         private List<PlayerListItem> playerListItems;
         private TMP_Text codeText;
 
+        public event Action OnStartGameRpc;
+
         protected override void Awake()
         {
             base.Awake();
@@ -112,24 +114,12 @@ namespace OverBang.ExoWorld.Core.Menus
 
         private void OnCreateGame()
         {
-            if (!SessionManager.Global.IsHost()) 
+            if (!SessionManager.Global.IsHost())
                 return;
             
             IHostSession session = (IHostSession)SessionManager.Global.ActiveSession;
             session.IsLocked = true;
-            
-            CreateGameModeRpc();
-        }
-
-        [Rpc(SendTo.Everyone)]
-        private void CreateGameModeRpc()
-        {
-            if (GameModeUtils.TryGetGameModeForName(GameModeUtils.SurvivalGameModeName, out Type gameModeType))
-            {
-                object gameMode = Activator.CreateInstance(gameModeType);
-                if (gameMode is IGameMode gameModeInstance)
-                    gameModeInstance.SetGameMode();
-            }
+            OnStartGameRpc?.Invoke();
         }
     }
 }

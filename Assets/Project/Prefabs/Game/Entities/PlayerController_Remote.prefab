@@ -8,6 +8,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6231831976319133866, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
+      propertyPath: AuthorityMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1023078469544215845, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1023078469544215845, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1023078469544215845, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1023078469544215845, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1023078469544215845, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1023078469544215845, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2138890545335585446, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2194053612006079565, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -76,10 +108,34 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8593382936616823977, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593382936616823977, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593382936616823977, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593382936616823977, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593382936616823977, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593382936616823977, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8973511709967392776, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
       propertyPath: weaponHolder
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5107296582398286511}
     - target: {fileID: 8985065719729054035, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
       propertyPath: m_Name
       value: PlayerController_Remote
@@ -90,8 +146,10 @@ PrefabInstance:
     - {fileID: 4862076419946111438, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
     - {fileID: 2674150274775296948, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
     - {fileID: 1186234965293078507, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
-    - {fileID: 1400611726766071219, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
     - {fileID: 202331387400008251, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
+    - {fileID: 2937561305450261851, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
+    - {fileID: 4877312307657521551, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
+    - {fileID: 4225862939240760527, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
     m_RemovedGameObjects:
     - {fileID: 992906681163127405, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
     - {fileID: 3316059015117000691, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
@@ -99,6 +157,7 @@ PrefabInstance:
     - {fileID: 7021016169931765619, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
     - {fileID: 661434748773175317, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
     - {fileID: 3312335043432271708, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
+    - {fileID: 1301980579875929360, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8985065719729054035, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
@@ -134,3 +193,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 267065aeca4843d3905050e0d9f49c34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.WeaponController
+--- !u!4 &5107296582398286511 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4255283002412921570, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
+  m_PrefabInstance: {fileID: 9073924728451688525}
+  m_PrefabAsset: {fileID: 0}

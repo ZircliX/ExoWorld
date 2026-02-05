@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 8039404263862611064}
   - component: {fileID: 2486222586093508894}
   m_Layer: 5
-  m_Name: TeammateHealthBar
+  m_Name: TeammateHealthBar BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -308,7 +308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.Player.PlayerHUD.TeammateInfo
   playerName: {fileID: 3503225870216976192}
   characterIcon: {fileID: 0}
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 8810787369794575510}
   healthBarBg: {fileID: 2486222586093508894}
 --- !u!114 &1438529844172288776
 MonoBehaviour:

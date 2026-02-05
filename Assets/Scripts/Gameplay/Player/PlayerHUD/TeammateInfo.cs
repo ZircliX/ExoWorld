@@ -8,7 +8,7 @@ namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
     public class TeammateInfo : MonoBehaviour
     {
         [SerializeField] private TMP_Text playerName;
-        [SerializeField] private Image characterIcon;
+        //[SerializeField] private Image characterIcon;
         [SerializeField] private Image healthBar;
         [SerializeField] private Image healthBarBg;
         
@@ -18,10 +18,10 @@ namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
             healthBarBg.DOFillAmount(health / maxHealth, 0.2f);
         }
 
-        public void SetInfos(string pName, Sprite icon)
+        public void SetInfos(string pName)
         {
             playerName.text = pName;
-            characterIcon.sprite = icon;
+            //characterIcon.sprite = icon;
         }
     }
 }

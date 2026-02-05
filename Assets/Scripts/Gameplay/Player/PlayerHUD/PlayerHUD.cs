@@ -85,7 +85,7 @@ namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
                     if (remoteGamePlayer.SessionPlayer.TryGetPlayerProperty(
                             GameMetrics.Global.ConstID.PlayerPropertyPlayerName, out string pName))
                     {
-                        teammateInfo.SetInfos(pName, remoteGamePlayer.CharacterData.Sprite);
+                        teammateInfo.SetInfos(pName);
                     }
                     
                     teammates.Add(teammateInfo);

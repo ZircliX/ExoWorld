@@ -126,7 +126,9 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             CurrentWeaponCategory = category;
             
             OnWeaponChanged?.Invoke();
-            playerRig.OnWeaponChange(CurrentWeapon.Rig);
+            
+            if (IsOwner)
+                playerRig.OnWeaponChange(CurrentWeapon.Rig);
         }
         
         #region Inputs
