@@ -45,12 +45,12 @@ namespace OverBang.ExoWorld.Core.GameMode.Players
             
             using (DictionaryPool<string, PlayerProperty>.Get(out Dictionary<string, PlayerProperty> properties))
             {
-                properties[ConstID.Global.PlayerPropertyHealth] = new PlayerProperty(Health.ToString(CultureInfo.InvariantCulture), VisibilityPropertyOptions.Member);
-                properties[ConstID.Global.PlayerPropertyMaxHealth] = new PlayerProperty(MaxHealth.ToString(CultureInfo.InvariantCulture), VisibilityPropertyOptions.Member);
-                properties[ConstID.Global.PlayerPropertyState] = new PlayerProperty(State.ToString(), VisibilityPropertyOptions.Member);
+                properties[ConstID.Global.PlayerPropertyHealth] = new PlayerProperty(Health.ToString(CultureInfo.InvariantCulture), VisibilityPropertyOptions.Public);
+                properties[ConstID.Global.PlayerPropertyMaxHealth] = new PlayerProperty(MaxHealth.ToString(CultureInfo.InvariantCulture), VisibilityPropertyOptions.Public);
+                properties[ConstID.Global.PlayerPropertyState] = new PlayerProperty(State.ToString(), VisibilityPropertyOptions.Public);
                 
-                properties[ConstID.Global.PlayerPropertyCharacterData] = new PlayerProperty(CharacterData.ID, VisibilityPropertyOptions.Member);
-                properties[ConstID.Global.PlayerPropertyClientID] = new PlayerProperty(ClientID.ToString(), VisibilityPropertyOptions.Member);
+                properties[ConstID.Global.PlayerPropertyCharacterData] = new PlayerProperty(CharacterData.ID, VisibilityPropertyOptions.Public);
+                properties[ConstID.Global.PlayerPropertyClientID] = new PlayerProperty(ClientID.ToString(), VisibilityPropertyOptions.Public);
                     
                 LocalSessionPlayer.SetProperties(properties);
             }
