@@ -47,7 +47,7 @@ namespace OverBang.ExoWorld.Core.Scene
         
         public static SceneEventProgressStatus NetworkLoadScene(string sceneName, LoadSceneMode mode = LoadSceneMode.Single)
         {
-            if (!NetworkManager.Singleton.IsServer)
+            if (!NetworkManager.Singleton.IsListening)
             {
                 Debug.LogWarning($"NetworkLoadScene ignored on client: {sceneName}");
                 return SceneEventProgressStatus.SceneEventInProgress;

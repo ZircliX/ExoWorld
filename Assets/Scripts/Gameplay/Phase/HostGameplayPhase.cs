@@ -17,7 +17,7 @@ namespace OverBang.ExoWorld.Gameplay.Phase
             SceneReference gameSceneRef = SceneCollection.Global.GameSceneRef;
             Scene currentSceneName = SceneLoader.GetCurrentScene();
     
-            if (currentSceneName.name != gameSceneRef.Name && NetworkManager.Singleton.IsServer)
+            if (currentSceneName.name != gameSceneRef.Name)
             {
                 await SceneLoader.LoadSceneAsync(gameSceneRef.Name, LoadSceneMode.Single);
             }

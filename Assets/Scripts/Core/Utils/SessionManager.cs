@@ -19,7 +19,7 @@ namespace OverBang.ExoWorld.Core.Utils
 
         public bool IsHost()
         {
-            return ActiveSession is { IsHost: true };
+            return ActiveSession.Players[0].Id == CurrentPlayer.Id;
         }
 
         public async Awaitable<ISession> CreateOrJoinSession(string sessionId, SessionOptions options)
