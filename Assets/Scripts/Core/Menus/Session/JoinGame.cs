@@ -10,39 +10,45 @@ namespace OverBang.ExoWorld.Core.Menus
 
         private void Awake()
         {
-            joinGameUI.OnJoinGameRequested += OnJoinGameRequested;
+            joinGameUI.OnJoinGameByCodeRequested += OnJoinGameByCodeRequested;
+            joinGameUI.OnJoinGameBySessionRequested += OnJoinGameBySessionRequested;
         }
 
         private void OnDestroy()
         {
-            joinGameUI.OnJoinGameRequested -= OnJoinGameRequested;
+            joinGameUI.OnJoinGameByCodeRequested -= OnJoinGameByCodeRequested;
+            joinGameUI.OnJoinGameBySessionRequested -= OnJoinGameBySessionRequested;
         }
 
-        private void OnJoinGameRequested(string sessionID, string sessionPassword)
+        private void OnJoinGameByCodeRequested(string code)
         {
-            JoinGameAsync(sessionID, sessionPassword);
+            JoinGameByCodeAsync(code);
+        }
+        
+        private void OnJoinGameBySessionRequested(SessionInfo info)
+        {
+            JoinGameBySessionAsync(info);
         }
 
-        private async void JoinGameAsync(string sessionID, string sessionPassword)
+        private async void JoinGameByCodeAsync(string code)
         {
             try
             {
-                // Join public
-                if (!string.IsNullOrEmpty(sessionID))
-                {
-                    await SessionManager.Global.JoinSessionByID(sessionID);
-                    await Awaitable.WaitForSecondsAsync(0.2f);
-                    joinGameUI.OnJoinedGame?.Invoke();
-                }
-
-                // Join private
-                if (!string.IsNullOrEmpty(sessionPassword))
-                {
-                    await SessionManager.Global.JoinSessionByPassword(sessionPassword);
-                    await Awaitable.WaitForSecondsAsync(0.2f);
-                    joinGameUI.OnJoinedGame?.Invoke();
-                }
-                
+                await SessionManager.Global.JoinSessionByCode(code);
+                joinGameUI.OnJoinedGame?.Invoke();
+            }
+            catch (Exception e)
+            {
+                Debug.LogException(e);
+            }
+        }
+        
+        private async void JoinGameBySessionAsync(SessionInfo info)
+        {
+            try
+            {
+                await SessionManager.Global.JoinSessionByID(info.sessionId);
+                joinGameUI.OnJoinedGame?.Invoke();
             }
             catch (Exception e)
             {

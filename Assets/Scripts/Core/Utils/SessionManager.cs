@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using OverBang.ExoWorld.Core.Metrics;
+using Unity.Netcode;
 using Unity.Services.Multiplayer;
 using UnityEngine;
 
@@ -50,8 +51,6 @@ namespace OverBang.ExoWorld.Core.Utils
             if (ActiveSession != null)
                 return ActiveSession;
             
-            JoinSessionOptions options = new JoinSessionOptions();
-            
             ActiveSession = await MultiplayerService.Instance.JoinSessionByIdAsync(sessionID);
             await SetPlayerName();
                 
@@ -59,7 +58,7 @@ namespace OverBang.ExoWorld.Core.Utils
             return ActiveSession;
         }
         
-        public async Awaitable<ISession> JoinSessionByPassword(string password)
+        public async Awaitable<ISession> JoinSessionByCode(string password)
         {
             if (ActiveSession != null)
                 return ActiveSession;

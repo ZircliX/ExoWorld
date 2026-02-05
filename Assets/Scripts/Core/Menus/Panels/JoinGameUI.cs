@@ -28,8 +28,10 @@ namespace OverBang.ExoWorld.Core.Menus
         private List<LobbyListItem> lobbyItems;
 
         public Action OnJoinedGame;
-        public event JoinGameEvent OnJoinGameRequested;
-        public delegate void JoinGameEvent(string serverName, string password);
+        public event JoinGameBySession OnJoinGameBySessionRequested;
+        public event JoinGameByCode OnJoinGameByCodeRequested;
+        public delegate void JoinGameBySession(SessionInfo info);
+        public delegate void JoinGameByCode(string code);
 
         protected override void Awake()
         {
@@ -76,6 +78,11 @@ namespace OverBang.ExoWorld.Core.Menus
                 QuerySessionsOptions queryOptions = new QuerySessionsOptions()
                 {
                     Count = 10,
+                    FilterOptions = new List<FilterOption>()
+                    {
+                        new FilterOption(FilterField.AvailableSlots, "1", FilterOperation.GreaterOrEqual),
+                        new FilterOption(FilterField.IsLocked, "false", FilterOperation.Equal)
+                    }
                 };
 
                 IList<ISessionInfo> availableSessions = await SessionManager.Global.QuerySessions(queryOptions);
@@ -90,7 +97,6 @@ namespace OverBang.ExoWorld.Core.Menus
                         sessionName = session.Name,
                         currentPlayers = session.MaxPlayers - session.AvailableSlots,
                         maxPlayers = session.MaxPlayers,
-                        isPrivate = session.IsLocked
                     };
                     filteredLobbies.Add(info);
                 }
@@ -126,13 +132,22 @@ namespace OverBang.ExoWorld.Core.Menus
 
         private void HandleJoinGame()
         {
-            if (!string.IsNullOrEmpty(selectedSession.sessionId))
-                OnJoinGameRequested?.Invoke(selectedSession.sessionId, passwordInput.text);
+            if (!string.IsNullOrEmpty(passwordInput.text))
+            {
+                //Debug.Log($"Joining game with password: {passwordInput.text}");
+                OnJoinGameByCodeRequested?.Invoke(passwordInput.text);
+            }
+
+            if (!string.IsNullOrEmpty(selectedSession.sessionName))
+            {
+                //Debug.Log($"Joining game with session ID: {selectedSession.sessionId}");   
+                OnJoinGameBySessionRequested?.Invoke(selectedSession);
+            }
         }
 
         private void HandlePasswordChanged(string current)
         {
-            joinButton.interactable = !string.IsNullOrEmpty(current) && current.Length == 8;
+            joinButton.interactable = !string.IsNullOrEmpty(current) && current.Length == GameMetrics.Global.MaxPasswordLenght;
         }
 
         private void ClearLobbies()
