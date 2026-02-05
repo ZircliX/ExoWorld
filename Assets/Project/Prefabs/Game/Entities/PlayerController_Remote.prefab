@@ -131,7 +131,7 @@ PrefabInstance:
     - target: {fileID: 8973511709967392776, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
       propertyPath: weaponHolder
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5107296582398286511}
     - target: {fileID: 8985065719729054035, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
       propertyPath: m_Name
       value: PlayerController_Remote
@@ -188,3 +188,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 267065aeca4843d3905050e0d9f49c34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.WeaponController
+--- !u!4 &5107296582398286511 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4255283002412921570, guid: 5842a5524f203524794f5c0812babf8c, type: 3}
+  m_PrefabInstance: {fileID: 9073924728451688525}
+  m_PrefabAsset: {fileID: 0}

@@ -47,6 +47,9 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
         private void FixedUpdate()
         {
+            if (!IsOwner)
+                return;
+            
             lifeTime += Time.fixedDeltaTime;
             if (lifeTime >= data.BulletLifeTime)
             {
