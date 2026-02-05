@@ -16,8 +16,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         [SerializeField] private Image wheelPointerImage; 
 
         private List<GadgetUi> GadgetUis => controllerUI.GadgetUis;
-        private int itemCount => GadgetUis.Count;
-        private int currentSelection;
+        private int ItemCount => GadgetUis.Count;
         private Vector2 centerPosition;
         private Vector2 accumulatedDelta; 
         
@@ -39,7 +38,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         public void StartSelection()
         {
             accumulatedDelta = Vector2.zero;
-            currentSelection = 1;
         }
         
         private void Update()
@@ -52,7 +50,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
                 accumulatedDelta = mouseDelta * deltaSensitivity;
                 UpdateSelection();
             }
-                
         }
 
         private int selectedIndex;
@@ -66,8 +63,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             float angle = Mathf.Atan2(accumulatedDelta.x, accumulatedDelta.y) * Mathf.Rad2Deg;
             if (angle < 0) angle += 360f;
             
-            float anglePerItem = 360f / itemCount;
-            selectedIndex = Mathf.RoundToInt(angle / anglePerItem) % itemCount;
+            float anglePerItem = 360f / ItemCount;
+            selectedIndex = Mathf.RoundToInt(angle / anglePerItem) % ItemCount;
             
             float targetAngle = selectedIndex * anglePerItem;
             wheelPointerImage.transform.rotation = Quaternion.Euler(0f, 0f, -targetAngle);
