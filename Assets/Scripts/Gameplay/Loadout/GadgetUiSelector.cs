@@ -95,6 +95,9 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         
         private void OnItemSelected()
         {
+            if (currentSelectedGadget == null) 
+                return;
+            
             controllerUI.SetCurrentSelectedGadget(currentSelectedGadget.data);
         }
     }
