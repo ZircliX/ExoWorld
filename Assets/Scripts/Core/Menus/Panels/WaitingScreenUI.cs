@@ -5,6 +5,7 @@ using OverBang.ExoWorld.Core.GameMode;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Core.Utils;
 using Sirenix.OdinInspector;
+using TMPro;
 using Unity.Netcode;
 using Unity.Services.Multiplayer;
 using UnityEngine;
@@ -15,23 +16,30 @@ namespace OverBang.ExoWorld.Core.Menus
     public class WaitingScreenUI : NavigablePanel
     {
         [SerializeField, Required] private Button startButton;
+        [SerializeField, Required] private Button codeButton;
         [SerializeField, Required] private PlayerListItem playerListItemPrefab;
         [SerializeField, Required] private Transform playersContainer;
         [SerializeField, Required] private LayoutGroup playersContainerLayoutGroup;
         
         private List<PlayerListItem> playerListItems;
+        private TMP_Text codeText;
 
         protected override void Awake()
         {
             base.Awake();
             playerListItems = new List<PlayerListItem>(4);
             playersContainer.ClearChildren();
+            codeText = codeButton.GetComponentInChildren<TMP_Text>();
         }
 
         protected override void OnShow()
         {
             startButton.onClick.AddListener(OnCreateGame);
             startButton.interactable = SessionManager.Global.IsHost();
+            
+            IHostSession session = (IHostSession)SessionManager.Global.ActiveSession;
+            codeText.text = session.Code;
+            codeButton.onClick.AddListener(() => GUIUtility.systemCopyBuffer = codeText.text);
 
             NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
             OnClientConnected();

@@ -19,17 +19,17 @@ namespace OverBang.ExoWorld.Core.Menus
             hostGameUI.OnCreateHostClicked -= OnHostGame;
         }
 
-        private void OnHostGame(string serverName, int maxPlayers, ServerVisibility visibility, string password)
+        private void OnHostGame(string serverName, int maxPlayers, ServerVisibility visibility)
         {
             SessionOptions options;
-            if (string.IsNullOrEmpty(password))
+            if (visibility == ServerVisibility.Public)
             {
                 options = new SessionOptions()
                 {
                     Name = serverName,
                     MaxPlayers = maxPlayers,
-                    IsPrivate = visibility != ServerVisibility.Public,
-                }.WithRelayNetwork();
+                    IsPrivate = false,
+                }.WithDistributedAuthorityNetwork();
             }
             else
             {
@@ -37,9 +37,8 @@ namespace OverBang.ExoWorld.Core.Menus
                 {
                     Name = serverName,
                     MaxPlayers = maxPlayers,
-                    IsPrivate = visibility != ServerVisibility.Public,
-                    Password = password
-                }.WithRelayNetwork();
+                    IsPrivate = true,
+                }.WithDistributedAuthorityNetwork();
             }
             
             CreateHostAsync(options);
@@ -50,7 +49,6 @@ namespace OverBang.ExoWorld.Core.Menus
             try
             {
                 await SessionManager.Global.CreateSession(gameOptions);
-                await Awaitable.WaitForSecondsAsync(0.2f);
                 hostGameUI.OnHostCreated?.Invoke();
                 //Debug.Log($"Host session {gameOptions.Name} created");
             }

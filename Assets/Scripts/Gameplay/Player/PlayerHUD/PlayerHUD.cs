@@ -63,6 +63,10 @@ namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
             {
                 playerNameText.text = playerName;
             }
+            else
+            {
+                playerNameText.text = $"Player_{Player.SessionPlayerID[..6]}";
+            }
             
             OnHealthChanged(Player.Health, Player.MaxHealth);
         }

@@ -22,11 +22,6 @@ namespace OverBang.ExoWorld.Gameplay.Network
         
         private GamePlayerManager gamePlayerManager;
         
-
-        public SurvivalGameMode()
-        {
-        }
-        
         public async Awaitable OnBegin()
         {
             gamePlayerManager = new GameObject(nameof(GamePlayerManager)).AddComponent<GamePlayerManager>();
@@ -39,8 +34,8 @@ namespace OverBang.ExoWorld.Gameplay.Network
 
         public async Awaitable OnEnd()
         {
-            await Task.CompletedTask;
             Object.Destroy(gamePlayerManager.gameObject);
+            await Task.CompletedTask;
         }
 
         public async Awaitable Execute()

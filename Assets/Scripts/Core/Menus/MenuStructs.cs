@@ -16,7 +16,6 @@ namespace OverBang.ExoWorld.Core.Menus
         public string sessionName;
         public int currentPlayers;
         public int maxPlayers;
-        public bool isPrivate;
     }
 
     public enum ServerVisibility

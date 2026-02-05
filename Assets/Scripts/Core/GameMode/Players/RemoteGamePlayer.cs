@@ -71,6 +71,5 @@ namespace OverBang.ExoWorld.Core.GameMode.Players
         {
             SessionPlayerID = id;
         }
-
     }
 }

@@ -1,6 +1,4 @@
 using System;
-using System.Text;
-using OverBang.ExoWorld.Core.Metrics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,15 +11,11 @@ namespace OverBang.ExoWorld.Core.Menus
         [SerializeField] private IntSelector maxPlayersSelector;
         [SerializeField] private ServerVisibilitySelector serverVisibilitySelector;
         
-        [SerializeField] private GameObject passwordContainer;
-        [SerializeField] private TMP_Text passwordText;
-        
         [SerializeField, Space] private Button createButton;
-        [SerializeField] private Button copyButton;
 
         public Action OnHostCreated;
         public event HostCreatedEvent OnCreateHostClicked;
-        public delegate void HostCreatedEvent(string serverName, int maxPlayers, ServerVisibility visibility, string password);
+        public delegate void HostCreatedEvent(string serverName, int maxPlayers, ServerVisibility visibility);
 
         private string currentPassword;
         private bool started;
@@ -31,52 +25,31 @@ namespace OverBang.ExoWorld.Core.Menus
             base.Awake();
             OnBackClicked += Hide;
             
-            copyButton.onClick.AddListener(() => GUIUtility.systemCopyBuffer = currentPassword);
-            
             createButton.onClick.AddListener(
                 () =>
                 {
                     HandleHostCreate(gameNameInput.text,
                         maxPlayersSelector.CurrentValue,
-                        serverVisibilitySelector.CurrentValue,
-                        currentPassword);
+                        serverVisibilitySelector.CurrentValue);
                     createButton.interactable = false;
                     started = true;
                 });
 
             createButton.interactable = false;
             gameNameInput.onValueChanged.AddListener(text => createButton.interactable = !string.IsNullOrEmpty(text) && !started);
-            
-            serverVisibilitySelector.OnValueChanged += visibility => passwordContainer.SetActive(visibility == ServerVisibility.Private);
         }
 
-        private void HandleHostCreate(string serverName, int maxPlayers, ServerVisibility visibility, string password)
+        private void HandleHostCreate(string serverName, int maxPlayers, ServerVisibility visibility)
         {
             serverName = serverName.Trim().Replace(" ", string.Empty);
             gameNameInput.text = serverName;
             
-            if (visibility != ServerVisibility.Private)
-                password = string.Empty;
-            
-            OnCreateHostClicked?.Invoke(serverName, maxPlayers, visibility, password);
+            OnCreateHostClicked?.Invoke(serverName, maxPlayers, visibility);
         }
 
-        private static readonly StringBuilder builder = new StringBuilder();
         protected override void OnShow()
         {
-            // Generate a random password
-            builder.Clear();
-
-            for (int i = 0; i < GameMetrics.Global.MaxPasswordLenght; i++)
-            {
-                char c = (char)UnityEngine.Random.Range(65, 91);
-                builder.Append(char.ToUpper(c));
-            }
-            
             started = false;
-
-            currentPassword = builder.ToString();
-            passwordText.text = currentPassword;
         }
     }
 }
