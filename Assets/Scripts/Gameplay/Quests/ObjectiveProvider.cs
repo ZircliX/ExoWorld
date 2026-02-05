@@ -40,21 +40,28 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         {
             if (LevelManager.Instance != null)
                 LevelManager.Instance.OnStateChanged += OnStateChanged;
-            ObjectivesManager.OnWantsToChangeObjective += QueueObjective;
+            //ObjectivesManager.OnWantsToChangeObjective += QueueObjective;
         }
         
         private void OnDisable()
         {
             if (LevelManager.Instance != null)
                 LevelManager.Instance.OnStateChanged -= OnStateChanged;
-            ObjectivesManager.OnWantsToChangeObjective -= QueueObjective;
+            //ObjectivesManager.OnWantsToChangeObjective -= QueueObjective;
         }
 
-        private void OnStateChanged(LevelState obj)
+        private void OnStateChanged(LevelState state)
         {
-            if (obj == LevelState.Running)
+            if (state == LevelState.Running)
             {
-                QueueObjective();
+                ObjectiveCollectionData obj = objectiveCollections[0];
+                for (int index = obj.Objectives.Length - 1; index >= 0; index--)
+                {
+                    ObjectiveData objData = obj.Objectives[index];
+                    objData.AddObjective();
+                }
+
+                //QueueObjective();
             }
         }
 

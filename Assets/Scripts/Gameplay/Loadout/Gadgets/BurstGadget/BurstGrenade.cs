@@ -18,7 +18,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
         public bool IsCasting { get; private set; }
         public event Action OnGadgetEnded;
         
-        public event Action OnGadgetDiscarded;
         public event Action OnGadgetBeingCasted;
         
         private BurstGrenadeEntity grenadeEntity;
@@ -59,7 +58,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
 
         public void End()
         {
-            Debug.Log($"BurstGrenade End");
             IsEquiped = false;
             IsCasting = false;
             isLaunched = false;
@@ -68,8 +66,9 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
 
         public void Discard()
         {
-            OnGadgetEnded?.Invoke();
-            OnGadgetDiscarded?.Invoke();
+            Object.Destroy(grenadeEntity.gameObject);
+            grenadeEntity = null;
+            End();
         }
     }
 }
