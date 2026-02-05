@@ -118,6 +118,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             
             currentGadget = null;
             currentGadgetData = null;
+            loadoutController.ChangeGameplayInputsState(true);
         }
 
         #region Inputs
@@ -136,6 +137,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
                 if (context.performed)
                 {
                     DeselectCurrentGadget();
+                    loadoutController.RemoveReceiver(this);
                 }
             }
             

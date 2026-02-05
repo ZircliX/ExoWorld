@@ -158,6 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cb7e812e1794fb1a3cfb280b410edbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.Loadout.ParalixGadget.ParalixGrenadeEntity
+  rb: {fileID: 2191814864685051435}
+  collider: {fileID: 410124877795776538}
 --- !u!54 &2191814864685051435
 Rigidbody:
   m_ObjectHideFlags: 0

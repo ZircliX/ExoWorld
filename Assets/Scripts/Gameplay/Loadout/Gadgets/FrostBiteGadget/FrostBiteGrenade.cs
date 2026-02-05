@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using OverBang.ExoWorld.Core.Abilities;
 using OverBang.ExoWorld.Core.Abilities.Gadgets;
 using UnityEngine;
@@ -17,8 +17,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
         public bool IsEquiped { get; private set; }
         public bool IsCasting { get; private set; }
         public event Action OnGadgetEnded;
-        
-        public event Action OnGadgetDiscarded;
         public event Action OnGadgetBeingCasted;
         
         private FrostBiteGrenadeEntity grenadeEntity;
@@ -35,8 +33,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
             Caster = caster;
             IsEquiped = true;
             IsCasting = false;
-            
-            
+            OnGadgetBeingCasted?.Invoke();
             grenadeEntity = Object.Instantiate(Data.Prefab, Caster.CastAnchor);
             grenadeEntity.FreezeGrenade(true);
         }
@@ -59,7 +56,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
 
         public void End()
         {
-            Debug.Log($"FrostBite Grenade End");
             IsEquiped = false;
             IsCasting = false;
             isLaunched = false;
@@ -68,8 +64,10 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
 
         public void Discard()
         {
-            OnGadgetEnded?.Invoke();
-            OnGadgetDiscarded?.Invoke();
+            Debug.Log("Discard");
+            Object.Destroy(grenadeEntity.gameObject);
+            grenadeEntity = null;
+            End();
         }
     }
 }

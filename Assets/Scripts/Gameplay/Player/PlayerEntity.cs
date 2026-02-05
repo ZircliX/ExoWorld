@@ -43,7 +43,9 @@ namespace OverBang.ExoWorld.Gameplay.Player
 
         public void ApplySlow(float slowPercentage, float slowDuration)
         {
-            throw new NotImplementedException();
+            Debug.Log("c'est pas implémenter, et franchement, " +
+                      "aller changer dans le script de 700 lignes pour slow le joueurs," +
+                      " j'ai pas les épaules");
         }
     }
 }
