@@ -1,3 +1,4 @@
+using OverBang.ExoWorld.Core.Interactions;
 using OverBang.ExoWorld.Core.Phases;
 using OverBang.ExoWorld.Core.Utils;
 using OverBang.ExoWorld.Gameplay.Phase;
@@ -6,16 +7,23 @@ using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.HUB
 {
-    public class Ship : NetworkPhaseListener<GameplayPhase>
+    public class Ship : NetworkPhaseListener<GameplayPhase>, IInteractable
     {
+        [SerializeField] private Transform uiPosition;
         private bool canBeTriggered;
         
-        private void OnTriggerEnter(Collider other)
+        public string InteractionText => "Démarrer la capsule";
+        public int Priority => (int)TargetPriority.Medium;
+        public bool CanInteract { get; private set; } = true;
+        public InteractionType SupportedInteractions => InteractionType.Interact;
+        Vector3 IInteractable.UIPosition => uiPosition.position;
+
+        public void Interact(PlayerInteraction playerInteraction)
         {
-            if ((other.CompareTag("Player") || other.CompareTag("LocalPlayer")) && canBeTriggered)
-            {
-                ExitHubPhaseRpc();
-            }
+            if (!canBeTriggered) 
+                return;
+            
+            ExitHubPhaseRpc();
         }
         
         [Rpc(SendTo.Everyone)]
@@ -26,12 +34,8 @@ namespace OverBang.ExoWorld.Gameplay.HUB
             
             Debug.Log("Exiting hub phase on client : " + SessionManager.Global.CurrentPlayer.Id);
             canBeTriggered = false;
+            CanInteract = false;
             CurrentPhase.SetIsDone();
-        }
-
-        public void SetCanBeTriggered(bool value)
-        {
-            canBeTriggered = value;
         }
     }
 }

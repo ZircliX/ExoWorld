@@ -114,12 +114,12 @@ namespace OverBang.ExoWorld.Core.Utils
                 {
                     if (player.TryGetPhaseStatusByPlayer(out PhaseStatus status))
                     {
-                        Debug.Log(status.ToString());
+                        //Debug.Log(status.ToString());
                         if (status != targetStatus)
                             allReady = false;
                     }
                 }
-                Debug.Log(allReady);
+                //Debug.Log(allReady);
                 return allReady;
             }, CancellationToken.None);
         } 

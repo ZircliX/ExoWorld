@@ -1,6 +1,7 @@
 using System;
 using OverBang.ExoWorld.Core.Damage;
 using OverBang.ExoWorld.Core.Interactions;
+using OverBang.ExoWorld.Gameplay.Abilities;
 using OverBang.ExoWorld.Gameplay.Level;
 using OverBang.ExoWorld.Gameplay.Targeting;
 using Unity.Netcode;
@@ -11,6 +12,8 @@ namespace OverBang.ExoWorld.Gameplay.Quests
 {
     public class Pump : NetworkBehaviour, ITargetable, IDamageable
     {
+        [SerializeField] private DetectionArea enterDetectionArea;
+        
         #region Quest
 
         [SerializeField] private QuestOneData questOneData;
@@ -43,6 +46,31 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         private void Awake()
         {
             Health = MaxHealth;
+            oneHandler = questOneData.GetHandlerByData<QuestOneHandler>();
+            
+            enterDetectionArea.SetAllowedTags("Player", "LocalPlayer");
+        }
+
+        private void OnEnable()
+        {
+            enterDetectionArea.OnEnter += OnEnter;
+        }
+
+        private void OnDisable()
+        {
+            enterDetectionArea.OnEnter -= OnEnter;
+        }
+
+        private void OnEnter(Collider arg1, object arg2)
+        {
+            OnEnterRpc();
+        }
+
+        [Rpc(SendTo.Everyone)]
+        private void OnEnterRpc()
+        {
+            enterDetectionArea.enabled = false;
+            oneHandler.SetStepIndex(1);
         }
 
         public void CallStartRepair()
@@ -61,9 +89,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         private void InvokePumpStartRpc()
         {
             IsStarted = true;
-            
-            oneHandler = questOneData.GetHandlerByData<QuestOneHandler>();
-            oneHandler.SetStepIndex(1);
+            oneHandler.SetStepIndex(2);
         }
 
         public void TakeDamage(DamageData damage)
@@ -120,7 +146,6 @@ namespace OverBang.ExoWorld.Gameplay.Quests
                 IsCompleted = true;
 
                 current = target;
-                oneHandler.SetStepIndex(2);
             }
             
             ObjectivesManager.DispatchGameEvent(new QuestOneEvent(current, target));

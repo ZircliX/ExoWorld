@@ -8,27 +8,26 @@ namespace ZTools.ObjectiveSystem.Sample
     public class ObjectivesUI : Core.ObjectivesUI
     {
         [SerializeField] private TMP_Text objectiveNameText;
-        [SerializeField] private TMP_Text objectiveDescriptionText;
-        [SerializeField] private TMP_Text objectiveStepText;
         [SerializeField] private TMP_Text objectiveProgressText;
 
         private int previousStep;
         private IObjectiveHandler currentObjectiveHandler;
 
-        protected override void OnObjectiveChanged(IObjectiveHandler objectiveHandler)
+        private void Start()
         {
-            if (currentObjectiveHandler != null)
-                currentObjectiveHandler.OnObjectiveStepChanged -= OnStepChanged;
+            IObjectiveHandler objectiveHandler = ObjectivesManager.ActiveObjectives[0];
             
-            if (objectiveHandler == null)
-            {
-                ClearObjective();
-                return;
-            }
-
             currentObjectiveHandler = objectiveHandler;
             objectiveHandler.OnObjectiveStepChanged += OnStepChanged;
             UpdateObjectiveUI(objectiveHandler);
+        }
+
+        protected override void OnObjectiveChanged(IObjectiveHandler objectiveHandler)
+        {
+            if (objectiveHandler == null)
+            {
+                ClearObjective();
+            }
         }
 
         private void OnStepChanged(int obj)
@@ -40,24 +39,21 @@ namespace ZTools.ObjectiveSystem.Sample
         {
             objectiveNameText.text = objectiveHandler.ObjectiveData.ObjectiveName;
             
-            if (objectiveDescriptionText != null)
-            {
-                objectiveDescriptionText.text = objectiveHandler.ObjectiveData.ObjectiveDescription;
-            }
-            
-            objectiveStepText.text = objectiveHandler.ObjectiveData.ObjectiveSteps[objectiveHandler.StepIndex];
             if (objectiveHandler.StepIndex != previousStep)
             {
-                objectiveStepText.DOColor(Color.orange, 0.2f).OnComplete(() =>
+                objectiveProgressText.DOColor(Color.red, 0.2f).OnComplete(() =>
                 {
-                    objectiveStepText.DOColor(Color.white, 1.5f);
+                    objectiveProgressText.DOColor(Color.white, 1.5f);
                 });
             }
             
             float current = objectiveHandler.CurrentProgress.currentProgress;
             float target = objectiveHandler.CurrentProgress.targetProgress;
             float progress = Mathf.Abs(current - target);
-            objectiveProgressText.text = progress <= 0 ? string.Empty : $"{progress:0.0}s";
+            
+            string stepText = objectiveHandler.ObjectiveData.ObjectiveSteps[objectiveHandler.StepIndex];
+            string progressText = progress <= 0 ? string.Empty : $"({current:0}/{target:0})";
+            objectiveProgressText.text = $"{stepText} {progressText}";
 
             previousStep = objectiveHandler.StepIndex;
         }
@@ -65,12 +61,6 @@ namespace ZTools.ObjectiveSystem.Sample
         protected override void ClearObjective()
         {
             objectiveNameText.text = string.Empty;
-            
-            if (objectiveDescriptionText != null)
-            {
-                objectiveDescriptionText.text = string.Empty;
-            }
-
             objectiveProgressText.text = string.Empty;
         }
     }

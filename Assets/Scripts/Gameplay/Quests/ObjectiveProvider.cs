@@ -40,19 +40,17 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         {
             if (LevelManager.Instance != null)
                 LevelManager.Instance.OnStateChanged += OnStateChanged;
-            //ObjectivesManager.OnWantsToChangeObjective += QueueObjective;
         }
         
         private void OnDisable()
         {
             if (LevelManager.Instance != null)
                 LevelManager.Instance.OnStateChanged -= OnStateChanged;
-            //ObjectivesManager.OnWantsToChangeObjective -= QueueObjective;
         }
 
-        private void OnStateChanged(LevelState state)
+        private void OnStateChanged(LevelManager.LevelState state)
         {
-            if (state == LevelState.Running)
+            if (state == LevelManager.LevelState.Running)
             {
                 ObjectiveCollectionData obj = objectiveCollections[0];
                 for (int index = obj.Objectives.Length - 1; index >= 0; index--)
@@ -64,15 +62,6 @@ namespace OverBang.ExoWorld.Gameplay.Quests
                 //QueueObjective();
             }
         }
-
-        /*
-        /// <summary>
-        /// This is a temporary method to kick off the queuing process.
-        /// </summary>
-        private void Start()
-        {
-            QueueObjective();
-        }*/
 
         /// <summary>
         /// Advances to the next <see cref="ObjectiveCollectionData"/> in the sequence.
