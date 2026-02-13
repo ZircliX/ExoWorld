@@ -6,6 +6,7 @@ using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Core.Utils;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
@@ -19,6 +20,9 @@ namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
         [SerializeField, Space] private Transform teammateContainer;
         [SerializeField] private TeammateInfo teammatePrefab;
         private List<TeammateInfo> teammates;
+        
+        [SerializeField, Space] private GameObject questsPanel;
+        [SerializeField] private GameObject timerPanel;
         
         private LocalGamePlayer player;
         private LocalGamePlayer Player
@@ -34,6 +38,10 @@ namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
         {
             teammateContainer.ClearChildren();
             teammates = new List<TeammateInfo>(3);
+
+            bool isNeeded = SceneManager.GetActiveScene().name == GameMetrics.Global.SceneCollection.GameSceneRef.Name;
+            timerPanel.SetActive(isNeeded);
+            questsPanel.SetActive(isNeeded);
         }
 
         private void OnEnable()

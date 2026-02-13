@@ -27,15 +27,11 @@ namespace OverBang.ExoWorld.Gameplay.Phase
             //Debug.Log("Starting Hub Phase");
             //Debug.Log("Updating player phase status to ReadyForSceneLoad");
             await SessionManager.Global.CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyPhaseStatus, nameof(PhaseStatus.ReadyForSceneLoad));
-            Debug.Log("Player phase status updated to ReadyForSceneLoad");
-            
-            Debug.Log("Waiting for all players to be ready for scene load...");
             await NetworkPropertiesUtils.AwaitableUntilAllPlayers(PhaseStatus.ReadyForSceneLoad);
             
             Debug.Log(SessionManager.Global.IsHost());
             if (SessionManager.Global.IsHost())
             {
-                Debug.Log("Load scene Hub for all players");
                 SceneReference hubSceneRef = SceneCollection.Global.HubSceneRef;
                 Scene currentScene = SceneLoader.GetCurrentScene();
     

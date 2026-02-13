@@ -19,6 +19,9 @@ namespace OverBang.ExoWorld.Core.Metrics
         [field: SerializeField, FoldoutGroup("Sessions")]
         public int MaxPasswordLenght { get; private set; } = 8;
         
+        [field: SerializeField, FoldoutGroup("Survival Game Mode")]
+        public float GameDuration { get; private set; } = 60*6;
+        
         [field: SerializeField, FoldoutGroup("Prefabs")] public NetworkObject PlayerControllerPrefab { get; private set; }
        
         [field: SerializeField, FoldoutGroup("Layers")] public LayerMask HittableLayers { get; private set; }

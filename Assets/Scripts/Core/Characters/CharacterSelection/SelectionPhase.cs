@@ -45,7 +45,7 @@ namespace OverBang.ExoWorld.Core.Characters
 
         protected virtual async Awaitable OnBegin()
         {
-            Debug.Log("Starting Selection Phase");
+            //Debug.Log("Starting Selection Phase");
             LoadCharactersData();
             
             await Task.CompletedTask;

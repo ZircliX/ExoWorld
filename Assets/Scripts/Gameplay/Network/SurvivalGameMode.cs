@@ -6,6 +6,7 @@ using OverBang.ExoWorld.Core.GameMode.Players;
 using OverBang.ExoWorld.Core.Phases;
 using OverBang.ExoWorld.Core.Utils;
 using OverBang.ExoWorld.Gameplay.Phase;
+using OverBang.ExoWorld.Gameplay.Quests;
 using Unity.Services.Multiplayer;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -22,12 +23,16 @@ namespace OverBang.ExoWorld.Gameplay.Network
         
         private GamePlayerManager gamePlayerManager;
         
+        private QuestManager questManager;
+        
         public async Awaitable OnBegin()
         {
             gamePlayerManager = new GameObject(nameof(GamePlayerManager)).AddComponent<GamePlayerManager>();
             gamePlayerManager.hideFlags = HideFlags.NotEditable;
             
             Object.DontDestroyOnLoad(gamePlayerManager.gameObject);
+            
+            questManager = new QuestManager();
             
             await Task.CompletedTask;
         }
@@ -40,7 +45,7 @@ namespace OverBang.ExoWorld.Gameplay.Network
 
         public async Awaitable Execute()
         {
-            Debug.Log("Run GameMode: SurvivalGameMode");
+            //Debug.Log("Run GameMode: SurvivalGameMode");
             bool isRunning = true;
             hasCharacter = false;
 
@@ -65,6 +70,8 @@ namespace OverBang.ExoWorld.Gameplay.Network
                 
                 gamePlayerManager.Initialize(gamePlayers);
             }
+            
+            questManager.QueueNextQuest();
 
             while (isRunning)
             {
@@ -73,6 +80,8 @@ namespace OverBang.ExoWorld.Gameplay.Network
                 // Hub
                 await HandleHubPhase();
 
+                questManager.RequestQuestQueue();
+                
                 // Gameplay
                 GameplayPhase gameplayPhase = await HandleGameplayPhase();
                 gameplayEndInfos = gameplayPhase.CurrentEndInfos;
@@ -89,7 +98,7 @@ namespace OverBang.ExoWorld.Gameplay.Network
 
         private async Awaitable HandleHubPhase()
         {
-            Debug.Log("Creating Hub Phase");
+            //Debug.Log("Creating Hub Phase");
             SelectionPhase.SelectionSettings selectionSettings = new SelectionPhase.SelectionSettings
             {
                 selectionType = hasCharacter ? SelectionPhase.SelectionType.None : SelectionPhase.SelectionType.Pick,

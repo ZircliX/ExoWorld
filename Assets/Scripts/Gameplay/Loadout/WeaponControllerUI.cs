@@ -96,7 +96,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
                         ammoText.DOColor(Color.white, 1.5f);
                     });
                 }
-                ammoText.text = $"{currentAmmo}/{magSize}";
+                ammoText.text = $"{currentAmmo}";
             }
         }
 

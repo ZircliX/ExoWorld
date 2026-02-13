@@ -28,7 +28,7 @@ namespace OverBang.ExoWorld.Gameplay.HUB.Listeners
                 characterDatas.Add(characterData);
             
             OnCharactersLoaded?.Invoke();
-            Debug.Log("Loading Complete");
+            //Debug.Log("Loading Complete");
         }
         
         public void ConfirmSelection(CharacterData characterData)
