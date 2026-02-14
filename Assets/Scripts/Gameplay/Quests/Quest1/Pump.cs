@@ -30,15 +30,14 @@ namespace OverBang.ExoWorld.Gameplay.Quests
 
         #region Interfaces
 
-        public event Action<bool> OnTargetableChanged;
-        public Transform Transform => transform;
-        public TargetPriority Priority => TargetPriority.High;
-        public bool IsTargetable => IsAlive && isTargetable;
-        private bool isTargetable = true;
+        public event Action<bool> OnTargeted;
+        
+        public TargetPriority Priority => TargetPriority.VeryHigh;
+        public bool IsTargetable => IsAlive;
         public float Health { get; private set; }
         public float MaxHealth => questOneData.TotalRepairHealth;
         public bool IsAlive => Health > 0;
-        public bool IsInvincible { get; set; }
+        public bool IsInvincible { get; private set; }
         public event Action OnDamaged;
 
         #endregion
@@ -63,6 +62,9 @@ namespace OverBang.ExoWorld.Gameplay.Quests
 
         private void OnEnter(Collider arg1, object arg2)
         {
+            if (oneHandler.StepIndex > 0) 
+                return;
+            
             OnEnterRpc();
         }
 
@@ -96,10 +98,6 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         {
             if (IsOwner)
             {
-                DamagePump();
-            }
-            else
-            {
                 CallHitPumpRpc();
             }
         }
@@ -112,15 +110,29 @@ namespace OverBang.ExoWorld.Gameplay.Quests
 
         private void DamagePump()
         {
-            if (!IsOwner) return;
             Health--;
+            
+            if (Health <= 0)
+            {
+                ResetPumpRpc();
+            }
+            
             OnDamaged?.Invoke();
+        }
+
+        [Rpc(SendTo.Everyone)]
+        private void ResetPumpRpc()
+        {
+            Health = questOneData.TotalRepairHealth;
+            IsStarted = false;
+            CurrentRepairTime = 0;
+            oneHandler?.SetStepIndex(1);
+            ObjectivesManager.DispatchGameEvent(new QuestOneEvent(0, questOneData.RepairTimeRequired));
         }
         
         public void SetTargetable(bool state)
         {
-            isTargetable = state;
-            OnTargetableChanged?.Invoke(state);
+            OnTargeted?.Invoke(state);
         }
 
         private void Update()

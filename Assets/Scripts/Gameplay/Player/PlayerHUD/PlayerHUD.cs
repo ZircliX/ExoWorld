@@ -57,10 +57,10 @@ namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
             Player.OnHealthChanged -= OnHealthChanged;
         }
 
-        private void OnHealthChanged(float health, float maxHealth)
+        private void OnHealthChanged(float previous, float current, float maxHealth)
         {
-            healthBar.fillAmount = health / maxHealth;
-            healthBarBg.DOFillAmount(health / maxHealth, 0.2f);
+            healthBar.fillAmount = current / maxHealth;
+            healthBarBg.DOFillAmount(current / maxHealth, 0.2f);
         }
 
         private void RefreshPlayerStats()
@@ -76,7 +76,7 @@ namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
                 playerNameText.text = $"Player_{Player.SessionPlayerID[..6]}";
             }
             
-            OnHealthChanged(Player.Health, Player.MaxHealth);
+            OnHealthChanged(0, Player.Health, Player.MaxHealth);
         }
 
         private void RefreshTeammates()

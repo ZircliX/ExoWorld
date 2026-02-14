@@ -6,7 +6,7 @@ namespace OverBang.ExoWorld.Gameplay.Targeting
 {
     public class DamageableComponent : MonoBehaviour, IDamageable, IHealth
     {
-        public event Action<float, float> OnHealthChanged;
+        public event Action<float, float, float> OnHealthChanged;
 
         public bool IsInvincible { get; set; }
         public float MinHealth { get; private set; }
@@ -23,7 +23,7 @@ namespace OverBang.ExoWorld.Gameplay.Targeting
             float previousHealth = Health;
             Health -= damage.baseDamage;
             if (Health <= MinHealth) Health = MinHealth;
-            OnHealthChanged?.Invoke(previousHealth, Health);
+            OnHealthChanged?.Invoke(previousHealth, Health, MaxHealth);
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using OverBang.ExoWorld.Core.Interactions;
 using Unity.Netcode;
 using UnityEngine;
@@ -31,7 +32,19 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         }
 
         Vector3 IInteractable.UIPosition => transform.position.Add(y: 1f);
-        
+
+        private void Awake()
+        {
+            questTwoHandler ??= questTwoData.GetHandlerByData<QuestTwoHandler>();
+            if (questTwoHandler == null)
+            {
+                gameObject.SetActive(false);
+                canBePickedUp = false;
+                canBeDropped = false;
+                CanInteract = false;
+            }
+        }
+
         public void OnPickup(PlayerInteraction playerInteraction)
         {
             questTwoHandler ??= questTwoData.GetHandlerByData<QuestTwoHandler>();

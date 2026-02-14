@@ -14,9 +14,17 @@ namespace OverBang.ExoWorld.Gameplay.Player
         public PlayerController Controller { get; set; }
         private CharacterData characterData;
 
-        private void OnEnable() => UpgradeManager.Instance.OnUpgrade += Initialize;
+        private void OnEnable()
+        {
+            UpgradeManager.Instance.OnUpgrade += Initialize;
+            DamageableAndHealableComponent.OnHealthChanged += OnHealthChanged;
+        }
 
-        private void OnDisable() => UpgradeManager.Instance.OnUpgrade -= Initialize;
+        private void OnDisable()
+        {
+            UpgradeManager.Instance.OnUpgrade -= Initialize;
+            DamageableAndHealableComponent.OnHealthChanged -= OnHealthChanged;
+        }
 
         public void OnSync(PlayerRuntimeContext context)
         {
@@ -30,15 +38,20 @@ namespace OverBang.ExoWorld.Gameplay.Player
                 characterData.BaseStats.Health + UpgradeManager.Instance.GetRuntimeUpgrade(UpgradeType.Health),
                 characterData.BaseStats.Resistance + UpgradeManager.Instance.GetRuntimeUpgrade(UpgradeType.Resistance));
         }
+        
+        private void OnHealthChanged(float previous, float current, float max)
+        {
+            Controller.LocalGamePlayer.SetHealth(current);
+        }
 
-        public event Action<bool> OnTargetableChanged;
-        public Transform Transform => transform;
+        public event Action<bool> OnTargeted;
+        
         public TargetPriority Priority => TargetPriority.High;
         public bool IsTargetable { get; private set; } = true;
         public void SetTargetable(bool state)
         {
             IsTargetable = state;
-            OnTargetableChanged?.Invoke(IsTargetable);
+            OnTargeted?.Invoke(IsTargetable);
         }
 
         public void ApplySlow(float slowPercentage, float slowDuration)

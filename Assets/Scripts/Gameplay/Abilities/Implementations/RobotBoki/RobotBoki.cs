@@ -71,15 +71,15 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             OnExploded?.Invoke();
         }
         
-        public event Action<bool> OnTargetableChanged;
-        public Transform Transform => transform;
+        public event Action<bool> OnTargeted;
+        
         public TargetPriority Priority { get; private set; } = TargetPriority.VeryHigh;
         public bool IsTargetable { get; private set; }
         
         public void SetTargetable(bool state)
         {
             IsTargetable = state;
-            OnTargetableChanged?.Invoke(state);
+            OnTargeted?.Invoke(state);
         }
     }
 }

@@ -14,7 +14,8 @@ namespace ZTools.ObjectiveSystem.Core
                     return obj as T;
             }
 
-            throw new System.InvalidCastException($"Cannot cast handler of type {handler.GetType().Name} to type {typeof(T).Name}");
+            //throw new System.InvalidCastException($"Cannot cast handler of type {handler.GetType().Name} to type {typeof(T).Name}");
+            return null;
         }
     }
 }

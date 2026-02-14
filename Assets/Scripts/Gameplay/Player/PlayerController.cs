@@ -14,6 +14,7 @@ namespace OverBang.ExoWorld.Gameplay.Player
     {
         [SerializeField] private Transform playerModelContainer;
         private IPlayerComponent[] playerComponents;
+        public LocalGamePlayer LocalGamePlayer { get; private set; }
         
         private void Awake()
         {
@@ -22,6 +23,7 @@ namespace OverBang.ExoWorld.Gameplay.Player
         
         public void Connect(LocalGamePlayer localGamePlayer)
         {
+            LocalGamePlayer = localGamePlayer;
             SetDataRpc(localGamePlayer.SessionPlayerID, localGamePlayer.CharacterData.ID);
         }
         

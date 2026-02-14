@@ -30,7 +30,7 @@ namespace ZTools.ObjectiveSystem.Sample
             }
         }
 
-        private void OnStepChanged(int obj)
+        private void OnStepChanged(int step)
         {
             UpdateObjectiveUI(currentObjectiveHandler);
         }

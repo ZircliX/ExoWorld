@@ -19,10 +19,26 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         public string InteractionText => CanInteract && isHoldingFusible ? questData.InteractionText : questData.InteractionTextEmpty;
         public int Priority => (int)TargetPriority.High;
         public bool CanInteract { get; private set; }
-        public InteractionType SupportedInteractions => InteractionType.Interact;
+        public InteractionType SupportedInteractions { get; private set; } = InteractionType.Interact;
 
         Vector3 IInteractable.UIPosition => transform.position.Add(y: 1f);
+        
+        private void Awake()
+        {
+            questTwoHandler ??= questData.GetHandlerByData<QuestTwoHandler>();
 
+            if (questTwoHandler == null)
+            {
+                gameObject.SetActive(false);
+                CanInteract = false;
+                SupportedInteractions = InteractionType.None;
+                return;
+            }
+            
+            detectionArea.GetCollider<SphereCollider>().radius = questData.InteractionRange;
+            detectionArea.SetRequireInterface<IFusible>();
+        }
+        
         public void Interact(PlayerInteraction playerInteraction)
         {
             questTwoHandler ??= questData.GetHandlerByData<QuestTwoHandler>();
@@ -48,12 +64,6 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         {
             detectionArea.OnEnter -= OnEnter;
             detectionArea.OnExit -= OnExit;
-        }
-
-        private void Awake()
-        {
-            detectionArea.GetCollider<SphereCollider>().radius = questData.InteractionRange;
-            detectionArea.SetRequireInterface<IFusible>();
         }
 
         private void AddFusible(PlayerInteraction playerInteraction)
