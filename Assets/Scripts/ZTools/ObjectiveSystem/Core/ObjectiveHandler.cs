@@ -22,9 +22,9 @@ namespace ZTools.ObjectiveSystem.Core
         /// <summary>
         /// Gets the base <see cref="ObjectiveData"/> associated with this objective.
         /// </summary>
-        public ObjectiveData ObjectiveData { get; protected set; }
+        public ObjectiveData ObjectiveData { get; private set; }
 
-        public int StepIndex { get; protected set; }
+        public int StepIndex { get; private set; }
         public ObjectiveData GetObjectiveData() => ObjectiveData;
         
         public void SetStepIndex(int stepIndex)
@@ -42,42 +42,29 @@ namespace ZTools.ObjectiveSystem.Core
         /// <summary>
         /// This value typically increments as the player performs actions related to the objective.
         /// </summary>
-        public ObjectiveProgression CurrentProgress { get; protected set; }
+        public ObjectiveProgression CurrentProgress { get; private set; }
         public ObjectiveProgression GetCurrentProgress() => CurrentProgress;
 
         /// <summary>
         /// Indicates where the objective is in its lifecycle.
         /// </summary>
-        public ObjectiveState State { get; protected set; }
+        public ObjectiveState State { get; private set; }
         public ObjectiveState GetState() => State;
 
         /// <summary>
         /// Event fired when the objective's progress changes.
         /// Subscribers can react to updates in the objective's completion status.
         /// </summary>
-        public event Action<IObjectiveHandler> OnObjectiveProgressChanged = delegate { };
+        public event Action<ObjectiveProgression> OnObjectiveProgressChanged;
 
         public event Action<int> OnObjectiveStepChanged;
-
-        /// <summary>
-        /// Invokes the <see cref="OnObjectiveProgressChanged"/> event.
-        /// </summary>
-        protected void InvokeProgressChanged()
-            => OnObjectiveProgressChanged?.Invoke(this);
 
         /// <summary>
         /// Event fired when the objective's state changes (e.g., from Active to Completed).
         /// Subscribers can react to significant lifecycle events of the objective.
         /// </summary>
-        public event Action<IObjectiveHandler, ObjectiveState> OnObjectiveStateChanged = delegate { };
-
-        /// <summary>
-        /// Invokes the <see cref="OnObjectiveStateChanged"/> event with the new state.
-        /// </summary>
-        /// <param name="newState">The new <see cref="ObjectiveState"/> of the objective.</param>
-        protected void InvokeStateChanged(ObjectiveState newState)
-            => OnObjectiveStateChanged?.Invoke(this, newState);
-
+        public event Action<IObjectiveHandler, ObjectiveState> OnObjectiveStateChanged;
+        
         /// <summary>
         /// Initializes the objective and sets it to its active state, preparing it for tracking.
         /// </summary>
@@ -118,8 +105,7 @@ namespace ZTools.ObjectiveSystem.Core
             ObjectiveProgression eventProgress = CalculateProgression(gameEvent);
             
             // Check if the eventProgress is different from the current progress
-            bool isDifferent = !Mathf.Approximately(eventProgress.currentProgress, CurrentProgress.currentProgress) ||
-                                    !Mathf.Approximately(eventProgress.targetProgress, CurrentProgress.targetProgress);
+            bool madeProgress = eventProgress.currentProgress > CurrentProgress.currentProgress;
             
             CurrentProgress = eventProgress;
             
@@ -133,10 +119,10 @@ namespace ZTools.ObjectiveSystem.Core
             }
             else
             {
-                InvokeProgressChanged();
+                OnObjectiveProgressChanged?.Invoke(CurrentProgress);
             }
 
-            return isDifferent;
+            return madeProgress;
         }
 
         /// <summary>
@@ -175,7 +161,7 @@ namespace ZTools.ObjectiveSystem.Core
         {
             if (State == newState) return;
             State = newState;
-            InvokeStateChanged(newState);
+            OnObjectiveStateChanged?.Invoke(this, newState);
         }
     }
 }

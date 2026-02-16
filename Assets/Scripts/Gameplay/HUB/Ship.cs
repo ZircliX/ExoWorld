@@ -10,7 +10,6 @@ namespace OverBang.ExoWorld.Gameplay.HUB
     public class Ship : NetworkPhaseListener<GameplayPhase>, IInteractable
     {
         [SerializeField] private Transform uiPosition;
-        private bool canBeTriggered;
         
         public string InteractionText => "Démarrer la capsule";
         public int Priority => (int)TargetPriority.Medium;
@@ -20,7 +19,7 @@ namespace OverBang.ExoWorld.Gameplay.HUB
 
         public void Interact(PlayerInteraction playerInteraction)
         {
-            if (!canBeTriggered) 
+            if (!CanInteract) 
                 return;
             
             ExitHubPhaseRpc();
@@ -33,7 +32,6 @@ namespace OverBang.ExoWorld.Gameplay.HUB
                 return;
             
             Debug.Log("Exiting hub phase on client : " + SessionManager.Global.CurrentPlayer.Id);
-            canBeTriggered = false;
             CanInteract = false;
             CurrentPhase.SetIsDone();
         }
