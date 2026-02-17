@@ -73,7 +73,7 @@ MonoBehaviour:
     m_Value: {r: 1, g: 1, b: 1, a: 1}
   maxFogDistance:
     m_OverrideState: 1
-    m_Value: 1000
+    m_Value: 200
   mipFogMaxMip:
     m_OverrideState: 1
     m_Value: 0.5
@@ -82,7 +82,7 @@ MonoBehaviour:
     m_Value: 0
   mipFogFar:
     m_OverrideState: 1
-    m_Value: 1000
+    m_Value: 200
   baseHeight:
     m_OverrideState: 1
     m_Value: 90
@@ -103,7 +103,7 @@ MonoBehaviour:
     m_Value: 1
   depthExtent:
     m_OverrideState: 1
-    m_Value: 200
+    m_Value: 150
   denoisingMode:
     m_OverrideState: 1
     m_Value: 2
@@ -158,10 +158,10 @@ MonoBehaviour:
     m_Value: 1
   tracing:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 2
   m_MinSmoothness:
     m_OverrideState: 1
-    m_Value: 0.25
+    m_Value: 0.4
   m_SmoothnessFadeStart:
     m_OverrideState: 1
     m_Value: 0.75
@@ -203,7 +203,7 @@ MonoBehaviour:
     m_Value: 1
   m_RayMaxIterations:
     m_OverrideState: 1
-    m_Value: 200
+    m_Value: 75
   rayMiss:
     m_OverrideState: 1
     m_Value: 3
@@ -397,10 +397,10 @@ MonoBehaviour:
   active: 1
   quality:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 1
   rayTracing:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   intensity:
     m_OverrideState: 1
     m_Value: 1
@@ -438,31 +438,31 @@ MonoBehaviour:
     m_Value: 1
   m_StepCount:
     m_OverrideState: 1
-    m_Value: 16
+    m_Value: 4
   m_FullResolution:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   m_MaximumRadiusInPixels:
     m_OverrideState: 1
-    m_Value: 80
+    m_Value: 32
   m_BilateralUpsample:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   m_DirectionCount:
     m_OverrideState: 1
-    m_Value: 4
+    m_Value: 1
   m_RayLength:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 1
   m_SampleCount:
     m_OverrideState: 1
-    m_Value: 8
+    m_Value: 2
   m_Denoise:
     m_OverrideState: 1
     m_Value: 1
   m_DenoiserRadius:
     m_OverrideState: 1
-    m_Value: 0.65
+    m_Value: 0.5
 --- !u!114 &-3984294907015349067
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -904,7 +904,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcf384b154398e341b6b29969c078198, type: 3}
   m_Name: MotionBlur
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   quality:
     m_OverrideState: 0
     m_Value: 1
@@ -1443,25 +1443,25 @@ MonoBehaviour:
     m_Value: 4
   cascadeShadowSplit0:
     m_OverrideState: 1
-    m_Value: 0.0285
+    m_Value: 0.01875
   cascadeShadowSplit1:
     m_OverrideState: 1
-    m_Value: 0.057142857
+    m_Value: 0.085
   cascadeShadowSplit2:
     m_OverrideState: 1
-    m_Value: 0.20440225
+    m_Value: 0.1875
   cascadeShadowBorder0:
     m_OverrideState: 1
-    m_Value: 0.13157895
+    m_Value: 0.451
   cascadeShadowBorder1:
     m_OverrideState: 1
-    m_Value: 0.5673317
+    m_Value: 0.45
   cascadeShadowBorder2:
     m_OverrideState: 1
-    m_Value: 0.54982907
+    m_Value: 0.529
   cascadeShadowBorder3:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.39538464
 --- !u!114 &1021290749370649129
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1557,7 +1557,7 @@ MonoBehaviour:
   active: 0
   screenFadeDistance:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.372
 --- !u!114 &2122420891578733213
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1780,19 +1780,19 @@ MonoBehaviour:
     m_Value: 20
   m_NearSampleCount:
     m_OverrideState: 1
-    m_Value: 5
+    m_Value: 4
   m_NearMaxBlur:
     m_OverrideState: 1
-    m_Value: 4
+    m_Value: 3
   m_FarSampleCount:
     m_OverrideState: 1
-    m_Value: 7
+    m_Value: 5
   m_FarMaxBlur:
     m_OverrideState: 1
-    m_Value: 8
+    m_Value: 6
   m_Resolution:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 4
   m_HighQualityFiltering:
     m_OverrideState: 1
     m_Value: 1
@@ -1884,7 +1884,7 @@ MonoBehaviour:
     m_Value: 0.25
   m_SampleCount:
     m_OverrideState: 1
-    m_Value: 10
+    m_Value: 6
 --- !u!114 &4799550002370829519
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -2490,8 +2490,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.RenderPipelines.HighDefinition.Runtime::UnityEngine.Rendering.HighDefinition.SplitToning
   active: 1
   shadows:
-    m_OverrideState: 1
-    m_Value: {r: 0.5597484, g: 0.5597484, b: 0.5597484, a: 1}
+    m_OverrideState: 0
+    m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   highlights:
     m_OverrideState: 1
     m_Value: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 1}
