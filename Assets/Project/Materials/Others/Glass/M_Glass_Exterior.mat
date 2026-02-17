@@ -13,10 +13,10 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _ALPHATEST_ON
+  - _DISABLE_SSR_TRANSPARENT
   - _DOUBLESIDED_ON
   - _ENABLE_FOG_ON_TRANSPARENT
   - _MAPPING_TRIPLANAR
-  - _MATERIAL_FEATURE_IRIDESCENCE
   - _NORMALMAP
   - _NORMALMAP_TANGENT_SPACE
   - _REFRACTION_SPHERE
@@ -191,7 +191,7 @@ Material:
     - _IridescenceMask: 0.1
     - _IridescenceThickness: 1
     - _LinkDetailsWithBase: 1
-    - _MaterialID: 3
+    - _MaterialID: 1
     - _Metallic: 0.1
     - _MetallicRemapMax: 1
     - _MetallicRemapMin: 0
@@ -208,7 +208,7 @@ Material:
     - _PerPixelSorting: 0
     - _RayTracing: 0
     - _ReceivesSSR: 1
-    - _ReceivesSSRTransparent: 1
+    - _ReceivesSSRTransparent: 0
     - _RefractionModel: 2
     - _Smoothness: 0.95
     - _SmoothnessRemapMax: 1
@@ -218,9 +218,9 @@ Material:
     - _SpecularOcclusionMode: 1
     - _SrcBlend: 1
     - _StencilRef: 0
-    - _StencilRefDepth: 24
-    - _StencilRefGBuffer: 10
-    - _StencilRefMV: 40
+    - _StencilRefDepth: 16
+    - _StencilRefGBuffer: 2
+    - _StencilRefMV: 32
     - _StencilWriteMask: 6
     - _StencilWriteMaskDepth: 25
     - _StencilWriteMaskGBuffer: 15
