@@ -28,6 +28,7 @@ namespace OverBang.ExoWorld.Core.GameMode.Players
         public ulong ClientID => NetworkManager.Singleton.LocalClientId;
         
         private IPlayer LocalSessionPlayer => SessionManager.Global.CurrentPlayer;
+        public NetworkObject CurrentPlayerObject { get; private set; }
         
         public ResourcesInventory Inventory { get; private set; } = new ResourcesInventory();
 
@@ -111,6 +112,7 @@ namespace OverBang.ExoWorld.Core.GameMode.Players
                 playerController.Connect(this);
             }
             
+            CurrentPlayerObject = playerObject;
             return playerObject;
         }
         

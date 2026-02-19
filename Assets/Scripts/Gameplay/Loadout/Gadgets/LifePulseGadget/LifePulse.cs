@@ -14,9 +14,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.LifePulseGadget
         public bool IsEquiped { get; private set; }
         public bool IsCasting { get; private set; }
         
-        public event Action OnGadgetEnded;
-        public event Action OnGadgetDiscarded;
-        public event Action OnGadgetBeingCasted;
+        public event Action<IGadget> OnGadgetCasted;
+        public event Action<IGadget> OnGadgetEnded;
         
         private LifePulseEntity grenadeEntity;
         private bool isLaunched;
@@ -26,7 +25,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.LifePulseGadget
             Data = lifePulseData;
         }
         
-
         public void Begin(ICaster caster)
         {
             isLaunched = false;
@@ -42,31 +40,32 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.LifePulseGadget
         {
             isLaunched = true;
             IsCasting = true;
-            grenadeEntity.Initialize(Data, caster.CastAnchor.forward, this);
+            grenadeEntity.Initialize(Data, this);
+            OnGadgetCasted?.Invoke(this);
         }
 
         public void Tick(float deltaTime)
         {
-            if (!isLaunched) return;
-            if (grenadeEntity != null)
-            {
-                grenadeEntity.Tick(deltaTime);
-            }
         }
 
         public void End()
         {
-            Debug.Log($"ShockGrenade End");
-            IsEquiped = false;
-            IsCasting = false;
-            isLaunched = false;
-            OnGadgetEnded?.Invoke();
+            OnGadgetEnded?.Invoke(this);
+            Reset();
         }
 
         public void Discard()
         {
-            OnGadgetEnded?.Invoke();
-            OnGadgetDiscarded?.Invoke();
+            Object.Destroy(grenadeEntity.gameObject);
+            grenadeEntity = null;
+            Reset();
+        }
+
+        private void Reset()
+        {
+            IsEquiped = false;
+            IsCasting = false;
+            isLaunched = false;
         }
     }
 }

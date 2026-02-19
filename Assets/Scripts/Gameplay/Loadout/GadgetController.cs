@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Helteix.Tools;
 using OverBang.ExoWorld.Core.Abilities;
 using OverBang.ExoWorld.Core.Abilities.Gadgets;
 using OverBang.ExoWorld.Core.GameMode.Players;
@@ -21,7 +22,11 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private GadgetData currentGadgetData;
         private IGadget currentGadget;
         
+        private List<IGadget> castedGadgets;
+        private DynamicBuffer<IGadget> gadgetBuffer;
+        
         private LocalGamePlayer player;
+        private bool isSelecting;
 
         public event Action<LocalGamePlayer> OnGadgetSelectionBegin; 
         public event Action OnGadgetSelectionEnd; 
@@ -29,15 +34,17 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         
         public void Initialize(LoadoutController loadoutController)
         {
+            castedGadgets = new List<IGadget>(8);
+            gadgetBuffer  = new DynamicBuffer<IGadget>(8);
             this.loadoutController = loadoutController;
             player = GamePlayerManager.Instance.GetLocalPlayer();
-            Debugss();
+            DebugAddGadgets();
         }
 
         /// <summary>
         /// TODO : DELETE THIS SHIT WHEN CRAFTING TABLE IS HERE
         /// </summary>
-        private void Debugss()
+        private void DebugAddGadgets()
         {
             foreach (GadgetData gadgetDatas in debugGadgetData)
             {
@@ -47,9 +54,14 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
         private void Update()
         {
-            if (currentGadget is {IsEquiped : true} )
+            if (castedGadgets.Count > 0)
             {
-                currentGadget.Tick(Time.deltaTime);
+                gadgetBuffer.CopyFrom(castedGadgets);
+                for (int index = 0; index < gadgetBuffer.Length; index++)
+                {
+                    IGadget gadget = gadgetBuffer[index];
+                    gadget.Tick(Time.deltaTime);
+                }
             }
         }
 
@@ -57,75 +69,97 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         {
             return currentGadget is { IsEquiped : true,  IsCasting : false };
         }
-        
-        
-        private void StartGadgetSelection()
-        {
-            OnGadgetSelectionBegin?.Invoke(player);
-        }
 
         public void SelectCurrentGadget(GadgetData data)
         {
-            if (currentGadgetData != null && currentGadget != null)
+            if (data == null)
             {
-                DeselectCurrentGadget();
+                ReactiveGameplayInputs();
+                loadoutController.RemoveReceiver(this);
+                return;
             }
-            currentGadgetData = data;
+            
+            DeselectCurrentGadget();
+            
+            if (player.GadgetInventory.GetGadgetCount(data, out int amount) && amount > 0)
+            {
+                currentGadgetData = data;
+                
+                if (player.GadgetInventory.TryGetGadget(currentGadgetData, out IGadget gadget))
+                {
+                    currentGadget = gadget;
+                    currentGadget.OnGadgetCasted += OnGadgetCasted;
+                    currentGadget.Begin(this);
+                    Debug.Log("Gadget Begin !!!! !!!! !!!!!");
+                }
+                else
+                {
+                    Debug.LogError("WTF oO j'suis gay ou quoi ?");
+                }
+            }
         }
         
         private void DeselectCurrentGadget()
         {
-            Debug.Log("DeselectCurrentGadget");
+            if (currentGadget == null) return;
+            
+            currentGadget.OnGadgetCasted -= OnGadgetCasted;
             currentGadget.Discard();
+            currentGadget = null;
+            currentGadgetData = null;
+            
+            loadoutController.RemoveReceiver(this);
+            Debug.LogError("Gadget Discard !!!! !!!!!");
+        }
+        
+        private void StartGadget()
+        {
+            player.GadgetInventory.RemoveGadget(currentGadgetData, 1);
+            currentGadget.Cast(this);
+        }
+
+        private void OnGadgetCasted(IGadget gadget)
+        {
+            if (currentGadget == null) return;
+           
+            currentGadget.OnGadgetCasted -= OnGadgetCasted;
+            currentGadget.OnGadgetEnded += OnGadgetEnded;
+
+            castedGadgets.Add(currentGadget);
+            currentGadget = null;
+            currentGadgetData = null;
+            ReactiveGameplayInputs();
+        }
+
+        private void OnGadgetEnded(IGadget gadget)
+        {
+            gadget.OnGadgetEnded -= OnGadgetEnded;
+            castedGadgets.Remove(gadget);
+        }
+
+        private void StartGadgetSelection()
+        {
+            isSelecting = true;
+            OnGadgetSelectionBegin?.Invoke(player);
         }
         
         private void StopGadgetSelection()
         {
+            isSelecting = false;
             OnGadgetSelectionEnd?.Invoke();
             loadoutController.SwitchCameraInputs(true);
-            
-            if (currentGadgetData != null && player.GadgetInventory.TryGetGadget(currentGadgetData, out IGadget gadget))
-            {
-                currentGadget = gadget;
-                currentGadget.OnGadgetBeingCasted += ReactiveGameplayInputs;
-                currentGadget.OnGadgetEnded += OnEnd;
-                currentGadget.Begin(this);
-            }
-            else
-            {
-                OnEnd();
-            }
-        }
-
-        private void StartGadget()
-        {
-            currentGadget.Cast(this);
-            player.GadgetInventory.RemoveGadget(currentGadgetData, 1);
-        }
-
-        private void ReactiveGameplayInputs()
-        {
-            loadoutController.ChangeGameplayInputsState(true);
         }
         
-        private void OnEnd()
-        {
-            if (currentGadget != null)
-            {
-                currentGadget.OnGadgetBeingCasted -= ReactiveGameplayInputs;
-                currentGadget.OnGadgetEnded -= OnEnd;
-            }
-            
-            currentGadget = null;
-            currentGadgetData = null;
-            loadoutController.ChangeGameplayInputsState(true);
-        }
-
         #region Inputs
+        
+            private void ReactiveGameplayInputs()
+            {
+                loadoutController.ChangeGameplayInputsState(true);
+            }
         
             public void OnLeftInput(InputAction.CallbackContext context)
             {
-                if (context.performed && CanCastGadget())
+                if (context.performed && CanCastGadget() && !isSelecting)
                 {
                     StartGadget();
                     loadoutController.RemoveReceiver(this);
@@ -134,18 +168,19 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
             public void OnRightInput(InputAction.CallbackContext context)
             {
-                if (context.performed)
+                if (context.performed && !isSelecting)
                 {
                     DeselectCurrentGadget();
-                    loadoutController.RemoveReceiver(this);
+                    ReactiveGameplayInputs();
                 }
             }
-            
 
             public void OnCInput(InputAction.CallbackContext context)
             {
-                if (context.performed) StartGadgetSelection();
-                if (context.canceled) StopGadgetSelection();
+                if (context.performed) 
+                    StartGadgetSelection();
+                if (context.canceled) 
+                    StopGadgetSelection();
             }
             
         #endregion

@@ -14,6 +14,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         [SerializeField] private TMP_Text amountTxt;
         [SerializeField] private TMP_Text gadgetTitle;
         [SerializeField] private TMP_Text gadgetDescription;
+        [SerializeField] private Color maskColor;
         public GadgetData data { get; private set; }
         private int amount;
         private GadgetControllerUI gadgetControllerUI;
@@ -27,6 +28,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             amount = gadgetAmount;
             icon.sprite = Data.Icon;
             icon.color = Color.white;
+            amountTxt.color =  Color.white;
             gadgetTitle.text = Data.Name;
             gadgetDescription.text = Data.Description;
             amountTxt.text = gadgetAmount.ToString();
@@ -35,6 +37,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         public void SelectThisGadget()
         {
             if (!isSelectable) return;
+            Refresh(data,amount);
             HighLightBackGround(1f, Color.black);
         }
 
@@ -63,7 +66,17 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             gadgetDescription.text = string.Empty;
             gameObject.SetActive(false);
         }
-        
+
+        public void Mask()
+        {
+            icon.color = maskColor;
+            amountTxt.color = maskColor;
+        }
+
+        public bool CheckSelectiveness()
+        {
+            return isSelectable;
+        }
         private void HighLightBackGround(float visibility, Color color)
         {
             iconBackGround.DOKill();

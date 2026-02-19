@@ -1,5 +1,4 @@
-﻿using System;
-using Ami.BroAudio;
+﻿using Ami.BroAudio;
 using KBCore.Refs;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Gameplay.Abilities;
@@ -10,7 +9,9 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
     public class BurstGrenadeEntity : MonoBehaviour
     {
         [SerializeField, Self] private Rigidbody rb;
+        [SerializeField, Self] private TrailRenderer trail;
         [SerializeField] private Collider collider;
+
         
         private IExplosionStrategy strategy;
 
@@ -28,6 +29,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
         {
             rb.isKinematic = value;
             collider.isTrigger = value;
+            trail.enabled = !value;
         }
         
         public void Initialize(BurstGrenadeData data, Vector3 direction, BurstGrenade burstGrenade)
@@ -66,6 +68,11 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
         private void OnExploded(bool terminated)
         {
             BroAudio.Play(data.SoundID);
+            if (data.ExplosionEffect != null)
+            {
+                ParticleSystem ps = Instantiate(data.ExplosionEffect, transform.position, Quaternion.identity);
+                Destroy(ps.gameObject, ps.main.duration);
+            }
             if (terminated)
             {
                 strategy.OnExploded -= OnExploded;

@@ -6,8 +6,8 @@ namespace OverBang.ExoWorld.Core.Abilities.Gadgets
     {
         bool IsEquiped { get; }
         bool IsCasting { get; }
-        event Action OnGadgetEnded;
-        event Action OnGadgetBeingCasted;
+        event Action<IGadget> OnGadgetCasted;
+        event Action<IGadget> OnGadgetEnded;
         
         
         GadgetData Data { get; }

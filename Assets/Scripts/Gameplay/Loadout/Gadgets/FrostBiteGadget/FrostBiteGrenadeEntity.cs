@@ -9,8 +9,9 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
     public class FrostBiteGrenadeEntity : MonoBehaviour
     {
         [SerializeField, Self] private Rigidbody rb;
+        [SerializeField, Self] private TrailRenderer trail;
         [SerializeField] private Collider collider;
-        
+
         private IExplosionStrategy strategy;
 
         private FrostBiteGrenadeData data;
@@ -27,6 +28,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
         {
             rb.isKinematic = value;
             collider.isTrigger = value;
+            trail.enabled = !value;
         }
         
         public void Initialize(FrostBiteGrenadeData data, Vector3 direction, FrostBiteGrenade grenade)
@@ -65,6 +67,12 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
         private void OnExploded(bool terminated)
         {
             BroAudio.Play(data.SoundID);
+            
+            if (data.ExplosionEffect != null)
+            {
+                ParticleSystem ps = Instantiate(data.ExplosionEffect, transform.position, Quaternion.identity);
+                Destroy(ps.gameObject, ps.main.duration);
+            }
             
             if (terminated)
             {
