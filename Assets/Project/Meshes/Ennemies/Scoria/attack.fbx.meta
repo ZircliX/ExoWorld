@@ -112,7 +112,142 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: T-PoseScoria(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: scoria1
+      parentName: T-PoseScoria(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scoria_Low
+      parentName: scoria1
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: jnt_main
+      parentName: scoria1
+      position: {x: -0.017348247, y: 0.23471478, z: -0.32261902}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: jnt_body
+      parentName: jnt_main
+      position: {x: -0, y: 0.9120473, z: 6.310887e-32}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: jnt_head
+      parentName: jnt_body
+      position: {x: -0.0019066943, y: -0.18854488, z: 0.5625631}
+      rotation: {x: -0.32887843, y: -0, z: 0.049214035, w: 0.9430891}
+      scale: {x: 1, y: 1, z: 1}
+    - name: jnt_tentacle1
+      parentName: jnt_head
+      position: {x: 0.036753323, y: 0.11282236, z: 0.24560834}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: jnt_tentacle2
+      parentName: jnt_head
+      position: {x: 0.12502083, y: 0.057972964, z: 0.24560834}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: jnt_tentacle3
+      parentName: jnt_head
+      position: {x: 0.15651728, y: -0.04956808, z: 0.24560834}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: jnt_tentacle4
+      parentName: jnt_head
+      position: {x: 0.123416744, y: -0.13377173, z: 0.22631472}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: jnt_tentacle5
+      parentName: jnt_head
+      position: {x: 0.02483874, y: -0.17883693, z: 0.23661609}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: jnt_tentacle6
+      parentName: jnt_head
+      position: {x: -0.07023502, y: -0.13390656, z: 0.23661609}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: jnt_tentacle7
+      parentName: jnt_head
+      position: {x: -0.113589324, y: -0.032648075, z: 0.25417525}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: jnt_tentacle8
+      parentName: jnt_head
+      position: {x: -0.06662663, y: 0.07620735, z: 0.24560834}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: jnt_hips_back_right
+      parentName: jnt_body
+      position: {x: 0.4409076, y: -0.31063986, z: -0.55349416}
+      rotation: {x: -2.8913572e-17, y: 0.90262413, z: 2.8913572e-17, w: -0.43042967}
+      scale: {x: 1, y: 1, z: 1}
+    - name: jnt_knee_back_right
+      parentName: jnt_hips_back_right
+      position: {x: -0.18746716, y: -0.07847733, z: 0.09145913}
+      rotation: {x: 0, y: -0.63043106, z: -0, w: 0.77624524}
+      scale: {x: 1, y: 1, z: 1}
+    - name: jnt_ankle_back_right
+      parentName: jnt_knee_back_right
+      position: {x: 0.031581093, y: -0.4012823, z: 0.0357366}
+      rotation: {x: -4.5133787e-17, y: 0.97201395, z: 4.5133787e-17, w: -0.23492333}
+      scale: {x: 1, y: 1, z: 1}
+    - name: jnt_hips_front_right
+      parentName: jnt_body
+      position: {x: 0.4280659, y: -0.35586873, z: 0.32261902}
+      rotation: {x: 0.37839177, y: 0.78511965, z: -0.34529248, w: -0.34810922}
+      scale: {x: 1, y: 1, z: 1}
+    - name: jnt_knee_front_right
+      parentName: jnt_hips_front_right
+      position: {x: -0.3285314, y: -0.09713422, z: 0.09502879}
+      rotation: {x: -0.35999265, y: -0.5984408, z: -0.23734467, w: 0.6752344}
+      scale: {x: 1, y: 1, z: 1}
+    - name: jnt_ankle_front_right
+      parentName: jnt_knee_front_right
+      position: {x: 0.03436715, y: -0.36506754, z: 0.0131993545}
+      rotation: {x: -0.012161178, y: 0.95257443, z: -0.09433923, w: -0.2890573}
+      scale: {x: 1, y: 1, z: 1}
+    - name: jnt_hips_front_left
+      parentName: jnt_body
+      position: {x: -0.3933694, y: -0.35586873, z: 0.32261902}
+      rotation: {x: 0.14335117, y: 0.7658372, z: -0.48833108, w: -0.3930353}
+      scale: {x: 1, y: 1, z: 1}
+    - name: jnt_knee_front_left
+      parentName: jnt_hips_front_left
+      position: {x: -0.20988947, y: -0.09713422, z: 0.24148534}
+      rotation: {x: -0.41567892, y: -0.567601, z: -0.02048367, w: 0.7103665}
+      scale: {x: 1, y: 1, z: 1}
+    - name: jnt_ankle_front_left
+      parentName: jnt_knee_front_left
+      position: {x: 0.0107134795, y: -0.36506754, z: 0.02534223}
+      rotation: {x: -0.02765603, y: 0.9730376, z: -0.101867184, w: -0.20507605}
+      scale: {x: 1, y: 1, z: 1}
+    - name: jnt_hips_back_left
+      parentName: jnt_body
+      position: {x: -0.38612658, y: -0.31063986, z: -0.43764117}
+      rotation: {x: -2.8913572e-17, y: 0.90262413, z: 2.8913572e-17, w: -0.43042967}
+      scale: {x: 1, y: 1, z: 1}
+    - name: jnt_knee_back_left
+      parentName: jnt_hips_back_left
+      position: {x: -0.10984855, y: -0.07847733, z: 0.238666}
+      rotation: {x: 0, y: -0.63043106, z: -0, w: 0.77624524}
+      scale: {x: 1, y: 1, z: 1}
+    - name: jnt_ankle_back_left
+      parentName: jnt_knee_back_left
+      position: {x: 0.031581093, y: -0.4012823, z: 0.0357366}
+      rotation: {x: -4.5133787e-17, y: 0.97201395, z: 4.5133787e-17, w: -0.23492333}
+      scale: {x: 1, y: 1, z: 1}
+    - name: jnt_butt
+      parentName: jnt_body
+      position: {x: -1.4210854e-16, y: 0.38594952, z: -0.60109717}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.43579507, y: 0.43579507, z: 0.43579507}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -123,7 +258,7 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 1be30e28849de8a45bcf46b5a317b71d, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
