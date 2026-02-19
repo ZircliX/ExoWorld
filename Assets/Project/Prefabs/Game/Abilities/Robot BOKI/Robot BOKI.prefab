@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 0
+  GlobalObjectIdHash: 3079908722
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -76,6 +76,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.Abilities.RobotBoki
   ShowTopMostFoldoutHeaderGroup: 1
   agent: {fileID: 757290549253829827}
+  networkObject: {fileID: 2125148221849584662}
 --- !u!195 &757290549253829827
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -231,7 +232,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 58e4e360bb7938b4aa997dd6d7449c38, type: 2}
+  - {fileID: 2100000, guid: 321265cd47b8f2e41816f71c2b8698b1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
