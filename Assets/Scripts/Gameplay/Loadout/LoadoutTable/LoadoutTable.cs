@@ -4,13 +4,13 @@ using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Gameplay.Cameras;
 using OverBang.ExoWorld.Gameplay.Player.PlayerHUD;
 using UnityEngine;
-using UnityUtils;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public class LoadoutTable : MonoBehaviour, IInteractable
     {
         [Header("Weapon Collections")]
+        [SerializeField] private Transform uiTarget;
         [SerializeField] private WeaponData[] primaryWeaponData;
         [SerializeField] private WeaponData[] secondaryWeaponData;
 
@@ -20,7 +20,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         public int Priority => (int)TargetPriority.High;
         public bool CanInteract { get; private set; } = true;
         public InteractionType SupportedInteractions => InteractionType.Interact;
-        Vector3 IInteractable.UIPosition => transform.position.Add(y: 0.5f);
+        Vector3 IInteractable.UIPosition => uiTarget.position;
 
         public void Interact(PlayerInteraction playerInteraction)
         {

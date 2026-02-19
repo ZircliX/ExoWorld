@@ -3,14 +3,16 @@ using KBCore.Refs;
 using OverBang.ExoWorld.Core.Interactions;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Gameplay.Targeting;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace OverBang.ExoWorld.Gameplay.Abilities
 {
-    public class RobotBoki : MonoBehaviour, ITargetable
+    public class RobotBoki : NetworkBehaviour, ITargetable
     {
         [SerializeField, Self] private NavMeshAgent agent;
+        [SerializeField, Self] private NetworkObject networkObject;
 
         public event Action OnExploded;
         
@@ -62,12 +64,12 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         
         private void OnExplosionStrategyExploded(bool terminated)
         {
-            if (!terminated) 
+            if (!terminated)
                 return;
-            Debug.Log("Destroy RobotBoki");
             
             robotBehaviour.ExplosionStrategy.OnExploded -= OnExplosionStrategyExploded;
             robotBehaviour.Dispose();
+            networkObject.Despawn(true);
             OnExploded?.Invoke();
         }
         

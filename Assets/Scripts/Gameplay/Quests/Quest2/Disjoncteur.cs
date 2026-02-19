@@ -42,10 +42,16 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         public void Interact(PlayerInteraction playerInteraction)
         {
             questTwoHandler ??= questData.GetHandlerByData<QuestTwoHandler>();
-            if (questTwoHandler is {StepIndex: < 2})
-                questTwoHandler.SetStepIndex(2);
+            if (questTwoHandler is { StepIndex: < 2 })
+                UpdateHandlerStepRpc();
             
             AddFusible(playerInteraction);
+        }
+
+        [Rpc(SendTo.Everyone)]
+        private void UpdateHandlerStepRpc()
+        {
+            questTwoHandler.SetStepIndex(2);
         }
 
         public void OnPlayerEnter(PlayerInteraction playerInteraction)
@@ -84,14 +90,20 @@ namespace OverBang.ExoWorld.Gameplay.Quests
                 playerInteraction.DropItem();
                 playerInteraction.RequestUpdateUI(this);
 
-                QuestTwoEvent evt = new QuestTwoEvent(1);
-                ObjectivesManager.DispatchGameEvent(evt);
+                DispatchAddedFusibleRpc();
 
                 if (fusiblesInserted >= questData.TotalPieces)
                 {
                     OnAllFusiblesInserted();
                 }
             }
+        }
+
+        [Rpc(SendTo.Everyone)]
+        private void DispatchAddedFusibleRpc()
+        {
+            QuestTwoEvent evt = new QuestTwoEvent(1);
+            ObjectivesManager.DispatchGameEvent(evt);
         }
 
         private void OnEnter(Collider col, object target)

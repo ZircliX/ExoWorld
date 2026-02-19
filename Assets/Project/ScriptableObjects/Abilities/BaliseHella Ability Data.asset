@@ -25,8 +25,8 @@ MonoBehaviour:
     rid: 402417008147955824
   <AugmentData2>k__BackingField:
     rid: 402417008147955825
-  <BalisePrefab>k__BackingField: {fileID: 689287734001234153, guid: 19eee50d44e89574096d417fe1fbc91e, type: 3}
-  <HealingCircle>k__BackingField: {fileID: 6211125795773073634, guid: 1125ead0acdd6494694a51d488daa494, type: 3}
+  <BalisePrefab>k__BackingField: {fileID: 5702084948040205239, guid: 19eee50d44e89574096d417fe1fbc91e, type: 3}
+  <VfxInitializer>k__BackingField: {fileID: 1184208852431202538, guid: 1125ead0acdd6494694a51d488daa494, type: 3}
   <ThrowForce>k__BackingField: 350
   references:
     version: 2
@@ -47,5 +47,5 @@ MonoBehaviour:
       type: {class: BaliseHellaStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}
       data:
         <Radius>k__BackingField: 10
-        <Duration>k__BackingField: 3
+        <Duration>k__BackingField: 10
         <MinHealth>k__BackingField: 5

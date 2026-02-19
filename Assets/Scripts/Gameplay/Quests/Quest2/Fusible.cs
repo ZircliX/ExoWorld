@@ -1,4 +1,3 @@
-using System;
 using OverBang.ExoWorld.Core.Interactions;
 using Unity.Netcode;
 using UnityEngine;
@@ -50,13 +49,19 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             questTwoHandler ??= questTwoData.GetHandlerByData<QuestTwoHandler>();
             if (questTwoHandler is { StepIndex: < 1 })
             {
-                questTwoHandler.SetStepIndex(1);
+                UpdateHandlerStepRpc();
             }
             
             isPickedUp = true;
             CanInteract = false;
             SetPriority(-1);
             gameObject.SetActive(false); // Hide or trigger pickup animation
+        }
+
+        [Rpc(SendTo.Everyone)]
+        private void UpdateHandlerStepRpc()
+        {
+            questTwoHandler.SetStepIndex(1);
         }
 
         public void OnDrop(PlayerInteraction playerInteraction)
