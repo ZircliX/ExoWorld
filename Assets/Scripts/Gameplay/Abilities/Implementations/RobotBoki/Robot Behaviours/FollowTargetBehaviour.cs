@@ -45,12 +45,12 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             if (currentTarget != null)
             {
                 // Move towards target
-                Vector3 directionToTarget = (currentTarget.Transform.position - agent.transform.position).normalized;
+                Vector3 directionToTarget = (currentTarget.transform.position - agent.transform.position).normalized;
                 agent.transform.rotation = Quaternion.LookRotation(directionToTarget);
                 agent.Move(directionToTarget * (agent.speed * deltaTime));
 
                 // Check if we've reached the target
-                float distanceToTarget = Vector3.Distance(agent.transform.position, currentTarget.Transform.position);
+                float distanceToTarget = Vector3.Distance(agent.transform.position, currentTarget.transform.position);
                 if (distanceToTarget < EXPLOSION_DISTANCE)
                 {
                     Explode();
@@ -69,7 +69,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
                     StrategyData.DetectionRadius, 
                     out ITargetable closest))
             {
-                Debug.DrawLine(agent.transform.position, closest.Transform.position, Color.red, 0.2f);
+                Debug.DrawLine(agent.transform.position, closest.transform.position, Color.red, 0.2f);
                 currentTarget = closest;
             }
         }

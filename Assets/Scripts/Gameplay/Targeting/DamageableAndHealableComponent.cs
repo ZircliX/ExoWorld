@@ -10,7 +10,7 @@ namespace OverBang.ExoWorld.Gameplay.Targeting
     {
         [SerializeField] protected SoundID damagedSound;
         
-        public event Action<float, float> OnHealthChanged;
+        public event Action<float, float, float> OnHealthChanged;
         public float MinHealth { get; private set; }
         [field: SerializeField, ReadOnly] public float Health { get; private set; }
         public float MaxHealth { get; private set; }
@@ -35,7 +35,7 @@ namespace OverBang.ExoWorld.Gameplay.Targeting
             float previousHealth = Health;
             Health = health;
             if (Health <= MinHealth) Health = MinHealth;
-            OnHealthChanged?.Invoke(previousHealth, Health);
+            OnHealthChanged?.Invoke(previousHealth, Health, MaxHealth);
         }
 
         public void Heal(float amount)

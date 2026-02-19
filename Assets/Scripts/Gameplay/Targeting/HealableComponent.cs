@@ -7,7 +7,7 @@ namespace OverBang.ExoWorld.Gameplay.Targeting
     {
         public event Action OnHealed;
 
-        public event Action<float, float> OnHealthChanged;
+        public event Action<float, float, float> OnHealthChanged;
         public float MinHealth { get; }
         public float Health { get; private set; }
         [field: SerializeField] public float MaxHealth { get; private set; }
@@ -20,8 +20,10 @@ namespace OverBang.ExoWorld.Gameplay.Targeting
         
         public void Heal(float amount)
         {
+            float previousHealth = Health;
             Health += amount;
             OnHealed?.Invoke();
+            OnHealthChanged?.Invoke(previousHealth, Health, MaxHealth);
         }
     }
 }

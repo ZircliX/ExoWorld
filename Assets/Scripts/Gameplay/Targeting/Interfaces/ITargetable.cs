@@ -6,8 +6,8 @@ namespace OverBang.ExoWorld.Gameplay.Targeting
 {
     public interface ITargetable
     {
-        event Action<bool> OnTargetableChanged;
-        Transform Transform { get; }
+        event Action<bool> OnTargeted;
+        Transform transform { get; }
         TargetPriority Priority { get; }
         bool IsTargetable { get; }
 

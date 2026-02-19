@@ -4,17 +4,18 @@ using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Core.Utils;
 using OverBang.ExoWorld.Gameplay.Cameras;
 using UnityEngine;
-using UnityUtils;
 
 namespace OverBang.ExoWorld.Gameplay.Upgrade
 {
     public class UpgradeTable : MonoBehaviour, IInteractable
     {
+        [SerializeField] private Transform uiTarget;
+        
         public string InteractionText => string.Empty;
         public int Priority => (int)TargetPriority.High;
         public bool CanInteract { get; private set; } = true;
         public InteractionType SupportedInteractions => InteractionType.Interact;
-        Vector3 IInteractable.UIPosition => transform.position.Add(y: 0.5f);
+        Vector3 IInteractable.UIPosition => uiTarget.position;
         
         public event Action<bool> OnUpgradePanelRequest;
         

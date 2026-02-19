@@ -15,6 +15,9 @@ namespace ZTools.ObjectiveSystem.Sample
 
         private void Start()
         {
+            if (ObjectivesManager.ActiveObjectives.Count == 0) 
+                return;
+            
             IObjectiveHandler objectiveHandler = ObjectivesManager.ActiveObjectives[0];
             
             currentObjectiveHandler = objectiveHandler;
@@ -30,7 +33,7 @@ namespace ZTools.ObjectiveSystem.Sample
             }
         }
 
-        private void OnStepChanged(int obj)
+        private void OnStepChanged(int step)
         {
             UpdateObjectiveUI(currentObjectiveHandler);
         }

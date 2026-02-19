@@ -1,6 +1,7 @@
 using OverBang.ExoWorld.Core.Abilities;
 using OverBang.ExoWorld.Core.Characters;
-using UnityEngine;
+using OverBang.ExoWorld.Core.GameMode.Players;
+using Unity.Netcode;
 
 namespace OverBang.ExoWorld.Gameplay.Abilities
 {
@@ -13,21 +14,37 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         protected ICaster Caster { get; private set; }
         private IAbility<RobotBokiData> ability;
         
+        private NetworkSpawnManager spawnManager;
+        private LocalGamePlayer localPlayer;
+        
         public void Initialize(IAbility<RobotBokiData> ability, ICaster caster, TData data)
         {
             Caster = caster;
             Data = data;
             this.ability = ability;
+            
+            spawnManager = NetworkManager.Singleton.SpawnManager;
+            localPlayer = GamePlayerManager.Instance.GetLocalPlayer();
         }
         
         public virtual void Begin(IAbility<RobotBokiData> ability)
         {
             IRobotBehaviour behaviour = GetRobotBehaviour();
             
-            Robot = Object.Instantiate(ability.DataT.Prefab, Caster.transform.position + Caster.Forward * 1.5f, Caster.transform.rotation);
-            Robot.Initialize(ability.DataT, behaviour);
+            NetworkObject networkObject = spawnManager.InstantiateAndSpawn(ability.DataT.Prefab, 
+                localPlayer.ClientID,
+                true,
+                false,
+                false,
+                Caster.transform.position + Caster.Forward * 1.5f, Caster.transform.rotation);
 
-            Robot.OnExploded += OnRobotExploded;
+            if (networkObject.TryGetComponent(out RobotBoki robot))
+            {
+                Robot = robot;
+                
+                Robot.Initialize(ability.DataT, behaviour);
+                Robot.OnExploded += OnRobotExploded;
+            }
         }
 
         public virtual void Tick(IAbility<RobotBokiData> ability, float deltaTime)
@@ -49,7 +66,6 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         private void OnRobotExploded()
         {
             ability.End();
-            Object.Destroy(Robot.gameObject);
         }
         
         protected abstract IRobotBehaviour GetRobotBehaviour();

@@ -145,7 +145,7 @@ namespace OverBang.ExoWorld.Gameplay.Movement
 
         public void SetDash(bool state)
         {
-            Debug.Log("Setting dash to " + state);
+            //Debug.Log("Setting dash to " + state);
             DashInput = state;
         }
         public bool CanDash() => DashInput;

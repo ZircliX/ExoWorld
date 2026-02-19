@@ -39,11 +39,12 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
 
         [field: SerializeField] public float patrolRadius { get; private set; } = 10f;
 
-        private List<Transform> currentPlayersInRange;
+        private List<ITargetable> currentTargetsInRange;
 
         private EnemyAnimator enemyAnimator;
         [SerializeField, Self] private CapsuleCollider collider; 
         private Vector3 targetPoint;
+        private IDamageable currentDamageable;
         private bool isPatrol;
         private bool isAttacking;
         
@@ -77,7 +78,7 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
             AttackDetectionArea.OnExit -= OnAttackExit;
         }
 
-        private void Damaged(float previousHealth, float currentHealth)
+        private void Damaged(float previousHealth, float currentHealth, float max)
         {
             //Debug.Log($"Remaining Health : {DahComponent.Health}");
             if (currentHealth <= 0)
@@ -96,12 +97,12 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
             {
                 Agent.speed = enemyData.BaseSpeed;
                 FocusDetectionArea.SetRequireInterface<ITargetable>();
-                FocusDetectionArea.SetAllowedTags("Player", "LocalPlayer");
-                AttackDetectionArea.SetRequireInterface<ITargetable>();
-                AttackDetectionArea.SetAllowedTags("Player", "LocalPlayer");
+                //FocusDetectionArea.SetAllowedTags("Player", "LocalPlayer");
+                AttackDetectionArea.SetRequireInterface<IDamageable>();
+                //AttackDetectionArea.SetAllowedTags("Player", "LocalPlayer");
                 
                 // TODO : Setup Health based on enemy data
-                currentPlayersInRange = new List<Transform>();
+                currentTargetsInRange = new List<ITargetable>();
                 EnemyManager.Instance.Register(this);
             }
         }
@@ -130,13 +131,13 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
             if (!IsOwner) return;
             if (!Agent.enabled) return;
             
-            if (currentPlayersInRange.Count <= 0 && !Agent.pathPending && Agent.remainingDistance <= Agent.stoppingDistance && !isAttacking)
+            if (currentTargetsInRange.Count <= 0 && !Agent.pathPending && Agent.remainingDistance <= Agent.stoppingDistance && !isAttacking)
             {
                 ChooseNewDestination();
             }
-            else if (currentPlayersInRange.Count > 0 && !isAttacking)
+            else if (currentTargetsInRange.Count > 0 && !isAttacking)
             {
-                Vector3 target = GetClosestPlayer();
+                Vector3 target = GetClosestTarget();
                 Agent.SetDestination(target);
             }
         }
@@ -160,64 +161,94 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
 
         #region detection
         
-        private Vector3 GetClosestPlayer()
+        private Vector3 GetClosestTarget()
         {
-            Transform closest = currentPlayersInRange[0];
-            if (closest.position == Vector3.zero) return transform.position;
+            ITargetable closest = currentTargetsInRange[0];
+            float closestDistance = Vector3.Distance(transform.position, closest.transform.position);
+            TargetPriority highestPriority = closest.Priority;
             
-            float closestDistance = Vector3.Distance(transform.position, closest.position);
-            
-            foreach (Transform player in currentPlayersInRange)
+            foreach (ITargetable target in currentTargetsInRange)
             {
-                float distance = Vector3.Distance(transform.position, player.position);
+                float distance = Vector3.Distance(transform.position, target.transform.position);
+                TargetPriority priority = target.Priority;
 
-                if (distance < closestDistance)
+                if (distance < closestDistance && 
+                    priority >= highestPriority &&
+                    target.IsTargetable)
                 {
                     closestDistance = distance;
-                    closest = player;
+                    highestPriority = priority;
+                    
+                    closest = target;
                 }
             }
 
-            return closest.position;
+            closest.SetTargetable(true);
+
+            return closest.transform.position;
         }
         
         private void OnEntered(Collider col, object target)
         {
             if (!IsOwner) return;
-            //Debug.Log("player entered !!!!!!!!!");
-            currentPlayersInRange.Add(col.transform);
+            if (target is ITargetable targetable)
+            {
+                currentTargetsInRange.Add(targetable);
+                //Debug.Log("player entered !!!!!!!!!");
+            }
         }
 
         private void OnExited(Collider col, object target)
         {
             if (!IsOwner) return;
-            currentPlayersInRange.Remove(col.transform);
+            if (target is ITargetable targetable)
+            {
+                currentTargetsInRange.Remove(targetable);
+                //Debug.Log("player entered !!!!!!!!!");
+            }
         }
         
         private void OnAttackEnter(Collider col, object target)
         {
             //Debug.Log("player entered, attacking !!!!!!!!!");
+            
+            currentDamageable = target as IDamageable;
+            const float attackOffset = 1.1f + 0.25f;
+            
             isPatrol = false;
             enemyAnimator.SetBool(IsPatrol, isPatrol);
             
             isAttacking = true;
             enemyAnimator.SetBool(IsPunching,  isAttacking);
+
+            _ = HandleAttack(attackOffset);
         }
         
         private void OnAttackExit(Collider col, object target)
         {
             //Debug.Log("player leaving..., chasing !!!!!!!!!!");
+
             isAttacking = false;
             enemyAnimator.SetBool(IsPunching,  isAttacking);
             
             isPatrol = true;
             enemyAnimator.SetBool(IsPatrol, isPatrol);
         }
+
+        private async Awaitable HandleAttack(float attackOffset)
+        {
+            while (isAttacking)
+            {
+                await Awaitable.WaitForSecondsAsync(attackOffset);
+                Damage(currentDamageable);
+                await Awaitable.WaitForSecondsAsync(3.833f - attackOffset);
+            }
+        }
         
         #endregion detection
-        
 
-        protected void OnDeath()
+
+        private void OnDeath()
         {
             collider.enabled = false;
             Agent.enabled = false;
@@ -270,11 +301,11 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
 
         public void Damage(IDamageable damageable)
         {
-            
+            damageable.TakeDamage(DamageData);
         }
         
-        public event Action<bool> OnTargetableChanged;
-        public Transform Transform => transform;
+        public event Action<bool> OnTargeted;
+        
         public TargetPriority Priority { get; private set; } = TargetPriority.Medium;
         public bool IsTargetable => isTargetable && Agent.enabled;
         private bool isTargetable = true;
@@ -282,7 +313,7 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
         public void SetTargetable(bool state)
         {
             isTargetable = state;
-            OnTargetableChanged?.Invoke(state);
+            OnTargeted?.Invoke(state);
         }
 
         public void ApplySlow(float slowPercentage, float slowDuration)

@@ -1,4 +1,5 @@
 using KBCore.Refs;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Abilities
@@ -11,6 +12,34 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
 
         private void OnEnable()
         {
+            DetectionArea.OnEnter += OnEnter;
+            DetectionArea.OnExit += OnExit;
+        }
+
+        private void OnDisable()
+        {
+            DetectionArea.OnEnter -= OnEnter;
+            DetectionArea.OnExit -= OnExit;
+        }
+
+        protected virtual void OnEnter(Collider other, object target){}
+        protected virtual void OnExit(Collider other, object target){}
+    }
+    
+    public abstract class NetworkBaseDetector : NetworkBehaviour
+    {
+        [field: SerializeField, Child] public DetectionArea DetectionArea { get; private set; }
+        
+        private void OnValidate() => this.ValidateRefs();
+
+        private void OnEnable()
+        {
+            if (!IsOwner)
+            {
+                Destroy(DetectionArea);
+                return;
+            }
+            
             DetectionArea.OnEnter += OnEnter;
             DetectionArea.OnExit += OnExit;
         }

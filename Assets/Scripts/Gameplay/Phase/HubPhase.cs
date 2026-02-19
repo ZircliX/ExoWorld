@@ -6,7 +6,6 @@ using OverBang.ExoWorld.Core.Phases;
 using OverBang.ExoWorld.Core.Scene;
 using OverBang.ExoWorld.Core.Utils;
 using OverBang.Pooling;
-using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Scene = UnityEngine.SceneManagement.Scene;

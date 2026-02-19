@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 using ZTools.Logger.Core;
 
 namespace ZTools.ObjectiveSystem.Core
@@ -157,7 +158,11 @@ namespace ZTools.ObjectiveSystem.Core
                 if (objectiveHandler.State == ObjectiveState.Active)
                 {
                     bool madeProgress = objectiveHandler.ProcessEvent(gameEvent);
-                    if (madeProgress) OnObjectiveProgress?.Invoke(objectiveHandler);
+                    if (madeProgress)
+                    {
+                        Debug.Log($"Objective '{objectiveHandler.ObjectiveData.ObjectiveName}' made progress.");
+                        OnObjectiveProgress?.Invoke(objectiveHandler);
+                    }
                 }
             }
         }
@@ -169,7 +174,7 @@ namespace ZTools.ObjectiveSystem.Core
         /// <returns>True if an objective is found, false otherwise.</returns>
         public static bool TryGetCurrentObjective(out IObjectiveHandler objectiveHandler)
         {
-            objectiveHandler = default;
+            objectiveHandler = null;
             
             if (ActiveObjectives.Count > 0)
             {

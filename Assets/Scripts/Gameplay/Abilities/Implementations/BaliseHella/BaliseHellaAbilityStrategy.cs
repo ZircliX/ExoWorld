@@ -2,9 +2,10 @@ using System;
 using System.Collections.Generic;
 using OverBang.ExoWorld.Core.Abilities;
 using OverBang.ExoWorld.Core.Characters;
+using OverBang.ExoWorld.Core.GameMode.Players;
 using OverBang.ExoWorld.Gameplay.Targeting;
+using Unity.Netcode;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace OverBang.ExoWorld.Gameplay.Abilities
 {
@@ -40,11 +41,16 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             }
         }
         
-        protected BaliseHella Balise { get; private set; }
+        protected BaliseHella CurrentBalise { get; private set; }
         protected TData Data { get; private set; }
         protected ICaster Caster { get; private set; }
 
         protected Dictionary<GameObject, DetectedPlayer> players;
+
+        private NetworkSpawnManager spawnManager;
+        private LocalGamePlayer localPlayer;
+
+        private float currentTime;
 
         public void Initialize(IAbility<BaliseHellaData> ability, ICaster caster, TData data)
         {
@@ -52,28 +58,50 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             Data = data;
             
             players = new Dictionary<GameObject, DetectedPlayer>(4);
+            
+            spawnManager = NetworkManager.Singleton.SpawnManager;
+            localPlayer = GamePlayerManager.Instance.GetLocalPlayer();
         }
-        
+
         public virtual void Begin(IAbility<BaliseHellaData> ability)
         {
-            Balise = Object.Instantiate(ability.DataT.BalisePrefab, Caster.transform.position + Caster.Forward, Quaternion.identity);
-            Balise.Initialize(ability.DataT, Caster.Forward, Data.Radius);
+            currentTime = 0;
             
-            Balise.DetectionArea.OnEnter += OnEnter;
-            Balise.DetectionArea.OnExit += OnExit;
+            NetworkObject networkObject =
+                spawnManager.InstantiateAndSpawn(ability.DataT.BalisePrefab, 
+                    localPlayer.ClientID, 
+                    true, 
+                    false, 
+                    false, 
+                    Caster.transform.position + Caster.Forward, Quaternion.identity);
+
+            if (networkObject.TryGetComponent(out BaliseHella balise))
+            {
+                CurrentBalise = balise;
+                
+                CurrentBalise.Initialize(ability.DataT, Caster.Forward, Data.Radius, Data.Duration);
+            
+                CurrentBalise.DetectionArea.OnEnter += OnEnter;
+                CurrentBalise.DetectionArea.OnExit += OnExit;
+            }
         }
 
         public virtual void Tick(IAbility<BaliseHellaData> ability, float deltaTime)
         {
+            currentTime += deltaTime;
+            if (currentTime >= Data.Duration)
+            {
+                ability.End();
+            }
         }
 
         public virtual void End(IAbility<BaliseHellaData> ability)
         {
-            Balise.DetectionArea.OnEnter -= OnEnter;
-            Balise.DetectionArea.OnExit -= OnExit;
+            CurrentBalise.DetectionArea.OnEnter -= OnEnter;
+            CurrentBalise.DetectionArea.OnExit -= OnExit;
             
-            Balise.Stop();
-            Balise = null;
+            CurrentBalise.Stop();
+            CurrentBalise = null;
         }
 
         public void Dispose(IAbility<BaliseHellaData> ability)

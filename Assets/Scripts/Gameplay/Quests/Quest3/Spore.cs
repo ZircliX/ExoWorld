@@ -9,6 +9,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
     public class Spore : NetworkBehaviour, IDamageable
     {
         [SerializeField] private QuestThreeData questThreeData;
+        private QuestThreeHandler questThreeHandler;
 
         private readonly NetworkVariable<float> health = 
             new NetworkVariable<float>(readPerm: NetworkVariableReadPermission.Everyone, 
@@ -18,11 +19,18 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         {
             if (IsOwner)
                 health.Value = questThreeData.SporeHealth;
+            
+            questThreeHandler ??= questThreeData.GetHandlerByData<QuestThreeHandler>();
+            if (questThreeHandler == null)
+            {
+                gameObject.SetActive(false);
+            }
         }
 
         public void TakeDamage(DamageData damage)
         {
-            TakeDamageRpc(damage.baseDamage);
+            if (gameObject.activeSelf)
+                TakeDamageRpc(damage.baseDamage);
         }
         
         [Rpc(SendTo.Owner)]

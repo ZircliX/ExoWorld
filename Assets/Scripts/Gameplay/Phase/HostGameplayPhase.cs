@@ -1,6 +1,5 @@
 ﻿using Eflatun.SceneReference;
 using OverBang.ExoWorld.Core.Scene;
-using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

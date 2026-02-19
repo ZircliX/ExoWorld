@@ -31,19 +31,37 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         }
 
         Vector3 IInteractable.UIPosition => transform.position.Add(y: 1f);
-        
+
+        private void Awake()
+        {
+            questTwoHandler ??= questTwoData.GetHandlerByData<QuestTwoHandler>();
+            if (questTwoHandler == null)
+            {
+                gameObject.SetActive(false);
+                canBePickedUp = false;
+                canBeDropped = false;
+                CanInteract = false;
+            }
+        }
+
         public void OnPickup(PlayerInteraction playerInteraction)
         {
             questTwoHandler ??= questTwoData.GetHandlerByData<QuestTwoHandler>();
             if (questTwoHandler is { StepIndex: < 1 })
             {
-                questTwoHandler.SetStepIndex(1);
+                UpdateHandlerStepRpc();
             }
             
             isPickedUp = true;
             CanInteract = false;
             SetPriority(-1);
             gameObject.SetActive(false); // Hide or trigger pickup animation
+        }
+
+        [Rpc(SendTo.Everyone)]
+        private void UpdateHandlerStepRpc()
+        {
+            questTwoHandler.SetStepIndex(1);
         }
 
         public void OnDrop(PlayerInteraction playerInteraction)

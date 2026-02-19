@@ -12,13 +12,12 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         public QuestManager()
         {
             quests = Resources.LoadAll<ObjectiveData>("Quests");
-            Debug.Log($"Loaded {quests.Length} quests");
             ObjectivesManager.OnObjectiveProgress += OnObjectiveProgress;
         }
 
         private void OnObjectiveProgress(IObjectiveHandler handler)
         {
-            if (handler.State == ObjectiveState.Completed &&
+            if (handler.State is ObjectiveState.Completed or ObjectiveState.Disposed &&
                 handler.ObjectiveData == currentQuest)
             {
                 Debug.Log($"Quest {currentQuest.Name} completed!");
@@ -41,7 +40,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             
             currentQuest = quests[currentQuestIndex];
             currentQuest.AddObjective();
-            Debug.Log($"Queuing quest {currentQuest.Name}");
+            //Debug.Log($"Queuing quest {currentQuest.Name}");
             
             currentQuestIndex++;
         }
