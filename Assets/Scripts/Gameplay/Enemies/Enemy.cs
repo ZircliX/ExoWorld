@@ -97,8 +97,10 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
             {
                 Agent.speed = enemyData.BaseSpeed;
                 FocusDetectionArea.SetRequireInterface<ITargetable>();
+                FocusDetectionArea.GetCollider<SphereCollider>().radius = enemyData.TriggerDetectionRadius;
                 //FocusDetectionArea.SetAllowedTags("Player", "LocalPlayer");
                 AttackDetectionArea.SetRequireInterface<IDamageable>();
+                AttackDetectionArea.GetCollider<SphereCollider>().radius = enemyData.AttackDetectionRadius;
                 //AttackDetectionArea.SetAllowedTags("Player", "LocalPlayer");
                 
                 // TODO : Setup Health based on enemy data

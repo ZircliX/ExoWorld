@@ -14,12 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.EnemyData
   <EnemyName>k__BackingField: Brutor
   <EnemyType>k__BackingField: 1
-  <DamageInfo>k__BackingField:
-    baseDamage: 50
+  <DamageData>k__BackingField:
+    baseDamage: 0
     weakSpotMultiplier: 0
-    bonusDamage: 0
   <BaseHealth>k__BackingField: 250
   <BaseSpeed>k__BackingField: 3
+  <RagdollDuration>k__BackingField: 2
+  <TriggerDetectionRadius>k__BackingField: 35
+  <AttackDetectionRadius>k__BackingField: 5
   <ModelPrefab>k__BackingField: {fileID: 6050217233775909602, guid: 443f66e240b61d24bb6e73a9f16ca868, type: 3}
   <EnemyPrefab>k__BackingField: {fileID: 827771057727792807, guid: f615e6bd2f350664a9f5d3e82c0f415c, type: 3}
   <Dependencies>k__BackingField:
