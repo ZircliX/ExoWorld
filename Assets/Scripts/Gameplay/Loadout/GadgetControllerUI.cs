@@ -84,7 +84,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
                 else
                 {
                     gadgetUi.SetSelectable(false);
-                    gadgetUi.Clear();
+                    gadgetUi.Mask();
                 }
                 i++;
             }

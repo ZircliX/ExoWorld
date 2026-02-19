@@ -2,7 +2,6 @@
 using KBCore.Refs;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Gameplay.Abilities;
-using OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout.ParalixGadget
@@ -10,7 +9,9 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.ParalixGadget
     public class ParalixGrenadeEntity : MonoBehaviour
     {
         [SerializeField, Self] private Rigidbody rb;
+        [SerializeField, Self] private TrailRenderer trail;
         [SerializeField] private Collider collider;
+
         
         private IExplosionStrategy strategy;
 
@@ -28,6 +29,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.ParalixGadget
         {
             rb.isKinematic = value;
             collider.isTrigger = value;
+            trail.enabled = !value;
         }
         
         public void Initialize(ParalixGrenadeData data, Vector3 direction, ParalixGrenade grenade)
@@ -66,6 +68,13 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.ParalixGadget
         private void OnExploded(bool terminated)
         {
             BroAudio.Play(data.SoundID);
+            
+            if (data.ExplosionEffect != null)
+            {
+                ParticleSystem ps = Instantiate(data.ExplosionEffect, transform.position, Quaternion.identity);
+                Destroy(ps.gameObject, ps.main.duration);
+            }
+            
             if (terminated)
             {
                 strategy.OnExploded -= OnExploded;

@@ -9,10 +9,11 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.ShockGadget
     public class ShockGrenadeEntity : MonoBehaviour
     {
         [SerializeField, Self] private Rigidbody rb;
+        [SerializeField, Self] private TrailRenderer trail;
         [SerializeField] private Collider collider;
         
         private IExplosionStrategy strategy;
-
+        
         private ShockGrenadeData data;
         private ShockGrenade shockGrenade;
         private float time;
@@ -27,6 +28,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.ShockGadget
         {
             rb.isKinematic = value;
             collider.isTrigger = value;
+            trail.enabled = !value;
         }
 
         public void Initialize(ShockGrenadeData data, Vector3 direction, ShockGrenade shockGrenade)
@@ -65,6 +67,12 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.ShockGadget
         private void OnExploded(bool terminated)
         {
             BroAudio.Play(data.SoundID);
+            
+            if (data.ExplosionEffect != null)
+            {
+                ParticleSystem ps = Instantiate(data.ExplosionEffect, transform.position, Quaternion.identity);
+                Destroy(ps.gameObject, ps.main.duration);
+            }
             
             if (terminated)
             {

@@ -1,9 +1,9 @@
-﻿using Ami.BroAudio;
+﻿using System.Collections;
+using Ami.BroAudio;
 using KBCore.Refs;
 using OverBang.ExoWorld.Core.GameMode.Players;
-using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Gameplay.Abilities;
-using OverBang.ExoWorld.Gameplay.Loadout.ShockGadget;
+using OverBang.ExoWorld.Gameplay.Player;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout.LifePulseGadget
@@ -31,49 +31,38 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.LifePulseGadget
             collider.isTrigger = value;
         }
         
-        public void Initialize(LifePulseData data, Vector3 direction, LifePulse lifePulse)
+        public void Initialize(LifePulseData data, LifePulse lifePulse)
         {
-            strategy = new HealingExplosion(data.HealthAmount);
             this.lifePulseGrenade = lifePulse;
             this.data = data;
-            strategy.OnExploded += OnExploded;
             FreezeGrenade(false);
-        }
-        
-        
-        public void Tick(float deltaTime)
-        {
-            if (time < data.ExplosionDelay)
+            
+            LocalGamePlayer localGamePlayer = GamePlayerManager.Instance.GetLocalPlayer();
+            Transform player = localGamePlayer.CurrentPlayerObject.transform.GetChild(1);
+            if (player.TryGetComponent(out PlayerEntity playerEntity))
             {
-                time += deltaTime;
-            }
-            else if (!isDetonated)
-            {
-                strategy.Explode(() =>
-                {
-                    Collider[] colliders = Physics.OverlapSphere(
-                        transform.position,
-                        data.ExplosionRadius,
-                        GameMetrics.Global.HittableLayers,
-                        QueryTriggerInteraction.Collide);
-
-                    return colliders;
-                });
-                
-                isDetonated = true;
+                playerEntity.DamageableAndHealableComponent.Heal(data.HealthAmount);
+                MeshRenderer meshRenderer = gameObject.GetComponentInChildren<MeshRenderer>();
+                meshRenderer.enabled = false;
+                StartCoroutine(OnHealed());
             }
         }
         
-        private void OnExploded(bool terminated)
+        private IEnumerator OnHealed()
         {
             BroAudio.Play(data.SoundID);
-            if (terminated)
+            
+            if (data.ExplosionEffect != null)
             {
-                strategy.OnExploded -= OnExploded;
+                ParticleSystem ps = Instantiate(data.ExplosionEffect, transform.position, Quaternion.identity);
+                
+                float mainDuration = ps.main.duration;
+                Destroy(ps.gameObject, mainDuration);
+                
+                yield return new WaitForSeconds(mainDuration);
                 End();
             }
         }
-        
         
         private void End()
         {

@@ -16,16 +16,19 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
 
         public void Ragdoll(bool value)
         {
-            ModelAnimator.enabled = !value;
+            if (ragdollRigidbodies != null && ragdollColliders != null)
+            {
+                ModelAnimator.enabled = !value;
 
-            foreach (Rigidbody rb in ragdollRigidbodies)
-            {
-                rb.isKinematic = !value;
-            }
-            
-            foreach (Collider col in ragdollColliders)
-            {
-                col.enabled = value;
+                foreach (Rigidbody rb in ragdollRigidbodies)
+                {
+                    rb.isKinematic = !value;
+                }
+
+                foreach (Collider col in ragdollColliders)
+                {
+                    col.enabled = value;
+                }
             }
         }
 

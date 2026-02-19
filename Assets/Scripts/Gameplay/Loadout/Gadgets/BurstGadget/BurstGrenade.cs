@@ -1,24 +1,19 @@
 ﻿using System;
 using OverBang.ExoWorld.Core.Abilities;
 using OverBang.ExoWorld.Core.Abilities.Gadgets;
-using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
 {
     public class BurstGrenade : IGadget
     {
-        
         GadgetData IGadget.Data => Data;
         public BurstGrenadeData Data { get; private set; }
-        
         public ICaster Caster { get; private set; }
-
         public bool IsEquiped { get; private set; }
         public bool IsCasting { get; private set; }
-        public event Action OnGadgetEnded;
-        
-        public event Action OnGadgetBeingCasted;
+        public event Action<IGadget> OnGadgetCasted;
+        public event Action<IGadget> OnGadgetEnded;
         
         private BurstGrenadeEntity grenadeEntity;
         private bool isLaunched;
@@ -30,11 +25,10 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
         
         public void Begin(ICaster caster)
         {
-            isLaunched = false;
             Caster = caster;
+            isLaunched = false;
             IsEquiped = true;
             IsCasting = false;
-            
             
             grenadeEntity = Object.Instantiate(Data.Prefab, Caster.CastAnchor);
             grenadeEntity.FreezeGrenade(true);
@@ -45,6 +39,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
             isLaunched = true;
             IsCasting = true;
             grenadeEntity.Initialize(Data, caster.CastAnchor.forward, this);
+            OnGadgetCasted?.Invoke(this);
         }
 
         public void Tick(float deltaTime)
@@ -58,17 +53,22 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
 
         public void End()
         {
-            IsEquiped = false;
-            IsCasting = false;
-            isLaunched = false;
-            OnGadgetEnded?.Invoke();
+            OnGadgetEnded?.Invoke(this);
+            Reset();
         }
 
         public void Discard()
         {
             Object.Destroy(grenadeEntity.gameObject);
             grenadeEntity = null;
-            End();
+            Reset();
+        }
+
+        private void Reset()
+        {
+            IsEquiped = false;
+            IsCasting = false;
+            isLaunched = false;
         }
     }
 }

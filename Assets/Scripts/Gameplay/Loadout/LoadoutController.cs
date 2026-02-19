@@ -38,7 +38,12 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             weaponController.Initialize(this);
             gadgetController.Initialize(this);
         }
-        
+
+        private void Update()
+        {
+            Debug.Log(current);
+        }
+
         #region Receivers
 
             public void SwitchReceiver(IInputReceiver receiver)

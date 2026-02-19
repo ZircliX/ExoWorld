@@ -1,6 +1,5 @@
 ﻿using OverBang.ExoWorld.Core.Abilities.Gadgets;
 using OverBang.ExoWorld.Core.Damage;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout.ParalixGadget
