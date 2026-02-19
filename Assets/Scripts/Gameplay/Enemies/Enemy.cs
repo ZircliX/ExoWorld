@@ -253,7 +253,7 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
             collider.enabled = false;
             Agent.enabled = false;
             enemyAnimator.Ragdoll(true);
-            Invoke(nameof(WaitUntilRagdoll), 2f);
+            Invoke(nameof(WaitUntilRagdoll), enemyData.RagdollDuration);
         }
 
         private void WaitUntilRagdoll()
