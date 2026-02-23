@@ -17,6 +17,7 @@ Material:
   - _DISABLE_SSR
   - _DISABLE_SSR_TRANSPARENT
   - _DOUBLESIDED_ON
+  - _MATERIAL_FEATURE_TRANSMISSION
   m_InvalidKeywords:
   - _HEIGHTMAP
   - _MASKMAP
@@ -160,12 +161,12 @@ Material:
     m_Ints: []
     m_Floats:
     - Animation_Cutoff: 20
-    - Distance_Fade_End: 80
-    - Distance_Fade_Start: 40
+    - Distance_Fade_End: 40
+    - Distance_Fade_Start: 15
     - Vector1_593c5cea6c4a42e993ed03ced4685732: 0.5
     - Vector1_8651797e3e304e108dbd25f9d5a426ba: 1
-    - Vector1_a5b8b09028ce49a39f4d090894c89e22: 0.4
-    - Vector1_a5b8b09028ce49a39f4d090894c89e22_1: 0.4
+    - Vector1_a5b8b09028ce49a39f4d090894c89e22: 0.2
+    - Vector1_a5b8b09028ce49a39f4d090894c89e22_1: 0.2
     - Vector1_a6983181c8dc4691ba6a28a34c4223a6: 1
     - Wind_Blast: 0.05
     - Wind_Intensity: 0.25
@@ -233,7 +234,7 @@ Material:
     - _IridescenceMask: 1
     - _IridescenceThickness: 1
     - _LinkDetailsWithBase: 1
-    - _MaterialID: 1
+    - _MaterialID: 5
     - _MaterialTypeMask: 32
     - _Metallic: 0
     - _MetallicRemapMax: 1
@@ -242,6 +243,7 @@ Material:
     - _NormalScale: 1
     - _ObjectSpaceUVMapping: 0
     - _ObjectSpaceUVMappingEmissive: 0
+    - _Offset_UV: 0
     - _OpaqueCullMode: 2
     - _PPDLodThreshold: 5
     - _PPDMaxSamples: 15
@@ -278,6 +280,7 @@ Material:
     - _TexWorldScale: 1
     - _TexWorldScaleEmissive: 1
     - _Thickness: 0
+    - _Tiling_UV: 1
     - _TransmissionEnable: 1
     - _TransmissionMask: 1
     - _TransparentBackfaceEnable: 0
@@ -307,6 +310,7 @@ Material:
     - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
+    - _Offset_UV: {r: 0, g: 0, b: 0, a: 0}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _ThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _Thickness_Remap: {r: 1, g: 2, b: 0, a: 0}
