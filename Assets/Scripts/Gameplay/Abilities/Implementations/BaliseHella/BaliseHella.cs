@@ -19,6 +19,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             DetectionArea.SetAllowedTags("Player", "LocalPlayer");
             
             rb.AddForce(Vector3.up * 0.5f + direction * data.ThrowForce * Time.deltaTime, ForceMode.Impulse);
+            Invoke(nameof(FreezePosition), 1f);
 
             // VFX
             BaliseVfxInitializer vfx = Instantiate(data.VfxInitializer, bottom.position, Quaternion.identity, transform);
@@ -28,12 +29,9 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             healingCircle.Play();
         }
 
-        private void Update()
+        private void FreezePosition()
         {
-            if (rb.linearVelocity.sqrMagnitude < 1f)
-            {
-                rb.constraints = RigidbodyConstraints.FreezeAll;
-            }
+            rb.constraints = RigidbodyConstraints.FreezeAll;
         }
 
         public void Stop()

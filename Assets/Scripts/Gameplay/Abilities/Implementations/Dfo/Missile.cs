@@ -108,9 +108,8 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         private void Cleanup()
         {
             //Cleanup
-            missileSmoke.transform.parent = null;
             missileSmoke.Stop();
-            Destroy(missileSmoke.gameObject, missileSmoke.main.duration);
+            missileSmoke.gameObject.SetActive(false);
             
             if (preview != null) Destroy(preview.gameObject);
             soundSource.Stop();

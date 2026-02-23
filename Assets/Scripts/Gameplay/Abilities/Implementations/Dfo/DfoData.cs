@@ -1,4 +1,5 @@
 using OverBang.ExoWorld.Core.Characters;
+using OverBang.Pooling.Resource;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -15,6 +16,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         
         [field: Header("Missile Spawn")]
         [field: SerializeField] public NetworkObject MissilePrefab { get; private set; }
+        [field: SerializeField] public PoolResource MissileResource { get; private set; }
         [field: SerializeField] public float HeightSpawn { get; private set; }
         [field: SerializeField] public float SpawnDuration { get; private set; }
         

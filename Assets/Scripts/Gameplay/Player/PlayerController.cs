@@ -59,19 +59,11 @@ namespace OverBang.ExoWorld.Gameplay.Player
                     playerComponent.OnSync(context);
                 }
                 
-                PlayerManager.Instance.RegisterPlayer(this);
-
                 if (IsOwner)
                 {
                     CameraManager.Instance.RequestCameraChange(CameraIDs.Global.PlayerViewCamera);
                 }
             }
-        }
-
-        public override void OnDestroy()
-        {
-            base.OnDestroy();
-            PlayerManager.Instance.UnregisterPlayer(this);
         }
     }
 }

@@ -1,5 +1,4 @@
-using Helteix.Singletons.MonoSingletons;
-using OverBang.ExoWorld.Core.Scene;
+using Helteix.Singletons.SceneServices;
 using OverBang.ExoWorld.Gameplay.Level;
 using OverBang.Pooling;
 using OverBang.Pooling.Resource;
@@ -7,32 +6,20 @@ using Unity.Netcode;
 
 namespace OverBang.ExoWorld.Gameplay.Network
 {
-    public class PoolAssetNetworkHandler : MonoSingleton<PoolAssetNetworkHandler>
+    public class PoolAssetNetworkHandler : SceneService<PoolAssetNetworkHandler>
     {
         private void OnEnable()
-        {
-            SceneLoader.OnPreSceneLoad += Desactivate;
-            SceneLoader.OnPostSceneLoad += Activate;
-        }
-
-        private void OnDisable()
-        {
-            SceneLoader.OnPreSceneLoad -= Desactivate;
-            SceneLoader.OnPostSceneLoad -= Activate;
-        }
-
-        private void Activate()
         {
             PoolManager.Instance.OnPoolAssetRegistered += OnPoolAssetRegistered;
             PoolManager.Instance.OnPoolAssetUnregistered += OnPoolAssetUnregistered;
         }
 
-        private void Desactivate()
+        private void OnDisable()
         {
             PoolManager.Instance.OnPoolAssetRegistered -= OnPoolAssetRegistered;
             PoolManager.Instance.OnPoolAssetUnregistered -= OnPoolAssetUnregistered;
         }
-        
+
         private void OnPoolAssetRegistered(PoolResource resource)
         {
             switch (resource.Asset)
@@ -41,6 +28,7 @@ namespace OverBang.ExoWorld.Gameplay.Network
                     if (!prefabPoolAsset.Prefab.TryGetComponent(out NetworkObject networkObject))
                         return;
                     
+                    //Debug.LogError($"Registering prefab {prefabPoolAsset.Prefab.name} as network prefab");
                     PoolingNetworkPrefabHandler networkPrefabHandler = new PoolingNetworkPrefabHandler(resource);
                     NetworkManager.Singleton.PrefabHandler.AddHandler(networkObject, networkPrefabHandler);
                     break;
