@@ -7,7 +7,7 @@ namespace OverBang.ExoWorld.Gameplay.Targeting
     {
         public event Action OnHealed;
 
-        public event Action<float, float, float> OnHealthChanged;
+        public event IHealth.HealthChanged OnHealthChanged;
         public float MinHealth { get; }
         public float Health { get; private set; }
         [field: SerializeField] public float MaxHealth { get; private set; }

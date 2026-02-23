@@ -1,6 +1,8 @@
-﻿using OverBang.ExoWorld.Core.Enemies;
+﻿using System;
+using OverBang.ExoWorld.Core.Enemies;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace OverBang.ExoWorld.Gameplay.Enemies
 {
@@ -28,11 +30,34 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
         
         public int GetEnemyAmountThisWave(int initialAmount, float multiplier)
         {
-            int Value = Mathf.CeilToInt(initialAmount * multiplier);
-            return  Value;
+            int val = Mathf.CeilToInt(initialAmount * multiplier);
+            return  val;
         }
         
+        // Calculate total time for all waves
+
+        [SerializeField, ReadOnly] private float totalTime;
+
+        private void OnValidate()
+        {
+            totalTime = 0;
+            float multi = 1;
+            
+            for (int i = 0; i < WaveAmount; i++)
+            {
+                int enemies = Mathf.RoundToInt(InitialEnemyAmountInWave * multi);
+                
+                for (int j = 0; j < enemies; j++)
+                {
+                    totalTime += Random.Range(MinMaxSpawnIntervals.x, MinMaxSpawnIntervals.y);
+                }
+
+                multi *= EnemyAmountMultiplier;
+                totalTime += TimeBetweenWaves;
+            }
+        }
+
         #endregion Wave
-        
+
     }
 }

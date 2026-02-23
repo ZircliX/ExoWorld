@@ -4,7 +4,7 @@ using ZTools.ObjectiveSystem.Core;
 namespace OverBang.ExoWorld.Gameplay.Quests
 {
     [CreateAssetMenu(fileName = "QuestTwo", menuName = "OverBang/ObjectiveData/QuestTwo", order = 1)]
-    public class QuestTwoData : ObjectiveData
+    public class QuestTwoData : ObjectiveDataQuest
     {
         [field: SerializeField] public int TotalPieces { get; private set; } = 4;
         [field: SerializeField] public float InteractionRange { get; private set; } = 4;

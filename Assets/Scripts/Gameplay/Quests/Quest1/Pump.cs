@@ -46,6 +46,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         {
             Health = MaxHealth;
             oneHandler = questOneData.GetHandlerByData<QuestOneHandler>();
+            if (oneHandler == null) gameObject.SetActive(false);
             
             enterDetectionArea.SetAllowedTags("Player", "LocalPlayer");
         }
@@ -90,13 +91,14 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         [Rpc(SendTo.Everyone)]
         private void InvokePumpStartRpc()
         {
+            Health = questOneData.TotalRepairHealth;
             IsStarted = true;
             oneHandler.SetStepIndex(2);
         }
 
         public void TakeDamage(DamageData damage)
         {
-            if (IsOwner)
+            if (IsOwner && Health > 0)
             {
                 CallHitPumpRpc();
             }
@@ -111,10 +113,12 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         private void DamagePump()
         {
             Health--;
+            Debug.Log("Pump health: " + Health);
             
             if (Health <= 0)
             {
                 ResetPumpRpc();
+                LevelManager.Instance.EnemySpawnerManager.StopWaveMode(questOneData.EnemySpawnScenario);
             }
             
             OnDamaged?.Invoke();
@@ -123,11 +127,10 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         [Rpc(SendTo.Everyone)]
         private void ResetPumpRpc()
         {
-            Health = questOneData.TotalRepairHealth;
             IsStarted = false;
             CurrentRepairTime = 0;
-            oneHandler?.SetStepIndex(1);
             ObjectivesManager.DispatchGameEvent(new QuestOneEvent(0, questOneData.RepairTimeRequired));
+            oneHandler?.SetStepIndex(1);
         }
         
         public void SetTargetable(bool state)

@@ -8,7 +8,5 @@ namespace OverBang.ExoWorld.Gameplay.Quests
     public class TrinititeRewardData : RewardData
     {
         [field : SerializeField] public ItemData TrinititeData {get; private set;}
-        
-        
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using OverBang.ExoWorld.Core.Characters;
+using OverBang.ExoWorld.Core.Damage;
 using OverBang.ExoWorld.Core.Interactions;
 using OverBang.ExoWorld.Core.Upgrade;
 using OverBang.ExoWorld.Gameplay.Targeting;
@@ -8,40 +9,33 @@ using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Player
 {
-    public class PlayerEntity : MonoBehaviour, IPlayerComponent, ITargetable, ISlowable
+    public class PlayerEntity : MonoBehaviour, IPlayerComponent, ITargetable, ISlowable, IDamageable, IHealable, IHealth
     {
-        [field: SerializeField] public DamageableAndHealableComponent DamageableAndHealableComponent { get; private set; }
-        public PlayerController Controller { get; set; }
+        public PlayerController Controller { get; private set; }
         private CharacterData characterData;
 
         private void OnEnable()
         {
             UpgradeManager.Instance.OnUpgrade += Initialize;
-            DamageableAndHealableComponent.OnHealthChanged += OnHealthChanged;
         }
 
         private void OnDisable()
         {
             UpgradeManager.Instance.OnUpgrade -= Initialize;
-            DamageableAndHealableComponent.OnHealthChanged -= OnHealthChanged;
         }
 
         public void OnSync(PlayerRuntimeContext context)
         {
             characterData = context.playerCharacterData;
+            Controller = context.playerController;
             Initialize();
         }
         
         private void Initialize()
         {
-            DamageableAndHealableComponent.Initialize(
-                characterData.BaseStats.Health + UpgradeManager.Instance.GetRuntimeUpgrade(UpgradeType.Health),
-                characterData.BaseStats.Resistance + UpgradeManager.Instance.GetRuntimeUpgrade(UpgradeType.Resistance));
-        }
-        
-        private void OnHealthChanged(float previous, float current, float max)
-        {
-            Controller.LocalGamePlayer.SetHealth(current);
+            Controller.LocalGamePlayer.SetMaxHealth(characterData.BaseStats.Health + UpgradeManager.Instance.GetRuntimeUpgrade(UpgradeType.Health));
+            Controller.LocalGamePlayer.SetHealth(Controller.LocalGamePlayer.MaxHealth);
+            //characterData.BaseStats.Resistance + UpgradeManager.Instance.GetRuntimeUpgrade(UpgradeType.Resistance));
         }
 
         public event Action<bool> OnTargeted;
@@ -59,6 +53,29 @@ namespace OverBang.ExoWorld.Gameplay.Player
             Debug.Log("c'est pas implémenter, et franchement, " +
                       "aller changer dans le script de 700 lignes pour slow le joueurs," +
                       " j'ai pas les épaules");
+        }
+
+        public void TakeDamage(DamageData damage)
+        {
+            if (Health - damage.baseDamage >= MaxHealth)
+            {
+                Controller.LocalGamePlayer.SetHealth(Health - damage.baseDamage);
+            }
+        }
+
+        public void Heal(float amount)
+        {
+            float health = Health + amount;
+            Controller.LocalGamePlayer.SetHealth(Mathf.Min(health, MaxHealth));
+        }
+
+        public event IHealth.HealthChanged OnHealthChanged;
+        public float MinHealth { get; private set; }
+        public float Health => Controller.LocalGamePlayer.Health;
+        public float MaxHealth => Controller.LocalGamePlayer.MaxHealth;
+        public void SetMinHealth(float minHealth)
+        {
+            MinHealth = minHealth;
         }
     }
 }

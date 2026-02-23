@@ -23,9 +23,9 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             {
                 Collider col = colliders[i];
                 
-                if (col.TryGetComponent(out PlayerEntity damageable))
+                if (col.TryGetComponent(out PlayerEntity playerEntity))
                 {
-                    damageable.DamageableAndHealableComponent.Heal(healingValue);
+                    playerEntity.Heal(healingValue);
                 }
             }
         }

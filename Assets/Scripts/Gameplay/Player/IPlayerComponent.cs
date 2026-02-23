@@ -2,7 +2,7 @@
 {
     public interface IPlayerComponent
     {
-        PlayerController Controller { get; set; }
+        PlayerController Controller { get; }
         void OnSync(PlayerRuntimeContext context);
     }
 }

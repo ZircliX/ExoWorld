@@ -10,7 +10,7 @@ namespace OverBang.ExoWorld.Gameplay.Movement
     {
         [field: SerializeField] public CameraController CameraController { get; private set; }
 
-        public PlayerController Controller { get; set; }
+        public PlayerController Controller { get; private set; }
         public Animator PlayerAnimator { get; private set; }
 
         protected override void Awake()
