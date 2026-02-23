@@ -36,7 +36,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.LifePulseGadget
             grenadeEntity.FreezeGrenade(true);
         }
 
-        public void Cast(ICaster caster)
+        public void Cast(Camera cam)
         {
             isLaunched = true;
             IsCasting = true;

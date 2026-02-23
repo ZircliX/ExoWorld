@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace OverBang.ExoWorld.Core.Abilities.Gadgets
 {
@@ -11,7 +12,7 @@ namespace OverBang.ExoWorld.Core.Abilities.Gadgets
         
         GadgetData Data { get; }
         void Begin(ICaster caster);
-        void Cast(ICaster caster);
+        void Cast(Camera cam);
         void Tick(float deltaTime);
         void End();
         void Discard();

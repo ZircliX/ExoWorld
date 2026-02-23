@@ -31,6 +31,16 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         public event Action<LocalGamePlayer> OnGadgetSelectionBegin; 
         public event Action OnGadgetSelectionEnd; 
         
+        private Camera cam;
+        public Camera InteractionCamera
+        {
+            get
+            {
+                if (cam == null) cam = Camera.main;
+                return cam;
+            }
+        }
+        
         
         public void Initialize(LoadoutController loadoutController)
         {
@@ -114,7 +124,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private void CastGadget()
         {
             player.GadgetInventory.RemoveGadget(currentGadgetData, 1);
-            currentGadget.Cast(this);
+            currentGadget.Cast(InteractionCamera);
             currentGadget.OnGadgetEnded += OnGadgetEnded;
             
             castedGadgets.Add(currentGadget);

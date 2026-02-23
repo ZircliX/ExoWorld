@@ -1,6 +1,7 @@
 using System;
 using OverBang.ExoWorld.Core.Abilities;
 using OverBang.ExoWorld.Core.Abilities.Gadgets;
+using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
@@ -35,11 +36,12 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
             grenadeEntity.FreezeGrenade(true);
         }
 
-        public void Cast(ICaster caster)
+        public void Cast(Camera cam)
         {
             isLaunched = true;
             IsCasting = true;
-            grenadeEntity.Initialize(Data, caster.CastAnchor.forward, this);
+            
+            grenadeEntity.Initialize(Data, cam.transform.forward, this);
         }
 
         public void Tick(float deltaTime)
