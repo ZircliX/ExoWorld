@@ -62,7 +62,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             
             float current = objectiveHandler.CurrentProgress.currentProgress;
             float target = objectiveHandler.CurrentProgress.targetProgress;
-            bool madeProgress = current > 0 && current < target;
+            bool madeProgress = current > 0 && current <= target;
             
             string stepText = objectiveHandler.ObjectiveData.ObjectiveSteps[objectiveHandler.StepIndex];
             string progressText = madeProgress ? $"({current:0}/{target:0})" : string.Empty;
@@ -87,6 +87,9 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             if (currentObjectiveHandler.ObjectiveData is ObjectiveDataQuest { Reward: TrinititeRewardData trinititeRewardData } questData)
             {
                 questCompleteRewardText.text = $"{trinititeRewardData.TrinititeData.ItemName} : {trinititeRewardData.TrinititeData.Quantity}";
+                Debug.Log(questCompleteRewardImage);
+                Debug.Log(questCompleteRewardImage.sprite);
+                Debug.Log(trinititeRewardData.TrinititeData.Icon);
                 questCompleteRewardImage.sprite = trinititeRewardData.TrinititeData.Icon;
             }
             

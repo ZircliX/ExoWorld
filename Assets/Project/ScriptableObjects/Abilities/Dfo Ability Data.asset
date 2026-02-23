@@ -54,7 +54,7 @@ MonoBehaviour:
         <MissileCount>k__BackingField: 20
         <DiameterSpawn>k__BackingField: 5
         <Damage>k__BackingField:
-          baseDamage: 0
+          baseDamage: 100
           weakSpotMultiplier: 1.5
     - rid: 402416982411968636
       type: {class: DfoStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}
@@ -63,7 +63,7 @@ MonoBehaviour:
         <MissileCount>k__BackingField: 20
         <DiameterSpawn>k__BackingField: 20
         <Damage>k__BackingField:
-          baseDamage: 100
+          baseDamage: 200
           weakSpotMultiplier: 1.5
     - rid: 402417374115397759
       type: {class: DfoStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}
@@ -72,5 +72,5 @@ MonoBehaviour:
         <MissileCount>k__BackingField: 15
         <DiameterSpawn>k__BackingField: 10
         <Damage>k__BackingField:
-          baseDamage: 150
+          baseDamage: 100
           weakSpotMultiplier: 0
