@@ -12,7 +12,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.ShockGadget
         public ICaster Caster { get; private set; }
         public bool IsEquiped { get; private set; }
         public bool IsCasting { get; private set; }
-        public event Action<IGadget> OnGadgetCasted;
+        
         public event Action<IGadget> OnGadgetEnded;
 
         private ShockGrenadeEntity grenadeEntity;
@@ -38,7 +38,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.ShockGadget
             isLaunched = true;
             IsCasting = true;
             grenadeEntity.Initialize(Data, caster.CastAnchor.forward, this);
-            OnGadgetCasted?.Invoke(this);
         }
 
         public void Tick(float deltaTime)

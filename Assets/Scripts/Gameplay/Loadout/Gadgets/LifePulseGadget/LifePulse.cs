@@ -14,7 +14,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.LifePulseGadget
         public bool IsEquiped { get; private set; }
         public bool IsCasting { get; private set; }
         
-        public event Action<IGadget> OnGadgetCasted;
+        
         public event Action<IGadget> OnGadgetEnded;
         
         private LifePulseEntity grenadeEntity;
@@ -41,7 +41,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.LifePulseGadget
             isLaunched = true;
             IsCasting = true;
             grenadeEntity.Initialize(Data, this);
-            OnGadgetCasted?.Invoke(this);
+           
         }
 
         public void Tick(float deltaTime)

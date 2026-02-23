@@ -14,7 +14,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
 
         public bool IsEquiped { get; private set; }
         public bool IsCasting { get; private set; }
-        public event Action<IGadget> OnGadgetCasted;
+        
         public event Action<IGadget> OnGadgetEnded;
         
         private FrostBiteGrenadeEntity grenadeEntity;
@@ -27,11 +27,10 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
         
         public void Begin(ICaster caster)
         {
-            isLaunched = false;
             Caster = caster;
+            isLaunched = false;
             IsEquiped = true;
             IsCasting = false;
-            OnGadgetCasted?.Invoke(this);
             grenadeEntity = Object.Instantiate(Data.Prefab, Caster.CastAnchor);
             grenadeEntity.FreezeGrenade(true);
         }

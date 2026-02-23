@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using OverBang.ExoWorld.Core.Abilities.Gadgets;
 using UnityEngine;
 
@@ -6,15 +7,7 @@ namespace OverBang.ExoWorld.Core.Inventory
 {
     public class GadgetInventory
     {
-        private class RuntimeGadgetInfo
-        {
-            public IGadget Gadget;
-            public int Amount;
-            
-            public bool IsUsable => Gadget != null &&  Amount > 0;
-        }
-        
-        private Dictionary<GadgetData, RuntimeGadgetInfo> gadgets = new Dictionary<GadgetData, RuntimeGadgetInfo>();
+        private Dictionary<GadgetData, List<IGadget>> gadgets = new();
         public HashSet<GadgetData> GadgetDatas { get; private set; } = new HashSet<GadgetData>();
 
         public GadgetInventory()
@@ -22,33 +15,41 @@ namespace OverBang.ExoWorld.Core.Inventory
             GadgetData[] gadgetDatas = Resources.LoadAll<GadgetData>("Gadgets");
             for (int i = 0; i < gadgetDatas.Length; i++)
             {
-                gadgets.Add(gadgetDatas[i], new RuntimeGadgetInfo());
+                gadgets.Add(gadgetDatas[i], new List<IGadget>());
                 GadgetDatas.Add(gadgetDatas[i]);
             }
         }
 
-        public void AddGadget(GadgetData data, IGadget gadgetType, int amount)
+        public void AddGadget(GadgetData data, int amount, Func<IGadget> getGadget)
         {
-            if (gadgets.TryGetValue(data, out RuntimeGadgetInfo gadgetInfo))
+            if (gadgets.TryGetValue(data, out List<IGadget> list))
             {
-                gadgetInfo.Gadget = gadgetType;
-                gadgetInfo.Amount += amount;
+                for (int i = 0; i < amount; i++)
+                {
+                    list.Add(getGadget());
+                }
             }
         }
 
         public void RemoveGadget(GadgetData data, int amount)
         {
-            if (gadgets.TryGetValue(data, out RuntimeGadgetInfo gadgetInfo))
+            if (gadgets.TryGetValue(data, out List<IGadget> list))
             {
-                gadgetInfo.Amount -= amount;
+                for (int i = 0; i < amount; i++)
+                {
+                    if (list.Count > 0)
+                    {
+                        list.RemoveAt(0);
+                    }
+                }
             }
         }
     
         public bool GetGadgetCount(GadgetData data, out int amount)
         {
-            if (gadgets.TryGetValue(data, out RuntimeGadgetInfo gadgetInfo))
+            if (gadgets.TryGetValue(data, out List<IGadget> list))
             {
-                amount = gadgetInfo.Amount;
+                amount = list.Count;
                 return true;
             }
             
@@ -58,9 +59,9 @@ namespace OverBang.ExoWorld.Core.Inventory
     
         public bool TryGetGadget(GadgetData data, out IGadget gadget)
         {
-            if (gadgets.TryGetValue(data, out RuntimeGadgetInfo gadgetInfo) && gadgetInfo.IsUsable)
+            if (gadgets.TryGetValue(data, out List<IGadget> list))
             {
-                gadget = gadgetInfo.Gadget;
+                gadget = list[0];
                 return true;
             }
             

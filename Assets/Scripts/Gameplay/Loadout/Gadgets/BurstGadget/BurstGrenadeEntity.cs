@@ -11,7 +11,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
         [SerializeField, Self] private Rigidbody rb;
         [SerializeField, Self] private TrailRenderer trail;
         [SerializeField] private Collider collider;
-
         
         private IExplosionStrategy strategy;
 

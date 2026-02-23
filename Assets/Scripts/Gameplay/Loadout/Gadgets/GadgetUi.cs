@@ -43,6 +43,9 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
         public void DeselectThisGadget()
         {
+            Refresh(data,amount);
+            gadgetTitle.text = string.Empty;
+            gadgetDescription.text = string.Empty;
             HighLightBackGround(0f, Color.white);
         }
 
