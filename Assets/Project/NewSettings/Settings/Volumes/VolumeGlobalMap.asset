@@ -109,13 +109,13 @@ MonoBehaviour:
     m_Value: 2
   anisotropy:
     m_OverrideState: 1
-    m_Value: 0.3
+    m_Value: 0.35
   sliceDistributionUniformity:
     m_OverrideState: 1
     m_Value: 0.75
   multipleScatteringIntensity:
-    m_OverrideState: 1
-    m_Value: 0.25
+    m_OverrideState: 0
+    m_Value: 0.5
   m_FogControlMode:
     m_OverrideState: 1
     m_Value: 0
@@ -397,19 +397,19 @@ MonoBehaviour:
   active: 1
   quality:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 3
   rayTracing:
     m_OverrideState: 1
     m_Value: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 1.2
   directLightingStrength:
     m_OverrideState: 1
-    m_Value: 0.1
+    m_Value: 0.2
   radius:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 1.2
   spatialBilateralAggressiveness:
     m_OverrideState: 1
     m_Value: 0.15
@@ -904,13 +904,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcf384b154398e341b6b29969c078198, type: 3}
   m_Name: MotionBlur
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   quality:
     m_OverrideState: 0
     m_Value: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   maximumVelocity:
     m_OverrideState: 0
     m_Value: 200

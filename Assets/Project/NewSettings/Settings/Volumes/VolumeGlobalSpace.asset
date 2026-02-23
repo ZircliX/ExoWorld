@@ -213,6 +213,28 @@ MonoBehaviour:
     m_Value:
       serializedVersion: 0
       m_Bits: 1
+--- !u!114 &-7763194911147999810
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0775cbb206825d541bf6c0297ee524ca, type: 3}
+  m_Name: SplitToning
+  m_EditorClassIdentifier: Unity.RenderPipelines.HighDefinition.Runtime::UnityEngine.Rendering.HighDefinition.SplitToning
+  active: 1
+  shadows:
+    m_OverrideState: 0
+    m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  highlights:
+    m_OverrideState: 1
+    m_Value: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 1}
+  balance:
+    m_OverrideState: 1
+    m_Value: 10
 --- !u!114 &-6968864554478855678
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -354,19 +376,19 @@ MonoBehaviour:
   active: 1
   quality:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 3
   rayTracing:
     m_OverrideState: 1
     m_Value: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 1.2
   directLightingStrength:
     m_OverrideState: 1
-    m_Value: 0.1
+    m_Value: 0.2
   radius:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 1.2
   spatialBilateralAggressiveness:
     m_OverrideState: 1
     m_Value: 0.15
@@ -395,31 +417,31 @@ MonoBehaviour:
     m_Value: 1
   m_StepCount:
     m_OverrideState: 1
-    m_Value: 16
+    m_Value: 4
   m_FullResolution:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   m_MaximumRadiusInPixels:
     m_OverrideState: 1
-    m_Value: 80
+    m_Value: 32
   m_BilateralUpsample:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   m_DirectionCount:
     m_OverrideState: 1
-    m_Value: 4
+    m_Value: 1
   m_RayLength:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 1
   m_SampleCount:
     m_OverrideState: 1
-    m_Value: 8
+    m_Value: 2
   m_Denoise:
     m_OverrideState: 1
     m_Value: 1
   m_DenoiserRadius:
     m_OverrideState: 1
-    m_Value: 0.65
+    m_Value: 0.5
 --- !u!114 &-3984294907015349067
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -910,7 +932,7 @@ MonoBehaviour:
     m_Value: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   maximumVelocity:
     m_OverrideState: 0
     m_Value: 200
@@ -984,6 +1006,7 @@ MonoBehaviour:
   - {fileID: 4698272143774116776}
   - {fileID: 6931036894127865697}
   - {fileID: -1053372635333810562}
+  - {fileID: -7763194911147999810}
 --- !u!114 &111534945785832103
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1432,7 +1455,7 @@ MonoBehaviour:
   interCascadeBorders: 1
   maxShadowDistance:
     m_OverrideState: 1
-    m_Value: 1100
+    m_Value: 50
   directionalTransmissionMultiplier:
     m_OverrideState: 1
     m_Value: 1
@@ -1441,25 +1464,25 @@ MonoBehaviour:
     m_Value: 4
   cascadeShadowSplit0:
     m_OverrideState: 1
-    m_Value: 0.0285
+    m_Value: 0.04
   cascadeShadowSplit1:
     m_OverrideState: 1
-    m_Value: 0.057142857
+    m_Value: 0.12
   cascadeShadowSplit2:
     m_OverrideState: 1
-    m_Value: 0.22857143
+    m_Value: 0.32
   cascadeShadowBorder0:
     m_OverrideState: 1
-    m_Value: 0.13157895
+    m_Value: 0.5
   cascadeShadowBorder1:
     m_OverrideState: 1
-    m_Value: 0.5673317
+    m_Value: 0.5
   cascadeShadowBorder2:
     m_OverrideState: 1
-    m_Value: 0.27924076
+    m_Value: 0.4
   cascadeShadowBorder3:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.47058824
 --- !u!114 &1021290749370649129
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1778,19 +1801,19 @@ MonoBehaviour:
     m_Value: 20
   m_NearSampleCount:
     m_OverrideState: 1
-    m_Value: 5
+    m_Value: 4
   m_NearMaxBlur:
     m_OverrideState: 1
-    m_Value: 4
+    m_Value: 3
   m_FarSampleCount:
     m_OverrideState: 1
-    m_Value: 7
+    m_Value: 5
   m_FarMaxBlur:
     m_OverrideState: 1
-    m_Value: 8
+    m_Value: 6
   m_Resolution:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 4
   m_HighQualityFiltering:
     m_OverrideState: 1
     m_Value: 1
@@ -1882,7 +1905,7 @@ MonoBehaviour:
     m_Value: 0.15
   m_SampleCount:
     m_OverrideState: 1
-    m_Value: 10
+    m_Value: 6
 --- !u!114 &4799550002370829519
 MonoBehaviour:
   m_ObjectHideFlags: 3
