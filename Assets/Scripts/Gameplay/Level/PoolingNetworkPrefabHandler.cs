@@ -16,11 +16,12 @@ namespace OverBang.ExoWorld.Gameplay.Level
 
         public NetworkObject Instantiate(ulong ownerClientId, Vector3 position, Quaternion rotation)
         {
+            //Debug.LogError($"Instantiating resource : {resource.name}");
             GameObject go = resource.Spawn<GameObject>();
             if (go != null && go.TryGetComponent(out NetworkObject networkObject))
             {
                 //Debug.Log($"Spawning  {networkObject.name} network object from pool", networkObject);
-                networkObject.ActiveSceneSynchronization = true;
+                networkObject.ActiveSceneSynchronization = false;
                 networkObject.transform.position = position;
                 networkObject.transform.rotation = rotation;
                 

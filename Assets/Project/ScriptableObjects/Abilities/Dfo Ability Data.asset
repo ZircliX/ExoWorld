@@ -29,6 +29,7 @@ MonoBehaviour:
   <ThrowForce>k__BackingField: 200
   <LifeTime>k__BackingField: 12
   <MissilePrefab>k__BackingField: {fileID: 8738834175512621160, guid: d04ad76036f15414b8bd8f9f6ad39d88, type: 3}
+  <MissileResource>k__BackingField: {fileID: 11400000, guid: 6c5de1c2bb0c0d54cb35f13b1b21bab0, type: 2}
   <HeightSpawn>k__BackingField: 150
   <SpawnDuration>k__BackingField: 5
   <MissileData>k__BackingField:
@@ -55,7 +56,6 @@ MonoBehaviour:
         <Damage>k__BackingField:
           baseDamage: 0
           weakSpotMultiplier: 1.5
-          bonusDamage: 0
     - rid: 402416982411968636
       type: {class: DfoStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}
       data:
@@ -65,7 +65,6 @@ MonoBehaviour:
         <Damage>k__BackingField:
           baseDamage: 100
           weakSpotMultiplier: 1.5
-          bonusDamage: 0
     - rid: 402417374115397759
       type: {class: DfoStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}
       data:
@@ -75,4 +74,3 @@ MonoBehaviour:
         <Damage>k__BackingField:
           baseDamage: 150
           weakSpotMultiplier: 0
-          bonusDamage: 0

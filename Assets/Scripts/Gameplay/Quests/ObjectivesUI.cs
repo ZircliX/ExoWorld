@@ -62,7 +62,6 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             
             float current = objectiveHandler.CurrentProgress.currentProgress;
             float target = objectiveHandler.CurrentProgress.targetProgress;
-            Debug.Log($"{current}/{target}");
             bool madeProgress = current > 0 && current < target;
             
             string stepText = objectiveHandler.ObjectiveData.ObjectiveSteps[objectiveHandler.StepIndex];

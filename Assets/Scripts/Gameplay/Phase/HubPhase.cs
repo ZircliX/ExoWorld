@@ -28,7 +28,6 @@ namespace OverBang.ExoWorld.Gameplay.Phase
             await SessionManager.Global.CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyPhaseStatus, nameof(PhaseStatus.ReadyForSceneLoad));
             await NetworkPropertiesUtils.AwaitableUntilAllPlayers(PhaseStatus.ReadyForSceneLoad);
             
-            Debug.Log(SessionManager.Global.IsHost());
             if (SessionManager.Global.IsHost())
             {
                 SceneReference hubSceneRef = SceneCollection.Global.HubSceneRef;
