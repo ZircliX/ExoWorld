@@ -9,7 +9,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
 {
     public class AbilityController : MonoBehaviour, IPlayerComponent, ICaster
     {
-        public PlayerController Controller { get; set; }
+        public PlayerController Controller { get; private set; }
         public Transform CastAnchor { get; }
         public Vector3 Forward => pm.CameraController.transform.forward;
         private PlayerMovement pm;

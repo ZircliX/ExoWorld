@@ -23,7 +23,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
                 return cam;
             }
         }
-        public PlayerController Controller { get; set; }
+        public PlayerController Controller { get; private set; }
         private LoadoutController loadoutController;
         public Weapon PrimaryWeapon { get; private set; }
         public Weapon SecondaryWeapon { get; private set; }

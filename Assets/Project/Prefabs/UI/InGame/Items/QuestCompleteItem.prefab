@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 5938462140896804668}
   - component: {fileID: 6601184669149739142}
   - component: {fileID: 1153842939082551140}
+  - component: {fileID: 127266200099469739}
   m_Layer: 0
   m_Name: QuestCompleteItem
   m_TagString: Untagged
@@ -141,6 +142,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &127266200099469739
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5264557474134277341}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &5835540893291141844
 GameObject:
   m_ObjectHideFlags: 0

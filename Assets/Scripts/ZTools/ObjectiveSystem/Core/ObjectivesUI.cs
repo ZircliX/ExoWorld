@@ -9,13 +9,13 @@ namespace ZTools.ObjectiveSystem.Core
     {
         protected virtual void OnEnable()
         {
-            ObjectivesManager.OnObjectiveChanged += OnObjectiveChanged;
+            //ObjectivesManager.OnObjectiveChanged += OnObjectiveChanged;
             ObjectivesManager.OnObjectiveProgress += UpdateObjectiveUI;
         }
         
         protected virtual void OnDisable()
         {
-            ObjectivesManager.OnObjectiveChanged -= OnObjectiveChanged;
+            //ObjectivesManager.OnObjectiveChanged -= OnObjectiveChanged;
             ObjectivesManager.OnObjectiveProgress -= UpdateObjectiveUI;
         }
 
@@ -23,7 +23,7 @@ namespace ZTools.ObjectiveSystem.Core
         /// Called when the current objective changes.
         /// </summary>
         /// <param name="objectiveHandler">The new objective</param>
-        protected abstract void OnObjectiveChanged(IObjectiveHandler objectiveHandler);
+        //protected abstract void OnObjectiveChanged(IObjectiveHandler objectiveHandler);
 
         /// <summary>
         /// Updates the UI to reflect the current state of the objective.

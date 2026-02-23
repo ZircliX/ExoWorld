@@ -252,6 +252,7 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
 
         private void OnDeath()
         {
+            isAttacking = false;
             collider.enabled = false;
             Agent.enabled = false;
             enemyAnimator.Ragdoll(true);

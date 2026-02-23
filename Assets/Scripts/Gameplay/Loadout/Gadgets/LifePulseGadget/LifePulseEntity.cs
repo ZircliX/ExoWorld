@@ -41,7 +41,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.LifePulseGadget
             Transform player = localGamePlayer.CurrentPlayerObject.transform.GetChild(1);
             if (player.TryGetComponent(out PlayerEntity playerEntity))
             {
-                playerEntity.DamageableAndHealableComponent.Heal(data.HealthAmount);
+                playerEntity.Heal(data.HealthAmount);
                 MeshRenderer meshRenderer = gameObject.GetComponentInChildren<MeshRenderer>();
                 meshRenderer.enabled = false;
                 StartCoroutine(OnHealed());

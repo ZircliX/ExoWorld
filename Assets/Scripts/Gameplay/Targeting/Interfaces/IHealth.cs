@@ -4,7 +4,8 @@ namespace OverBang.ExoWorld.Gameplay.Targeting
 {
     public interface IHealth
     {
-        event Action<float, float, float> OnHealthChanged;
+        event HealthChanged OnHealthChanged;
+        public delegate void HealthChanged(float previous, float current, float max);
         
         float MinHealth { get; }
         float Health { get; }

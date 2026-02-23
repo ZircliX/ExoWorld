@@ -37,6 +37,12 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
             IsWaving = false;
         }
 
+        public void StopWaveMode(EnemySpawnScenario scenario)
+        {
+            IsWaving = false;
+            currentWave = scenario.WaveAmount;
+        }
+
         public void SpawnEnemies(EnemySpawnScenario enemySpawnScenario)
         {
             CurrentEnemySpawnScenario = enemySpawnScenario;
@@ -57,9 +63,9 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
             }
         }
         
+        int currentWave = 1;
         private async Awaitable StartWaveMode(EnemySpawnScenario enemySpawnScenario)
         {
-            int currentWave = 1;
             int enemyToSpawnInWave = enemySpawnScenario.InitialEnemyAmountInWave * SessionManager.Global.ActiveSession.PlayerCount;
 
             //Wave mode loop

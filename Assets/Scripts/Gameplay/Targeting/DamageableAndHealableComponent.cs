@@ -1,5 +1,4 @@
-﻿using System;
-using Ami.BroAudio;
+﻿using Ami.BroAudio;
 using OverBang.ExoWorld.Core.Damage;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -10,7 +9,7 @@ namespace OverBang.ExoWorld.Gameplay.Targeting
     {
         [SerializeField] protected SoundID damagedSound;
         
-        public event Action<float, float, float> OnHealthChanged;
+        public event IHealth.HealthChanged OnHealthChanged;
         public float MinHealth { get; private set; }
         [field: SerializeField, ReadOnly] public float Health { get; private set; }
         public float MaxHealth { get; private set; }
