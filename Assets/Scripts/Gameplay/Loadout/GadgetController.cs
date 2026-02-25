@@ -64,6 +64,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
         private void Update()
         {
+            if (!IsOwner) return;
             if (castedGadgets.Count > 0)
             {
                 gadgetBuffer.CopyFrom(castedGadgets);

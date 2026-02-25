@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
 {
-    public class FrostBiteGrenadeEntity : MonoBehaviour, IPoolInstanceListener
+    public class FrostBiteGrenadeEntity : NetworkBehaviour, IPoolInstanceListener
     {
         [SerializeField, Self] private Rigidbody rb;
         [SerializeField, Self] private NetworkObject no;
@@ -53,6 +53,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
         
         public void Tick(float deltaTime)
         {
+            if(!IsOwner) return;
+            
             if (time < Data.ExplosionDelay)
             {
                 time += deltaTime;
@@ -76,6 +78,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
 
         private void Update()
         {
+            if (!IsOwner) return;
             if (frostBiteGrenade == null) return;
             if (!frostBiteGrenade.IsCasting)
             {
@@ -97,17 +100,23 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
                     transform.position,
                     Quaternion.identity
                 );
-                if (vfx.TryGetComponent(out ParticleSystem ps))
-                {
-                    ps.Play();
-                    Invoke(nameof(DestroyVfx), ps.main.duration);
-                }
+                PlayVfxRpc();
             }
             
             if (terminated)
             {
                 strategy.OnExploded -= OnExploded;
                 End();
+            }
+        }
+
+        [Rpc(SendTo.Everyone)]
+        private void PlayVfxRpc()
+        {
+            if (vfx.TryGetComponent(out ParticleSystem ps))
+            {
+                ps.Play();
+                Invoke(nameof(DestroyVfx), ps.main.duration);
             }
         }
 
