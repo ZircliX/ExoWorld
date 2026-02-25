@@ -1,5 +1,6 @@
 ﻿using Ami.BroAudio;
 using KBCore.Refs;
+using OverBang.ExoWorld.Core.Database;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Gameplay.Abilities;
 using OverBang.Pooling;
@@ -40,9 +41,23 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
         public void Initialize(FrostBiteGrenadeData data, FrostBiteGrenade grenade)
         {
             Data = data;
+            InitializeRpc(data.ID);
             strategy = new CryoExplosion(Data.DamageData, Data.SlowDuration, Data.SlowPercentage);
             frostBiteGrenade = grenade;
             strategy.OnExploded += OnExploded;
+        }
+
+        [Rpc(SendTo.Everyone)]
+        private void InitializeRpc(string dataId)
+        {
+            if (GameDatabase.Global.TryGetAssetByID(dataId, out FrostBiteGrenadeData asset))
+            {
+                Data = asset;
+            }
+            else
+            {
+                Debug.LogError($"[FrostBiteGrenadeEntity] {dataId} not found in database !");
+            }
         }
 
         public void Cast(Vector3 direction)
@@ -88,7 +103,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
 
         public void OnExploded(bool terminated)
         {
-            BroAudio.Play(Data.SoundID);
             
             if (Data.ExplosionEffect != null)
             {
@@ -113,6 +127,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
         [Rpc(SendTo.Everyone)]
         private void PlayVfxRpc()
         {
+            BroAudio.Play(Data.SoundID);
             if (vfx.TryGetComponent(out ParticleSystem ps))
             {
                 ps.Play();
