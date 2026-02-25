@@ -1,22 +1,27 @@
 ﻿using Ami.BroAudio;
 using KBCore.Refs;
+using OverBang.ExoWorld.Core.Database;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Gameplay.Abilities;
+using OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget;
+using OverBang.Pooling;
+using OverBang.Pooling.Resource;
 using Unity.Netcode;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
 {
-    public class BurstGrenadeEntity : NetworkBehaviour
+    public class BurstGrenadeEntity : NetworkBehaviour, IPoolInstanceListener
     {
         [SerializeField, Self] private Rigidbody rb;
+        [SerializeField, Self] private NetworkObject no;
         [SerializeField, Self] private TrailRenderer trail;
         [SerializeField] private Collider collider;
         
         private IExplosionStrategy strategy;
-
-        private BurstGrenadeData data;
+        private BurstGrenadeData Data;
         private BurstGrenade burstGrenade;
+        private NetworkObject vfx;
         private float time;
         private bool isDetonated;
 
@@ -25,26 +30,50 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
             this.ValidateRefs();
         }
 
-        public void FreezeGrenade(bool value)
+        [Rpc(SendTo.Everyone)]
+        public void FreezeGrenadeRpc(bool value)
         {
             rb.isKinematic = value;
             collider.isTrigger = value;
             trail.enabled = !value;
         }
         
-        public void Initialize(BurstGrenadeData data, Vector3 direction, BurstGrenade burstGrenade)
+        public void Initialize(BurstGrenadeData data, BurstGrenade grenade)
         {
-            strategy = new StandardExplosion(data.DamageData);
-            this.burstGrenade = burstGrenade;
-            this.data = data;
+            Data = data;
+            InitializeRpc(Data.ID);
+            strategy = new StandardExplosion(Data.DamageData);
+            burstGrenade = grenade;
             strategy.OnExploded += OnExploded;
-            FreezeGrenade(false);
-            rb.AddForce(Vector3.up * 0.5f + direction * data.ThrowForce * Time.deltaTime, ForceMode.Impulse);
         }
+        
+        [Rpc(SendTo.Everyone)]
+        private void InitializeRpc(string dataId)
+        {
+            Debug.Log($"Database null ? {GameDatabase.Global == null}");
+            Debug.Log($"Database assets count : {GameDatabase.Global?.DatabaseAssets.Length}");
+            if (GameDatabase.Global.TryGetAssetByID(dataId, out BurstGrenadeData asset))
+            {
+                Data = asset;
+            }
+            else
+            {
+                Debug.LogError($"[FrostBiteGrenadeEntity] {dataId} not found in database !");
+            }
+        }
+        
+        public void Cast(Vector3 direction)
+        {
+            FreezeGrenadeRpc(false);
+            rb.AddForce(Vector3.up * 0.5f + direction * Data.ThrowForce * Time.deltaTime, ForceMode.Impulse);
+        }
+        
         
         public void Tick(float deltaTime)
         {
-            if (time < data.ExplosionDelay)
+            if(!IsOwner) return;
+
+            if (time < Data.ExplosionDelay)
             {
                 time += deltaTime;
             }
@@ -54,7 +83,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
                 {
                     Collider[] colliders = Physics.OverlapSphere(
                         transform.position,
-                        data.ExplosionRadius,
+                        Data.ExplosionRadius,
                         GameMetrics.Global.HittableLayers,
                         QueryTriggerInteraction.Collide);
 
@@ -65,14 +94,32 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
             }
         }
         
-        private void OnExploded(bool terminated)
+        private void Update()
         {
-            BroAudio.Play(data.SoundID);
-            if (data.ExplosionEffect != null)
+            if (!IsOwner) return;
+            if (burstGrenade == null) return;
+            if (!burstGrenade.IsCasting)
             {
-                //ParticleSystem ps = Instantiate(data.ExplosionEffect, transform.position, Quaternion.identity);
-                //Destroy(ps.gameObject, ps.main.duration);
+                transform.position = burstGrenade.Caster.CastAnchor.transform.position;
             }
+        }
+        
+        public void OnExploded(bool terminated)
+        {
+            
+            if (Data.ExplosionEffect != null)
+            {
+                vfx = burstGrenade.spawnManager.InstantiateAndSpawn(Data.ExplosionEffect,
+                    burstGrenade.player.ClientID,
+                    true,
+                    true,
+                    false,
+                    transform.position,
+                    Quaternion.identity
+                );
+                PlayVfxRpc(vfx.NetworkObjectId);
+            }
+            
             if (terminated)
             {
                 strategy.OnExploded -= OnExploded;
@@ -80,10 +127,55 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
             }
         }
         
+        [Rpc(SendTo.Everyone)]
+        private void PlayVfxRpc(ulong networkObjectId)
+        {
+            if (!NetworkManager.Singleton.SpawnManager.SpawnedObjects.TryGetValue(networkObjectId, out NetworkObject netObj))
+            {
+                Debug.LogError($"VFX with ID {networkObjectId} not found.");
+                return;
+            }
+            
+            vfx = netObj;
+            if (vfx.TryGetComponent(out ParticleSystem ps))
+            {
+                ps.Play();
+                Invoke(nameof(DestroyVfx), ps.main.duration);
+            }
+
+            BroAudio.Play(Data.SoundID);
+        }
+        
+        private void DestroyVfx()
+        {
+            if(!IsOwner) return;
+            if(vfx != null) vfx.Despawn();
+        }
+        
         private void End()
         {
+            if(!IsOwner) return;
             burstGrenade.End();
-            Destroy(gameObject);
+            no.Despawn();
+        }
+
+        public void Discard()
+        {
+            if(!IsOwner) return;
+            no.Despawn();
+        }
+
+        public IPool Pool { get; }
+        public void OnSpawn(IPool pool)
+        {
+            isDetonated = false;
+            time = 0f;
+        }
+
+        public void OnDespawn(IPool pool)
+        {
+            isDetonated = false;
+            time = 0f;
         }
     }
 }
