@@ -15,6 +15,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         [field: SerializeField, Self] public WeaponRig Rig { get; private set; }
 
         protected Camera playerCamera;
+        public WeaponController WeaponController { get; private set; }
         
         public IFireBehaviour fireBehaviour { get; protected set; }
         public IReloadBehaviour reloadBehaviour { get; protected set; }
@@ -27,11 +28,12 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             this.ValidateRefs();
         }
 
-        public virtual void Initialize(WeaponData weaponData, Camera cam)
+        public virtual void Initialize(WeaponData weaponData, Camera cam, WeaponController weaponController)
         {
             WeaponData = weaponData;
             State = new RuntimeWeaponState(this);
             playerCamera = cam;
+            this.WeaponController = weaponController;
 
             fireBehaviour = WeaponData.FireBehaviour.CreateFireBehavior();
             reloadBehaviour = WeaponData.ReloadBehaviour.CreateReloadBehavior();

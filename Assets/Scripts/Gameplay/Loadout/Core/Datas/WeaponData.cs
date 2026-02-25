@@ -36,6 +36,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         [field: SerializeField] public float CurveMultiplier { get; protected set; }
         [field: SerializeField] public float RandomnessMultiplier { get; protected set; }
         [field: SerializeField] public float ResetLerpSpeed { get; protected set; }
+        [field: SerializeField] public WeaponRecoilSettings WeaponRecoilSettings { get; protected set; }
+        
         
         // RELOAD DATA
         [field: SerializeField] public WeaponReloadBehaviour ReloadBehaviour { get; protected set; }
