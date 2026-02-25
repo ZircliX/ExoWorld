@@ -1,8 +1,9 @@
 using System;
 using OverBang.ExoWorld.Core.Abilities;
 using OverBang.ExoWorld.Core.Abilities.Gadgets;
+using OverBang.ExoWorld.Core.GameMode.Players;
+using Unity.Netcode;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
 {
@@ -15,7 +16,10 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
 
         public bool IsEquiped { get; private set; }
         public bool IsCasting { get; private set; }
-        
+        public NetworkSpawnManager spawnManager { get; private set; }
+        public LocalGamePlayer player { get; private set; }
+
+        private float lifeTime = 5f;
         public event Action<IGadget> OnGadgetEnded;
         
         private FrostBiteGrenadeEntity grenadeEntity;
@@ -26,14 +30,33 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
             Data = GrenadeData;
         }
         
-        public void Begin(ICaster caster)
+        public void Begin(ICaster caster, LocalGamePlayer localPlayer)
         {
             Caster = caster;
             isLaunched = false;
             IsEquiped = true;
-            IsCasting = false;
-            grenadeEntity = Object.Instantiate(Data.Prefab, Caster.CastAnchor);
-            grenadeEntity.FreezeGrenade(true);
+            IsCasting = false; 
+            player = localPlayer; 
+            spawnManager = NetworkManager.Singleton.SpawnManager;
+            
+            Debug.Log(player.ClientID);
+            Debug.Log(Data.Prefab);
+            Debug.Log(Data);
+            
+            NetworkObject grenade = spawnManager.InstantiateAndSpawn(Data.Prefab, 
+                player.ClientID, 
+                true,
+                true,
+                false,
+                Caster.CastAnchor.position);
+
+            if (grenade.TryGetComponent(out FrostBiteGrenadeEntity entity))
+            {
+                grenadeEntity = entity;
+                grenadeEntity.FreezeGrenade(true);
+                grenadeEntity.Initialize(Data,this);
+            }
+            
         }
 
         public void Cast(Camera cam)
@@ -41,7 +64,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
             isLaunched = true;
             IsCasting = true;
             
-            grenadeEntity.Initialize(Data, cam.transform.forward, this);
+            grenadeEntity.Cast(cam.transform.forward);
         }
 
         public void Tick(float deltaTime)
@@ -61,7 +84,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
 
         public void Discard()
         {
-            Object.Destroy(grenadeEntity.gameObject);
+            grenadeEntity.Discard();
             grenadeEntity = null;
             Reset();
         }
@@ -71,6 +94,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
             IsEquiped = false;
             IsCasting = false;
             isLaunched = false;
+            player = null;
         }
     }
 }

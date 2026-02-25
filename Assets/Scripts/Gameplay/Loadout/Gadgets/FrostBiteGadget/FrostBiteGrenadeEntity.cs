@@ -2,22 +2,28 @@
 using KBCore.Refs;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Gameplay.Abilities;
+using OverBang.Pooling;
+using OverBang.Pooling.Resource;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
 {
-    public class FrostBiteGrenadeEntity : MonoBehaviour
+    public class FrostBiteGrenadeEntity : MonoBehaviour, IPoolInstanceListener
     {
         [SerializeField, Self] private Rigidbody rb;
+        [SerializeField, Self] private NetworkObject no;
         [SerializeField, Self] private TrailRenderer trail;
         [SerializeField] private Collider collider;
 
         private IExplosionStrategy strategy;
 
-        private FrostBiteGrenadeData data;
+        private FrostBiteGrenadeData Data;
         private FrostBiteGrenade frostBiteGrenade;
         private float time;
         private bool isDetonated;
+        
+        private NetworkObject vfx;
 
         private void OnValidate()
         {
@@ -31,19 +37,23 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
             trail.enabled = !value;
         }
         
-        public void Initialize(FrostBiteGrenadeData data, Vector3 direction, FrostBiteGrenade grenade)
+        public void Initialize(FrostBiteGrenadeData data, FrostBiteGrenade grenade)
         {
-            strategy = new CryoExplosion(data.DamageData, data.SlowDuration, data.SlowPercentage);
-            this.frostBiteGrenade = grenade;
-            this.data = data;
+            Data = data;
+            strategy = new CryoExplosion(Data.DamageData, Data.SlowDuration, Data.SlowPercentage);
+            frostBiteGrenade = grenade;
             strategy.OnExploded += OnExploded;
+        }
+
+        public void Cast(Vector3 direction)
+        {
             FreezeGrenade(false);
-            rb.AddForce(Vector3.up * 0.5f + direction * data.ThrowForce * Time.deltaTime, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * 0.5f + direction * Data.ThrowForce * Time.deltaTime, ForceMode.Impulse);
         }
         
         public void Tick(float deltaTime)
         {
-            if (time < data.ExplosionDelay)
+            if (time < Data.ExplosionDelay)
             {
                 time += deltaTime;
             }
@@ -53,7 +63,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
                 {
                     Collider[] colliders = Physics.OverlapSphere(
                         transform.position,
-                        data.ExplosionRadius,
+                        Data.ExplosionRadius,
                         GameMetrics.Global.HittableLayers,
                         QueryTriggerInteraction.Collide);
 
@@ -63,15 +73,35 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
                 isDetonated = true;
             }
         }
-        
-        private void OnExploded(bool terminated)
+
+        private void Update()
         {
-            BroAudio.Play(data.SoundID);
-            
-            if (data.ExplosionEffect != null)
+            if (frostBiteGrenade == null) return;
+            if (!frostBiteGrenade.IsCasting)
             {
-                ParticleSystem ps = Instantiate(data.ExplosionEffect, transform.position, Quaternion.identity);
-                Destroy(ps.gameObject, ps.main.duration);
+                transform.position = frostBiteGrenade.Caster.CastAnchor.transform.position;
+            }
+        }
+
+        public void OnExploded(bool terminated)
+        {
+            BroAudio.Play(Data.SoundID);
+            
+            if (Data.ExplosionEffect != null)
+            {
+                vfx = frostBiteGrenade.spawnManager.InstantiateAndSpawn(Data.ExplosionEffect,
+                    frostBiteGrenade.player.ClientID,
+                    true,
+                    true,
+                    false,
+                    transform.position,
+                    Quaternion.identity
+                );
+                if (vfx.TryGetComponent(out ParticleSystem ps))
+                {
+                    ps.Play();
+                    Invoke(nameof(DestroyVfx), ps.main.duration);
+                }
             }
             
             if (terminated)
@@ -80,11 +110,33 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
                 End();
             }
         }
-        
+
+        private void DestroyVfx()
+        {
+            if(vfx != null) vfx.Despawn();
+        }
         private void End()
         {
             frostBiteGrenade.End();
-            Destroy(gameObject);
+            no.Despawn();
+        }
+
+        public void Discard()
+        {
+            no.Despawn();
+        }
+
+        public IPool Pool { get; }
+        public void OnSpawn(IPool pool)
+        {
+            isDetonated = false;
+            time = 0f;
+        }
+
+        public void OnDespawn(IPool pool)
+        {
+            isDetonated = false;
+            time = 0f;
         }
     }
 }

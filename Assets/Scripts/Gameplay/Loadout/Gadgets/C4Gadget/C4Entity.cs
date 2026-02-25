@@ -2,11 +2,12 @@
 using Ami.BroAudio;
 using KBCore.Refs;
 using OverBang.ExoWorld.Gameplay.Abilities;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout.C4Gadget
 {
-    public class C4Entity : MonoBehaviour
+    public class C4Entity : NetworkBehaviour
     {
         [SerializeField, Self] private Rigidbody rb;
         [SerializeField, Self] private TrailRenderer trail;
@@ -47,8 +48,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.C4Gadget
             
             if (data.ExplosionEffect != null)
             {
-                ParticleSystem ps = Instantiate(data.ExplosionEffect, transform.position, Quaternion.identity);
-                Destroy(ps.gameObject, ps.main.duration);
+                //ParticleSystem ps = Instantiate(data.ExplosionEffect, transform.position, Quaternion.identity);
+                //Destroy(ps.gameObject, ps.main.duration);
             }
             
             if (terminated)

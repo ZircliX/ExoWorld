@@ -2,11 +2,12 @@
 using KBCore.Refs;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Gameplay.Abilities;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout.ShockGadget
 {
-    public class ShockGrenadeEntity : MonoBehaviour
+    public class ShockGrenadeEntity : NetworkBehaviour
     {
         [SerializeField, Self] private Rigidbody rb;
         [SerializeField, Self] private TrailRenderer trail;
@@ -70,8 +71,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.ShockGadget
             
             if (data.ExplosionEffect != null)
             {
-                ParticleSystem ps = Instantiate(data.ExplosionEffect, transform.position, Quaternion.identity);
-                Destroy(ps.gameObject, ps.main.duration);
+                //ParticleSystem ps = Instantiate(data.ExplosionEffect, transform.position, Quaternion.identity);
+                //Destroy(ps.gameObject, ps.main.duration);
             }
             
             if (terminated)

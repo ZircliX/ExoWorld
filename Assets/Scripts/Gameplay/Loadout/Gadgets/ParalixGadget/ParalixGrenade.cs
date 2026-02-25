@@ -1,6 +1,7 @@
 ﻿using System;
 using OverBang.ExoWorld.Core.Abilities;
 using OverBang.ExoWorld.Core.Abilities.Gadgets;
+using OverBang.ExoWorld.Core.GameMode.Players;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -26,7 +27,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.ParalixGadget
             Data = GrenadeData;
         }
         
-        public void Begin(ICaster caster)
+        public void Begin(ICaster caster, LocalGamePlayer player)
         {
             isLaunched = false;
             Caster = caster;

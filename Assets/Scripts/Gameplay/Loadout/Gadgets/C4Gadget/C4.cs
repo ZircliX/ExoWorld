@@ -1,6 +1,7 @@
 ﻿using System;
 using OverBang.ExoWorld.Core.Abilities;
 using OverBang.ExoWorld.Core.Abilities.Gadgets;
+using OverBang.ExoWorld.Core.GameMode.Players;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -25,7 +26,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.C4Gadget
             this.Data = c4GadgetData;
         }
         
-        public void Begin(ICaster caster)
+        public void Begin(ICaster caster, LocalGamePlayer player)
         {
             Caster = caster;
             isLaunched = false;

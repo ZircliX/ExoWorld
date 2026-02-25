@@ -2,11 +2,12 @@
 using KBCore.Refs;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Gameplay.Abilities;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
 {
-    public class BurstGrenadeEntity : MonoBehaviour
+    public class BurstGrenadeEntity : NetworkBehaviour
     {
         [SerializeField, Self] private Rigidbody rb;
         [SerializeField, Self] private TrailRenderer trail;
@@ -69,8 +70,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
             BroAudio.Play(data.SoundID);
             if (data.ExplosionEffect != null)
             {
-                ParticleSystem ps = Instantiate(data.ExplosionEffect, transform.position, Quaternion.identity);
-                Destroy(ps.gameObject, ps.main.duration);
+                //ParticleSystem ps = Instantiate(data.ExplosionEffect, transform.position, Quaternion.identity);
+                //Destroy(ps.gameObject, ps.main.duration);
             }
             if (terminated)
             {

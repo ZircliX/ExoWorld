@@ -58,7 +58,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         {
             foreach (GadgetData gadgetData in debugGadgetData)
             {
-                player.GadgetInventory.AddGadget(gadgetData, 10, () => GadgetFactory.CreateGadget(gadgetData));
+                player.GadgetInventory.AddGadget(gadgetData, 40, () => GadgetFactory.CreateGadget(gadgetData));
             }
         }
 
@@ -99,8 +99,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
                 if (player.GadgetInventory.TryGetGadget(currentGadgetData, out IGadget gadget))
                 {
                     currentGadget = gadget;
-                    currentGadget.Begin(this);
                     Debug.Log("Gadget Begin !!!! !!!! !!!!!");
+                    currentGadget.Begin(this, player);
                 }
                 else
                 {
