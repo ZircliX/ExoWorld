@@ -11,8 +11,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public class GadgetControllerUI : MonoBehaviour
     {
+        [field : SerializeField, Required] public GadgetController Controller { get; private set; }
         [SerializeField, Self] private GadgetUiSelector selector;
-        [SerializeField, Required] private GadgetController controller;
         
         [SerializeField, Self] private CanvasGroup gadgetWheel;
         
@@ -32,14 +32,14 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
         private void OnEnable()
         {
-            controller.OnGadgetSelectionBegin += SelectionBegin;
-            controller.OnGadgetSelectionEnd += SelectionEnd;
+            Controller.OnGadgetSelectionBegin += SelectionBegin;
+            Controller.OnGadgetSelectionEnd += SelectionEnd;
         }
 
         private void OnDisable()
         {
-            controller.OnGadgetSelectionBegin -= SelectionBegin;
-            controller.OnGadgetSelectionEnd -= SelectionEnd;
+            Controller.OnGadgetSelectionBegin -= SelectionBegin;
+            Controller.OnGadgetSelectionEnd -= SelectionEnd;
         }
 
         private void SelectionBegin(LocalGamePlayer player)
@@ -57,7 +57,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         
         public void SetCurrentSelectedGadget(GadgetData data)
         {
-            controller.SelectCurrentGadget(data);
+            Controller.SelectCurrentGadget(data);
         }
         
         private void ChangeVisibility(bool visible)

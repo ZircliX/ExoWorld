@@ -4,11 +4,12 @@ using KBCore.Refs;
 using OverBang.ExoWorld.Core.GameMode.Players;
 using OverBang.ExoWorld.Gameplay.Abilities;
 using OverBang.ExoWorld.Gameplay.Player;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout.LifePulseGadget
 {
-    public class LifePulseEntity : MonoBehaviour
+    public class LifePulseEntity : NetworkBehaviour
     {
         [SerializeField, Self] private Rigidbody rb;
         [SerializeField] private Collider collider;
@@ -54,12 +55,13 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.LifePulseGadget
             
             if (data.ExplosionEffect != null)
             {
-                ParticleSystem ps = Instantiate(data.ExplosionEffect, transform.position, Quaternion.identity);
+                //ParticleSystem ps = Instantiate(data.ExplosionEffect, transform.position, Quaternion.identity);
                 
-                float mainDuration = ps.main.duration;
-                Destroy(ps.gameObject, mainDuration);
+                //float mainDuration = ps.main.duration;
+                //Destroy(ps.gameObject, mainDuration);
                 
-                yield return new WaitForSeconds(mainDuration);
+                //yield return new WaitForSeconds(mainDuration);
+                yield return null; //TODO : delete
                 End();
             }
         }

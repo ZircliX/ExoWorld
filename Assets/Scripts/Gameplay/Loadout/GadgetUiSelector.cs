@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -14,6 +15,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         [SerializeField, Space] private float selectionThreshold = 0.5f;
         [SerializeField] private float deltaSensitivity = 1f; 
         [SerializeField] private Image wheelPointerImage; 
+        
 
         private List<GadgetUi> GadgetUis => controllerUI.GadgetUis;
         private int ItemCount => GadgetUis.Count;
@@ -38,12 +40,20 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         
         public void StartSelection()
         {
+            if (currentSelectedGadget !=null && !currentSelectedGadget.CheckSelectiveness())
+            {
+                Debug.Log(currentSelectedGadget.CheckSelectiveness());
+                currentSelectedGadget.DeselectThisGadget();
+                currentSelectedGadget.Mask();
+                currentSelectedGadget = null;
+            }
             accumulatedDelta = Vector2.zero;
         }
         
         private void Update()
         {
-            // Accumulate delta movement
+            if (!controllerUI.Controller.IsSelecting) return;
+            
             Vector2 mouseDelta = Pointer.current.delta.ReadValue();
             
             if (mouseDelta.sqrMagnitude > selectionThreshold)
@@ -57,6 +67,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         {
             if (accumulatedDelta.magnitude < selectionThreshold)
             {
+                Debug.Log("no movement, no new selection");
                 return;
             }
             

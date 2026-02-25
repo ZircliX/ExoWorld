@@ -1,6 +1,8 @@
 using System;
 using OverBang.ExoWorld.Core.Abilities;
 using OverBang.ExoWorld.Core.Abilities.Gadgets;
+using OverBang.ExoWorld.Core.GameMode.Players;
+using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout.ShockGadget
@@ -12,7 +14,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.ShockGadget
         public ICaster Caster { get; private set; }
         public bool IsEquiped { get; private set; }
         public bool IsCasting { get; private set; }
-        public event Action<IGadget> OnGadgetCasted;
+        
         public event Action<IGadget> OnGadgetEnded;
 
         private ShockGrenadeEntity grenadeEntity;
@@ -23,7 +25,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.ShockGadget
             Data = shockGrenadeData;
         }
         
-        public void Begin(ICaster caster)
+        public void Begin(ICaster caster, LocalGamePlayer player)
         {
             isLaunched = false;
             Caster = caster;
@@ -33,12 +35,11 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.ShockGadget
             grenadeEntity.FreezeGrenade(true);
         }
 
-        public void Cast(ICaster caster)
+        public void Cast(Camera cam)
         {
             isLaunched = true;
             IsCasting = true;
-            grenadeEntity.Initialize(Data, caster.CastAnchor.forward, this);
-            OnGadgetCasted?.Invoke(this);
+            grenadeEntity.Initialize(Data, cam.transform.forward, this);
         }
 
         public void Tick(float deltaTime)
