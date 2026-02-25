@@ -45,8 +45,12 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         private void Awake()
         {
             Health = MaxHealth;
-            oneHandler = questOneData.GetHandlerByData<QuestOneHandler>();
-            if (oneHandler == null) gameObject.SetActive(false);
+            oneHandler ??= questOneData.GetHandlerByData<QuestOneHandler>();
+            if (oneHandler == null)
+            {
+                gameObject.SetActive(false);
+                Health = 0f;
+            }
             
             enterDetectionArea.SetAllowedTags("Player", "LocalPlayer");
         }

@@ -4,12 +4,9 @@ namespace OverBang.ExoWorld.Gameplay.Quests
 {
     public class QuestTwoHandler : ObjectiveHandler<QuestTwoData, QuestTwoEvent>
     {
-        private int totalPieces;
-        
         protected override ObjectiveProgression CalculateProgression(QuestTwoData objectiveData, QuestTwoEvent gameEvent)
         {
-            totalPieces += gameEvent.pieces;
-            return new ObjectiveProgression(totalPieces, objectiveData.TotalPieces);
+            return new ObjectiveProgression(gameEvent.pieces, gameEvent.targetPieces);
         }
 
         protected override void ObjectiveCompleted()

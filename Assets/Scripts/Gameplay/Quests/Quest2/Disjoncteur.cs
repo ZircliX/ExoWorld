@@ -15,6 +15,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         private int fusiblesInserted;
         private bool isHoldingFusible;
         private QuestTwoHandler questTwoHandler;
+        private int currentPieces;
         
         public string InteractionText => CanInteract && isHoldingFusible ? questData.InteractionText : questData.InteractionTextEmpty;
         public int Priority => (int)TargetPriority.High;
@@ -102,7 +103,8 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         [Rpc(SendTo.Everyone)]
         private void DispatchAddedFusibleRpc()
         {
-            QuestTwoEvent evt = new QuestTwoEvent(1);
+            currentPieces++;
+            QuestTwoEvent evt = new QuestTwoEvent(currentPieces, questData.TotalPieces);
             ObjectivesManager.DispatchGameEvent(evt);
         }
 

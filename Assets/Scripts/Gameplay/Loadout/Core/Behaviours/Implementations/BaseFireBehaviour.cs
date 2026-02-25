@@ -51,6 +51,9 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
             BroAudio.Play(Weapon.WeaponData.FireSound);
             
+            WeaponRecoilSettings recoil = Weapon.WeaponData.WeaponRecoilSettings;
+            Weapon.WeaponController.Controller.CameraController.RecoilFire(recoil.GetRecoil(), recoil.Snappiness, recoil.ReturnSpeed);
+            
             // Increment Consecutive Shots
             if (ConsecutiveShots < Weapon.WeaponData.MaxRecoilShots)
             {

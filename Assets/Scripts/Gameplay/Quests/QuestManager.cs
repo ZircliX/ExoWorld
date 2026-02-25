@@ -25,20 +25,22 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             }
         }
 
-        public void RequestQuestQueue()
+        public void RequestQuestQueue(int skip = 0)
         {
             if (currentQuest == null)
             {
                 Debug.Log("Requesting quest queue");
-                QueueNextQuest();
+                QueueNextQuest(skip);
             }
         }
 
-        public void QueueNextQuest()
+        public void QueueNextQuest(int skip = 0)
         {
             if (currentQuestIndex >= quests.Length) return;
             
-            currentQuest = quests[currentQuestIndex];
+            int nextIndex = currentQuestIndex + skip;
+            
+            currentQuest = quests[nextIndex];
             currentQuest.AddObjective();
             //Debug.Log($"Queuing quest {currentQuest.Name}");
             

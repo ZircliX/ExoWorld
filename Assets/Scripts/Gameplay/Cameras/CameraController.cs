@@ -126,15 +126,15 @@ namespace OverBang.ExoWorld.Gameplay.Cameras
             effectCoroutine = StartCoroutine(IEffectCoroutine());
         }
 
-        private Vector3 _targetRotation;
+        private Vector3 targetRotation;
         private Vector3 currentRotation;
-        private float _snap;
-        private float _returnSpeed;
+        private float snap;
+        private float returnSpeed;
         
         private void Update()
         {
-            _targetRotation = Vector3.Lerp(_targetRotation, Vector3.zero, _returnSpeed * Time.deltaTime);
-            currentRotation = Vector3.Slerp(currentRotation, _targetRotation, _snap * Time.fixedDeltaTime);
+            targetRotation = Vector3.Lerp(targetRotation, Vector3.zero, returnSpeed * Time.deltaTime);
+            currentRotation = Vector3.Slerp(currentRotation, targetRotation, snap * Time.fixedDeltaTime);
             Quaternion recoilRotation = Quaternion.Euler(currentRotation);
             
             transform.localRotation = recoilRotation;
@@ -142,9 +142,9 @@ namespace OverBang.ExoWorld.Gameplay.Cameras
 
         public void RecoilFire(Vector3 targetRotation, float snap, float returnSpeed)
         {
-            _targetRotation = targetRotation;
-            _snap = snap;
-            _returnSpeed = returnSpeed;
+            this.targetRotation = targetRotation;
+            this.snap = snap;
+            this.returnSpeed = returnSpeed;
         }
     }
 }

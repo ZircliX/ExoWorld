@@ -114,8 +114,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             SecondaryWeapon = Instantiate(secondary.Prefab, weaponHolder);
             
             // Initialize the weapon with loadout
-            PrimaryWeapon.Initialize(primary, InteractionCamera);
-            SecondaryWeapon.Initialize(secondary, InteractionCamera);
+            PrimaryWeapon.Initialize(primary, InteractionCamera, this);
+            SecondaryWeapon.Initialize(secondary, InteractionCamera, this);
         }
 
         [Rpc(SendTo.Everyone)]

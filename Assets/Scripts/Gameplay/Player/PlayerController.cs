@@ -12,6 +12,7 @@ namespace OverBang.ExoWorld.Gameplay.Player
 {
     public class PlayerController : NetworkBehaviour, IPlayerController
     {
+        [field: SerializeField] public CameraController CameraController { get; private set; }
         [SerializeField] private Transform playerModelContainer;
         private IPlayerComponent[] playerComponents;
         public LocalGamePlayer LocalGamePlayer { get; private set; }

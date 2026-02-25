@@ -11,14 +11,11 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         [SerializeField] private QuestThreeData questThreeData;
         private QuestThreeHandler questThreeHandler;
 
-        private readonly NetworkVariable<float> health = 
-            new NetworkVariable<float>(readPerm: NetworkVariableReadPermission.Everyone, 
-                writePerm: NetworkVariableWritePermission.Owner);
+        private float health;
 
         private void Awake()
         {
-            if (IsOwner)
-                health.Value = questThreeData.SporeHealth;
+            health = questThreeData.SporeHealth;
             
             questThreeHandler ??= questThreeData.GetHandlerByData<QuestThreeHandler>();
             if (questThreeHandler == null)
@@ -33,20 +30,19 @@ namespace OverBang.ExoWorld.Gameplay.Quests
                 TakeDamageRpc(damage.baseDamage);
         }
         
-        [Rpc(SendTo.Owner)]
+        [Rpc(SendTo.Everyone)]
         private void TakeDamageRpc(float finalDamage)
         {
-            health.Value -= finalDamage;
+            health -= finalDamage;
 
-            if (health.Value <= 0)
+            if (health <= 0)
             {
-                DispatchEventRpc();
+                DispatchEvent();
                 Destroy(gameObject);
             }
         }
 
-        [Rpc(SendTo.Everyone)]
-        private void DispatchEventRpc()
+        private void DispatchEvent()
         {
             IGameEvent evt = new QuestThreeEvent();
             ObjectivesManager.DispatchGameEvent(evt);
