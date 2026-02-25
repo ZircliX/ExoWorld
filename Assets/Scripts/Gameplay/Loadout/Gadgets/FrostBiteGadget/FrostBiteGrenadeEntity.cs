@@ -41,7 +41,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
         public void Initialize(FrostBiteGrenadeData data, FrostBiteGrenade grenade)
         {
             Data = data;
-            InitializeRpc(data.ID);
+            Debug.Log($"Owner : {Data.ID}");
+            InitializeRpc(Data.ID);
             strategy = new CryoExplosion(Data.DamageData, Data.SlowDuration, Data.SlowPercentage);
             frostBiteGrenade = grenade;
             strategy.OnExploded += OnExploded;
@@ -50,6 +51,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
         [Rpc(SendTo.Everyone)]
         private void InitializeRpc(string dataId)
         {
+            Debug.Log($"Database null ? {GameDatabase.Global == null}");
+            Debug.Log($"Database assets count : {GameDatabase.Global?.DatabaseAssets.Length}");
             if (GameDatabase.Global.TryGetAssetByID(dataId, out FrostBiteGrenadeData asset))
             {
                 Data = asset;
@@ -114,7 +117,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
                     transform.position,
                     Quaternion.identity
                 );
-                PlayVfxRpc();
+                PlayVfxRpc(vfx.NetworkObjectId);
             }
             
             if (terminated)
@@ -123,30 +126,41 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
                 End();
             }
         }
-
+        
         [Rpc(SendTo.Everyone)]
-        private void PlayVfxRpc()
+        private void PlayVfxRpc(ulong networkObjectId)
         {
-            BroAudio.Play(Data.SoundID);
+            if (!NetworkManager.Singleton.SpawnManager.SpawnedObjects
+                    .TryGetValue(networkObjectId, out NetworkObject netObj))
+            {
+                Debug.LogError($"VFX with ID {networkObjectId} not found.");
+                return;
+            }
+            
+            vfx = netObj;
             if (vfx.TryGetComponent(out ParticleSystem ps))
             {
                 ps.Play();
                 Invoke(nameof(DestroyVfx), ps.main.duration);
             }
-        }
 
+            BroAudio.Play(Data.SoundID);
+        }
         private void DestroyVfx()
         {
+            if(!IsOwner) return;
             if(vfx != null) vfx.Despawn();
         }
         private void End()
         {
+            if(!IsOwner) return;
             frostBiteGrenade.End();
             no.Despawn();
         }
 
         public void Discard()
         {
+            if(!IsOwner) return;
             no.Despawn();
         }
 
