@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9127993270445195953
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3793780792817199912}
+  - component: {fileID: 5190174665093642400}
+  m_Layer: 0
+  m_Name: Cockroach_Static_Simulation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3793780792817199912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9127993270445195953}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5190174665093642400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9127993270445195953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d172c85f267e80f4fbb6decdfa68fb82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emitterState: 0
+  playOnAwake: 1
+  numberOfEmissions: 100
+  emissionObjects:
+  - {fileID: 973355840609230703, guid: dcdbfca95e174414687ed49c4c566234, type: 3}
+  - {fileID: 593343216604820554, guid: 78b7f28a004063d4f8e50fcb633f836d, type: 3}
+  simulationSize: 1.5
+  simulationHeight: 2
+  loopMode: 0
+  settingsPreset: 1
+  moveSpeed: 0.75
+  rotationSpeed: 15
+  sizeVariation: 0.5
+  pauseTime: 2
+  surface_LayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  simulationMode: 0
+  bakeResolutions: 1
+  pathfindingResolution: 2
+  pathfindingResolutionSteps: 30
+  navigationTexture: {fileID: 0}
+  spawnOrigin: {x: 0, y: 0, z: 0}
