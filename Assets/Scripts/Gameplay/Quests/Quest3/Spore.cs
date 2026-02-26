@@ -37,6 +37,9 @@ namespace OverBang.ExoWorld.Gameplay.Quests
 
             if (health <= 0)
             {
+                if (questThreeHandler.StepIndex < 1)
+                    questThreeHandler.SetStepIndex(1);
+                
                 DispatchEvent();
                 Destroy(gameObject);
             }
