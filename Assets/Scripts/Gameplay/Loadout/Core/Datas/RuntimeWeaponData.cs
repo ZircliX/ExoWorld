@@ -1,4 +1,6 @@
-﻿namespace OverBang.ExoWorld.Gameplay.Loadout
+﻿using UnityEngine;
+
+namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public class RuntimeWeaponState
     {
@@ -29,7 +31,7 @@
             }
             
             CurrentBullets -= amount;
-            TimeForNextShot = weapon.WeaponData.FireCooldown;
+            TimeForNextShot = weapon.WeaponData.FireCooldown * weapon.WeaponController.ShootRateMultiplier;
             return true;
         }
 
@@ -43,6 +45,7 @@
             if (TimeForNextShot <= 0f)
                 return;
             
+            Debug.Log(weapon.WeaponController.ShootRateMultiplier);
             TimeForNextShot -= deltaTime;
         }
     }

@@ -24,10 +24,10 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             }
         }
 
-        public void TakeDamage(DamageData damage)
+        public void TakeDamage(RuntimeDamageData damage)
         {
             if (gameObject.activeSelf)
-                TakeDamageRpc(damage.baseDamage);
+                TakeDamageRpc(damage.finalDamage);
         }
         
         [Rpc(SendTo.Everyone)]

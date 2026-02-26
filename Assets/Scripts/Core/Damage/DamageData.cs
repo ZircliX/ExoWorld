@@ -12,10 +12,20 @@ namespace OverBang.ExoWorld.Core.Damage
             bonusDamage = bonus;
             return this;
         }
+
+        public readonly RuntimeDamageData GetRuntimeDamage()
+        {
+            return new RuntimeDamageData
+            {
+                finalDamage = baseDamage + bonusDamage,
+                weakSpotMultiplier = weakSpotMultiplier
+            };
+        }
     }
 
     public struct RuntimeDamageData
     {
-        
+        public float finalDamage;
+        public float weakSpotMultiplier;
     }
 }

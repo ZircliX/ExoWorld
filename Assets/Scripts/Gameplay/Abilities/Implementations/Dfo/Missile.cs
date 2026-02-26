@@ -85,7 +85,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
                 RaycastHit hit = results[i];
                 if (hit.collider.TryGetComponent(out IDamageable damageable))
                 {
-                    damageable.TakeDamage(damageData);
+                    damageable.TakeDamage(damageData.GetRuntimeDamage());
                 }
             }
         }

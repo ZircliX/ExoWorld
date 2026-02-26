@@ -13,6 +13,11 @@ namespace OverBang.ExoWorld.Gameplay.Movement
         public PlayerController Controller { get; private set; }
         public Animator PlayerAnimator { get; private set; }
 
+        public void SetMovementSpeedMultiplier(float multiplier)
+        {
+            MovementSpeedMultiplier = multiplier;
+        }
+        
         protected override void Awake()
         {
             base.Awake();

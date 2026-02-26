@@ -56,7 +56,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
                     !damagedEnemies.Contains(damageable) &&
                     col.gameObject != Caster.gameObject)
                 {
-                    damageable.TakeDamage(ability.DataT.Damage);
+                    damageable.TakeDamage(ability.DataT.Damage.GetRuntimeDamage());
                 }
             }
         }
@@ -81,7 +81,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             //Flame Damages
             foreach (IDamageable enemy in damagedEnemies)
             {
-                enemy.TakeDamage(Data.FlameDamage);
+                enemy.TakeDamage(Data.FlameDamage.GetRuntimeDamage());
             }
         }
     }
@@ -116,7 +116,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
                 if (col.gameObject.TryGetComponent(out IDamageable damageable) && 
                     col.CompareTag("Enemy"))
                 {
-                    damageable.TakeDamage(Data.ElectricDamage);
+                    damageable.TakeDamage(Data.ElectricDamage.GetRuntimeDamage());
                 }
             }
         }

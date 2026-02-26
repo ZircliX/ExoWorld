@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using KBCore.Refs;
+using OverBang.ExoWorld.Core.Damage;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Core.Upgrade;
 using OverBang.ExoWorld.Gameplay.Targeting;
@@ -16,6 +17,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         public override IPool Pool { get; protected set; }
 
         private BulletData data;
+        private float damageMultiplier;
         
         private Vector3 previousPosition;
         private RaycastHit[] results;
@@ -44,7 +46,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             }
         }
 
-        public override void Fire(Vector3 origin, Vector3 direction, BulletData bulletData)
+        public override void Fire(Vector3 origin, Vector3 direction, BulletData bulletData, float damageMultiplier)
         {
             if (!IsOwner) 
                 return;
@@ -56,6 +58,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             previousPosition = transform.position;
 
             data = bulletData;
+            this.damageMultiplier = damageMultiplier;
             
             if (rb == null) return;
             rb.AddForce(direction * data.BulletSpeed, ForceMode.Impulse);
@@ -96,8 +99,17 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
                 {
                     if (hit.collider.TryGetComponent(out IDamageable damageable) && IsOwner)
                     {
+                        float damage = data.Damage.baseDamage;
+                        float bonusDamage = UpgradeManager.Instance.GetRuntimeUpgrade(UpgradeType.Damage);
+
+                        RuntimeDamageData finalDamage = new RuntimeDamageData()
+                        {
+                            finalDamage = (damage + bonusDamage) * damageMultiplier,
+                            weakSpotMultiplier = data.Damage.weakSpotMultiplier,
+                        };
+                        
                         //Debug.Log($"Dealing damage to IDamageable {hit.collider.name}", hit.collider.gameObject);
-                        damageable.TakeDamage(data.Damage.WithBonusDamage(UpgradeManager.Instance.GetRuntimeUpgrade(UpgradeType.Damage)));
+                        damageable.TakeDamage(finalDamage);
                     }
                     
                     /* To push objects when hit - disabled for now
