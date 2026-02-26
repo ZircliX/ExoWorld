@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Helteix.Tools;
+using OverBang.ExoWorld.Core.Damage;
 using OverBang.ExoWorld.Gameplay.Abilities;
 using OverBang.ExoWorld.Gameplay.Targeting;
 using Unity.Netcode;
@@ -75,7 +76,14 @@ namespace OverBang.ExoWorld.Gameplay.Quests
                 IDamageable target = buffer[i];
                 
                 Debug.Log($"Applying {data.GazTickDamage} Damage to {target.GetType().Name}");
-                target.TakeDamage(data.GazTickDamage);
+
+                RuntimeDamageData damageData = new RuntimeDamageData()
+                {
+                    finalDamage = data.GazTickDamage.baseDamage,
+                    weakSpotMultiplier = data.GazTickDamage.weakSpotMultiplier,
+                };
+                
+                target.TakeDamage(damageData);
             }
         }
 

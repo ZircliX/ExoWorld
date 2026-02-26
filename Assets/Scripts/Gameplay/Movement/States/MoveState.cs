@@ -108,7 +108,6 @@ namespace OverBang.ExoWorld.Gameplay.Movement
 
             //Les escaliers mon pire enemi
             Vector3 up = -movement.Gravity.Value.normalized;
-            Vector3 playerBasePosition = movement.Position - movement.CapsuleCollider.height * 0.5f * up;
 
             Vector3 stepPoint = movement.Foot.position + up * maxStepHeight + Vector3.ProjectOnPlane(finalVelocity, projectionPlaneNormal).normalized * movement.CapsuleCollider.radius;
 

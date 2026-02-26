@@ -11,6 +11,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
     public class WeaponController : NetworkBehaviour, IPlayerComponent, IInputReceiver
     {
         [SerializeField] private WeaponData[] weaponsData;
+        [SerializeField] private Transform weaponHolder;
         public event Action<RigBuilder> OnRigBuilderAccessed;
         
         public Loadout Loadout { get; private set; }
@@ -36,10 +37,12 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         };
         public WeaponCategory CurrentWeaponCategory { get; private set; }
         
-        [SerializeField] private Transform weaponHolder;
 
         public event Action OnWeaponChanged;
         private PlayerRig playerRig;
+
+        public float ShootRateMultiplier { get; private set; } = 1;
+        public float DamageMultiplier { get; private set; } = 1;
         
         private void OnEnable()
         {
@@ -49,6 +52,16 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private void OnDisable()
         {
             PlayerLoadout.OnLoadoutChanged -= RefreshLoadout;
+        }
+
+        public void SetShootRateMultiplier(float shootRate)
+        {
+            ShootRateMultiplier = shootRate;
+        }
+
+        public void SetDamageMultiplier(float damage)
+        {
+            DamageMultiplier = damage;
         }
 
         public void Initialize(LoadoutController loadoutController)

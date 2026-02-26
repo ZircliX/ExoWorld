@@ -304,7 +304,7 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
 
         public void Damage(IDamageable damageable)
         {
-            damageable.TakeDamage(DamageData);
+            damageable.TakeDamage(DamageData.GetRuntimeDamage());
         }
         
         public event Action<bool> OnTargeted;

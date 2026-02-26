@@ -24,10 +24,10 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             }
         }
 
-        public void TakeDamage(DamageData damage)
+        public void TakeDamage(RuntimeDamageData damage)
         {
             if (gameObject.activeSelf)
-                TakeDamageRpc(damage.baseDamage);
+                TakeDamageRpc(damage.finalDamage);
         }
         
         [Rpc(SendTo.Everyone)]
@@ -37,6 +37,9 @@ namespace OverBang.ExoWorld.Gameplay.Quests
 
             if (health <= 0)
             {
+                if (questThreeHandler.StepIndex < 1)
+                    questThreeHandler.SetStepIndex(1);
+                
                 DispatchEvent();
                 Destroy(gameObject);
             }

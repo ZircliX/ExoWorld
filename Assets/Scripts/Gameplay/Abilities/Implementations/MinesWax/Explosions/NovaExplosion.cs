@@ -39,7 +39,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
                 {
                     if (colliders[j].TryGetComponent(out IDamageable damageable))
                     {
-                        damageable.TakeDamage(damage);
+                        damageable.TakeDamage(damage.GetRuntimeDamage());
                     }
                 }
 

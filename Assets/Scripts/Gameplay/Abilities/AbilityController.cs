@@ -10,7 +10,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
     public class AbilityController : MonoBehaviour, IPlayerComponent, ICaster
     {
         public PlayerController Controller { get; private set; }
-        public Transform CastAnchor { get; }
+        [field: SerializeField] public Transform CastAnchor { get; private set; }
         public Vector3 Forward => pm.CameraController.transform.forward;
         private PlayerMovement pm;
         
@@ -21,7 +21,10 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
 
         private void Awake()
         {
-            pm = GetComponent<PlayerMovement>();
+            if (transform.GetChild(1).TryGetComponent(out pm))
+            {
+                CastAnchor = transform.GetChild(1);
+            }
         }
 
         private void Update()

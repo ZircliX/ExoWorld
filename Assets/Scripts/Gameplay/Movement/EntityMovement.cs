@@ -12,6 +12,7 @@ namespace OverBang.ExoWorld.Gameplay.Movement
     public class EntityMovement : MonoBehaviour
     {
         #region Public Properties
+        
         public bool IsGrounded { get; protected set; }
         public bool PreviousIsGrounded { get; protected set; }
         public Vector3 InputDirection { get; protected set; }
@@ -22,6 +23,7 @@ namespace OverBang.ExoWorld.Gameplay.Movement
         public Formula<Vector3> CurrentVelocity { get; protected set; }
         public Vector3 Position { get; protected set; }
         public Priority<Vector3> Gravity { get; protected set; }
+        
         #endregion
         
         [Header("Audio Settings")]
@@ -165,6 +167,7 @@ namespace OverBang.ExoWorld.Gameplay.Movement
         public const float MIN_THRESHOLD = 0.001f;
         protected readonly RaycastHit[] raycastHitsBuffer = new RaycastHit[16];
         protected readonly Collider[] collidersBuffer = new Collider[16];
+        public float MovementSpeedMultiplier { get; protected set; } = 1;
         
         #region Event Functions
         
@@ -258,7 +261,7 @@ namespace OverBang.ExoWorld.Gameplay.Movement
             //Manage States Values
             MovementStateBehavior state = movementStates[currentStateIndex];
 
-            Vector3 stateVelocity = state.GetVelocity(this, deltaTime, ref stateGravityScale);
+            Vector3 stateVelocity = state.GetVelocity(this, deltaTime, ref stateGravityScale) * MovementSpeedMultiplier;
             stateVelocity += Gravity.Value * (stateGravityScale * gravityScale * deltaTime);
             CurrentVelocity.Write(stateChannelKey, stateVelocity);
 

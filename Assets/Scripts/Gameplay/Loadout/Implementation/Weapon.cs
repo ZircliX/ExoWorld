@@ -72,7 +72,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
             if (bulletInstance.TryGetComponent(out Bullet bullet))
             {
-                bullet.Fire(Rig.shootPoint.position, dir, WeaponData.BulletData);
+                bullet.Fire(Rig.shootPoint.position, dir, WeaponData.BulletData, WeaponController.DamageMultiplier);
             }
             else
             {

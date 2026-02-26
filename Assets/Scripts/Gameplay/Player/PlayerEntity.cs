@@ -3,6 +3,7 @@ using OverBang.ExoWorld.Core.Characters;
 using OverBang.ExoWorld.Core.Damage;
 using OverBang.ExoWorld.Core.Interactions;
 using OverBang.ExoWorld.Core.Upgrade;
+using OverBang.ExoWorld.Gameplay.Loadout;
 using OverBang.ExoWorld.Gameplay.Targeting;
 using OverBang.ExoWorld.Gameplay.Upgrade;
 using UnityEngine;
@@ -13,6 +14,8 @@ namespace OverBang.ExoWorld.Gameplay.Player
     {
         public PlayerController Controller { get; private set; }
         private CharacterData characterData;
+
+        public WeaponController WeaponController { get; private set; }
 
         private void OnEnable()
         {
@@ -28,6 +31,9 @@ namespace OverBang.ExoWorld.Gameplay.Player
         {
             characterData = context.playerCharacterData;
             Controller = context.playerController;
+
+            WeaponController = Controller.GetComponent<WeaponController>();
+            
             Initialize();
         }
         
@@ -55,11 +61,11 @@ namespace OverBang.ExoWorld.Gameplay.Player
                       " j'ai pas les épaules");
         }
 
-        public void TakeDamage(DamageData damage)
+        public void TakeDamage(RuntimeDamageData damage)
         {
-            if (Health - damage.baseDamage >= MaxHealth)
+            if (Health - damage.finalDamage >= MaxHealth)
             {
-                Controller.LocalGamePlayer.SetHealth(Health - damage.baseDamage);
+                Controller.LocalGamePlayer.SetHealth(Health - damage.finalDamage);
             }
         }
 

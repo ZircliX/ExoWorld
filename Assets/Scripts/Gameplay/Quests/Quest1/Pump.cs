@@ -100,7 +100,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             oneHandler.SetStepIndex(2);
         }
 
-        public void TakeDamage(DamageData damage)
+        public void TakeDamage(RuntimeDamageData damage)
         {
             if (IsOwner && Health > 0)
             {
