@@ -17,7 +17,7 @@ using Random = UnityEngine.Random;
 namespace OverBang.ExoWorld.Gameplay.Enemies
 {
     [RequireComponent(typeof(DamageableAndHealableComponent))]
-    public class Enemy : NetworkBehaviour, IPoolInstanceListener, IDamageSource, ITargetable, ISlowable
+    public class Enemy : NetworkBehaviour, IPoolInstanceListener, IDamageSource, ITargetable, ISpeedTarget
     {
         [field : Header("Datas")]
         [field : SerializeField, Self, HideInInspector] public NetworkObject EnemyNetworkObject { get; private set; }
@@ -319,10 +319,10 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
             OnTargeted?.Invoke(state);
         }
 
-        public void ApplySlow(float slowPercentage, float slowDuration)
+        public void ApplySpeed(float speedPercentage, float duration)
         {
-            Agent.speed *= 1f - slowPercentage;
-            Invoke(nameof(RemoveSlow), slowDuration);
+            Agent.speed *= 1f - speedPercentage;
+            Invoke(nameof(RemoveSlow), duration);
         }
 
         private void RemoveSlow()

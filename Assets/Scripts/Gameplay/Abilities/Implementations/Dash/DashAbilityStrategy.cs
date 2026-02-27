@@ -22,7 +22,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         {
             Caster = caster;
             
-            if (caster.gameObject.TryGetComponent(out PlayerMovement pm))
+            if (caster.transform.GetChild(1).TryGetComponent(out PlayerMovement pm))
             {
                 PlayerMovement = pm;
             }

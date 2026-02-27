@@ -45,7 +45,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             if (TimeForNextShot <= 0f)
                 return;
             
-            Debug.Log(weapon.WeaponController.ShootRateMultiplier);
+            //Debug.Log(weapon.WeaponController.ShootRateMultiplier);
             TimeForNextShot -= deltaTime;
         }
     }

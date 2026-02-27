@@ -4,18 +4,22 @@ using OverBang.ExoWorld.Core.Damage;
 using OverBang.ExoWorld.Core.Interactions;
 using OverBang.ExoWorld.Core.Upgrade;
 using OverBang.ExoWorld.Gameplay.Loadout;
+using OverBang.ExoWorld.Gameplay.Movement;
 using OverBang.ExoWorld.Gameplay.Targeting;
 using OverBang.ExoWorld.Gameplay.Upgrade;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Player
 {
-    public class PlayerEntity : MonoBehaviour, IPlayerComponent, ITargetable, ISlowable, IDamageable, IHealable, IHealth
+    public class PlayerEntity : MonoBehaviour, IPlayerComponent, ITargetable, ISpeedTarget, IDamageable, IHealable, IHealth
     {
         public PlayerController Controller { get; private set; }
         private CharacterData characterData;
 
         public WeaponController WeaponController { get; private set; }
+
+        private PlayerMovement pm;
+        private float currentSlowTimer;
 
         private void OnEnable()
         {
@@ -33,6 +37,7 @@ namespace OverBang.ExoWorld.Gameplay.Player
             Controller = context.playerController;
 
             WeaponController = Controller.GetComponent<WeaponController>();
+            pm = GetComponent<PlayerMovement>();
             
             Initialize();
         }
@@ -54,11 +59,21 @@ namespace OverBang.ExoWorld.Gameplay.Player
             OnTargeted?.Invoke(IsTargetable);
         }
 
-        public void ApplySlow(float slowPercentage, float slowDuration)
+        public void ApplySpeed(float speedPercentage, float duration)
         {
-            Debug.Log("c'est pas implémenter, et franchement, " +
-                      "aller changer dans le script de 700 lignes pour slow le joueurs," +
-                      " j'ai pas les épaules");
+            currentSlowTimer = duration;
+            pm.SetMovementSpeedMultiplier(1 + speedPercentage);
+        }
+
+        private void Update()
+        {
+            if (currentSlowTimer > 0)
+                currentSlowTimer -= Time.deltaTime;
+            
+            if (currentSlowTimer <= 0)
+            {
+                pm.SetMovementSpeedMultiplier(1);
+            }
         }
 
         public void TakeDamage(RuntimeDamageData damage)

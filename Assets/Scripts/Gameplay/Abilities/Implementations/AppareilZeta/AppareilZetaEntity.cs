@@ -19,6 +19,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         [SerializeField] private DetectionArea damageDetectionArea;
         
         private IAppareilZetaAbilityStrategyData strategyData;
+        private AppareilZetaData data;
         private IExplosionStrategy explosionStrategy;
         
         private List<PlayerEntity> players;
@@ -36,6 +37,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             buffer = new DynamicBuffer<IDamageable>(8);
             
             this.strategyData = strategyData;
+            this.data = data;
             explosionStrategy = new StandardExplosion(new DamageData()
             {
                 baseDamage = strategyData.ExplosionDamage
@@ -122,10 +124,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
                 player.WeaponController.SetShootRateMultiplier(1 - 1 * strategyData.GivenBonus);
                 player.WeaponController.SetDamageMultiplier(1 + 1 * strategyData.GivenBonus);
 
-                if (player.TryGetComponent(out PlayerMovement pm))
-                {
-                    pm.SetMovementSpeedMultiplier(1 + 1 * strategyData.GivenBonus);
-                }
+                player.ApplySpeed(strategyData.GivenBonus, data.Duration);
             }
             
             else if (target is IDamageable damageable)
@@ -143,10 +142,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
                 player.WeaponController.SetShootRateMultiplier(1);
                 player.WeaponController.SetDamageMultiplier(1);
 
-                if (player.TryGetComponent(out PlayerMovement pm))
-                {
-                    pm.SetMovementSpeedMultiplier(1);
-                }
+                player.ApplySpeed(0, 0);
             }
             
             else if (target is IDamageable damageable)
