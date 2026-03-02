@@ -13,13 +13,10 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
         public FrostBiteGrenadeData Data { get; private set; }
         
         public ICaster Caster { get; private set; }
-
         public bool IsEquiped { get; private set; }
         public bool IsCasting { get; private set; }
         public NetworkSpawnManager spawnManager { get; private set; }
         public LocalGamePlayer player { get; private set; }
-
-        private float lifeTime = 5f;
         public event Action<IGadget> OnGadgetEnded;
         
         private FrostBiteGrenadeEntity grenadeEntity;
@@ -53,7 +50,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
             if (grenade.TryGetComponent(out FrostBiteGrenadeEntity entity))
             {
                 grenadeEntity = entity;
-                grenadeEntity.FreezeGrenade(true);
+                grenadeEntity.FreezeGrenadeRpc(true);
                 grenadeEntity.Initialize(Data,this);
             }
             

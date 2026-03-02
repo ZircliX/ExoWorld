@@ -68,7 +68,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             if (castedGadgets.Count > 0)
             {
                 gadgetBuffer.CopyFrom(castedGadgets);
-                Debug.Log(gadgetBuffer.Length);
                 for (int index = 0; index < gadgetBuffer.Length; index++)
                 {
                     IGadget gadget = gadgetBuffer[index];
