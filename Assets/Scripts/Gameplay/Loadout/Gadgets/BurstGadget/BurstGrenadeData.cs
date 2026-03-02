@@ -13,7 +13,10 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
     {
         [field: SerializeField] public NetworkObject Prefab { get; private set; }
         [field: SerializeField] public DamageData DamageData { get; private set; }
+        [field: SerializeField] public DamageData FireDamageData { get; private set; }
         [field: SerializeField] public float ThrowForce { get; private set; }
+        [field: SerializeField] public float ZoneDuration { get; private set; }
+        [field: SerializeField] public NetworkObject FireZoneVfx { get; private set; }
         [field : SerializeField, ReadOnly] public string ID { get; private set; }
         
         private void OnValidate()

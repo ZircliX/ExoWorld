@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 7067403717580696990}
   - component: {fileID: 3767293237778474218}
   - component: {fileID: -6629937039569539960}
+  - component: {fileID: 2645937083899976632}
   m_Layer: 0
   m_Name: BurstGrenade
   m_TagString: Untagged
@@ -162,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 4023272993
+  GlobalObjectIdHash: 1330768194
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -189,7 +190,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.Loadout.BurstGadget.BurstGrenadeEntity
   ShowTopMostFoldoutHeaderGroup: 1
   rb: {fileID: 2191814864685051435}
+  no: {fileID: -2235405139483644919}
   trail: {fileID: 7067403717580696990}
+  meshRenderer: {fileID: 3262586500542679372}
   collider: {fileID: 410124877795776538}
 --- !u!54 &2191814864685051435
 Rigidbody:
@@ -391,3 +394,19 @@ MonoBehaviour:
   UseRigidBodyForMotion: 0
   AutoUpdateKinematicState: 1
   AutoSetKinematicOnDespawn: 1
+--- !u!114 &2645937083899976632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7493946297009585417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e44b100c3d23430c86d54a79ce6f46dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.Abilities.BaliseVfxInitializer
+  <HealingCircle>k__BackingField: {fileID: 0}
+  vfxRadius: []
+  vfxSphereRadius: []
+  vfxDuration: []

@@ -37,10 +37,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
             player = localPlayer; 
             spawnManager = NetworkManager.Singleton.SpawnManager;
             
-            Debug.Log(player.ClientID);
-            Debug.Log(Data.Prefab);
-            Debug.Log(Data);
-            
             NetworkObject grenade = spawnManager.InstantiateAndSpawn(Data.Prefab, 
                 player.ClientID, 
                 true,
