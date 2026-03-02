@@ -27,18 +27,20 @@ namespace OverBang.ExoWorld.Gameplay.Quests
                 return;
             
             IObjectiveHandler objectiveHandler = ObjectivesManager.ActiveObjectives[0];
-            objectiveHandler.OnObjectiveStateChanged += OnStateChanged;
-            
             currentObjectiveHandler = objectiveHandler;
+            objectiveHandler.OnObjectiveStateChanged += OnStateChanged;
             objectiveHandler.OnObjectiveStepChanged += OnStepChanged;
+            
             UpdateObjectiveUI(objectiveHandler);
         }
 
         private void OnStateChanged(IObjectiveHandler objectiveHandler, ObjectiveState state)
         {
-            if (state is ObjectiveState.Completed or ObjectiveState.Disposed)
+            if (state is ObjectiveState.Completed or ObjectiveState.Disposed &&
+                currentObjectiveHandler == objectiveHandler)
             {
-                objectiveHandler.OnObjectiveStateChanged += OnStateChanged;
+                objectiveHandler.OnObjectiveStateChanged -= OnStateChanged;
+                objectiveHandler.OnObjectiveStepChanged -= OnStepChanged;
                 ClearObjective();
             }
         }
@@ -73,6 +75,12 @@ namespace OverBang.ExoWorld.Gameplay.Quests
 
         protected override void ClearObjective()
         {
+            if (questCompleteRewardImage == null)
+            {
+                Debug.LogWarning("questCompleteRewardImage was destroyed before ClearObjective!");
+                return;
+            }
+            
             Sequence uiSequence = DOTween.Sequence();
 
             //Remove quest
@@ -87,9 +95,8 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             if (currentObjectiveHandler.ObjectiveData is ObjectiveDataQuest { Reward: TrinititeRewardData trinititeRewardData } questData)
             {
                 questCompleteRewardText.text = $"{trinititeRewardData.TrinititeData.ItemName} : {trinititeRewardData.TrinititeData.Quantity}";
+                
                 Debug.Log(questCompleteRewardImage);
-                Debug.Log(questCompleteRewardImage.sprite);
-                Debug.Log(trinititeRewardData.TrinititeData.Icon);
                 questCompleteRewardImage.sprite = trinititeRewardData.TrinititeData.Icon;
             }
             

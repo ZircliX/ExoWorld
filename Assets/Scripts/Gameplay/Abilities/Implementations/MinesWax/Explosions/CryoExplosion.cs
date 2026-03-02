@@ -33,9 +33,9 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
                     damageable.TakeDamage(damage.GetRuntimeDamage());
                 }
                 
-                if (col.TryGetComponent(out ISlowable slowable))
+                if (col.TryGetComponent(out ISpeedTarget slowable))
                 {
-                    slowable.ApplySlow(slowPercentage, slowDuration);
+                    slowable.ApplySpeed(-slowPercentage, slowDuration);
                 }
             }
             

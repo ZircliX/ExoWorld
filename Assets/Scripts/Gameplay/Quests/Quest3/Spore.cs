@@ -1,3 +1,5 @@
+using System;
+using KBCore.Refs;
 using OverBang.ExoWorld.Core.Damage;
 using OverBang.ExoWorld.Gameplay.Targeting;
 using Unity.Netcode;
@@ -8,10 +10,16 @@ namespace OverBang.ExoWorld.Gameplay.Quests
 {
     public class Spore : NetworkBehaviour, IDamageable
     {
+        [SerializeField, Self] private NetworkObject networkObject;
         [SerializeField] private QuestThreeData questThreeData;
         private QuestThreeHandler questThreeHandler;
 
         private float health;
+
+        private void OnValidate()
+        {
+            this.ValidateRefs();
+        }
 
         private void Awake()
         {
@@ -26,8 +34,21 @@ namespace OverBang.ExoWorld.Gameplay.Quests
 
         public void TakeDamage(RuntimeDamageData damage)
         {
-            if (gameObject.activeSelf)
-                TakeDamageRpc(damage.finalDamage);
+            if (!gameObject.activeSelf)
+                return;
+
+            TakeDamageRpc(damage.finalDamage);
+            
+            if (health - damage.finalDamage < 0)
+            {
+                OwnerDestroyRpc();
+            }
+        }
+
+        [Rpc(SendTo.Owner)]
+        private void OwnerDestroyRpc()
+        {
+            networkObject.Despawn(false);
         }
         
         [Rpc(SendTo.Everyone)]
@@ -41,7 +62,6 @@ namespace OverBang.ExoWorld.Gameplay.Quests
                     questThreeHandler.SetStepIndex(1);
                 
                 DispatchEvent();
-                Destroy(gameObject);
             }
         }
 
@@ -49,6 +69,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         {
             IGameEvent evt = new QuestThreeEvent();
             ObjectivesManager.DispatchGameEvent(evt);
+            gameObject.SetActive(false);
         }
     }
 }

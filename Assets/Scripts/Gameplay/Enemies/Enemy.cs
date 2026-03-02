@@ -6,6 +6,7 @@ using OverBang.ExoWorld.Core.Enemies;
 using OverBang.ExoWorld.Core.Interactions;
 using OverBang.ExoWorld.Core.Utils;
 using OverBang.ExoWorld.Gameplay.Abilities;
+using OverBang.ExoWorld.Gameplay.Loots;
 using OverBang.ExoWorld.Gameplay.Targeting;
 using OverBang.Pooling;
 using OverBang.Pooling.Resource;
@@ -17,7 +18,7 @@ using Random = UnityEngine.Random;
 namespace OverBang.ExoWorld.Gameplay.Enemies
 {
     [RequireComponent(typeof(DamageableAndHealableComponent))]
-    public class Enemy : NetworkBehaviour, IPoolInstanceListener, IDamageSource, ITargetable, ISlowable
+    public class Enemy : NetworkBehaviour, IPoolInstanceListener, IDamageSource, ITargetable, ISpeedTarget
     {
         [field : Header("Datas")]
         [field : SerializeField, Self, HideInInspector] public NetworkObject EnemyNetworkObject { get; private set; }
@@ -255,14 +256,17 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
             isAttacking = false;
             collider.enabled = false;
             Agent.enabled = false;
+            
             enemyAnimator.Ragdoll(true);
+            EnemyManager.Instance.Unregister(this);
+            
+            NetworkObject loot = enemyData.LootTable.GetDrop(transform.position, transform.rotation);
+            
             Invoke(nameof(WaitUntilRagdoll), enemyData.RagdollDuration);
         }
 
         private void WaitUntilRagdoll()
         {
-            EnemyManager.Instance.Unregister(this);
-            
             if (IsOwner)
             {
                 OnDeathOwner();
@@ -319,10 +323,10 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
             OnTargeted?.Invoke(state);
         }
 
-        public void ApplySlow(float slowPercentage, float slowDuration)
+        public void ApplySpeed(float speedPercentage, float duration, string effectId)
         {
-            Agent.speed *= 1f - slowPercentage;
-            Invoke(nameof(RemoveSlow), slowDuration);
+            Agent.speed *= 1f - speedPercentage;
+            Invoke(nameof(RemoveSlow), duration);
         }
 
         private void RemoveSlow()

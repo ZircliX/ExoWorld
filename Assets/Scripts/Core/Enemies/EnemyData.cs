@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using OverBang.ExoWorld.Core.Damage;
 using OverBang.ExoWorld.Core.Database;
+using OverBang.ExoWorld.Core.Inventory;
 using OverBang.Pooling;
 using OverBang.Pooling.Dependencies;
 using OverBang.Pooling.Resource;
@@ -27,6 +28,8 @@ namespace OverBang.ExoWorld.Core.Enemies
         public GameObject ModelPrefab { get; private set; }
         [field: SerializeField]
         public NetworkObject EnemyPrefab { get; private set; }
+        [field: SerializeField]
+        public LootTable LootTable { get; private set; }
         
         [field: SerializeField, Space]
         public SimplePoolConfig[] Dependencies { get; private set; }

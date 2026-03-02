@@ -37,6 +37,9 @@ namespace OverBang.ExoWorld.Gameplay.Level
 
         public float CurrentGameTime { get; private set; }
         private GazDispenser gazDispenser;
+        
+        private EnemySpawnScenario survivalScenario;
+        
         public event Action<float> OnTimerTick;
         public event Action OnTimerEnd;
 
@@ -54,6 +57,7 @@ namespace OverBang.ExoWorld.Gameplay.Level
 
         public async Awaitable Initialize(GameplayPhase phase)
         {
+            currentPhase = phase;
             OnLevelManagerCreated?.Invoke();
             
             if (State != LevelState.None)
@@ -63,15 +67,15 @@ namespace OverBang.ExoWorld.Gameplay.Level
             }
             
             SetState(LevelState.Initializing);
-            currentPhase = phase;
+            
+            survivalScenario = Resources.Load<EnemySpawnScenario>("SpawnScenario/SurvivalScenario");
+            gazDispenser = GameObject.FindGameObjectWithTag("EndGameGaz").GetComponent<GazDispenser>();
 
             await SetupGameMap();
             SetupPlayer(GamePlayerManager.Instance.GetLocalPlayer());
             await SetupEnemies();
             await SetupPooling();
             await SetupUI();
-
-            gazDispenser = GameObject.FindGameObjectWithTag("EndGameGaz").GetComponent<GazDispenser>();
             
             SetState(LevelState.Ready);
         }
@@ -79,6 +83,7 @@ namespace OverBang.ExoWorld.Gameplay.Level
         public void StartLevel()
         {
             CurrentGameTime = GameMetrics.Global.GameDuration;
+            EnemySpawnerManager.SpawnEnemies(survivalScenario);
             SetState(LevelState.Running);
         }
 
@@ -105,6 +110,7 @@ namespace OverBang.ExoWorld.Gameplay.Level
             if (State == LevelState.Disposed) return;
             
             PoolManager.Instance.ClearPools();
+            EnemySpawnerManager.StopWaveMode(survivalScenario);
             
             SetState(LevelState.Disposed);
         }
