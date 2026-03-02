@@ -5,29 +5,28 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
 {
     public class AreaManager : MonoSingleton<AreaManager>
     {
-        private List<Area> areas;
+        public List<Area> Areas { get; private set; }
         
         private void Awake()
         {
-            areas = new List<Area>();
+            Areas = new List<Area>();
         }
 
         public void Register(Area area)
         {
-            areas.Add(area);
+            Areas.Add(area);
         }
 
         public void Unregister(Area area)
         {
-            areas.Remove(area);
+            Areas.Remove(area);
         }
 
         public HashSet<Area> GetSpawnableAreas()
         {
+            HashSet<Area> availableSpawnAreas = new HashSet<Area>(Areas.Count);
             
-            HashSet<Area> availableSpawnAreas = new HashSet<Area>(areas.Count);
-            
-            foreach (Area area in areas)
+            foreach (Area area in Areas)
             {
                 if (area.IsValid())
                 {

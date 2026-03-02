@@ -8,6 +8,7 @@ namespace OverBang.ExoWorld.Core.Inventory
         Vector3 LootPosition => transform.position;
         string LootId { get; }
         ItemData GetItemData();
+        void Initialize(ItemData itemData);
         void OnLoot(ResourcesInventory inventory);
     }
 }

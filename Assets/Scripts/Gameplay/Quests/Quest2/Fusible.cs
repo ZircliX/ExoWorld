@@ -1,4 +1,5 @@
 using OverBang.ExoWorld.Core.Interactions;
+using OverBang.ExoWorld.Gameplay.Player;
 using Unity.Netcode;
 using UnityEngine;
 using UnityUtils;
@@ -15,6 +16,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         private bool isPickedUp;
         private bool isUsable = true;
         private QuestTwoHandler questTwoHandler;
+        private PlayerEntity playerEntity;
 
         public string InteractionText => "Ramasser le fusible";
         public int Priority { get; private set; } = (int)TargetPriority.Medium;
@@ -54,6 +56,9 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             
             isPickedUp = true;
             CanInteract = false;
+            playerEntity = transform.parent.GetComponent<PlayerEntity>();
+            playerEntity.ApplySpeed(-questTwoData.CarryingSlowForce, -1, nameof(Fusible));
+            
             SetPriority(-1);
             gameObject.SetActive(false); // Hide or trigger pickup animation
         }

@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 809b6762ff2449a183151d44e77fde4f, type: 3}
-  m_Name: QuestOneScenario
+  m_Name: SurvivalScenario
   m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.EnemySpawnScenario
-  <Name>k__BackingField: Quest One Scenario
+  <Name>k__BackingField: Survival Game Mode Scenario
   <SpawnBehavior>k__BackingField: 0
   <EnemyDatas>k__BackingField:
   - {fileID: 11400000, guid: 3314422291d81724c8e1736c676430a3, type: 2}
   - {fileID: 11400000, guid: f5305a9813141a94d86017f1907a6acf, type: 2}
   <SpawnAmount>k__BackingField: 12
-  <MinMaxSpawnIntervals>k__BackingField: {x: 0.5, y: 1.5}
-  <WaveAmount>k__BackingField: 5
-  <InitialEnemyAmountInWave>k__BackingField: 5
+  <MinMaxSpawnIntervals>k__BackingField: {x: 5, y: 5}
+  <WaveAmount>k__BackingField: 6
+  <InitialEnemyAmountInWave>k__BackingField: 10
   <EnemyAmountMultiplier>k__BackingField: 1
-  <TimeBetweenWaves>k__BackingField: 6
-  totalTime: 58.654015
+  <TimeBetweenWaves>k__BackingField: 10
+  totalTime: 360
