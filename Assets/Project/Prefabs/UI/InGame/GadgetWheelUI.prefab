@@ -147,8 +147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daf529b1fbd14965bf06da103b5d0f56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.GadgetControllerUI
+  <Controller>k__BackingField: {fileID: 0}
   selector: {fileID: 8201009885963097955}
-  controller: {fileID: 0}
   gadgetWheel: {fileID: 8338379939896907046}
   <GadgetUis>k__BackingField:
   - {fileID: 3912212879582034473}
@@ -549,6 +549,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3007017395897248337, guid: 6ae0f6171712ac442b62930f7c09a811, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 4301b09b1069f1c40b85b8116564c649, type: 2}
+    - target: {fileID: 3007017395897248337, guid: 6ae0f6171712ac442b62930f7c09a811, type: 3}
+      propertyPath: m_fontStyle
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 3007017395897248337, guid: 6ae0f6171712ac442b62930f7c09a811, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8645691041021899414, guid: 4301b09b1069f1c40b85b8116564c649, type: 2}
+    - target: {fileID: 3007017395897248337, guid: 6ae0f6171712ac442b62930f7c09a811, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4488315885521308916, guid: 6ae0f6171712ac442b62930f7c09a811, type: 3}
       propertyPath: m_Name
       value: GadgetDetails
@@ -582,6 +598,18 @@ PrefabInstance:
       value: Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet
         consectetur adipiscing elit quisque.
       objectReference: {fileID: 0}
+    - target: {fileID: 7189985504039090457, guid: 6ae0f6171712ac442b62930f7c09a811, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: afd5197cf2c8e1b44aeaf39ac3fa08f4, type: 2}
+    - target: {fileID: 7189985504039090457, guid: 6ae0f6171712ac442b62930f7c09a811, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -2786001236448931497, guid: afd5197cf2c8e1b44aeaf39ac3fa08f4, type: 2}
+    - target: {fileID: 7189985504039090457, guid: 6ae0f6171712ac442b62930f7c09a811, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7215057250746955620, guid: 6ae0f6171712ac442b62930f7c09a811, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -592,7 +620,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7215057250746955620, guid: 6ae0f6171712ac442b62930f7c09a811, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 204.84
+      value: 153.53
       objectReference: {fileID: 0}
     - target: {fileID: 7215057250746955620, guid: 6ae0f6171712ac442b62930f7c09a811, type: 3}
       propertyPath: m_AnchoredPosition.x

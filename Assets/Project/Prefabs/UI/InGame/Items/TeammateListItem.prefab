@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 83.895, y: -11.175}
-  m_SizeDelta: {x: 167.79, y: 0}
+  m_SizeDelta: {x: 169.8, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1203094422376256280
 CanvasRenderer:
@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Teammate's Name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: afd5197cf2c8e1b44aeaf39ac3fa08f4, type: 2}
+  m_sharedMaterial: {fileID: -2786001236448931497, guid: afd5197cf2c8e1b44aeaf39ac3fa08f4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -307,7 +307,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.Player.PlayerHUD.TeammateInfo
   playerName: {fileID: 3503225870216976192}
-  characterIcon: {fileID: 0}
   healthBar: {fileID: 8810787369794575510}
   healthBarBg: {fileID: 2486222586093508894}
 --- !u!114 &1438529844172288776
