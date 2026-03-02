@@ -1,3 +1,4 @@
+using System;
 using OverBang.ExoWorld.Core.Inventory;
 using OverBang.Pooling;
 using OverBang.Pooling.Resource;
@@ -24,6 +25,17 @@ namespace OverBang.ExoWorld.Gameplay.Loots
         public void Initialize(ItemData itemData)
         {
             this.itemData = itemData;
+        }
+
+        private void FixedUpdate()
+        {
+            if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hitInfo, 2f))
+            {
+                if (hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
+                {
+                    boundsCollider.enabled = true;
+                }
+            }
         }
 
         public void OnLoot(ResourcesInventory inventorySystem)
@@ -59,7 +71,6 @@ namespace OverBang.ExoWorld.Gameplay.Loots
         public void OnSpawn(IPool pool)
         {
             Pool = pool;
-            boundsCollider.enabled = true;
         }
 
         public void OnDespawn(IPool pool)

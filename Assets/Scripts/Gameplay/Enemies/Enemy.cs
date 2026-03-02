@@ -261,7 +261,6 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
             EnemyManager.Instance.Unregister(this);
             
             NetworkObject loot = enemyData.LootTable.GetDrop(transform.position, transform.rotation);
-            Debug.Log("Looting drop", loot);
             
             Invoke(nameof(WaitUntilRagdoll), enemyData.RagdollDuration);
         }

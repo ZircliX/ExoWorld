@@ -2,7 +2,6 @@ using OverBang.ExoWorld.Core.GameMode.Players;
 using OverBang.ExoWorld.Core.Inventory;
 using Unity.Netcode;
 using UnityEngine;
-using UnityUtils;
 
 namespace OverBang.ExoWorld.Gameplay.Loots
 {
@@ -19,13 +18,6 @@ namespace OverBang.ExoWorld.Gameplay.Loots
                 false,
                 position, 
                 rotation);
-            Debug.Log("Spawned Loot");
-
-            if (networkObject.TryGetComponent(out Rigidbody rb))
-            {
-                rb.AddExplosionForce(100, position.Add(y: -0.25f), 1f, 100, ForceMode.Impulse);
-                Debug.Log("Applied explosion force to loot");
-            }
 
             if (networkObject.TryGetComponent(out LootDrop lootDrop))
             {
@@ -34,7 +26,12 @@ namespace OverBang.ExoWorld.Gameplay.Loots
                 itemData.SetQuantity(Random.Range(scriptableItemData.MinQuantity, scriptableItemData.MaxQuantity + 1));
                 
                 lootDrop.Initialize(itemData);
-                Debug.Log("Initialized loot drop");
+                
+                if (networkObject.TryGetComponent(out Rigidbody rb))
+                {
+                    Vector3 direction = (Vector3.up + Random.onUnitSphere).normalized;
+                    rb.AddForce(direction * 5, ForceMode.Impulse);
+                }
                 
                 return networkObject;
             }

@@ -20,7 +20,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private float damageMultiplier;
         
         private Vector3 previousPosition;
-        private RaycastHit[] results;
+        private static readonly Collider[] results = new Collider[8];
         private int currentPenetration;
         private float lifeTime;
         
@@ -54,7 +54,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             transform.position = origin;
             transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
             
-            results = new RaycastHit[8];
             previousPosition = transform.position;
 
             data = bulletData;
@@ -79,25 +78,22 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             Vector3 currentPosition = transform.position;
             Vector3 distance = currentPosition - previousPosition;
             Vector3 direction = distance.normalized;
+            Vector3 startPoint = previousPosition - direction * (sc.radius + Mathf.Epsilon);
             LayerMask mask = GameMetrics.Global.HittableLayers;
             
-            int hitSize = Physics.SphereCastNonAlloc(previousPosition, sc.radius * 0.25f, direction, results, distance.magnitude, mask, QueryTriggerInteraction.Collide);
+            int hitSize = Physics.OverlapCapsuleNonAlloc(previousPosition, currentPosition, sc.radius, results, mask, QueryTriggerInteraction.Ignore);
 
             //Debug.DrawRay(previousPosition, direction * distance.magnitude, Color.red, 0.5f);
             //Debug.Log(hitSize);
             
             for (int i = 0; i < hitSize; i++)
             {
-                RaycastHit hit = results[i];
+                Collider hit = results[i];
                 //Debug.Log($"Bullet hit : {hit.collider.gameObject.name} with tag {hit.collider.tag}", hit.collider.gameObject);
 
-                // Skip already hit objects
-                if (hitObjects.Contains(hit.collider.gameObject) || hit.collider.isTrigger)
-                    continue;
-                
-                if (!hit.collider.gameObject.CompareTag("LocalPlayer"))
+                if (!hit.gameObject.CompareTag("LocalPlayer"))
                 {
-                    if (hit.collider.TryGetComponent(out IDamageable damageable) && IsOwner)
+                    if (hit.TryGetComponent(out IDamageable damageable) && IsOwner)
                     {
                         float damage = data.Damage.baseDamage;
                         float bonusDamage = UpgradeManager.Instance.GetRuntimeUpgrade(UpgradeType.Damage);
@@ -120,7 +116,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
                     */
                     
                     currentPenetration++;
-                    hitObjects.Add(hit.collider.gameObject);
+                    hitObjects.Add(hit.gameObject);
                 }
                 
                 if (currentPenetration >= data.Penetration)
