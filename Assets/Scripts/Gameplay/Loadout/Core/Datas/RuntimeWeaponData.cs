@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace OverBang.ExoWorld.Gameplay.Loadout
+﻿namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public class RuntimeWeaponState
     {

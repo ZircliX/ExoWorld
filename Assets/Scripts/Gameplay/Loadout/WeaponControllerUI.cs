@@ -1,4 +1,7 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
+using OverBang.ExoWorld.Core.GameMode.Players;
+using OverBang.ExoWorld.Core.Inventory;
 using OverBang.ExoWorld.Gameplay.Upgrade;
 using TMPro;
 using UnityEngine;
@@ -13,13 +16,21 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         [Header("HUD")]
         [SerializeField] private Image weaponIcon;
         [SerializeField] private TMP_Text ammoText;
+        [SerializeField] private TMP_Text totalAmmoText;
         
         private Weapon currentWeapon;
-        
+        private LocalGamePlayer player;
+
+        private void Awake()
+        {
+            player = GamePlayerManager.Instance.GetLocalPlayer();
+        }
+
         private void OnEnable()
         {
             controller.OnWeaponChanged += OnWeaponChanged;
             UpgradeManager.Instance.OnUpgrade += HandleUpgrade;
+            player.Inventory.OnItemQuantityChanged += OnItemQuantityChanged;
 
             // If a weapon is already equipped when HUD appears
             if (controller.CurrentWeapon != null)
@@ -30,7 +41,16 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         {
             controller.OnWeaponChanged -= OnWeaponChanged;
             UpgradeManager.Instance.OnUpgrade -= HandleUpgrade;
+            player.Inventory.OnItemQuantityChanged -= OnItemQuantityChanged;
             UnsubscribeCurrentWeapon();
+        }
+
+        private void OnItemQuantityChanged(ItemData item)
+        {
+            if (item.ItemId == currentWeapon.WeaponData.BulletItemData.ItemData.ItemId)
+            {
+                totalAmmoText.text = item.Quantity.ToString();
+            }
         }
 
         private void OnWeaponChanged()
@@ -62,8 +82,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         {
             UpdateWeaponUI();
         }
-
-
+        
         private void HandleUpgrade()
         {
             WeaponData data = currentWeapon.WeaponData;
@@ -85,7 +104,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
                 weaponIcon.sprite = data.WeaponSprite;
 
             int currentAmmo = currentWeapon.State.CurrentBullets / currentWeapon.WeaponData.BulletsPerShot;
-            int magSize = (data.MagCapacity + data.UpgradeMagCap) / data.BulletsPerShot;
 
             if (ammoText != null)
             {
@@ -97,6 +115,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
                     });
                 }
                 ammoText.text = $"{currentAmmo}";
+                totalAmmoText.text = player.Inventory.GetItemQuantity(data.BulletItemData.ItemData.ItemId).ToString();
             }
         }
 

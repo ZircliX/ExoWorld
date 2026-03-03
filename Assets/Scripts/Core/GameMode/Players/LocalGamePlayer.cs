@@ -35,6 +35,12 @@ namespace OverBang.ExoWorld.Core.GameMode.Players
         public GadgetInventory GadgetInventory {get; private set;} = new GadgetInventory();
         
         private bool isDirty;
+
+        public LocalGamePlayer()
+        {
+            ScriptableItemData ammo = Resources.Load<ScriptableItemData>("ItemData/Munitions");
+            Inventory.AddItem(ammo.ItemData, 90);
+        }
         
         /// <summary>
         /// Called every x frame to apply changes to the player properties

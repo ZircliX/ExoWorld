@@ -23,14 +23,17 @@ namespace OverBang.ExoWorld.Gameplay.Loots
             {
                 LootTable.LootableItemData scriptableItemData = lootTable.GetRandomLoot();
                 ItemData itemData = scriptableItemData.Loot.ItemData;
-                itemData.SetQuantity(Random.Range(scriptableItemData.MinQuantity, scriptableItemData.MaxQuantity + 1));
+                
+                int newQuantity = Random.Range(scriptableItemData.MinQuantity, scriptableItemData.MaxQuantity + 1);
+                //Debug.Log(newQuantity);
+                itemData.SetQuantity(newQuantity);
                 
                 lootDrop.Initialize(itemData);
                 
                 if (networkObject.TryGetComponent(out Rigidbody rb))
                 {
                     Vector3 direction = (Vector3.up + Random.onUnitSphere).normalized;
-                    rb.AddForce(direction * 5, ForceMode.Impulse);
+                    rb.AddForce(direction * 6f, ForceMode.Impulse);
                 }
                 
                 return networkObject;
