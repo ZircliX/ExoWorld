@@ -10,7 +10,8 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
         [field: SerializeField, Range(0,1)]
         public float Probability { get; private set; }
         
-        private CharacterLine[] lines;
+        [field: SerializeField]
+        public CharacterLine[] lines { get; private set; }
 
         public bool TryGetLine(CharacterData data, out CharacterLine line)
         {

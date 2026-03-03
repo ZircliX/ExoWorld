@@ -1,5 +1,4 @@
 ﻿using System;
-using NUnit.Framework;
 using OverBang.ExoWorld.Core.Characters;
 using Sirenix.OdinInspector;
 using UnityEngine;

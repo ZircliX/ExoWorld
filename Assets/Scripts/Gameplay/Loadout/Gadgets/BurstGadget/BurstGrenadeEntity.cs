@@ -193,7 +193,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
                 {
                     if (col.TryGetComponent(out IDamageable entity))
                     {
-                        entity.TakeDamage(Data.FireDamageData);
+                        entity.TakeDamage(Data.FireDamageData.GetRuntimeDamage());
                     }
                 }
             }
