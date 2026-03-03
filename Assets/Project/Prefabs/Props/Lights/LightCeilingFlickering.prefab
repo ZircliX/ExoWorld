@@ -45,7 +45,7 @@ Light:
   serializedVersion: 12
   m_Type: 0
   m_Color: {r: 0.8509804, g: 1, b: 0.93333334, a: 1}
-  m_Intensity: 100
+  m_Intensity: 400
   m_Range: 10
   m_SpotAngle: 150
   m_InnerSpotAngle: 131.30777
@@ -254,7 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OverBang.GameName.TechArt.FlickeringLight
   targetLight: {fileID: 6351727747989027926}
-  defaultIntensity: 100
+  defaultIntensity: 400
   minTime: 0.125
   maxTime: 0.75
   audioSource: {fileID: 0}
