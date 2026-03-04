@@ -16,33 +16,9 @@ namespace OverBang.ExoWorld.Core.Inventory
         public IReadOnlyList<ItemData> Items => orderedItems.AsReadOnly();
         
         public event Action<ItemData> OnItemAdded;
-        public event Action<ItemData, int> OnItemRemoved;
+        public event Action<ItemData> OnItemRemoved;
         public event Action<ItemData> OnItemQuantityChanged;
-
-        public bool AddItem(ItemData itemData)
-        {
-            if (itemData is not { Quantity: > 0 })
-            {
-                Debug.LogWarning("Attempted to add invalid item data");
-                return false;
-            }
-
-            // Try to stack with existing item
-            if (inventory.TryGetValue(itemData.ItemId, out ItemData existingItem))
-            {
-                existingItem.AddQuantity(itemData.Quantity);
-                OnItemQuantityChanged?.Invoke(existingItem);
-                return true;
-            }
-
-            ItemData newItem = itemData.Clone();
-            inventory[itemData.ItemId] = newItem;
-            orderedItems.Add(newItem);
-            
-            OnItemAdded?.Invoke(newItem);
-            return true;
-        }
-
+        
         /// <summary>
         /// Add multiple items at once
         /// </summary>
@@ -53,6 +29,36 @@ namespace OverBang.ExoWorld.Core.Inventory
                 if (!AddItem(item))
                     return false;
             }
+            return true;
+        }
+        
+        public bool AddItem(ItemData itemData)
+        {
+            if (itemData is not { Quantity: > 0 })
+            {
+                Debug.LogWarning("Attempted to add invalid item data");
+                return false;
+            }
+            
+            return AddItem(itemData, itemData.Quantity);
+        }
+        
+        public bool AddItem(ItemData itemData, int quantity)
+        {
+            // Try to stack with existing item
+            if (inventory.TryGetValue(itemData.ItemId, out ItemData existingItem))
+            {
+                existingItem.AddQuantity(quantity);
+                inventory[itemData.ItemId] = existingItem;
+                OnItemQuantityChanged?.Invoke(existingItem);
+                return true;
+            }
+
+            ItemData newItem = itemData.SetQuantity(quantity);
+            inventory[itemData.ItemId] = newItem;
+            orderedItems.Add(newItem);
+            
+            OnItemAdded?.Invoke(newItem);
             return true;
         }
 
@@ -66,6 +72,7 @@ namespace OverBang.ExoWorld.Core.Inventory
 
             int removed = Mathf.Min(quantity, item.Quantity);
             item.SetQuantity(item.Quantity - removed);
+            inventory[itemId] = item;
 
             if (item.Quantity <= 0)
             {
@@ -73,7 +80,8 @@ namespace OverBang.ExoWorld.Core.Inventory
                 orderedItems.Remove(item);
             }
 
-            OnItemRemoved?.Invoke(item, removed);
+            OnItemQuantityChanged?.Invoke(item);
+            OnItemRemoved?.Invoke(item);
             return removed;
         }
 
@@ -114,7 +122,7 @@ namespace OverBang.ExoWorld.Core.Inventory
         /// <summary>
         /// Get all items of a specific type/rarity
         /// </summary>
-        public List<ItemData> GetItemsByRarity(ItemRarity rarity)
+        public List<ItemData> GetItemsByRarity(ItemData.ItemRarity rarity)
         {
             return orderedItems.Where(i => i.Rarity == rarity).ToList();
         }

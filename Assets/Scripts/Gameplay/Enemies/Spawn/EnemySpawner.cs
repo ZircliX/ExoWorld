@@ -10,13 +10,15 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
         {
             NetworkSpawnManager spawnManager = NetworkManager.Singleton.SpawnManager;
 
-            NetworkObject instance = Instantiate(enemyData.EnemyPrefab,
+            NetworkObject instance = spawnManager.InstantiateAndSpawn(
+                enemyData.EnemyPrefab,
+                NetworkManager.Singleton.LocalClientId,
+                true,
+                false,
+                false,
                 transform.position,
                 Quaternion.identity);
             
-            
-            instance.SpawnWithOwnership(NetworkManager.Singleton.LocalClientId, true);
-
             if (instance == null)
                 return null;
 

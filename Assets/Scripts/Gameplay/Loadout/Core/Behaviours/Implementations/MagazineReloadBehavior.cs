@@ -1,4 +1,5 @@
 using System;
+using OverBang.ExoWorld.Core.GameMode.Players;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,10 +9,12 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
     {
         public bool IsReloading { get; private set; }
         private Weapon weapon;
+        private LocalGamePlayer player;
         
         public void OnInitialize(Weapon weapon)
         {
             this.weapon = weapon;
+            player = GamePlayerManager.Instance.GetLocalPlayer();
         }
 
         public async void OnReloadInput(InputAction.CallbackContext context)
@@ -39,12 +42,20 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
         public async Awaitable Reload()
         {
+            if (player.Inventory.GetItemQuantity(weapon.WeaponData.BulletItemData.ItemData.ItemId) <= 0)
+                return;
+
+            int current = weapon.State.CurrentBullets;
+            
             IsReloading = true;
             weapon.State.SetBullets(0);
             
             await Awaitable.WaitForSecondsAsync(weapon.WeaponData.ReloadTime);
+
+            int quantityRequested = (weapon.WeaponData.MagCapacity + weapon.WeaponData.UpgradeMagCap) - current;
+            int quantityReceived = player.Inventory.RemoveItem(weapon.WeaponData.BulletItemData.ItemData.ItemId, quantityRequested);
             
-            weapon.State.SetBullets(Mathf.RoundToInt(weapon.WeaponData.MagCapacity + weapon.WeaponData.UpgradeMagCap));
+            weapon.State.SetBullets(current + quantityReceived);
             weapon.RequestOnWeaponReloaded();
             IsReloading = false;
         }

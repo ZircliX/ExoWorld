@@ -160,7 +160,7 @@ namespace ZTools.ObjectiveSystem.Core
                     bool madeProgress = objectiveHandler.ProcessEvent(gameEvent);
                     if (madeProgress)
                     {
-                        Debug.Log($"Objective '{objectiveHandler.ObjectiveData.ObjectiveName}' made progress.");
+                        //Debug.Log($"Objective '{objectiveHandler.ObjectiveData.ObjectiveName}' made progress.");
                         OnObjectiveProgress?.Invoke(objectiveHandler);
                     }
                 }
