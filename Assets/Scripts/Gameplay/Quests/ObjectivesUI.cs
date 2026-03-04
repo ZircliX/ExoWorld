@@ -36,7 +36,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
 
         private void OnStateChanged(IObjectiveHandler objectiveHandler, ObjectiveState state)
         {
-            if (state is ObjectiveState.Completed or ObjectiveState.Disposed &&
+            if (state is ObjectiveState.Completed &&
                 currentObjectiveHandler == objectiveHandler)
             {
                 objectiveHandler.OnObjectiveStateChanged -= OnStateChanged;

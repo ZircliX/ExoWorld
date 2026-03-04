@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Helteix.Tools;
 using KBCore.Refs;
 using OverBang.ExoWorld.Core.Damage;
 using OverBang.ExoWorld.Core.Enemies;
@@ -43,7 +44,7 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
         private List<ITargetable> currentTargetsInRange;
 
         private EnemyAnimator enemyAnimator;
-        [SerializeField, Self] private CapsuleCollider collider; 
+        [SerializeField, Self] private CapsuleCollider collider;
         private Vector3 targetPoint;
         private IDamageable currentDamageable;
         private bool isPatrol;
@@ -301,7 +302,7 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
         
         public void OnDespawn(IPool pool)
         {
-            
+            enemyModelContainer.ClearChildren();
         }
         
         #endregion Pooling Implementation
