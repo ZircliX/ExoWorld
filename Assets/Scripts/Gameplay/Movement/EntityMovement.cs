@@ -261,8 +261,15 @@ namespace OverBang.ExoWorld.Gameplay.Movement
             //Manage States Values
             MovementStateBehavior state = movementStates[currentStateIndex];
 
-            Vector3 stateVelocity = state.GetVelocity(this, deltaTime, ref stateGravityScale) * MovementSpeedMultiplier;
-            stateVelocity += Gravity.Value * (stateGravityScale * gravityScale * deltaTime);
+            Vector3 planarVelocity = state.GetVelocity(this, deltaTime, ref stateGravityScale);
+            Vector3 gravity = Gravity.Value * (stateGravityScale * gravityScale * deltaTime);
+
+            Vector3 stateVelocity = new Vector3(
+                planarVelocity.x * MovementSpeedMultiplier,
+                planarVelocity.y,
+                planarVelocity.z * MovementSpeedMultiplier
+            ) + gravity;
+            
             CurrentVelocity.Write(stateChannelKey, stateVelocity);
 
             HandlePhysicsRotation();

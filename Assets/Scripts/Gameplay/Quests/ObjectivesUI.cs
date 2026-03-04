@@ -6,7 +6,7 @@ using ZTools.ObjectiveSystem.Core;
 
 namespace OverBang.ExoWorld.Gameplay.Quests
 {
-    public class ObjectivesUI : ZTools.ObjectiveSystem.Core.ObjectivesUI
+    public class ObjectivesUI : MonoBehaviour
     {
         [SerializeField] private CanvasGroup questContainer;
         [SerializeField] private TMP_Text objectiveNameText;
@@ -28,10 +28,16 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             
             IObjectiveHandler objectiveHandler = ObjectivesManager.ActiveObjectives[0];
             currentObjectiveHandler = objectiveHandler;
-            objectiveHandler.OnObjectiveStateChanged += OnStateChanged;
-            objectiveHandler.OnObjectiveStepChanged += OnStepChanged;
+            currentObjectiveHandler.OnObjectiveProgress += OnObjectiveProgress;
+            currentObjectiveHandler.OnObjectiveStateChanged += OnStateChanged;
+            currentObjectiveHandler.OnObjectiveStepChanged += OnStepChanged;
             
-            UpdateObjectiveUI(objectiveHandler);
+            UpdateObjectiveUI();
+        }
+
+        private void OnObjectiveProgress(ObjectiveProgression progression)
+        {
+            UpdateObjectiveUI();
         }
 
         private void OnStateChanged(IObjectiveHandler objectiveHandler, ObjectiveState state)
@@ -39,22 +45,23 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             if (state is ObjectiveState.Completed &&
                 currentObjectiveHandler == objectiveHandler)
             {
-                objectiveHandler.OnObjectiveStateChanged -= OnStateChanged;
-                objectiveHandler.OnObjectiveStepChanged -= OnStepChanged;
+                currentObjectiveHandler.OnObjectiveProgress -= OnObjectiveProgress;
+                currentObjectiveHandler.OnObjectiveStateChanged -= OnStateChanged;
+                currentObjectiveHandler.OnObjectiveStepChanged -= OnStepChanged;
                 ClearObjective();
             }
         }
 
         private void OnStepChanged(int step)
         {
-            UpdateObjectiveUI(currentObjectiveHandler);
+            UpdateObjectiveUI();
         }
 
-        protected override void UpdateObjectiveUI(IObjectiveHandler objectiveHandler)
+        private void UpdateObjectiveUI()
         {
-            objectiveNameText.text = objectiveHandler.ObjectiveData.ObjectiveName;
+            objectiveNameText.text = currentObjectiveHandler.ObjectiveData.ObjectiveName;
             
-            if (objectiveHandler.StepIndex != previousStep)
+            if (currentObjectiveHandler.StepIndex != previousStep)
             {
                 objectiveProgressText.DOColor(Color.red, 0.2f).OnComplete(() =>
                 {
@@ -62,23 +69,23 @@ namespace OverBang.ExoWorld.Gameplay.Quests
                 });
             }
             
-            float current = objectiveHandler.CurrentProgress.currentProgress;
-            float target = objectiveHandler.CurrentProgress.targetProgress;
+            float current = currentObjectiveHandler.CurrentProgress.currentProgress;
+            float target = currentObjectiveHandler.CurrentProgress.targetProgress;
             bool madeProgress = current > 0 && current <= target;
             
-            string stepText = objectiveHandler.ObjectiveData.ObjectiveSteps[objectiveHandler.StepIndex];
+            string stepText = currentObjectiveHandler.ObjectiveData.ObjectiveSteps[currentObjectiveHandler.StepIndex];
             string progressText = madeProgress ? $"({current:0}/{target:0})" : string.Empty;
             objectiveProgressText.text = $"{stepText} {progressText}";
 
-            previousStep = objectiveHandler.StepIndex;
+            previousStep = currentObjectiveHandler.StepIndex;
         }
 
-        protected override void ClearObjective()
+        private void ClearObjective()
         {
             if (questCompleteRewardImage == null)
             {
                 Debug.LogWarning("questCompleteRewardImage was destroyed before ClearObjective!");
-                return;
+                //return;
             }
             
             Sequence uiSequence = DOTween.Sequence();
@@ -94,7 +101,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
                 
             if (currentObjectiveHandler.ObjectiveData is ObjectiveDataQuest { Reward: TrinititeRewardData trinititeRewardData } questData)
             {
-                questCompleteRewardText.text = $"{trinititeRewardData.TrinititeData.ItemName} : {trinititeRewardData.TrinititeData.Quantity}";
+                questCompleteRewardText.text = $"{trinititeRewardData.TrinititeData.ItemName} : {trinititeRewardData.RewardQuantity}";
                 
                 Debug.Log(questCompleteRewardImage);
                 questCompleteRewardImage.sprite = trinititeRewardData.TrinititeData.Icon;

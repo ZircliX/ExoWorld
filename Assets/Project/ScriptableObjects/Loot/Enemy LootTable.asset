@@ -13,12 +13,9 @@ MonoBehaviour:
   m_Name: Enemy LootTable
   m_EditorClassIdentifier: OverBang.ExoWorld.Core::OverBang.ExoWorld.Core.Inventory.LootTable
   <LootEntries>k__BackingField:
-  - <DropChance>k__BackingField: 0.8
-    <MinQuantity>k__BackingField: 1
-    <MaxQuantity>k__BackingField: 1
+  - <DropChance>k__BackingField: 1
+    <MinQuantity>k__BackingField: 2
+    <MaxQuantity>k__BackingField: 6
     <Loot>k__BackingField: {fileID: 11400000, guid: d9f1b70d04f68024ba10aac41fb37890, type: 2}
-  - <DropChance>k__BackingField: 0.2
-    <MinQuantity>k__BackingField: 50
-    <MaxQuantity>k__BackingField: 50
-    <Loot>k__BackingField: {fileID: 11400000, guid: d9f1b70d04f68024ba10aac41fb37890, type: 2}
-  <NetworkPrefab>k__BackingField: {fileID: 1409037436812830572, guid: 4ae96820ac69049428f60a6b8246f5de, type: 3}
+    <LootPrefab>k__BackingField: {fileID: 1409037436812830572, guid: 4ae96820ac69049428f60a6b8246f5de, type: 3}
+  <Equilibrate>k__BackingField: 1

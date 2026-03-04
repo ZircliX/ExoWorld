@@ -17,7 +17,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
 
         private void OnObjectiveProgress(IObjectiveHandler handler)
         {
-            if (handler.State is ObjectiveState.Completed or ObjectiveState.Disposed &&
+            if (handler.State is ObjectiveState.Completed &&
                 handler.ObjectiveData == currentQuest)
             {
                 Debug.Log($"Quest {currentQuest.Name} completed!");

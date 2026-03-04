@@ -164,7 +164,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
             no.Despawn();
         }
 
-        public IPool Pool { get; }
         public void OnSpawn(IPool pool)
         {
             isDetonated = false;

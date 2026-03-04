@@ -55,7 +55,7 @@ namespace ZTools.ObjectiveSystem.Core
         /// Event fired when the objective's progress changes.
         /// Subscribers can react to updates in the objective's completion status.
         /// </summary>
-        public event Action<ObjectiveProgression> OnObjectiveProgressChanged;
+        public event Action<ObjectiveProgression> OnObjectiveProgress;
 
         public event Action<int> OnObjectiveStepChanged;
 
@@ -119,7 +119,7 @@ namespace ZTools.ObjectiveSystem.Core
             }
             else
             {
-                OnObjectiveProgressChanged?.Invoke(CurrentProgress);
+                OnObjectiveProgress?.Invoke(CurrentProgress);
             }
 
             return madeProgress;

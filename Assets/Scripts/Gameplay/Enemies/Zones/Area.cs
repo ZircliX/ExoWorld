@@ -1,25 +1,30 @@
 ﻿using System.Collections.Generic;
 using KBCore.Refs;
 using OverBang.ExoWorld.Core.Enemies;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace OverBang.ExoWorld.Gameplay.Enemies
 {
-    [RequireComponent(typeof(BoxCollider))]
+    [RequireComponent(typeof(Collider))]
     public class Area : MonoBehaviour
     {
-        [Header("Bounds Parameters")]
-        [field: SerializeField, Self, HideInInspector] public Transform Center { get; private set; }
+        [Header("Refs")] 
+        [SerializeField, Self] private Transform center;
+        [SerializeField, Child] private EnemySpawner[] spawners;
         
-        [field: SerializeField, Child] public List<EnemySpawner> Spawners { get; private set; }
+        [SerializeField, ReadOnly] private int currentPlayersInArea;
+        
         private List<Transform> players;
         private BoxCollider boxCollider;
-
+        
+        public bool IsValid => players.Count > 0;
+        
         private void OnValidate()
         {
             this.ValidateRefs();
-            
+            currentPlayersInArea = players.Count;
         }
 
         private void Awake()
@@ -33,7 +38,6 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
             boxCollider.isTrigger = true;
             this.ValidateRefs();
         }
-
 
         private void OnEnable()
         {
@@ -60,29 +64,26 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
                 players.Remove(other.transform) ;
             }
         }
-        
-        public bool IsValid()
-        {
-            return players.Count > 0;
-        }
 
         public async Awaitable<int> SpawnInSpawners(EnemySpawnScenario enemySpawnScenario, int enemyToSpawn, int wave)
         {
             int spawnedEnemies = 0;
-            foreach (EnemySpawner spawner in Spawners)
+            for (int index = 0; index < spawners.Length; index++)
             {
+                EnemySpawner spawner = spawners[index];
                 EnemyData[] enemyDatas = enemySpawnScenario.EnemyDatas;
-                
+
                 int rnd = Random.Range(0, enemyDatas.Length);
                 Enemy enemy = spawner.SpawnEnemy(enemyDatas[rnd]);
                 if (enemy == null)
                     break;
-                
-                enemy.name = $"{enemy.enemyData.name} | Wave {wave} | Area : {gameObject.name} & Spawner : {spawner.name}| EnemyLeft : {enemyToSpawn - spawnedEnemies} | ";
+
+                enemy.name = $"{enemy.EnemyData.EnemyName} | Area : {gameObject.name} | Spawner : {spawner.name}";
                 enemy.transform.position = spawner.transform.position;
                 spawnedEnemies++;
 
-                await Awaitable.WaitForSecondsAsync(Random.Range(enemySpawnScenario.MinMaxSpawnIntervals.x, enemySpawnScenario.MinMaxSpawnIntervals.y));
+                await Awaitable.WaitForSecondsAsync(Random.Range(enemySpawnScenario.MinMaxSpawnIntervals.x,
+                    enemySpawnScenario.MinMaxSpawnIntervals.y));
                 if (spawnedEnemies >= enemyToSpawn)
                     break;
             }

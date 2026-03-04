@@ -67,12 +67,7 @@ namespace OverBang.ExoWorld.Gameplay.Loots
             }
         }
 
-        public IPool Pool { get; private set; }
-        public void OnSpawn(IPool pool)
-        {
-            Pool = pool;
-        }
-
+        public void OnSpawn(IPool pool) { }
         public void OnDespawn(IPool pool)
         {
             boundsCollider.enabled = false;
