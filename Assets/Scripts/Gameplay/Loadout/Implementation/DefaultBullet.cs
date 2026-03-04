@@ -100,7 +100,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
                         RuntimeDamageData finalDamage = new RuntimeDamageData()
                         {
-                            finalDamage = (damage + bonusDamage) * damageMultiplier,
+                            finalDamage = ((damage + bonusDamage) * damageMultiplier) / (currentPenetration + 1),
                             weakSpotMultiplier = data.Damage.weakSpotMultiplier,
                         };
                         

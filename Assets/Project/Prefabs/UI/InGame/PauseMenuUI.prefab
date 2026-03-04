@@ -262,6 +262,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3655878517687630916}
   - component: {fileID: 3533446484984446255}
+  - component: {fileID: 1665108455514370875}
   m_Layer: 5
   m_Name: PauseMenuUI
   m_TagString: Untagged
@@ -298,10 +299,26 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 912883793249847975}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!114 &1665108455514370875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912883793249847975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21d9a24453a7462ba0583a055f4cc0e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: OverBang.ExoWorld.Core::OverBang.ExoWorld.Core.Menus.CanvasPanelGroup
+  canvasGroup: {fileID: 3533446484984446255}
+  animationDuration: 0.3
+  closeOnAwake: 1
+  interactable: 0
 --- !u!1 &1492061821129110050
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,7 +654,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 250, y: -70.67999}
+  m_AnchoredPosition: {x: 250, y: -250.68}
   m_SizeDelta: {x: 360.42, y: 53.63}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3190627956286078734
@@ -1244,7 +1261,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 250, y: -359.315}
+  m_AnchoredPosition: {x: 250, y: -539.315}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4935049604800406624

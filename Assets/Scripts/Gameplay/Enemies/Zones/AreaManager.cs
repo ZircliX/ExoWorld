@@ -28,7 +28,7 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
             
             foreach (Area area in Areas)
             {
-                if (area.IsValid())
+                if (area.IsValid)
                 {
                     availableSpawnAreas.Add(area);
                 }

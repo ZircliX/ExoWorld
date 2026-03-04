@@ -24,7 +24,7 @@ namespace ZTools.ObjectiveSystem.Core
         /// </summary>
         ObjectiveState State { get; }
         
-        event Action<ObjectiveProgression> OnObjectiveProgressChanged;
+        event Action<ObjectiveProgression> OnObjectiveProgress;
         event Action<int> OnObjectiveStepChanged;
         
         event Action<IObjectiveHandler, ObjectiveState> OnObjectiveStateChanged;

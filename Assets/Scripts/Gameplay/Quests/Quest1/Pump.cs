@@ -162,8 +162,9 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             {
                 IsStarted = false;
                 IsCompleted = true;
+                Health = 0;
 
-                current = target;
+                CurrentRepairTime = target;
             }
             
             ObjectivesManager.DispatchGameEvent(new QuestOneEvent(current, target));

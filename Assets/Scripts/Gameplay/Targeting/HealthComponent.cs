@@ -5,9 +5,10 @@ using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Targeting
 {
-    public class DamageableAndHealableComponent : MonoBehaviour, IDamageable, IHealable, IHealth
+    public class HealthComponent : MonoBehaviour, IDamageable, IHealable, IHealth
     {
         [SerializeField] protected SoundID damagedSound;
+        [SerializeField] protected SoundID killedSound;
         
         public event IHealth.HealthChanged OnHealthChanged;
         public float MinHealth { get; private set; }
@@ -33,7 +34,11 @@ namespace OverBang.ExoWorld.Gameplay.Targeting
         {
             float previousHealth = Health;
             Health = health;
-            if (Health <= MinHealth) Health = MinHealth;
+            if (Health <= MinHealth)
+            {
+                BroAudio.Play(killedSound, transform.position);
+                Health = MinHealth;
+            }
             OnHealthChanged?.Invoke(previousHealth, Health, MaxHealth);
         }
 
@@ -44,7 +49,9 @@ namespace OverBang.ExoWorld.Gameplay.Targeting
 
         public void TakeDamage(RuntimeDamageData damage)
         {
-            BroAudio.Play(damagedSound, transform.position);
+            if (damagedSound.IsValid())
+                BroAudio.Play(damagedSound, transform.position);
+            
             SetHealth(Mathf.Max(Health - damage.finalDamage * (1f - Resistance), 0f));
         }
     }
