@@ -38,8 +38,13 @@ namespace OverBang.ExoWorld.Core.GameMode.Players
 
         public LocalGamePlayer()
         {
-            ScriptableItemData ammo = Resources.Load<ScriptableItemData>("ItemData/Munitions");
-            Inventory.AddItem(ammo.ItemData, 90);
+            ScriptableItemData[] resources = Resources.LoadAll<ScriptableItemData>("ItemData");
+
+            for (int i = 0; i < resources.Length; i++)
+            {
+                ScriptableItemData itemData = resources[i];
+                Inventory.AddItem(itemData.ItemData, itemData.DefaultQuantity);
+            }
         }
         
         /// <summary>

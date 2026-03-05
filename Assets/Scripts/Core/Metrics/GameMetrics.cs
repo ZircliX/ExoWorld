@@ -1,3 +1,4 @@
+using OverBang.ExoWorld.Core.Menus;
 using OverBang.ExoWorld.Core.Scene;
 using Sirenix.OdinInspector;
 using Unity.Netcode;
@@ -23,6 +24,7 @@ namespace OverBang.ExoWorld.Core.Metrics
         public float GameDuration { get; private set; } = 60*6;
         
         [field: SerializeField, FoldoutGroup("Prefabs")] public NetworkObject PlayerControllerPrefab { get; private set; }
+        [field: SerializeField, FoldoutGroup("Prefabs")] public LoadingScreen LoadingScreen { get; private set; }
        
         [field: SerializeField, FoldoutGroup("Layers")] public LayerMask HittableLayers { get; private set; }
         

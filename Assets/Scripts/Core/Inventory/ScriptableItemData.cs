@@ -6,5 +6,6 @@ namespace OverBang.ExoWorld.Core.Inventory
     public class ScriptableItemData : ScriptableObject
     {
         [field: SerializeField] public ItemData ItemData { get; private set; }
+        [field: SerializeField] public int DefaultQuantity { get; private set; }
     }
 }

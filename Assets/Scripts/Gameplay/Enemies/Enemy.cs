@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Helteix.Tools;
 using KBCore.Refs;
+using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Components;
 using OverBang.ExoWorld.Core.Damage;
 using OverBang.ExoWorld.Core.Enemies;
 using OverBang.ExoWorld.Core.Interactions;

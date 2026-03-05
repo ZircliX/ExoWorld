@@ -1,4 +1,5 @@
 using KBCore.Refs;
+using OverBang.ExoWorld.Core.Components;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -11,6 +12,11 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         [SerializeField] private Transform bottom;
         
         private ParticleSystem healingCircle;
+
+        private void OnValidate()
+        {
+            this.ValidateRefs();
+        }
 
         public void Initialize(BaliseHellaData data, Vector3 direction, float radius, float duration)
         {

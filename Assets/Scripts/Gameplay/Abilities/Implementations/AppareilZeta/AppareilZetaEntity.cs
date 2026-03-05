@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using Helteix.Tools;
 using KBCore.Refs;
+using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Components;
 using OverBang.ExoWorld.Core.Damage;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Gameplay.Movement;

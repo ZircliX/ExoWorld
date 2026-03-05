@@ -24,7 +24,9 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
         private void OnValidate()
         {
             this.ValidateRefs();
-            currentPlayersInArea = players.Count;
+            
+            if (players != null)
+                currentPlayersInArea = players.Count;
         }
 
         private void Awake()

@@ -1,4 +1,6 @@
 using System;
+using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Components;
 using OverBang.ExoWorld.Core.Damage;
 using OverBang.ExoWorld.Core.Interactions;
 using OverBang.ExoWorld.Gameplay.Abilities;
@@ -48,7 +50,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             oneHandler ??= questOneData.GetHandlerByData<QuestOneHandler>();
             if (oneHandler == null)
             {
-                gameObject.SetActive(false);
+                transform.parent.gameObject.SetActive(false);
             }
             
             enterDetectionArea.SetAllowedTags("Player", "LocalPlayer");
