@@ -1,5 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-3567324977221726061
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa486462e6be1764e89c788ba30e61f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.HighDefinition.Runtime::UnityEditor.Rendering.HighDefinition.MaterialExternalReferences
+  m_DiffusionProfileReferences:
+  - {fileID: 11400000, guid: 658ba958ef7f4604e8867aa64a18091b, type: 2}
+  m_MaterialReferences: []
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -26,7 +41,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: 3400
   stringTagMap:
     RenderType: Transparent
   disabledShaderPasses:
@@ -43,7 +58,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseColorMap:
-        m_Texture: {fileID: 2800000, guid: da671c7576a1e834a9916285f630bc49, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BentNormalMap:
@@ -79,7 +94,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: da671c7576a1e834a9916285f630bc49, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
@@ -149,7 +164,7 @@ Material:
     - _AlphaDstBlend: 10
     - _AlphaRemapMax: 1
     - _AlphaRemapMin: 0
-    - _AlphaSrcBlend: 1
+    - _AlphaSrcBlend: 0
     - _Anisotropy: 0
     - _BlendMode: 0
     - _CoatMask: 0
@@ -161,7 +176,7 @@ Material:
     - _DetailNormalScale: 1
     - _DetailSmoothnessScale: 1
     - _DiffusionProfile: 0
-    - _DiffusionProfileHash: 0
+    - _DiffusionProfileHash: 3.157095
     - _DisplacementLockObjectScale: 1
     - _DisplacementLockTilingScale: 1
     - _DisplacementMode: 0
@@ -197,7 +212,7 @@ Material:
     - _MetallicRemapMax: 1
     - _MetallicRemapMin: 0.2040135
     - _NormalMapSpace: 0
-    - _NormalScale: 2
+    - _NormalScale: 1
     - _ObjectSpaceUVMapping: 0
     - _ObjectSpaceUVMappingEmissive: 0
     - _OpaqueCullMode: 2
@@ -251,9 +266,9 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.6039216, g: 0.6039216, b: 0.6039216, a: 1}
-    - _Color: {r: 0.6039216, g: 0.6039216, b: 0.6039216, a: 1}
-    - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
+    - _BaseColor: {r: 0.6039216, g: 0.6039216, b: 0.6039216, a: 0}
+    - _Color: {r: 0.6039216, g: 0.6039216, b: 0.6039216, a: 0}
+    - _DiffusionProfileAsset: {r: 1.4913293e+15, g: 2.3333532e-36, b: -8.6919006e-16, a: 1.1340223e-22}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissiveColor: {r: 0, g: 0, b: 0, a: 1}

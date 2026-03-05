@@ -251,7 +251,6 @@ GameObject:
   - component: {fileID: 7744916253966162380}
   - component: {fileID: 427343067982445781}
   - component: {fileID: 2618859724212613493}
-  - component: {fileID: 5624213418784559694}
   m_Layer: 0
   m_Name: Plate_Little
   m_TagString: Untagged
@@ -333,27 +332,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3056650209773396097}
   m_Mesh: {fileID: 4300000, guid: 8ba3e1d315faf3b4cb2adb7b4f8c4210, type: 2}
---- !u!65 &5624213418784559694
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3056650209773396097}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.10002198, y: 0.4, z: 0.7}
-  m_Center: {x: 0.0000014603138, y: 0, z: 0}
 --- !u!1 &6788285914538114346
 GameObject:
   m_ObjectHideFlags: 0
