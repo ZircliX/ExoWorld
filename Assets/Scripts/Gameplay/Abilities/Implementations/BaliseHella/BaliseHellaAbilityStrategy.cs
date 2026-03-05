@@ -73,7 +73,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
                     true, 
                     false, 
                     false, 
-                    Caster.transform.position + Caster.Forward, Quaternion.identity);
+                    Caster.CastAnchor.position + Caster.Forward, Quaternion.identity);
 
             if (networkObject.TryGetComponent(out BaliseHella balise))
             {

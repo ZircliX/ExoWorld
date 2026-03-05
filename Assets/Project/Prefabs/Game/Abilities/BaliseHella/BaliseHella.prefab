@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 1848933335
+  GlobalObjectIdHash: 1041703700
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -258,6 +258,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   <DetectionArea>k__BackingField: {fileID: 2109180920598131112}
   rb: {fileID: 7411133184877083849}
+  networkObject: {fileID: 5702084948040205239}
   bottom: {fileID: 9217705055519370637}
 --- !u!54 &7411133184877083849
 Rigidbody:
@@ -346,7 +347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.NetworkRigidbody
   ShowTopMostFoldoutHeaderGroup: 1
   NetworkRigidbodyBaseExpanded: 0
-  UseRigidBodyForMotion: 1
+  UseRigidBodyForMotion: 0
   AutoUpdateKinematicState: 1
   AutoSetKinematicOnDespawn: 1
 --- !u!1 &5254132598348944450

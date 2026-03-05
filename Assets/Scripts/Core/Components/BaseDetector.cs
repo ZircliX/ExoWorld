@@ -1,15 +1,12 @@
-using KBCore.Refs;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace OverBang.ExoWorld.Gameplay.Abilities
+namespace OverBang.ExoWorld.Core.Components
 {
     public abstract class BaseDetector : MonoBehaviour
     {
-        [field: SerializeField, Child] public DetectionArea DetectionArea { get; private set; }
+        [field: SerializeField] public DetectionArea DetectionArea { get; private set; }
         
-        private void OnValidate() => this.ValidateRefs();
-
         private void OnEnable()
         {
             DetectionArea.OnEnter += OnEnter;
@@ -28,9 +25,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
     
     public abstract class NetworkBaseDetector : NetworkBehaviour
     {
-        [field: SerializeField, Child] public DetectionArea DetectionArea { get; private set; }
-        
-        private void OnValidate() => this.ValidateRefs();
+        [field: SerializeField] public DetectionArea DetectionArea { get; private set; }
 
         private void OnEnable()
         {

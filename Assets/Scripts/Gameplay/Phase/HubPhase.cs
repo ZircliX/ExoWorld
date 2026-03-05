@@ -1,6 +1,7 @@
 using Eflatun.SceneReference;
 using OverBang.ExoWorld.Core.Characters;
 using OverBang.ExoWorld.Core.GameMode.Players;
+using OverBang.ExoWorld.Core.Menus;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Core.Phases;
 using OverBang.ExoWorld.Core.Scene;
@@ -23,8 +24,8 @@ namespace OverBang.ExoWorld.Gameplay.Phase
             SceneManager.sceneLoaded += OnSceneLoaded;
             await base.OnBegin();
             
-            //Debug.Log("Starting Hub Phase");
-            //Debug.Log("Updating player phase status to ReadyForSceneLoad");
+            await LoadingScreen.Instance.Show();
+            
             await SessionManager.Global.CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyPhaseStatus, nameof(PhaseStatus.ReadyForSceneLoad));
             await NetworkPropertiesUtils.AwaitableUntilAllPlayers(PhaseStatus.ReadyForSceneLoad);
             
@@ -38,6 +39,8 @@ namespace OverBang.ExoWorld.Gameplay.Phase
                     await SceneLoader.LoadSceneAsync(hubSceneRef.Name, LoadSceneMode.Single);
                 }
             }
+            
+            await LoadingScreen.Instance.Hide();
             
             StartSelection();
         }
