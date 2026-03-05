@@ -31,7 +31,6 @@ namespace OverBang.ExoWorld.Core.Interactions.Clothing
             }
             else if (target is SphereCollider sphereCollider)
             {
-                Debug.Log("AAAAAAAAAAAAAAAAAAAAAAA");
                 foreach (Cloth cloth in cloths)
                 {
                     ClothSphereColliderPair[] pairs = cloth.sphereColliders;

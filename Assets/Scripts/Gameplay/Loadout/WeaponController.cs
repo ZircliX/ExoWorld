@@ -126,6 +126,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             PrimaryWeapon = Instantiate(primary.Prefab, weaponHolder);
             SecondaryWeapon = Instantiate(secondary.Prefab, weaponHolder);
             
+            if (!IsOwner) return;
+            
             // Initialize the weapon with loadout
             PrimaryWeapon.Initialize(primary, InteractionCamera, this);
             SecondaryWeapon.Initialize(secondary, InteractionCamera, this);
