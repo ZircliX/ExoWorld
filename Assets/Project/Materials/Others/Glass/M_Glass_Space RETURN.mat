@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.HighDefinition.Runtime::UnityEditor.Rendering.HighDefinition.MaterialExternalReferences
   m_DiffusionProfileReferences:
-  - {fileID: 11400000, guid: 658ba958ef7f4604e8867aa64a18091b, type: 2}
+  - {fileID: 11400000, guid: 7ae046cd87a71984f811b6417dd08f42, type: 2}
   m_MaterialReferences: []
 --- !u!21 &2100000
 Material:
@@ -28,7 +28,8 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _ALPHATEST_ON
-  - _ENABLE_FOG_ON_TRANSPARENT
+  - _DISABLE_DECALS
+  - _DISABLE_SSR_TRANSPARENT
   - _MAPPING_TRIPLANAR
   - _MATERIAL_FEATURE_TRANSMISSION
   - _NORMALMAP
@@ -44,9 +45,10 @@ Material:
   disabledShaderPasses:
   - MOTIONVECTORS
   - DistortionVectors
-  - TransparentDepthPostpass
-  - TransparentBackface
   - RayTracingPrepass
+  - TransparentDepthPostpass
+  - TransparentDepthPrepass
+  - TransparentBackface
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -166,7 +168,7 @@ Material:
     - _AlphaCutoffEnable: 1
     - _AlphaCutoffPostpass: 0.5
     - _AlphaCutoffPrepass: 0.5
-    - _AlphaCutoffShadow: 0.5
+    - _AlphaCutoffShadow: 0
     - _AlphaDstBlend: 10
     - _AlphaRemapMax: 1
     - _AlphaRemapMin: 0
@@ -182,7 +184,7 @@ Material:
     - _DetailNormalScale: 1
     - _DetailSmoothnessScale: 1
     - _DiffusionProfile: 0
-    - _DiffusionProfileHash: 3.157095
+    - _DiffusionProfileHash: 2.635576
     - _DisplacementLockObjectScale: 1
     - _DisplacementLockTilingScale: 1
     - _DisplacementMode: 0
@@ -211,7 +213,7 @@ Material:
     - _EmissiveIntensity: 1
     - _EmissiveIntensityUnit: 0
     - _EnableBlendModePreserveSpecularLighting: 1
-    - _EnableFogOnTransparent: 1
+    - _EnableFogOnTransparent: 0
     - _EnableGeometricSpecularAA: 0
     - _EnergyConservingSpecularColor: 1
     - _HeightAmplitude: 0.02
@@ -246,9 +248,9 @@ Material:
     - _PerPixelSorting: 0
     - _RayTracing: 0
     - _ReceivesSSR: 1
-    - _ReceivesSSRTransparent: 1
+    - _ReceivesSSRTransparent: 0
     - _RefractionModel: 0
-    - _Smoothness: 0.05
+    - _Smoothness: 0.2
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0
     - _SpecularAAScreenSpaceVariance: 0.1
@@ -256,17 +258,17 @@ Material:
     - _SpecularOcclusionMode: 1
     - _SrcBlend: 1
     - _StencilRef: 0
-    - _StencilRefDepth: 8
+    - _StencilRefDepth: 0
     - _StencilRefDistortionVec: 4
-    - _StencilRefGBuffer: 10
-    - _StencilRefMV: 40
+    - _StencilRefGBuffer: 2
+    - _StencilRefMV: 32
     - _StencilWriteMask: 6
     - _StencilWriteMaskDepth: 9
     - _StencilWriteMaskDistortionVec: 4
     - _StencilWriteMaskGBuffer: 15
     - _StencilWriteMaskMV: 41
     - _SubsurfaceMask: 1
-    - _SupportDecals: 1
+    - _SupportDecals: 0
     - _SurfaceType: 1
     - _TexWorldScale: 0.05
     - _TexWorldScaleEmissive: 1
@@ -293,7 +295,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 0.7021477, g: 0.7622328, b: 0.76729554, a: 0}
     - _Color: {r: 0.7021477, g: 0.7622328, b: 0.76729554, a: 0}
-    - _DiffusionProfileAsset: {r: 1.4913293e+15, g: 2.3333532e-36, b: -8.6919006e-16, a: 1.1340223e-22}
+    - _DiffusionProfileAsset: {r: -208537500, g: -1.8061988e-36, b: 22.758774, a: 71.9072}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissiveColor: {r: 0, g: 0, b: 0, a: 1}
