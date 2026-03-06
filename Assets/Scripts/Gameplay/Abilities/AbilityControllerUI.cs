@@ -1,3 +1,4 @@
+using OverBang.ExoWorld.Core.Abilities;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,8 +7,11 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
     public class AbilityControllerUI : MonoBehaviour
     {
         [SerializeField] private AbilityController abilityController;
-        [SerializeField] private Image primaryImage;
-        [SerializeField] private Image secondaryImage;
+        [SerializeField] private Transform primaryTarget;
+        [SerializeField] private Transform secondaryTarget;
+        
+        private AbilityIconReference primaryIcon;
+        private AbilityIconReference secondaryIcon;
 
         private void OnEnable()
         {
@@ -21,8 +25,13 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
 
         private void OnAbilitiesChanged(IAbility primary, IAbility secondary)
         {
-            primaryImage.sprite = primary.Data.Icon;
-            secondaryImage.sprite = secondary.Data.Icon;
+            if (primaryIcon != null)
+                Destroy(primaryIcon);
+            if (secondaryIcon != null)
+                Destroy(secondaryIcon);
+            
+            primaryIcon = Instantiate(primary.Data.Icon, primaryTarget);
+            secondaryIcon = Instantiate(secondary.Data.Icon, secondaryTarget);
         }
     }
 }

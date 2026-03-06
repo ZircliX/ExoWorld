@@ -15,7 +15,7 @@ MonoBehaviour:
   <Name>k__BackingField: Dash
   <Description>k__BackingField: "Pousse et inflige des d\xE9g\xE2ts aux ennemis.
     Les ennemis touch\xE9s s\u2019enflamment."
-  <Icon>k__BackingField: {fileID: 21300000, guid: 25e29baad4df27e4592b15fa8547d160, type: 3}
+  <Icon>k__BackingField: {fileID: -2840557992986190584, guid: ea83d8158f5e38a489d6df5e0b28469a, type: 3}
   <Cooldown>k__BackingField: 3
   <Duration>k__BackingField: 0.25
   <MainData>k__BackingField:
@@ -27,7 +27,6 @@ MonoBehaviour:
   <Damage>k__BackingField:
     baseDamage: 100
     weakSpotMultiplier: 1.5
-    bonusDamage: 0
   <CastDistanceThreshold>k__BackingField: 0.2
   references:
     version: 2
@@ -38,14 +37,12 @@ MonoBehaviour:
         <FlameDamage>k__BackingField:
           baseDamage: 20
           weakSpotMultiplier: 0
-          bonusDamage: 0
     - rid: 402417374115397761
       type: {class: ElectricDashStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}
       data:
         <ElectricDamage>k__BackingField:
           baseDamage: 100
           weakSpotMultiplier: 0
-          bonusDamage: 0
         <ExplosionRadius>k__BackingField: 5
     - rid: 402417374115397762
       type: {class: SpectralDashStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}
