@@ -142,6 +142,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         {
             if (!IsOwner) return;
             Pool = pool;
+            
             currentPenetration = 0;
             lifeTime = 0;
             
@@ -154,9 +155,9 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         {
             if (!IsOwner) return;
             if (rb == null) return;
-
             
-            rb.linearVelocity = Vector3.zero;
+            if (!rb.isKinematic)
+                rb.linearVelocity = Vector3.zero;
             rb.isKinematic = true;
         }
     }

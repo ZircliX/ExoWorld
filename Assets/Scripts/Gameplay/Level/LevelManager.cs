@@ -68,7 +68,8 @@ namespace OverBang.ExoWorld.Gameplay.Level
             
             SetState(LevelState.Initializing);
             
-            survivalScenario = Resources.Load<EnemySpawnScenario>("SpawnScenario/SurvivalScenario");
+            if (phase is HostGameplayPhase hostPhase)
+                survivalScenario = Resources.Load<EnemySpawnScenario>("SpawnScenario/SurvivalScenario");
             gazDispenser = GameObject.FindGameObjectWithTag("EndGameGaz").GetComponent<GazDispenser>();
 
             await SetupGameMap();
@@ -83,7 +84,8 @@ namespace OverBang.ExoWorld.Gameplay.Level
         public void StartLevel()
         {
             CurrentGameTime = GameMetrics.Global.GameDuration;
-            EnemySpawnerManager.SpawnEnemies(survivalScenario);
+            if (survivalScenario != null)
+                EnemySpawnerManager.SpawnEnemies(survivalScenario);
             SetState(LevelState.Running);
         }
 

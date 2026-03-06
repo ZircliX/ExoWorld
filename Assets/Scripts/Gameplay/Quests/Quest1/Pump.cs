@@ -58,11 +58,15 @@ namespace OverBang.ExoWorld.Gameplay.Quests
 
         private void OnEnable()
         {
+            if (!IsOwner) return;
+            
             enterDetectionArea.OnEnter += OnEnter;
         }
 
         private void OnDisable()
         {
+            if (!IsOwner) return;
+            
             enterDetectionArea.OnEnter -= OnEnter;
         }
 
@@ -84,13 +88,13 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         public void CallStartRepair()
         {
             CallStartRepairRpc(true);
-            InvokePumpStartRpc();
         }
 
         [Rpc(SendTo.Owner)]
         private void CallStartRepairRpc(bool isStarted)
         {
             LevelManager.Instance.EnemySpawnerManager.SpawnEnemies(questOneData.EnemySpawnScenario);
+            InvokePumpStartRpc();
         }
         
         [Rpc(SendTo.Everyone)]
@@ -105,28 +109,17 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         {
             if (IsOwner && Health > 0)
             {
-                CallHitPumpRpc();
-            }
-        }
-
-        [Rpc(SendTo.Everyone)]
-        private void CallHitPumpRpc()
-        {
-            DamagePump();
-        }
-
-        private void DamagePump()
-        {
-            Health--;
-            Debug.Log("Pump health: " + Health);
+                Health--;
+                Debug.Log("Pump health: " + Health);
             
-            if (Health <= 0)
-            {
-                ResetPumpRpc();
-                LevelManager.Instance.EnemySpawnerManager.StopWaveMode(questOneData.EnemySpawnScenario);
-            }
+                if (Health <= 0)
+                {
+                    ResetPumpRpc();
+                    LevelManager.Instance.EnemySpawnerManager.StopWaveMode(questOneData.EnemySpawnScenario);
+                }
             
-            OnDamaged?.Invoke();
+                OnDamaged?.Invoke();
+            }
         }
 
         [Rpc(SendTo.Everyone)]
@@ -145,7 +138,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
 
         private void Update()
         {
-            if (!IsStarted || !IsHost) return;
+            if (!IsStarted || !IsOwner) return;
             
             CurrentRepairTime += Time.deltaTime;
             couplingTimer += Time.deltaTime;

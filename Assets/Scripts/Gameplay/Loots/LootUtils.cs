@@ -10,6 +10,9 @@ namespace OverBang.ExoWorld.Gameplay.Loots
         public static NetworkObject GetDrop(this LootTable lootTable, Vector3 position, Quaternion rotation)
         {
             LootTable.LootableItemData scriptableItemData = lootTable.GetRandomLoot();
+
+            if (scriptableItemData.LootPrefab == null && scriptableItemData.Loot == null)
+                return null;
             
             NetworkSpawnManager spawnManager = NetworkManager.Singleton.SpawnManager;
             NetworkObject networkObject = spawnManager.InstantiateAndSpawn(

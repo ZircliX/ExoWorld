@@ -123,10 +123,10 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             {
                 players.Add(player);
                 
-                player.WeaponController.SetShootRateMultiplier(1 - 1 * strategyData.GivenBonus);
-                player.WeaponController.SetDamageMultiplier(1 + 1 * strategyData.GivenBonus);
+                player.WeaponController.SetShootRateMultiplier(1 + strategyData.GivenBonus);
+                player.WeaponController.SetDamageMultiplier(1 + strategyData.GivenBonus);
 
-                player.ApplySpeed(strategyData.GivenBonus, data.Duration, name);
+                player.ApplySpeed(strategyData.MoveSpeedBonus, data.Duration, name);
             }
             
             else if (target is IDamageable damageable)
