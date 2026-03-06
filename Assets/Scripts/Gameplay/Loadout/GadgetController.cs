@@ -99,7 +99,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
                 if (player.GadgetInventory.TryGetGadget(currentGadgetData, out IGadget gadget))
                 {
                     currentGadget = gadget;
-                    Debug.Log("Gadget Begin !!!! !!!! !!!!!");
+                    //Debug.Log("Gadget Begin !!!! !!!! !!!!!");
                     currentGadget.Begin(this, player);
                 }
                 else
@@ -118,7 +118,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             currentGadgetData = null;
             
             loadoutController.RemoveReceiver(this);
-            Debug.LogError("Gadget Discard !!!! !!!!!");
+            //Debug.LogError("Gadget Discard !!!! !!!!!");
         }
         
         private void CastGadget()

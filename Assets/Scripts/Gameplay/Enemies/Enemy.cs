@@ -280,8 +280,11 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
             navMeshAgent.enabled = false;
 
             // Nettoyage des subscriptions
-            foreach (ITargetable t in currentTargetsInRange)
-                t.OnTargeted -= OnAnyTargetStateChanged;
+            if (currentTargetsInRange != null)
+            {
+                foreach (ITargetable t in currentTargetsInRange)
+                    t.OnTargeted -= OnAnyTargetStateChanged;
+            }
 
             if (currentBestTarget != null)
             {

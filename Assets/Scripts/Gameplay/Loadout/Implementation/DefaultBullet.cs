@@ -140,6 +140,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
         public override void OnSpawn(IPool pool)
         {
+            if (!IsOwner) return;
             Pool = pool;
             currentPenetration = 0;
             lifeTime = 0;
@@ -151,7 +152,10 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
         public override void OnDespawn(IPool pool)
         {
+            if (!IsOwner) return;
             if (rb == null) return;
+
+            
             rb.linearVelocity = Vector3.zero;
             rb.isKinematic = true;
         }
