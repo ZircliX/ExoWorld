@@ -180,7 +180,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
 
         private void DoBurstDamageToEnemies()
         {
-            Debug.Log("DoBurstDamageToEnemies");
+            //Debug.Log("DoBurstDamageToEnemies");
             Collider[] colliders = Physics.OverlapSphere(
                 transform.position,
                 Data.ExplosionRadius,

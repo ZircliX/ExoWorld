@@ -7,13 +7,14 @@ namespace OverBang.ExoWorld.Gameplay.Quests
     public class PumpStart : MonoBehaviour, IInteractable
     {
         [SerializeField] private Pump pump;
+        [SerializeField] private Transform target;
 
         public string InteractionText => string.Empty;
         public int Priority => (int)TargetPriority.High;
         public bool CanInteract => !pump.IsStarted && !pump.IsCompleted;
         public InteractionType SupportedInteractions => InteractionType.Interact;
 
-        Vector3 IInteractable.UIPosition => transform.position.Add(y: 1f, x: -1f);
+        Vector3 IInteractable.UIPosition => target.position;
 
         public void Interact(PlayerInteraction playerInteraction)
         {

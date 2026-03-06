@@ -1,4 +1,5 @@
 ﻿using System;
+using OverBang.ExoWorld.Core.GameMode.Players;
 using OverBang.ExoWorld.Gameplay.IK_Animation;
 using OverBang.ExoWorld.Gameplay.Player;
 using Unity.Netcode;
@@ -99,13 +100,13 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             Loadout = PlayerLoadout.Loadout;
             if (Loadout.primaryWeapon == null && Loadout.secondaryWeapon == null)
                 return;
-            
-            InstantiateWeaponsRpc(Loadout.primaryWeapon.WeaponName, Loadout.secondaryWeapon.WeaponName);
+            ulong clientID = GamePlayerManager.Instance.GetLocalPlayer().ClientID;
+            InstantiateWeaponsRpc(clientID, Loadout.primaryWeapon.WeaponName, Loadout.secondaryWeapon.WeaponName);
             SetVisibleWeaponRpc(WeaponCategory.Primary);
         }
 
         [Rpc(SendTo.Everyone)]
-        private void InstantiateWeaponsRpc(string primaryWeaponName, string secondaryWeaponName)
+        private void InstantiateWeaponsRpc(ulong clientID, string primaryWeaponName, string secondaryWeaponName)
         {
             if (PrimaryWeapon != null)
                 DestroyImmediate(PrimaryWeapon.gameObject);
@@ -126,7 +127,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             PrimaryWeapon = Instantiate(primary.Prefab, weaponHolder);
             SecondaryWeapon = Instantiate(secondary.Prefab, weaponHolder);
             
-            if (!IsOwner) return;
+            if (clientID != GamePlayerManager.Instance.GetLocalPlayer().ClientID) return;
             
             // Initialize the weapon with loadout
             PrimaryWeapon.Initialize(primary, InteractionCamera, this);
