@@ -15,8 +15,6 @@ namespace OverBang.ExoWorld.Core.GameMode.Players
 {
     public class LocalGamePlayer : IGamePlayer
     {
-        public IReadOnlyPlayer SessionPlayer => LocalSessionPlayer;
-
         public CharacterData CharacterData { get; private set;}
 
         public float Health { get; private set; } = -1;
@@ -28,13 +26,26 @@ namespace OverBang.ExoWorld.Core.GameMode.Players
         public ulong ClientID => NetworkManager.Singleton.LocalClientId;
         
         private IPlayer LocalSessionPlayer => SessionManager.Global.CurrentPlayer;
+        public IReadOnlyPlayer SessionPlayer => LocalSessionPlayer;
         public NetworkObject CurrentPlayerObject { get; private set; }
         
         public ResourcesInventory Inventory { get; private set; } = new ResourcesInventory();
-
         public GadgetInventory GadgetInventory {get; private set;} = new GadgetInventory();
         
         private bool isDirty;
+        private float lastSaveTime = float.MinValue;
+        private const float SAVE_COOLDOWN = 1.5f;
+
+        public LocalGamePlayer()
+        {
+            ScriptableItemData[] resources = Resources.LoadAll<ScriptableItemData>("ItemData");
+
+            for (int i = 0; i < resources.Length; i++)
+            {
+                ScriptableItemData itemData = resources[i];
+                Inventory.AddItem(itemData.ItemData, itemData.DefaultQuantity);
+            }
+        }
         
         /// <summary>
         /// Called every x frame to apply changes to the player properties
@@ -42,6 +53,8 @@ namespace OverBang.ExoWorld.Core.GameMode.Players
         public void ApplyIfDirty()
         {
             if (!isDirty) 
+                return;
+            if (Time.realtimeSinceStartup - lastSaveTime < SAVE_COOLDOWN) 
                 return;
             
             using (DictionaryPool<string, PlayerProperty>.Get(out Dictionary<string, PlayerProperty> properties))
@@ -58,6 +71,7 @@ namespace OverBang.ExoWorld.Core.GameMode.Players
 
             SavePlayerData().Run();
             isDirty = false;
+            lastSaveTime = Time.realtimeSinceStartup;
         }
 
         private async Awaitable SavePlayerData()

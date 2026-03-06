@@ -249,7 +249,7 @@ namespace Insect_VFX
             EditorGUILayout.EndVertical();
         }
 
-        public void DrawHeader()
+        public new void DrawHeader()
         {
             
             GUIStyle titleStyle = new GUIStyle(GUI.skin.label)

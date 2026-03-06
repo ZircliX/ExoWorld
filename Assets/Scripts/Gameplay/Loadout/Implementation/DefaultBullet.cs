@@ -100,7 +100,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
                         RuntimeDamageData finalDamage = new RuntimeDamageData()
                         {
-                            finalDamage = (damage + bonusDamage) * damageMultiplier,
+                            finalDamage = ((damage + bonusDamage) * damageMultiplier) / (currentPenetration + 1),
                             weakSpotMultiplier = data.Damage.weakSpotMultiplier,
                         };
                         
@@ -140,7 +140,9 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
         public override void OnSpawn(IPool pool)
         {
+            if (!IsOwner) return;
             Pool = pool;
+            
             currentPenetration = 0;
             lifeTime = 0;
             
@@ -151,8 +153,11 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
         public override void OnDespawn(IPool pool)
         {
+            if (!IsOwner) return;
             if (rb == null) return;
-            rb.linearVelocity = Vector3.zero;
+            
+            if (!rb.isKinematic)
+                rb.linearVelocity = Vector3.zero;
             rb.isKinematic = true;
         }
     }

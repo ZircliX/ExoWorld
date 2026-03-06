@@ -71,7 +71,7 @@ namespace OverBang.ExoWorld.Gameplay.Network
                 gamePlayerManager.Initialize(gamePlayers);
             }
             
-            questManager.QueueNextQuest(0);
+            questManager.QueueNextQuest();
 
             while (isRunning)
             {

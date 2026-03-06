@@ -21,6 +21,7 @@ namespace OverBang.ExoWorld.Core.Enemies
         [field: SerializeField] public float BaseHealth { get; private set; }
         [field: SerializeField] public float BaseSpeed { get; private set; }
         [field: SerializeField] public float RagdollDuration { get; private set; }
+        [field: SerializeField] public float PatrolRadius { get; private set; } = 10f;
         [field: SerializeField] public float TriggerDetectionRadius { get; private set; }
         [field: SerializeField] public float AttackDetectionRadius { get; private set; }
         

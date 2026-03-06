@@ -37,6 +37,7 @@ MonoBehaviour:
         <ExplosionDamage>k__BackingField: 20
         <ExplosionDamageTick>k__BackingField: 5
         <GivenBonus>k__BackingField: 0.15
+        <MoveSpeedBonus>k__BackingField: 0.075
     - rid: 402417008147955844
       type: {class: AppareilZetaCompressedStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}
       data:
@@ -44,10 +45,12 @@ MonoBehaviour:
         <ExplosionDamage>k__BackingField: 0
         <ExplosionDamageTick>k__BackingField: 10
         <GivenBonus>k__BackingField: 0.1
+        <MoveSpeedBonus>k__BackingField: 0.05
     - rid: 6969012058403635340
       type: {class: AppareilZetaStrategyData, ns: OverBang.ExoWorld.Gameplay.Abilities, asm: OverBang.ExoWorld.Gameplay}
       data:
         <ExplosionRadius>k__BackingField: 1.5
         <ExplosionDamage>k__BackingField: 0
         <ExplosionDamageTick>k__BackingField: 0
-        <GivenBonus>k__BackingField: 0.3
+        <GivenBonus>k__BackingField: 0.2
+        <MoveSpeedBonus>k__BackingField: 0.1

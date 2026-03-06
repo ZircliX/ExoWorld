@@ -1,0 +1,58 @@
+﻿using Ami.BroAudio;
+using OverBang.ExoWorld.Core.Damage;
+using Sirenix.OdinInspector;
+using UnityEngine;
+
+namespace OverBang.ExoWorld.Gameplay.Targeting
+{
+    public class HealthComponent : MonoBehaviour, IDamageable, IHealable, IHealth
+    {
+        [SerializeField] protected SoundID damagedSound;
+        [SerializeField] protected SoundID killedSound;
+        
+        public event IHealth.HealthChanged OnHealthChanged;
+        public float MinHealth { get; private set; }
+        [field: SerializeField, ReadOnly] public float Health { get; private set; }
+        public float MaxHealth { get; private set; }
+        public float Resistance { get; private set; }
+        public bool IsAlive => Health > MinHealth;
+        public void SetMinHealth(float minHealth)
+        {
+            MinHealth = minHealth;
+        }
+
+        public bool IsInvincible { get; set; }
+
+        public void Initialize(float maxHealth,  float resistance)
+        {
+            MaxHealth = maxHealth;
+            Health = MaxHealth;
+            Resistance = resistance;
+        }
+
+        public void SetHealth(float health)
+        {
+            float previousHealth = Health;
+            Health = health;
+            if (Health <= MinHealth)
+            {
+                BroAudio.Play(killedSound, transform.position);
+                Health = MinHealth;
+            }
+            OnHealthChanged?.Invoke(previousHealth, Health, MaxHealth);
+        }
+
+        public void Heal(float amount)
+        {
+            SetHealth(Mathf.Min(Health + amount, MaxHealth));
+        }
+
+        public void TakeDamage(RuntimeDamageData damage)
+        {
+            if (damagedSound.IsValid())
+                BroAudio.Play(damagedSound, transform.position);
+            
+            SetHealth(Mathf.Max(Health - damage.finalDamage * (1f - Resistance), 0f));
+        }
+    }
+}

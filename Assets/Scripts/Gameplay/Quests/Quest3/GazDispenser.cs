@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using Helteix.Tools;
+using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Components;
 using OverBang.ExoWorld.Core.Damage;
 using OverBang.ExoWorld.Gameplay.Abilities;
 using OverBang.ExoWorld.Gameplay.Targeting;

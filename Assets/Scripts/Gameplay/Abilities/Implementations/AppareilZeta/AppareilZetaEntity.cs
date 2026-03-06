@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using Helteix.Tools;
 using KBCore.Refs;
+using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Components;
 using OverBang.ExoWorld.Core.Damage;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Gameplay.Movement;
@@ -121,10 +123,10 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             {
                 players.Add(player);
                 
-                player.WeaponController.SetShootRateMultiplier(1 - 1 * strategyData.GivenBonus);
-                player.WeaponController.SetDamageMultiplier(1 + 1 * strategyData.GivenBonus);
+                player.WeaponController.SetShootRateMultiplier(1 + strategyData.GivenBonus);
+                player.WeaponController.SetDamageMultiplier(1 + strategyData.GivenBonus);
 
-                player.ApplySpeed(strategyData.GivenBonus, data.Duration);
+                player.ApplySpeed(strategyData.MoveSpeedBonus, data.Duration, name);
             }
             
             else if (target is IDamageable damageable)
@@ -142,7 +144,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
                 player.WeaponController.SetShootRateMultiplier(1);
                 player.WeaponController.SetDamageMultiplier(1);
 
-                player.ApplySpeed(0, 0);
+                player.RemoveSpeed(name, 3f);
             }
             
             else if (target is IDamageable damageable)

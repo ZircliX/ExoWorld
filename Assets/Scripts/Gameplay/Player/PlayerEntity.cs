@@ -37,6 +37,7 @@ namespace OverBang.ExoWorld.Gameplay.Player
 
         private PlayerMovement pm;
         private Dictionary<string, SpeedEffect> activeEffects;
+        private Dictionary<string, float> awaitForRemovalEffects;
 
         private void OnEnable()
         {
@@ -65,6 +66,7 @@ namespace OverBang.ExoWorld.Gameplay.Player
             Controller.LocalGamePlayer.SetHealth(Controller.LocalGamePlayer.MaxHealth);
             //characterData.BaseStats.Resistance + UpgradeManager.Instance.GetRuntimeUpgrade(UpgradeType.Resistance));
             activeEffects = new Dictionary<string, SpeedEffect>(8);
+            awaitForRemovalEffects = new Dictionary<string, float>(8);
         }
 
         public event Action<bool> OnTargeted;
@@ -104,6 +106,9 @@ namespace OverBang.ExoWorld.Gameplay.Player
         
         public void ApplySpeed(float speedPercentage, float duration = 0f, string effectId = null)
         {
+            if (effectId != null && activeEffects.ContainsKey(effectId))
+                return;
+            
             effectId ??= Guid.NewGuid().ToString();
 
             SpeedEffect effect = new SpeedEffect
@@ -125,6 +130,11 @@ namespace OverBang.ExoWorld.Gameplay.Player
                 UpdateMovementSpeed();
             }
         }
+
+        public void RemoveSpeed(string effectID, float duration)
+        {
+            awaitForRemovalEffects[effectID] = duration;
+        }
         
         public void ClearTemporaryEffects()
         {
@@ -144,13 +154,33 @@ namespace OverBang.ExoWorld.Gameplay.Player
         private void Update()
         {
             UpdateSpeedEffects();
+            UpdateWaitForRemovalEffects();
         }
-        
+
+        private void UpdateWaitForRemovalEffects()
+        {
+            float deltaTime = Time.deltaTime;
+            Dictionary<string, float> copy = new Dictionary<string, float>(awaitForRemovalEffects);
+
+            foreach ((string id, float duration) in copy)
+            {
+                float newDuration = duration - deltaTime;
+                if (newDuration <= 0)
+                {
+                    RemoveSpeed(id);
+                }
+                
+                awaitForRemovalEffects[id] = newDuration;
+            }
+        }
+
         private void UpdateSpeedEffects()
         {
             List<string> expiredEffects = new List<string>();
+            
+            Dictionary<string, SpeedEffect> copy = new Dictionary<string, SpeedEffect>(activeEffects);
 
-            foreach ((string id, SpeedEffect effect) in activeEffects)
+            foreach ((string id, SpeedEffect effect) in copy)
             {
                 if (effect.isPermanent)
                     continue;
@@ -190,6 +220,7 @@ namespace OverBang.ExoWorld.Gameplay.Player
             foreach (SpeedEffect effect in activeEffects.Values)
             {
                 totalMultiplier *= effect.speedMultiplier;
+                //Debug.Log($"TotalMultiplier: {totalMultiplier}");
             }
 
             pm.SetMovementSpeedMultiplier(totalMultiplier);

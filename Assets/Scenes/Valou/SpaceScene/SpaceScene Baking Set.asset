@@ -74,9 +74,9 @@ MonoBehaviour:
   minCellPosition: {x: -1, y: -1, z: -1}
   globalBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 486, y: 486, z: 486}
+    m_Extent: {x: 243, y: 243, z: 243}
   bakedSimplificationLevels: 4
-  bakedMinDistanceBetweenProbes: 2
+  bakedMinDistanceBetweenProbes: 1
   bakedProbeOcclusion: 0
   bakedSkyOcclusionValue: 0
   bakedSkyShadingDirectionValue: 0
@@ -87,7 +87,7 @@ MonoBehaviour:
     y: 0
     z: 0
     w: 0
-  maxSHChunkCount: 1
+  maxSHChunkCount: 5
   L0ChunkSize: 65536
   L1ChunkSize: 32768
   L2TextureChunkSize: 32768
@@ -107,7 +107,7 @@ MonoBehaviour:
   freezePlacement: 0
   probeOffset: {x: 0, y: 0, z: 0}
   simplificationLevels: 4
-  minDistanceBetweenProbes: 2
+  minDistanceBetweenProbes: 1
   renderersLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -128,4 +128,4 @@ MonoBehaviour:
       bakeScene: 1
       bounds:
         m_Center: {x: 0, y: 0, z: 0}
-        m_Extent: {x: 486, y: 486, z: 486}
+        m_Extent: {x: 243, y: 243, z: 243}

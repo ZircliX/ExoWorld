@@ -33,10 +33,10 @@ MonoBehaviour:
     supportLightLayers: 1
     renderingLayerMaskBuffer: 0
     supportWater: 1
-    waterSimulationResolution: 128
+    waterSimulationResolution: 64
     supportWaterExclusion: 0
     supportWaterHorizontalDeformation: 0
-    supportWaterDecals: 1
+    supportWaterDecals: 0
     waterDecalAtlasSize: 1024
     maximumWaterDecalCount: 48
     waterScriptInteractionsMode: 0
@@ -119,7 +119,7 @@ MonoBehaviour:
       maxLocalVolumetricFogSize: 64
       maxLocalVolumetricFogOnScreen: 64
     hdShadowInitParams:
-      maxShadowRequests: 128
+      maxShadowRequests: 256
       directionalShadowsDepthBits: 16
       punctualShadowFilteringQuality: 1
       directionalShadowFilteringQuality: 1
@@ -132,7 +132,7 @@ MonoBehaviour:
         shadowAtlasResolution: 2048
         shadowAtlasDepthBits: 16
         useDynamicViewportRescale: 0
-      cachedPunctualLightShadowAtlas: 2048
+      cachedPunctualLightShadowAtlas: 4096
       cachedAreaLightShadowAtlas: 2048
       allowDirectionalMixedCachedShadows: 0
       shadowResolutionDirectional:
@@ -174,7 +174,7 @@ MonoBehaviour:
       - DLSS
       - FSR2
       - STP
-      DLSSPerfQualitySetting: 0
+      DLSSPerfQualitySetting: 3
       DLSSInjectionPoint: 0
       TAAUInjectionPoint: 0
       STPInjectionPoint: 0

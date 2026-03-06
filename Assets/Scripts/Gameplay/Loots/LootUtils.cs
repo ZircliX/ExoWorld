@@ -9,9 +9,14 @@ namespace OverBang.ExoWorld.Gameplay.Loots
     {
         public static NetworkObject GetDrop(this LootTable lootTable, Vector3 position, Quaternion rotation)
         {
+            LootTable.LootableItemData scriptableItemData = lootTable.GetRandomLoot();
+
+            if (scriptableItemData.LootPrefab == null && scriptableItemData.Loot == null)
+                return null;
+            
             NetworkSpawnManager spawnManager = NetworkManager.Singleton.SpawnManager;
             NetworkObject networkObject = spawnManager.InstantiateAndSpawn(
-                lootTable.NetworkPrefab, 
+                scriptableItemData.LootPrefab, 
                 GamePlayerManager.Instance.GetLocalPlayer().ClientID, 
                 true, 
                 true,
@@ -21,16 +26,16 @@ namespace OverBang.ExoWorld.Gameplay.Loots
 
             if (networkObject.TryGetComponent(out LootDrop lootDrop))
             {
-                LootTable.LootableItemData scriptableItemData = lootTable.GetRandomLoot();
                 ItemData itemData = scriptableItemData.Loot.ItemData;
-                itemData.SetQuantity(Random.Range(scriptableItemData.MinQuantity, scriptableItemData.MaxQuantity + 1));
-                
+                int newQuantity = Random.Range(scriptableItemData.MinQuantity, scriptableItemData.MaxQuantity + 1);
+
+                itemData.SetQuantity(newQuantity);
                 lootDrop.Initialize(itemData);
                 
                 if (networkObject.TryGetComponent(out Rigidbody rb))
                 {
                     Vector3 direction = (Vector3.up + Random.onUnitSphere).normalized;
-                    rb.AddForce(direction * 5, ForceMode.Impulse);
+                    rb.AddForce(direction * 6f, ForceMode.Impulse);
                 }
                 
                 return networkObject;

@@ -1,5 +1,10 @@
+using System;
+using System.Collections.Generic;
+using OverBang.ExoWorld.Core.Audios.ContextualDialogues;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.Pool;
+using Random = UnityEngine.Random;
 
 namespace OverBang.ExoWorld.Core.Inventory
 {
@@ -9,14 +14,21 @@ namespace OverBang.ExoWorld.Core.Inventory
         [System.Serializable]
         public struct LootableItemData
         {
-            [field: SerializeField] public float DropChance { get; private set; }
+            [field: SerializeField, Range(0, 1)] public float DropChance { get; private set; }
             [field: SerializeField] public int MinQuantity { get; private set; }
             [field: SerializeField] public int MaxQuantity { get; private set; }
             [field: SerializeField] public ScriptableItemData Loot { get; private set; }
+            [field: SerializeField] public NetworkObject LootPrefab { get; private set; }
+            
+            public LootableItemData SetProbability(float probability)
+            {
+                DropChance = probability;
+                return this;
+            }
         }
         
         [field: SerializeField] public LootableItemData[] LootEntries { get; private set; }
-        [field: SerializeField] public NetworkObject NetworkPrefab { get; private set; }
+        [field: SerializeField] public bool Equilibrate { get; private set; }
     
         public LootableItemData GetRandomLoot()
         {
@@ -37,6 +49,29 @@ namespace OverBang.ExoWorld.Core.Inventory
             }
         
             return LootEntries[^1];
+        }
+
+        private void OnValidate()
+        {
+            if (!Equilibrate) return;
+            
+            using (DictionaryPool<int, float>.Get(out Dictionary<int, float> dictionary))
+            {
+                float total = 0;
+                for (int i = 0; i < LootEntries.Length; i++)
+                {
+                    LootableItemData clip = LootEntries[i];
+                    total += clip.DropChance;
+                    
+                    dictionary.Add(i, clip.DropChance);
+                }
+
+                foreach ((int i, float prob) in dictionary)
+                {
+                    float normalizedProb = prob / total;
+                    LootEntries[i] = LootEntries[i].SetProbability(normalizedProb);
+                }
+            }
         }
     }
 }

@@ -637,7 +637,7 @@ GameObject:
   - component: {fileID: 677785087391186206}
   - component: {fileID: 7032216942833352714}
   - component: {fileID: 3102419613835407489}
-  - component: {fileID: 5237697135511310407}
+  - component: {fileID: 5193154191941482240}
   m_Layer: 8
   m_Name: Truck
   m_TagString: Untagged
@@ -1122,8 +1122,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4855994437814154402}
   m_Mesh: {fileID: 0}
---- !u!64 &5237697135511310407
-MeshCollider:
+--- !u!65 &5193154191941482240
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1140,10 +1140,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 3
+  m_Size: {x: 3.0000267, y: 4, z: 15.0000105}
+  m_Center: {x: 0.49998194, y: 0, z: -4.4999976}
 --- !u!1 &6287643431704164199
 GameObject:
   m_ObjectHideFlags: 0

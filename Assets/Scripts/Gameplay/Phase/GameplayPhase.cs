@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using OverBang.ExoWorld.Core.Menus;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Core.Phases;
 using OverBang.ExoWorld.Core.Utils;
@@ -46,6 +47,8 @@ namespace OverBang.ExoWorld.Gameplay.Phase
             await SessionManager.Global.CurrentPlayer.UpdatePlayerProperty(ConstID.Global.PlayerPropertyPhaseStatus, nameof(PhaseStatus.None));
             SceneManager.sceneLoaded += OnSceneLoaded;
             LevelManager = CreateLevelManager();
+            
+            await LoadingScreen.Instance.Show();
 
             await LoadScene();
             
@@ -54,6 +57,8 @@ namespace OverBang.ExoWorld.Gameplay.Phase
                 await LevelManager.Initialize(this);
                 LevelManager.StartLevel();
             }
+            
+            await LoadingScreen.Instance.Hide();
         }
 
         protected virtual async Awaitable Execute()

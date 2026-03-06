@@ -109,15 +109,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.Enemy
   ShowTopMostFoldoutHeaderGroup: 1
-  <EnemyNetworkObject>k__BackingField: {fileID: 827771057727792807}
-  <Agent>k__BackingField: {fileID: 6307496961718370695}
-  <DahComponent>k__BackingField: {fileID: 2641663678897118583}
-  enemyData: {fileID: 0}
-  <enemyModelContainer>k__BackingField: {fileID: 7473997488970608723}
-  <FocusDetectionArea>k__BackingField: {fileID: 4240668120309789052}
-  <AttackDetectionArea>k__BackingField: {fileID: 5123218484393456302}
-  <patrolRadius>k__BackingField: 10
-  collider: {fileID: 4209642412550774923}
+  networkObject: {fileID: 827771057727792807}
+  healthComponent: {fileID: 2641663678897118583}
+  capsuleCollider: {fileID: 4209642412550774923}
+  modelContainer: {fileID: 7473997488970608723}
+  navMeshAgent: {fileID: 6307496961718370695}
+  focusDetectionArea: {fileID: 4240668120309789052}
+  attackDetectionArea: {fileID: 5123218484393456302}
 --- !u!195 &6307496961718370695
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -153,6 +151,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.DamageableAndHealableComponent
   damagedSound:
+    ID: 0
+    _sourceAsset: {fileID: 0}
+    <DebugObject>k__BackingField: {fileID: 3953532697497277536}
+  killedSound:
     ID: 1073741848
     _sourceAsset: {fileID: 11400000, guid: 1e98a9d7d89afe544803e95a716644ff, type: 2}
     <DebugObject>k__BackingField: {fileID: 3953532697497277536}
@@ -305,7 +307,7 @@ GameObject:
   - component: {fileID: 3635136003686820902}
   - component: {fileID: 4240668120309789052}
   m_Layer: 0
-  m_Name: PatrolTrigger
+  m_Name: FocusTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

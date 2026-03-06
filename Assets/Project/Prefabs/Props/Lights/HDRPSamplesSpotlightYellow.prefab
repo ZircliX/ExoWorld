@@ -809,6 +809,7 @@ GameObject:
   - component: {fileID: 4143302112860216674}
   - component: {fileID: 1504145194653637985}
   - component: {fileID: 3590474122446220807}
+  - component: {fileID: 5774035185986787202}
   m_Layer: 8
   m_Name: HDRPSamplesSpotlightYellow
   m_TagString: Untagged
@@ -889,6 +890,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5774035185986787202
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8082782737370686994}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0023551711, y: 0.0018301085, z: 0.014543148}
+  m_Center: {x: -0.00012852423, y: -0.00008178164, z: 0.007286372}
 --- !u!1 &8097845537710247158
 GameObject:
   m_ObjectHideFlags: 0

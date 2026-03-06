@@ -67,7 +67,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         {
             if (accumulatedDelta.magnitude < selectionThreshold)
             {
-                Debug.Log("no movement, no new selection");
+                //Debug.Log("no movement, no new selection");
                 return;
             }
             

@@ -258,6 +258,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   <DetectionArea>k__BackingField: {fileID: 2109180920598131112}
   rb: {fileID: 7411133184877083849}
+  networkObject: {fileID: 5702084948040205239}
   bottom: {fileID: 9217705055519370637}
 --- !u!54 &7411133184877083849
 Rigidbody:
@@ -346,7 +347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.NetworkRigidbody
   ShowTopMostFoldoutHeaderGroup: 1
   NetworkRigidbodyBaseExpanded: 0
-  UseRigidBodyForMotion: 1
+  UseRigidBodyForMotion: 0
   AutoUpdateKinematicState: 1
   AutoSetKinematicOnDespawn: 1
 --- !u!1 &5254132598348944450

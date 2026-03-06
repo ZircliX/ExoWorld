@@ -1,4 +1,5 @@
 ﻿using Ami.BroAudio;
+using OverBang.ExoWorld.Core.Inventory;
 using OverBang.ExoWorld.Core.Upgrade;
 using OverBang.ExoWorld.Gameplay.Upgrade;
 using UnityEngine;
@@ -10,6 +11,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
     {
         // BULLET DATA
         [field: SerializeField] public BulletData BulletData { get; protected set; }
+        [field: SerializeField] public ScriptableItemData BulletItemData { get; protected set; }
         
         // GENERAL DATA
         [field: SerializeField] public string WeaponName { get; protected set; }

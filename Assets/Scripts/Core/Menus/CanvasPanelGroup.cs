@@ -10,6 +10,7 @@ namespace OverBang.ExoWorld.Core.Menus
         [SerializeField, Self] private CanvasGroup canvasGroup;
         [SerializeField] private float animationDuration = 0.3f;
         [SerializeField] private bool closeOnAwake = true;
+        [SerializeField] private bool interactable = true;
 
         private void OnValidate() => this.ValidateRefs();
 
@@ -26,15 +27,15 @@ namespace OverBang.ExoWorld.Core.Menus
             {
                 canvasGroup.DOFade(1, animationDuration).OnComplete(() =>
                 {
-                    canvasGroup.blocksRaycasts = true;
-                    canvasGroup.interactable = true;
+                    canvasGroup.blocksRaycasts = interactable;
+                    canvasGroup.interactable = interactable;
                 });
             }
             else
             {
                 canvasGroup.alpha = 1;
-                canvasGroup.blocksRaycasts = true;
-                canvasGroup.interactable = true;
+                canvasGroup.blocksRaycasts = interactable;
+                canvasGroup.interactable = interactable;
             }
         }
 

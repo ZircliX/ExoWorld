@@ -1,4 +1,3 @@
-using System;
 using OverBang.ExoWorld.Core.Inventory;
 using OverBang.Pooling;
 using OverBang.Pooling.Resource;
@@ -29,6 +28,7 @@ namespace OverBang.ExoWorld.Gameplay.Loots
 
         private void FixedUpdate()
         {
+            if (!IsOwner) return;
             if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hitInfo, 2f))
             {
                 if (hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
@@ -67,12 +67,7 @@ namespace OverBang.ExoWorld.Gameplay.Loots
             }
         }
 
-        public IPool Pool { get; private set; }
-        public void OnSpawn(IPool pool)
-        {
-            Pool = pool;
-        }
-
+        public void OnSpawn(IPool pool) { }
         public void OnDespawn(IPool pool)
         {
             boundsCollider.enabled = false;
