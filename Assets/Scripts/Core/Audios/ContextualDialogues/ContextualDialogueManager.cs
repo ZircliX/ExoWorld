@@ -11,7 +11,7 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
         [RuntimeInitializeOnLoadMethod]
         private static void InitializeOnLoad()
         {
-            ContextualDialogueData[] r = Resources.LoadAll<ContextualDialogueData>("ContextualDialogueData");
+            ContextualDialogueData[] r = Resources.LoadAll<ContextualDialogueData>("Audios/ContextualDialogue");
             loadedData = new Dictionary<string, ContextualDialogueData>();
             
             for (int i = 0; i < r.Length; i++)
@@ -27,9 +27,12 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
         
         public static void FireEvent(string id, CDContext context)
         {
-            if (TryGetEvent(context.data, id, out ContextualDialogue contextualDialogueData))
+            if (TryGetEvent(context.data, id, out ContextualDialogue contextualDialogue))
             {
-                
+                if (!ContextualDialogueController.Instance.TryAddContextualDialogue(contextualDialogue))
+                {
+                    Debug.LogError($"Cannot add {contextualDialogue} to controller !");
+                }
             }
         }
 
