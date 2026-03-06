@@ -36,7 +36,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
                 true,
                 false,
                 false,
-                Caster.transform.position + Caster.Forward * 1.5f, Caster.transform.rotation);
+                Caster.CastAnchor.position + Caster.Forward * 1.5f, Caster.transform.rotation);
 
             if (networkObject.TryGetComponent(out RobotBoki robot))
             {

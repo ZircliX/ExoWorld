@@ -1,5 +1,7 @@
 using Helteix.ChanneledProperties.Priorities;
+using Helteix.Tools;
 using OverBang.ExoWorld.Core;
+using OverBang.ExoWorld.Core.Abilities;
 using OverBang.ExoWorld.Core.Characters;
 using OverBang.ExoWorld.Core.Menus;
 using OverBang.ExoWorld.Gameplay.HUB.Listeners;
@@ -26,13 +28,19 @@ namespace OverBang.ExoWorld.Gameplay.HUB
         [SerializeField] private TMP_Text characterDescriptionText;
         
         [Header("Ability Infos")]
-        [SerializeField, Space] private Button primaryAbilityButton;
+        [Space]
+        [SerializeField] private Button primaryAbilityButton;
         [SerializeField] private Button secondaryAbilityButton;
+        [SerializeField] private Transform primaryAbilityTarget;
+        [SerializeField] private Transform secondaryAbilityTarget;
         [SerializeField] private Color selectedColor;
         [SerializeField] private Color unselectedColor;
         
         [SerializeField] private TMP_Text abilityNameText;
         [SerializeField] private TMP_Text abilityDescriptionText;
+
+        private AbilityIconReference primaryIcon;
+        private AbilityIconReference secondaryIcon;
         
         private CharacterData currentCharacterData;
         private int currentCharacterIndex;
@@ -52,6 +60,9 @@ namespace OverBang.ExoWorld.Gameplay.HUB
             
             primaryAbilityButton.onClick.AddListener( () => UpdateAbility(true));
             secondaryAbilityButton.onClick.AddListener( () => UpdateAbility(false));
+            
+            primaryAbilityButton.transform.ClearChildren();
+            secondaryAbilityButton.transform.ClearChildren();
         }
 
         private void OnLoaded()
@@ -93,11 +104,20 @@ namespace OverBang.ExoWorld.Gameplay.HUB
         {
             characterNameText.text = currentCharacterData.Name;
             characterCategoryText.text = currentCharacterData.CharacterClass.ToString();
-            characterImage.sprite = currentCharacterData.Sprite;
+            if (characterImage != null)
+                characterImage.sprite = currentCharacterData.Sprite;
             characterDescriptionText.text = currentCharacterData.Description;
             
-            primaryAbilityButton.image.sprite = currentCharacterData.PrimaryAbility.Icon;
-            secondaryAbilityButton.image.sprite = currentCharacterData.SecondaryAbility.Icon;
+            if (primaryIcon != null)
+                Destroy(primaryIcon.gameObject);
+            if (secondaryIcon != null)
+                Destroy(secondaryIcon.gameObject);
+            
+            primaryIcon = Instantiate(currentCharacterData.PrimaryAbility.Icon, primaryAbilityTarget);
+            secondaryIcon = Instantiate(currentCharacterData.SecondaryAbility.Icon, secondaryAbilityTarget);
+
+            primaryAbilityButton.targetGraphic = primaryIcon.TargetGraphic;
+            secondaryAbilityButton.targetGraphic = secondaryIcon.TargetGraphic;
             
             UpdateAbility(abilitySelected);
         }

@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using OverBang.ExoWorld.Core.Abilities;
 using OverBang.ExoWorld.Core.Characters;
+using OverBang.ExoWorld.Core.GameMode.Players;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Abilities
@@ -12,21 +14,35 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         protected TData Data { get; private set; }
         protected List<MineWax> activeMines;
         
+        private NetworkSpawnManager spawnManager;
+        private LocalGamePlayer localPlayer;
+        
         public void Initialize(IAbility<MinesWaxData> ability, ICaster caster, TData data)
         {
             Caster = caster;
             Data = data;
             activeMines = new List<MineWax>(3);
+            
+            spawnManager = NetworkManager.Singleton.SpawnManager;
+            localPlayer = GamePlayerManager.Instance.GetLocalPlayer();
         }
         
         public virtual void Begin(IAbility<MinesWaxData> ability)
         {
             IExplosionStrategy explosionStrategy = GetExplosionStrategy();
             
-            MineWax mine = Object.Instantiate(ability.DataT.MineWaxPrefab, Caster.transform.position + Caster.Forward, Quaternion.identity);
-            mine.Initialize(ability.DataT, Caster.Forward, explosionStrategy);
-            
-            activeMines.Add(mine);
+            NetworkObject networkObject = spawnManager.InstantiateAndSpawn(ability.DataT.MineWaxPrefab, 
+                localPlayer.ClientID,
+                true,
+                false,
+                false,
+                Caster.CastAnchor.position + Caster.Forward * 1.5f, Caster.transform.rotation);
+
+            if (networkObject.TryGetComponent(out MineWax mine))
+            {
+                mine.Initialize(ability.DataT, Caster.Forward, explosionStrategy);
+                activeMines.Add(mine);
+            }
         }
 
         public virtual void Tick(IAbility<MinesWaxData> ability, float deltaTime)
