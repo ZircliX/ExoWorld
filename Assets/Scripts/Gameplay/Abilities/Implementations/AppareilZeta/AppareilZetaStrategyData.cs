@@ -10,6 +10,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         [field: SerializeField] public float ExplosionDamage { get; private set; }
         [field: SerializeField] public float ExplosionDamageTick { get; private set; }
         [field: SerializeField] public float GivenBonus { get; private set; }
+        [field: SerializeField] public float MoveSpeedBonus { get; private set; }
     }
     
     [System.Serializable]
@@ -19,6 +20,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         [field: SerializeField] public float ExplosionDamage { get; private set; }
         [field: SerializeField] public float ExplosionDamageTick { get; private set; }
         [field: SerializeField] public float GivenBonus { get; private set; }
+        [field: SerializeField] public float MoveSpeedBonus { get; private set; }
     }
     
     [System.Serializable]
@@ -28,6 +30,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         [field: SerializeField] public float ExplosionDamage { get; private set; }
         [field: SerializeField] public float ExplosionDamageTick { get; private set; }
         [field: SerializeField] public float GivenBonus { get; private set; }
+        [field: SerializeField] public float MoveSpeedBonus { get; private set; }
     }
 
     public interface IAppareilZetaAbilityStrategyData
@@ -36,5 +39,6 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         float ExplosionDamage { get; }
         float ExplosionDamageTick { get; }
         float GivenBonus { get; }
+        float MoveSpeedBonus { get; }
     }
 }

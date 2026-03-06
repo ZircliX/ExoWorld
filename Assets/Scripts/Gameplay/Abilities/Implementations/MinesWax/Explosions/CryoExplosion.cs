@@ -35,7 +35,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
                 
                 if (col.TryGetComponent(out ISpeedTarget slowable))
                 {
-                    slowable.ApplySpeed(-slowPercentage, slowDuration);
+                    slowable.ApplySpeed(-slowPercentage, slowDuration, nameof(CryoExplosion));
                 }
             }
             

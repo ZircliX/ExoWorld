@@ -292,10 +292,16 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
                 currentBestTarget = null;
             }
 
-            enemyAnimator.Ragdoll(true);
+            RagdollRpc();
             EnemyManager.Instance.Unregister(this);
             EnemyData.LootTable.GetDrop(transform.position, transform.rotation);
             Invoke(nameof(WaitUntilRagdoll), EnemyData.RagdollDuration);
+        }
+
+        [Rpc(SendTo.Everyone)]
+        private void RagdollRpc()
+        {
+            enemyAnimator.Ragdoll(true);
         }
 
         private void WaitUntilRagdoll()
