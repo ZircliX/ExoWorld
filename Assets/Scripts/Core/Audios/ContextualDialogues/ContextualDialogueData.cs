@@ -2,18 +2,19 @@
 using OverBang.ExoWorld.Core.Characters;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Pool;
-using Random = UnityEngine.Random;
 
 namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
 {
     [CreateAssetMenu(menuName = "OverBang/Audios/ContextualDialogue")]
     public class ContextualDialogueData : ScriptableObject
     {
-        [field: SerializeField] public string ID {get; private set;}
-        [field: SerializeField] public bool CanBeHeardByEveryone { get; private set; }
+        [field: SerializeField, ReadOnly] public string ID {get; private set;}
+        [field: SerializeField, Range(0, 5)] public int Priority { get; private set; } = 0;
+        [field: SerializeField, Range(0, 1)] public float Probability { get; private set; } = 1;
+        [field: SerializeField] public bool CanBeHeardByEveryone { get; private set; } = true;
+        [field: SerializeField] public float Lifetime { get; private set; } = 0.2f;
 
-        [SerializeField] 
+        [SerializeField, ListDrawerSettings(ShowFoldout = false)] 
         private ContextualClip[] clips;
         
         private void Reset()
@@ -28,12 +29,10 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
             if (clips.Length == 0)
                 return false;
 
-            float rnd = Random.value;
             for (int i = 0; i < clips.Length; i++)
             {
-                rnd -= clips[i].Probability;
-                if (rnd <= 0)
-                    return clips[i].TryGetLine(data, out line);
+                if(clips[i].CharacterData == data) 
+                    return clips[i].TryGetLine(out line);
             }
             
             return false;
@@ -46,24 +45,6 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
                 ID = Guid.NewGuid().ToString();
                 Debug.LogWarning($"[OnValidate] Regenerating ID for {name}..." +
                                  $"{ID}");
-            }
-
-            using (DictionaryPool<int, float>.Get(out var dictionary))
-            {
-                float total = 0;
-                for (int i = 0; i < clips.Length; i++)
-                {
-                    ContextualClip clip = clips[i];
-                    total += clip.Probability;
-                    
-                    dictionary.Add(i, clip.Probability);
-                }
-
-                foreach ((int i, float prob) in dictionary)
-                {
-                    float normalizedProb = prob / total;
-                    clips[i] = clips[i].SetProbability(normalizedProb);
-                }
             }
         }
             
