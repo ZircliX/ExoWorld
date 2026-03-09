@@ -12,11 +12,11 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _DISABLE_DECALS
   - _DOUBLESIDED_ON
   - _ENABLE_FOG_ON_TRANSPARENT
   - _MAPPING_TRIPLANAR
   - _MASKMAP
-  - _MATERIAL_FEATURE_IRIDESCENCE
   - _NORMALMAP
   - _NORMALMAP_TANGENT_SPACE
   - _REFRACTION_SPHERE
@@ -191,7 +191,7 @@ Material:
     - _IridescenceMask: 0.1
     - _IridescenceThickness: 1
     - _LinkDetailsWithBase: 1
-    - _MaterialID: 3
+    - _MaterialID: 1
     - _Metallic: 0
     - _MetallicRemapMax: 0
     - _MetallicRemapMin: 0
@@ -226,7 +226,7 @@ Material:
     - _StencilWriteMaskGBuffer: 15
     - _StencilWriteMaskMV: 41
     - _SubsurfaceMask: 1
-    - _SupportDecals: 1
+    - _SupportDecals: 0
     - _SurfaceType: 1
     - _TexWorldScale: 0.25
     - _TexWorldScaleEmissive: 1

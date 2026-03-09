@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8358863204856456225}
   m_Layer: 0
   m_Name: GazDispenser
-  m_TagString: Untagged
+  m_TagString: EndGameGaz
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 2794382992
-  InScenePlacedSourceGlobalObjectIdHash: 0
+  GlobalObjectIdHash: 1303141368
+  InScenePlacedSourceGlobalObjectIdHash: 2794382992
   DeferredDespawnTick: 0
   Ownership: 1
   AlwaysReplicateAsRoot: 0
@@ -139,5 +139,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.1949358, y: 4.022628, z: 5.6329207}
+  m_Size: {x: 200, y: 50, z: 150}
   m_Center: {x: 0, y: 1.8897576, z: 0}

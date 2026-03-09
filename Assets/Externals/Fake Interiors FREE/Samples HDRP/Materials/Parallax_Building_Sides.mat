@@ -15,6 +15,7 @@ Material:
   - _FACADETEXTURE_ON
   m_InvalidKeywords:
   - _ADD_PRECOMPUTED_VELOCITY
+  - _DISABLE_SSR
   - _DISABLE_SSR_TRANSPARENT
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
@@ -126,25 +127,26 @@ Material:
     - _GlassSmoothness: 12.36
     - _GlassSmoothnessMultiplier: 9.79
     - _Keyword1: 1
+    - _MetalnessValue: 0.5
     - _OpaqueCullMode: 2
     - _PerPixelSorting: 0
     - _PropLayerToggle: 1
     - _PropsTexTiling: 0.295
     - _PropsTexTilling: 0.41
-    - _ReceivesSSR: 1
+    - _ReceivesSSR: 0
     - _ReceivesSSRTransparent: 0
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
-    - _RoomIntensity: 10
+    - _RoomIntensity: 1.5
     - _RoomTile: 1
     - _Smoothness: 0
     - _SmoothnessValue: 1
     - _SrcBlend: 1
     - _StencilRef: 0
-    - _StencilRefDepth: 8
+    - _StencilRefDepth: 0
     - _StencilRefDistortionVec: 4
-    - _StencilRefGBuffer: 10
-    - _StencilRefMV: 40
+    - _StencilRefGBuffer: 2
+    - _StencilRefMV: 32
     - _StencilWriteMask: 6
     - _StencilWriteMaskDepth: 9
     - _StencilWriteMaskDistortionVec: 4
@@ -177,7 +179,7 @@ Material:
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _PositionOffsetXYZroomsWprops: {r: 3.12, g: 0.36, b: 2.48, a: 1}
-    - _RoomColorTint: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 0}
+    - _RoomColorTint: {r: 0.84705883, g: 0.8745098, b: 1, a: 0}
     - _RoomsXYZPropsW: {r: 0.295, g: 0.59, b: 0.195, a: 0.295}
     - _Vector0: {r: 0.93, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

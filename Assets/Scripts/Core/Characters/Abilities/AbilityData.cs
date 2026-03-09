@@ -1,3 +1,4 @@
+using OverBang.ExoWorld.Core.Abilities;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Core.Characters
@@ -7,7 +8,7 @@ namespace OverBang.ExoWorld.Core.Characters
         [field: Header("General Data")]
         [field: SerializeField] public string Name { get; private set; }
         [field: SerializeField, TextArea] public string Description { get; private set; }
-        [field: SerializeField] public Sprite Icon { get; private set; }
+        [field: SerializeField] public AbilityIconReference Icon { get; private set; }
 
         [field: Header("Specific Data")]
         [field: SerializeField] public float Cooldown { get; private set; }
