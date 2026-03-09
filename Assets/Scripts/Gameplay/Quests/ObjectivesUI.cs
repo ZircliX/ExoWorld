@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -28,11 +29,22 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             
             IObjectiveHandler objectiveHandler = ObjectivesManager.ActiveObjectives[0];
             currentObjectiveHandler = objectiveHandler;
+            
             currentObjectiveHandler.OnObjectiveProgress += OnObjectiveProgress;
             currentObjectiveHandler.OnObjectiveStateChanged += OnStateChanged;
             currentObjectiveHandler.OnObjectiveStepChanged += OnStepChanged;
             
             UpdateObjectiveUI();
+        }
+
+        private void OnDisable()
+        {
+            if (currentObjectiveHandler != null)
+            {
+                currentObjectiveHandler.OnObjectiveProgress -= OnObjectiveProgress;
+                currentObjectiveHandler.OnObjectiveStateChanged -= OnStateChanged;
+                currentObjectiveHandler.OnObjectiveStepChanged -= OnStepChanged;
+            }
         }
 
         private void OnObjectiveProgress(ObjectiveProgression progression)
@@ -42,7 +54,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
 
         private void OnStateChanged(IObjectiveHandler objectiveHandler, ObjectiveState state)
         {
-            if (state is ObjectiveState.Completed &&
+            if (state is ObjectiveState.Disposed &&
                 currentObjectiveHandler == objectiveHandler)
             {
                 currentObjectiveHandler.OnObjectiveProgress -= OnObjectiveProgress;
@@ -84,7 +96,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         {
             if (questCompleteRewardImage == null)
             {
-                Debug.LogWarning("questCompleteRewardImage was destroyed before ClearObjective!");
+                Debug.LogWarning("questCompleteRewardImage was destroyed before ClearObjective!", gameObject);
                 //return;
             }
             
@@ -107,14 +119,17 @@ namespace OverBang.ExoWorld.Gameplay.Quests
                 questCompleteRewardImage.sprite = trinititeRewardData.TrinititeData.Icon;
             }
             
-            //Show reward + initialize texts
+            //Show reward
+            questCompleteContainer.transform.localScale = new Vector3(0, 1, 1);
             uiSequence.Append(questCompleteContainer.DOFade(1, 1.5f));
+            uiSequence.Join(questCompleteContainer.transform.DOScaleX(1, 0.5f));
             
             //Wait
             uiSequence.AppendInterval(3f);
             
             //Remove reward
             uiSequence.Append(questCompleteContainer.DOFade(0, 1.5f));
+            uiSequence.Join(questCompleteContainer.transform.DOScaleX(0, 0.5f));
             
             //Play
             uiSequence.Play();

@@ -11,7 +11,9 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         [SerializeField] private Transform secondaryTarget;
         
         private AbilityIconReference primaryIcon;
+        private IAbility primaryAbility;
         private AbilityIconReference secondaryIcon;
+        private IAbility secondaryAbility;
 
         private void Awake()
         {
@@ -38,6 +40,21 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             
             primaryIcon = Instantiate(primary.Data.Icon, primaryTarget);
             secondaryIcon = Instantiate(secondary.Data.Icon, secondaryTarget);
+
+            primaryAbility = primary;
+            secondaryAbility = secondary;
+        }
+
+        private void OnAbilityUsed(IAbility ability)
+        {
+            if (ability == primaryAbility)
+            {
+                //primaryIcon.TargetGraphic.DOColor(col, 1.5f);
+            }
+            else if (ability == secondaryAbility)
+            {
+                //secondaryIcon.TargetGraphic.DOColor(col, 1.5f);
+            }
         }
     }
 }
