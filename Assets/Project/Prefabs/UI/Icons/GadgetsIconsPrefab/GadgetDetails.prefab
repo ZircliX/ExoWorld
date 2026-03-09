@@ -99,7 +99,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 209, y: -250.67}
+  m_AnchoredPosition: {x: 209, y: -253.005}
   m_SizeDelta: {x: 358, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8119163259605554729
@@ -133,8 +133,8 @@ MonoBehaviour:
   m_text: Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet
     consectetur adipiscing elit quisque faucibus.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: afd5197cf2c8e1b44aeaf39ac3fa08f4, type: 2}
+  m_sharedMaterial: {fileID: -2786001236448931497, guid: afd5197cf2c8e1b44aeaf39ac3fa08f4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -253,7 +253,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 209, y: -150}
-  m_SizeDelta: {x: 204.84, y: 50}
+  m_SizeDelta: {x: 230.29, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8522604342482650315
 CanvasRenderer:
@@ -285,8 +285,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Nom du gadget
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4301b09b1069f1c40b85b8116564c649, type: 2}
+  m_sharedMaterial: {fileID: -8645691041021899414, guid: 4301b09b1069f1c40b85b8116564c649, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -310,13 +310,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 16
+  m_fontStyle: 17
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
