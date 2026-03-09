@@ -49,44 +49,22 @@ namespace OverBang.ExoWorld.Gameplay.Network
             bool isRunning = true;
             hasCharacter = false;
 
-            ISession session = SessionManager.Global.ActiveSession;
-            IPlayer currentPlayer = SessionManager.Global.CurrentPlayer;
-            using (ListPool<IGamePlayer>.Get(out List<IGamePlayer> gamePlayers))
-            {
-                foreach (IReadOnlyPlayer player in session.Players)
-                {
-                    //Local pour lois
-                    if (player.Id == currentPlayer.Id)
-                    {
-                        LocalGamePlayer localGamePlayer = new LocalGamePlayer();
-                        gamePlayers.Add(localGamePlayer);
-                    }
-                    else
-                    {
-                        RemoteGamePlayer remoteGamePlayer = new RemoteGamePlayer(player.Id);
-                        gamePlayers.Add(remoteGamePlayer);
-                    }
-                }
-                
-                gamePlayerManager.Initialize(gamePlayers);
-            }
-            
-            questManager.QueueNextQuest();
+            SetupGamePlayerManager();
 
             while (isRunning)
             {
+                questManager.RequestQuestQueue();
+                
                 CheckForCharacter();
                 
                 // Hub
                 await HandleHubPhase();
-
-                questManager.RequestQuestQueue();
                 
                 // Gameplay
                 GameplayPhase gameplayPhase = await HandleGameplayPhase();
                 gameplayEndInfos = gameplayPhase.CurrentEndInfos;
 
-                if(gameplayPhase.CurrentEndInfos.isFinished)
+                if (gameplayPhase.CurrentEndInfos.isFinished)
                     isRunning = false;
             }
         }
@@ -125,6 +103,31 @@ namespace OverBang.ExoWorld.Gameplay.Network
             await gameplayPhase.RunAsync();
             
             return gameplayPhase;
+        }
+
+        private void SetupGamePlayerManager()
+        {
+            ISession session = SessionManager.Global.ActiveSession;
+            IPlayer currentPlayer = SessionManager.Global.CurrentPlayer;
+            using (ListPool<IGamePlayer>.Get(out List<IGamePlayer> gamePlayers))
+            {
+                foreach (IReadOnlyPlayer player in session.Players)
+                {
+                    //Local pour lois
+                    if (player.Id == currentPlayer.Id)
+                    {
+                        LocalGamePlayer localGamePlayer = new LocalGamePlayer();
+                        gamePlayers.Add(localGamePlayer);
+                    }
+                    else
+                    {
+                        RemoteGamePlayer remoteGamePlayer = new RemoteGamePlayer(player.Id);
+                        gamePlayers.Add(remoteGamePlayer);
+                    }
+                }
+                
+                gamePlayerManager.Initialize(gamePlayers);
+            }
         }
     }
 }

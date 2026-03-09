@@ -47,12 +47,16 @@ namespace OverBang.ExoWorld.Gameplay.Lightning
     {
         public static void Register(this FlickeringLight light)
         {
-            FlickerLightManager.Instance.RegisterLight(light);
+            FlickerLightManager flickerLightManager = FlickerLightManager.Instance;
+            if (flickerLightManager != null)
+                flickerLightManager.RegisterLight(light);
         }
         
         public static void Unregister(this FlickeringLight light)
         {
-            FlickerLightManager.Instance.UnregisterLight(light);
+            FlickerLightManager flickerLightManager = FlickerLightManager.Instance;
+            if (flickerLightManager != null)
+                flickerLightManager.UnregisterLight(light);
         }
     }
 }

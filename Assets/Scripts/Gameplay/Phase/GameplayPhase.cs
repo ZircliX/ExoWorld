@@ -20,14 +20,7 @@ namespace OverBang.ExoWorld.Gameplay.Phase
         [System.Serializable]
         public struct GameplayEndInfos
         {
-            public GameplayRewards rewards;
             public bool isFinished;
-        }
-
-        [System.Serializable]
-        public struct GameplayRewards
-        {
-            public int trinititeReward;
         }
         
         public readonly GameplaySettings Settings;

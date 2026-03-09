@@ -9,8 +9,8 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         
         protected override ObjectiveProgression CalculateProgression(QuestThreeData objectiveData, QuestThreeEvent gameEvent)
         {
-            currentKilledSpore++;
-            return new ObjectiveProgression(currentKilledSpore, objectiveData.TargetSporeToKill);
+            currentKilledSpore += gameEvent.pieces;
+            return new ObjectiveProgression(currentKilledSpore, gameEvent.targetPieces);
         }
 
         protected override void ObjectiveCompleted()

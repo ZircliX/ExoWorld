@@ -1,6 +1,6 @@
+using Helteix.Tools;
 using OverBang.ExoWorld.Core.Abilities;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace OverBang.ExoWorld.Gameplay.Abilities
 {
@@ -11,7 +11,15 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         [SerializeField] private Transform secondaryTarget;
         
         private AbilityIconReference primaryIcon;
+        private IAbility primaryAbility;
         private AbilityIconReference secondaryIcon;
+        private IAbility secondaryAbility;
+
+        private void Awake()
+        {
+            primaryTarget.ClearChildren();
+            secondaryTarget.ClearChildren();
+        }
 
         private void OnEnable()
         {
@@ -26,12 +34,27 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         private void OnAbilitiesChanged(IAbility primary, IAbility secondary)
         {
             if (primaryIcon != null)
-                Destroy(primaryIcon);
+                Destroy(primaryIcon.gameObject);
             if (secondaryIcon != null)
-                Destroy(secondaryIcon);
+                Destroy(secondaryIcon.gameObject);
             
             primaryIcon = Instantiate(primary.Data.Icon, primaryTarget);
             secondaryIcon = Instantiate(secondary.Data.Icon, secondaryTarget);
+
+            primaryAbility = primary;
+            secondaryAbility = secondary;
+        }
+
+        private void OnAbilityUsed(IAbility ability)
+        {
+            if (ability == primaryAbility)
+            {
+                //primaryIcon.TargetGraphic.DOColor(col, 1.5f);
+            }
+            else if (ability == secondaryAbility)
+            {
+                //secondaryIcon.TargetGraphic.DOColor(col, 1.5f);
+            }
         }
     }
 }
