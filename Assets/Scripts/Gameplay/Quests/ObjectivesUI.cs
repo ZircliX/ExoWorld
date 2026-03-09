@@ -103,7 +103,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             {
                 questCompleteRewardText.text = $"{trinititeRewardData.TrinititeData.ItemName} : {trinititeRewardData.RewardQuantity}";
                 
-                Debug.Log(questCompleteRewardImage);
+                //Debug.Log(questCompleteRewardImage);
                 questCompleteRewardImage.sprite = trinititeRewardData.TrinititeData.Icon;
             }
             
