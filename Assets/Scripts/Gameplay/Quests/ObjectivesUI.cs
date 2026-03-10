@@ -122,6 +122,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             //Show reward
             questCompleteContainer.transform.localScale = new Vector3(0, 1, 1);
             uiSequence.Append(questCompleteContainer.DOFade(1, 1.5f));
+            uiSequence.Join(questCompleteContainer.transform.DOScaleY(1, 0.5f));
             uiSequence.Join(questCompleteContainer.transform.DOScaleX(1, 0.5f));
             
             //Wait
