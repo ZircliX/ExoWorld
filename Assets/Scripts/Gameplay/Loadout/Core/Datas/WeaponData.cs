@@ -1,5 +1,6 @@
 ﻿using Ami.BroAudio;
 using OverBang.ExoWorld.Core.Inventory;
+using OverBang.ExoWorld.Core.Manena;
 using OverBang.ExoWorld.Core.Upgrade;
 using OverBang.ExoWorld.Gameplay.Upgrade;
 using UnityEngine;
@@ -40,6 +41,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         [field: SerializeField] public float ResetLerpSpeed { get; protected set; }
         [field: SerializeField] public WeaponRecoilSettings WeaponRecoilSettings { get; protected set; }
         
+        //Crosshair Data
+        [field: SerializeField] public CrosshairOffsetData CrosshairOffsetData { get; protected set; }
         
         // RELOAD DATA
         [field: SerializeField] public WeaponReloadBehaviour ReloadBehaviour { get; protected set; }
