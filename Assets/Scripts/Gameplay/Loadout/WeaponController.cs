@@ -39,7 +39,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         public WeaponCategory CurrentWeaponCategory { get; private set; }
         
 
-        public event Action OnWeaponChanged;
+        public event Action<Weapon, Weapon> OnWeaponChanged;
         private PlayerRig playerRig;
 
         public float ShootRateMultiplier { get; private set; } = 1;
@@ -137,15 +137,17 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         [Rpc(SendTo.Everyone)]
         private void SetVisibleWeaponRpc(WeaponCategory category)
         {
+            Weapon previousWeapon = CurrentWeapon;
+
             PrimaryWeapon.gameObject.SetActive(category == WeaponCategory.Primary);
             SecondaryWeapon.gameObject.SetActive(category == WeaponCategory.Secondary);
             CurrentWeaponCategory = category;
-            
-            OnWeaponChanged?.Invoke();
-            
+
+            OnWeaponChanged?.Invoke(previousWeapon, CurrentWeapon);
+
             if (IsOwner)
                 playerRig.OnWeaponChange(CurrentWeapon.Rig);
-        }
+        } 
         
         #region Inputs
 
