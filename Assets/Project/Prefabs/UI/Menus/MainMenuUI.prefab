@@ -89,6 +89,7 @@ MonoBehaviour:
   canvasGroup: {fileID: 5852629185496620114}
   animationDuration: 0.3
   closeOnAwake: 0
+  interactable: 1
 --- !u!1 &633972104567375661
 GameObject:
   m_ObjectHideFlags: 0
@@ -1476,8 +1477,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 452248039188885963}
-  - {fileID: 1301412448652220359}
   - {fileID: 1658110593236948674}
+  - {fileID: 1301412448652220359}
   m_Father: {fileID: 5049258990658812909}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
