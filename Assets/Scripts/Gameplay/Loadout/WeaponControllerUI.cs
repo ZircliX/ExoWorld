@@ -34,7 +34,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
             // If a weapon is already equipped when HUD appears
             if (controller.CurrentWeapon != null)
-                OnWeaponChanged();
+                OnWeaponChanged(null, controller.CurrentWeapon);
         }
 
         private void OnDisable()
@@ -53,7 +53,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             }
         }
 
-        private void OnWeaponChanged()
+        private void OnWeaponChanged(Weapon previous, Weapon current)
         {
             UnsubscribeCurrentWeapon();
 
