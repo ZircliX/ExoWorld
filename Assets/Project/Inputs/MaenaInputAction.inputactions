@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "name": "MaenaInputAction",
+    "maps": [
+        {
+            "name": "UI",
+            "id": "4b6161b4-13f7-4235-886e-0e78b14e0ef8",
+            "actions": [
+                {
+                    "name": "SpaceTest",
+                    "type": "Button",
+                    "id": "388ecb87-7e0d-44e8-8f84-f49e28facd57",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "12709f48-9cc8-46d9-b83e-2aa73d4dcd6e",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpaceTest",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
