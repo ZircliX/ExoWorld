@@ -17,8 +17,8 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
             }
         }
         
+        [SerializeField] private SubtitlesManager subtitlesManager;
         private CdQueuedComparer comparer = new();
-        
         private Dictionary<ulong, List<CdQueued>> lineQueue = new ();
         
         private void Update()
@@ -67,6 +67,8 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
                     TryRemoveContextualDialogue(cdQueued.dialogue, cdQueued.context);
                 
                 cdQueued.Fire();
+
+                subtitlesManager.DisplaySubtitle(cdQueued.dialogue.text, cdQueued.context.data.Name, cdQueued.dialogue.subtitleLifetime);
             }
             else if (cdQueued.IsFinished)
             {
@@ -90,7 +92,7 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
 
             if (!lineQueue.TryGetValue(context.playerId, out List<CdQueued> queue)) return false;
 
-            CdQueued cdd = new CdQueued(dialogue, context);
+            CdQueued cdd = new(dialogue, context);
 
             foreach (CdQueued cd in queue)
             {

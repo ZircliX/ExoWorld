@@ -1,4 +1,5 @@
-﻿using Ami.BroAudio;
+﻿using System;
+using Ami.BroAudio;
 
 namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
 {
@@ -15,7 +16,6 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
         private float lifetime;
         private bool outDated;
         
-
         public CdQueued(ContextualDialogue dialogue, CDContext context)
         {
             this.dialogue = dialogue;
@@ -30,7 +30,7 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
             if (outDated || WasFired) return;
             lifetime += deltaTime;
             
-            if (lifetime >= dialogue.lifetime)
+            if (lifetime >= dialogue.voiceLifetime)
             {
                 outDated = true;
             }

@@ -8,7 +8,8 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
     {
         public readonly string text;
         public readonly int priority;
-        public readonly float lifetime;
+        public readonly float voiceLifetime;
+        public readonly float subtitleLifetime;
         public readonly SoundID soundID;
         public readonly CharacterData character;
         public readonly bool canBeHeardByEveryone;
@@ -16,10 +17,11 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
         public ContextualDialogue(CharacterData characterData, ContextualDialogueData data, ContextualClip.CharacterLine line)
         {
             canBeHeardByEveryone = data.CanBeHeardByEveryone;
+            voiceLifetime = data.VoiceLifetime;
+            subtitleLifetime = line.subtitleLifeTime;
             priority = data.Priority;
-            lifetime = data.Lifetime;
-            text = line.text;
             soundID = line.SoundID;
+            text = line.text;
             character = characterData;
         }
 

@@ -12,7 +12,7 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
         [field: SerializeField, Range(0, 5)] public int Priority { get; private set; } = 0;
         [field: SerializeField, Range(0, 1)] public float Probability { get; private set; } = 1;
         [field: SerializeField] public bool CanBeHeardByEveryone { get; private set; } = true;
-        [field: SerializeField] public float Lifetime { get; private set; } = 0.2f;
+        [field: SerializeField] public float VoiceLifetime { get; private set; } = 0.2f;
 
         [SerializeField, ListDrawerSettings(ShowFoldout = false)] 
         private ContextualClip[] clips;
@@ -45,6 +45,16 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
                 ID = Guid.NewGuid().ToString();
                 Debug.LogWarning($"[OnValidate] Regenerating ID for {name}..." +
                                  $"{ID}");
+            }
+            
+            for (int i = 0; i < clips.Length; i++)
+            {
+                for (int j = 0; j < clips[i].Lines.Length; j++)
+                {
+                    ContextualClip.CharacterLine line = clips[i].Lines[j]; 
+                    line.UpdateCharacterCount();    
+                    clips[i].Lines[j] = line; 
+                }
             }
         }
             

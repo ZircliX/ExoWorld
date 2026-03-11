@@ -22,6 +22,9 @@ namespace OverBang.ExoWorld.Core.Characters
         [field: SerializeField]
         public Sprite Sprite { get; private set; }
         
+        [field: SerializeField]
+        public Color Color { get; private set; }
+        
         [field: SerializeField] 
         public CharacterClasses CharacterClass { get; private set; }
         
