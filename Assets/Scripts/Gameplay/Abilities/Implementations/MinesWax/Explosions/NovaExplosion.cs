@@ -1,4 +1,5 @@
 using System;
+using DamageNumbersPro;
 using OverBang.ExoWorld.Core.Damage;
 using OverBang.ExoWorld.Core.Utils;
 using OverBang.ExoWorld.Gameplay.Targeting;
@@ -6,19 +7,21 @@ using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Abilities
 {
-    public class NovaExplosion : IExplosionStrategy
+    public class NovaExplosion : IExplosionStrategy, IDamageSource
     {
         private readonly DamageData damage;
         private readonly float explosionInterval;
         private readonly int targetExplosionCount;
+        private readonly DamageNumberMesh damagePrefab;
         
         public event Action<bool> OnExploded;
 
-        public NovaExplosion(DamageData damage, float explosionInterval, int targetExplosionCount)
+        public NovaExplosion(DamageData damage, float explosionInterval, int targetExplosionCount, DamageNumberMesh damagePrefab)
         {
             this.damage = damage;
             this.explosionInterval = explosionInterval;
             this.targetExplosionCount = targetExplosionCount;
+            this.damagePrefab = damagePrefab;
         }
 
         public void Explode(Func<Collider[]> getOverlapColliders)
@@ -39,7 +42,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
                 {
                     if (colliders[j].TryGetComponent(out IDamageable damageable))
                     {
-                        damageable.TakeDamage(damage.GetRuntimeDamage());
+                        Damage(damageable);
                     }
                 }
 
@@ -48,6 +51,15 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
                 
                 await Awaitable.WaitForSecondsAsync(explosionInterval);
             }
+        }
+        
+        public DamageData DamageData => damage;
+        public void Damage(IDamageable damageable)
+        {
+            RuntimeDamageData runtimeDamageData = damage.GetRuntimeDamage();
+            
+            damageable.TakeDamage(runtimeDamageData);
+            damagePrefab.Spawn(damageable.DamageTarget.position, runtimeDamageData.finalDamage, damageable.DamageTarget);
         }
     }
 }

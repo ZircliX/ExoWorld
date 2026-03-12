@@ -40,7 +40,7 @@ namespace OverBang.ExoWorld.Core.Interactions
             canvasGroup.DOFade(1, .2f);
 
             inputKey.SetActive(interactable.Instance.CanInteract);
-            interactionText.text = interactable.Instance.InteractionText == string.Empty ? "Intéragir" : interactable.Instance.InteractionText;
+            interactionText.text = interactable.Instance.InteractionText == string.Empty ? "Interagir" : interactable.Instance.InteractionText;
         }
 
         private void LateUpdate()

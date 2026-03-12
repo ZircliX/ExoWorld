@@ -35,7 +35,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.ParalixGadget
         
         public void Initialize(ParalixGrenadeData data, Vector3 direction, ParalixGrenade grenade)
         {
-            strategy = new CryoExplosion(data.DamageData, data.StunDuration, data.SlowPercentage);
+            strategy = new CryoExplosion(data.DamageData, data.StunDuration, data.SlowPercentage, data.DamagePrefab);
             this.frostBiteGrenade = grenade;
             this.data = data;
             strategy.OnExploded += OnExploded;

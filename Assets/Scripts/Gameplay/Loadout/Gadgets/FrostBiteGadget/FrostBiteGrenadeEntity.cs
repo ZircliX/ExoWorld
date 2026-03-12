@@ -41,7 +41,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
         {
             Data = data;
             InitializeRpc(Data.ID);
-            strategy = new CryoExplosion(Data.DamageData, Data.SlowDuration, Data.SlowPercentage);
+            strategy = new CryoExplosion(Data.DamageData, Data.SlowDuration, Data.SlowPercentage, Data.DamagePrefab);
             frostBiteGrenade = grenade;
             strategy.OnExploded += OnExploded;
         }

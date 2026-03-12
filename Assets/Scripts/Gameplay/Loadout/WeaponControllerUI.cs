@@ -1,5 +1,4 @@
-﻿using System;
-using DG.Tweening;
+﻿using DG.Tweening;
 using OverBang.ExoWorld.Core.GameMode.Players;
 using OverBang.ExoWorld.Core.Inventory;
 using OverBang.ExoWorld.Gameplay.Upgrade;
@@ -99,11 +98,12 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             }
 
             WeaponData data = currentWeapon.WeaponData;
+            int bulletsPerShot = data.BulletsPerShot;
 
             if (weaponIcon != null && data.WeaponSprite != null)
                 weaponIcon.sprite = data.WeaponSprite;
 
-            int currentAmmo = currentWeapon.State.CurrentBullets / currentWeapon.WeaponData.BulletsPerShot;
+            int currentAmmo = currentWeapon.State.CurrentBullets / bulletsPerShot;
 
             if (ammoText != null)
             {
@@ -115,7 +115,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
                     });
                 }
                 ammoText.text = $"{currentAmmo}";
-                totalAmmoText.text = player.Inventory.GetItemQuantity(data.BulletItemData.ItemData.ItemId).ToString();
+                totalAmmoText.text = (player.Inventory.GetItemQuantity(data.BulletItemData.ItemData.ItemId) / bulletsPerShot).ToString();
             }
         }
 

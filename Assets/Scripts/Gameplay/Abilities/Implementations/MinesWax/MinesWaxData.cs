@@ -1,3 +1,4 @@
+using DamageNumbersPro;
 using OverBang.ExoWorld.Core.Characters;
 using Unity.Netcode;
 using UnityEngine;
@@ -14,5 +15,6 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         [field: SerializeField] public float ExplosionRadius { get; private set; }
         [field: SerializeField] public float DetonateDelay { get; private set; }
         [field: SerializeField] public ParticleSystem ExplosionVfx { get; private set; }
+        [field: SerializeField] public DamageNumberMesh DamagePrefab { get; private set; }
     }
 }

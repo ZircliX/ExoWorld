@@ -69,6 +69,7 @@ Transform:
   - {fileID: 7473997488970608723}
   - {fileID: 5543645050160963184}
   - {fileID: 8851027337331684442}
+  - {fileID: 4933801091104133750}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &827771057727792807
@@ -158,6 +159,7 @@ MonoBehaviour:
     ID: 1073741848
     _sourceAsset: {fileID: 11400000, guid: 1e98a9d7d89afe544803e95a716644ff, type: 2}
     <DebugObject>k__BackingField: {fileID: 3953532697497277536}
+  <DamageTarget>k__BackingField: {fileID: 4933801091104133750}
   <Health>k__BackingField: 0
 --- !u!136 &4209642412550774923
 CapsuleCollider:
@@ -295,6 +297,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.DetectionArea
   <DetectionCollider>k__BackingField: {fileID: 6844058314773871737}
+--- !u!1 &4525505990525340563
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4933801091104133750}
+  m_Layer: 11
+  m_Name: Damage Target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4933801091104133750
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4525505990525340563}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.954, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7438193527821288508}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8569898657867337544
 GameObject:
   m_ObjectHideFlags: 0

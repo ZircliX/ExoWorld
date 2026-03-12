@@ -9,7 +9,7 @@ using UnityUtils;
 
 namespace OverBang.ExoWorld.Gameplay.Abilities
 {
-    public class Missile : MonoBehaviour
+    public class Missile : MonoBehaviour, IDamageSource
     {
         [SerializeField, Self] private Rigidbody rb;
         [SerializeField, Self] private NetworkObject networkObject;
@@ -85,7 +85,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
                 RaycastHit hit = results[i];
                 if (hit.collider.TryGetComponent(out IDamageable damageable))
                 {
-                    damageable.TakeDamage(damageData.GetRuntimeDamage());
+                    Damage(damageable);
                 }
             }
         }
@@ -116,6 +116,15 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             
             manager.RemoveMissile(this);
             networkObject.Despawn();
+        }
+
+        public DamageData DamageData => damageData;
+        public void Damage(IDamageable damageable)
+        {
+            RuntimeDamageData runtimeDamageData = DamageData.GetRuntimeDamage();
+            
+            damageable.TakeDamage(runtimeDamageData);
+            data.damagePrefab.Spawn(damageable.DamageTarget.position, runtimeDamageData.finalDamage, damageable.DamageTarget);
         }
     }
 }

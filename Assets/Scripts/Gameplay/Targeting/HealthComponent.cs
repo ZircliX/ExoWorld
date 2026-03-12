@@ -10,6 +10,8 @@ namespace OverBang.ExoWorld.Gameplay.Targeting
         [SerializeField] protected SoundID damagedSound;
         [SerializeField] protected SoundID killedSound;
         
+        [field: SerializeField] public Transform DamageTarget { get; private set; }
+        
         public event IHealth.HealthChanged OnHealthChanged;
         public float MinHealth { get; private set; }
         [field: SerializeField, ReadOnly] public float Health { get; private set; }
