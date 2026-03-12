@@ -1,5 +1,4 @@
-﻿using System;
-using Ami.BroAudio;
+﻿using Ami.BroAudio;
 using KBCore.Refs;
 using OverBang.ExoWorld.Gameplay.Abilities;
 using Unity.Netcode;
@@ -34,7 +33,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.C4Gadget
         
         public void Initialize(C4Data data, Vector3 direction, C4 grenade)
         {
-            strategy = new StandardExplosion(data.DamageData);
+            strategy = new StandardExplosion(data.DamageData, data.DamagePrefab);
             this.frostBiteGrenade = grenade;
             this.data = data;
             strategy.OnExploded += OnExploded;

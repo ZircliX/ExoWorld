@@ -1,9 +1,7 @@
 using System;
-using OverBang.ExoWorld.Core;
 using OverBang.ExoWorld.Core.Components;
 using OverBang.ExoWorld.Core.Damage;
 using OverBang.ExoWorld.Core.Interactions;
-using OverBang.ExoWorld.Gameplay.Abilities;
 using OverBang.ExoWorld.Gameplay.Level;
 using OverBang.ExoWorld.Gameplay.Targeting;
 using Unity.Netcode;
@@ -41,6 +39,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         public bool IsAlive => Health > 0;
         public bool IsInvincible { get; private set; }
         public event Action OnDamaged;
+        [field: SerializeField] public Transform DamageTarget { get; private set; }
 
         #endregion
 

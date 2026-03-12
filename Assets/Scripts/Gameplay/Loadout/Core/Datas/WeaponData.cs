@@ -1,7 +1,7 @@
 ﻿using Ami.BroAudio;
 using OverBang.ExoWorld.Core.Inventory;
-using OverBang.ExoWorld.Core.Manena;
 using OverBang.ExoWorld.Core.Upgrade;
+using OverBang.ExoWorld.Gameplay.Loadout.Crosshair;
 using OverBang.ExoWorld.Gameplay.Upgrade;
 using UnityEngine;
 
@@ -24,7 +24,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         // Audio DATA
         [field: SerializeField] public SoundID FireSound { get; protected set; }
         
-        // FIRE BEHAVIOUR
+        // FIRE BEHAVIOURS
         [field: SerializeField] public WeaponFireBehaviour FireBehaviour { get; protected set; }
         [field: SerializeField] public float FireCooldown { get; protected set; }
         [field: SerializeField] public int BulletsPerShot { get; protected set; }
@@ -41,7 +41,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         [field: SerializeField] public float ResetLerpSpeed { get; protected set; }
         [field: SerializeField] public WeaponRecoilSettings WeaponRecoilSettings { get; protected set; }
         
-        //Crosshair Data
+        // Crosshair Data
         [field: SerializeField] public CrosshairOffsetData CrosshairOffsetData { get; protected set; }
         
         // RELOAD DATA

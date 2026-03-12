@@ -1,4 +1,5 @@
 ﻿using System;
+using DamageNumbersPro;
 using OverBang.ExoWorld.Core.Abilities.Gadgets;
 using OverBang.ExoWorld.Core.Damage;
 using OverBang.ExoWorld.Core.Database;
@@ -15,6 +16,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.ParalixGadget
         [field: SerializeField] public float ThrowForce { get; private set; }
         [field: SerializeField] public float StunDuration { get; private set; }
         [field: SerializeField] public float SlowPercentage { get; private set; } = 1f;
+        [field: SerializeField] public DamageNumberMesh DamagePrefab { get; private set; }
         
         [field : SerializeField, ReadOnly] public string ID { get; private set; }
         

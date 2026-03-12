@@ -1,3 +1,4 @@
+using DamageNumbersPro;
 using OverBang.ExoWorld.Core.Characters;
 using Unity.Netcode;
 using UnityEngine;
@@ -10,5 +11,6 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         [field: Space]
         [field: SerializeField] public NetworkObject Prefab { get; private set; }
         [field: SerializeField] public float ThrowForce { get; private set; }
+        [field: SerializeField] public DamageNumberMesh DamagePrefab { get; private set; }
     }
 }

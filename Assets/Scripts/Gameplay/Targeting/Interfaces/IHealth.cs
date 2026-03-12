@@ -1,5 +1,3 @@
-using System;
-
 namespace OverBang.ExoWorld.Gameplay.Targeting
 {
     public interface IHealth

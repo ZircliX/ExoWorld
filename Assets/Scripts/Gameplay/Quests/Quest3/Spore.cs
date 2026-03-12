@@ -1,4 +1,3 @@
-using System;
 using KBCore.Refs;
 using OverBang.ExoWorld.Core.Damage;
 using OverBang.ExoWorld.Gameplay.Targeting;
@@ -12,6 +11,8 @@ namespace OverBang.ExoWorld.Gameplay.Quests
     {
         [SerializeField, Self] private NetworkObject networkObject;
         [SerializeField] private QuestThreeData questThreeData;
+        
+        [field: SerializeField] public Transform DamageTarget { get; private set; }
         private QuestThreeHandler questThreeHandler;
 
         private float health;

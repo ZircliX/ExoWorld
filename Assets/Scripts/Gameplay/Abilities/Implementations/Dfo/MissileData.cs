@@ -1,4 +1,5 @@
 using Ami.BroAudio;
+using DamageNumbersPro;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Abilities
@@ -10,6 +11,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         public float LifeTime;
         public float DetonationRadius;
         public float DetonationTime;
+        public DamageNumberMesh damagePrefab;
         
         [Header("Feedbacks")]
         public ParticleSystem PreviewPrefab;

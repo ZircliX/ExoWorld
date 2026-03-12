@@ -37,9 +37,9 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             _ => null
         };
         public WeaponCategory CurrentWeaponCategory { get; private set; }
-        
 
         public event Action<Weapon, Weapon> OnWeaponChanged;
+        
         private PlayerRig playerRig;
 
         public float ShootRateMultiplier { get; private set; } = 1;

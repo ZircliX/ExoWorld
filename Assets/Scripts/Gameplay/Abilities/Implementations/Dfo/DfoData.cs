@@ -1,3 +1,4 @@
+using DamageNumbersPro;
 using OverBang.ExoWorld.Core.Characters;
 using OverBang.Pooling.Resource;
 using Unity.Netcode;

@@ -3,7 +3,6 @@ using OverBang.ExoWorld.Core.Abilities;
 using OverBang.ExoWorld.Core.Characters;
 using OverBang.ExoWorld.Core.GameMode.Players;
 using Unity.Netcode;
-using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Abilities
 {
@@ -29,7 +28,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         
         public virtual void Begin(IAbility<MinesWaxData> ability)
         {
-            IExplosionStrategy explosionStrategy = GetExplosionStrategy();
+            IExplosionStrategy explosionStrategy = GetExplosionStrategy(ability.DataT);
             
             NetworkObject networkObject = spawnManager.InstantiateAndSpawn(ability.DataT.MineWaxPrefab, 
                 localPlayer.ClientID,
@@ -57,33 +56,33 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         {
         }
 
-        protected abstract IExplosionStrategy GetExplosionStrategy();
+        protected abstract IExplosionStrategy GetExplosionStrategy(MinesWaxData data);
     }
     
     [CreateStrategyFor(typeof(MinesWaxStrategyData))]
     public class MinesWaxAbilityStrategy : MinesWaxAbilityStrategy<MinesWaxStrategyData>
     {
-        protected override IExplosionStrategy GetExplosionStrategy()
+        protected override IExplosionStrategy GetExplosionStrategy(MinesWaxData data)
         {
-            return new StandardExplosion(Data.Damage);
+            return new StandardExplosion(Data.Damage, data.DamagePrefab);
         }
     }
 
     [CreateStrategyFor(typeof(MinesWaxCryoStrategyData))]
     public class MinesWaxCryoAbilityStrategy : MinesWaxAbilityStrategy<MinesWaxCryoStrategyData>
     {
-        protected override IExplosionStrategy GetExplosionStrategy()
+        protected override IExplosionStrategy GetExplosionStrategy(MinesWaxData data)
         {
-            return new CryoExplosion(Data.Damage, Data.SlowDuration, Data.SlowPercentage);
+            return new CryoExplosion(Data.Damage, Data.SlowDuration, Data.SlowPercentage, data.DamagePrefab);
         }
     }
     
     [CreateStrategyFor(typeof(MinesWaxNovaStrategyData))]
     public class MinesWaxNovaAbilityStrategy : MinesWaxAbilityStrategy<MinesWaxNovaStrategyData>
     {
-        protected override IExplosionStrategy GetExplosionStrategy()
+        protected override IExplosionStrategy GetExplosionStrategy(MinesWaxData data)
         {
-            return new NovaExplosion(Data.Damage, Data.ExplosionInterval, Data.ExplosionCount);
+            return new NovaExplosion(Data.Damage, Data.ExplosionInterval, Data.ExplosionCount, data.DamagePrefab);
         }
     }
 }

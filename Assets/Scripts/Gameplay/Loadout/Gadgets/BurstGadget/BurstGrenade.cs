@@ -4,7 +4,6 @@ using OverBang.ExoWorld.Core.Abilities.Gadgets;
 using OverBang.ExoWorld.Core.GameMode.Players;
 using Unity.Netcode;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
 {

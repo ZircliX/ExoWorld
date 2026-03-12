@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout
 {
-    public class DefaultBullet : Bullet
+    public class DefaultBullet : Bullet, IDamageSource
     {
         [SerializeField, Self] private Rigidbody rb;
         [SerializeField, Self] private SphereCollider sc;
@@ -76,9 +76,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             }
             
             Vector3 currentPosition = transform.position;
-            Vector3 distance = currentPosition - previousPosition;
-            Vector3 direction = distance.normalized;
-            Vector3 startPoint = previousPosition - direction * (sc.radius + Mathf.Epsilon);
             LayerMask mask = GameMetrics.Global.HittableLayers;
             
             int hitSize = Physics.OverlapCapsuleNonAlloc(previousPosition, currentPosition, sc.radius, results, mask, QueryTriggerInteraction.Ignore);
@@ -93,19 +90,10 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
                 if (!hit.gameObject.CompareTag("LocalPlayer"))
                 {
-                    if (hit.TryGetComponent(out IDamageable damageable) && IsOwner)
+                    if (hit.TryGetComponent(out IDamageable damageable))
                     {
-                        float damage = data.Damage.baseDamage;
-                        float bonusDamage = UpgradeManager.Instance.GetRuntimeUpgrade(UpgradeType.Damage);
-
-                        RuntimeDamageData finalDamage = new RuntimeDamageData()
-                        {
-                            finalDamage = ((damage + bonusDamage) * damageMultiplier) / (currentPenetration + 1),
-                            weakSpotMultiplier = data.Damage.weakSpotMultiplier,
-                        };
-                        
                         //Debug.Log($"Dealing damage to IDamageable {hit.collider.name}", hit.collider.gameObject);
-                        damageable.TakeDamage(finalDamage);
+                        Damage(damageable);
                     }
                     
                     /* To push objects when hit - disabled for now
@@ -159,6 +147,22 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             if (!rb.isKinematic)
                 rb.linearVelocity = Vector3.zero;
             rb.isKinematic = true;
+        }
+
+        public DamageData DamageData => data.Damage;
+        public void Damage(IDamageable damageable)
+        {
+            float damage = data.Damage.baseDamage;
+            float bonusDamage = UpgradeManager.Instance.GetRuntimeUpgrade(UpgradeType.Damage);
+                    
+            RuntimeDamageData finalDamage = new RuntimeDamageData()
+            {
+                finalDamage = ((damage + bonusDamage) * damageMultiplier) / (currentPenetration + 1),
+                weakSpotMultiplier = data.Damage.weakSpotMultiplier,
+            };
+            
+            damageable.TakeDamage(finalDamage);
+            data.DamagePrefab.Spawn(damageable.DamageTarget.position, finalDamage.finalDamage, damageable.DamageTarget);
         }
     }
 }
