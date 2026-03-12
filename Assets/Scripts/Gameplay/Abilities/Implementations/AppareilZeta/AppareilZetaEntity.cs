@@ -43,7 +43,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             explosionStrategy = new StandardExplosion(new DamageData()
             {
                 baseDamage = strategyData.ExplosionDamage
-            });
+            }, data.DamagePrefab);
             
             bonusDetectionArea.GetCollider<SphereCollider>().radius = strategyData.ExplosionRadius;
             bonusDetectionArea.SetAllowedTags("LocalPlayer");

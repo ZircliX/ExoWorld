@@ -1,4 +1,5 @@
 ﻿using Ami.BroAudio;
+using DamageNumbersPro;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -16,6 +17,5 @@ namespace OverBang.ExoWorld.Core.Abilities.Gadgets
         [field: SerializeField] public NetworkObject ExplosionEffect { get; private set; }
         [field: SerializeField] public float ExplosionDelay { get; private set; }
         [field: SerializeField] public float ExplosionRadius { get; private set; }
-        
     }
 }

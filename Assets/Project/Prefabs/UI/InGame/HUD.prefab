@@ -3608,7 +3608,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 834202076795451047}
-  - component: {fileID: 7775132944871550931}
+  - component: {fileID: 4928281268356402435}
   m_Layer: 5
   m_Name: Crosshair
   m_TagString: Untagged
@@ -3640,7 +3640,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 32, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7775132944871550931
+--- !u!114 &4928281268356402435
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3649,9 +3649,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7258632860753592448}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdfde032931646d49b34f41795aa9295, type: 3}
+  m_Script: {fileID: 11500000, guid: afd1ca62e87731d4dac2b8dbc9f045f8, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Core.Manena.CrosshairOffset
+  m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.Loadout.Crosshair.CrosshairOffset
   rt: {fileID: 834202076795451047}
   wc: {fileID: 0}
 --- !u!1 &7322025983477947674

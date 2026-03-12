@@ -29,7 +29,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         
         public virtual void Begin(IAbility<RobotBokiData> ability)
         {
-            IRobotBehaviour behaviour = GetRobotBehaviour();
+            IRobotBehaviour behaviour = GetRobotBehaviour(ability.DataT);
             
             NetworkObject networkObject = spawnManager.InstantiateAndSpawn(ability.DataT.Prefab, 
                 localPlayer.ClientID,
@@ -68,15 +68,15 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             ability.End();
         }
         
-        protected abstract IRobotBehaviour GetRobotBehaviour();
+        protected abstract IRobotBehaviour GetRobotBehaviour(RobotBokiData data);
     }
 
     [CreateStrategyFor(typeof(RobotBokiStrategyData))]
     public class RobotBokiAbilityStrategy : RobotBokiAbilityStrategy<RobotBokiStrategyData>
     {
-        protected override IRobotBehaviour GetRobotBehaviour()
+        protected override IRobotBehaviour GetRobotBehaviour(RobotBokiData data)
         {
-            IRobotBehaviour behaviour = new FollowTargetBehaviour(Data, new StandardExplosion(Data.Damage));
+            IRobotBehaviour behaviour = new FollowTargetBehaviour(Data, new StandardExplosion(Data.Damage, data.DamagePrefab));
             return behaviour;
         }
     }
@@ -84,7 +84,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
     [CreateStrategyFor(typeof(RobotBokiLeurreStrategyData))]
     public class RobotBokiLeurreAbilityStrategy : RobotBokiAbilityStrategy<RobotBokiLeurreStrategyData>
     {
-        protected override IRobotBehaviour GetRobotBehaviour()
+        protected override IRobotBehaviour GetRobotBehaviour(RobotBokiData data)
         {
             IRobotBehaviour behaviour = new ForwardBehaviour(Data, new EmptyExplosion());
             return behaviour;
@@ -94,9 +94,9 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
     [CreateStrategyFor(typeof(RobotBokiImpulsionStrategyData))]
     public class RobotBokiImpulsionAbilityStrategy : RobotBokiAbilityStrategy<RobotBokiImpulsionStrategyData>
     {
-        protected override IRobotBehaviour GetRobotBehaviour()
+        protected override IRobotBehaviour GetRobotBehaviour(RobotBokiData data)
         {
-            IRobotBehaviour behaviour = new FollowTargetBehaviour(Data, new CryoExplosion(Data.Damage, Data.FreezeDuration, 1));
+            IRobotBehaviour behaviour = new FollowTargetBehaviour(Data, new CryoExplosion(Data.Damage, Data.FreezeDuration, 1, data.DamagePrefab));
             return behaviour;
         }
     }

@@ -34,7 +34,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.ShockGadget
 
         public void Initialize(ShockGrenadeData data, Vector3 direction, ShockGrenade shockGrenade)
         {
-            strategy = new StandardExplosion(data.DamageData);
+            strategy = new StandardExplosion(data.DamageData, data.DamagePrefab);
             this.shockGrenade = shockGrenade;
             this.data = data;
             strategy.OnExploded += OnExploded;

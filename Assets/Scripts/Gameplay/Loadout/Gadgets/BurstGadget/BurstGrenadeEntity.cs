@@ -1,10 +1,10 @@
-﻿using System.Data;
+﻿using System;
 using Ami.BroAudio;
 using KBCore.Refs;
+using OverBang.ExoWorld.Core.Damage;
 using OverBang.ExoWorld.Core.Database;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Gameplay.Abilities;
-using OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget;
 using OverBang.ExoWorld.Gameplay.Targeting;
 using OverBang.Pooling;
 using OverBang.Pooling.Resource;
@@ -13,7 +13,7 @@ using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
 {
-    public class BurstGrenadeEntity : NetworkBehaviour, IPoolInstanceListener
+    public class BurstGrenadeEntity : NetworkBehaviour, IPoolInstanceListener, IDamageSource
     {
         [SerializeField, Self] private Rigidbody rb;
         [SerializeField, Self] private NetworkObject no;
@@ -54,7 +54,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
             zoneTimer = 0f;
             time = 0f;
             InitializeRpc(Data.ID);
-            strategy = new StandardExplosion(Data.DamageData);
+            strategy = new StandardExplosion(Data.DamageData, Data.DamagePrefab);
             burstGrenade = grenade;
             strategy.OnExploded += OnExploded;
         }
@@ -77,7 +77,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
             FreezeGrenadeRpc(false);
             rb.AddForce(Vector3.up * 0.5f + direction * Data.ThrowForce * Time.deltaTime, ForceMode.Impulse);
         }
-        
         
         public void Tick(float deltaTime)
         {
@@ -103,7 +102,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
                 isDetonated = true;
             }
         }
-        
+
         private void Update()
         {
             if (!IsOwner) return;
@@ -118,7 +117,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
                 TickBurstZone(Time.deltaTime);
             }
         }
-        
+
         public void OnExploded(bool terminated)
         {
             if (Data.ExplosionEffect != null)
@@ -175,7 +174,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
                 isZoneEnded = true;
                 EndBurstZone();
             }
-            
         }
 
         private void DoBurstDamageToEnemies()
@@ -193,7 +191,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
                 {
                     if (col.TryGetComponent(out IDamageable entity))
                     {
-                        entity.TakeDamage(Data.FireDamageData.GetRuntimeDamage());
+                        Damage(entity);
                     }
                 }
             }
@@ -288,6 +286,15 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.BurstGadget
         {
             isDetonated = false;
             time = 0f;
+        }
+
+        public DamageData DamageData => Data.DamageData;
+        public void Damage(IDamageable damageable)
+        {
+            RuntimeDamageData runtimeDamageData = Data.FireDamageData.GetRuntimeDamage();
+            
+            damageable.TakeDamage(runtimeDamageData);
+            Data.DamagePrefab.Spawn(damageable.DamageTarget.position, runtimeDamageData.finalDamage, damageable.DamageTarget);
         }
     }
 }

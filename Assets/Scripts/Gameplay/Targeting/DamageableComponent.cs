@@ -1,5 +1,4 @@
-﻿using System;
-using OverBang.ExoWorld.Core.Damage;
+﻿using OverBang.ExoWorld.Core.Damage;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Targeting
@@ -17,6 +16,8 @@ namespace OverBang.ExoWorld.Gameplay.Targeting
         {
             MinHealth = minHealth;
         }
+        
+        [field: SerializeField] public Transform DamageTarget { get; private set; }
 
         public void TakeDamage(RuntimeDamageData damage)
         {

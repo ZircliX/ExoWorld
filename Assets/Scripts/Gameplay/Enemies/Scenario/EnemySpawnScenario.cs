@@ -1,5 +1,4 @@
-﻿using System;
-using OverBang.ExoWorld.Core.Enemies;
+﻿using OverBang.ExoWorld.Core.Enemies;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;

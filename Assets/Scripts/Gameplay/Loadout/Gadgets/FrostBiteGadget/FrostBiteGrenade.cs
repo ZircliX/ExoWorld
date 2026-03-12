@@ -36,10 +36,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
             player = localPlayer; 
             spawnManager = NetworkManager.Singleton.SpawnManager;
             
-            Debug.Log(player.ClientID);
-            Debug.Log(Data.Prefab);
-            Debug.Log(Data);
-            
             NetworkObject grenade = spawnManager.InstantiateAndSpawn(Data.Prefab, 
                 player.ClientID, 
                 true,
@@ -53,7 +49,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout.FrostBiteGadget
                 grenadeEntity.FreezeGrenadeRpc(true);
                 grenadeEntity.Initialize(Data,this);
             }
-            
         }
 
         public void Cast(Camera cam)

@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Helteix.Tools;
 using KBCore.Refs;
-using OverBang.ExoWorld.Core;
 using OverBang.ExoWorld.Core.Components;
 using OverBang.ExoWorld.Core.Damage;
 using OverBang.ExoWorld.Core.Enemies;
 using OverBang.ExoWorld.Core.Interactions;
 using OverBang.ExoWorld.Core.Utils;
-using OverBang.ExoWorld.Gameplay.Abilities;
 using OverBang.ExoWorld.Gameplay.Loots;
 using OverBang.ExoWorld.Gameplay.Targeting;
 using OverBang.Pooling;
