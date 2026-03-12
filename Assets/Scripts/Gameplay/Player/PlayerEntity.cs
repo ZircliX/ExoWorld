@@ -94,7 +94,7 @@ namespace OverBang.ExoWorld.Gameplay.Player
             Debug.Log("Final Damage: " + damage.finalDamage + " Health: " + Health + "");
             Controller.LocalGamePlayer.SetHealth(Health - damage.finalDamage);
         }
-
+        
         public void Heal(float amount)
         {
             float health = Health + amount;
