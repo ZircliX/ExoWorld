@@ -35,7 +35,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
                 true,
                 false,
                 false,
-                Caster.CastAnchor.position + Caster.Forward * 1.5f, Caster.transform.rotation);
+                Caster.CastAnchor.position, Caster.transform.rotation);
 
             if (networkObject.TryGetComponent(out MineWax mine))
             {

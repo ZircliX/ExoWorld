@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using DG.Tweening;
 using Helteix.Tools;
 using OverBang.ExoWorld.Core.GameMode.Players;
 using OverBang.ExoWorld.Core.Metrics;
@@ -15,7 +14,6 @@ namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
     {
         [SerializeField] private TMP_Text playerNameText;
         [SerializeField] private Image healthBar;
-        [SerializeField] private Image healthBarBg;
         
         [SerializeField, Space] private Transform teammateContainer;
         [SerializeField] private TeammateInfo teammatePrefab;
@@ -57,10 +55,10 @@ namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
             Player.OnHealthChanged -= OnHealthChanged;
         }
 
-        private void OnHealthChanged(float previous, float current, float maxHealth)
+        private void OnHealthChanged(float current, float maxHealth)
         {
             healthBar.fillAmount = current / maxHealth;
-            healthBarBg.DOFillAmount(current / maxHealth, 0.2f);
+            //healthBarBg.DOFillAmount(current / maxHealth, 0.2f);
         }
 
         private void RefreshPlayerStats()
@@ -75,8 +73,6 @@ namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
             {
                 playerNameText.text = $"Player_{Player.SessionPlayerID[..6]}";
             }
-            
-            OnHealthChanged(0, Player.Health, Player.MaxHealth);
         }
 
         private void RefreshTeammates()

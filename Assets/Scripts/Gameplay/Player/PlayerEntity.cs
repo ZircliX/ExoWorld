@@ -72,10 +72,9 @@ namespace OverBang.ExoWorld.Gameplay.Player
         public event Action<bool> OnTargeted;
         
         public TargetPriority Priority => TargetPriority.High;
-        public bool IsTargetable { get; private set; } = true;
+        public bool IsTargetable => Health > 0;
         public void SetTargetable(bool state)
         {
-            IsTargetable = state;
             OnTargeted?.Invoke(IsTargetable);
         }
 
@@ -83,12 +82,19 @@ namespace OverBang.ExoWorld.Gameplay.Player
 
         public void TakeDamage(RuntimeDamageData damage)
         {
-            if (Health - damage.finalDamage >= MaxHealth)
+            if (MinHealth > 0)
             {
-                Controller.LocalGamePlayer.SetHealth(Health - damage.finalDamage);
+                float potentialHealth = Health - damage.finalDamage;
+                if (potentialHealth < MinHealth)
+                {
+                    damage.finalDamage = Health - MinHealth;
+                }
             }
+            
+            Debug.Log("Final Damage: " + damage.finalDamage + " Health: " + Health + "");
+            Controller.LocalGamePlayer.SetHealth(Health - damage.finalDamage);
         }
-
+        
         public void Heal(float amount)
         {
             float health = Health + amount;
@@ -96,7 +102,7 @@ namespace OverBang.ExoWorld.Gameplay.Player
         }
 
         public event IHealth.HealthChanged OnHealthChanged;
-        public float MinHealth { get; private set; }
+        public float MinHealth { get; private set; } = 0;
         public float Health => Controller.LocalGamePlayer.Health;
         public float MaxHealth => Controller.LocalGamePlayer.MaxHealth;
         public void SetMinHealth(float minHealth)

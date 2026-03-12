@@ -319,8 +319,10 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
         public void OnSpawn(IPool pool) => navMeshAgent.enabled = true;
         public void OnDespawn(IPool pool) => modelContainer.ClearChildren();
 
-        public void Damage(IDamageable damageable) =>
+        public void Damage(IDamageable damageable)
+        {
             damageable.TakeDamage(DamageData.GetRuntimeDamage());
+        }
 
         public void SetTargetable(bool state)
         {

@@ -25,6 +25,7 @@ namespace OverBang.ExoWorld.Core.Metrics
         
         [field: SerializeField, FoldoutGroup("Prefabs")] public NetworkObject PlayerControllerPrefab { get; private set; }
         [field: SerializeField, FoldoutGroup("Prefabs")] public LoadingScreen LoadingScreen { get; private set; }
+        [field: SerializeField, FoldoutGroup("Prefabs")] public NetworkManager NetworkManager { get; private set; }
        
         [field: SerializeField, FoldoutGroup("Layers")] public LayerMask HittableLayers { get; private set; }
         

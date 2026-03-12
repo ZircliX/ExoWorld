@@ -22,7 +22,9 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             base.Initialize(robotTarget, agent, getOverlapColliders);
             
             robotTarget.SetTargetable(false);
-            EnemyManager.Instance.OnEnemyUnregistered += OnEnemyUnregister;
+            
+            if (EnemyManager.Instance != null)
+                EnemyManager.Instance.OnEnemyUnregistered += OnEnemyUnregister;
             
             SearchForTarget();
             targetSearchTimer = TARGET_SEARCH_INTERVAL;
@@ -38,8 +40,11 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
                 targetSearchTimer = TARGET_SEARCH_INTERVAL;
             }
 
-            if (agent == null)
+            if (agent == null || !agent.isOnNavMesh)
+            {
+                Explode();
                 return;
+            }
 
             // Move in a direction
             if (currentTarget != null)
@@ -65,11 +70,14 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
 
         private void SearchForTarget()
         {
+            if (EnemyManager.Instance == null)
+                return;
+            
             if (EnemyManager.Instance.TryGetClosest(agent.transform.position, 
                     StrategyData.DetectionRadius, 
                     out ITargetable closest))
             {
-                Debug.DrawLine(agent.transform.position, closest.transform.position, Color.red, 0.2f);
+                //Debug.DrawLine(agent.transform.position, closest.transform.position, Color.red, 0.2f);
                 currentTarget = closest;
             }
         }
@@ -85,7 +93,8 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
 
         public override void Dispose()
         {
-            EnemyManager.Instance.OnEnemyUnregistered -= OnEnemyUnregister;
+            if (EnemyManager.Instance != null)
+                EnemyManager.Instance.OnEnemyUnregistered -= OnEnemyUnregister;
         }
     }
 }
