@@ -40,6 +40,7 @@ namespace OverBang.ExoWorld.Core.Settings
             OnVolumeChanged?.Invoke(MasterVolume);
             SaveSettings();
         }
+        
 
         private void LoadSettings()
         {

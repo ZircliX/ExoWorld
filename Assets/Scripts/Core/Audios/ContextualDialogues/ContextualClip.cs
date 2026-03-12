@@ -33,11 +33,19 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
             public float subtitleLifeTime;
             [TextArea(1,20)] public string text;
             [Sirenix.OdinInspector.ReadOnly] public int characterCount;
+            [ShowIf("isTooLong")] public float delayBetweenLines;
             public SoundID SoundID;
+            private bool isTooLong;
             
             public void UpdateCharacterCount()
             {
                 characterCount = text.Length;
+            }
+
+            /// <summary>if text is too long, show "delay between lines"</summary> <param name="value"></param>
+            public void UpdateCondition(bool value)
+            {
+                isTooLong = value;
             }
         }
     }

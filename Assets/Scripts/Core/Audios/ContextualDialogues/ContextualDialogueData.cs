@@ -13,6 +13,7 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
         [field: SerializeField, Range(0, 1)] public float Probability { get; private set; } = 1;
         [field: SerializeField] public bool CanBeHeardByEveryone { get; private set; } = true;
         [field: SerializeField] public float VoiceLifetime { get; private set; } = 0.2f;
+        [field: SerializeField] public int maxSubtitlesTextLenght { get; private set; } = 144;
 
         [SerializeField, ListDrawerSettings(ShowFoldout = false)] 
         private ContextualClip[] clips;
@@ -52,7 +53,17 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
                 for (int j = 0; j < clips[i].Lines.Length; j++)
                 {
                     ContextualClip.CharacterLine line = clips[i].Lines[j]; 
-                    line.UpdateCharacterCount();    
+                    line.UpdateCharacterCount();
+
+                    if (line.characterCount > maxSubtitlesTextLenght)
+                    {
+                        line.UpdateCondition(true);
+                    }
+                    else
+                    {
+                        line.UpdateCondition(false);
+                    }
+                    
                     clips[i].Lines[j] = line; 
                 }
             }

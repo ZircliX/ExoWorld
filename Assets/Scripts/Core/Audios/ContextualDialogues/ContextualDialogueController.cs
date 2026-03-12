@@ -68,7 +68,7 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
                 
                 cdQueued.Fire();
 
-                subtitlesManager.DisplaySubtitle(cdQueued.dialogue.text, cdQueued.context.data.Name, cdQueued.dialogue.subtitleLifetime);
+                subtitlesManager.DisplaySubtitle(cdQueued);
             }
             else if (cdQueued.IsFinished)
             {
