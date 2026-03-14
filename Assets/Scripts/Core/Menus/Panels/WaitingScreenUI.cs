@@ -35,8 +35,10 @@ namespace OverBang.ExoWorld.Core.Menus
 
         protected override void OnShow()
         {
+            LoadingUI.Instance.Close();
+            
             startButton.onClick.AddListener(OnCreateGame);
-            startButton.interactable = SessionManager.Global.IsHost();
+            startButton.enabled = SessionManager.Global.IsHost();
             
             IHostSession session = (IHostSession)SessionManager.Global.ActiveSession;
             codeText.text = session.Code;
@@ -113,9 +115,6 @@ namespace OverBang.ExoWorld.Core.Menus
 
         private void OnCreateGame()
         {
-            if (!SessionManager.Global.IsHost())
-                return;
-            
             IHostSession session = (IHostSession)SessionManager.Global.ActiveSession;
             session.IsLocked = true;
             OnStartGameRpc?.Invoke();

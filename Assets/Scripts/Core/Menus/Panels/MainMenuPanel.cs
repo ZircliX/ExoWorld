@@ -1,5 +1,7 @@
 using System;
 using OverBang.ExoWorld.Core.Metrics;
+using OverBang.ExoWorld.Core.Utils;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -45,6 +47,11 @@ namespace OverBang.ExoWorld.Core.Menus
             hostButton.navigation = CreateNavigation(down: joinButton);
             joinButton.navigation = CreateNavigation(up: hostButton, down: settingsButton);
             settingsButton.navigation = CreateNavigation(up: joinButton);
+        }
+
+        protected override void OnShow()
+        {
+            LoadingUI.Instance.Close();
         }
     }
 }

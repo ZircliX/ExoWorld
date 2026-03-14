@@ -14,7 +14,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         [SerializeField] private bool canBeDropped = true;
         
         private bool isPickedUp;
-        private bool isUsable = true;
+        private readonly NetworkVariable<bool> isUsable = new NetworkVariable<bool>(true, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
         private QuestTwoHandler questTwoHandler;
         private PlayerEntity playerEntity;
 
@@ -48,6 +48,9 @@ namespace OverBang.ExoWorld.Gameplay.Quests
 
         public void OnPickup(PlayerInteraction playerInteraction)
         {
+            if (!isUsable.Value)
+                return;
+            
             questTwoHandler ??= questTwoData.GetHandlerByData<QuestTwoHandler>();
             if (questTwoHandler is { StepIndex: < 1 })
             {
@@ -56,7 +59,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             
             isPickedUp = true;
             CanInteract = false;
-            playerEntity = transform.parent.GetComponent<PlayerEntity>();
+            playerEntity = playerInteraction.transform.parent.GetComponent<PlayerEntity>();
             playerEntity.ApplySpeed(-questTwoData.CarryingSlowForce, -1, nameof(Fusible));
             
             SetPriority(-1);
@@ -71,13 +74,17 @@ namespace OverBang.ExoWorld.Gameplay.Quests
 
         public void OnDrop(PlayerInteraction playerInteraction)
         {
-            if (!isUsable)
+            if (!isUsable.Value)
                 return;
             
             isPickedUp = false;
             CanInteract = true;
             SetPriority((int)TargetPriority.Medium);
             transform.position = playerInteraction.CurrentInteractable.Instance.transform.position;
+
+            playerEntity.ApplySpeed(0, -1, nameof(Fusible));
+            playerEntity = null;
+            
             gameObject.SetActive(true); // Show or trigger drop animation
         }
 
@@ -86,9 +93,10 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             Priority = prio;
         }
         
-        public void SetUsable(bool usable)
+        [Rpc(SendTo.Owner)]
+        public void SetUsableRpc(bool usable)
         {
-            isUsable = usable;
+            isUsable.Value = usable;
         }
     }
 }

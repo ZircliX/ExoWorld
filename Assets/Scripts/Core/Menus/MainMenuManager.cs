@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using OverBang.ExoWorld.Core.Utils;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Core.Menus
@@ -21,6 +23,25 @@ namespace OverBang.ExoWorld.Core.Menus
             
             ShowPanel(mainMenuPanel);
             panelHistory.Push(mainMenuPanel);
+        }
+        
+        private void OnEnable()
+        {
+            NetworkManager.Singleton.OnTransportFailure += OnTransportFailure;
+        }
+
+        private void OnDisable()
+        {
+            if (NetworkManager.Singleton != null)
+                NetworkManager.Singleton.OnTransportFailure -= OnTransportFailure;
+        }
+
+        private async void OnTransportFailure()
+        {
+            Debug.LogWarning("[SessionManager] Transport failure — recreating session...");
+            await SessionManager.Global.LeaveCurrentSession();
+    
+            ShowPanel(mainMenuPanel);
         }
 
         private void InitializeListeners()

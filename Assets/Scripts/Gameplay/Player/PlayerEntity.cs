@@ -91,7 +91,11 @@ namespace OverBang.ExoWorld.Gameplay.Player
                 }
             }
             
-            Debug.Log("Final Damage: " + damage.finalDamage + " Health: " + Health + "");
+            if (Health < 0)
+            {
+                Controller.LocalGamePlayer.SetHealth(MaxHealth);
+            }
+            
             Controller.LocalGamePlayer.SetHealth(Health - damage.finalDamage);
         }
         
