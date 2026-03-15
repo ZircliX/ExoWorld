@@ -14,6 +14,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         [SerializeField] private WeaponData[] weaponsData;
         [SerializeField] private Transform weaponHolder;
         public event Action<RigBuilder> OnRigBuilderAccessed;
+        public event Action<bool> OnActiveStateChanged;
+        private bool activeState = true;
         
         public Loadout Loadout { get; private set; }
         private Camera cam;
@@ -147,13 +149,21 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
             if (IsOwner)
                 playerRig.OnWeaponChange(CurrentWeapon.Rig);
-        } 
+        }
+
+        public void SetActiveState(bool state)
+        {
+            if (!IsOwner) return;
+            activeState = state;
+            OnActiveStateChanged?.Invoke(state);
+        }
         
         #region Inputs
 
         public void OnLeftInput(InputAction.CallbackContext context)
         {
             if (!IsOwner) return;
+            if (!activeState) return;
             CurrentWeapon?.OnShootInput(context);
         }
 
@@ -165,6 +175,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         public void OnMiddleDragInput(InputAction.CallbackContext context)
         {
             if (!IsOwner) return;
+            if (!activeState) return;
             if (!context.performed || CurrentWeapon == null)
                 return;
 
@@ -174,6 +185,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         public void OnRInput(InputAction.CallbackContext context)
         {
             if (!IsOwner) return;
+            if (!activeState) return;
             CurrentWeapon?.OnReloadInput(context);
         }
         

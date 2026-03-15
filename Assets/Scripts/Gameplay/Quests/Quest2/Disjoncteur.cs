@@ -83,12 +83,10 @@ namespace OverBang.ExoWorld.Gameplay.Quests
                 isHoldingFusible = false;
                 CanInteract = false;
                 fusiblesInserted++;
-                
-                IInteractable interactable = playerInteraction.DropItem();
-                if (interactable.transform.TryGetComponent(out NetworkObject networkObject))
-                {
-                    networkObject.Despawn();
-                }
+
+                IInteractable interactable= playerInteraction.DropItem();
+                if (interactable is Fusible fusible)
+                    fusible.Consume();
                 
                 playerInteraction.RequestUpdateUI(this);
 

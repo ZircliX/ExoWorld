@@ -30,6 +30,7 @@ namespace OverBang.ExoWorld.Gameplay.Player
             }
         }
         
+        [field: SerializeField] public Transform DamageTarget { get; private set; }
         public PlayerController Controller { get; private set; }
         private CharacterData characterData;
 
@@ -77,9 +78,7 @@ namespace OverBang.ExoWorld.Gameplay.Player
         {
             OnTargeted?.Invoke(IsTargetable);
         }
-
-        [field: SerializeField] public Transform DamageTarget { get; private set; }
-
+        
         public void TakeDamage(RuntimeDamageData damage)
         {
             if (MinHealth > 0)

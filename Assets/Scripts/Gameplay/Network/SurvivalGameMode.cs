@@ -53,7 +53,7 @@ namespace OverBang.ExoWorld.Gameplay.Network
 
             while (isRunning)
             {
-                questManager.RequestQuestQueue();
+                questManager.RequestQuestQueue(1);
                 
                 CheckForCharacter();
                 

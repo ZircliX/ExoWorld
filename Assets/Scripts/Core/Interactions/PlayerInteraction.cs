@@ -178,14 +178,15 @@ namespace OverBang.ExoWorld.Core.Interactions
             if (!CanDropCurrentItem())
                 return null;
 
-            InteractableData previouslyHeld = HeldItem;
-            previouslyHeld.IsHeld = false;
-            HeldItem = null;
+            HeldItem.IsHeld = false;
 
-            previouslyHeld.Instance.OnDrop(this);
+            IInteractable heldItemInstance = HeldItem.Instance;
+            heldItemInstance.OnDrop(this);
             OnItemDropped?.Invoke(CurrentInteractable);
+
+            HeldItem = null;
             
-            return previouslyHeld.Instance;
+            return heldItemInstance;
         }
 
         public bool CanDropCurrentItem()
