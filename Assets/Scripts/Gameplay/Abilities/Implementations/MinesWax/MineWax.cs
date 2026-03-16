@@ -25,7 +25,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             this.explosionStrategy = explosionStrategy;
             
             DetectionArea.GetCollider<SphereCollider>().radius = data.DetectionRadius;
-            DetectionArea.SetAllowedTags("Enemy", "LocalPlayer");
+            DetectionArea.SetAllowedTags("Enemy", "LocalPlayer", "Player");
             DetectionArea.SetRequireInterface<IDamageable>();
             
             rb.AddForce(Vector3.up * 0.5f + direction * data.ThrowForce * Time.deltaTime, ForceMode.Impulse);

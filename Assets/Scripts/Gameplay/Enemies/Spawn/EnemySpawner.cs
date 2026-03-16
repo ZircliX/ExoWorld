@@ -10,6 +10,9 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
         {
             NetworkSpawnManager spawnManager = NetworkManager.Singleton.SpawnManager;
 
+            if (spawnManager == null)
+                return null;
+            
             NetworkObject instance = spawnManager.InstantiateAndSpawn(
                 enemyData.EnemyPrefab,
                 NetworkManager.Singleton.LocalClientId,

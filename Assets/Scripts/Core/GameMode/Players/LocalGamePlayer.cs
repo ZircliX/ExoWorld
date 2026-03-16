@@ -19,7 +19,7 @@ namespace OverBang.ExoWorld.Core.GameMode.Players
 
         public float Health { get; private set; } = -1;
         public float MaxHealth { get; private set; } = -1;
-        public event Action<float, float, float> OnHealthChanged;
+        public event Action<float, float> OnHealthChanged;
         public PlayerState State { get; private set; } = PlayerState.Uninitialized;
 
         public string SessionPlayerID => LocalSessionPlayer.Id;
@@ -99,14 +99,14 @@ namespace OverBang.ExoWorld.Core.GameMode.Players
         {
             Health = newHealth;
             isDirty = true;
-            OnHealthChanged?.Invoke(Health, MaxHealth, MaxHealth);
+            OnHealthChanged?.Invoke(Health, MaxHealth);
         }
 
         public void SetMaxHealth(float newMaxHealth)
         {
             MaxHealth = newMaxHealth;
             isDirty = true;
-            OnHealthChanged?.Invoke(Health, MaxHealth, MaxHealth);
+            OnHealthChanged?.Invoke(Health, MaxHealth);
         }
         
         public void SetState(PlayerState newState)
