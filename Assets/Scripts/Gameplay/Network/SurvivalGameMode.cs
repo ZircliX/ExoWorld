@@ -1,9 +1,12 @@
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using OverBang.ExoWorld.Core.Characters;
 using OverBang.ExoWorld.Core.GameMode;
 using OverBang.ExoWorld.Core.GameMode.Players;
+using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Core.Phases;
+using OverBang.ExoWorld.Core.Scene;
 using OverBang.ExoWorld.Core.Utils;
 using OverBang.ExoWorld.Gameplay.Phase;
 using OverBang.ExoWorld.Gameplay.Quests;
@@ -16,17 +19,26 @@ namespace OverBang.ExoWorld.Gameplay.Network
     [CreateGameMode(GameModeUtils.SurvivalGameModeName)]
     public class SurvivalGameMode : IGameMode
     {
+        private CancellationTokenSource cts;
+        
         private GameplayPhase.GameplayEndInfos gameplayEndInfos;
         private bool hasCharacter;
+        private bool isRunning;
         
         public IReadOnlyCollection<IGamePlayer> GamePlayers => gamePlayerManager.Players;
-        
         private GamePlayerManager gamePlayerManager;
-        
         private QuestManager questManager;
+
+        public void End()
+        {
+            isRunning = false;
+            cts?.Cancel();
+        }
         
         public async Awaitable OnBegin()
         {
+            cts = new CancellationTokenSource();
+            
             gamePlayerManager = new GameObject(nameof(GamePlayerManager)).AddComponent<GamePlayerManager>();
             gamePlayerManager.hideFlags = HideFlags.NotEditable;
             
@@ -39,33 +51,37 @@ namespace OverBang.ExoWorld.Gameplay.Network
 
         public async Awaitable OnEnd()
         {
-            Object.Destroy(gamePlayerManager.gameObject);
-            await Task.CompletedTask;
+            cts?.Dispose();
+            cts = null;
+            
+            if (gamePlayerManager != null)
+                Object.Destroy(gamePlayerManager.gameObject);   
+            
+            await SceneLoader.LoadSceneAsync(GameMetrics.Global.SceneCollection.MainMenuSceneRef.Name);
+            await SessionManager.Global.LeaveCurrentSession();
         }
 
         public async Awaitable Execute()
         {
-            //Debug.Log("Run GameMode: SurvivalGameMode");
-            bool isRunning = true;
+            isRunning = true;
             hasCharacter = false;
-
+            
             SetupGamePlayerManager();
 
             while (isRunning)
             {
+                if (cts.IsCancellationRequested) break;
+        
                 questManager.RequestQuestQueue(1);
-                
                 CheckForCharacter();
-                
-                // Hub
-                await HandleHubPhase();
-                
-                // Gameplay
-                GameplayPhase gameplayPhase = await HandleGameplayPhase();
-                gameplayEndInfos = gameplayPhase.CurrentEndInfos;
 
-                if (gameplayPhase.CurrentEndInfos.isFinished)
-                    isRunning = false;
+                await HandleHubPhase();
+                if (cts.IsCancellationRequested) break;
+
+                GameplayPhase gameplayPhase = await HandleGameplayPhase();
+                if (cts.IsCancellationRequested) break;
+        
+                gameplayEndInfos = gameplayPhase.CurrentEndInfos;
             }
         }
 
@@ -83,7 +99,7 @@ namespace OverBang.ExoWorld.Gameplay.Network
                 availableClasses = CharacterClasses.All,
             };
             
-            HubPhase hubPhase = new HubPhase(selectionSettings);
+            HubPhase hubPhase = new HubPhase(selectionSettings, cts);
             await hubPhase.RunAsync();
         }
         
@@ -96,9 +112,9 @@ namespace OverBang.ExoWorld.Gameplay.Network
 
             GameplayPhase gameplayPhase;
             if (SessionManager.Global.IsHost())
-                gameplayPhase = new HostGameplayPhase(gameplaySettings);
+                gameplayPhase = new HostGameplayPhase(gameplaySettings, cts);
             else
-                gameplayPhase = new ClientGameplayPhase(gameplaySettings);
+                gameplayPhase = new ClientGameplayPhase(gameplaySettings, cts);
                 
             await gameplayPhase.RunAsync();
             

@@ -17,6 +17,12 @@ namespace OverBang.ExoWorld.Core.Menus
                 backButton.onClick.AddListener(InvokeBackClicked);
         }
 
+        private void OnDestroy()
+        {
+            if (backButton != null)
+                backButton.onClick.RemoveListener(InvokeBackClicked);
+        }
+
         public virtual void InvokeBackClicked()
         {
             OnBackClicked?.Invoke();

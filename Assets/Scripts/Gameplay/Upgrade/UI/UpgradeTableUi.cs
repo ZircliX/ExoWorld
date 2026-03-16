@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using OverBang.ExoWorld.Core.Inventory;
+using OverBang.ExoWorld.Gameplay.Core.Menus;
 using OverBang.ExoWorld.Gameplay.Player.PlayerHUD;
 using TMPro;
 using UnityEngine;

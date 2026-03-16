@@ -85,7 +85,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             playerEntity.RemoveSpeed(nameof(Fusible));
             playerEntity = null;
 
-            if (isConsumed) return; // ← don't reactivate if inserted into disjoncteur
+            if (isConsumed) return; // don't reactivate if inserted into disjoncteur
 
             CanInteract = true;
             SetPriority((int)TargetPriority.Medium);

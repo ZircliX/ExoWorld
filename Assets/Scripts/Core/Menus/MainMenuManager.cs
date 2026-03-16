@@ -7,7 +7,7 @@ namespace OverBang.ExoWorld.Core.Menus
 {
     public class MainMenuManager : MonoBehaviour
     {
-        [SerializeField] private MainMenuPanel mainMenuPanel;
+        [SerializeField] private MainMenuUI mainMenuUI;
         [SerializeField] private HostGameUI hostGameUI;
         [SerializeField] private JoinGameUI joinGameUI;
         [SerializeField] private WaitingScreenUI waitingScreenUI;
@@ -21,8 +21,8 @@ namespace OverBang.ExoWorld.Core.Menus
         {
             InitializeListeners();
             
-            ShowPanel(mainMenuPanel);
-            panelHistory.Push(mainMenuPanel);
+            ShowPanel(mainMenuUI);
+            panelHistory.Push(mainMenuUI);
         }
         
         private void OnEnable()
@@ -41,15 +41,15 @@ namespace OverBang.ExoWorld.Core.Menus
             Debug.LogWarning("[SessionManager] Transport failure — recreating session...");
             await SessionManager.Global.LeaveCurrentSession();
     
-            ShowPanel(mainMenuPanel);
+            ShowPanel(mainMenuUI);
         }
 
         private void InitializeListeners()
         {
-            mainMenuPanel.OnHostClicked += () => ShowPanel(hostGameUI);
-            mainMenuPanel.OnJoinClicked += () => ShowPanel(joinGameUI);
-            mainMenuPanel.OnContactClicked += () => ShowPanel(contactsUI);
-            mainMenuPanel.OnSettingsClicked += () => ShowPanel(settingsUI);
+            mainMenuUI.OnHostClicked += () => ShowPanel(hostGameUI);
+            mainMenuUI.OnJoinClicked += () => ShowPanel(joinGameUI);
+            mainMenuUI.OnContactClicked += () => ShowPanel(contactsUI);
+            mainMenuUI.OnSettingsClicked += () => ShowPanel(settingsUI);
 
             hostGameUI.OnBackClicked += GoBack;
             hostGameUI.OnHostCreated += () => ShowPanel(waitingScreenUI);

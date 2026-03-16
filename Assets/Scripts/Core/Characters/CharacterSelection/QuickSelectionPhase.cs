@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Threading;
+using UnityEngine;
 
 namespace OverBang.ExoWorld.Core.Characters
 {
     public class QuickSelectionPhase : SelectionPhase
     {
-        public QuickSelectionPhase(SelectionSettings selectionSettings) : base(selectionSettings)
+        public QuickSelectionPhase(SelectionSettings selectionSettings, CancellationTokenSource cts) : base(selectionSettings, cts)
         {
         }
 

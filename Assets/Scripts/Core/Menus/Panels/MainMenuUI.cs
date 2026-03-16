@@ -1,13 +1,11 @@
 using System;
 using OverBang.ExoWorld.Core.Metrics;
-using OverBang.ExoWorld.Core.Utils;
-using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace OverBang.ExoWorld.Core.Menus
 {
-    public class MainMenuPanel : BasePanel
+    public class MainMenuUI : BasePanel
     {
         [SerializeField] private Button hostButton;
         [SerializeField] private Button joinButton;

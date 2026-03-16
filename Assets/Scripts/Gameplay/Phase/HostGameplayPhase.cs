@@ -1,4 +1,5 @@
-﻿using Eflatun.SceneReference;
+﻿using System.Threading;
+using Eflatun.SceneReference;
 using OverBang.ExoWorld.Core.Scene;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,7 +8,7 @@ namespace OverBang.ExoWorld.Gameplay.Phase
 {
     public class HostGameplayPhase : GameplayPhase
     {
-        public HostGameplayPhase(GameplaySettings gameplaySettings) : base(gameplaySettings)
+        public HostGameplayPhase(GameplaySettings gameplaySettings, CancellationTokenSource cts) : base(gameplaySettings, cts)
         {
         }
 
