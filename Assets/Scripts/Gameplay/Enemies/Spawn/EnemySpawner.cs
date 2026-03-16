@@ -27,7 +27,7 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
 
             if (instance.TryGetComponent(out Enemy enemy))
             {
-                enemy.Initialize(enemyData.ID);
+                enemy.InitializeRpc(enemyData.ID);
             }
 
             return enemy;

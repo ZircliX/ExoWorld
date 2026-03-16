@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using KBCore.Refs;
+using OverBang.ExoWorld.Gameplay.Core.Menus;
 using OverBang.ExoWorld.Gameplay.Player.PlayerHUD;
 using UnityEngine;
 using UnityEngine.InputSystem;

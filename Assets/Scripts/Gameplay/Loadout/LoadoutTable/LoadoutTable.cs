@@ -2,6 +2,7 @@
 using OverBang.ExoWorld.Core.Interactions;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Gameplay.Cameras;
+using OverBang.ExoWorld.Gameplay.Core.Menus;
 using OverBang.ExoWorld.Gameplay.Player.PlayerHUD;
 using UnityEngine;
 

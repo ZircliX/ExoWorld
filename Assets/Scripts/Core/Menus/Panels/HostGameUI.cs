@@ -43,13 +43,15 @@ namespace OverBang.ExoWorld.Core.Menus
         {
             serverName = serverName.Trim().Replace(" ", string.Empty);
             gameNameInput.text = serverName;
-            
+
             OnCreateHostClicked?.Invoke(serverName, maxPlayers, visibility);
+            LoadingUI.Instance.Open();
         }
 
         protected override void OnShow()
         {
             started = false;
+            createButton.interactable = !string.IsNullOrEmpty(gameNameInput.text) && !started;
         }
     }
 }

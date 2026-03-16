@@ -26,6 +26,8 @@ namespace OverBang.ExoWorld.Core.Characters
             public CharacterClasses availableClasses;
 
         }
+
+        protected readonly CancellationTokenSource cts;
         
         public readonly SelectionSettings Settings;
         
@@ -37,8 +39,9 @@ namespace OverBang.ExoWorld.Core.Characters
         
         public List<CharacterData> AvailableCharacters { get; protected set; }
         
-        protected SelectionPhase(SelectionSettings selectionSettings)
+        protected SelectionPhase(SelectionSettings selectionSettings, CancellationTokenSource cts)
         {
+            this.cts = cts;
             Settings = selectionSettings;
             AvailableCharacters = new List<CharacterData>();
         }
@@ -53,7 +56,7 @@ namespace OverBang.ExoWorld.Core.Characters
 
         protected virtual async Awaitable Execute()
         {
-            await AwaitableUtils.AwaitableUntil(() => IsDone, CancellationToken.None);
+            await AwaitableUtils.AwaitableUntil(() => IsDone, cts.Token);
         }
         
         protected virtual async Awaitable OnEnd()

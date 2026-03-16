@@ -7,7 +7,7 @@ namespace OverBang.ExoWorld.Gameplay.Phase
 {
     public class ClientGameplayPhase : GameplayPhase
     {
-        public ClientGameplayPhase(GameplaySettings gameplaySettings) : base(gameplaySettings)
+        public ClientGameplayPhase(GameplaySettings gameplaySettings, CancellationTokenSource cts) : base(gameplaySettings, cts)
         {
         }
         
@@ -18,7 +18,7 @@ namespace OverBang.ExoWorld.Gameplay.Phase
                 //Debug.Log("Waiting");
                 SessionManager.Global.CurrentPlayer.TryGetPhaseStatusByPlayer(out PhaseStatus status);
                 return status == PhaseStatus.SceneLoaded;
-            }, CancellationToken.None);
+            }, cts.Token);
         }
     }
 }

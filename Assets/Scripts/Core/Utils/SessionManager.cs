@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using OverBang.ExoWorld.Core.Metrics;
+using Unity.Netcode;
 using Unity.Services.Multiplayer;
 using UnityEngine;
 
@@ -89,21 +90,24 @@ namespace OverBang.ExoWorld.Core.Utils
 
         public async Awaitable LeaveCurrentSession()
         {
-            if (ActiveSession != null)
+            if (ActiveSession == null) return;
+
+            try
             {
-                try
-                {
-                    await ActiveSession.LeaveAsync();
-                    OnSessionChanged?.Invoke(null);
-                }
-                catch
-                {
-                    // Game Closed, Ignore
-                }
-                finally
-                {
-                    ActiveSession = null;
-                }
+                await ActiveSession.LeaveAsync();
+            }
+            catch (Exception e)
+            {
+                Debug.LogWarning($"[SessionManager] LeaveSession failed cleanly: {e.Message}");
+        
+                // Only force shutdown if LeaveAsync itself failed
+                if (NetworkManager.Singleton != null && NetworkManager.Singleton.IsListening)
+                    NetworkManager.Singleton.Shutdown();
+            }
+            finally
+            {
+                ActiveSession = null;
+                OnSessionChanged?.Invoke(null);
             }
         }
     }

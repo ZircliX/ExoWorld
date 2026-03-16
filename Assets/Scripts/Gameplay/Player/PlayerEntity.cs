@@ -30,6 +30,7 @@ namespace OverBang.ExoWorld.Gameplay.Player
             }
         }
         
+        [field: SerializeField] public Transform DamageTarget { get; private set; }
         public PlayerController Controller { get; private set; }
         private CharacterData characterData;
 
@@ -77,9 +78,7 @@ namespace OverBang.ExoWorld.Gameplay.Player
         {
             OnTargeted?.Invoke(IsTargetable);
         }
-
-        [field: SerializeField] public Transform DamageTarget { get; private set; }
-
+        
         public void TakeDamage(RuntimeDamageData damage)
         {
             if (MinHealth > 0)
@@ -91,7 +90,11 @@ namespace OverBang.ExoWorld.Gameplay.Player
                 }
             }
             
-            Debug.Log("Final Damage: " + damage.finalDamage + " Health: " + Health + "");
+            if (Health < 0)
+            {
+                Controller.LocalGamePlayer.SetHealth(MaxHealth);
+            }
+            
             Controller.LocalGamePlayer.SetHealth(Health - damage.finalDamage);
         }
         

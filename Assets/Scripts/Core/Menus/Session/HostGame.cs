@@ -21,6 +21,11 @@ namespace OverBang.ExoWorld.Core.Menus
 
         private void OnHostGame(string serverName, int maxPlayers, ServerVisibility visibility)
         {
+            if (SessionManager.Global.ActiveSession != null)
+            {
+                SessionManager.Global.LeaveCurrentSession().Run();
+            }
+            
             SessionOptions options;
             if (visibility == ServerVisibility.Public)
             {

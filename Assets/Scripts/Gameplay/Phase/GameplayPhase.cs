@@ -22,6 +22,8 @@ namespace OverBang.ExoWorld.Gameplay.Phase
         {
             public bool isFinished;
         }
+
+        protected readonly CancellationTokenSource cts;
         
         public readonly GameplaySettings Settings;
         
@@ -30,8 +32,9 @@ namespace OverBang.ExoWorld.Gameplay.Phase
         
         public bool IsDone { get; private set; }
 
-        public GameplayPhase(GameplaySettings gameplaySettings)
+        public GameplayPhase(GameplaySettings gameplaySettings, CancellationTokenSource cts)
         {
+            this.cts = cts;
             Settings = gameplaySettings;
         }
 
@@ -56,7 +59,7 @@ namespace OverBang.ExoWorld.Gameplay.Phase
 
         protected virtual async Awaitable Execute()
         {
-            await AwaitableUtils.AwaitableUntil(() => IsDone, CancellationToken.None);
+            await AwaitableUtils.AwaitableUntil(() => IsDone, cts.Token);
             
             CurrentEndInfos = new GameplayEndInfos()
             {

@@ -1,5 +1,7 @@
 using System;
 using OverBang.ExoWorld.Core.Abilities;
+using OverBang.ExoWorld.Core.Metrics;
+using OverBang.ExoWorld.Core.Scene;
 using OverBang.ExoWorld.Gameplay.Movement;
 using OverBang.ExoWorld.Gameplay.Player;
 using UnityEngine;
@@ -60,8 +62,9 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
 
         private bool CanUseAbility(IAbility ability)
         {
-            bool condition = ability is { CanBeUsed: true };
-            return condition;
+            bool canBeUsed = ability is { CanBeUsed: true };
+            bool scene = SceneLoader.GetCurrentScene().name != GameMetrics.Global.SceneCollection.HubSceneRef.Name;
+            return canBeUsed && scene;
         }
 
         public void OnSync(PlayerRuntimeContext context)

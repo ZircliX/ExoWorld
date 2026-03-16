@@ -6,7 +6,7 @@ using OverBang.ExoWorld.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
+namespace OverBang.ExoWorld.Gameplay.Core.Menus
 {
     public class HUD : SceneService<HUD>
     {
@@ -42,7 +42,11 @@ namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
                 inputs.actions.FindActionMap(GameplayMapName).Enable();
             }
             
-            Ath.DOFade(state ? 0 : 1, fadeDuration);
+            Ath.DOFade(state ? 0 : 1, fadeDuration).OnComplete(() =>
+            {
+                Ath.blocksRaycasts = !state;
+                Ath.interactable = !state;
+            });
             
             SetCursorState(state);
         }
