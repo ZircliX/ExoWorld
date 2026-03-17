@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using OverBang.ExoWorld.Core.Audios.ContextualDialogues;
 using OverBang.ExoWorld.Core.Characters;
 using OverBang.ExoWorld.Core.Damage;
+using OverBang.ExoWorld.Core.GameMode.Players;
 using OverBang.ExoWorld.Core.Interactions;
 using OverBang.ExoWorld.Core.Upgrade;
 using OverBang.ExoWorld.Gameplay.Loadout;
@@ -35,7 +37,7 @@ namespace OverBang.ExoWorld.Gameplay.Player
         private CharacterData characterData;
 
         public WeaponController WeaponController { get; private set; }
-
+        
         private PlayerMovement pm;
         private Dictionary<string, SpeedEffect> activeEffects;
         private Dictionary<string, float> awaitForRemovalEffects;
