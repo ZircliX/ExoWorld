@@ -8,7 +8,7 @@ namespace OverBang.ExoWorld.Core.Audios
 {
     public class SubtitlesManager : MonoBehaviour
     {
-        [field : SerializeField] public bool Enabled { get; private set; } 
+        [field: SerializeField] public bool Enabled { get; private set; } = true; 
         [SerializeField] private int maxSubtitlesTextLenght;
         [SerializeField] private GameObject subtitleArea;
         [SerializeField] private GameObject subtitlePrefab;
@@ -32,9 +32,10 @@ namespace OverBang.ExoWorld.Core.Audios
 
         private void Update()
         {
-            foreach (SubtitlesUi subtitle in subtitlesUisQueue)
+            float dt = Time.deltaTime;
+            for (int i = subtitlesUisQueue.Count - 1; i >= 0; i--)
             {
-                subtitle.Tick(Time.deltaTime);
+                subtitlesUisQueue[i].Tick(dt);
             }
         }
 
@@ -59,15 +60,17 @@ namespace OverBang.ExoWorld.Core.Audios
         {
             DisplaySubtitle(cdQueued.context.data.Name, cdQueued.dialogue.text, cdQueued.dialogue.subtitleLifetime, cdQueued.dialogue.timeBetweenLines);
         }
+        
         public void DisplaySubtitle(string characterName, string subtitleText, float subtitleLifetime, float  timeBetweenLines)
         {
             GameObject subtitle = Instantiate(subtitlePrefab, subtitleArea.transform);
             subtitle.transform.SetParent(subtitleArea.transform);
             subtitle.TryGetComponent(out SubtitlesUi subtitlesUi);
             AddSubtitleUi(subtitlesUi);
+            
             List<string> lines = SmartSubtitleWrapper.Split(subtitleText, maxSubtitlesTextLenght);
 
-            SubtitlesUiType uiType;
+            SubtitlesUiType uiType = default;
             
             if (lines.Count == 1)
             {
@@ -77,8 +80,6 @@ namespace OverBang.ExoWorld.Core.Audios
             {
                 uiType = SubtitlesUiType.Multiple;
             }
-            
-            uiType = SubtitlesUiType.Simple;
             
             subtitlesUi.Initialize(characterName, lines, uiType, subtitleLifetime, timeBetweenLines);
         }

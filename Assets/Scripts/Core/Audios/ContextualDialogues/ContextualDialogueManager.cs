@@ -25,13 +25,12 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
             }
         }
 
-        [RuntimeInitializeOnLoadMethod]
-        private static void CreateController()
+        public static void RegisterController(this ContextualDialogueController controller)
         {
-            GameObject controller = new("ContextualDialogueController");
-            Controller = controller.AddComponent<ContextualDialogueController>();
-            Object.DontDestroyOnLoad(controller);
-            
+            if (Controller == null)
+            {
+                Controller = controller;
+            }
         }
         
         
@@ -46,7 +45,7 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
             {
                 if (!Controller.TryAddContextualDialogue(contextualDialogue, context))
                 {
-                    Debug.LogError($"Cannot add {contextualDialogue} to controller !");
+                    Debug.LogWarning($"Cannot add {contextualDialogue} to controller !");
                 }
             }
         }

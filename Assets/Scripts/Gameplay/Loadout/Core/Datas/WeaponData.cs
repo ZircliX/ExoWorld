@@ -1,4 +1,5 @@
 ﻿using Ami.BroAudio;
+using OverBang.ExoWorld.Core.Audios.ContextualDialogues;
 using OverBang.ExoWorld.Core.Inventory;
 using OverBang.ExoWorld.Core.Upgrade;
 using OverBang.ExoWorld.Gameplay.Loadout.Crosshair;
@@ -52,5 +53,9 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
                                     (UpgradeManager.Instance.GetRuntimeUpgrade(UpgradeType.MaxMagCap)/
                                      100));
         [field: SerializeField] public float ReloadTime { get; protected set; }
+        
+        // DIALOGUES
+        [field  : Header("Dialogues : ")]
+        [field: SerializeField] public ContextualDialogueData ReloadGialoguesData { get; protected set; }
     }
 }

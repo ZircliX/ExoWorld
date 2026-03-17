@@ -14,8 +14,8 @@ namespace OverBang.ExoWorld.Core.Audios
         [field : SerializeField] public CanvasGroup SubtitleCanvasGroup { get; private set; }
         [field : SerializeField] public TMP_Text NameText { get; private set; }
         [field : SerializeField] public TMP_Text SubtitleText { get; private set; }
-        [field : SerializeField] public float FadeDuration { get; private set; }
-
+        [field: SerializeField] public float FadeDuration { get; private set; } = 0.1f;
+        public bool IsDead { get; private set; }
         public event Action<SubtitlesUi> OnSubtitleBeingKilled;
         
         private List<string> Lines = new();
@@ -25,16 +25,20 @@ namespace OverBang.ExoWorld.Core.Audios
         
         private Sequence openSequence;
         private Sequence closeSequence;
+        private Sequence showTextSequence;
         
-        private Sequence openInternalSequence;
+        private Sequence IntervalSequence;
         private Sequence closeInternalSequence;
         
         public void InitializeTweens()
         {
             openSequence = DOTween.Sequence()
                 .Append(SubtitleCanvasGroup.DOFade(1, FadeDuration))
-                .Join(NameText.DOFade(1, FadeDuration))
-                .Join(SubtitleText.DOFade(1, FadeDuration))
+                .SetAutoKill(false)
+                .Pause();
+
+            showTextSequence = DOTween.Sequence()
+                .Append(SubtitleText.DOFade(1, 0.1f))
                 .SetAutoKill(false)
                 .Pause();
             
@@ -45,27 +49,29 @@ namespace OverBang.ExoWorld.Core.Audios
                 .SetAutoKill(false)
                 .Pause();
             
-            closeInternalSequence = DOTween.Sequence()
-                .Append(SubtitleText.DOFade(0, 0.2f))
+            IntervalSequence = DOTween.Sequence()
+                .Append(SubtitleText.DOFade(1, 0.1f))
+                .AppendInterval(timebetween)
+                .Append(closeInternalSequence)
                 .SetAutoKill(false)
                 .Pause();
-            
-            openInternalSequence = DOTween.Sequence()
-                .Append(SubtitleText.DOFade(1, 0.2f))
-                .AppendInterval(timebetween)
+
+            closeInternalSequence = DOTween.Sequence()
+                .Append(SubtitleText.DOFade(0, 0.2f))
                 .SetAutoKill(false)
                 .Pause();
         }
 
         public void Initialize(string characterName, List<string> subtitles, SubtitlesManager.SubtitlesUiType uiType, float subtitleLifetime, float timeBetweenLines)
         {
-            
+            IsDead = false;
             time = 0f;
             Lines = subtitles;
             timebetween = timeBetweenLines;
             lifeTime = subtitleLifetime;
             NameText.text = characterName; 
             type = uiType;
+            
             InitializeTweens();
             
             switch (type)
@@ -74,6 +80,7 @@ namespace OverBang.ExoWorld.Core.Audios
                     
                     SubtitleText.text = Lines[0];
                     openSequence.Restart();
+                    showTextSequence.Restart();
                     
                     return;
                 
@@ -81,7 +88,7 @@ namespace OverBang.ExoWorld.Core.Audios
                     
                     SubtitleText.text = Lines[0];
                     openSequence.Restart();
-                    DisplayMultipleSubtitles();
+                    IntervalSequence.Play().OnComplete(DisplayMultipleSubtitles);
                     
                     return;
             }
@@ -100,16 +107,21 @@ namespace OverBang.ExoWorld.Core.Audios
         private int i;
         private void DisplayMultipleSubtitles()
         {
+            if (IsDead) return;
             i++;
-            if (i > Lines.Count) return;
+            if (i > Lines.Count)
+            {
+                closeSequence.Play();
+                return;
+            }
             
-            closeInternalSequence.Restart();
             SubtitleText.text = Lines[i];
-            openInternalSequence.Play().OnComplete(DisplayMultipleSubtitles);
+            IntervalSequence.Play().OnComplete(DisplayMultipleSubtitles);
         }
         
         private void KillSubtitle()
         {
+            IsDead = true;
             OnSubtitleBeingKilled?.Invoke(this);
             closeSequence.Play().OnComplete(() =>
             {

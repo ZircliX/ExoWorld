@@ -1,37 +1,54 @@
 ﻿using System.Collections.Generic;
 using OverBang.ExoWorld.Core.Audios.ContextualDialogues;
-using Sirenix.Utilities;
+using OverBang.ExoWorld.Core.Characters;
+using OverBang.ExoWorld.Core.GameMode.Players;
 using Unity.Netcode;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace OverBang.ExoWorld.Gameplay.Player
 {
     public class PlayerCDController : NetworkBehaviour
     {
+        public static PlayerCDController Instance { get; private set; }
+        [field : SerializeField] public Transform AudioSourceAnchor { get; private set; }
+        public void Awake()
+        {
+            if (Instance ==null)
+            {
+                Instance = this;
+            }
+        }
+
         private static readonly Dictionary<ulong, PlayerCDController> playerCDControllers = new();
 
-        private void OnEnable()
+        public override void OnNetworkSpawn()
         {
             playerCDControllers.Add(OwnerClientId, this);
+            Debug.Log($"registering player to contextualDialogueManager with id : {OwnerClientId} ");
             ContextualDialogueManager.Controller.RegisterPlayer(OwnerClientId);
         }
 
-        private void OnDisable()
+        public override void OnNetworkDespawn()
         {
             playerCDControllers.Remove(OwnerClientId);
             ContextualDialogueManager.Controller.UnregisterPlayer(OwnerClientId);
         }
 
-        public CDContext GetContext()
+        private CDContext GetContext()
         {
+            LocalGamePlayer player = GamePlayerManager.Instance.GetLocalPlayer();
+            
             return new CDContext()
             {
+                data = player.CharacterData,
                 playerId = OwnerClientId,
-                sourceTransform =  transform,
+                sourceTransform = AudioSourceAnchor,
                 sourceType = CDContext.SourceType.FollowSpatialized
             };
         }
-
+        
+        
         public void FireDialogue(string id)
         {
             if (!ContextualDialogueManager.TryGetDialogueData(id, out ContextualDialogueData dialogue))

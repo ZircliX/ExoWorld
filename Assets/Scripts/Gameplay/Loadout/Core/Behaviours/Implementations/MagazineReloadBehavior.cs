@@ -1,5 +1,6 @@
 using System;
 using OverBang.ExoWorld.Core.GameMode.Players;
+using OverBang.ExoWorld.Gameplay.Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -48,6 +49,9 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             int current = weapon.State.CurrentBullets;
             
             IsReloading = true;
+            
+            PlayerCDController.Instance.FireDialogue(weapon.WeaponData.ReloadGialoguesData);
+            
             weapon.State.SetBullets(0);
             
             await Awaitable.WaitForSecondsAsync(weapon.WeaponData.ReloadTime);

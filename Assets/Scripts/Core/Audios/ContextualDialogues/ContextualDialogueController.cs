@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Ami.BroAudio;
+using Sirenix.OdinInspector;
+using Unity.VisualScripting.IonicZip;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -17,10 +21,16 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
             }
         }
         
-        [SerializeField] private SubtitlesManager subtitlesManager;
+        [SerializeField, Required] private SubtitlesManager subtitlesManager;
         private CdQueuedComparer comparer = new();
         private Dictionary<ulong, List<CdQueued>> lineQueue = new ();
-        
+
+
+        private void OnEnable()
+        {
+            this.RegisterController();
+        }
+
         private void Update()
         {
             float dt = Time.deltaTime;
@@ -67,8 +77,8 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
                     TryRemoveContextualDialogue(cdQueued.dialogue, cdQueued.context);
                 
                 cdQueued.Fire();
-
                 subtitlesManager.DisplaySubtitle(cdQueued);
+
             }
             else if (cdQueued.IsFinished)
             {
@@ -89,8 +99,12 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
         
         public bool TryAddContextualDialogue(ContextualDialogue dialogue, CDContext context)
         {
-
-            if (!lineQueue.TryGetValue(context.playerId, out List<CdQueued> queue)) return false;
+            if (!lineQueue.TryGetValue(context.playerId, out List<CdQueued> queue))
+            {
+                lineQueue.TryGetValue(context.playerId, out List<CdQueued> test);
+                Debug.Log(test);
+                return false;
+            }
 
             CdQueued cdd = new(dialogue, context);
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using Ami.BroAudio;
+using UnityEngine;
 
 namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
 {
@@ -38,6 +39,7 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
 
         public void Fire()
         {
+            Debug.Log(context.sourceTransform);
             AudioPlayer = BroAudio.Play(dialogue.soundID, context.sourceTransform);
         }
 
