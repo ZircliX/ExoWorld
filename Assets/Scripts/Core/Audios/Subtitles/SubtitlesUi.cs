@@ -62,7 +62,7 @@ namespace OverBang.ExoWorld.Core.Audios
                 .Pause();
         }
 
-        public void Initialize(string characterName, List<string> subtitles, SubtitlesManager.SubtitlesUiType uiType, float subtitleLifetime, float timeBetweenLines)
+        public void Initialize(string characterName, List<string> subtitles, SubtitlesManager.SubtitlesUiType uiType, float subtitleLifetime, float timeBetweenLines, Color color)
         {
             IsDead = false;
             time = 0f;
@@ -70,6 +70,7 @@ namespace OverBang.ExoWorld.Core.Audios
             timebetween = timeBetweenLines;
             lifeTime = subtitleLifetime;
             NameText.text = characterName; 
+            NameText.color = color; 
             type = uiType;
             
             InitializeTweens();

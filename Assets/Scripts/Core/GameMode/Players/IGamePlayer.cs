@@ -1,4 +1,5 @@
 using OverBang.ExoWorld.Core.Characters;
+using UnityEngine;
 
 namespace OverBang.ExoWorld.Core.GameMode.Players
 {

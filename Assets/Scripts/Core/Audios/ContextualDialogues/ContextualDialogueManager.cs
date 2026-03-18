@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using OverBang.ExoWorld.Core.Characters;
+using OverBang.ExoWorld.Core.Database;
 using OverBang.ExoWorld.Core.GameMode.Players;
 using UnityEngine;
 
@@ -38,10 +39,9 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
         
         public static void FireEvent(string id, CDContext context)
         {
-            if (!GamePlayerManager.Instance.TryGetPlayerWithClientId(context.playerId, out IGamePlayer player)) 
-                return;
+            if (!GameDatabase.Global.TryGetAssetByID(id, out CharacterData characterData)) return;
             
-            if (TryGetDialogue(player.CharacterData, id, out ContextualDialogue contextualDialogue))
+            if (TryGetDialogue(characterData, id, out ContextualDialogue contextualDialogue))
             {
                 if (!Controller.TryAddContextualDialogue(contextualDialogue, context))
                 {
