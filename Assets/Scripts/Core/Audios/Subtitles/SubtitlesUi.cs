@@ -18,16 +18,16 @@ namespace OverBang.ExoWorld.Core.Audios
         public bool IsDead { get; private set; }
         public event Action<SubtitlesUi> OnSubtitleBeingKilled;
         
-        private List<string> Lines = new();
+        private List<string> lines = new List<string>();
         private float lifeTime;
-        private float timebetween;
+        private float timeBetween;
         private SubtitlesManager.SubtitlesUiType type;
         
         private Sequence openSequence;
         private Sequence closeSequence;
         private Sequence showTextSequence;
         
-        private Sequence IntervalSequence;
+        private Sequence intervalSequence;
         private Sequence closeInternalSequence;
         
         public void InitializeTweens()
@@ -49,15 +49,15 @@ namespace OverBang.ExoWorld.Core.Audios
                 .SetAutoKill(false)
                 .Pause();
             
-            IntervalSequence = DOTween.Sequence()
-                .Append(SubtitleText.DOFade(1, 0.1f))
-                .AppendInterval(timebetween)
-                .Append(closeInternalSequence)
-                .SetAutoKill(false)
-                .Pause();
-
             closeInternalSequence = DOTween.Sequence()
                 .Append(SubtitleText.DOFade(0, 0.2f))
+                .SetAutoKill(false)
+                .Pause();
+            
+            intervalSequence = DOTween.Sequence()
+                .Append(SubtitleText.DOFade(1, 0.1f))
+                .AppendInterval(timeBetween)
+                .Append(closeInternalSequence)
                 .SetAutoKill(false)
                 .Pause();
         }
@@ -66,8 +66,8 @@ namespace OverBang.ExoWorld.Core.Audios
         {
             IsDead = false;
             time = 0f;
-            Lines = subtitles;
-            timebetween = timeBetweenLines;
+            lines = subtitles;
+            timeBetween = timeBetweenLines;
             lifeTime = subtitleLifetime;
             NameText.text = characterName; 
             NameText.color = color; 
@@ -79,7 +79,7 @@ namespace OverBang.ExoWorld.Core.Audios
             {
                 case SubtitlesManager.SubtitlesUiType.Simple:
                     
-                    SubtitleText.text = Lines[0];
+                    SubtitleText.text = lines[0];
                     openSequence.Restart();
                     showTextSequence.Restart();
                     
@@ -87,9 +87,9 @@ namespace OverBang.ExoWorld.Core.Audios
                 
                 case SubtitlesManager.SubtitlesUiType.Multiple:
                     
-                    SubtitleText.text = Lines[0];
+                    SubtitleText.text = lines[0];
                     openSequence.Restart();
-                    IntervalSequence.Play().OnComplete(DisplayMultipleSubtitles);
+                    intervalSequence.Play().OnComplete(DisplayMultipleSubtitles);
                     
                     return;
             }
@@ -110,14 +110,14 @@ namespace OverBang.ExoWorld.Core.Audios
         {
             if (IsDead) return;
             i++;
-            if (i > Lines.Count)
+            if (i > lines.Count)
             {
                 closeSequence.Play();
                 return;
             }
             
-            SubtitleText.text = Lines[i];
-            IntervalSequence.Play().OnComplete(DisplayMultipleSubtitles);
+            SubtitleText.text = lines[i];
+            intervalSequence.Play().OnComplete(DisplayMultipleSubtitles);
         }
         
         private void KillSubtitle()

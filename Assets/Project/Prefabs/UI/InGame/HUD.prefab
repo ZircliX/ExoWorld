@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 5076493585853247109}
   - component: {fileID: 7687379721308607442}
   - component: {fileID: 8306382341123338479}
+  - component: {fileID: 2467748492111921732}
   m_Layer: 0
   m_Name: Subtitles
   m_TagString: Untagged
@@ -204,6 +205,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!114 &2467748492111921732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693346420623802065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3745c776f80b4d038a12ad12f405840a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: OverBang.ExoWorld.Core::OverBang.ExoWorld.Core.Audios.SubtitlesManager
+  <Enabled>k__BackingField: 1
+  maxSubtitlesTextLenght: 144
+  subtitleArea: {fileID: 693346420623802065}
+  subtitlePrefab: {fileID: 6159727055594873305, guid: bcf2019aea297494bb8a9c321011330f, type: 3}
 --- !u!1 &723606451048000586
 GameObject:
   m_ObjectHideFlags: 0
