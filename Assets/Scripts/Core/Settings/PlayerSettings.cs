@@ -1,6 +1,5 @@
 ﻿using System;
 using Helteix.Singletons.MonoSingletons;
-using OverBang.ExoWorld.Core.Audios;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Core.Settings

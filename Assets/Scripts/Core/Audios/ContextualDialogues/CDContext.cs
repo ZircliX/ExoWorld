@@ -1,5 +1,4 @@
-﻿using OverBang.ExoWorld.Core.Characters;
-using Unity.Netcode;
+﻿using Unity.Netcode;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues

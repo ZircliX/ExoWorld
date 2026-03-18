@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using OverBang.ExoWorld.Core.Audios.ContextualDialogues;
 using OverBang.ExoWorld.Core.Characters;
 using OverBang.ExoWorld.Core.Database;
 using OverBang.ExoWorld.Core.Settings;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace OverBang.ExoWorld.Core.Audios
 {
@@ -12,14 +12,16 @@ namespace OverBang.ExoWorld.Core.Audios
     {
         [field: SerializeField] public bool Enabled { get; private set; } = true; 
         [SerializeField] private int maxSubtitlesTextLenght;
-        [SerializeField] private GameObject subtitleArea;
-        [SerializeField] private GameObject subtitlePrefab;
+        [SerializeField] private RectTransform subtitleArea;
+        [SerializeField] private RectTransform subtitlePrefab;
         
         private List<SubtitlesUi> subtitlesUisQueue;
+        private HashSet<CdQueued> displayedDialogues = new HashSet<CdQueued>();
         
-        public void Start()
+        public void Awake()
         {
             subtitlesUisQueue = new List<SubtitlesUi>();
+            displayedDialogues = new HashSet<CdQueued>();
         }
 
         private void OnEnable()
@@ -51,41 +53,33 @@ namespace OverBang.ExoWorld.Core.Audios
         {
             ui.OnSubtitleBeingKilled += RemoveSubtitleUi;
             subtitlesUisQueue.Add(ui);
+            
+            LayoutRebuilder.ForceRebuildLayoutImmediate(subtitleArea);
         }
 
         public void RemoveSubtitleUi(SubtitlesUi ui)
         {
             subtitlesUisQueue.Remove(ui);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(subtitleArea);
         }
 
         public void DisplaySubtitle(CdQueued cdQueued)
         {
+            if (displayedDialogues.Contains(cdQueued)) return;
             if (!GameDatabase.Global.TryGetAssetByID(cdQueued.context.characterDataId, out CharacterData characterData)) return;
 
-            DisplaySubtitle(characterData.Name, cdQueued.dialogue.text, cdQueued.dialogue.subtitleLifetime, cdQueued.dialogue.timeBetweenLines, characterData.Color);
-        }
-        
-        public void DisplaySubtitle(string characterName, string subtitleText, float subtitleLifetime, float  timeBetweenLines, Color color)
-        {
-            GameObject subtitle = Instantiate(subtitlePrefab, subtitleArea.transform);
-            subtitle.transform.SetParent(subtitleArea.transform);
-            subtitle.TryGetComponent(out SubtitlesUi subtitlesUi);
-            AddSubtitleUi(subtitlesUi);
-            
-            List<string> lines = SmartSubtitleWrapper.Split(subtitleText, maxSubtitlesTextLenght);
+            displayedDialogues.Add(cdQueued);
 
-            SubtitlesUiType uiType = default;
-            
-            if (lines.Count == 1)
-            {
-                uiType = SubtitlesUiType.Simple;
-            }
-            else if (lines.Count > 1)
-            {
-                uiType = SubtitlesUiType.Multiple;
-            }
-            
-            subtitlesUi.Initialize(characterName, lines, uiType, subtitleLifetime, timeBetweenLines, color);
+            RectTransform subtitle = Instantiate(subtitlePrefab, subtitleArea.transform);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(subtitle);
+            subtitle.TryGetComponent(out SubtitlesUi subtitlesUi);
+
+            subtitlesUi.OnSubtitleBeingKilled += _ => displayedDialogues.Remove(cdQueued);
+            AddSubtitleUi(subtitlesUi);
+
+            List<string> lines = SmartSubtitleWrapper.Split(cdQueued.dialogue.text, maxSubtitlesTextLenght);
+            SubtitlesUiType uiType = lines.Count > 1 ? SubtitlesUiType.Multiple : SubtitlesUiType.Simple;
+            subtitlesUi.Initialize(characterData.Name, lines, uiType, cdQueued.dialogue.subtitleLifetime, cdQueued.dialogue.timeBetweenLines, characterData.Color);
         }
 
         public enum SubtitlesUiType
