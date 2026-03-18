@@ -7,9 +7,17 @@ namespace OverBang.ExoWorld.Gameplay.Loots
 {
     public static class LootUtils
     {
-        public static NetworkObject GetDrop(this LootTable lootTable, Vector3 position, Quaternion rotation)
+        public static NetworkObject GetDrop(this LootTable lootTable, Vector3 position, Quaternion rotation, ScriptableItemData preferedDrop = null)
         {
-            LootTable.LootableItemData scriptableItemData = lootTable.GetRandomLoot();
+            LootTable.LootableItemData scriptableItemData = default;
+            if (preferedDrop == null)
+            {
+                scriptableItemData = lootTable.GetRandomLoot();
+            }
+            else
+            {
+                scriptableItemData = lootTable.GetLoot(preferedDrop);
+            }
 
             if (scriptableItemData.LootPrefab == null && scriptableItemData.Loot == null)
                 return null;
@@ -26,7 +34,7 @@ namespace OverBang.ExoWorld.Gameplay.Loots
 
             if (networkObject.TryGetComponent(out LootDrop lootDrop))
             {
-                ItemData itemData = scriptableItemData.Loot.ItemData;
+                ItemData itemData = scriptableItemData.Loot.Data;
                 int newQuantity = Random.Range(scriptableItemData.MinQuantity, scriptableItemData.MaxQuantity + 1);
 
                 itemData.SetQuantity(newQuantity);

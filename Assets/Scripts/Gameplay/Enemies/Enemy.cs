@@ -310,7 +310,9 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
             Invoke(nameof(WaitUntilRagdoll), EnemyData.RagdollDuration);
 
             if (IsOwner)
-                EnemyData.LootTable.GetDrop(transform.position, transform.rotation);
+            {
+                EnemyData.LootTable.GetDrop(transform.position, transform.rotation, healthComponent.LastDamageData.itemData);
+            }
         }
 
         private void ClearTargets()

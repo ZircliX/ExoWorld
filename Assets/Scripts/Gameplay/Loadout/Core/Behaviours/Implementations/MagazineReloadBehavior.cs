@@ -43,7 +43,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
         public async Awaitable Reload()
         {
-            if (player.Inventory.GetItemQuantity(weapon.WeaponData.BulletItemData.ItemData.ItemId) <= 0)
+            if (player.Inventory.GetItemQuantity(weapon.WeaponData.BulletData.ItemData.Data.ItemId) <= 0)
                 return;
 
             int current = weapon.State.CurrentBullets;
@@ -57,7 +57,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             await Awaitable.WaitForSecondsAsync(weapon.WeaponData.ReloadTime);
 
             int quantityRequested = (weapon.WeaponData.MagCapacity + weapon.WeaponData.UpgradeMagCap) - current;
-            int quantityReceived = player.Inventory.RemoveItem(weapon.WeaponData.BulletItemData.ItemData.ItemId, quantityRequested);
+            int quantityReceived = player.Inventory.RemoveItem(weapon.WeaponData.BulletData.ItemData.Data.ItemId, quantityRequested);
             
             weapon.State.SetBullets(current + quantityReceived);
             weapon.RequestOnWeaponReloaded();

@@ -1,5 +1,6 @@
 ﻿using DamageNumbersPro;
 using OverBang.ExoWorld.Core.Damage;
+using OverBang.ExoWorld.Core.Inventory;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -15,5 +16,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         [field: SerializeField] public int Penetration { get; protected set; }
         [field: SerializeField] public DamageData Damage { get; protected set; }
         [field: SerializeField] public DamageNumberMesh DamagePrefab { get; protected set; }
+        [field: SerializeField] public ScriptableItemData ItemData { get; protected set; }
     }
 }

@@ -1,6 +1,4 @@
-﻿using Ami.BroAudio;
-using OverBang.ExoWorld.Core.Audios.ContextualDialogues;
-using OverBang.ExoWorld.Core.Inventory;
+using Ami.BroAudio;
 using OverBang.ExoWorld.Core.Upgrade;
 using OverBang.ExoWorld.Gameplay.Loadout.Crosshair;
 using OverBang.ExoWorld.Gameplay.Upgrade;
@@ -13,7 +11,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
     {
         // BULLET DATA
         [field: SerializeField] public BulletData BulletData { get; protected set; }
-        [field: SerializeField] public ScriptableItemData BulletItemData { get; protected set; }
         
         // GENERAL DATA
         [field: SerializeField] public string WeaponName { get; protected set; }

@@ -12,6 +12,8 @@ namespace OverBang.ExoWorld.Gameplay.Targeting
         
         [field: SerializeField] public Transform DamageTarget { get; private set; }
         
+        public RuntimeDamageData LastDamageData { get; private set; }
+        
         public event IHealth.HealthChanged OnHealthChanged;
         public float MinHealth { get; private set; }
         [field: SerializeField, ReadOnly] public float Health { get; private set; }
@@ -51,10 +53,13 @@ namespace OverBang.ExoWorld.Gameplay.Targeting
 
         public void TakeDamage(RuntimeDamageData damage)
         {
+            if (!IsAlive || IsInvincible) return;
+            
             if (damagedSound.IsValid())
                 BroAudio.Play(damagedSound, transform.position);
             
             SetHealth(Mathf.Max(Health - damage.finalDamage * (1f - Resistance), 0f));
+            LastDamageData = damage;
         }
     }
 }
