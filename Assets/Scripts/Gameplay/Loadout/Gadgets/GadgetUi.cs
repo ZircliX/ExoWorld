@@ -18,8 +18,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         public GadgetData data { get; private set; }
         private int amount;
         private GadgetControllerUI gadgetControllerUI;
-        
-       
 
         public void Refresh(GadgetData Data, int gadgetAmount)
         {
@@ -51,14 +49,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
         public void SetSelectable(bool selectability)
         {
-            if (selectability)
-            {
-                isSelectable = true;
-            }
-            else
-            {
-                isSelectable = false;
-            }
+            isSelectable = selectability;
         }
 
         public void Clear()
@@ -88,8 +79,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             Refresh(data,amount);
             iconBackGround.DOFade(visibility, 0.15f);
             icon.DOColor(color, 0.15f);
-            
         }
-
     }
 }

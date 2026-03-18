@@ -12,17 +12,13 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
     public class GadgetControllerUI : MonoBehaviour
     {
         [field : SerializeField, Required] public GadgetController Controller { get; private set; }
+        [field : SerializeField] public List<GadgetUi> GadgetUis { get; private set; }
         [SerializeField, Self] private GadgetUiSelector selector;
-        
         [SerializeField, Self] private CanvasGroup gadgetWheel;
         
-        [field : SerializeField] public List<GadgetUi> GadgetUis { get; private set; }
         public event Action OnGadgetUiSelectionEnd;
         
-        private void OnValidate()
-        {
-            this.ValidateRefs();
-        }
+        private void OnValidate() => this.ValidateRefs();
 
         private void Start()
         {

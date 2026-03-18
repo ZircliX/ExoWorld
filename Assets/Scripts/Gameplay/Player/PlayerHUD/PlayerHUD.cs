@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Helteix.Tools;
 using OverBang.ExoWorld.Core.GameMode.Players;
+using OverBang.ExoWorld.Core.Inventory;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Core.Utils;
 using TMPro;
@@ -12,13 +13,18 @@ namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
 {
     public class PlayerHUD : MonoBehaviour
     {
+        [Header("Player Stats")]
         [SerializeField] private TMP_Text playerNameText;
         [SerializeField] private Image healthBar;
+        [SerializeField] private TMP_Text trinititeText;
+        [SerializeField] private TMP_Text composantText;
         
+        [Header("Teammates Stats")]
         [SerializeField, Space] private Transform teammateContainer;
         [SerializeField] private TeammateInfo teammatePrefab;
         private List<TeammateInfo> teammates;
         
+        [Header("Other")]
         [SerializeField, Space] private GameObject questsPanel;
         [SerializeField] private GameObject timerPanel;
         
@@ -45,6 +51,7 @@ namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
         private void OnEnable()
         {
             Player.OnHealthChanged += OnHealthChanged;
+            Player.Inventory.OnItemQuantityChanged += OnItemQuantityChanged;
             
             RefreshPlayerStats();
             RefreshTeammates();
@@ -53,12 +60,26 @@ namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
         private void OnDisable()
         {
             Player.OnHealthChanged -= OnHealthChanged;
+            Player.Inventory.OnItemQuantityChanged -= OnItemQuantityChanged;
         }
 
         private void OnHealthChanged(float current, float maxHealth)
         {
             healthBar.fillAmount = current / maxHealth;
             //healthBarBg.DOFillAmount(current / maxHealth, 0.2f);
+        }
+        
+        private void OnItemQuantityChanged(ItemData itemData)
+        {
+            switch (itemData.ItemName)
+            {
+                case "Trinitite":
+                    trinititeText.text = itemData.Quantity.ToString();
+                    break;
+                case "Composant":
+                    composantText.text = itemData.Quantity.ToString();
+                    break;
+            }
         }
 
         private void RefreshPlayerStats()

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -7,6 +8,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public class GadgetUiSelector : MonoBehaviour
     { 
+        [SerializeField] private TMP_Text currentSelectedGadgetText;
+        
         [Header("Menu Settings")]
         [SerializeField, Space] private float radius = 150f;
         
@@ -23,28 +26,30 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private Vector2 accumulatedDelta; 
         
         private GadgetControllerUI controllerUI;
-        private GadgetUi currentSelectedGadget;
+        public GadgetUi CurrentSelectedGadget { get; private set; }
         
         public void Initialize(GadgetControllerUI controllerUI)
         {
             this.controllerUI = controllerUI;
             controllerUI.OnGadgetUiSelectionEnd += OnItemSelected;
+            controllerUI.Controller.OnGadgetCasted += UpdateCurrentGadgetAmount;
         }
         
         private void OnDisable()
         {
             controllerUI.OnGadgetUiSelectionEnd -= OnItemSelected;
+            controllerUI.Controller.OnGadgetCasted -= UpdateCurrentGadgetAmount;
         }
         
         
         public void StartSelection()
         {
-            if (currentSelectedGadget !=null && !currentSelectedGadget.CheckSelectiveness())
+            if (CurrentSelectedGadget !=null && !CurrentSelectedGadget.CheckSelectiveness())
             {
-                Debug.Log(currentSelectedGadget.CheckSelectiveness());
-                currentSelectedGadget.DeselectThisGadget();
-                currentSelectedGadget.Mask();
-                currentSelectedGadget = null;
+                Debug.Log(CurrentSelectedGadget.CheckSelectiveness());
+                CurrentSelectedGadget.DeselectThisGadget();
+                CurrentSelectedGadget.Mask();
+                CurrentSelectedGadget = null;
             }
             accumulatedDelta = Vector2.zero;
         }
@@ -99,25 +104,33 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private void UpdateSelectedGadget(int index)
         {
             GadgetUi newGadget = GadgetUis[index];
-            if (newGadget == currentSelectedGadget || !GadgetUis[index].isSelectable) 
+            if (newGadget == CurrentSelectedGadget || !GadgetUis[index].isSelectable) 
                 return;
             
-            if (currentSelectedGadget != null)
-                currentSelectedGadget.DeselectThisGadget();
+            if (CurrentSelectedGadget != null)
+                CurrentSelectedGadget.DeselectThisGadget();
             
-            currentSelectedGadget = newGadget;
-            currentSelectedGadget.SelectThisGadget();
+            CurrentSelectedGadget = newGadget;
+            UpdateCurrentGadgetAmount();
+            
+            CurrentSelectedGadget.SelectThisGadget();
         }
         
         private void OnItemSelected()
         {
-            if (currentSelectedGadget == null)
+            if (CurrentSelectedGadget == null)
             {
                 controllerUI.SetCurrentSelectedGadget(null);
                 return;
             }
                 
-            controllerUI.SetCurrentSelectedGadget(currentSelectedGadget.data);
+            controllerUI.SetCurrentSelectedGadget(CurrentSelectedGadget.data);
+        }
+
+        private void UpdateCurrentGadgetAmount()
+        {
+            int currentAmount = controllerUI.Controller.Player.GadgetInventory.GetGadgetCount(CurrentSelectedGadget.data, out int amount) ? amount : 0;
+            currentSelectedGadgetText.text = currentAmount.ToString();
         }
     }
 }
