@@ -17,7 +17,11 @@ namespace OverBang.ExoWorld.Gameplay.Manena
         
         [SerializeField, Range(0, 3)] private float loopDuration = 1.5f;
         [SerializeField, Range(0, 3)] private float loopCooldown = 0.5f;
+        [SerializeField] private Ease scaleInEasingCurve;
+        [SerializeField] private Ease scaleOutEasingCurve;
         [SerializeField] private Ease interactEasingCurve;
+        [SerializeField] private Ease loopInEasingCurve;
+        [SerializeField] private Ease loopOutEasingCurve;
         [SerializeField] private Color interactableColor;
 
         [SerializeField, Space] private DetectionArea enterArea;
@@ -63,9 +67,9 @@ namespace OverBang.ExoWorld.Gameplay.Manena
             Image iconOutline = waypointIconOutline.GetComponent<Image>();
 
             // Intro
-            sequence.Append(parentRect.DOScale(1, 1f).SetEase(interactEasingCurve));
-            sequence.Join(waypointCanvasGroup.DOFade(1, 1f).SetEase(interactEasingCurve));
-            sequence.Join(iconOutline.DOColor(Color.white, 1f).SetEase(interactEasingCurve));
+            sequence.Append(parentRect.DOScale(1, 1f).SetEase(scaleInEasingCurve));
+            sequence.Join(waypointCanvasGroup.DOFade(1, 0.5f).SetEase(interactEasingCurve));
+            sequence.Join(iconOutline.DOColor(Color.white, 0.5f).SetEase(interactEasingCurve));
             
             //sequence.AppendInterval(loopCooldown);
 
@@ -73,8 +77,8 @@ namespace OverBang.ExoWorld.Gameplay.Manena
             sequence.OnComplete(() =>
             {
                 Sequence loop = DOTween.Sequence();
-                loop.Append(waypointIconOutline.DOSizeDelta(outVec, loopDuration).SetEase(interactEasingCurve));
-                loop.Append(waypointIconOutline.DOSizeDelta(inVec, loopDuration).SetEase(interactEasingCurve));
+                loop.Append(waypointIconOutline.DOSizeDelta(outVec, loopDuration).SetEase(loopOutEasingCurve));
+                loop.Append(waypointIconOutline.DOSizeDelta(inVec, loopDuration).SetEase(loopInEasingCurve));
                 loop.SetLoops(-1, LoopType.Restart);
         
                 sequence = loop;
@@ -88,7 +92,8 @@ namespace OverBang.ExoWorld.Gameplay.Manena
             player = null;
             
             sequence.Kill();
-            waypointCanvasGroup.DOFade(0, 1f).SetEase(interactEasingCurve).OnComplete(() =>
+            sequence.Append(parentRect.DOScale(0, 1f).SetEase(scaleOutEasingCurve));
+            waypointCanvasGroup.DOFade(0, 0.5f).SetEase(scaleOutEasingCurve).OnComplete(() =>
             {
                 parentRect.localScale = new Vector3(0, 0, 0);
             });
@@ -102,9 +107,9 @@ namespace OverBang.ExoWorld.Gameplay.Manena
             Image iconOutline = waypointIconOutline.GetComponent<Image>();
 
             //parentRect.DOScale(0.8f, 1f).SetEase(interactEasingCurve);
-            seq.Append(iconOutline.DOColor(interactableColor, 0.5f)).SetEase(interactEasingCurve);
-            seq.Join(waypointIconOutline.DOSizeDelta(minVec, loopDuration)).SetEase(interactEasingCurve);
-            seq.Append(waypointIconOutline.DOSizeDelta(inVec, loopDuration)).SetEase(interactEasingCurve);
+            seq.Append(iconOutline.DOColor(interactableColor, 0.1f)).SetEase(interactEasingCurve);
+            seq.Join(waypointIconOutline.DOSizeDelta(minVec, 0.5f)).SetEase(loopOutEasingCurve);
+            seq.Append(waypointIconOutline.DOSizeDelta(inVec, 0.2f)).SetEase(loopInEasingCurve);
         }
         
         private void OnInteractExit(Collider other, object target)
