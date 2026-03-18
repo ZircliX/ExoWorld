@@ -1,5 +1,8 @@
 ﻿using System;
 using Ami.BroAudio;
+using OverBang.ExoWorld.Core.Database;
+using OverBang.ExoWorld.Core.Player;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
@@ -12,7 +15,7 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
         public IAudioPlayer AudioPlayer { get; private set; }
         
         public readonly ContextualDialogue dialogue;
-        public readonly CDContext context;
+        public CDContext context;
         
         private float lifetime;
         private bool outDated;
@@ -39,8 +42,11 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
 
         public void Fire()
         {
-            Debug.Log(context.sourceTransform);
-            AudioPlayer = BroAudio.Play(dialogue.soundID, context.sourceTransform);
+            if(context.networkObject.TryGet(out NetworkObject no))
+            {
+                if (!no.TryGetComponent(out PlayerReferences playerLinks)) return;
+                AudioPlayer = BroAudio.Play(dialogue.soundID, playerLinks.PlayerTransform);
+            }           
         }
 
         public void Kill()

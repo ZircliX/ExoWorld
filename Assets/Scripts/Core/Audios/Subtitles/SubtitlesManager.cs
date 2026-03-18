@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using OverBang.ExoWorld.Core.Audios.ContextualDialogues;
+using OverBang.ExoWorld.Core.Characters;
+using OverBang.ExoWorld.Core.Database;
 using OverBang.ExoWorld.Core.Settings;
 using UnityEngine;
 
@@ -58,10 +60,12 @@ namespace OverBang.ExoWorld.Core.Audios
 
         public void DisplaySubtitle(CdQueued cdQueued)
         {
-            DisplaySubtitle(cdQueued.context.data.Name, cdQueued.dialogue.text, cdQueued.dialogue.subtitleLifetime, cdQueued.dialogue.timeBetweenLines);
+            if (!GameDatabase.Global.TryGetAssetByID(cdQueued.context.characterDataId, out CharacterData characterData)) return;
+
+            DisplaySubtitle(characterData.Name, cdQueued.dialogue.text, cdQueued.dialogue.subtitleLifetime, cdQueued.dialogue.timeBetweenLines, characterData.Color);
         }
         
-        public void DisplaySubtitle(string characterName, string subtitleText, float subtitleLifetime, float  timeBetweenLines)
+        public void DisplaySubtitle(string characterName, string subtitleText, float subtitleLifetime, float  timeBetweenLines, Color color)
         {
             GameObject subtitle = Instantiate(subtitlePrefab, subtitleArea.transform);
             subtitle.transform.SetParent(subtitleArea.transform);
@@ -81,7 +85,7 @@ namespace OverBang.ExoWorld.Core.Audios
                 uiType = SubtitlesUiType.Multiple;
             }
             
-            subtitlesUi.Initialize(characterName, lines, uiType, subtitleLifetime, timeBetweenLines);
+            subtitlesUi.Initialize(characterName, lines, uiType, subtitleLifetime, timeBetweenLines, color);
         }
 
         public enum SubtitlesUiType

@@ -11,7 +11,7 @@ namespace OverBang.ExoWorld.Gameplay.Player
     public class PlayerCDController : NetworkBehaviour
     {
         public static PlayerCDController Instance { get; private set; }
-        [field : SerializeField] public Transform AudioSourceAnchor { get; private set; }
+        [field : SerializeField] public NetworkObject AudioSourceAnchor { get; private set; }
         public void Awake()
         {
             if (Instance ==null)
@@ -38,12 +38,11 @@ namespace OverBang.ExoWorld.Gameplay.Player
         private CDContext GetContext()
         {
             LocalGamePlayer player = GamePlayerManager.Instance.GetLocalPlayer();
-            
             return new CDContext()
             {
-                data = player.CharacterData,
+                characterDataId = player.CharacterData.ID,
                 playerId = OwnerClientId,
-                sourceTransform = AudioSourceAnchor,
+                networkObject = new NetworkObjectReference(AudioSourceAnchor),
                 sourceType = CDContext.SourceType.FollowSpatialized
             };
         }
@@ -65,7 +64,7 @@ namespace OverBang.ExoWorld.Gameplay.Player
             {
                 if (dialogue.CanBeHeardByEveryone)
                 {
-                    FireDialogueRpc(dialogue.ID);
+                    FireDialogueRpc(dialogue.ID, GetContext());
                 }
                 else
                 {
@@ -76,9 +75,9 @@ namespace OverBang.ExoWorld.Gameplay.Player
         }
         
         [Rpc(SendTo.Everyone)]
-        private void FireDialogueRpc(string id)
+        private void FireDialogueRpc(string id, CDContext context)
         {
-            CDContext context = GetContext();
+            
             ContextualDialogueManager.FireEvent(id, context);
         }
         
