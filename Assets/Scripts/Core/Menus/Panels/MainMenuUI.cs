@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace OverBang.ExoWorld.Core.Menus
 {
-    public class MainMenuPanel : BasePanel
+    public class MainMenuUI : BasePanel
     {
         [SerializeField] private Button hostButton;
         [SerializeField] private Button joinButton;
@@ -45,6 +45,11 @@ namespace OverBang.ExoWorld.Core.Menus
             hostButton.navigation = CreateNavigation(down: joinButton);
             joinButton.navigation = CreateNavigation(up: hostButton, down: settingsButton);
             settingsButton.navigation = CreateNavigation(up: joinButton);
+        }
+
+        protected override void OnShow()
+        {
+            LoadingUI.Instance.Close();
         }
     }
 }

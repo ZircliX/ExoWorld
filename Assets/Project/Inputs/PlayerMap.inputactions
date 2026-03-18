@@ -106,15 +106,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Tab",
-                    "type": "Button",
-                    "id": "ac8c1ea3-2443-4f2b-a8b2-dedf5ddcc373",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "PrimaryAbility",
                     "type": "Button",
                     "id": "93839a51-5f93-4fe4-8cec-b019308bd8cd",
@@ -523,17 +514,6 @@
                     "processors": "",
                     "groups": ";Controller",
                     "action": "Interact",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f71837e2-c05c-4493-8e16-9a772b698eb4",
-                    "path": "<Keyboard>/tab",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard and Mouse",
-                    "action": "Tab",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

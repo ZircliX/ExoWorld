@@ -25,12 +25,12 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             }
         }
 
-        public void RequestQuestQueue()
+        public void RequestQuestQueue(int skip = 0)
         {
             if (currentQuest == null)
             {
                 //Debug.LogError("Requesting quest queue");
-                QueueNextQuest(0);
+                QueueNextQuest(skip);
             }
             else
             {

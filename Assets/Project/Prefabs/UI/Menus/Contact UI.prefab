@@ -251,7 +251,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 20, y: -10}
-  m_SizeDelta: {x: 189.77, y: 50}
+  m_SizeDelta: {x: 176.47, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &7649684836847601198
 CanvasRenderer:
@@ -283,8 +283,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Contacts
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4301b09b1069f1c40b85b8116564c649, type: 2}
+  m_sharedMaterial: {fileID: -8645691041021899414, guid: 4301b09b1069f1c40b85b8116564c649, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1241,6 +1241,7 @@ MonoBehaviour:
   canvasGroup: {fileID: 2532975205143015414}
   animationDuration: 0.3
   closeOnAwake: 1
+  interactable: 1
 --- !u!1001 &1629568004622287421
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1407,11 +1408,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8985632604987536780, guid: 4626877894d51cf449a77e4f628e2075, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 139.75
       objectReference: {fileID: 0}
     - target: {fileID: 8985632604987536780, guid: 4626877894d51cf449a77e4f628e2075, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 143.935
+      value: 144.875
       objectReference: {fileID: 0}
     - target: {fileID: 8985632604987536780, guid: 4626877894d51cf449a77e4f628e2075, type: 3}
       propertyPath: m_AnchoredPosition.y

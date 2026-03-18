@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using Helteix.Tools;
 using KBCore.Refs;
 using OverBang.ExoWorld.Core.Components;
@@ -18,7 +19,7 @@ using Random = UnityEngine.Random;
 
 namespace OverBang.ExoWorld.Gameplay.Enemies
 {
-    public class Enemy : NetworkBehaviour, IPoolInstanceListener, IDamageSource, ITargetable, ISpeedTarget
+    public class Enemy : NetworkBehaviour, IDamageSource, ITargetable, ISpeedTarget
     {
         [Header("References")]
         [SerializeField, Self] private NetworkObject networkObject;
@@ -38,6 +39,7 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
         private Vector3 targetPoint;
         private bool isPatrol;
         private bool isAttacking;
+        private CancellationTokenSource attackCts;
 
         // Targets
         private List<ITargetable> currentTargetsInRange;
@@ -75,9 +77,12 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
             attackDetectionArea.OnExit  -= OnAttackExit;
         }
 
-        public void Initialize(string enemyDataId)
+        [Rpc(SendTo.Everyone)]
+        public void InitializeRpc(string enemyDataId)
         {
             SetEnemyModelRpc(enemyDataId);
+            
+            navMeshAgent.enabled = true;
             capsuleCollider.enabled = true;
             enemyAnimator.Ragdoll(false);
 
@@ -128,6 +133,8 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
                 // On suit la best target déjà calculée — recalcul seulement si elle bouge
                 if (currentBestTarget != null)
                     navMeshAgent.SetDestination(currentBestTarget.transform.position);
+                else
+                    ReevaluateBestTarget();
             }
         }
 
@@ -161,7 +168,6 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
                 if (!target.IsTargetable) continue;
 
                 float distance = Vector3.Distance(transform.position, target.transform.position);
-                // Plus la priorité est haute, plus on divise la distance → favorise la cible prioritaire
                 float score = distance / (1 + (int)target.Priority);
 
                 if (score < bestScore)
@@ -172,7 +178,7 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
             }
 
             if (best == currentBestTarget) return;
-            
+
             if (currentBestTarget != null)
                 currentBestTarget.OnTargeted -= OnBestTargetStateChanged;
 
@@ -183,6 +189,11 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
                 currentBestTarget.OnTargeted += OnBestTargetStateChanged;
                 currentBestTarget.SetTargetable(true);
                 navMeshAgent.SetDestination(currentBestTarget.transform.position);
+            }
+            else
+            {
+                // No valid target → resume patrol
+                ChooseNewDestination();
             }
         }
 
@@ -201,7 +212,6 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
             if (target is not ITargetable targetable) return;
 
             currentTargetsInRange.Add(targetable);
-            // On écoute immédiatement les changements de cette cible
             targetable.OnTargeted += OnAnyTargetStateChanged;
             ReevaluateBestTarget();
         }
@@ -241,41 +251,72 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
             isAttacking = true;
             enemyAnimator.SetBool(IsPunchingParam, isAttacking);
 
-            _ = HandleAttack(attackOffset);
+            attackCts?.Cancel();
+            attackCts = new CancellationTokenSource();
+            HandleAttack(attackOffset, attackCts.Token).Run();
         }
 
         private void OnAttackExit(Collider col, object target)
         {
             if (!IsOwner) return;
 
-            isAttacking = false;
-            enemyAnimator.SetBool(IsPunchingParam, isAttacking);
+            StopAttack();
 
             isPatrol = true;
             enemyAnimator.SetBool(IsPatrolParam, isPatrol);
         }
-
-        private async Awaitable HandleAttack(float attackOffset)
+        
+        private void StopAttack()
         {
-            while (isAttacking)
+            isAttacking = false;
+            enemyAnimator.SetBool(IsPunchingParam, false);
+            attackCts?.Cancel();
+            attackCts = null;
+            currentDamageableTarget = null;
+        }
+
+        private async Awaitable HandleAttack(float attackOffset, CancellationToken ct)
+        {
+            try
             {
-                await Awaitable.WaitForSecondsAsync(attackOffset);
-                Damage(currentDamageableTarget);
-                await Awaitable.WaitForSecondsAsync(3.833f - attackOffset);
+                while (isAttacking && !ct.IsCancellationRequested)
+                {
+                    await Awaitable.WaitForSecondsAsync(attackOffset, ct);
+
+                    if (currentDamageableTarget != null)
+                        Damage(currentDamageableTarget);
+
+                    await Awaitable.WaitForSecondsAsync(3.833f - attackOffset, ct);
+                }
             }
+            catch (OperationCanceledException) { }
         }
 
         private void OnHealthChanged(float previousHealth, float currentHealth, float max)
         {
-            if (currentHealth <= 0) OnDeath();
+            if (currentHealth <= 0 && IsOwner) OnDeathRpc();
         }
 
-        private void OnDeath()
+        [Rpc(SendTo.Everyone)]
+        private void OnDeathRpc()
         {
-            isAttacking = false;
+            StopAttack(); // ← cancels token, clears target, stops loop
             capsuleCollider.enabled = false;
             navMeshAgent.enabled = false;
 
+            ClearTargets();
+            EnemyManager.Instance.Unregister(this);
+            enemyAnimator.Ragdoll(true);
+            Invoke(nameof(WaitUntilRagdoll), EnemyData.RagdollDuration);
+
+            if (IsOwner)
+            {
+                EnemyData.LootTable.GetDrop(transform.position, transform.rotation, healthComponent.LastDamageData.itemData);
+            }
+        }
+
+        private void ClearTargets()
+        {
             // Nettoyage des subscriptions
             if (currentTargetsInRange != null)
             {
@@ -288,36 +329,21 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
                 currentBestTarget.OnTargeted -= OnBestTargetStateChanged;
                 currentBestTarget = null;
             }
-
-            RagdollRpc();
-            EnemyManager.Instance.Unregister(this);
-            EnemyData.LootTable.GetDrop(transform.position, transform.rotation);
-            Invoke(nameof(WaitUntilRagdoll), EnemyData.RagdollDuration);
-        }
-
-        [Rpc(SendTo.Everyone)]
-        private void RagdollRpc()
-        {
-            enemyAnimator.Ragdoll(true);
         }
 
         private void WaitUntilRagdoll()
         {
-            if (IsOwner) OnDeathOwner();
+            if (IsOwner)
+            {
+                networkObject.Despawn();
+            }
             else
             {
                 gameObject.SetActive(false);
-                OnDeathRpc();
             }
+            
+            modelContainer.ClearChildren();
         }
-
-        [Rpc(SendTo.Owner)]
-        private void OnDeathRpc() => OnDeathOwner();
-
-        private void OnDeathOwner() => networkObject.Despawn();
-
-        public void OnSpawn(IPool pool) => navMeshAgent.enabled = true;
-        public void OnDespawn(IPool pool) => modelContainer.ClearChildren();
 
         public void Damage(IDamageable damageable)
         {

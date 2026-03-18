@@ -14,10 +14,12 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         [SerializeField] private bool canBeDropped = true;
         
         private bool isPickedUp;
-        private bool isUsable = true;
+        private bool isConsumed;
+        private readonly NetworkVariable<bool> isUsable = new NetworkVariable<bool>(true, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
         private QuestTwoHandler questTwoHandler;
         private PlayerEntity playerEntity;
 
+        Vector3 IInteractable.UIPosition => transform.position.Add(y: 1f);
         public string InteractionText => "Ramasser le fusible";
         public int Priority { get; private set; } = (int)TargetPriority.Medium;
         public bool CanInteract { get; private set; } = true;
@@ -31,8 +33,6 @@ namespace OverBang.ExoWorld.Gameplay.Quests
                 return interactions;
             }
         }
-
-        Vector3 IInteractable.UIPosition => transform.position.Add(y: 1f);
 
         private void Awake()
         {
@@ -48,6 +48,9 @@ namespace OverBang.ExoWorld.Gameplay.Quests
 
         public void OnPickup(PlayerInteraction playerInteraction)
         {
+            if (!isUsable.Value)
+                return;
+            
             questTwoHandler ??= questTwoData.GetHandlerByData<QuestTwoHandler>();
             if (questTwoHandler is { StepIndex: < 1 })
             {
@@ -56,8 +59,10 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             
             isPickedUp = true;
             CanInteract = false;
-            playerEntity = transform.parent.GetComponent<PlayerEntity>();
+            
+            playerEntity = playerInteraction.transform.parent.GetComponent<PlayerEntity>();
             playerEntity.ApplySpeed(-questTwoData.CarryingSlowForce, -1, nameof(Fusible));
+            playerEntity.WeaponController.SetActiveState(false);
             
             SetPriority(-1);
             gameObject.SetActive(false); // Hide or trigger pickup animation
@@ -71,24 +76,32 @@ namespace OverBang.ExoWorld.Gameplay.Quests
 
         public void OnDrop(PlayerInteraction playerInteraction)
         {
-            if (!isUsable)
-                return;
+            if (!isUsable.Value) return;
             
+            transform.position = playerEntity.transform.position;
+
             isPickedUp = false;
+            playerEntity.WeaponController.SetActiveState(true);
+            playerEntity.RemoveSpeed(nameof(Fusible));
+            playerEntity = null;
+
+            if (isConsumed) return; // don't reactivate if inserted into disjoncteur
+
             CanInteract = true;
             SetPriority((int)TargetPriority.Medium);
-            transform.position = playerInteraction.CurrentInteractable.Instance.transform.position;
-            gameObject.SetActive(true); // Show or trigger drop animation
+            gameObject.SetActive(true);
+        }
+        
+        public void Consume()
+        {
+            isConsumed = true;
+            isUsable.Value = false; // if owner
+            gameObject.SetActive(false);
         }
 
         public void SetPriority(int prio)
         {
             Priority = prio;
-        }
-        
-        public void SetUsable(bool usable)
-        {
-            isUsable = usable;
         }
     }
 }

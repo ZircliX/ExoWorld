@@ -28,6 +28,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private void OnEnable()
         {
             controller.OnWeaponChanged += OnWeaponChanged;
+            controller.OnActiveStateChanged += OnActiveStateChanged;
             UpgradeManager.Instance.OnUpgrade += HandleUpgrade;
             player.Inventory.OnItemQuantityChanged += OnItemQuantityChanged;
 
@@ -39,6 +40,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private void OnDisable()
         {
             controller.OnWeaponChanged -= OnWeaponChanged;
+            controller.OnActiveStateChanged -= OnActiveStateChanged;
             UpgradeManager.Instance.OnUpgrade -= HandleUpgrade;
             player.Inventory.OnItemQuantityChanged -= OnItemQuantityChanged;
             UnsubscribeCurrentWeapon();
@@ -46,7 +48,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
         private void OnItemQuantityChanged(ItemData item)
         {
-            if (item.ItemId == currentWeapon.WeaponData.BulletItemData.ItemData.ItemId)
+            if (item.ItemId == currentWeapon.WeaponData.BulletData.ItemData.Data.ItemId)
             {
                 totalAmmoText.text = item.Quantity.ToString();
             }
@@ -89,6 +91,13 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             UpdateWeaponUI();
         }
 
+        private void OnActiveStateChanged(bool active)
+        {
+            weaponIcon.DOFade(active ? 1 : 0.25f, 0.3f);
+            ammoText.DOFade(active ? 1 : 0.25f, 0);
+            totalAmmoText.DOFade(active ? 1 : 0.25f, 0);
+        }
+
         private void UpdateWeaponUI()
         {
             if (currentWeapon == null)
@@ -115,7 +124,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
                     });
                 }
                 ammoText.text = $"{currentAmmo}";
-                totalAmmoText.text = (player.Inventory.GetItemQuantity(data.BulletItemData.ItemData.ItemId) / bulletsPerShot).ToString();
+                totalAmmoText.text = (player.Inventory.GetItemQuantity(data.BulletData.ItemData.Data.ItemId) / bulletsPerShot).ToString();
             }
         }
 

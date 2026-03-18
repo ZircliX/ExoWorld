@@ -63,11 +63,16 @@ namespace OverBang.ExoWorld.Gameplay.Loots
             }
             else
             {
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
 
-        public void OnSpawn(IPool pool) { }
+        public void OnSpawn(IPool pool)
+        {
+            boundsCollider.enabled = true;
+            hasBeenLooted = false;
+        }
+        
         public void OnDespawn(IPool pool)
         {
             boundsCollider.enabled = false;

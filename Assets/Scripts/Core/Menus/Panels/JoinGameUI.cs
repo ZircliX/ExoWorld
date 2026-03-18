@@ -143,6 +143,8 @@ namespace OverBang.ExoWorld.Core.Menus
                 //Debug.Log($"Joining game with session ID: {selectedSession.sessionId}");   
                 OnJoinGameBySessionRequested?.Invoke(selectedSession);
             }
+            
+            LoadingUI.Instance.Open();
         }
 
         private void HandlePasswordChanged(string current)

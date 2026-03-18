@@ -1,3 +1,5 @@
+using OverBang.ExoWorld.Core.Inventory;
+
 namespace OverBang.ExoWorld.Core.Damage
 {
     [System.Serializable]
@@ -27,5 +29,9 @@ namespace OverBang.ExoWorld.Core.Damage
     {
         public float finalDamage;
         public float weakSpotMultiplier;
+        public DamageType damageType;
+        public ScriptableItemData itemData;
     }
+    
+    public enum DamageType { Physical, Explosive, Projectile }
 }

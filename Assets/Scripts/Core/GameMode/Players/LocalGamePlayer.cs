@@ -43,7 +43,7 @@ namespace OverBang.ExoWorld.Core.GameMode.Players
             for (int i = 0; i < resources.Length; i++)
             {
                 ScriptableItemData itemData = resources[i];
-                Inventory.AddItem(itemData.ItemData, itemData.DefaultQuantity);
+                Inventory.AddItem(itemData.Data, itemData.DefaultQuantity);
             }
         }
         
