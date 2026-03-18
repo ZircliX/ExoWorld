@@ -1,9 +1,6 @@
-﻿using System;
-using Ami.BroAudio;
-using OverBang.ExoWorld.Core.Database;
+﻿using Ami.BroAudio;
 using OverBang.ExoWorld.Core.Player;
 using Unity.Netcode;
-using UnityEngine;
 
 namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
 {

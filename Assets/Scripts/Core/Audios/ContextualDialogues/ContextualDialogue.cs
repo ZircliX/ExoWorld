@@ -25,7 +25,7 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
             timeBetweenLines = line.delayBetweenLines;
             priority = data.Priority;
             subtitleLifetime = line.subtitleLifeTime;
-            soundID = line.SoundID;
+            soundID = line.soundID;
             text = line.text;
         }
 

@@ -1,7 +1,6 @@
 ﻿using Ami.BroAudio;
 using OverBang.ExoWorld.Core.Characters;
 using Sirenix.OdinInspector;
-using Unity.Collections;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
@@ -32,9 +31,9 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
         {
             public float subtitleLifeTime;
             [TextArea(1,20)] public string text;
-            [Sirenix.OdinInspector.ReadOnly] public int characterCount;
+            [ReadOnly] public int characterCount;
             [ShowIf("isTooLong")] public float delayBetweenLines;
-            public SoundID SoundID;
+            public SoundID soundID;
             private bool isTooLong;
             
             public void UpdateCharacterCount()

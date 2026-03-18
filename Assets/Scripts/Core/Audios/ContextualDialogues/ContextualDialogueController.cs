@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using Ami.BroAudio;
+﻿using System.Collections.Generic;
 using Sirenix.OdinInspector;
-using Unity.VisualScripting.IonicZip;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -22,9 +19,8 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
         }
         
         [SerializeField, Required] private SubtitlesManager subtitlesManager;
-        private CdQueuedComparer comparer = new();
-        private Dictionary<ulong, List<CdQueued>> lineQueue = new ();
-
+        private readonly CdQueuedComparer comparer = new CdQueuedComparer();
+        private readonly Dictionary<ulong, List<CdQueued>> lineQueue = new Dictionary<ulong, List<CdQueued>>();
 
         private void OnEnable()
         {
@@ -42,13 +38,17 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
 
                 RemoveOutdatedCD(queue, dt);
 
+                if (queue.Count == 0)
+                    continue;
+
                 CdQueued last = queue[^1];
                 queue.Sort(comparer);
-                
+
                 ProcessFirstQueuedDialogue(last, queue);
             }
         }
 
+        // ReSharper disable once InconsistentNaming
         private void RemoveOutdatedCD(List<CdQueued> queue, float dt)
         {
             using (ListPool<CdQueued>.Get(out List<CdQueued> toRemove))
@@ -68,22 +68,24 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
 
         private void ProcessFirstQueuedDialogue(CdQueued last, List<CdQueued> queue)
         {
-            if(queue.Count == 0) return;
-                
+            if (queue.Count == 0) return;
+
             CdQueued cdQueued = queue[^1];
+
             if (!cdQueued.WasFired)
             {
-                if(last != cdQueued && last.IsPlaying)
+                if (last != cdQueued && last.IsPlaying)
+                {
                     TryRemoveContextualDialogue(cdQueued.dialogue, cdQueued.context);
-                
+                    return;
+                }
+
                 cdQueued.Fire();
                 subtitlesManager.DisplaySubtitle(cdQueued);
-
             }
             else if (cdQueued.IsFinished)
             {
                 TryRemoveContextualDialogue(cdQueued.dialogue, cdQueued.context);
-                ProcessFirstQueuedDialogue(cdQueued, queue);
             }
         }
 
@@ -106,7 +108,7 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
                 return false;
             }
 
-            CdQueued cdd = new(dialogue, context);
+            CdQueued cdd = new CdQueued(dialogue, context);
 
             foreach (CdQueued cd in queue)
             {
