@@ -159,6 +159,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             {
                 finalDamage = ((damage + bonusDamage) * damageMultiplier) / (currentPenetration + 1),
                 weakSpotMultiplier = data.Damage.weakSpotMultiplier,
+                damageType = DamageType.Projectile,
+                itemData = data.ItemData
             };
             
             damageable.TakeDamage(finalDamage);

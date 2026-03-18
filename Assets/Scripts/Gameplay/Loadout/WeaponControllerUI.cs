@@ -48,7 +48,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
         private void OnItemQuantityChanged(ItemData item)
         {
-            if (item.ItemId == currentWeapon.WeaponData.BulletItemData.ItemData.ItemId)
+            if (item.ItemId == currentWeapon.WeaponData.BulletData.ItemData.Data.ItemId)
             {
                 totalAmmoText.text = item.Quantity.ToString();
             }
@@ -124,7 +124,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
                     });
                 }
                 ammoText.text = $"{currentAmmo}";
-                totalAmmoText.text = (player.Inventory.GetItemQuantity(data.BulletItemData.ItemData.ItemId) / bulletsPerShot).ToString();
+                totalAmmoText.text = (player.Inventory.GetItemQuantity(data.BulletData.ItemData.Data.ItemId) / bulletsPerShot).ToString();
             }
         }
 

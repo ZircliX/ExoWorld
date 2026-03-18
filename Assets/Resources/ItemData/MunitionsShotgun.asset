@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cea1fc326a6340dbabaa9b00c9d4970e, type: 3}
   m_Name: MunitionsShotgun
   m_EditorClassIdentifier: OverBang.ExoWorld.Core::OverBang.ExoWorld.Core.Inventory.ScriptableItemData
-  <ItemData>k__BackingField:
-    <ItemId>k__BackingField: AmmoShotgun
-    <ItemName>k__BackingField: Munitions de pompe
-    <Icon>k__BackingField: {fileID: 21300000, guid: 5ad278cc42b4d5541a38d0a78af725ca, type: 3}
-    <Description>k__BackingField: "Munitions n\xE9cessaire au fonctionnement des
-      armes \xE0 feu"
+  <Data>k__BackingField:
+    <ItemId>k__BackingField: ShotgunAmmo
+    <ItemName>k__BackingField: 
+    <Icon>k__BackingField: {fileID: 0}
+    <Description>k__BackingField: 
     <Rarity>k__BackingField: 0
     <Quantity>k__BackingField: 0
   <DefaultQuantity>k__BackingField: 216

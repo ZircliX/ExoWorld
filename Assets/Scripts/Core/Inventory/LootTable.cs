@@ -51,6 +51,17 @@ namespace OverBang.ExoWorld.Core.Inventory
             return LootEntries[^1];
         }
 
+        public LootableItemData GetLoot(ScriptableItemData loot)
+        {
+            foreach (LootableItemData entry in LootEntries)
+            {
+                if (entry.Loot == loot)
+                    return entry;
+            }
+
+            return default;
+        }
+
         private void OnValidate()
         {
             if (!Equilibrate) return;
