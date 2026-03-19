@@ -42,6 +42,7 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
             if(context.networkObject.TryGet(out NetworkObject no))
             {
                 if (!no.TryGetComponent(out PlayerReferences playerLinks)) return;
+                if (!dialogue.soundID.IsValid()) return; 
                 AudioPlayer = BroAudio.Play(dialogue.soundID, playerLinks.PlayerTransform);
             }           
         }
