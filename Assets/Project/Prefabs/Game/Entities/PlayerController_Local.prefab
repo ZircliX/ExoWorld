@@ -473,7 +473,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 153522939717772411}
-  - {fileID: 986342141974403812}
   m_Father: {fileID: 7830069918296049799}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7482118811950782185
@@ -1176,7 +1175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fcf529844ab4547ac867476615bec73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: OverBang.ExoWorld.Core::OverBang.ExoWorld.Core.Player.PlayerFlashLight
-  flashLight: {fileID: 6716395519171326867}
+  flashLight: {fileID: 0}
 --- !u!114 &5248633824829772109
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using Ami.BroAudio;
 using OverBang.ExoWorld.Core.Audios.ContextualDialogues;
+using OverBang.ExoWorld.Core.Components;
 using OverBang.ExoWorld.Core.Upgrade;
 using OverBang.ExoWorld.Gameplay.Loadout.Crosshair;
 using OverBang.ExoWorld.Gameplay.Upgrade;
@@ -11,9 +12,11 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
     public class WeaponData : ScriptableObject
     {
         // BULLET DATA
+        [field: Header("Bullet Data :")]
         [field: SerializeField] public BulletData BulletData { get; protected set; }
         
         // GENERAL DATA
+        [field: Header("General Data :")]
         [field: SerializeField] public string WeaponName { get; protected set; }
         [field: SerializeField] public string WeaponType { get; protected set; }
         [field: SerializeField] public string WeaponDescription { get; protected set; }
@@ -21,14 +24,17 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         [field: SerializeField] public Weapon Prefab { get; protected set; }
         
         // Audio DATA
+        [field: Header("Audio Data :")]
         [field: SerializeField] public SoundID FireSound { get; protected set; }
         
         // FIRE BEHAVIOURS
+        [field: Header("FireBehaviour Data :")]
         [field: SerializeField] public WeaponFireBehaviour FireBehaviour { get; protected set; }
         [field: SerializeField] public float FireCooldown { get; protected set; }
         [field: SerializeField] public int BulletsPerShot { get; protected set; }
         
         // RECOIL DATA
+        [field: Header("Recoil Data :")]
         [field: SerializeField] public int RecoilPatternShots { get; protected set; }
         [field: SerializeField] public int MaxRecoilShots { get; protected set; }
         [field: SerializeField] public Vector2 BulletDispersionX { get; protected set; }
@@ -41,9 +47,11 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         [field: SerializeField] public WeaponRecoilSettings WeaponRecoilSettings { get; protected set; }
         
         // Crosshair Data
+        [field: Header("Crosshair Data :")]
         [field: SerializeField] public CrosshairOffsetData CrosshairOffsetData { get; protected set; }
         
         // RELOAD DATA
+        [field: Header("ReloadBehaviour Data :")]
         [field: SerializeField] public WeaponReloadBehaviour ReloadBehaviour { get; protected set; }
         [field: SerializeField] public int MagCapacity { get; protected set; }
 
@@ -53,7 +61,10 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         [field: SerializeField] public float ReloadTime { get; protected set; }
         
         // DIALOGUES
-        [field  : Header("Dialogues : ")]
-        [field: SerializeField] public ContextualDialogueData ReloadGialoguesData { get; protected set; }
+        [field: Header("Dialogues Data :")]
+        [field: SerializeField] public ContextualDialogueData ReloadDialogueData { get; protected set; }
+        
+        [field: Header("Dialogues Data :")]
+        [field: SerializeField] public ParticleSystemReference MuzzleFlashPrefab { get; protected set; }
     }
 }

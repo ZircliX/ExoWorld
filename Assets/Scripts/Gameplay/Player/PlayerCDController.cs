@@ -57,6 +57,8 @@ namespace OverBang.ExoWorld.Gameplay.Player
 
         public void FireDialogue(ContextualDialogueData dialogue)
         {
+            if (dialogue == null) return;
+
             float rdn = Random.value;
             
             if (rdn <= dialogue.Probability)

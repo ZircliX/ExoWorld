@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using KBCore.Refs;
+using OverBang.ExoWorld.Core.Components;
 using OverBang.ExoWorld.Core.Damage;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Core.Upgrade;
@@ -12,9 +13,18 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public class DefaultBullet : Bullet, IDamageSource
     {
+        private static readonly RaycastHit[] sphereResults = new RaycastHit[8];
+
+        private class HitDistanceComparer : IComparer<RaycastHit>
+        {
+            public static readonly HitDistanceComparer Instance = new();
+            public int Compare(RaycastHit x, RaycastHit y) => x.distance.CompareTo(y.distance);
+        }
+        
         [SerializeField, Self] private Rigidbody rb;
         [SerializeField, Self] private SphereCollider sc;
         public override IPool Pool { get; protected set; }
+        private Camera cam;
 
         private BulletData data;
         private float damageMultiplier;
@@ -31,6 +41,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private void Awake()
         {
             hitObjects = new List<GameObject>();
+            cam = Camera.main;
         }
         
         public override void OnNetworkSpawn()
@@ -46,77 +57,102 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             }
         }
 
-        public override void Fire(Vector3 origin, Vector3 direction, BulletData bulletData, float damageMultiplier)
+        public override void Fire(Vector3 origin, Vector3 direction, BulletData bulletData, float damageMultiplier, bool shouldCenter)
         {
-            if (!IsOwner) 
-                return;
-            
-            transform.position = origin;
-            transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
-            
-            previousPosition = transform.position;
+            if (!IsOwner) return;
 
+            Vector3 correctedDirection = default;
+            if (shouldCenter)
+            {
+                Ray cameraRay = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)); // Center of cam
+                Vector3 targetPoint = Physics.Raycast(cameraRay, out RaycastHit hit, 500f, GameMetrics.Global.HittableLayers)
+                    ? hit.point
+                    : cameraRay.origin + cameraRay.direction * 500f;
+
+                correctedDirection = (targetPoint - origin).normalized;
+            }
+            else
+            {
+                correctedDirection = direction;
+            }
+
+            transform.position = origin;
+            transform.rotation = Quaternion.LookRotation(correctedDirection, Vector3.up);
+
+            previousPosition = origin;
             data = bulletData;
             this.damageMultiplier = damageMultiplier;
-            
-            if (rb == null) return;
-            rb.AddForce(direction * data.BulletSpeed, ForceMode.Impulse);
+
+            rb.isKinematic = true;
+            rb.linearVelocity = Vector3.zero;
         }
 
         private void FixedUpdate()
         {
-            if (!IsOwner)
-                return;
-            
+            if (!IsOwner) return;
+
             lifeTime += Time.fixedDeltaTime;
             if (lifeTime >= data.BulletLifeTime)
             {
                 ReturnBullet();
                 return;
             }
-            
-            Vector3 currentPosition = transform.position;
+
+            float stepDistance = data.BulletSpeed * Time.fixedDeltaTime;
+            Vector3 direction = transform.forward;
             LayerMask mask = GameMetrics.Global.HittableLayers;
-            
-            int hitSize = Physics.OverlapCapsuleNonAlloc(previousPosition, currentPosition, sc.radius, results, mask, QueryTriggerInteraction.Ignore);
 
-            //Debug.DrawRay(previousPosition, direction * distance.magnitude, Color.red, 0.5f);
-            //Debug.Log(hitSize);
-            
-            for (int i = 0; i < hitSize; i++)
+            // Single reliable SphereCast along the full step
+            int hitCount = Physics.SphereCastNonAlloc(
+                previousPosition,
+                sc.radius,
+                direction,
+                sphereResults,
+                stepDistance,
+                mask,
+                QueryTriggerInteraction.Ignore
+            );
+
+            // Sort by distance so we hit in order
+            System.Array.Sort(sphereResults, 0, hitCount, HitDistanceComparer.Instance);
+
+            bool returned = false;
+            for (int i = 0; i < hitCount; i++)
             {
-                Collider hit = results[i];
-                //Debug.Log($"Bullet hit : {hit.collider.gameObject.name} with tag {hit.collider.tag}", hit.collider.gameObject);
+                RaycastHit hit = sphereResults[i];
+                if (hit.collider == null) continue;
+                if (hit.collider.gameObject.CompareTag("LocalPlayer")) continue;
+                if (hitObjects.Contains(hit.collider.gameObject)) continue;
 
-                if (!hit.gameObject.CompareTag("LocalPlayer"))
-                {
-                    if (hit.TryGetComponent(out IDamageable damageable))
-                    {
-                        //Debug.Log($"Dealing damage to IDamageable {hit.collider.name}", hit.collider.gameObject);
-                        Damage(damageable);
-                    }
-                    
-                    /* To push objects when hit - disabled for now
-                    if(hit.collider.attachedRigidbody != null)
-                    {
-                        hit.collider.attachedRigidbody.AddForce(rb.velocity * data.ImpactForce, ForceMode.Impulse);
-                    }
-                    */
-                    
-                    currentPenetration++;
-                    hitObjects.Add(hit.gameObject);
-                }
-                
+                if (hit.collider.TryGetComponent(out IDamageable damageable))
+                    Damage(damageable);
+
+                // Spawn decal aligned to normal
+                Vector3 decalPoint = hit.point == Vector3.zero ? hit.collider.ClosestPoint(previousPosition) : hit.point;
+                Quaternion decalRot = hit.normal != Vector3.zero ? Quaternion.LookRotation(hit.normal) : Quaternion.identity;
+                ParticleSystemReference system = Instantiate(data.HitDecalPrefab, decalPoint, decalRot);
+                system.Play();
+                Destroy(system.gameObject, 10f);
+
+                currentPenetration++;
+                hitObjects.Add(hit.collider.gameObject);
+
                 if (currentPenetration >= data.Penetration)
                 {
                     ReturnBullet();
+                    returned = true;
                     break;
                 }
             }
-            
-            previousPosition = currentPosition;
-        }
 
+            if (!returned)
+            {
+                // Move bullet manually
+                transform.position = previousPosition + direction * stepDistance;
+                previousPosition = transform.position;
+            }
+        }
+        
         private void ReturnBullet()
         {
             //Debug.Log("Despawning bullet", gameObject);
@@ -130,12 +166,12 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         {
             if (!IsOwner) return;
             Pool = pool;
-            
+
             currentPenetration = 0;
             lifeTime = 0;
-            
-            if (rb == null) return;
-            rb.isKinematic = false;
+            hitObjects.Clear();
+
+            rb.isKinematic = true;
             rb.linearVelocity = Vector3.zero;
         }
 

@@ -50,7 +50,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         {
             if (item.ItemId == currentWeapon.WeaponData.BulletData.ItemData.Data.ItemId)
             {
-                totalAmmoText.text = item.Quantity.ToString();
+                totalAmmoText.text = (item.Quantity / currentWeapon.WeaponData.BulletsPerShot).ToString();
             }
         }
 
