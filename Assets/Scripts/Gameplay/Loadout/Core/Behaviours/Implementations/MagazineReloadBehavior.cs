@@ -25,9 +25,11 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
                 if (!context.performed)
                     return;
 
+                Debug.Log(IsReloading);
                 if (!ShouldReload())
                     return;
 
+                Debug.Log("Reloading");
                 await Reload();
             }
             catch (Exception e)
@@ -50,7 +52,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             
             IsReloading = true;
             
-            PlayerCDController.Instance.FireDialogue(weapon.WeaponData.ReloadGialoguesData);
+            PlayerCDController.Instance.FireDialogue(weapon.WeaponData.ReloadDialogueData);
             
             weapon.State.SetBullets(0);
             

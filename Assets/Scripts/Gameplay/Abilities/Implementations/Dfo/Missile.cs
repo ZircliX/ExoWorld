@@ -97,9 +97,9 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             explosion.Play();
             Destroy(explosion.gameObject, explosion.main.duration);
             
-            ParticleSystem impact = Instantiate(data.ImpactPrefab, transform.position.Add(y: -0.25f), Quaternion.identity);
-            impact.Play();
-            Destroy(impact.gameObject, impact.main.duration);
+            //ParticleSystem impact = Instantiate(data.ImpactPrefab, transform.position.Add(y: -0.25f), Quaternion.identity);
+            //impact.Play();
+            //Destroy(impact.gameObject, impact.main.duration);
             
             //Audio
             BroAudio.Play(data.DetonationSound, transform.position);

@@ -14,8 +14,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         [SerializeField] private WeaponData[] weaponsData;
         [SerializeField] private Transform weaponHolder;
         public event Action<RigBuilder> OnRigBuilderAccessed;
-        public event Action<bool> OnActiveStateChanged;
-        private bool activeState = true;
         
         public Loadout Loadout { get; private set; }
         private Camera cam;
@@ -28,7 +26,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             }
         }
         public PlayerController Controller { get; private set; }
-        private LoadoutController loadoutController;
+        public LoadoutController LoadoutController { get; private set; }
         public Weapon PrimaryWeapon { get; private set; }
         public Weapon SecondaryWeapon { get; private set; }
 
@@ -69,7 +67,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
         public void Initialize(LoadoutController loadoutController)
         {
-            this.loadoutController = loadoutController;
+            this.LoadoutController = loadoutController;
         }
 
         public void OnSync(PlayerRuntimeContext context)
@@ -150,20 +148,12 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             if (IsOwner)
                 playerRig.OnWeaponChange(CurrentWeapon.Rig);
         }
-
-        public void SetActiveState(bool state)
-        {
-            if (!IsOwner) return;
-            activeState = state;
-            OnActiveStateChanged?.Invoke(state);
-        }
         
         #region Inputs
 
         public void OnLeftInput(InputAction.CallbackContext context)
         {
             if (!IsOwner) return;
-            if (!activeState) return;
             CurrentWeapon?.OnShootInput(context);
         }
 
@@ -175,7 +165,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         public void OnMiddleDragInput(InputAction.CallbackContext context)
         {
             if (!IsOwner) return;
-            if (!activeState) return;
             if (!context.performed || CurrentWeapon == null)
                 return;
 
@@ -185,7 +174,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         public void OnRInput(InputAction.CallbackContext context)
         {
             if (!IsOwner) return;
-            if (!activeState) return;
             CurrentWeapon?.OnReloadInput(context);
         }
         

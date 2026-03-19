@@ -13,6 +13,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         public WeaponData WeaponData { get; protected set; }
         public RuntimeWeaponState State { get; protected set; }
         [field: SerializeField, Self] public WeaponRig Rig { get; private set; }
+        [field: SerializeField] public Transform MuzzleTarget { get; private set; }
 
         protected Camera playerCamera;
         public WeaponController WeaponController { get; private set; }
@@ -72,7 +73,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
             if (bulletInstance.TryGetComponent(out Bullet bullet))
             {
-                bullet.Fire(Rig.shootPoint.position, dir, WeaponData.BulletData, WeaponController.DamageMultiplier);
+                bool shouldCenter = WeaponData.BulletData.ItemData.Data.ItemId != "ShotgunAmmo";
+                bullet.Fire(Rig.shootPoint.position, dir, WeaponData.BulletData, WeaponController.DamageMultiplier, shouldCenter);
             }
             else
             {

@@ -13,7 +13,7 @@ namespace Ami.BroAudio.Demo
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!IsInZone && other.gameObject.CompareTag("Player"))
+            if (!IsInZone && other.gameObject.CompareTag("LocalPlayer"))
             {
                 IsInZone = true;
                 InZoneObject = other.gameObject;
@@ -23,7 +23,7 @@ namespace Ami.BroAudio.Demo
 
         private void OnTriggerExit(Collider other)
         {
-            if (IsInZone && other.gameObject.CompareTag("Player"))
+            if (IsInZone && other.gameObject.CompareTag("LocalPlayer"))
             {
                 IsInZone = false;
                 InZoneObject = null;

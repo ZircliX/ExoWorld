@@ -1,5 +1,4 @@
-﻿using System;
-using Ami.BroAudio;
+﻿using Ami.BroAudio;
 using KBCore.Refs;
 using OverBang.ExoWorld.Core.Damage;
 using OverBang.ExoWorld.Core.Database;

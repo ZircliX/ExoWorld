@@ -33,10 +33,6 @@ namespace OverBang.ExoWorld.Gameplay.HUB.Listeners
             //TODO : FOUDROYER LOIS
             Transform spawnPoint = GameObject.FindGameObjectWithTag("Respawn").transform;
             NetworkObject playerObject = player.Spawn(spawnPoint.position, spawnPoint.rotation);
-            if (playerObject.TryGetComponent(out PlayerFlashLight flashLight))
-            {
-                flashLight.SetState(false);
-            }
             
             PoolUtils.PoolType poolType = PoolUtils.PoolType.Characters | PoolUtils.PoolType.Dependencies;
             Awaitable awaitable = PoolUtils.SetupPooling(poolType);

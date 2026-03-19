@@ -144,14 +144,14 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
         private void StartGadgetSelection()
         {
-            IsSelecting = true;
+            IsSelecting = !loadoutController.OnlyUI;
             OnGadgetSelectionBegin?.Invoke(Player);
         }
         
         private void StopGadgetSelection()
         {
-            IsSelecting = false;
             OnGadgetSelectionEnd?.Invoke();
+            IsSelecting = false;
             loadoutController.SwitchCameraInputs(true);
         }
         

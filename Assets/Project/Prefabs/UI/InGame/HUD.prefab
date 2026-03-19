@@ -6183,6 +6183,10 @@ PrefabInstance:
       value: -241.005
       objectReference: {fileID: 0}
     - target: {fileID: 8201009885963097955, guid: 2f4656013e76de348b481aa70a0a030c, type: 3}
+      propertyPath: controllerUI
+      value: 
+      objectReference: {fileID: 3692388850831324730}
+    - target: {fileID: 8201009885963097955, guid: 2f4656013e76de348b481aa70a0a030c, type: 3}
       propertyPath: currentSelectedGadgetText
       value: 
       objectReference: {fileID: 5255607781650615778}
@@ -6191,6 +6195,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f4656013e76de348b481aa70a0a030c, type: 3}
+--- !u!114 &3692388850831324730 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5277977576125151402, guid: 2f4656013e76de348b481aa70a0a030c, type: 3}
+  m_PrefabInstance: {fileID: 8791348341754777232}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daf529b1fbd14965bf06da103b5d0f56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: OverBang.ExoWorld.Gameplay::OverBang.ExoWorld.Gameplay.GadgetControllerUI
 --- !u!224 &4022331779194115206 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5607849934920489494, guid: 2f4656013e76de348b481aa70a0a030c, type: 3}

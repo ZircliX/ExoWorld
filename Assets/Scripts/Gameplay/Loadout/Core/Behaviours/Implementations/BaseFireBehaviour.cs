@@ -1,4 +1,5 @@
 using Ami.BroAudio;
+using OverBang.ExoWorld.Core.Components;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -36,6 +37,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             {
                 if (Weapon.State.CurrentBullets <= 0 && !Weapon.State.IsReloading)
                 {
+                    Debug.Log("Reload with fire");
                     Weapon.reloadBehaviour.Reload();
                 }
                 //Debug.LogWarning($"Could not consume {bulletsToFire} bullet(s).");
@@ -47,6 +49,12 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             {
                 Weapon.Fire();
                 Weapon.RequestOnWeaponFired();
+                ParticleSystemReference muzzle = Object.Instantiate(Weapon.WeaponData.MuzzleFlashPrefab, Weapon.MuzzleTarget);
+                muzzle.Play();
+                Object.Destroy(muzzle.gameObject, 0.5f);
+                
+                Debug.Log("VFX", muzzle.gameObject);
+                //Debug.Break();
             }
 
             BroAudio.Play(Weapon.WeaponData.FireSound);
