@@ -11,7 +11,7 @@ namespace OverBang.ExoWorld.Core.Audios
         [field : SerializeField] public CanvasGroup SubtitleCanvasGroup { get; private set; }
         [field : SerializeField] public TMP_Text NameText { get; private set; }
         [field : SerializeField] public TMP_Text SubtitleText { get; private set; }
-        [field: SerializeField] public float FadeDuration { get; private set; } = 0.1f;
+        [field: SerializeField] public float FadeDuration { get; private set; } = 0.5f;
         public bool IsDead { get; private set; }
         public event Action<SubtitlesUi> OnSubtitleBeingKilled;
         
@@ -52,9 +52,10 @@ namespace OverBang.ExoWorld.Core.Audios
                 .Pause();
             
             intervalSequence = DOTween.Sequence()
-                .Append(SubtitleText.DOFade(1, 0.1f))
+                .Append(SubtitleText.DOFade(1, 0.5f))
                 .AppendInterval(timeBetween)
-                .Append(closeInternalSequence)
+                .AppendCallback(() => closeInternalSequence.Restart())
+                .OnComplete(DisplayMultipleSubtitles)
                 .SetAutoKill(false)
                 .Pause();
         }
@@ -86,7 +87,7 @@ namespace OverBang.ExoWorld.Core.Audios
                     
                     SubtitleText.text = lines[0];
                     openSequence.Restart();
-                    intervalSequence.Play().OnComplete(DisplayMultipleSubtitles);
+                    showTextSequence.Play().AppendInterval(timeBetween).OnComplete(DisplayMultipleSubtitles);
                     
                     return;
             }
@@ -114,7 +115,7 @@ namespace OverBang.ExoWorld.Core.Audios
             }
             
             SubtitleText.text = lines[i];
-            intervalSequence.Play().OnComplete(DisplayMultipleSubtitles);
+            intervalSequence.Play();
         }
         
         private void KillSubtitle()

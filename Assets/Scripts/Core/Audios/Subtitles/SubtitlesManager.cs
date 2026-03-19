@@ -11,7 +11,6 @@ namespace OverBang.ExoWorld.Core.Audios
     public class SubtitlesManager : MonoBehaviour
     {
         [field: SerializeField] public bool Enabled { get; private set; } = true; 
-        [SerializeField] private int maxSubtitlesTextLenght;
         [SerializeField] private RectTransform subtitleArea;
         [SerializeField] private RectTransform subtitlePrefab;
         
@@ -22,6 +21,7 @@ namespace OverBang.ExoWorld.Core.Audios
         {
             subtitlesUisQueue = new List<SubtitlesUi>();
             displayedDialogues = new HashSet<CdQueued>();
+            this.RegisterManager();
         }
 
         private void OnEnable()
@@ -77,7 +77,7 @@ namespace OverBang.ExoWorld.Core.Audios
             subtitlesUi.OnSubtitleBeingKilled += _ => displayedDialogues.Remove(cdQueued);
             AddSubtitleUi(subtitlesUi);
 
-            List<string> lines = SmartSubtitleWrapper.Split(cdQueued.dialogue.text, maxSubtitlesTextLenght);
+            List<string> lines = SmartSubtitleWrapper.Split(cdQueued.dialogue.text, cdQueued.dialogue.maxSubtitlesTextLenght);
             SubtitlesUiType uiType = lines.Count > 1 ? SubtitlesUiType.Multiple : SubtitlesUiType.Simple;
             subtitlesUi.Initialize(characterData.Name, lines, uiType, cdQueued.dialogue.subtitleLifetime, cdQueued.dialogue.timeBetweenLines, characterData.Color);
         }

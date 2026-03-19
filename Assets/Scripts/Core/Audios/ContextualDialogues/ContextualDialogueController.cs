@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Helteix.Singletons.SceneServices;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -6,7 +7,7 @@ using UnityEngine.Pool;
 namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
 {
     
-    public class ContextualDialogueController : MonoBehaviour
+    public class ContextualDialogueController : SceneService<ContextualDialogueController>
     {
         private class CdQueuedComparer : IComparer<CdQueued>
         {
@@ -18,13 +19,18 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
             }
         }
         
-        [SerializeField, Required] private SubtitlesManager subtitlesManager;
+        private SubtitlesManager subtitlesManager;
         private readonly CdQueuedComparer comparer = new CdQueuedComparer();
         private readonly Dictionary<ulong, List<CdQueued>> lineQueue = new Dictionary<ulong, List<CdQueued>>();
 
         private void OnEnable()
         {
             this.RegisterController();
+        }
+
+        public void RegisterManager(SubtitlesManager manager)
+        {
+            subtitlesManager = manager;
         }
 
         private void Update()
@@ -139,6 +145,14 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
             
             Debug.Log("Dialogue Not Found, already ended ?");
             return false;
+        }
+    }
+
+    public static class ContextualDialogueControllerExtensions
+    {
+        public static void RegisterManager(this SubtitlesManager manager)
+        {
+            ContextualDialogueController.Instance.RegisterManager(manager);
         }
     }
 }
