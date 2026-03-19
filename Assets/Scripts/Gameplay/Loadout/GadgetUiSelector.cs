@@ -9,6 +9,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
     public class GadgetUiSelector : MonoBehaviour
     { 
         [SerializeField] private TMP_Text currentSelectedGadgetText;
+        [SerializeField] private GadgetControllerUI controllerUI;
         
         [Header("Menu Settings")]
         [SerializeField, Space] private float radius = 150f;
@@ -25,24 +26,23 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private Vector2 centerPosition;
         private Vector2 accumulatedDelta; 
         
-        private GadgetControllerUI controllerUI;
         public GadgetUi CurrentSelectedGadget { get; private set; }
-        
-        public void Initialize(GadgetControllerUI controllerUI)
+
+        private void OnEnable()
         {
-            this.controllerUI = controllerUI;
+            controllerUI.OnGadgetUiSelectionBegin += StartSelection;
             controllerUI.OnGadgetUiSelectionEnd += OnItemSelected;
             controllerUI.Controller.OnGadgetCasted += UpdateCurrentGadgetAmount;
         }
         
         private void OnDisable()
         {
+            controllerUI.OnGadgetUiSelectionBegin += StartSelection;
             controllerUI.OnGadgetUiSelectionEnd -= OnItemSelected;
             controllerUI.Controller.OnGadgetCasted -= UpdateCurrentGadgetAmount;
         }
         
-        
-        public void StartSelection()
+        private void StartSelection()
         {
             if (CurrentSelectedGadget !=null && !CurrentSelectedGadget.CheckSelectiveness())
             {
@@ -56,6 +56,12 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         
         private void Update()
         {
+            if (controllerUI == null || controllerUI.Controller == null)
+            {
+                Debug.LogError("GadgetUiSelector is missing a reference to a GadgetControllerUI!");
+                return;
+            }
+
             if (!controllerUI.Controller.IsSelecting) return;
             
             Vector2 mouseDelta = Pointer.current.delta.ReadValue();
@@ -118,7 +124,10 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         
         private void OnItemSelected()
         {
-            if (CurrentSelectedGadget == null)
+            if (!controllerUI.Controller.IsSelecting)
+                return;
+            
+            if (CurrentSelectedGadget == null || CurrentSelectedGadget.data == null)
             {
                 controllerUI.SetCurrentSelectedGadget(null);
                 return;

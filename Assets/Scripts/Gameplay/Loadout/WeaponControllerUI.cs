@@ -28,7 +28,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private void OnEnable()
         {
             controller.OnWeaponChanged += OnWeaponChanged;
-            controller.OnActiveStateChanged += OnActiveStateChanged;
+            controller.LoadoutController.OnActiveStateChanged += OnActiveStateChanged;
             UpgradeManager.Instance.OnUpgrade += HandleUpgrade;
             player.Inventory.OnItemQuantityChanged += OnItemQuantityChanged;
 
@@ -40,7 +40,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private void OnDisable()
         {
             controller.OnWeaponChanged -= OnWeaponChanged;
-            controller.OnActiveStateChanged -= OnActiveStateChanged;
+            controller.LoadoutController.OnActiveStateChanged -= OnActiveStateChanged;
             UpgradeManager.Instance.OnUpgrade -= HandleUpgrade;
             player.Inventory.OnItemQuantityChanged -= OnItemQuantityChanged;
             UnsubscribeCurrentWeapon();
@@ -91,11 +91,11 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             UpdateWeaponUI();
         }
 
-        private void OnActiveStateChanged(bool active)
+        private void OnActiveStateChanged(bool onlyUI)
         {
-            weaponIcon.DOFade(active ? 1 : 0.25f, 0.3f);
-            ammoText.DOFade(active ? 1 : 0.25f, 0);
-            totalAmmoText.DOFade(active ? 1 : 0.25f, 0);
+            weaponIcon.DOFade(!onlyUI ? 1 : 0.25f, 0.3f);
+            ammoText.DOFade(!onlyUI ? 1 : 0.25f, 0.3f);
+            totalAmmoText.DOFade(!onlyUI ? 1 : 0.25f, 0.3f);
         }
 
         private void UpdateWeaponUI()
