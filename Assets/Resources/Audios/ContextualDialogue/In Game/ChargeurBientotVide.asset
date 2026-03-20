@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ebe66b7a1e94f888eae60147add7c5d, type: 3}
+  m_Name: ChargeurBientotVide
+  m_EditorClassIdentifier: OverBang.ExoWorld.Core::OverBang.ExoWorld.Core.Audios.ContextualDialogues.ContextualDialogueData
+  <ID>k__BackingField: 0604eada-f755-4ada-8c37-75691e55fbd2
+  <Priority>k__BackingField: 0
+  <Probability>k__BackingField: 1
+  <CanBeHeardByEveryone>k__BackingField: 1
+  <VoiceLifetime>k__BackingField: 0.2
+  <maxSubtitlesTextLenght>k__BackingField: 144
+  clips:
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: bed7478a90a81034487b01a6fbd270ea, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 0
+      text: 'Je dois trouver des munitions le plus vite possible.
+
+'
+      characterCount: 53
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 0
+      text: 'Depuis quand est ce que je tombe en rade de munition moi ?
+
+'
+      characterCount: 59
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 0
+      text: "Bient\xF4t plus de balles, prenons garde."
+      characterCount: 38
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: 6907ab4dd1948334eabe022b53c8b49d, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 0
+      text: "L'\xE9nergie de mon arme est faible.\n"
+      characterCount: 34
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 0
+      text: Avertissement, mes munitions sont faibles.
+      characterCount: 42
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: 8538becf3d7dff243b44f593a4e788a8, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 0
+      text: "Presque \xE0 sec ? Comptez pas sur moi apr\xE8s \xE7a hein.\n"
+      characterCount: 51
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 0
+      text: 'Moi ? A sec ...? Heuuu, qui m''a pris mes balles ?!
+
+'
+      characterCount: 51
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 0
+      text: '"C''est quoi ces armes de merde qui se vident trop vite."'
+      characterCount: 56
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: 464e9e9c5413d1340bd1934a0c4149f5, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 0
+      text: 'Il va me manquer des balles, va falloir passer au grenades.
+
+'
+      characterCount: 60
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 0
+      text: "J'aurais d\xFB \xE9couter maman et prendre plus de balles."
+      characterCount: 52
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}

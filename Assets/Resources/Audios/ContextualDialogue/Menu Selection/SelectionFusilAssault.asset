@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ebe66b7a1e94f888eae60147add7c5d, type: 3}
+  m_Name: SelectionFusilAssault
+  m_EditorClassIdentifier: OverBang.ExoWorld.Core::OverBang.ExoWorld.Core.Audios.ContextualDialogues.ContextualDialogueData
+  <ID>k__BackingField: d90df0e3-57c0-464a-be3f-5df90bd618b1
+  <Priority>k__BackingField: 0
+  <Probability>k__BackingField: 1
+  <CanBeHeardByEveryone>k__BackingField: 1
+  <VoiceLifetime>k__BackingField: 0.2
+  <maxSubtitlesTextLenght>k__BackingField: 144
+  clips:
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: bed7478a90a81034487b01a6fbd270ea, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 0
+      text: "J'ai d\xE9j\xE0 eu mieux entre les mains, mais \xE7a fera l'affaire.\n"
+      characterCount: 60
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 0
+      text: "Une arme fiable... \xE7a faisait longtemps."
+      characterCount: 40
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: 6907ab4dd1948334eabe022b53c8b49d, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 0
+      text: "Quel dr\xF4le d'outil. D'o\xF9 je viens, tel instrument n'exsite pas.\n"
+      characterCount: 64
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 0
+      text: "Rapide est le flot, l\xE9g\xE8re est la prise."
+      characterCount: 40
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: 8538becf3d7dff243b44f593a4e788a8, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 0
+      text: "On est s\xFBr que \xE7a tire encore ce truc ?\n"
+      characterCount: 40
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 0
+      text: "J'esp\xE8re que ce truc est bien raffistol\xE9, je tire pas avec n'importe
+        quoi moi."
+      characterCount: 78
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: 464e9e9c5413d1340bd1934a0c4149f5, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 0
+      text: "J'pr\xE9f\xE8re quand \xE7a explose mais on va faire avec.\n"
+      characterCount: 50
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 0
+      text: "Une arme rapide et pr\xE9cise, manquerait plus qu'elle soit incroyablement
+        belle pour qu'on l'appelle Spikey."
+      characterCount: 106
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}

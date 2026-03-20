@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ebe66b7a1e94f888eae60147add7c5d, type: 3}
+  m_Name: Rechargement
+  m_EditorClassIdentifier: OverBang.ExoWorld.Core::OverBang.ExoWorld.Core.Audios.ContextualDialogues.ContextualDialogueData
+  <ID>k__BackingField: b47a06e2-3796-41ad-a352-ba8e19e2f985
+  <Priority>k__BackingField: 0
+  <Probability>k__BackingField: 1
+  <CanBeHeardByEveryone>k__BackingField: 1
+  <VoiceLifetime>k__BackingField: 0.2
+  <maxSubtitlesTextLenght>k__BackingField: 144
+  clips:
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: bed7478a90a81034487b01a6fbd270ea, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 0
+      text: 'Un instant...
+
+'
+      characterCount: 14
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 0
+      text: "Je ne suis plus derri\xE8re vous, attention.\n"
+      characterCount: 42
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 0
+      text: "Je RECHARGGGGGGE, attention \xE0 vous."
+      characterCount: 35
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: 6907ab4dd1948334eabe022b53c8b49d, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 0
+      text: 'Patience !
+
+'
+      characterCount: 11
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 0
+      text: Je recharge... Surveillez-moi !
+      characterCount: 31
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: 8538becf3d7dff243b44f593a4e788a8, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 0
+      text: 'Je recharge !
+
+'
+      characterCount: 14
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 0
+      text: 'Couvrez-moi !
+
+'
+      characterCount: 14
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 0
+      text: A sec !
+      characterCount: 7
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: 464e9e9c5413d1340bd1934a0c4149f5, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 0
+      text: "Attteennndddeeezz... Ok c'est bon, j'suis pr\xEAt \xE0 vous r\xE8gler
+        votre compte.\n"
+      characterCount: 75
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 0
+      text: "Pause tactique pour Spikey, de retour tr\xE8s vite ne vous en faites
+        pas.\n"
+      characterCount: 71
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 0
+      text: "Laisse moi me rapeller dans quel sens \xE7a va et je suis \xE0 toi."
+      characterCount: 61
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
