@@ -41,7 +41,6 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         
         private void OnExploded(bool endedExplosions)
         {
-            // TODO : Add Sound & VFX
             ParticleSystem ps = Instantiate(data.ExplosionVfx, transform.position, Quaternion.identity);
             Destroy(ps.gameObject, ps.main.duration);
 
