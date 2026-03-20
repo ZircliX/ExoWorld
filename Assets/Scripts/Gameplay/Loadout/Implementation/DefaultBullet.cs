@@ -2,11 +2,13 @@ using System.Collections.Generic;
 using KBCore.Refs;
 using OverBang.ExoWorld.Core.Components;
 using OverBang.ExoWorld.Core.Damage;
+using OverBang.ExoWorld.Core.GameMode.Players;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Core.Upgrade;
 using OverBang.ExoWorld.Gameplay.Targeting;
 using OverBang.ExoWorld.Gameplay.Upgrade;
 using OverBang.Pooling;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout
@@ -25,6 +27,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         [SerializeField, Self] private SphereCollider sc;
         public override IPool Pool { get; protected set; }
         private Camera cam;
+        private NetworkSpawnManager spawnManager;
+        private LocalGamePlayer localGamePlayer;
 
         private BulletData data;
         private float damageMultiplier;
@@ -47,6 +51,9 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         public override void OnNetworkSpawn()
         {
             base.OnNetworkSpawn();
+            
+            spawnManager = NetworkManager.SpawnManager;
+            localGamePlayer = GamePlayerManager.Instance.GetLocalPlayer();
         
             // Only owner simulates physics
             if (!IsOwner)
@@ -121,28 +128,28 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             for (int i = 0; i < hitCount; i++)
             {
                 RaycastHit hit = sphereResults[i];
-                if (hit.collider == null) continue;
-                if (hit.collider.gameObject.CompareTag("LocalPlayer")) continue;
-                if (hitObjects.Contains(hit.collider.gameObject)) continue;
-
-                if (hit.collider.TryGetComponent(out IDamageable damageable))
-                    Damage(damageable);
-
-                // Spawn decal aligned to normal
-                Vector3 decalPoint = hit.point == Vector3.zero ? hit.collider.ClosestPoint(previousPosition) : hit.point;
-                Quaternion decalRot = hit.normal != Vector3.zero ? Quaternion.LookRotation(hit.normal) : Quaternion.identity;
-                ParticleSystemReference system = Instantiate(data.HitDecalPrefab, decalPoint, decalRot);
-                system.Play();
-                Destroy(system.gameObject, 10f);
-
-                currentPenetration++;
-                hitObjects.Add(hit.collider.gameObject);
-
-                if (currentPenetration >= data.Penetration)
+                if (hit.collider != null)
                 {
-                    ReturnBullet();
-                    returned = true;
-                    break;
+                    if (!hit.collider.gameObject.CompareTag("LocalPlayer"))
+                    {
+                        if (hitObjects.Contains(hit.collider.gameObject)) 
+                            continue;
+
+                        if (hit.collider.TryGetComponent(out IDamageable damageable))
+                            Damage(damageable);
+
+                        HandleVFX(hit);
+
+                        currentPenetration++;
+                        hitObjects.Add(hit.collider.gameObject);
+
+                        if (currentPenetration >= data.Penetration)
+                        {
+                            ReturnBullet();
+                            returned = true;
+                            break;
+                        }
+                    }
                 }
             }
 
@@ -151,6 +158,31 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
                 // Move bullet manually
                 transform.position = previousPosition + direction * stepDistance;
                 previousPosition = transform.position;
+            }
+        }
+
+        private void HandleVFX(RaycastHit hit)
+        {
+            // Spawn decal aligned to normal
+            Vector3 decalPoint = hit.point == Vector3.zero
+                ? hit.collider.ClosestPoint(previousPosition)
+                : hit.point;
+            Quaternion decalRot = hit.normal != Vector3.zero
+                ? Quaternion.LookRotation(hit.normal)
+                : Quaternion.identity;
+            
+            NetworkObject hitDecal = spawnManager.InstantiateAndSpawn(data.HitDecalPrefab,
+                localGamePlayer.ClientID,
+                true,
+                true,
+                false,
+                decalPoint,
+                decalRot);
+
+            if (hitDecal.TryGetComponent(out ParticleSystemReference system))
+            {
+                system.Play();
+                Destroy(system.gameObject, 10f);
             }
         }
         

@@ -1,5 +1,7 @@
 using Ami.BroAudio;
 using OverBang.ExoWorld.Core.Components;
+using OverBang.ExoWorld.Core.GameMode.Players;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,11 +13,16 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         public Weapon Weapon { get; protected set; }
         
         protected float consecutiveShotsValue;
+        protected NetworkSpawnManager spawnManager;
+        protected LocalGamePlayer localPlayer;
 
         public virtual void OnInitialize(Weapon weapon)
         {
             Weapon = weapon;
             Weapon.OnWeaponSetCurrent += OnWeaponSetCurrent;
+            
+            spawnManager = NetworkManager.Singleton.SpawnManager;
+            localPlayer = GamePlayerManager.Instance.GetLocalPlayer();
         }
 
         protected abstract void OnWeaponSetCurrent(bool val);
@@ -51,16 +58,9 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             {
                 Weapon.Fire();
                 Weapon.RequestOnWeaponFired();
-                
-                ParticleSystemReference muzzle = Object.Instantiate(Weapon.WeaponData.MuzzleFlashPrefab, Weapon.MuzzleTarget);
-                muzzle.Play();
-                Object.Destroy(muzzle.gameObject, 0.5f);
-                
-                ParticleSystemReference casing = Object.Instantiate(Weapon.WeaponData.EmptyCasePrefab, Weapon.EjectionTarget);
-                casing.Play();
-                Object.Destroy(casing.gameObject, 5f);
             }
-
+            
+            HandleVFX();
             BroAudio.Play(Weapon.WeaponData.FireSound);
             
             WeaponRecoilSettings recoil = Weapon.WeaponData.WeaponRecoilSettings;
@@ -91,6 +91,47 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             );
 
             ConsecutiveShots = Mathf.FloorToInt(consecutiveShotsValue);
+        }
+
+        protected void HandleVFX()
+        {
+            NetworkObject muzzle = spawnManager.InstantiateAndSpawn(Weapon.WeaponData.MuzzleFlashPrefab,
+                localPlayer.ClientID,
+                true,
+                true,
+                false,
+                Weapon.MuzzleTarget.position,
+                Weapon.MuzzleTarget.rotation);
+                
+            if (muzzle.TryGetComponent(out ParticleSystemReference muzzleRef))
+            {
+                muzzleRef.Play();
+                Object.Destroy(muzzle.gameObject, 0.5f);
+            }
+            else
+            {
+                Debug.LogWarning($"Could not get {nameof(ParticleSystemReference)} from muzzle flash instance.", muzzle);
+                Object.Destroy(muzzle.gameObject);
+            }
+                
+            NetworkObject casing = spawnManager.InstantiateAndSpawn(Weapon.WeaponData.EmptyCasePrefab,
+                localPlayer.ClientID,
+                true,
+                true,
+                false,
+                Weapon.EjectionTarget.position,
+                Weapon.EjectionTarget.rotation);
+                
+            if (casing.TryGetComponent(out ParticleSystemReference casingRef))
+            {
+                casingRef.Play();
+                Object.Destroy(casing.gameObject, 5f);
+            }
+            else
+            {
+                Debug.LogWarning($"Could not get {nameof(ParticleSystemReference)} from casing instance.", casing);
+                Object.Destroy(casing.gameObject);
+            }
         }
     }
 }

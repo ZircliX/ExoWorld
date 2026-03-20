@@ -12,7 +12,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
     {
         [field: Header("Prefabs :")]
         [field: SerializeField] public NetworkObject BulletPrefab { get; protected set; }
-        [field: SerializeField] public ParticleSystemReference HitDecalPrefab { get; protected set; }
+        [field: SerializeField] public NetworkObject HitDecalPrefab { get; protected set; }
         
         [field: Header("Movement Data :")]
         [field: SerializeField] public float BulletSpeed { get; protected set; }
