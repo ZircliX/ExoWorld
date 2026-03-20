@@ -134,10 +134,15 @@ MonoBehaviour:
   outVec: {x: 86, y: 86}
   inVec: {x: 64, y: 64}
   minVec: {x: 25, y: 25}
-  loopDuration: 1
+  loopDuration: 0.5
+  scaleLoopDuration: 0.17
   loopCooldown: 0
-  interactEasingCurve: 4
-  interactableColor: {r: 1, g: 0.46021724, b: 0, a: 1}
+  scaleInEasingCurve: 11
+  scaleOutEasingCurve: 12
+  interactEasingCurve: 28
+  loopInEasingCurve: 9
+  loopOutEasingCurve: 2
+  interactableColor: {r: 0.95686275, g: 0.6039216, b: 0.07450981, a: 1}
   enterArea: {fileID: 7991149625404841197}
   interactArea: {fileID: 938723734635732090}
 --- !u!225 &8797179470634142103
