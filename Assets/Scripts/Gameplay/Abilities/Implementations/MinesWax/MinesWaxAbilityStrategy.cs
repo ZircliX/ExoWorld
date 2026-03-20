@@ -3,6 +3,7 @@ using OverBang.ExoWorld.Core.Abilities;
 using OverBang.ExoWorld.Core.Characters;
 using OverBang.ExoWorld.Core.GameMode.Players;
 using Unity.Netcode;
+using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Abilities
 {
@@ -28,6 +29,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         
         public virtual void Begin(IAbility<MinesWaxData> ability)
         {
+            Debug.Log("Begin MinesWax");
             IExplosionStrategy explosionStrategy = GetExplosionStrategy(ability.DataT);
             
             NetworkObject networkObject = spawnManager.InstantiateAndSpawn(ability.DataT.MineWaxPrefab, 
@@ -39,6 +41,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
 
             if (networkObject.TryGetComponent(out MineWax mine))
             {
+                Debug.Log("Spawned MineWax");
                 mine.Initialize(ability.DataT, Caster.Forward, explosionStrategy);
                 activeMines.Add(mine);
             }

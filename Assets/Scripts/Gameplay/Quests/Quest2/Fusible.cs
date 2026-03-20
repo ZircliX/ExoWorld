@@ -76,7 +76,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
 
         public void OnDrop(PlayerInteraction playerInteraction)
         {
-            if (!isUsable.Value) return;
+            //if (!isUsable.Value) return;
             
             transform.position = playerEntity.transform.position;
 
@@ -95,8 +95,8 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         public void Consume()
         {
             isConsumed = true;
-            isUsable.Value = false; // if owner
-            gameObject.SetActive(false);
+            isUsable.Value = false;
+            SetPriority(-1);
         }
 
         public void SetPriority(int prio)

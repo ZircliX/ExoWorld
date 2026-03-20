@@ -287,6 +287,7 @@ GameObject:
   - component: {fileID: 3092788691708449625}
   - component: {fileID: 3610373250367334629}
   - component: {fileID: 1447862212118204962}
+  - component: {fileID: 2507828057770870016}
   m_Layer: 14
   m_Name: Shotgun Model
   m_TagString: Player
@@ -339,6 +340,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.Weapon
   <Rig>k__BackingField: {fileID: 3610373250367334629}
   <MuzzleTarget>k__BackingField: {fileID: 7459123857067401961}
+--- !u!114 &2507828057770870016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3356263050659617615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fcf529844ab4547ac867476615bec73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: OverBang.ExoWorld.Core::OverBang.ExoWorld.Core.Player.PlayerFlashLight
+  flashLight: {fileID: 3918632161311142341}
 --- !u!1 &3549599825926312503
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,6 +503,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b8fcc99f3763e741a47361d52f87d3b, type: 3}
+--- !u!108 &3918632161311142341 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 539778676667487311, guid: 5b8fcc99f3763e741a47361d52f87d3b, type: 3}
+  m_PrefabInstance: {fileID: 3538820955701224842}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9110172393208709890 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5724567084818572936, guid: 5b8fcc99f3763e741a47361d52f87d3b, type: 3}

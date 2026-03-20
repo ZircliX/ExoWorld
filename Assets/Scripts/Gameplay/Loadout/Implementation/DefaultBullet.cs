@@ -83,8 +83,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             data = bulletData;
             this.damageMultiplier = damageMultiplier;
 
-            rb.isKinematic = true;
             rb.linearVelocity = Vector3.zero;
+            rb.isKinematic = true;
         }
 
         private void FixedUpdate()
