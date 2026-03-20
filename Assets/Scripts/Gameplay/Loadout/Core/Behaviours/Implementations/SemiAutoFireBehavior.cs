@@ -4,6 +4,15 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public class SemiAutoFireBehavior : BaseFireBehaviour
     {
+        protected override void OnWeaponSetCurrent(bool val)
+        {
+            if (!val)
+            {
+                ConsecutiveShots = 0;
+                consecutiveShotsValue = 0f;
+            }
+        }
+
         public override void OnShootInput(InputAction.CallbackContext context)
         {
             if (!context.performed)

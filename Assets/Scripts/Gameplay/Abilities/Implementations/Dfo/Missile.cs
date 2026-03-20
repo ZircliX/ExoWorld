@@ -40,6 +40,8 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             
             rb.AddForce(Vector3.down * (data.Speed * Time.deltaTime), ForceMode.Impulse);
             soundSource.Play();
+
+            return;
             
             if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 1000f,
                     GameMetrics.Global.HittableLayers, QueryTriggerInteraction.Ignore))

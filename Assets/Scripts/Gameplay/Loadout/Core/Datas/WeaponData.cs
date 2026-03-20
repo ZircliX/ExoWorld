@@ -64,7 +64,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         [field: Header("Dialogues Data :")]
         [field: SerializeField] public ContextualDialogueData ReloadDialogueData { get; protected set; }
         
-        [field: Header("Dialogues Data :")]
+        [field: Header("VFX Data :")]
         [field: SerializeField] public ParticleSystemReference MuzzleFlashPrefab { get; protected set; }
+        [field: SerializeField] public ParticleSystemReference EmptyCasePrefab { get; protected set; }
     }
 }

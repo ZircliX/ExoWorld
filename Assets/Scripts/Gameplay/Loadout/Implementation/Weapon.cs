@@ -14,19 +14,23 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         public RuntimeWeaponState State { get; protected set; }
         [field: SerializeField, Self] public WeaponRig Rig { get; private set; }
         [field: SerializeField] public Transform MuzzleTarget { get; private set; }
+        [field: SerializeField] public Transform EjectionTarget { get; private set; }
 
-        protected Camera playerCamera;
+        private Camera playerCamera;
         public WeaponController WeaponController { get; private set; }
         
-        public IFireBehaviour fireBehaviour { get; protected set; }
-        public IReloadBehaviour reloadBehaviour { get; protected set; }
+        public IFireBehaviour FireBehaviour { get; private set; }
+        public IReloadBehaviour ReloadBehaviour { get; private set; }
         
         public event Action OnWeaponFired;
-        public event Action OnWeaponReloaded;
+        public event Action<bool> OnWeaponReload;
+        public event Action<bool> OnWeaponSetCurrent;
 
-        private void OnValidate()
+        private void OnValidate() => this.ValidateRefs();
+
+        public void SetCurrent(bool val)
         {
-            this.ValidateRefs();
+            OnWeaponSetCurrent?.Invoke(val);
         }
 
         public virtual void Initialize(WeaponData weaponData, Camera cam, WeaponController weaponController)
@@ -36,25 +40,25 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             playerCamera = cam;
             this.WeaponController = weaponController;
 
-            fireBehaviour = WeaponData.FireBehaviour.CreateFireBehavior();
-            reloadBehaviour = WeaponData.ReloadBehaviour.CreateReloadBehavior();
+            FireBehaviour = WeaponData.FireBehaviour.CreateFireBehavior();
+            ReloadBehaviour = WeaponData.ReloadBehaviour.CreateReloadBehavior();
 
-            fireBehaviour?.OnInitialize(this);
-            reloadBehaviour?.OnInitialize(this);
+            FireBehaviour?.OnInitialize(this);
+            ReloadBehaviour?.OnInitialize(this);
 
             gameObject.SetActive(false);
         }
         
         protected virtual void Update()
         {
-            if (State == null || fireBehaviour == null || reloadBehaviour == null)
+            if (State == null || FireBehaviour == null || ReloadBehaviour == null)
                 return;
             
             float deltaTime = Time.deltaTime;
             
             State.Tick(deltaTime);
-            fireBehaviour.Tick(deltaTime);
-            reloadBehaviour.Tick(deltaTime);
+            FireBehaviour.Tick(deltaTime);
+            ReloadBehaviour.Tick(deltaTime);
         }
 
         public void Fire()
@@ -84,17 +88,17 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
         public virtual void OnShootInput(InputAction.CallbackContext context)
         {
-            fireBehaviour?.OnShootInput(context);
+            FireBehaviour?.OnShootInput(context);
         }
 
         public virtual void OnReloadInput(InputAction.CallbackContext context)
         {
-            reloadBehaviour?.OnReloadInput(context);
+            ReloadBehaviour?.OnReloadInput(context);
         }
 
         public Vector3 GetBulletDirection(Transform shootPoint)
         {
-            int shotIndex = fireBehaviour.ConsecutiveShots;
+            int shotIndex = FireBehaviour.ConsecutiveShots;
             int patternShots = Mathf.Max(WeaponData.RecoilPatternShots, 1);
             
             // Get current pattern index
@@ -126,11 +130,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             return (forward + offset).normalized;
         }
 
-        public void RequestOnWeaponFired()
-        {
-            OnWeaponFired?.Invoke();
-        }
+        public void RequestOnWeaponFired() => OnWeaponFired?.Invoke();
 
-        public void RequestOnWeaponReloaded() => OnWeaponReloaded?.Invoke();
+        public void RequestOnWeaponReloaded(bool isReloading) => OnWeaponReload?.Invoke(isReloading);
     }
 }

@@ -15,8 +15,10 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         public virtual void OnInitialize(Weapon weapon)
         {
             Weapon = weapon;
+            Weapon.OnWeaponSetCurrent += OnWeaponSetCurrent;
         }
 
+        protected abstract void OnWeaponSetCurrent(bool val);
         public abstract void OnShootInput(InputAction.CallbackContext context);
 
         public abstract void Tick(float deltaTime);
@@ -37,8 +39,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             {
                 if (Weapon.State.CurrentBullets <= 0 && !Weapon.State.IsReloading)
                 {
-                    Debug.Log("Reload with fire");
-                    Weapon.reloadBehaviour.Reload();
+                    //Debug.Log("Reload with fire");
+                    Weapon.ReloadBehaviour.Reload();
                 }
                 //Debug.LogWarning($"Could not consume {bulletsToFire} bullet(s).");
                 return;
@@ -49,12 +51,14 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             {
                 Weapon.Fire();
                 Weapon.RequestOnWeaponFired();
+                
                 ParticleSystemReference muzzle = Object.Instantiate(Weapon.WeaponData.MuzzleFlashPrefab, Weapon.MuzzleTarget);
                 muzzle.Play();
                 Object.Destroy(muzzle.gameObject, 0.5f);
                 
-                Debug.Log("VFX", muzzle.gameObject);
-                //Debug.Break();
+                ParticleSystemReference casing = Object.Instantiate(Weapon.WeaponData.EmptyCasePrefab, Weapon.EjectionTarget);
+                casing.Play();
+                Object.Destroy(casing.gameObject, 5f);
             }
 
             BroAudio.Play(Weapon.WeaponData.FireSound);

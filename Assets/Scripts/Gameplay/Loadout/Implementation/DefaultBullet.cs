@@ -82,7 +82,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             previousPosition = origin;
             data = bulletData;
             this.damageMultiplier = damageMultiplier;
-
+            
+            rb.isKinematic = false;
             rb.linearVelocity = Vector3.zero;
             rb.isKinematic = true;
         }
@@ -172,7 +173,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             hitObjects.Clear();
 
             rb.isKinematic = true;
-            rb.linearVelocity = Vector3.zero;
         }
 
         public override void OnDespawn(IPool pool)
@@ -180,8 +180,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             if (!IsOwner) return;
             if (rb == null) return;
             
-            if (!rb.isKinematic)
-                rb.linearVelocity = Vector3.zero;
             rb.isKinematic = true;
         }
 
