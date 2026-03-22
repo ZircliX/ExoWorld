@@ -138,10 +138,15 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private void SetVisibleWeaponRpc(WeaponCategory category)
         {
             Weapon previousWeapon = CurrentWeapon;
+            
+            if (previousWeapon != null)
+                previousWeapon.SetCurrent(false);
 
             PrimaryWeapon.gameObject.SetActive(category == WeaponCategory.Primary);
             SecondaryWeapon.gameObject.SetActive(category == WeaponCategory.Secondary);
             CurrentWeaponCategory = category;
+
+            CurrentWeapon.SetCurrent(true);
 
             OnWeaponChanged?.Invoke(previousWeapon, CurrentWeapon);
 

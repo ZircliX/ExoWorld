@@ -8,13 +8,17 @@ namespace OverBang.ExoWorld.Core.Player
     {
         [SerializeField] private Light flashLight;
 
-        private void OnEnable()
+        private void Awake()
         {
-            SetState(SceneLoader.GetCurrentScene().name != GameMetrics.Global.SceneCollection.HubSceneRef.Name);
+            if (flashLight == null) flashLight = GetComponentInChildren<Light>();
+
+            bool state = SceneLoader.GetCurrentScene().name != GameMetrics.Global.SceneCollection.HubSceneRef.Name;
+            SetState(state);
         }
 
         private void SetState(bool state)
         {
+            if (flashLight == null) return;
             flashLight.enabled = state;
         }
     }

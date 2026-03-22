@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3092788691708449625}
   - component: {fileID: 3610373250367334629}
   - component: {fileID: 2363746963960901663}
+  - component: {fileID: 1243818358241332970}
   m_Layer: 14
   m_Name: PistolModel
   m_TagString: Player
@@ -63,6 +64,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.Weapon
   <Rig>k__BackingField: {fileID: 3610373250367334629}
   <MuzzleTarget>k__BackingField: {fileID: 8322446784746536301}
+  <EjectionTarget>k__BackingField: {fileID: 5394874945094385273}
+--- !u!114 &1243818358241332970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3356263050659617615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fcf529844ab4547ac867476615bec73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: OverBang.ExoWorld.Core::OverBang.ExoWorld.Core.Player.PlayerFlashLight
+  flashLight: {fileID: 582346519468921051}
 --- !u!1 &3549599825926312503
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,6 +540,7 @@ Transform:
   - {fileID: 4029808164713946979}
   - {fileID: 4029808164713946981}
   - {fileID: 8322446784746536301}
+  - {fileID: 5394874945094385273}
   m_Father: {fileID: 4029808164713946989}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4029808164710522699
@@ -615,6 +631,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4029808164713946989}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5889745899796440840
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5394874945094385273}
+  m_Layer: 14
+  m_Name: EjectTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5394874945094385273
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5889745899796440840}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.0042, y: 0.0309, z: -0.0265}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4029808164713946991}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &6872623868082857424
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,6 +750,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b8fcc99f3763e741a47361d52f87d3b, type: 3}
+--- !u!108 &582346519468921051 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 539778676667487311, guid: 5b8fcc99f3763e741a47361d52f87d3b, type: 3}
+  m_PrefabInstance: {fileID: 1110494418793251988}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4618718102660112924 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5724567084818572936, guid: 5b8fcc99f3763e741a47361d52f87d3b, type: 3}

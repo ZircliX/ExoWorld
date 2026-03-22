@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5724567084818572936}
   - component: {fileID: 539778676667487311}
   - component: {fileID: 6497512096806038343}
-  - component: {fileID: 5085369985636106181}
   m_Layer: 14
   m_Name: Light
   m_TagString: Untagged
@@ -241,16 +240,3 @@ MonoBehaviour:
   m_ObsoleteUseShadowQualitySettings: 0
   m_ObsoleteCustomShadowResolution: 512
   m_ObsoleteContactShadows: 0
---- !u!114 &5085369985636106181
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8184510978320541783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fcf529844ab4547ac867476615bec73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: OverBang.ExoWorld.Core::OverBang.ExoWorld.Core.Player.PlayerFlashLight
-  flashLight: {fileID: 539778676667487311}

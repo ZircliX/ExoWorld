@@ -21,17 +21,18 @@ namespace OverBang.ExoWorld.Core.Audios
         {
             subtitlesUisQueue = new List<SubtitlesUi>();
             displayedDialogues = new HashSet<CdQueued>();
-            this.RegisterManager();
         }
 
         private void OnEnable()
         {
             PlayerSettings.Instance.OnSubtitlesChanged += SetSubtitlesEnabled;
+            this.RegisterManager();
         }
 
         private void OnDisable()
         {
             PlayerSettings.Instance.OnSubtitlesChanged -= SetSubtitlesEnabled;
+            this.UnregisterManager();
         }
 
         private void Update()

@@ -4,6 +4,7 @@ using OverBang.ExoWorld.Core.Components;
 using OverBang.ExoWorld.Core.Upgrade;
 using OverBang.ExoWorld.Gameplay.Loadout.Crosshair;
 using OverBang.ExoWorld.Gameplay.Upgrade;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout
@@ -64,7 +65,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         [field: Header("Dialogues Data :")]
         [field: SerializeField] public ContextualDialogueData ReloadDialogueData { get; protected set; }
         
-        [field: Header("Dialogues Data :")]
-        [field: SerializeField] public ParticleSystemReference MuzzleFlashPrefab { get; protected set; }
+        [field: Header("VFX Data :")]
+        [field: SerializeField] public NetworkObject MuzzleFlashPrefab { get; protected set; }
+        [field: SerializeField] public NetworkObject EmptyCasePrefab { get; protected set; }
     }
 }

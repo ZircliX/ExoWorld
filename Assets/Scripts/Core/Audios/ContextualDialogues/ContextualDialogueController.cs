@@ -33,6 +33,14 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
             subtitlesManager = manager;
         }
 
+        public void UnregisterManager(SubtitlesManager manager)
+        {
+            if (subtitlesManager == manager)
+            {
+                subtitlesManager = null;
+            }
+        }
+
         private void Update()
         {
             float dt = Time.deltaTime;
@@ -87,7 +95,8 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
                 }
 
                 cdQueued.Fire();
-                subtitlesManager.DisplaySubtitle(cdQueued);
+                if (subtitlesManager != null)
+                    subtitlesManager.DisplaySubtitle(cdQueued);
             }
             else if (cdQueued.IsFinished)
             {
@@ -153,6 +162,11 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
         public static void RegisterManager(this SubtitlesManager manager)
         {
             ContextualDialogueController.Instance.RegisterManager(manager);
+        }
+        
+        public static void UnregisterManager(this SubtitlesManager manager)
+        {
+            ContextualDialogueController.Instance.UnregisterManager(manager);
         }
     }
 }

@@ -9,6 +9,7 @@ namespace OverBang.ExoWorld.Core.Components
         [field: SerializeField] public ParticleSystem MainParticleSystem { get; private set; }
         [field: SerializeField] public ParticleSystem[] SubParticleSystem { get; private set; }
         [field: SerializeField] public bool Looping { get; private set; } = true;
+        [field: SerializeField] public bool PlayOnAwake { get; private set; } = true;
         
         public float MaxDuration => MainParticleSystem?.main.duration ?? SubParticleSystem.Max(ps => ps.main.duration);
 
@@ -18,12 +19,14 @@ namespace OverBang.ExoWorld.Core.Components
             {
                 ParticleSystem.MainModule main = MainParticleSystem.main;
                 main.loop = Looping;
+                main.playOnAwake = PlayOnAwake;
             }
 
             for (int i = 0; i < SubParticleSystem.Length; i++)
             {
                 ParticleSystem.MainModule mainModule = SubParticleSystem[i].main;
                 mainModule.loop = Looping;
+                mainModule.playOnAwake = PlayOnAwake;
             }
         }
 
