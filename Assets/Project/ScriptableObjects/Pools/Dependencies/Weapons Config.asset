@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fdf83d613fe4a489da51b047be467e6, type: 3}
+  m_Name: Weapons Config
+  m_EditorClassIdentifier: OverBang.Pooling.Runtime:OverBang.Pooling.Resource:SimplePoolConfigData
+  <Config>k__BackingField:
+  - <PoolSize>k__BackingField: 10
+    <PoolResource>k__BackingField: {fileID: 11400000, guid: 369e6753a4c4cd749a3b2309af60e11d, type: 2}
+  - <PoolSize>k__BackingField: 10
+    <PoolResource>k__BackingField: {fileID: 11400000, guid: 633145772fec8c14da9f7203ad0708e2, type: 2}
+  - <PoolSize>k__BackingField: 10
+    <PoolResource>k__BackingField: {fileID: 11400000, guid: 6dac620f5ba5af94bb33e04621eddbd6, type: 2}
+  - <PoolSize>k__BackingField: 10
+    <PoolResource>k__BackingField: {fileID: 11400000, guid: b21a8adf851a9b64fa4c285989c397e0, type: 2}
+  - <PoolSize>k__BackingField: 10
+    <PoolResource>k__BackingField: {fileID: 11400000, guid: d6f94721ee25bcb4f9621f71a153b524, type: 2}
+  - <PoolSize>k__BackingField: 10
+    <PoolResource>k__BackingField: {fileID: 11400000, guid: d6154e68511597a449d10aa47e432060, type: 2}
+  - <PoolSize>k__BackingField: 10
+    <PoolResource>k__BackingField: {fileID: 11400000, guid: fbe9acdd676b9824b9f8313df27347c0, type: 2}
+  - <PoolSize>k__BackingField: 10
+    <PoolResource>k__BackingField: {fileID: 11400000, guid: 6a64a0f3209b56e45b27885c0a4bb8f7, type: 2}
+  - <PoolSize>k__BackingField: 10
+    <PoolResource>k__BackingField: {fileID: 11400000, guid: 989231530b70d1a44bd096cb54ccba27, type: 2}
+  - <PoolSize>k__BackingField: 10
+    <PoolResource>k__BackingField: {fileID: 11400000, guid: 79f936e837105b7488378aa7d6ceec4b, type: 2}

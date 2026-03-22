@@ -43,7 +43,7 @@ namespace OverBang.ExoWorld.Core.Characters
         public AbilityData SecondaryAbility { get; private set; }
         
         [field: SerializeField, Space] 
-        public SimplePoolConfig[] Dependencies { get; private set; }
+        public SimplePoolConfigData[] Dependencies { get; private set; }
 
         [field: SerializeField, ReadOnly]
         public string ID { get; private set; }
@@ -63,8 +63,16 @@ namespace OverBang.ExoWorld.Core.Characters
             
             for (int i = 0; i < Dependencies.Length; i++)
             {
-                if(Dependencies[i])
-                    poolConfigs.Add(Dependencies[i]);
+                SimplePoolConfigData simplePoolConfigData = Dependencies[i];
+                if (simplePoolConfigData == null)
+                    continue;
+                
+                for (int j = 0; j < simplePoolConfigData.Config.Length; j++)
+                {
+                    SimplePoolConfig simplePoolConfig = simplePoolConfigData.Config[j];
+                    if(simplePoolConfig)
+                        poolConfigs.Add(simplePoolConfig);
+                }
             }
         }
     }

@@ -1,6 +1,7 @@
 using Ami.BroAudio;
 using OverBang.ExoWorld.Core.Components;
 using OverBang.ExoWorld.Core.GameMode.Players;
+using OverBang.ExoWorld.Core.Utils;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -106,12 +107,12 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             if (muzzle.TryGetComponent(out ParticleSystemReference muzzleRef))
             {
                 muzzleRef.Play();
-                Object.Destroy(muzzle.gameObject, 0.5f);
+                DespawnAfterDelay(muzzleRef.GetComponent<NetworkObject>(), 0.5f).Run();
             }
             else
             {
                 Debug.LogWarning($"Could not get {nameof(ParticleSystemReference)} from muzzle flash instance.", muzzle);
-                Object.Destroy(muzzle.gameObject);
+                muzzleRef.GetComponent<NetworkObject>().Despawn();
             }
                 
             NetworkObject casing = spawnManager.InstantiateAndSpawn(Weapon.WeaponData.EmptyCasePrefab,
@@ -125,13 +126,19 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             if (casing.TryGetComponent(out ParticleSystemReference casingRef))
             {
                 casingRef.Play();
-                Object.Destroy(casing.gameObject, 5f);
+                DespawnAfterDelay(casingRef.GetComponent<NetworkObject>(), 5f).Run();
             }
             else
             {
                 Debug.LogWarning($"Could not get {nameof(ParticleSystemReference)} from casing instance.", casing);
-                Object.Destroy(casing.gameObject);
+                casingRef.GetComponent<NetworkObject>().Despawn();
             }
+        }
+        
+        private async Awaitable DespawnAfterDelay(NetworkObject networkObject, float delay)
+        {
+            await Awaitable.WaitForSecondsAsync(delay);
+            networkObject.Despawn();
         }
     }
 }

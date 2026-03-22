@@ -5,6 +5,7 @@ using OverBang.ExoWorld.Core.Damage;
 using OverBang.ExoWorld.Core.GameMode.Players;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Core.Upgrade;
+using OverBang.ExoWorld.Core.Utils;
 using OverBang.ExoWorld.Gameplay.Targeting;
 using OverBang.ExoWorld.Gameplay.Upgrade;
 using OverBang.Pooling;
@@ -182,8 +183,14 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             if (hitDecal.TryGetComponent(out ParticleSystemReference system))
             {
                 system.Play();
-                Destroy(system.gameObject, 10f);
+                DespawnAfterDelay(system.GetComponent<NetworkObject>(), 10f).Run();
             }
+        }
+        
+        private async Awaitable DespawnAfterDelay(NetworkObject networkObject, float delay)
+        {
+            await Awaitable.WaitForSecondsAsync(delay);
+            networkObject.Despawn();
         }
         
         private void ReturnBullet()

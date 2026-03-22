@@ -9,7 +9,7 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
         [field: SerializeField] public Transform DamageTarget { get; private set; }
         public void TakeDamage(RuntimeDamageData damage)
         {
-            Debug.Log("aajhhfgbsjhgbwsfkygswdkf");
+            //Debug.Log("aajhhfgbsjhgbwsfkygswdkf");
         }
     }
 }
