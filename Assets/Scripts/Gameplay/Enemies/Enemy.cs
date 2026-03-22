@@ -166,6 +166,9 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
             foreach (ITargetable target in currentTargetsInRange)
             {
                 if (!target.IsTargetable) continue;
+    
+                // also check if the target is alive if you have access to it
+                if (target is IHealth hp && !(hp.Health > 0)) continue;
 
                 float distance = Vector3.Distance(transform.position, target.transform.position);
                 float score = distance / (1 + (int)target.Priority);
