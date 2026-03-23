@@ -156,7 +156,7 @@ namespace OverBang.ExoWorld.Gameplay.Movement
         
         public void UseJump()
         {
-            jumpCooldown = 0.25f;
+            jumpCooldown = 0.75f;
             currentJump--;
         }
         

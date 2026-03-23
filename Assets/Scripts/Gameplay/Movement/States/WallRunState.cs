@@ -10,6 +10,7 @@ namespace OverBang.ExoWorld.Gameplay.Movement
     {
         [field: Header("Camera Effects")]
         [field: SerializeField] public CameraEffectData CameraEffectData { get; protected set; }
+        [field: SerializeField] public CameraShakeData CameraShakeData { get; protected set; }
 
         [Header("Speed")]
         [SerializeField] private float wallrunSpeed;
@@ -66,6 +67,11 @@ namespace OverBang.ExoWorld.Gameplay.Movement
                 comp.Speed);
 
             return cameraEffectComposite;
+        }
+        
+        public override CameraShakeComposite GetCameraShakes(EntityMovement movement, float deltaTime)
+        {
+            return CameraShakeData.CameraShakeComposite;
         }
 
         public override Vector3 GetVelocity(EntityMovement movement, float deltaTime, ref float gravityScale)
