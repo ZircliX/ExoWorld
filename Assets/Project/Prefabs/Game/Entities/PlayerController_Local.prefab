@@ -67,6 +67,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   em: {fileID: 4862076419946111438}
+--- !u!1 &797438675846319883
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6065920750057708852}
+  m_Layer: 0
+  m_Name: View
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6065920750057708852
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797438675846319883}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 15}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4581234042795819341}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &802856749566778651
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,7 +341,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6065920750057708852}
   m_Father: {fileID: 1518980571670799238}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4752699177290024824
@@ -473,6 +505,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 153522939717772411}
+  - {fileID: 986342141974403812}
   m_Father: {fileID: 7830069918296049799}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7482118811950782185
@@ -495,7 +528,7 @@ MonoBehaviour:
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
-    TrackingTarget: {fileID: 0}
+    TrackingTarget: {fileID: 6065920750057708852}
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
@@ -567,6 +600,7 @@ MonoBehaviour:
   cam: {fileID: 7482118811950782185}
   camFollow: {fileID: 5279472614157982913}
   camRecomposer: {fileID: 8255718729011407295}
+  headBumpBlendDuration: 0.2
 --- !u!114 &8937290672354039254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1930,7 +1964,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1403345774935625009, guid: 4f56e56d76eb55849871f002de085f31, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -205
+      value: -241.005
       objectReference: {fileID: 0}
     - target: {fileID: 1942648824966471871, guid: 4f56e56d76eb55849871f002de085f31, type: 3}
       propertyPath: m_AnchorMax.y

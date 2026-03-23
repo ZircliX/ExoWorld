@@ -28,7 +28,7 @@ namespace OverBang.ExoWorld.Gameplay.IK_Animation
             // Debug visualization
             if (target != null)
             {
-                Debug.DrawLine(transform.position, target.position, Color.red, Time.deltaTime);
+                Debug.DrawLine(transform.position, target.position, Color.green, Time.deltaTime);
             }
             
             if (rotationConstraint && target != null)

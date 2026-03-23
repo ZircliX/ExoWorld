@@ -20,6 +20,7 @@ namespace OverBang.ExoWorld.Gameplay.Movement
         public abstract (float, float) GetHeight(EntityMovement movement);
 
         public abstract CameraEffectComposite GetCameraEffects(EntityMovement movement, float deltaTime);
+        public abstract CameraShakeComposite GetCameraShakes(EntityMovement movement, float deltaTime);
 
         protected virtual Vector3 GetCameraDirection(EntityMovement movement, Vector2 direction)
         {
