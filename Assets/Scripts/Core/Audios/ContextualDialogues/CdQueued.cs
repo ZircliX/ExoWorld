@@ -39,11 +39,45 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
 
         public void Fire()
         {
-            if(context.networkObject.TryGet(out NetworkObject no))
+            if (context.networkObject.TryGet(out NetworkObject no))
             {
                 if (!no.TryGetComponent(out PlayerReferences playerLinks)) return;
-                if (!dialogue.soundID.IsValid()) return; 
+                if (!dialogue.soundID.IsValid()) return;
+
                 AudioPlayer = BroAudio.Play(dialogue.soundID, playerLinks.PlayerTransform);
+
+                if (dialogue.radioEffect)
+                {
+                    AudioPlayer
+                        .AddHighPassEffect((ctx) =>
+                        {
+                            // Bass Cut
+                            ctx.cutoffFrequency = 1100f;
+                        })
+                        .AddLowPassEffect((ctx) =>
+                        {
+                            // Treble Cut
+                            ctx.cutoffFrequency = 3250f;
+                        })
+                        .AddChorusEffect((ctx) =>
+                        {
+                            // Slight modulation for a more "radio-like" sound
+                            
+                            ctx.depth = 1;
+                            ctx.rate = 5f;
+                            ctx.dryMix = 0.75f;
+                            ctx.delay = 1f;
+                            ctx.wetMix1 = 0.25f;
+                            ctx.wetMix2 = 0.25f;
+                            ctx.wetMix3 = 0.25f;
+                        })
+                        .AddDistortionEffect(ctx =>
+                        {
+                            // Distortion Level
+                            
+                            ctx.distortionLevel = 0.25f;
+                        });
+                }
             }           
         }
 

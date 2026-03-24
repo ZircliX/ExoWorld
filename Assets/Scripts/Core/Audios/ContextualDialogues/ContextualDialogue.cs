@@ -15,18 +15,20 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
         public readonly SoundID soundID;
         public readonly CharacterData character;
         public readonly bool canBeHeardByEveryone;
+        public readonly bool radioEffect;
 
         public ContextualDialogue(CharacterData characterData, ContextualDialogueData data, ContextualClip.CharacterLine line)
         {
+            text = line.text;
+            priority = data.Priority;
+            voiceLifetime = data.VoiceLifetime;
+            subtitleLifetime = line.subtitleLifeTime;
+            timeBetweenLines = line.delayBetweenLines;
+            maxSubtitlesTextLenght = data.MaxSubtitlesTextLenght;
+            soundID = line.soundID;
             character = characterData;
             canBeHeardByEveryone = data.CanBeHeardByEveryone;
-            voiceLifetime = data.VoiceLifetime;
-            maxSubtitlesTextLenght = data.maxSubtitlesTextLenght;
-            timeBetweenLines = line.delayBetweenLines;
-            priority = data.Priority;
-            subtitleLifetime = line.subtitleLifeTime;
-            soundID = line.soundID;
-            text = line.text;
+            radioEffect = data.RadioEffect;
         }
 
         public bool Equals(ContextualDialogue other)

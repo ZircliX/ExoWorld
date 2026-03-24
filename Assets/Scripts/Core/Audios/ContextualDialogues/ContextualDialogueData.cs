@@ -11,9 +11,10 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
         [field: SerializeField, ReadOnly] public string ID {get; private set;}
         [field: SerializeField, Range(0, 5)] public int Priority { get; private set; } = 0;
         [field: SerializeField, Range(0, 1)] public float Probability { get; private set; } = 1;
-        [field: SerializeField] public bool CanBeHeardByEveryone { get; private set; } = true;
         [field: SerializeField] public float VoiceLifetime { get; private set; } = 0.2f;
-        [field: SerializeField] public int maxSubtitlesTextLenght { get; private set; } = 144;
+        [field: SerializeField] public int MaxSubtitlesTextLenght { get; private set; } = 144;
+        [field: SerializeField] public bool CanBeHeardByEveryone { get; private set; } = true;
+        [field: SerializeField] public bool RadioEffect { get; private set; } = true;
 
         [SerializeField, ListDrawerSettings(ShowFoldout = false)] 
         private ContextualClip[] clips;
@@ -55,7 +56,7 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
                     ContextualClip.CharacterLine line = clips[i].Lines[j]; 
                     line.UpdateCharacterCount();
 
-                    if (line.characterCount > maxSubtitlesTextLenght)
+                    if (line.characterCount > MaxSubtitlesTextLenght)
                     {
                         line.UpdateCondition(true);
                     }
