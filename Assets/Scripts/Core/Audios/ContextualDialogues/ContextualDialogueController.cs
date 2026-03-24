@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Helteix.Singletons.MonoSingletons;
 using Helteix.Singletons.SceneServices;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -27,6 +28,11 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
         {
             this.RegisterController();
         }
+
+        protected override void Activate()
+        {
+            DontDestroyOnLoad(gameObject);
+        } 
 
         public void RegisterManager(SubtitlesManager manager)
         {
@@ -106,7 +112,7 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
 
         public void RegisterPlayer(ulong playerId)
         {
-            lineQueue.Add(playerId, new List<CdQueued>());
+            if(!lineQueue.ContainsKey(playerId)) lineQueue.Add(playerId, new List<CdQueued>());
         }
 
         public void UnregisterPlayer(ulong playerId)

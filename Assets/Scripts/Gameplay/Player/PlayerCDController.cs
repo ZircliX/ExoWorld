@@ -1,13 +1,14 @@
-﻿using System.Collections.Generic;
-using OverBang.ExoWorld.Core.Audios.ContextualDialogues;
+﻿using OverBang.ExoWorld.Core.Audios.ContextualDialogues;
 using OverBang.ExoWorld.Core.GameMode.Players;
+using OverBang.ExoWorld.Core.Phases;
+using OverBang.ExoWorld.Gameplay.Phase;
 using Unity.Netcode;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace OverBang.ExoWorld.Gameplay.Player
 {
-    public class PlayerCDController : NetworkBehaviour
+    public class PlayerCDController : NetworkBehaviour, IPhaseListener<HubPhase>
     {
         public static PlayerCDController Instance { get; private set; }
         [field : SerializeField] public NetworkObject PlayerTransform { get; private set; }
@@ -19,19 +20,32 @@ namespace OverBang.ExoWorld.Gameplay.Player
             }
         }
 
-        private static readonly Dictionary<ulong, PlayerCDController> playerCDControllers = new();
-
         public override void OnNetworkSpawn()
         {
-            playerCDControllers.Add(OwnerClientId, this);
             Debug.Log($"registering player to contextualDialogueManager with id : {OwnerClientId} ");
-            ContextualDialogueManager.Controller.RegisterPlayer(OwnerClientId);
+            ulong id = OwnerClientId;
+            RegisterPlayerRpc(id);
+        }
+
+        [Rpc(SendTo.Everyone)]
+        private void RegisterPlayerRpc(ulong id)
+        {
+            Debug.Log(id);
+            Debug.Log(ContextualDialogueManager.Controller);
+            ContextualDialogueManager.Controller.RegisterPlayer(id);
         }
 
         public override void OnNetworkDespawn()
         {
-            playerCDControllers.Remove(OwnerClientId);
             ContextualDialogueManager.Controller.UnregisterPlayer(OwnerClientId);
+            ulong id = OwnerClientId;
+            UnregisterPlayerRpc(id);
+        }
+
+        [Rpc(SendTo.Everyone)]
+        private void UnregisterPlayerRpc(ulong id)
+        {
+            ContextualDialogueManager.Controller.UnregisterPlayer(id);
         }
 
         private CDContext GetContext()
@@ -45,7 +59,6 @@ namespace OverBang.ExoWorld.Gameplay.Player
                 sourceType = CDContext.SourceType.FollowSpatialized
             };
         }
-        
         
         public void FireDialogue(string id)
         {
@@ -79,9 +92,22 @@ namespace OverBang.ExoWorld.Gameplay.Player
         [Rpc(SendTo.Everyone)]
         private void FireDialogueRpc(string id, CDContext context)
         {
-            //Debug.Log("Fire Audio RPC : " + id + "");
             ContextualDialogueManager.FireEvent(id, context);
         }
-        
+
+        public void OnBegin(HubPhase phase)
+        {
+            phase.OnCharacterSelected += OnCharacterSelected;
+        }
+
+        private void OnCharacterSelected(LocalGamePlayer arg1, bool arg2)
+        {
+            RegisterPlayerRpc(OwnerClientId);
+        }
+
+        public void OnEnd(HubPhase phase)
+        {
+            phase.OnCharacterSelected -= OnCharacterSelected;
+        }
     }
 }

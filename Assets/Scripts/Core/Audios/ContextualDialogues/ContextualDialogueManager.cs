@@ -60,7 +60,7 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
         {
             if (loadedData.TryGetValue(id, out ContextualDialogueData contextualDialogueData))
             {
-                if (contextualDialogueData.TryGetClip(from, out var line))
+                if (contextualDialogueData.TryGetClip(from, out ContextualClip.CharacterLine line))
                 {
                     dialogue = new ContextualDialogue(from, contextualDialogueData, line);
                     return true;
