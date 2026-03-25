@@ -95,8 +95,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
   m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
+  m_MeshLodSelectionBias: -1
+  m_RenderingLayerMask: 3
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: c4f43a952dfeb7d4f90e3ea110eca03c, type: 2}
@@ -142,5 +142,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0, y: 2.695646, z: 3.5387464}
+  m_Size: {x: 0.2, y: 2.695646, z: 3.5387464}
   m_Center: {x: 0, y: 0, z: 0}
