@@ -26,7 +26,7 @@ MonoBehaviour:
     _sourceAsset: {fileID: 11400000, guid: 1e98a9d7d89afe544803e95a716644ff, type: 2}
     <DebugObject>k__BackingField: {fileID: 0}
   <FireBehaviour>k__BackingField: 0
-  <FireCooldown>k__BackingField: 0.3
+  <FireCooldown>k__BackingField: 1.25
   <BulletsPerShot>k__BackingField: 1
   <RecoilPatternShots>k__BackingField: 5
   <MaxRecoilShots>k__BackingField: 5
@@ -136,7 +136,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   <CurveMultiplier>k__BackingField: 1
   <RandomnessMultiplier>k__BackingField: 2
-  <ResetLerpSpeed>k__BackingField: 15
+  <ResetLerpSpeed>k__BackingField: 10
   <WeaponRecoilSettings>k__BackingField: {fileID: 11400000, guid: 091fd960d7f50b640b1b0edee377c259, type: 2}
   <CrosshairOffsetData>k__BackingField: {fileID: 11400000, guid: 4deeaaf93ed5ba4478e747e35578642e, type: 2}
   <ReloadBehaviour>k__BackingField: 1

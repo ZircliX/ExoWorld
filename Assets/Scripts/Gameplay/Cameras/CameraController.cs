@@ -22,6 +22,7 @@ namespace OverBang.ExoWorld.Gameplay.Cameras
         private CameraShakeComposite targetShakeComposite;
         private CameraShakeComposite baseComposite; // pan/dutch source
         [SerializeField] private float headBumpBlendDuration = 0.2f;
+        [SerializeField] private float headBumpReactiveSpeed = 8f;
         private float headBumpTimer;
         private float blendTimer;
         private float currentTilt;
@@ -62,13 +63,13 @@ namespace OverBang.ExoWorld.Gameplay.Cameras
 
             if (currentShakeComposite.frequency <= 0f)
             {
-                camRecomposer.Pan = Mathf.Lerp(camRecomposer.Pan, 0f, Time.deltaTime * 8f);
-                camRecomposer.Dutch = Mathf.Lerp(camRecomposer.Dutch, 0f, Time.deltaTime * 8f);
+                camRecomposer.Pan = Mathf.Lerp(camRecomposer.Pan, 0f, Time.deltaTime * headBumpReactiveSpeed);
+                camRecomposer.Dutch = Mathf.Lerp(camRecomposer.Dutch, 0f, Time.deltaTime * headBumpReactiveSpeed);
 
                 if (targetShakeComposite.onlyTilt)
-                    currentTilt = Mathf.Lerp(currentTilt, targetShakeComposite.tiltAmplitude, Time.deltaTime * 8f);
+                    currentTilt = Mathf.Lerp(currentTilt, targetShakeComposite.tiltAmplitude, Time.deltaTime * headBumpReactiveSpeed);
                 else
-                    currentTilt = Mathf.Lerp(currentTilt, 0f, Time.deltaTime * 8f);
+                    currentTilt = Mathf.Lerp(currentTilt, 0f, Time.deltaTime * headBumpReactiveSpeed);
 
                 camRecomposer.Tilt = currentTilt;
                 return;
@@ -93,9 +94,9 @@ namespace OverBang.ExoWorld.Gameplay.Cameras
             camRecomposer.Dutch = curve * dutchSource;
 
             if (targetShakeComposite.onlyTilt)
-                currentTilt = Mathf.Lerp(currentTilt, targetShakeComposite.tiltAmplitude, Time.deltaTime * 8f);
+                currentTilt = Mathf.Lerp(currentTilt, targetShakeComposite.tiltAmplitude, Time.deltaTime * headBumpReactiveSpeed);
             else
-                currentTilt = Mathf.Lerp(currentTilt, Mathf.Abs(curve) * currentShakeComposite.tiltAmplitude, Time.deltaTime * 8f);
+                currentTilt = Mathf.Lerp(currentTilt, Mathf.Abs(curve) * currentShakeComposite.tiltAmplitude, Time.deltaTime * headBumpReactiveSpeed);
 
             camRecomposer.Tilt = currentTilt;
         }
