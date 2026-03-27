@@ -381,11 +381,11 @@ MonoBehaviour:
         hasOnlyBiggerBricks: 1
     - position: {x: -1, y: 0, z: -1}
       index: 3
-      probeCount: 34560
+      probeCount: 34688
       minSubdiv: 0
       indexChunkCount: 117
       shChunkCount: 5
-      bricksCount: 540
+      bricksCount: 542
       indirectionEntryInfo:
       - positionInBricks: {x: -81, y: 0, z: -81}
         minSubdiv: 4
@@ -940,11 +940,11 @@ MonoBehaviour:
         hasMinMax: 1
         hasOnlyBiggerBricks: 0
       - positionInBricks: {x: 0, y: -27, z: 27}
-        minSubdiv: 3
+        minSubdiv: 4
         minBrickPos: {x: 0, y: 0, z: 0}
         maxBrickPosPlusOne: {x: 28, y: 28, z: 28}
         hasMinMax: 1
-        hasOnlyBiggerBricks: 0
+        hasOnlyBiggerBricks: 1
       - positionInBricks: {x: 0, y: -27, z: 54}
         minSubdiv: 4
         minBrickPos: {x: 0, y: 0, z: 0}
@@ -1061,11 +1061,11 @@ MonoBehaviour:
         hasOnlyBiggerBricks: 1
     - position: {x: 0, y: 0, z: -1}
       index: 4
-      probeCount: 19584
+      probeCount: 19520
       minSubdiv: 0
       indexChunkCount: 117
       shChunkCount: 3
-      bricksCount: 306
+      bricksCount: 305
       indirectionEntryInfo:
       - positionInBricks: {x: 0, y: 0, z: -81}
         minSubdiv: 4
@@ -1074,11 +1074,11 @@ MonoBehaviour:
         hasMinMax: 1
         hasOnlyBiggerBricks: 1
       - positionInBricks: {x: 0, y: 0, z: -54}
-        minSubdiv: 3
+        minSubdiv: 4
         minBrickPos: {x: 0, y: 0, z: 0}
         maxBrickPosPlusOne: {x: 28, y: 28, z: 28}
         hasMinMax: 1
-        hasOnlyBiggerBricks: 0
+        hasOnlyBiggerBricks: 1
       - positionInBricks: {x: 0, y: 0, z: -27}
         minSubdiv: 0
         minBrickPos: {x: 0, y: 0, z: 0}
@@ -1430,7 +1430,7 @@ MonoBehaviour:
     m_Keys:
     - Default
     m_Values:
-    - sceneHash: -1648369300
+    - sceneHash: -854690761
       cellDataAsset:
         m_AssetGUID: 8205a664e1481e7458dd58bdb2c7a381
         m_StreamableAssetPath: APVStreamingAssets\bd7f624ce1c9ef449a094a0440635bcf\8205a664e1481e7458dd58bdb2c7a381.bytes
@@ -1515,16 +1515,16 @@ MonoBehaviour:
       - offset: 3840
         elementCount: 247
       - offset: 7792
-        elementCount: 540
-      - offset: 16432
+        elementCount: 542
+      - offset: 16464
         elementCount: 387
-      - offset: 22624
+      - offset: 22656
         elementCount: 134
-      - offset: 24768
+      - offset: 24800
         elementCount: 182
-      - offset: 27680
-        elementCount: 306
-      - offset: 32576
+      - offset: 27712
+        elementCount: 305
+      - offset: 32592
         elementCount: 302
     m_Asset: {fileID: 4900000, guid: 388563b6fb508bb4b81d200f82405ac6, type: 3}
   cellSupportDataAsset:
