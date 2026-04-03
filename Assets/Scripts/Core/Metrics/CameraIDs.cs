@@ -12,5 +12,6 @@ namespace OverBang.ExoWorld.Core.Metrics
         [field: SerializeField] public CameraID DefaultCamera { get; private set; }
         [field: SerializeField] public CameraID LoadoutCamera { get; private set; }
         [field: SerializeField] public CameraID UpgradeCamera { get; private set; }
+        [field: SerializeField] public CameraID CraftCamera { get; private set; }
     }
 }

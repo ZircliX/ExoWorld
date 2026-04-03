@@ -72,7 +72,7 @@ namespace OverBang.ExoWorld.Gameplay.Network
             {
                 if (cts.IsCancellationRequested) break;
         
-                questManager.RequestQuestQueue(1);
+                questManager.RequestQuestQueue();
                 CheckForCharacter();
 
                 await HandleHubPhase();
