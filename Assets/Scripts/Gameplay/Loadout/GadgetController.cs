@@ -59,7 +59,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         {
             foreach (GadgetData gadgetData in debugGadgetData)
             {
-                Player.GadgetInventory.AddGadget(gadgetData, 40, () => GadgetFactory.CreateGadget(gadgetData));
+                Player.GadgetInventory.AddGadget(gadgetData, 2, () => GadgetFactory.CreateGadget(gadgetData));
             }
         }
 
