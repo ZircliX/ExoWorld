@@ -42,7 +42,8 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             RuntimeDamageData runtimeDamageData = damage.GetRuntimeDamage();
             
             damageable.TakeDamage(runtimeDamageData);
-            damagePrefab.Spawn(damageable.DamageTarget.position, runtimeDamageData.finalDamage, damageable.DamageTarget);
+            if (damageable.DamageTarget != null)
+                damagePrefab.Spawn(damageable.DamageTarget.position, runtimeDamageData.finalDamage, damageable.DamageTarget);
         }
     }
 }

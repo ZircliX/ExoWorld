@@ -125,12 +125,12 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         protected override void OnEnter(Collider col, object obj)
         {
             base.OnEnter(col, obj);
-            players[col.gameObject].health.SetMinHealth(Data.MinHealth);
+            players[col.gameObject].health.SetMinHealthRpc(Data.MinHealth);
         }
 
         protected override void OnExit(Collider col, object obj)
         {
-            players[col.gameObject].health.SetMinHealth(0);
+            players[col.gameObject].health.SetMinHealthRpc(0);
             base.OnExit(col, obj);
         }
     }
@@ -141,12 +141,12 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         protected override void OnEnter(Collider col, object obj)
         {
             base.OnEnter(col, obj);
-            players[col.gameObject].health.SetMinHealth(Data.MinHealth);
+            players[col.gameObject].health.SetMinHealthRpc(Data.MinHealth);
         }
 
         protected override void OnExit(Collider col, object obj)
         {
-            players[col.gameObject].health.SetMinHealth(0);
+            players[col.gameObject].health.SetMinHealthRpc(0);
             base.OnExit(col, obj);
         }
         
