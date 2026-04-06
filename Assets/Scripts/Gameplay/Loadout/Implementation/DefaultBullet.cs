@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Threading;
 using KBCore.Refs;
 using OverBang.ExoWorld.Core.Components;
 using OverBang.ExoWorld.Core.Damage;
@@ -40,6 +42,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private float lifeTime;
         
         private List<GameObject> hitObjects = new List<GameObject>();
+        private CancellationTokenSource bulletCts;
 
         private void OnValidate() => this.ValidateRefs();
 
@@ -183,19 +186,29 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             if (hitDecal.TryGetComponent(out ParticleSystemReference system))
             {
                 system.Play();
-                DespawnAfterDelay(system.GetComponent<NetworkObject>(), 10f).Run();
+                // Decal owns its own lifetime — survives bullet despawn
+                CancellationTokenSource decalCts = new CancellationTokenSource();
+                DespawnAfterDelay(system.GetComponent<NetworkObject>(), 10f, decalCts.Token)
+                    .Run();
             }
         }
         
-        private async Awaitable DespawnAfterDelay(NetworkObject networkObject, float delay)
+        private async Awaitable DespawnAfterDelay(NetworkObject networkObject, float delay, CancellationToken ct)
         {
-            await Awaitable.WaitForSecondsAsync(delay);
-            networkObject.Despawn();
+            try
+            {
+                await Awaitable.WaitForSecondsAsync(delay, ct);
+
+                if (networkObject != null && networkObject.IsSpawned)
+                    networkObject.Despawn();
+            }
+            catch (OperationCanceledException) { }
         }
         
         private void ReturnBullet()
         {
-            //Debug.Log("Despawning bullet", gameObject);
+            bulletCts?.Cancel(); // cancels all pending DespawnAfterDelay calls
+    
             if (IsOwner)
                 NetworkObject.Despawn();
             else
@@ -207,10 +220,12 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             if (!IsOwner) return;
             Pool = pool;
 
+            bulletCts?.Cancel();
+            bulletCts = new CancellationTokenSource();
+
             currentPenetration = 0;
             lifeTime = 0;
             hitObjects.Clear();
-
             rb.isKinematic = true;
         }
 

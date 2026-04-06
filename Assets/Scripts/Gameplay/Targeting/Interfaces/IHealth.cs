@@ -9,6 +9,6 @@ namespace OverBang.ExoWorld.Gameplay.Targeting
         float Health { get; }
         float MaxHealth { get; }
         
-        void SetMinHealth(float minHealth);
+        void SetMinHealthRpc(float minHealth);
     }
 }

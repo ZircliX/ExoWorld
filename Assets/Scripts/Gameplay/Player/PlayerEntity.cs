@@ -110,7 +110,7 @@ namespace OverBang.ExoWorld.Gameplay.Player
         public float MinHealth { get; private set; } = 0;
         public float Health => Controller.LocalGamePlayer.Health;
         public float MaxHealth => Controller.LocalGamePlayer.MaxHealth;
-        public void SetMinHealth(float minHealth)
+        public void SetMinHealthRpc(float minHealth)
         {
             MinHealth = minHealth;
         }

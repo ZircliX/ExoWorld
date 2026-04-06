@@ -11,7 +11,7 @@ namespace OverBang.ExoWorld.Gameplay.Targeting
         public float MinHealth { get; }
         public float Health { get; private set; }
         [field: SerializeField] public float MaxHealth { get; private set; }
-        public void SetMinHealth(float minHealth)
+        public void SetMinHealthRpc(float minHealth)
         {
             throw new NotImplementedException();
         }
