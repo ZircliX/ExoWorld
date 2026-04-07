@@ -84,7 +84,7 @@ Material:
     - _AlphaCutoffEnable: 1
     - _AlphaDstBlend: 1
     - _AlphaSrcBlend: 1
-    - _Atmosphere_Size: 5
+    - _Atmosphere_Size: 100
     - _BlendMode: 1
     - _ConservativeDepthOffsetEnable: 0
     - _CullMode: 2
@@ -135,7 +135,7 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 0.617064, g: 2.464497, b: 3.018868, a: 1}
+    - _Color: {r: 0.005851716, g: 0.002925858, b: 0.002925858, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

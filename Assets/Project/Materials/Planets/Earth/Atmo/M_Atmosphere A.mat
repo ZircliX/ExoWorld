@@ -20,16 +20,16 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: 2978
   stringTagMap:
     MotionVector: User
     RenderType: Transparent
   disabledShaderPasses:
-  - TransparentDepthPrepass
+  - MOTIONVECTORS
   - TransparentDepthPostpass
   - TransparentBackface
   - RayTracingPrepass
-  - MOTIONVECTORS
+  - TransparentDepthPrepass
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -52,7 +52,7 @@ Material:
     - _AlphaCutoffEnable: 1
     - _AlphaDstBlend: 1
     - _AlphaSrcBlend: 1
-    - _Atmosphere_Size: 20
+    - _Atmosphere_Size: 5
     - _BlendMode: 1
     - _ConservativeDepthOffsetEnable: 0
     - _CullMode: 2
@@ -94,7 +94,7 @@ Material:
     - _TransparentCullMode: 2
     - _TransparentDepthPostpassEnable: 0
     - _TransparentDepthPrepassEnable: 0
-    - _TransparentSortPriority: 0
+    - _TransparentSortPriority: -22
     - _TransparentWritingMotionVec: 0
     - _TransparentZWrite: 0
     - _UseShadowThreshold: 0
@@ -103,8 +103,8 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 0.95138663, g: 1.2383804, b: 2.9960783, a: 1}
-    - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
+    - _Color: {r: 0.07278145, g: 1.814136, b: 4.62893, a: 1}
+    - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
