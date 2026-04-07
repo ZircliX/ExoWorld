@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.EnemyAnimator
   <ModelAnimator>k__BackingField: {fileID: 1033399057261428826}
+  ragdollRigidbodies: []
+  ragdollColliders: []
 --- !u!1001 &9001162214550317590
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -128,7 +130,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 3da59a5991858b44599c5f0ecba3f976, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
