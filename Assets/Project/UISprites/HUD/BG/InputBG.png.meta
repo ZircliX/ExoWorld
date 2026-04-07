@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: af2597a08cf73f44b9a91094d4a7df0b
+guid: cd3d722ade3dd0a49ba3df185c4a3acf
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 128
+    maxTextureSize: 32
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GadgetBG 1_0
+      name: InputBG_0
       rect:
         serializedVersion: 2
-        x: 12
-        y: 12
-        width: 106
-        height: 101
+        x: 0
+        y: 4
+        width: 32
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,8 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 692d9208263aa9a4cad8a4fb1043b343
-      internalID: 1075674849
+      spriteID: 7b3c07bc901eac340a24242cc94586b0
+      internalID: -299684178
       vertices: []
       indices: 
       edges: []
@@ -134,7 +134,7 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      GadgetBG 1_0: 1075674849
+      InputBG_0: -299684178
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
