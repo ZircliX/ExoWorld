@@ -80,7 +80,7 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
         [Rpc(SendTo.Everyone)]
         public void InitializeRpc(string enemyDataId)
         {
-            SetEnemyModelRpc(enemyDataId);
+            SetEnemyModel(enemyDataId);
             
             navMeshAgent.enabled = true;
             capsuleCollider.enabled = true;
@@ -99,8 +99,7 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
             }
         }
 
-        [Rpc(SendTo.Everyone)]
-        private void SetEnemyModelRpc(string enemyDataId)
+        private void SetEnemyModel(string enemyDataId)
         {
             if (enemyDataId.TryGetAssetByID(out EnemyData enemyData))
             {
@@ -166,6 +165,7 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
             foreach (ITargetable target in currentTargetsInRange)
             {
                 if (!target.IsTargetable) continue;
+                if (target is IHealth hp && !(hp.Health > 0)) continue;
 
                 float distance = Vector3.Distance(transform.position, target.transform.position);
                 float score = distance / (1 + (int)target.Priority);
@@ -179,24 +179,27 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
 
             if (best == currentBestTarget) return;
 
+            // Restore previous best to the general pool listener
             if (currentBestTarget != null)
+            {
                 currentBestTarget.OnTargeted -= OnBestTargetStateChanged;
+                currentBestTarget.OnTargeted += OnAnyTargetStateChanged; // ← back to general pool
+            }
 
             currentBestTarget = best;
 
             if (currentBestTarget != null)
             {
-                currentBestTarget.OnTargeted += OnBestTargetStateChanged;
-                currentBestTarget.SetTargetable(true);
+                currentBestTarget.OnTargeted -= OnAnyTargetStateChanged; // ← remove from general pool
+                currentBestTarget.OnTargeted += OnBestTargetStateChanged; // ← exclusive listener
                 navMeshAgent.SetDestination(currentBestTarget.transform.position);
             }
             else
             {
-                // No valid target → resume patrol
                 ChooseNewDestination();
             }
         }
-
+        
         /// <summary>
         /// Callback : la best target a changé d'état (IsTargetable ou priorité).
         /// </summary>
@@ -212,8 +215,8 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
             if (target is not ITargetable targetable) return;
 
             currentTargetsInRange.Add(targetable);
-            targetable.OnTargeted += OnAnyTargetStateChanged;
-            ReevaluateBestTarget();
+            targetable.OnTargeted += OnAnyTargetStateChanged; // only general listener here
+            ReevaluateBestTarget(); // will promote to best and swap listener if needed
         }
 
         private void OnExited(Collider col, object target)
@@ -221,6 +224,7 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
             if (!IsOwner) return;
             if (target is not ITargetable targetable) return;
 
+            // Remove whichever listener is active
             targetable.OnTargeted -= OnAnyTargetStateChanged;
             currentTargetsInRange.Remove(targetable);
 
@@ -294,7 +298,7 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
 
         private void OnHealthChanged(float previousHealth, float currentHealth, float max)
         {
-            if (currentHealth <= 0 && IsOwner) OnDeathRpc();
+            if (currentHealth <= 0) OnDeathRpc();
         }
 
         [Rpc(SendTo.Everyone)]
@@ -305,12 +309,12 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
             navMeshAgent.enabled = false;
 
             ClearTargets();
-            EnemyManager.Instance.Unregister(this);
             enemyAnimator.Ragdoll(true);
             Invoke(nameof(WaitUntilRagdoll), EnemyData.RagdollDuration);
 
             if (IsOwner)
             {
+                EnemyManager.Instance.Unregister(this);
                 EnemyData.LootTable.GetDrop(transform.position, transform.rotation, healthComponent.LastDamageData.itemData);
             }
         }

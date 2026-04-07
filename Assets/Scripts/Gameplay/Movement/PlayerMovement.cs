@@ -22,12 +22,14 @@ namespace OverBang.ExoWorld.Gameplay.Movement
         {
             base.Awake();
             CameraController.CameraEffectProperty?.AddPriority(stateChannelKey, PriorityTags.High);
+            CameraController.CameraShakeProperty?.AddPriority(stateChannelKey, PriorityTags.High);
         }
 
         protected override void FixedUpdate()
         {
             base.FixedUpdate();
             CameraController.CameraEffectProperty.Write(stateChannelKey, movementStates[currentStateIndex].GetCameraEffects(this, Time.deltaTime));
+            CameraController.CameraShakeProperty.Write(stateChannelKey, movementStates[currentStateIndex].GetCameraShakes(this, Time.deltaTime));
         }
         
         public void OnSync(PlayerRuntimeContext context)
@@ -63,7 +65,7 @@ namespace OverBang.ExoWorld.Gameplay.Movement
 
         public void ReadInputRun(InputAction.CallbackContext context)
         {
-            RunInput = context.performed;
+            RunInput = context.performed && Rb.linearVelocity.sqrMagnitude > MIN_THRESHOLD && !jumpInputPressed;
         }
 
         /*

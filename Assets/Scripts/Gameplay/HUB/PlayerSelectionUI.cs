@@ -73,12 +73,14 @@ namespace OverBang.ExoWorld.Gameplay.HUB
             UpdateCharacterUI();
         }
 
-        private void ChangeEnabledState(bool enabled)
+        private void ChangeEnabledState(bool newState)
         {
-            GameController.CursorLockModePriority.Write(this, enabled ? CursorLockMode.None : CursorLockMode.Confined);
-            GameController.CursorVisibleStatePriority.Write(this, enabled);
+            //if (selectButton.interactable == newState) return;
+            
+            GameController.CursorLockModePriority.Write(this, newState ? CursorLockMode.None : CursorLockMode.Confined);
+            GameController.CursorVisibleStatePriority.Write(this, newState);
 
-            if (enabled)
+            if (newState)
             {
                 canvasGroup.Open();
             }
@@ -136,6 +138,8 @@ namespace OverBang.ExoWorld.Gameplay.HUB
 
         private void ConfirmSelection()
         {
+            selectButton.interactable = false;
+            
             ChangeEnabledState(false);
             GameController.CursorLockModePriority.RemovePriority(this);
             GameController.CursorVisibleStatePriority.RemovePriority(this);

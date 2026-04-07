@@ -26,15 +26,16 @@ Material:
   m_Name: M_FliesOpti
   m_Shader: {fileID: 4800000, guid: 6e4ae4064600d784cac1e41a9e6f2e59, type: 3}
   m_Parent: {fileID: 2100000, guid: 9d39e26cec487c747b756c7e44ed565c, type: 2}
-  m_ModifiedSerializedProperties: 0
+  m_ModifiedSerializedProperties: 2
   m_ValidKeywords:
   - _DISABLE_SSR
   - _DISABLE_SSR_TRANSPARENT
+  - _EMISSIVE_COLOR_MAP
   - _MAPPING_TRIPLANAR
   - _MASKMAP
   - _NORMALMAP_TANGENT_SPACE
   m_InvalidKeywords: []
-  m_LightmapFlags: 4
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -48,12 +49,26 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _EmissiveColorMap:
+        m_Texture: {fileID: 2800000, guid: 252b7474b0cbc0343a8e4f14fe68e766, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _SmoothnessRemapMax: 0.8257425
+    - _AORemapMax: 1
+    - _AORemapMin: 0.9138718
+    - _AlbedoAffectEmissive: 0
+    - _EmissiveExposureWeight: 0.21
+    - _EmissiveIntensity: 15.8
+    - _EmissiveIntensityUnit: 0
+    - _MetallicRemapMax: 1
+    - _SmoothnessRemapMax: 0.5763307
+    - _UseEmissiveIntensity: 1
     m_Colors:
-    - _BaseColor: {r: 0.13836467, g: 0.13836467, b: 0.13836467, a: 1}
-    - _Color: {r: 0.13836464, g: 0.13836464, b: 0.13836464, a: 1}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissiveColor: {r: 11.834509, g: 11.834509, b: 11.834509, a: 15.8}
+    - _EmissiveColorLDR: {r: 0.88031507, g: 0.88031507, b: 0.88031507, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

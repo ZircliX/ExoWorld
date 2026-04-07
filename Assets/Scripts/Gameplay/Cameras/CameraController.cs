@@ -4,7 +4,6 @@ using KBCore.Refs;
 using OverBang.ExoWorld.Gameplay.Cameras.Composits;
 using Unity.Cinemachine;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace OverBang.ExoWorld.Gameplay.Cameras
 {
@@ -20,8 +19,15 @@ namespace OverBang.ExoWorld.Gameplay.Cameras
         public Priority<CameraEffectComposite> CameraEffectProperty { get; private set; }
 
         private CameraShakeComposite currentShakeComposite;
-        private Coroutine shakeCoroutine;
-        private Vector3 originalOffset;
+        private CameraShakeComposite targetShakeComposite;
+        private CameraShakeComposite baseComposite; // pan/dutch source
+        [SerializeField] private float headBumpBlendDuration = 0.2f;
+        [SerializeField] private float headBumpReactiveSpeed = 8f;
+        private float headBumpTimer;
+        private float blendTimer;
+        private float currentTilt;
+        private bool isBlending;
+        
         private CameraEffectComposite currentEffectComposite;
         private Coroutine effectCoroutine;
         
@@ -29,59 +35,95 @@ namespace OverBang.ExoWorld.Gameplay.Cameras
 
         private void Awake()
         {
-            
             CameraShakeProperty = new Priority<CameraShakeComposite>();
             CameraShakeProperty.AddOnValueChangeCallback(ApplyCameraShake, true);
 
             CameraEffectProperty = new Priority<CameraEffectComposite>(CameraEffectComposite.Default);
             CameraEffectProperty.AddOnValueChangeCallback(ApplyCameraEffect, true);
-            
-            originalOffset = camFollow.Offset;
         }
         
-        private IEnumerator IShakeRoutine()
+        private void UpdateShake()
         {
-            float timer = 0f;
-            float shakeInterval = 1f / Mathf.Max(currentShakeComposite.Frequency, 0.01f);
-            float shakeTimer = 0f;
-
-            Vector3 targetOffset = Vector3.zero;
-            Vector3 currentOffset = Vector3.zero;
-
-            while (timer < currentShakeComposite.Duration)
+            if (isBlending)
             {
-                timer += Time.deltaTime;
-                shakeTimer += Time.deltaTime;
+                blendTimer += Time.deltaTime;
+                float t = Mathf.Clamp01(blendTimer / headBumpBlendDuration);
 
-                //Debug.Log($"shake timer: {shakeTimer}, shakeInterval: {shakeInterval}");
-                if (shakeTimer >= shakeInterval)
+                if (!targetShakeComposite.onlyTilt)
                 {
-                    shakeTimer = 0f;
-                    targetOffset = Random.insideUnitSphere * currentShakeComposite.Amplitude;
+                    currentShakeComposite.panAmplitude = Mathf.Lerp(currentShakeComposite.panAmplitude, targetShakeComposite.panAmplitude, t);
+                    currentShakeComposite.tiltAmplitude = Mathf.Lerp(currentShakeComposite.tiltAmplitude, targetShakeComposite.tiltAmplitude, t);
+                    currentShakeComposite.dutchAmplitude = Mathf.Lerp(currentShakeComposite.dutchAmplitude, targetShakeComposite.dutchAmplitude, t);
+                    currentShakeComposite.frequency = targetShakeComposite.frequency;
                 }
 
-                currentOffset = Vector3.Lerp(currentOffset, targetOffset, 0.5f);
-                camFollow.Offset = originalOffset + currentOffset;
-                
-                yield return null;
+                if (blendTimer >= headBumpBlendDuration)
+                    isBlending = false;
             }
 
-            camFollow.Offset = originalOffset;
+            if (currentShakeComposite.frequency <= 0f)
+            {
+                camRecomposer.Pan = Mathf.Lerp(camRecomposer.Pan, 0f, Time.deltaTime * headBumpReactiveSpeed);
+                camRecomposer.Dutch = Mathf.Lerp(camRecomposer.Dutch, 0f, Time.deltaTime * headBumpReactiveSpeed);
+
+                if (targetShakeComposite.onlyTilt)
+                    currentTilt = Mathf.Lerp(currentTilt, targetShakeComposite.tiltAmplitude, Time.deltaTime * headBumpReactiveSpeed);
+                else
+                    currentTilt = Mathf.Lerp(currentTilt, 0f, Time.deltaTime * headBumpReactiveSpeed);
+
+                camRecomposer.Tilt = currentTilt;
+                return;
+            }
+
+            float cycleDuration = 1f / currentShakeComposite.frequency;
+
+            if (!targetShakeComposite.onlyTilt)
+            {
+                headBumpTimer += Time.deltaTime;
+                if (headBumpTimer >= cycleDuration)
+                    headBumpTimer = 0f;
+            }
+
+            float t2 = headBumpTimer / cycleDuration;
+            float curve = Mathf.Sin(t2 * Mathf.PI * 2f);
+
+            float panSource = targetShakeComposite.onlyTilt ? baseComposite.panAmplitude : currentShakeComposite.panAmplitude;
+            float dutchSource = targetShakeComposite.onlyTilt ? baseComposite.dutchAmplitude : currentShakeComposite.dutchAmplitude;
+
+            camRecomposer.Pan = curve * panSource;
+            camRecomposer.Dutch = curve * dutchSource;
+
+            if (targetShakeComposite.onlyTilt)
+                currentTilt = Mathf.Lerp(currentTilt, targetShakeComposite.tiltAmplitude, Time.deltaTime * headBumpReactiveSpeed);
+            else
+                currentTilt = Mathf.Lerp(currentTilt, Mathf.Abs(curve) * currentShakeComposite.tiltAmplitude, Time.deltaTime * headBumpReactiveSpeed);
+
+            camRecomposer.Tilt = currentTilt;
         }
         
         private void ApplyCameraShake(CameraShakeComposite composite)
         {
-            if (!camFollow.isActiveAndEnabled) return;
-            
-            currentShakeComposite = composite;
-
-            if (shakeCoroutine != null)
+            if (targetShakeComposite.Equals(composite)) return;
+    
+            if (!composite.onlyTilt)
             {
-                StopCoroutine(shakeCoroutine);
+                baseComposite = currentShakeComposite;
+
+                if (targetShakeComposite.onlyTilt)
+                    currentShakeComposite.tiltAmplitude = camRecomposer.Tilt;
+
+                if (currentShakeComposite.frequency > 0f && composite.frequency > 0f)
+                {
+                    float currentCycleDuration = 1f / currentShakeComposite.frequency;
+                    float currentProgress = headBumpTimer / currentCycleDuration;
+                    float newCycleDuration = 1f / composite.frequency;
+                    headBumpTimer = currentProgress * newCycleDuration;
+                }
             }
 
-            shakeCoroutine = StartCoroutine(IShakeRoutine());
-            //Debug.Log($"Started camera shake with composite: {composite}");
+            targetShakeComposite = composite;
+            blendTimer = 0f;
+            isBlending = true;
         }
 
         private IEnumerator IEffectCoroutine()
@@ -138,6 +180,8 @@ namespace OverBang.ExoWorld.Gameplay.Cameras
             Quaternion recoilRotation = Quaternion.Euler(currentRotation);
             
             transform.localRotation = recoilRotation;
+            
+            UpdateShake();   
         }
 
         public void RecoilFire(Vector3 targetRotation, float snap, float returnSpeed)

@@ -5,7 +5,13 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
     public class FullAutoFireBehavior : BaseFireBehaviour
     {
         private bool isFiring;
-        
+
+        protected override void OnWeaponSetCurrent(bool val)
+        {
+            if (!val)
+                isFiring = false;
+        }
+
         public override void OnShootInput(InputAction.CallbackContext context)
         {
             if (context.started && !Weapon.State.IsReloading)

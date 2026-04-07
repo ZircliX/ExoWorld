@@ -20,7 +20,7 @@ namespace OverBang.ExoWorld.Gameplay.Targeting
         public float MaxHealth { get; private set; }
         public float Resistance { get; private set; }
         public bool IsAlive => Health > MinHealth;
-        public void SetMinHealth(float minHealth)
+        public void SetMinHealthRpc(float minHealth)
         {
             MinHealth = minHealth;
         }

@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ebe66b7a1e94f888eae60147add7c5d, type: 3}
+  m_Name: DeploiementPlanete
+  m_EditorClassIdentifier: OverBang.ExoWorld.Core::OverBang.ExoWorld.Core.Audios.ContextualDialogues.ContextualDialogueData
+  <ID>k__BackingField: 8266ceec-6a15-47c1-a9b6-f510c253dc7f
+  <Priority>k__BackingField: 0
+  <Probability>k__BackingField: 1
+  <CanBeHeardByEveryone>k__BackingField: 1
+  <VoiceLifetime>k__BackingField: 0.2
+  <maxSubtitlesTextLenght>k__BackingField: 144
+  clips:
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: bed7478a90a81034487b01a6fbd270ea, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 0
+      text: "Ok les jeunes, un pied apr\xE8s l'autre et tout se passera bien.\n"
+      characterCount: 62
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 0
+      text: "\xC7a me rapelle des batailles que j'aurai pr\xE9f\xE9r\xE9 oublier."
+      characterCount: 56
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: 6907ab4dd1948334eabe022b53c8b49d, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 0
+      text: "Cette plan\xE8te ne ressemble en rien \xE0 la mienne.\n"
+      characterCount: 48
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 0
+      text: "J'ai la pens\xE9e que cette plan\xE8te est manquante de couleurs.\n"
+      characterCount: 60
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 0
+      text: J'ai entendu qu'il y a d'excitantes substances ici !
+      characterCount: 52
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: 8538becf3d7dff243b44f593a4e788a8, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 0
+      text: "Waaw, vraiment une destination de r\xEAve \xE7a !\n"
+      characterCount: 44
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 0
+      text: "Ugh, je crois que je pr\xE9f\xE8rerai presque rentrer chez mon p\xE8re."
+      characterCount: 62
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: 464e9e9c5413d1340bd1934a0c4149f5, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 0
+      text: "Grenade : check, explosifs : check, mines : check, BOKI: check ; ok,
+        je crois qu'on est pr\xEAt \xE0 tout faire p\xE9ter.\n"
+      characterCount: 113
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 0
+      text: "Il faudrait que je revois les lignes de mon contrat qui limite mes grenades,
+        mais bon on va quand m\xEAme s'amuser."
+      characterCount: 112
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}

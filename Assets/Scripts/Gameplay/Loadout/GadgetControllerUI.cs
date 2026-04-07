@@ -12,22 +12,17 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
     public class GadgetControllerUI : MonoBehaviour
     {
         [field : SerializeField, Required] public GadgetController Controller { get; private set; }
-        [SerializeField, Self] private GadgetUiSelector selector;
-        
+        [field : SerializeField] public List<GadgetUi> GadgetUis { get; private set; }
         [SerializeField, Self] private CanvasGroup gadgetWheel;
         
-        [field : SerializeField] public List<GadgetUi> GadgetUis { get; private set; }
+        public event Action OnGadgetUiSelectionBegin;
         public event Action OnGadgetUiSelectionEnd;
         
-        private void OnValidate()
-        {
-            this.ValidateRefs();
-        }
+        private void OnValidate() => this.ValidateRefs();
 
         private void Start()
         {
             gadgetWheel.alpha = 0;
-            selector.Initialize(this);
         }
 
         private void OnEnable()
@@ -45,8 +40,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private void SelectionBegin(LocalGamePlayer player)
         {
             RefreshGadgetInUI(player);
-            ChangeVisibility(true);
-            selector.StartSelection();
+            ChangeVisibility(true, Controller.IsSelecting ? 1 : 0.5f);
+            OnGadgetUiSelectionBegin?.Invoke();
         }
         
         private void SelectionEnd()
@@ -60,9 +55,9 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             Controller.SelectCurrentGadget(data);
         }
         
-        private void ChangeVisibility(bool visible)
+        private void ChangeVisibility(bool visible, float maxAlpha = 1)
         {
-            gadgetWheel.DOFade(visible ? 1 : 0, 0.20f).OnComplete(() =>
+            gadgetWheel.DOFade(visible ? maxAlpha : 0, 0.20f).OnComplete(() =>
             {
                 gadgetWheel.interactable = visible;
                 gadgetWheel.blocksRaycasts = visible;

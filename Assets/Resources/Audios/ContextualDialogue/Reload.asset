@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ebe66b7a1e94f888eae60147add7c5d, type: 3}
+  m_Name: Reload
+  m_EditorClassIdentifier: OverBang.ExoWorld.Core::OverBang.ExoWorld.Core.Audios.ContextualDialogues.ContextualDialogueData
+  <ID>k__BackingField: aa8c27e9-07e6-4d81-b7f3-d9996534433a
+  <Priority>k__BackingField: 0
+  <Probability>k__BackingField: 1
+  <VoiceLifetime>k__BackingField: 0.2
+  <MaxSubtitlesTextLenght>k__BackingField: 144
+  <CanBeHeardByEveryone>k__BackingField: 1
+  <RadioEffect>k__BackingField: 1
+  clips:
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: bed7478a90a81034487b01a6fbd270ea, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 6
+      text: 'Ophuis Ophuis Ophuis Ophuis Ophuis Ophuis Ophuis Ophuis Ophuis Ophuis
+        Ophuis Ophuis Ophuis Ophuis Ophuis Ophuis Ophuis Ophuis Ophuis Ophuis Ophuis
+        Ophuis '
+      characterCount: 154
+      delayBetweenLines: 3
+      soundID:
+        ID: 1073741851
+        _sourceAsset: {fileID: 11400000, guid: a365ec0b28811d340aaadd4d2ce53a27, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3.5
+      text: OphuisOphuisOphuisOphuisOphuisOphuisOphuisOphuisOphuisOphuis
+      characterCount: 60
+      delayBetweenLines: 0
+      soundID:
+        ID: 1073741854
+        _sourceAsset: {fileID: 11400000, guid: a365ec0b28811d340aaadd4d2ce53a27, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: 6907ab4dd1948334eabe022b53c8b49d, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 6
+      text: ceci est un test de sous titre ! ceci est un test de sous titre ! ceci
+        est un test de sous titre ! ceci est un test de sous titre ! ceci est un
+        test de sous titre ! ceci est un test de sous titre ! ceci est un test de
+        sous titre !
+      characterCount: 230
+      delayBetweenLines: 3
+      soundID:
+        ID: 1342177412
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 5
+      text: 'olor sit amet consectetur adipiscing elit. A olor sit amet consectetur
+        adipiscing elit. A olor sit amet consectetur  adipiscing elit. A '
+      characterCount: 136
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177415
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: 8538becf3d7dff243b44f593a4e788a8, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 0
+      text: 
+      characterCount: 0
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 0
+      text: 
+      characterCount: 0
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 0
+      text: 
+      characterCount: 0
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: 464e9e9c5413d1340bd1934a0c4149f5, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 0
+      text: 
+      characterCount: 0
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 0
+      text: 
+      characterCount: 0
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 0
+      text: 
+      characterCount: 0
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}

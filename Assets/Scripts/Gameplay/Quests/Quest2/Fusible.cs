@@ -62,7 +62,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             
             playerEntity = playerInteraction.transform.parent.GetComponent<PlayerEntity>();
             playerEntity.ApplySpeed(-questTwoData.CarryingSlowForce, -1, nameof(Fusible));
-            playerEntity.WeaponController.SetActiveState(false);
+            playerEntity.WeaponController.LoadoutController.SetOnlyUIState(true);
             
             SetPriority(-1);
             gameObject.SetActive(false); // Hide or trigger pickup animation
@@ -76,12 +76,12 @@ namespace OverBang.ExoWorld.Gameplay.Quests
 
         public void OnDrop(PlayerInteraction playerInteraction)
         {
-            if (!isUsable.Value) return;
+            //if (!isUsable.Value) return;
             
             transform.position = playerEntity.transform.position;
 
             isPickedUp = false;
-            playerEntity.WeaponController.SetActiveState(true);
+            playerEntity.WeaponController.LoadoutController.SetOnlyUIState(false);
             playerEntity.RemoveSpeed(nameof(Fusible));
             playerEntity = null;
 
@@ -95,8 +95,8 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         public void Consume()
         {
             isConsumed = true;
-            isUsable.Value = false; // if owner
-            gameObject.SetActive(false);
+            isUsable.Value = false;
+            SetPriority(-1);
         }
 
         public void SetPriority(int prio)

@@ -28,7 +28,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private void OnEnable()
         {
             controller.OnWeaponChanged += OnWeaponChanged;
-            controller.OnActiveStateChanged += OnActiveStateChanged;
+            controller.LoadoutController.OnActiveStateChanged += OnActiveStateChanged;
             UpgradeManager.Instance.OnUpgrade += HandleUpgrade;
             player.Inventory.OnItemQuantityChanged += OnItemQuantityChanged;
 
@@ -40,7 +40,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private void OnDisable()
         {
             controller.OnWeaponChanged -= OnWeaponChanged;
-            controller.OnActiveStateChanged -= OnActiveStateChanged;
+            controller.LoadoutController.OnActiveStateChanged -= OnActiveStateChanged;
             UpgradeManager.Instance.OnUpgrade -= HandleUpgrade;
             player.Inventory.OnItemQuantityChanged -= OnItemQuantityChanged;
             UnsubscribeCurrentWeapon();
@@ -50,7 +50,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         {
             if (item.ItemId == currentWeapon.WeaponData.BulletData.ItemData.Data.ItemId)
             {
-                totalAmmoText.text = item.Quantity.ToString();
+                totalAmmoText.text = (item.Quantity / currentWeapon.WeaponData.BulletsPerShot).ToString();
             }
         }
 
@@ -62,8 +62,9 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
             if (currentWeapon != null)
             {
-                currentWeapon.OnWeaponFired += OnWeaponEvent;
-                currentWeapon.OnWeaponReloaded += OnWeaponEvent;
+                currentWeapon.OnWeaponFired += OnWeaponFired;
+                currentWeapon.OnWeaponReload += OnWeaponReload;
+                currentWeapon.OnWeaponSetCurrent += OnWeaponSetCurrent;
             }
 
             UpdateWeaponUI();
@@ -74,14 +75,33 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             if (currentWeapon == null)
                 return;
 
-            currentWeapon.OnWeaponFired -= OnWeaponEvent;
-            currentWeapon.OnWeaponReloaded -= OnWeaponEvent;
+            currentWeapon.OnWeaponFired -= OnWeaponFired;
+            currentWeapon.OnWeaponReload -= OnWeaponReload;
+            currentWeapon.OnWeaponSetCurrent -= OnWeaponSetCurrent;
             currentWeapon = null;
         }
-
-        private void OnWeaponEvent()
+        
+        private void OnWeaponFired()
         {
             UpdateWeaponUI();
+        }
+        
+        private void OnWeaponReload(bool isReloading)
+        {
+            if (isReloading)
+            {
+                OnActiveStateChanged(true);
+            }
+            else
+            {
+                OnActiveStateChanged(false);
+                UpdateWeaponUI();
+            }
+        }
+        
+        private void OnWeaponSetCurrent(bool isCurrent)
+        {
+            OnActiveStateChanged(false); // Fade to 1 in case of reloading and switching
         }
         
         private void HandleUpgrade()
@@ -91,11 +111,16 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             UpdateWeaponUI();
         }
 
-        private void OnActiveStateChanged(bool active)
+        private void OnActiveStateChanged(bool onlyUI)
         {
-            weaponIcon.DOFade(active ? 1 : 0.25f, 0.3f);
-            ammoText.DOFade(active ? 1 : 0.25f, 0);
-            totalAmmoText.DOFade(active ? 1 : 0.25f, 0);
+            weaponIcon.DOKill();
+            ammoText.DOKill();
+            ammoText.color = Color.white;
+            totalAmmoText.DOKill();
+            
+            weaponIcon.DOFade(!onlyUI ? 1 : 0.25f, 0.3f);
+            ammoText.DOFade(!onlyUI ? 1 : 0.25f, 0.3f);
+            totalAmmoText.DOFade(!onlyUI ? 1 : 0.25f, 0.3f);
         }
 
         private void UpdateWeaponUI()

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using DG.Tweening;
 using Helteix.ChanneledProperties.Priorities;
 using Helteix.Singletons.SceneServices;
@@ -27,6 +28,20 @@ namespace OverBang.ExoWorld.Gameplay.Core.Menus
         {
             GameController.CursorLockModePriority.RemovePriority(this);
             GameController.CursorVisibleStatePriority.RemovePriority(this);
+        }
+
+        bool hidden = false;
+        private void Update()
+        {
+            if (Keyboard.current.iKey.wasPressedThisFrame)
+            {
+                Ath.DOFade(hidden ? 1 : 0, fadeDuration).OnComplete(() =>
+                {
+                    Ath.blocksRaycasts = !hidden;
+                    Ath.interactable = !hidden;
+                    hidden = !hidden;
+                });
+            }
         }
 
         public void ChangeHudState(bool state)

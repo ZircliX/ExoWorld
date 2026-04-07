@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -7,6 +8,9 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 {
     public class GadgetUiSelector : MonoBehaviour
     { 
+        [SerializeField] private TMP_Text currentSelectedGadgetText;
+        [SerializeField] private GadgetControllerUI controllerUI;
+        
         [Header("Menu Settings")]
         [SerializeField, Space] private float radius = 150f;
         
@@ -22,35 +26,42 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private Vector2 centerPosition;
         private Vector2 accumulatedDelta; 
         
-        private GadgetControllerUI controllerUI;
-        private GadgetUi currentSelectedGadget;
-        
-        public void Initialize(GadgetControllerUI controllerUI)
+        public GadgetUi CurrentSelectedGadget { get; private set; }
+
+        private void OnEnable()
         {
-            this.controllerUI = controllerUI;
+            controllerUI.OnGadgetUiSelectionBegin += StartSelection;
             controllerUI.OnGadgetUiSelectionEnd += OnItemSelected;
+            controllerUI.Controller.OnGadgetCasted += UpdateCurrentGadgetAmount;
         }
         
         private void OnDisable()
         {
+            controllerUI.OnGadgetUiSelectionBegin += StartSelection;
             controllerUI.OnGadgetUiSelectionEnd -= OnItemSelected;
+            controllerUI.Controller.OnGadgetCasted -= UpdateCurrentGadgetAmount;
         }
         
-        
-        public void StartSelection()
+        private void StartSelection()
         {
-            if (currentSelectedGadget !=null && !currentSelectedGadget.CheckSelectiveness())
+            if (CurrentSelectedGadget !=null && !CurrentSelectedGadget.CheckSelectiveness())
             {
-                Debug.Log(currentSelectedGadget.CheckSelectiveness());
-                currentSelectedGadget.DeselectThisGadget();
-                currentSelectedGadget.Mask();
-                currentSelectedGadget = null;
+                Debug.Log(CurrentSelectedGadget.CheckSelectiveness());
+                CurrentSelectedGadget.DeselectThisGadget();
+                CurrentSelectedGadget.Mask();
+                CurrentSelectedGadget = null;
             }
             accumulatedDelta = Vector2.zero;
         }
         
         private void Update()
         {
+            if (controllerUI == null || controllerUI.Controller == null)
+            {
+                Debug.LogError("GadgetUiSelector is missing a reference to a GadgetControllerUI!");
+                return;
+            }
+
             if (!controllerUI.Controller.IsSelecting) return;
             
             Vector2 mouseDelta = Pointer.current.delta.ReadValue();
@@ -99,25 +110,36 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private void UpdateSelectedGadget(int index)
         {
             GadgetUi newGadget = GadgetUis[index];
-            if (newGadget == currentSelectedGadget || !GadgetUis[index].isSelectable) 
+            if (newGadget == CurrentSelectedGadget || !GadgetUis[index].isSelectable) 
                 return;
             
-            if (currentSelectedGadget != null)
-                currentSelectedGadget.DeselectThisGadget();
+            if (CurrentSelectedGadget != null)
+                CurrentSelectedGadget.DeselectThisGadget();
             
-            currentSelectedGadget = newGadget;
-            currentSelectedGadget.SelectThisGadget();
+            CurrentSelectedGadget = newGadget;
+            UpdateCurrentGadgetAmount();
+            
+            CurrentSelectedGadget.SelectThisGadget();
         }
         
         private void OnItemSelected()
         {
-            if (currentSelectedGadget == null)
+            if (!controllerUI.Controller.IsSelecting)
+                return;
+            
+            if (CurrentSelectedGadget == null || CurrentSelectedGadget.data == null)
             {
                 controllerUI.SetCurrentSelectedGadget(null);
                 return;
             }
                 
-            controllerUI.SetCurrentSelectedGadget(currentSelectedGadget.data);
+            controllerUI.SetCurrentSelectedGadget(CurrentSelectedGadget.data);
+        }
+
+        private void UpdateCurrentGadgetAmount()
+        {
+            int currentAmount = controllerUI.Controller.Player.GadgetInventory.GetGadgetCount(CurrentSelectedGadget.data, out int amount) ? amount : 0;
+            currentSelectedGadgetText.text = currentAmount.ToString();
         }
     }
 }

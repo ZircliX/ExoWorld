@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Shotgun Data
   m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.WeaponData
   <BulletData>k__BackingField: {fileID: 11400000, guid: 5be247ec03bcd5b45a9b83ad70efbfaa, type: 2}
-  <BulletItemData>k__BackingField: {fileID: 11400000, guid: e50dd31ade952d54fa9a4d4cd24ac9ef, type: 2}
   <WeaponName>k__BackingField: BARK 17 HeavenFall
   <WeaponType>k__BackingField: "Fusil \xE0 pompe"
   <WeaponDescription>k__BackingField: "Arme d\xE9vastatrice \xE0 courte port\xE9e,
@@ -82,10 +81,13 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   <CurveMultiplier>k__BackingField: 10
-  <RandomnessMultiplier>k__BackingField: 10
-  <ResetLerpSpeed>k__BackingField: 1.85
+  <RandomnessMultiplier>k__BackingField: 15
+  <ResetLerpSpeed>k__BackingField: 1.5
   <WeaponRecoilSettings>k__BackingField: {fileID: 11400000, guid: 107f639b500515f498386794adcfed52, type: 2}
   <CrosshairOffsetData>k__BackingField: {fileID: 11400000, guid: 60d44a2a87d70354cafc493fa15ec681, type: 2}
   <ReloadBehaviour>k__BackingField: 1
   <MagCapacity>k__BackingField: 36
   <ReloadTime>k__BackingField: 3
+  <ReloadDialogueData>k__BackingField: {fileID: 11400000, guid: 633f40d6c75fb7340a434d66491d23ae, type: 2}
+  <MuzzleFlashPrefab>k__BackingField: {fileID: -6078341349318673958, guid: f5c0bdb9efbf9be469928d6c834ea3cb, type: 3}
+  <EmptyCasePrefab>k__BackingField: {fileID: 5956843606552514325, guid: 980324a145a2b764a929f2c43ac7b66a, type: 3}

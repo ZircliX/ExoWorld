@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using OverBang.ExoWorld.Core.Characters;
+using OverBang.ExoWorld.Core.Database;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
@@ -8,6 +9,8 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
     {
         private static Dictionary<string, ContextualDialogueData> loadedData;
 
+        public static ContextualDialogueController Controller { get; private set; }
+        
         [RuntimeInitializeOnLoadMethod]
         private static void InitializeOnLoad()
         {
@@ -22,28 +25,44 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
             }
         }
 
-
+        public static void RegisterController(this ContextualDialogueController controller)
+        {
+            if (Controller == null)
+            {
+                Controller = controller;
+            }
+        }
+        
+        
         public static void FireEvent(this ContextualDialogueData data, CDContext context) => FireEvent(data.ID, context);
         
         public static void FireEvent(string id, CDContext context)
         {
-            if (TryGetEvent(context.data, id, out ContextualDialogue contextualDialogue))
+            if (!GameDatabase.Global.TryGetAssetByID(context.characterDataId, out CharacterData characterData)) return;
+            //Debug.Log("Get character data : " + characterData);
+            
+            if (TryGetDialogue(characterData, id, out ContextualDialogue contextualDialogue))
             {
-                if (!ContextualDialogueController.Instance.TryAddContextualDialogue(contextualDialogue))
+                //Debug.Log("Get Dialogue");
+                if (!Controller.TryAddContextualDialogue(contextualDialogue, context))
                 {
-                    Debug.LogError($"Cannot add {contextualDialogue} to controller !");
+                    Debug.LogWarning($"Cannot add {contextualDialogue} to controller !");
                 }
             }
         }
 
 
-        public static bool TryGetEvent(CharacterData from, string id, out ContextualDialogue dialogue)
+        public static bool TryGetDialogueData(string id, out ContextualDialogueData dialogue)
+        {
+            return loadedData.TryGetValue(id, out dialogue);
+        }
+        public static bool TryGetDialogue(CharacterData from, string id, out ContextualDialogue dialogue)
         {
             if (loadedData.TryGetValue(id, out ContextualDialogueData contextualDialogueData))
             {
-                if (contextualDialogueData.TryGetClip(from, out var line))
+                if (contextualDialogueData.TryGetClip(from, out ContextualClip.CharacterLine line))
                 {
-                    dialogue = new ContextualDialogue(contextualDialogueData, line);
+                    dialogue = new ContextualDialogue(from, contextualDialogueData, line);
                     return true;
                 }
             }

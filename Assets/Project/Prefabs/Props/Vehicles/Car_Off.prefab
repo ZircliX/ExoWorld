@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1097774430897851798}
   - component: {fileID: 1460689460414844098}
   - component: {fileID: 8352542511322917702}
+  - component: {fileID: 5167649330787181818}
   m_Layer: 8
   m_Name: Base_Car
   m_TagString: Untagged
@@ -64,7 +65,7 @@ MeshRenderer:
   m_SmallMeshCulling: 1
   m_ForceMeshLod: -1
   m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 17
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 3505ca84f05cc3844aa235f20dcbdee0, type: 2}
@@ -118,8 +119,29 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.9311535, y: 1.4702276, z: 5.3981543}
-  m_Center: {x: 0.00000035762787, y: -0.70703405, z: 0.42981052}
+  m_Size: {x: 1.9311535, y: 1.4702276, z: 1.8052449}
+  m_Center: {x: 0.00000035762787, y: -0.70703405, z: 0.0024659932}
+--- !u!65 &5167649330787181818
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270261399401869924}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.9311535, y: 0.7810447, z: 5.3981543}
+  m_Center: {x: 0.00000035762787, y: -0.89081264, z: 0.42981052}
 --- !u!1 &2494314495596759860
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,7 +239,7 @@ MeshRenderer:
   m_SmallMeshCulling: 1
   m_ForceMeshLod: -1
   m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 17
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 3505ca84f05cc3844aa235f20dcbdee0, type: 2}
@@ -309,7 +331,7 @@ MeshRenderer:
   m_SmallMeshCulling: 1
   m_ForceMeshLod: -1
   m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 17
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 3505ca84f05cc3844aa235f20dcbdee0, type: 2}
@@ -399,7 +421,7 @@ MeshRenderer:
   m_SmallMeshCulling: 1
   m_ForceMeshLod: -1
   m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 17
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 3505ca84f05cc3844aa235f20dcbdee0, type: 2}
@@ -491,7 +513,7 @@ MeshRenderer:
   m_SmallMeshCulling: 1
   m_ForceMeshLod: -1
   m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 17
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 3505ca84f05cc3844aa235f20dcbdee0, type: 2}
@@ -583,7 +605,7 @@ MeshRenderer:
   m_SmallMeshCulling: 1
   m_ForceMeshLod: -1
   m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 17
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 3505ca84f05cc3844aa235f20dcbdee0, type: 2}
@@ -675,7 +697,7 @@ MeshRenderer:
   m_SmallMeshCulling: 1
   m_ForceMeshLod: -1
   m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 17
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 9c3a3af463eded4419863ac114f15ede, type: 2}
@@ -800,7 +822,7 @@ MeshRenderer:
   m_SmallMeshCulling: 1
   m_ForceMeshLod: -1
   m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 17
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 3505ca84f05cc3844aa235f20dcbdee0, type: 2}
@@ -892,7 +914,7 @@ MeshRenderer:
   m_SmallMeshCulling: 1
   m_ForceMeshLod: -1
   m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 17
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 9c3a3af463eded4419863ac114f15ede, type: 2}
@@ -982,7 +1004,7 @@ MeshRenderer:
   m_SmallMeshCulling: 1
   m_ForceMeshLod: -1
   m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 17
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 9c3a3af463eded4419863ac114f15ede, type: 2}
@@ -1110,7 +1132,7 @@ MeshRenderer:
   m_SmallMeshCulling: 1
   m_ForceMeshLod: -1
   m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 17
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 9c3a3af463eded4419863ac114f15ede, type: 2}
@@ -1200,7 +1222,7 @@ MeshRenderer:
   m_SmallMeshCulling: 1
   m_ForceMeshLod: -1
   m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 17
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 9c3a3af463eded4419863ac114f15ede, type: 2}

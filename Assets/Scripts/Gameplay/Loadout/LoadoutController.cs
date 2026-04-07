@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using KBCore.Refs;
 using OverBang.ExoWorld.Gameplay.Core.Menus;
-using OverBang.ExoWorld.Gameplay.Player.PlayerHUD;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Pool;
@@ -21,7 +21,9 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private List<InputAction> actions;
         private List<InputAction> gameplayActions;
         private IInputReceiver current;
-		
+
+        public event Action<bool> OnActiveStateChanged;
+        public bool OnlyUI { get; private set; }
 
         private void OnValidate()
         {
@@ -38,45 +40,57 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             current = receivers.Peek();
             weaponController.Initialize(this);
             gadgetController.Initialize(this);
+
+            SetOnlyUIState(false);
+        }
+        
+        public void SetOnlyUIState(bool state)
+        {
+            OnlyUI = state;
+            OnActiveStateChanged?.Invoke(state);
         }
 
         #region Receivers
 
-            public void SwitchReceiver(IInputReceiver receiver)
-            {
-                receivers.Push(receiver);
-                current = receiver; 
-            }
+        public void SwitchReceiver(IInputReceiver receiver)
+        {
+            receivers.Push(receiver);
+            current = receiver; 
+        }
 
-            public void RemoveReceiver(IInputReceiver receiver)
+        public void RemoveReceiver(IInputReceiver receiver)
+        {
+            if (receivers.Peek() == receiver)
             {
-                if (receivers.Peek() == receiver)
-                {
-                    receivers.Pop();
-                    current = receivers.Peek();
-                }
+                receivers.Pop();
+                current = receivers.Peek();
             }
+        }
 
         #endregion
         
         #region Inputs
         public void OnLeftInput(InputAction.CallbackContext context)
         {
+            if (OnlyUI) return;
             current.OnLeftInput(context);
         }
 
         public void OnRightInput(InputAction.CallbackContext context)
         {
+            if (OnlyUI) return;
             current.OnRightInput(context);
         }
 
         public void OnMiddleDragInput(InputAction.CallbackContext context)
         {
+            if (OnlyUI) return;
             current.OnMiddleDragInput(context);
         }
 
         public void OnRInput(InputAction.CallbackContext context)
         {
+            if (OnlyUI) return;
             current.OnRInput(context);
         }
 
@@ -89,6 +103,12 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
                 SwitchCameraInputs(false);
             }
             current.OnCInput(context);
+
+            if (context.canceled && OnlyUI)
+            {
+                ChangeGameplayInputsState(true);
+                RemoveReceiver(gadgetController);
+            }
         }
         
         public void SwitchCameraInputs(bool value)

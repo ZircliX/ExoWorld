@@ -46,7 +46,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             
             currentQuest = quests[nextIndex];
             currentQuest.AddObjective();
-            Debug.Log($"Queuing quest {currentQuest.Name}");
+            //Debug.Log($"Queuing quest {currentQuest.Name}");
             
             currentQuestIndex++;
         }

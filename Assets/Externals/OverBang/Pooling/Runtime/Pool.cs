@@ -255,6 +255,17 @@ namespace OverBang.Pooling
                     IPoolInstanceListener listener = element.listeners[index];
                     listener.OnDespawn(this);
                 }
+
+                /*
+                if (instance == null)
+                {
+                    Debug.LogWarning("Tried to despawn a null instance.");
+                }
+                else
+                {
+                    Debug.Log(element.instance.name + " despawned in pool of " + typeof(T));
+                }
+                */
                 
                 strategy?.OnPostDestroy(element.instance);
                 

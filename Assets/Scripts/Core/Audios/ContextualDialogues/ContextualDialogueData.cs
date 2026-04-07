@@ -2,18 +2,21 @@
 using OverBang.ExoWorld.Core.Characters;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Pool;
-using Random = UnityEngine.Random;
 
 namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
 {
     [CreateAssetMenu(menuName = "OverBang/Audios/ContextualDialogue")]
     public class ContextualDialogueData : ScriptableObject
     {
-        [field: SerializeField] public string ID {get; private set;}
-        [field: SerializeField] public bool CanBeHeardByEveryone { get; private set; }
+        [field: SerializeField, ReadOnly] public string ID {get; private set;}
+        [field: SerializeField, Range(0, 5)] public int Priority { get; private set; } = 0;
+        [field: SerializeField, Range(0, 1)] public float Probability { get; private set; } = 1;
+        [field: SerializeField] public float VoiceLifetime { get; private set; } = 0.2f;
+        [field: SerializeField] public int MaxSubtitlesTextLenght { get; private set; } = 144;
+        [field: SerializeField] public bool CanBeHeardByEveryone { get; private set; } = true;
+        [field: SerializeField] public bool RadioEffect { get; private set; } = true;
 
-        [SerializeField] 
+        [SerializeField, ListDrawerSettings(ShowFoldout = false)] 
         private ContextualClip[] clips;
         
         private void Reset()
@@ -28,12 +31,10 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
             if (clips.Length == 0)
                 return false;
 
-            float rnd = Random.value;
             for (int i = 0; i < clips.Length; i++)
             {
-                rnd -= clips[i].Probability;
-                if (rnd <= 0)
-                    return clips[i].TryGetLine(data, out line);
+                if(clips[i].CharacterData == data) 
+                    return clips[i].TryGetLine(out line);
             }
             
             return false;
@@ -47,22 +48,24 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
                 Debug.LogWarning($"[OnValidate] Regenerating ID for {name}..." +
                                  $"{ID}");
             }
-
-            using (DictionaryPool<int, float>.Get(out var dictionary))
+            
+            for (int i = 0; i < clips.Length; i++)
             {
-                float total = 0;
-                for (int i = 0; i < clips.Length; i++)
+                for (int j = 0; j < clips[i].Lines.Length; j++)
                 {
-                    ContextualClip clip = clips[i];
-                    total += clip.Probability;
-                    
-                    dictionary.Add(i, clip.Probability);
-                }
+                    ContextualClip.CharacterLine line = clips[i].Lines[j]; 
+                    line.UpdateCharacterCount();
 
-                foreach ((int i, float prob) in dictionary)
-                {
-                    float normalizedProb = prob / total;
-                    clips[i] = clips[i].SetProbability(normalizedProb);
+                    if (line.characterCount > MaxSubtitlesTextLenght)
+                    {
+                        line.UpdateCondition(true);
+                    }
+                    else
+                    {
+                        line.UpdateCondition(false);
+                    }
+                    
+                    clips[i].Lines[j] = line; 
                 }
             }
         }

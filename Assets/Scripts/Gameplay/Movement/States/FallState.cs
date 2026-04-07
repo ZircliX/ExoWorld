@@ -9,6 +9,7 @@ namespace OverBang.ExoWorld.Gameplay.Movement
     {
         [field: Header("Camera Effects")]
         [field: SerializeField] public FallCameraEffectData CameraEffectData { get; protected set; }
+        [field: SerializeField] public CameraShakeData CameraShakeData { get; protected set; }
         private float fovModifier;
 
         public override void Enter(EntityMovement movement)
@@ -50,10 +51,6 @@ namespace OverBang.ExoWorld.Gameplay.Movement
             {
                 return MovementState.Dashing;
             }
-            if (movement.RunInput)
-            {
-                return MovementState.Running;
-            }
             
             return State;
         }
@@ -74,6 +71,11 @@ namespace OverBang.ExoWorld.Gameplay.Movement
 
             composite.FovScale += fovModifier;
             return composite;
+        }
+        
+        public override CameraShakeComposite GetCameraShakes(EntityMovement movement, float deltaTime)
+        {
+            return CameraShakeData.CameraShakeComposite;
         }
 
         protected override Vector3 GetGroundNormal(EntityMovement movement)
