@@ -19,7 +19,15 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         private QuestTwoHandler questTwoHandler;
         private PlayerEntity playerEntity;
 
-        Vector3 IInteractable.UIPosition => transform.position.Add(y: 1f);
+        Vector3 IInteractable.UIPosition
+        {
+            get
+            {
+                if (transform == null) return Vector3.zero;
+                return transform.position.Add(y: 1f);
+            }
+        }
+
         public string InteractionText => "Ramasser le fusible";
         public int Priority { get; private set; } = (int)TargetPriority.Medium;
         public bool CanInteract { get; private set; } = true;
@@ -56,16 +64,38 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             {
                 UpdateHandlerStepRpc();
             }
-            
-            isPickedUp = true;
-            CanInteract = false;
+
+            DisableRpc();
             
             playerEntity = playerInteraction.transform.parent.GetComponent<PlayerEntity>();
             playerEntity.ApplySpeed(-questTwoData.CarryingSlowForce, -1, nameof(Fusible));
             playerEntity.WeaponController.LoadoutController.SetOnlyUIState(true);
+        }
+
+        [Rpc(SendTo.Everyone)]
+        private void DisableRpc()
+        {
+            isPickedUp = true;
+            CanInteract = false;
             
             SetPriority(-1);
             gameObject.SetActive(false); // Hide or trigger pickup animation
+        }
+
+        [Rpc(SendTo.Everyone)]
+        private void EnableRpc()
+        {
+            isPickedUp = false;
+
+            if (isConsumed)
+            {
+                NetworkObject.Despawn();
+                return;
+            }
+            
+            CanInteract = true;
+            SetPriority((int)TargetPriority.Medium);
+            gameObject.SetActive(true);
         }
 
         [Rpc(SendTo.Everyone)]
@@ -80,19 +110,15 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             
             transform.position = playerEntity.transform.position;
 
-            isPickedUp = false;
             playerEntity.WeaponController.LoadoutController.SetOnlyUIState(false);
             playerEntity.RemoveSpeed(nameof(Fusible));
             playerEntity = null;
 
-            if (isConsumed) return; // don't reactivate if inserted into disjoncteur
-
-            CanInteract = true;
-            SetPriority((int)TargetPriority.Medium);
-            gameObject.SetActive(true);
+            EnableRpc();
         }
         
-        public void Consume()
+        [Rpc(SendTo.Everyone)]
+        public void ConsumeRpc()
         {
             isConsumed = true;
             isUsable.Value = false;

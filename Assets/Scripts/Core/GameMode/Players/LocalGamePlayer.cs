@@ -24,6 +24,7 @@ namespace OverBang.ExoWorld.Core.GameMode.Players
 
         public string SessionPlayerID => LocalSessionPlayer.Id;
         public ulong ClientID => NetworkManager.Singleton.LocalClientId;
+        public bool IsHost => NetworkManager.Singleton.LocalClientId == 0;
         
         private IPlayer LocalSessionPlayer => SessionManager.Global.CurrentPlayer;
         public IReadOnlyPlayer SessionPlayer => LocalSessionPlayer;
@@ -65,6 +66,7 @@ namespace OverBang.ExoWorld.Core.GameMode.Players
                 
                 properties[ConstID.Global.PlayerPropertyCharacterData] = new PlayerProperty(CharacterData.ID, VisibilityPropertyOptions.Public);
                 properties[ConstID.Global.PlayerPropertyClientID] = new PlayerProperty(ClientID.ToString(), VisibilityPropertyOptions.Public);
+                properties[ConstID.Global.PlayerPropertyHost] = new PlayerProperty(IsHost.ToString(), VisibilityPropertyOptions.Public);
                     
                 LocalSessionPlayer.SetProperties(properties);
             }

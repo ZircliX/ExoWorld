@@ -86,7 +86,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
 
                 if (playerInteraction.HeldItem.Instance is Fusible fusible)
                 {
-                    fusible.Consume();
+                    fusible.ConsumeRpc();
                     playerInteraction.DropItem();
                 }
                 

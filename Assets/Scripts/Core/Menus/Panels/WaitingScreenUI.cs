@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Helteix.Tools;
+using OverBang.ExoWorld.Core.GameMode.Players;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Core.Utils;
 using Sirenix.OdinInspector;
@@ -9,6 +10,7 @@ using Unity.Netcode;
 using Unity.Services.Multiplayer;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityUtils;
 
 namespace OverBang.ExoWorld.Core.Menus
 {
@@ -38,7 +40,7 @@ namespace OverBang.ExoWorld.Core.Menus
             LoadingUI.Instance.Close();
             
             startButton.onClick.AddListener(OnCreateGame);
-            startButton.enabled = SessionManager.Global.IsHost();
+            startButton.gameObject.SetActive(NetworkManager.Singleton.LocalClientId == 1);
             
             IHostSession session = (IHostSession)SessionManager.Global.ActiveSession;
             codeText.text = session.Code;

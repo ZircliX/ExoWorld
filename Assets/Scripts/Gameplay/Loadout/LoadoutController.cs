@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using KBCore.Refs;
+using OverBang.ExoWorld.Core.Metrics;
+using OverBang.ExoWorld.Core.Scene;
 using OverBang.ExoWorld.Gameplay.Core.Menus;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -96,6 +98,10 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
         public void OnCInput(InputAction.CallbackContext context)
         {
+            bool scene = SceneLoader.GetCurrentScene().name != GameMetrics.Global.SceneCollection.HubSceneRef.Name;
+            if (!scene)
+                return;
+            
             if (context.performed)
             {
                 SwitchReceiver(gadgetController);
