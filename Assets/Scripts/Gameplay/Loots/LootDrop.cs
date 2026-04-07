@@ -24,6 +24,13 @@ namespace OverBang.ExoWorld.Gameplay.Loots
         public void Initialize(ItemData itemData)
         {
             this.itemData = itemData;
+            InitializeRpc(itemData);
+        }
+
+        [Rpc(SendTo.Everyone)]
+        private void InitializeRpc(ItemData itemData)
+        {
+            this.itemData = itemData;
         }
 
         private void FixedUpdate()

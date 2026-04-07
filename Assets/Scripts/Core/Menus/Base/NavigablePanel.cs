@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace OverBang.ExoWorld.Core.Menus
@@ -15,6 +16,14 @@ namespace OverBang.ExoWorld.Core.Menus
             base.Awake();
             if (backButton != null)
                 backButton.onClick.AddListener(InvokeBackClicked);
+        }
+
+        private void Update()
+        {
+            if (Keyboard.current.escapeKey.wasPressedThisFrame)
+            {
+                InvokeBackClicked();
+            }
         }
 
         private void OnDestroy()

@@ -28,13 +28,9 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private ScriptableItemData currentSelectedItem;
         private GadgetData currentSelectedGadget; 
 
-        private void Awake()
-        {
-            player = GamePlayerManager.Instance.GetLocalPlayer();
-        }
-
         public void Interact(PlayerInteraction playerInteraction)
         {
+            player = GamePlayerManager.Instance.GetLocalPlayer();
             StartLoadoutSelection();
         }
 

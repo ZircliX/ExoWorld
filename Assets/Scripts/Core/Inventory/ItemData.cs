@@ -1,11 +1,12 @@
 using System;
 using Sirenix.OdinInspector;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Core.Inventory
 {
     [System.Serializable]
-    public struct ItemData : IEquatable<ItemData>
+    public struct ItemData : IEquatable<ItemData>, INetworkSerializable
     {
         public enum ItemRarity
         {
@@ -14,42 +15,67 @@ namespace OverBang.ExoWorld.Core.Inventory
             Légendaire
         }
         
-        [field: SerializeField] public string ItemId { get; private set; }
-        [field: SerializeField] public string ItemName { get; private set; }
-        [field: SerializeField] public Sprite Icon { get; private set; }
-        [field: SerializeField] public string Description { get; private set; }
-        [field: SerializeField] public ItemRarity Rarity { get; private set; }
-        [field: SerializeField, ReadOnly] public int Quantity { get; private set; }
+        public string ItemId => itemId;
+        public string ItemName => itemName;
+        public string Description => description;
+        public Sprite Icon => icon;
+        public ItemRarity Rarity => rarity;
+        public int Quantity => quantity;
+        
+        [SerializeField] private string itemId;
+        [SerializeField] private string itemName;
+        [SerializeField] private Sprite icon;
+        [SerializeField] private string description;
+        [SerializeField] private ItemRarity rarity;
+        [SerializeField, ReadOnly] private int quantity;
 
-        [Button] private void ResetQuantity() => Quantity = 0;
+        [Button] private void ResetQuantity() => quantity = 0;
 
         public ItemData(string id, string name, int qty = 1, Sprite itemIcon = null, 
             string desc = "", ItemRarity itemRarity = ItemRarity.Commun)
         {
-            ItemId = id;
-            ItemName = name;
-            Icon = itemIcon;
-            Description = desc;
-            Rarity = itemRarity;
+            itemId = id;
+            itemName = name;
+            icon = itemIcon;
+            description = desc;
+            rarity = itemRarity;
             
-            Quantity = qty;
+            quantity = qty;
         }
 
         public ItemData SetQuantity(int newQuantity)
         {
-            Quantity = Mathf.Max(0, newQuantity);
+            quantity = Mathf.Max(0, newQuantity);
             return this;
         }
 
         public ItemData AddQuantity(int amount)
         {
-            Quantity += amount;
+            quantity += amount;
             return this;
+        }
+        
+        public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
+        {
+            serializer.SerializeValue(ref itemId);
+            serializer.SerializeValue(ref itemName);
+            serializer.SerializeValue(ref description);
+            serializer.SerializeValue(ref quantity);
+
+            // Serialize enum as its underlying int
+            int rarityEnum = (int)this.rarity;
+            serializer.SerializeValue(ref rarityEnum);
+
+            // After deserialization, resolve the Sprite locally from the ID
+            /*
+            if (serializer.IsReader)
+                icon = ItemRegistry.GetIcon(itemId);
+            */
         }
 
         public bool Equals(ItemData other)
         {
-            return ItemId == other.ItemId && ItemName == other.ItemName && Equals(Icon, other.Icon) && Description == other.Description && Rarity == other.Rarity && Quantity == other.Quantity;
+            return itemId == other.itemId && itemName == other.itemName && Equals(icon, other.icon) && description == other.description && rarity == other.rarity && quantity == other.quantity;
         }
 
         public override bool Equals(object obj)
@@ -59,7 +85,7 @@ namespace OverBang.ExoWorld.Core.Inventory
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(ItemId, ItemName, Icon, Description, (int)Rarity, Quantity);
+            return HashCode.Combine(itemId, itemName, icon, description, (int)rarity, quantity);
         }
     }
 }

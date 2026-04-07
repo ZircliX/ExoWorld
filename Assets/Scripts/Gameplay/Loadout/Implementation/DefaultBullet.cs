@@ -199,7 +199,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             {
                 await Awaitable.WaitForSecondsAsync(delay, ct);
 
-                if (networkObject != null && networkObject.IsSpawned)
+                if (networkObject != null && networkObject.IsSpawned && IsOwner)
                     networkObject.Despawn();
             }
             catch (OperationCanceledException) { }

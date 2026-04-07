@@ -41,6 +41,16 @@ namespace OverBang.ExoWorld.Core.GameMode.Players
             }
         }
 
+        public bool IsHost
+        {
+            get
+            {
+                if (!SessionPlayer.TryGetPlayerProperty(ConstID.Global.PlayerPropertyClientID,
+                        out string propertyValue)) return false;
+                return bool.Parse(propertyValue);
+            }
+        }
+
         public PlayerState State 
         {
             get
