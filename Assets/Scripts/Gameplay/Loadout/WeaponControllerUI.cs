@@ -13,9 +13,13 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         [SerializeField] private WeaponController controller;
         
         [Header("HUD")]
+        
         [SerializeField] private Image weaponIcon;
         [SerializeField] private TMP_Text ammoText;
         [SerializeField] private TMP_Text totalAmmoText;
+        [SerializeField] private Image weaponPoint1;
+        [SerializeField] private Image weaponPoint2;
+        private bool IsFirstSelected = true;
         
         private Weapon currentWeapon;
         private LocalGamePlayer player;
@@ -56,8 +60,10 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
         private void OnWeaponChanged(Weapon previous, Weapon current)
         {
+            Debug.Log("OnWeaponChange Event");
             UnsubscribeCurrentWeapon();
-
+            if (previous != null) SwitchWeaponPoint();
+                
             currentWeapon = controller.CurrentWeapon;
 
             if (currentWeapon != null)
@@ -68,6 +74,15 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             }
 
             UpdateWeaponUI();
+        }
+
+        private void SwitchWeaponPoint()
+        {
+            IsFirstSelected = !IsFirstSelected;
+            weaponPoint1.DOKill();
+            weaponPoint2.DOKill();
+            weaponPoint1.DOFade(IsFirstSelected ? 1 : 0.5f, 0.2f);
+            weaponPoint2.DOFade(IsFirstSelected ? 0.5f : 1f, 0.2f);
         }
 
         private void UnsubscribeCurrentWeapon()

@@ -167,6 +167,9 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
     {
         public static void RegisterManager(this SubtitlesManager manager)
         {
+            Debug.Log(ContextualDialogueController.Instance);
+            Debug.Log(manager);
+            
             ContextualDialogueController.Instance.RegisterManager(manager);
         }
         
