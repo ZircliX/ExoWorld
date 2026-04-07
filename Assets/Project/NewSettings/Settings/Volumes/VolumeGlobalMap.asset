@@ -173,7 +173,7 @@ MonoBehaviour:
     m_Value: 1
   depthBufferThickness:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.01
   screenFadeDistance:
     m_OverrideState: 1
     m_Value: 1
@@ -185,10 +185,10 @@ MonoBehaviour:
     m_Value: 0.9
   speedRejectionParam:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 0.75
   speedRejectionScalerFactor:
     m_OverrideState: 1
-    m_Value: 0.2
+    m_Value: 0.75
   speedSmoothReject:
     m_OverrideState: 1
     m_Value: 1
