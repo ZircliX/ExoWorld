@@ -28,7 +28,6 @@ Material:
   m_Parent: {fileID: 2100000, guid: 9d39e26cec487c747b756c7e44ed565c, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _DISABLE_SSR
   - _DISABLE_SSR_TRANSPARENT
   - _MAPPING_TRIPLANAR
   - _MASKMAP
@@ -60,7 +59,11 @@ Material:
     - _AORemapMin: 0
     - _InvTilingScale: 2.5
     - _MetallicRemapMin: 1
+    - _ReceivesSSR: 1
     - _SmoothnessRemapMax: 0.57907575
+    - _StencilRefDepth: 8
+    - _StencilRefGBuffer: 10
+    - _StencilRefMV: 40
     - _TexWorldScale: 0.4
     m_Colors:
     - _BaseColor: {r: 0.70440245, g: 0.70440245, b: 0.70440245, a: 1}
