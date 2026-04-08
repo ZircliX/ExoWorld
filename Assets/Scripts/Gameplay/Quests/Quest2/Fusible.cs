@@ -23,7 +23,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         {
             get
             {
-                if (transform == null) return Vector3.zero;
+                if (this == null || transform == null) return Vector3.zero;
                 return transform.position.Add(y: 1f);
             }
         }
@@ -89,7 +89,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
 
             if (isConsumed)
             {
-                NetworkObject.Despawn();
+                NetworkObject.Despawn(false);
                 return;
             }
             

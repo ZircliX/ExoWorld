@@ -45,15 +45,9 @@ namespace OverBang.ExoWorld.Core.Inventory
         
         public bool AddItem(ItemData itemData, int quantity)
         {
-            Debug.Log(inventory);
-            Debug.Log(itemData);
-            Debug.Log(itemData.ItemId);
-            Debug.Log(inventory.TryGetValue("0", out ItemData item));
-            
             // Try to stack with existing item
             if (inventory.TryGetValue(itemData.ItemId, out ItemData existingItem))
             {
-                Debug.Log("aaaaaaaaaaaaaaaaaaaa");
                 existingItem.AddQuantity(quantity);
                 inventory[itemData.ItemId] = existingItem;
                 OnItemQuantityChanged?.Invoke(existingItem);

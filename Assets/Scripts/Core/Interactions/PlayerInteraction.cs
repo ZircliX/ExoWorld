@@ -93,15 +93,27 @@ namespace OverBang.ExoWorld.Core.Interactions
 
         private void UpdateInteractableData()
         {
+            List<InteractableData> toRemove = new List<InteractableData>();
+            
             foreach (InteractableData data in interactables)
             {
-                data.UpdateData();
+                if (!data.IsValid())
+                    toRemove.Add(data);
+                else
+                    data.UpdateData();
+            }
+
+            foreach (InteractableData data in toRemove)
+            {
+                interactables.Remove(data);
+                interactableDataMap.Remove(data.Instance);
             }
         }
 
         private void UpdateCurrentInteractable()
         {
             InteractableData nextInteractable = null;
+            interactables.RemoveAll(x => x.Instance == null);
 
             if (interactables.Count > 0)
             {
