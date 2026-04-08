@@ -23,7 +23,7 @@ namespace OverBang.ExoWorld.Core.Audios
             displayedDialogues = new HashSet<CdQueued>();
         }
 
-        private void OnEnable()
+        private void Start()
         {
             PlayerSettings.Instance.OnSubtitlesChanged += SetSubtitlesEnabled;
             this.RegisterManager();

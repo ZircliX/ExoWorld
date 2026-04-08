@@ -60,7 +60,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
 
         private void OnWeaponChanged(Weapon previous, Weapon current)
         {
-            Debug.Log("OnWeaponChange Event");
             UnsubscribeCurrentWeapon();
             if (previous != null) SwitchWeaponPoint();
                 
