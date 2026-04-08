@@ -194,7 +194,7 @@ Material:
     - _DistortionBlend: 0.5
     - _DistortionEnabled: 0
     - _DistortionStrength: 1
-    - _DistortionStrengthScaled: 0
+    - _DistortionStrengthScaled: 0.1
     - _DoubleSidedEnable: 0
     - _DoubleSidedGIMode: 0
     - _DoubleSidedNormalMode: 1
@@ -290,8 +290,8 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
-    - _Color: {r: 1.1486984, g: 1.1486984, b: 1.1486984, a: 0.9254902}
-    - _ColorAddSubDiff: {r: 1, g: 0, b: 0, a: 0}
+    - _Color: {r: 1.0592737, g: 1.0592737, b: 1.0592737, a: 0.88235295}
+    - _ColorAddSubDiff: {r: -1, g: 1, b: 0, a: 0}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
