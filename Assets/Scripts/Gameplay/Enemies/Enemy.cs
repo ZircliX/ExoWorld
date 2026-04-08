@@ -10,9 +10,8 @@ using OverBang.ExoWorld.Core.Interactions;
 using OverBang.ExoWorld.Core.Utils;
 using OverBang.ExoWorld.Gameplay.Loots;
 using OverBang.ExoWorld.Gameplay.Targeting;
-using OverBang.Pooling;
-using OverBang.Pooling.Resource;
 using Unity.Netcode;
+using Unity.Netcode.Components;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -23,6 +22,7 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
     {
         [Header("References")]
         [SerializeField, Self] private NetworkObject networkObject;
+        [SerializeField, Self] private NetworkAnimator networkAnimator;
         [SerializeField, Self] private HealthComponent healthComponent;
         [SerializeField, Self] private CapsuleCollider capsuleCollider;
         [SerializeField] private Transform modelContainer;
@@ -57,7 +57,11 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
         private bool isTargetable = true;
         public event Action<bool> OnTargeted;
 
-        private void OnValidate() => this.ValidateRefs();
+        private void OnValidate()
+        {
+            this.ValidateRefs();
+            networkAnimator.enabled = false;
+        }
 
         private void OnEnable()
         {
@@ -76,7 +80,7 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
             attackDetectionArea.OnEnter -= OnAttackEnter;
             attackDetectionArea.OnExit  -= OnAttackExit;
         }
-
+        
         [Rpc(SendTo.Everyone)]
         public void InitializeRpc(string enemyDataId)
         {
@@ -111,9 +115,15 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
                 {
                     enemyAnimator = animator;
                     isPatrol = true;
-                    enemyAnimator.SetBool(IsPatrolParam, isPatrol);
+                    SetAnimatorBoolRpc(IsPatrolParam, isPatrol);
                 }
             }
+        }
+        
+        [Rpc(SendTo.Everyone)]
+        public void SetAnimatorBoolRpc(string paramHash, bool value)
+        {
+            enemyAnimator?.SetBool(paramHash, value);
         }
 
         private void Update()
@@ -250,10 +260,10 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
             const float attackOffset = 1.1f + 0.25f;
 
             isPatrol = false;
-            enemyAnimator.SetBool(IsPatrolParam, isPatrol);
+            SetAnimatorBoolRpc(IsPatrolParam, isPatrol);
 
             isAttacking = true;
-            enemyAnimator.SetBool(IsPunchingParam, isAttacking);
+            SetAnimatorBoolRpc(IsPunchingParam, isAttacking);
 
             attackCts?.Cancel();
             attackCts = new CancellationTokenSource();
@@ -267,13 +277,13 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
             StopAttack();
 
             isPatrol = true;
-            enemyAnimator.SetBool(IsPatrolParam, isPatrol);
+            SetAnimatorBoolRpc(IsPatrolParam, isPatrol);
         }
         
         private void StopAttack()
         {
             isAttacking = false;
-            enemyAnimator.SetBool(IsPunchingParam, false);
+            SetAnimatorBoolRpc(IsPunchingParam, false);
             attackCts?.Cancel();
             attackCts = null;
             currentDamageableTarget = null;

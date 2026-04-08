@@ -28,7 +28,7 @@ namespace OverBang.ExoWorld.Core.Interactions
 
         public bool IsValid()
         {
-            return Instance != null;
+            return Instance != null &&  LastKnownPosition != Vector3.zero;
         }
     }
 }
