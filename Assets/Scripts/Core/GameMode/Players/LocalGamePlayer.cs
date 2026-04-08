@@ -21,6 +21,7 @@ namespace OverBang.ExoWorld.Core.GameMode.Players
         public float MaxHealth { get; private set; } = -1;
         public event Action<float, float> OnHealthChanged;
         public PlayerState State { get; private set; } = PlayerState.Uninitialized;
+        public event Action<PlayerState> OnStateChanged; 
 
         public string SessionPlayerID => LocalSessionPlayer.Id;
         public ulong ClientID => NetworkManager.Singleton.LocalClientId;
@@ -115,6 +116,7 @@ namespace OverBang.ExoWorld.Core.GameMode.Players
         {
             State = newState;
             isDirty = true;
+            OnStateChanged?.Invoke(State);
         }
 
         public NetworkObject Spawn(Vector3 position, Quaternion rotation, Transform parent = null)

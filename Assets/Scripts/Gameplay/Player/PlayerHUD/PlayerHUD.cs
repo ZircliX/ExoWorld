@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DG.Tweening;
 using Helteix.Tools;
 using OverBang.ExoWorld.Core.GameMode.Players;
 using OverBang.ExoWorld.Core.Inventory;
@@ -11,11 +12,12 @@ using UnityEngine.UI;
 
 namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
 {
-    public class PlayerHUD : MonoBehaviour
+    public class PlayerHUD : MonoBehaviour, IPlayerComponent
     {
         [Header("Player Stats")]
         [SerializeField] private TMP_Text playerNameText;
         [SerializeField] private Image healthBar;
+        [SerializeField] private Image healthBarBg;
         [SerializeField] private TMP_Text trinititeText;
         [SerializeField] private TMP_Text composantText;
         
@@ -28,16 +30,11 @@ namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
         [SerializeField, Space] private GameObject questsPanel;
         [SerializeField] private GameObject timerPanel;
         
-        private LocalGamePlayer player;
-        private LocalGamePlayer Player
-        {
-            get
-            {
-                player ??= GamePlayerManager.Instance.GetLocalPlayer();
-                return player;
-            }
-        }
-
+        [Header("Player")]
+        [SerializeField] private CanvasGroup reviveCanvas;
+        
+        public PlayerController Controller { get; private set; }
+        
         private void Awake()
         {
             teammateContainer.ClearChildren();
@@ -50,23 +47,26 @@ namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
 
         private void OnEnable()
         {
-            Player.OnHealthChanged += OnHealthChanged;
-            Player.Inventory.OnItemQuantityChanged += OnItemQuantityChanged;
-            
             RefreshPlayerStats();
             RefreshTeammates();
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
-            Player.OnHealthChanged -= OnHealthChanged;
-            Player.Inventory.OnItemQuantityChanged -= OnItemQuantityChanged;
+            Controller.LocalGamePlayer.OnHealthChanged -= OnHealthChanged;
+            Controller.LocalGamePlayer.Inventory.OnItemQuantityChanged -= OnItemQuantityChanged;
+            Controller.LocalGamePlayer.OnStateChanged -= OnStateChanged;
+        }
+
+        private void OnStateChanged(PlayerState state)
+        {
+            reviveCanvas.DOFade(state == PlayerState.Down ? 1 : 0, 0.25f);
         }
 
         private void OnHealthChanged(float current, float maxHealth)
         {
             healthBar.fillAmount = current / maxHealth;
-            //healthBarBg.DOFillAmount(current / maxHealth, 0.2f);
+            healthBarBg.DOFillAmount(current / maxHealth, 0.5f);
         }
         
         private void OnItemQuantityChanged(ItemData itemData)
@@ -84,7 +84,7 @@ namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
 
         private void RefreshPlayerStats()
         {
-            if (Player.SessionPlayer.TryGetPlayerProperty(
+            if (Controller.LocalGamePlayer.SessionPlayer.TryGetPlayerProperty(
                     GameMetrics.Global.ConstID.PlayerPropertyPlayerName,
                     out string playerName))
             {
@@ -92,7 +92,7 @@ namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
             }
             else
             {
-                playerNameText.text = $"Player_{Player.SessionPlayerID[..6]}";
+                playerNameText.text = $"Player_{Controller.LocalGamePlayer.SessionPlayerID[..6]}";
             }
         }
 
@@ -116,6 +116,14 @@ namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
                     teammates.Add(teammateInfo);
                 }
             }
+        }
+        
+        public void OnSync(PlayerRuntimeContext context)
+        {
+            Controller = context.playerController;
+            Controller.LocalGamePlayer.OnHealthChanged += OnHealthChanged;
+            Controller.LocalGamePlayer.Inventory.OnItemQuantityChanged += OnItemQuantityChanged;
+            Controller.LocalGamePlayer.OnStateChanged += OnStateChanged;
         }
     }
 }

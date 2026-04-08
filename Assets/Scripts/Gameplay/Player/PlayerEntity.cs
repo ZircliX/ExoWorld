@@ -11,6 +11,8 @@ using OverBang.ExoWorld.Gameplay.Movement;
 using OverBang.ExoWorld.Gameplay.Targeting;
 using OverBang.ExoWorld.Gameplay.Upgrade;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using Object = UnityEngine.Object;
 
 namespace OverBang.ExoWorld.Gameplay.Player
 {
@@ -83,6 +85,8 @@ namespace OverBang.ExoWorld.Gameplay.Player
         
         public void TakeDamage(RuntimeDamageData damage)
         {
+            Debug.LogError($"Take damage from {damage.source}", damage.source as GameObject);
+            
             if (MinHealth > 0)
             {
                 float potentialHealth = Health - damage.finalDamage;
@@ -92,18 +96,25 @@ namespace OverBang.ExoWorld.Gameplay.Player
                 }
             }
             
-            if (Health < 0)
-            {
-                Controller.LocalGamePlayer.SetHealth(MaxHealth);
-            }
+            float newHealth = Mathf.Max(Health - damage.finalDamage, 0);
+            Controller.LocalGamePlayer.SetHealth(newHealth);
             
-            Controller.LocalGamePlayer.SetHealth(Health - damage.finalDamage);
+            if (Health <= 0)
+            {
+                Controller.LocalGamePlayer.SetState(PlayerState.Down);
+            }
         }
         
         public void Heal(float amount)
         {
             float health = Health + amount;
             Controller.LocalGamePlayer.SetHealth(Mathf.Min(health, MaxHealth));
+        }
+
+        private void Revive()
+        {
+            Heal(MaxHealth);
+            Controller.LocalGamePlayer.SetState(PlayerState.Alive);
         }
 
         public event IHealth.HealthChanged OnHealthChanged;
@@ -240,5 +251,13 @@ namespace OverBang.ExoWorld.Gameplay.Player
         }
 
         #endregion
+
+        public void ReviveInput(InputAction.CallbackContext context)
+        {
+            if (context.performed && Controller.LocalGamePlayer.State == PlayerState.Down)
+            {
+                Revive();
+            }
+        }
     }
 }

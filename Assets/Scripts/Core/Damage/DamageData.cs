@@ -27,6 +27,7 @@ namespace OverBang.ExoWorld.Core.Damage
 
     public struct RuntimeDamageData
     {
+        public object source;
         public float finalDamage;
         public float weakSpotMultiplier;
         public DamageType damageType;

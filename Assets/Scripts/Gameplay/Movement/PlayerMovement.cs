@@ -1,4 +1,5 @@
 using Helteix.ChanneledProperties.Priorities;
+using OverBang.ExoWorld.Core.GameMode.Players;
 using OverBang.ExoWorld.Gameplay.Cameras;
 using OverBang.ExoWorld.Gameplay.Player;
 using UnityEngine;
@@ -13,6 +14,8 @@ namespace OverBang.ExoWorld.Gameplay.Movement
         public PlayerController Controller { get; private set; }
         public Animator PlayerAnimator { get; private set; }
 
+        private bool activeInputs = true;
+
         public void SetMovementSpeedMultiplier(float multiplier)
         {
             MovementSpeedMultiplier = multiplier;
@@ -23,6 +26,12 @@ namespace OverBang.ExoWorld.Gameplay.Movement
             base.Awake();
             CameraController.CameraEffectProperty?.AddPriority(stateChannelKey, PriorityTags.High);
             CameraController.CameraShakeProperty?.AddPriority(stateChannelKey, PriorityTags.High);
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            Controller.LocalGamePlayer.OnStateChanged -= OnStateChanged;
         }
 
         protected override void FixedUpdate()
@@ -36,18 +45,37 @@ namespace OverBang.ExoWorld.Gameplay.Movement
         {
             Controller = context.playerController;
             PlayerAnimator = context.playerAnimator;
+
+            Controller.LocalGamePlayer.OnStateChanged += OnStateChanged;
         }
-        
+
+        private void OnStateChanged(PlayerState state)
+        {
+            activeInputs = state is not PlayerState.Down or PlayerState.Dead;
+        }
+
         #region Inputs
 
         public void ReadInputMove(InputAction.CallbackContext context)
         {
+            if (!activeInputs)
+            {
+                InputDirection = Vector3.zero;
+                return;
+            }
+            
             Vector2 input = context.ReadValue<Vector2>();
             InputDirection = new Vector3(input.x, 0, input.y);
         }
 
         public void ReadInputJump(InputAction.CallbackContext context)
         {
+            if (!activeInputs)
+            {
+                jumpInputPressed = false;
+                return;
+            }
+            
             if (context.performed)
             {
                 jumpInputPressed = true;
@@ -60,11 +88,21 @@ namespace OverBang.ExoWorld.Gameplay.Movement
 
         public void ReadInputCrouch(InputAction.CallbackContext context)
         {
+            if (!activeInputs)
+            {
+                CrouchInput = false;
+                return;
+            }
             CrouchInput = context.performed;
         }
 
         public void ReadInputRun(InputAction.CallbackContext context)
         {
+            if (!activeInputs)
+            {
+                RunInput = false;
+                return;
+            }
             RunInput = context.performed && Rb.linearVelocity.sqrMagnitude > MIN_THRESHOLD && !jumpInputPressed;
         }
 
