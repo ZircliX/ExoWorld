@@ -118,8 +118,8 @@ namespace OverBang.ExoWorld.Gameplay.HUB
             primaryIcon = Instantiate(currentCharacterData.PrimaryAbility.Icon, primaryAbilityTarget);
             secondaryIcon = Instantiate(currentCharacterData.SecondaryAbility.Icon, secondaryAbilityTarget);
 
-            primaryAbilityButton.targetGraphic = primaryIcon.TargetGraphic;
-            secondaryAbilityButton.targetGraphic = secondaryIcon.TargetGraphic;
+            primaryAbilityButton.targetGraphic = primaryIcon.AbilityIcon;
+            secondaryAbilityButton.targetGraphic = secondaryIcon.AbilityIcon;
             
             UpdateAbility(abilitySelected);
         }
