@@ -26,6 +26,18 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
             return false;
         }
         
+        public bool TryGetLineAtIndex(int index, out CharacterLine line)
+        {
+            if (index >= 0 && index < Lines.Length)
+            {
+                line = Lines[index];
+                return true;
+            }
+            
+            line = default;
+            return false;
+        }
+        
         [System.Serializable] 
         public struct CharacterLine
         {
