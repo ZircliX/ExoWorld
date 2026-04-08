@@ -15,41 +15,42 @@ MonoBehaviour:
   <ID>k__BackingField: 49aeb11b-c5de-46d1-84d6-b6d11fe36040
   <Priority>k__BackingField: 0
   <Probability>k__BackingField: 1
-  <CanBeHeardByEveryone>k__BackingField: 1
   <VoiceLifetime>k__BackingField: 0.2
-  <maxSubtitlesTextLenght>k__BackingField: 144
+  <MaxSubtitlesTextLenght>k__BackingField: 144
+  <CanBeHeardByEveryone>k__BackingField: 1
+  <RadioEffect>k__BackingField: 1
   clips:
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: bed7478a90a81034487b01a6fbd270ea, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: "Grenade Burst lanc\xE9e.\n"
       characterCount: 22
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1073741853
+        _sourceAsset: {fileID: 11400000, guid: a365ec0b28811d340aaadd4d2ce53a27, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: 'Grenade Burst.
 
 '
       characterCount: 15
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1073741855
+        _sourceAsset: {fileID: 11400000, guid: a365ec0b28811d340aaadd4d2ce53a27, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: "J'ai lanc\xE9 une grenade de type Burst."
       characterCount: 37
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1073741854
+        _sourceAsset: {fileID: 11400000, guid: a365ec0b28811d340aaadd4d2ce53a27, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: 6907ab4dd1948334eabe022b53c8b49d, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: 'La Grenade Burst !
 
 '
@@ -59,7 +60,7 @@ MonoBehaviour:
         ID: 0
         _sourceAsset: {fileID: 0}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: 'Vigilence ! Grenade Burst !
 
 '
@@ -69,7 +70,7 @@ MonoBehaviour:
         ID: 0
         _sourceAsset: {fileID: 0}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: Une Grenade Burst dans les airs !
       characterCount: 33
       delayBetweenLines: 0
@@ -79,7 +80,7 @@ MonoBehaviour:
         <DebugObject>k__BackingField: {fileID: 0}
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: 8538becf3d7dff243b44f593a4e788a8, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: 'Lancer de Grenade Burst !
 
 '
@@ -89,7 +90,7 @@ MonoBehaviour:
         ID: 1342177307
         _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: 'Lancer de Grenade Burst !
 
 '
@@ -99,7 +100,7 @@ MonoBehaviour:
         ID: 1342177308
         _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: J'lance une Burst.
       characterCount: 18
       delayBetweenLines: 0
@@ -107,7 +108,7 @@ MonoBehaviour:
         ID: 1342177309
         _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: J'lance une Burst !
       characterCount: 19
       delayBetweenLines: 0
@@ -115,7 +116,7 @@ MonoBehaviour:
         ID: 1342177310
         _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: J'lance une Burst !
       characterCount: 19
       delayBetweenLines: 0
@@ -123,7 +124,7 @@ MonoBehaviour:
         ID: 1342177311
         _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: Grenade Burst.
       characterCount: 14
       delayBetweenLines: 0
@@ -131,7 +132,7 @@ MonoBehaviour:
         ID: 1342177312
         _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: Grenade Burst !
       characterCount: 15
       delayBetweenLines: 0
@@ -141,7 +142,7 @@ MonoBehaviour:
         <DebugObject>k__BackingField: {fileID: 0}
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: 464e9e9c5413d1340bd1934a0c4149f5, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: 'Grenade Burst je te choisi.
 
 '
@@ -151,7 +152,7 @@ MonoBehaviour:
         ID: 0
         _sourceAsset: {fileID: 0}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: 'Grenade Burst !
 
 '
@@ -161,7 +162,7 @@ MonoBehaviour:
         ID: 0
         _sourceAsset: {fileID: 0}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: Burst, hohoho.
       characterCount: 14
       delayBetweenLines: 0

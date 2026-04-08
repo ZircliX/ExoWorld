@@ -23,15 +23,11 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
         private SubtitlesManager subtitlesManager;
         private readonly CdQueuedComparer comparer = new CdQueuedComparer();
         private readonly Dictionary<ulong, List<CdQueued>> lineQueue = new Dictionary<ulong, List<CdQueued>>();
-
-        private void OnEnable()
-        {
-            this.RegisterController();
-        }
-
+        
         protected override void Activate()
         {
-            DontDestroyOnLoad(gameObject);
+            this.RegisterController();
+            DontDestroyOnLoad(this);
         } 
 
         public void RegisterManager(SubtitlesManager manager)
@@ -61,10 +57,9 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
                 if (queue.Count == 0)
                     continue;
 
-                CdQueued last = queue[^1];
                 queue.Sort(comparer);
 
-                ProcessFirstQueuedDialogue(last, queue);
+                ProcessFirstQueuedDialogue(queue);
             }
         }
 
@@ -86,19 +81,31 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
             }
         }
 
-        private void ProcessFirstQueuedDialogue(CdQueued last, List<CdQueued> queue)
+        private void ProcessFirstQueuedDialogue(List<CdQueued> queue)
         {
             if (queue.Count == 0) return;
 
             CdQueued cdQueued = queue[^1];
 
+            // Check if any dialogue is currently playing
+            bool anyPlaying = false;
+            foreach (CdQueued cd in queue)
+            {
+                if (cd.IsPlaying)
+                {
+                    anyPlaying = true;
+                    break;
+                }
+            }
+
+            if (anyPlaying)
+            {
+                // Wait for current dialogue to finish
+                return;
+            }
+
             if (!cdQueued.WasFired)
             {
-                if (last != cdQueued && last.IsPlaying)
-                {
-                    TryRemoveContextualDialogue(cdQueued.dialogue, cdQueued.context);
-                    return;
-                }
 
                 cdQueued.Fire();
                 if (subtitlesManager != null)
@@ -167,9 +174,6 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
     {
         public static void RegisterManager(this SubtitlesManager manager)
         {
-            Debug.Log(ContextualDialogueController.Instance);
-            Debug.Log(manager);
-            
             ContextualDialogueController.Instance.RegisterManager(manager);
         }
         

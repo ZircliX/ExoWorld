@@ -83,8 +83,11 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
 
         public void Kill()
         {
-            AudioPlayer?.Stop();
-            AudioPlayer = null;
+            if(AudioPlayer != null && AudioPlayer.IsPlaying)
+            {
+                AudioPlayer.Stop();
+                AudioPlayer = null;
+            }
         }
 
         public bool IsOutDated()

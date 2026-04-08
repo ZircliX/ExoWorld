@@ -22,7 +22,6 @@ namespace OverBang.ExoWorld.Gameplay.Player
 
         public override void OnNetworkSpawn()
         {
-            Debug.Log($"registering player to contextualDialogueManager with id : {OwnerClientId} ");
             ulong id = OwnerClientId;
             RegisterPlayerRpc(id);
         }
@@ -30,8 +29,6 @@ namespace OverBang.ExoWorld.Gameplay.Player
         [Rpc(SendTo.Everyone)]
         private void RegisterPlayerRpc(ulong id)
         {
-            Debug.Log(id);
-            Debug.Log(ContextualDialogueManager.Controller);
             ContextualDialogueManager.Controller.RegisterPlayer(id);
         }
 

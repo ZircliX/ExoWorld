@@ -1,4 +1,5 @@
 ﻿using Ami.BroAudio;
+using OverBang.ExoWorld.Core.Audios.ContextualDialogues;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -16,5 +17,8 @@ namespace OverBang.ExoWorld.Core.Abilities.Gadgets
         [field: SerializeField] public NetworkObject ExplosionEffect { get; private set; }
         [field: SerializeField] public float ExplosionDelay { get; private set; }
         [field: SerializeField] public float ExplosionRadius { get; private set; }
+        
+        [field: Header("Dialogues Data :")]
+        [field: SerializeField] public ContextualDialogueData DialogueData { get; protected set; }
     }
 }

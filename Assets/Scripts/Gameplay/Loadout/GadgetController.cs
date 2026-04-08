@@ -4,6 +4,7 @@ using Helteix.Tools;
 using OverBang.ExoWorld.Core.Abilities;
 using OverBang.ExoWorld.Core.Abilities.Gadgets;
 using OverBang.ExoWorld.Core.GameMode.Players;
+using OverBang.ExoWorld.Gameplay.Player;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -126,6 +127,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         {
             Player.GadgetInventory.RemoveGadget(currentGadgetData, 1);
             currentGadget.Cast(InteractionCamera);
+            PlayerCDController.Instance.FireDialogue(currentGadgetData.DialogueData);
+            
             currentGadget.OnGadgetEnded += OnGadgetEnded;
             
             castedGadgets.Add(currentGadget);
