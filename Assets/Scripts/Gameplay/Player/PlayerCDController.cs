@@ -1,4 +1,5 @@
 ﻿using OverBang.ExoWorld.Core.Audios.ContextualDialogues;
+using OverBang.ExoWorld.Core.Characters;
 using OverBang.ExoWorld.Core.GameMode.Players;
 using OverBang.ExoWorld.Core.Phases;
 using OverBang.ExoWorld.Gameplay.Phase;
@@ -73,23 +74,48 @@ namespace OverBang.ExoWorld.Gameplay.Player
             
             if (rdn <= dialogue.Probability)
             {
-                //Debug.Log("Fire Audio, everyone : " + dialogue.CanBeHeardByEveryone);
-                if (dialogue.CanBeHeardByEveryone)
+                // Choisir l'index de la ligne
+                LocalGamePlayer player = GamePlayerManager.Instance.GetLocalPlayer();
+                if (!ContextualDialogueManager.TryGetDialogueData(dialogue.ID, out ContextualDialogueData dialogueData)) return;
+                
+                // Vérifier si le clip existe pour ce personnage
+                if (dialogueData.TryGetClip(player.CharacterData, out ContextualClip.CharacterLine _))
                 {
-                    FireDialogueRpc(dialogue.ID, GetContext());
-                }
-                else
-                {
-                    CDContext context = GetContext();
-                    ContextualDialogueManager.FireEvent(dialogue.ID, context);
+                    // La ligne existe, maintenant on choisit un index aléatoire
+                    // On suppose que les lignes sont accessibles, sinon on doit modifier ContextualDialogueData
+                    // Pour l'instant, utiliser TryGetLineIndex helper
+                    int lineIndex = Random.Range(0, GetLineCountForCharacter(dialogueData, player.CharacterData));
+                    
+                    //Debug.Log("Fire Audio, everyone : " + dialogue.CanBeHeardByEveryone);
+                    if (dialogue.CanBeHeardByEveryone)
+                    {
+                        FireDialogueRpc(dialogue.ID, GetContext(), lineIndex);
+                    }
+                    else
+                    {
+                        CDContext context = GetContext();
+                        ContextualDialogueManager.FireEvent(dialogue.ID, context, lineIndex);
+                    }
                 }
             }
         }
         
-        [Rpc(SendTo.Everyone)]
-        private void FireDialogueRpc(string id, CDContext context)
+        private int GetLineCountForCharacter(ContextualDialogueData dialogueData, CharacterData characterData)
         {
-            ContextualDialogueManager.FireEvent(id, context);
+            // Utiliser la réflexion ou une méthode helper pour obtenir le nombre de lignes
+            // Pour l'instant, on utilise une approche simple : essayer d'obtenir chaque index jusqu'à échouer
+            int count = 0;
+            while (dialogueData.TryGetClip(characterData, count, out _))
+            {
+                count++;
+            }
+            return count;
+        }
+        
+        [Rpc(SendTo.Everyone)]
+        private void FireDialogueRpc(string id, CDContext context, int lineIndex)
+        {
+            ContextualDialogueManager.FireEvent(id, context, lineIndex);
         }
 
         public void OnBegin(HubPhase phase)

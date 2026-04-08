@@ -50,6 +50,19 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
                 }
             }
         }
+        
+        public static void FireEvent(string id, CDContext context, int lineIndex)
+        {
+            if (!GameDatabase.Global.TryGetAssetByID(context.characterDataId, out CharacterData characterData)) return;
+            
+            if (TryGetDialogue(characterData, id, lineIndex, out ContextualDialogue contextualDialogue))
+            {
+                if (!Controller.TryAddContextualDialogue(contextualDialogue, context))
+                {
+                    Debug.LogWarning($"Cannot add {contextualDialogue} to controller !");
+                }
+            }
+        }
 
 
         public static bool TryGetDialogueData(string id, out ContextualDialogueData dialogue)
@@ -61,6 +74,20 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
             if (loadedData.TryGetValue(id, out ContextualDialogueData contextualDialogueData))
             {
                 if (contextualDialogueData.TryGetClip(from, out ContextualClip.CharacterLine line))
+                {
+                    dialogue = new ContextualDialogue(from, contextualDialogueData, line);
+                    return true;
+                }
+            }
+            
+            dialogue = default;
+            return false;
+        }
+        public static bool TryGetDialogue(CharacterData from, string id, int lineIndex, out ContextualDialogue dialogue)
+        {
+            if (loadedData.TryGetValue(id, out ContextualDialogueData contextualDialogueData))
+            {
+                if (contextualDialogueData.TryGetClip(from, lineIndex, out ContextualClip.CharacterLine line))
                 {
                     dialogue = new ContextualDialogue(from, contextualDialogueData, line);
                     return true;

@@ -40,6 +40,21 @@ namespace OverBang.ExoWorld.Core.Audios.ContextualDialogues
             return false;
         }
         
+        public bool TryGetClip(CharacterData data, int lineIndex, out ContextualClip.CharacterLine line)
+        {
+            line = default;
+            if (clips.Length == 0)
+                return false;
+
+            for (int i = 0; i < clips.Length; i++)
+            {
+                if(clips[i].CharacterData == data) 
+                    return clips[i].TryGetLineAtIndex(lineIndex, out line);
+            }
+            
+            return false;
+        }
+        
         private void OnValidate()
         {
             if (string.IsNullOrEmpty(ID))
