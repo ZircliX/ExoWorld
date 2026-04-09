@@ -13,9 +13,90 @@ MonoBehaviour:
   m_Name: Alarme Declenchee
   m_EditorClassIdentifier: OverBang.ExoWorld.Core::OverBang.ExoWorld.Core.Audios.ContextualDialogues.ContextualDialogueData
   <ID>k__BackingField: 7074e8ad-5be0-4f5a-a508-67dca1e393f8
-  <Priority>k__BackingField: 0
+  <Priority>k__BackingField: 3
   <Probability>k__BackingField: 1
-  <CanBeHeardByEveryone>k__BackingField: 1
   <VoiceLifetime>k__BackingField: 0.2
-  <maxSubtitlesTextLenght>k__BackingField: 144
-  clips: []
+  <MaxSubtitlesTextLenght>k__BackingField: 144
+  <CanBeHeardByEveryone>k__BackingField: 0
+  <RadioEffect>k__BackingField: 1
+  clips:
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: bed7478a90a81034487b01a6fbd270ea, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 2.6
+      text: Courez les jeunes, courez !
+      characterCount: 27
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177585
+        _sourceAsset: {fileID: 11400000, guid: 4984b444485d37e44800c8dbc385ccea, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3.3
+      text: "\"La fuite me semble une tr\xE8s tr\xE8s bonne option.\""
+      characterCount: 48
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177586
+        _sourceAsset: {fileID: 11400000, guid: 4984b444485d37e44800c8dbc385ccea, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: 6907ab4dd1948334eabe022b53c8b49d, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 3.5
+      text: "Je n'avais pas la connaissance que nous \xE9tions venu braquer une banque.\n"
+      characterCount: 72
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177721
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3
+      text: "Alli\xE9s, je sugg\xE9re la fuite imm\xE9diate !"
+      characterCount: 39
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177722
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3
+      text: "Alli\xE9s, je sugg\xE9re la fuite imm\xE9diate !"
+      characterCount: 39
+      delayBetweenLines: 0
+      soundID:
+        ID: 0
+        _sourceAsset: {fileID: 0}
+        <DebugObject>k__BackingField: {fileID: 0}
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: 8538becf3d7dff243b44f593a4e788a8, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 2
+      text: EuUuHh... Barrez-vous !!
+      characterCount: 24
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177359
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3.3
+      text: "Mais \xE9teignez moi ce son casse-couilles !"
+      characterCount: 41
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177360
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: 464e9e9c5413d1340bd1934a0c4149f5, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 4.6
+      text: "Watatata ! Faut pas qu'on reste l\xE0, FAUT PAS QU'ON RESTE LA !!"
+      characterCount: 62
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177480
+        _sourceAsset: {fileID: 11400000, guid: 6ed5981b9a651b442b19b34cbc974ea1, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 4.5
+      text: "C'est l'heure de courir tr\xE8s vite et tr\xE8s loin !!"
+      characterCount: 49
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177481
+        _sourceAsset: {fileID: 11400000, guid: 6ed5981b9a651b442b19b34cbc974ea1, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}

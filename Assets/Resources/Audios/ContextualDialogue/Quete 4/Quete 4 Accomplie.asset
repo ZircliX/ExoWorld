@@ -13,9 +13,104 @@ MonoBehaviour:
   m_Name: Quete 4 Accomplie
   m_EditorClassIdentifier: OverBang.ExoWorld.Core::OverBang.ExoWorld.Core.Audios.ContextualDialogues.ContextualDialogueData
   <ID>k__BackingField: a01e36f2-5eed-45f6-9a78-8050aaada936
-  <Priority>k__BackingField: 0
+  <Priority>k__BackingField: 1
   <Probability>k__BackingField: 1
-  <CanBeHeardByEveryone>k__BackingField: 1
   <VoiceLifetime>k__BackingField: 0.2
-  <maxSubtitlesTextLenght>k__BackingField: 144
-  clips: []
+  <MaxSubtitlesTextLenght>k__BackingField: 144
+  <CanBeHeardByEveryone>k__BackingField: 0
+  <RadioEffect>k__BackingField: 1
+  clips:
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: bed7478a90a81034487b01a6fbd270ea, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 4.4
+      text: "Tout \xE7a me parait avoir de la valeur, mais bon ce n'est pas de mon
+        ressort."
+      characterCount: 75
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177583
+        _sourceAsset: {fileID: 11400000, guid: 4984b444485d37e44800c8dbc385ccea, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 2.2
+      text: Une bonne chose de faite.
+      characterCount: 25
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177584
+        _sourceAsset: {fileID: 11400000, guid: 4984b444485d37e44800c8dbc385ccea, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: 6907ab4dd1948334eabe022b53c8b49d, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 4.6
+      text: "La malette est en s\xE9curit\xE9, son contenu est-il si remarquable
+        que cela ?"
+      characterCount: 72
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177718
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 4.5
+      text: "Cela est un tr\xE9sor ? Pour quelles raisons avons nous retrouver cela
+        ?"
+      characterCount: 69
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177719
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 6.1
+      text: "Je pensais que nous nous \xE9tions d\xE9plac\xE9s pour de la Trinitite
+        et non pour un inutile porte document !"
+      characterCount: 101
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177720
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: 8538becf3d7dff243b44f593a4e788a8, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 2.4
+      text: "C'est quoi cette malette \xE0 la con encore !"
+      characterCount: 42
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177356
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 2.6
+      text: "J'ai l'impression d'avoir vol\xE9 un truc important."
+      characterCount: 49
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177357
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 2.7
+      text: "J'ai l'impression d'avoir vol\xE9 un truc important."
+      characterCount: 49
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177358
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: 464e9e9c5413d1340bd1934a0c4149f5, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 6
+      text: Une mallette... remplie... d'explosifs ! S'il vous plait, faites qu'elle
+        soit remplie d'explosifs !
+      characterCount: 99
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177478
+        _sourceAsset: {fileID: 11400000, guid: 6ed5981b9a651b442b19b34cbc974ea1, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 5.9
+      text: Elle m'a l'air importante cette mallette. Mais bon, au moins le boulot
+        est fini.
+      characterCount: 80
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177479
+        _sourceAsset: {fileID: 11400000, guid: 6ed5981b9a651b442b19b34cbc974ea1, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}

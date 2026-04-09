@@ -15,83 +15,84 @@ MonoBehaviour:
   <ID>k__BackingField: 0c24a4d6-d42c-4991-8c5c-e5ab1ee6ea98
   <Priority>k__BackingField: 0
   <Probability>k__BackingField: 1
-  <CanBeHeardByEveryone>k__BackingField: 1
   <VoiceLifetime>k__BackingField: 0.2
-  <maxSubtitlesTextLenght>k__BackingField: 144
+  <MaxSubtitlesTextLenght>k__BackingField: 144
+  <CanBeHeardByEveryone>k__BackingField: 0
+  <RadioEffect>k__BackingField: 1
   clips:
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: bed7478a90a81034487b01a6fbd270ea, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3.5
       text: "Ok, la mission a \xE9t\xE9 compl\xE8tement \xE9ffectu\xE9e.\n"
       characterCount: 45
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177577
+        _sourceAsset: {fileID: 11400000, guid: 4984b444485d37e44800c8dbc385ccea, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 2.5
       text: "Toutes les demandes de la mission ont \xE9t\xE9 atteintes."
       characterCount: 52
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177578
+        _sourceAsset: {fileID: 11400000, guid: 4984b444485d37e44800c8dbc385ccea, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: 6907ab4dd1948334eabe022b53c8b49d, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 4
       text: "Tout ce souffle toxique.. cela sugg\xE8re ma plan\xE8te natale."
       characterCount: 57
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177713
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: 8538becf3d7dff243b44f593a4e788a8, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
-      text: "J'suis pas pay\xE9e assez pour faire cette merde.\n"
+    - subtitleLifeTime: 3.4
+      text: "J'suis pas assez pay\xE9e pour faire cette merde.\n"
       characterCount: 47
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177347
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
-      text: 'J''ai failli y laisser ma peau si jamais !!
+    - subtitleLifeTime: 2.4
+      text: 'J''ai failli y laisser ma peau si jamais !
 
 '
-      characterCount: 43
+      characterCount: 42
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177348
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 2.6
       text: "Ramenez moi au vaisseau, \xE7a schlingue ici."
       characterCount: 42
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177349
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: 464e9e9c5413d1340bd1934a0c4149f5, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
-      text: "Je me demande si je pourai me faire payer en poudre plut\xF4t qu'en
-        argent.\n"
-      characterCount: 73
+    - subtitleLifeTime: 6
+      text: "Je me demande vraiment si je pourrai me faire payer en poudre plut\xF4t
+        qu'en argent.\n"
+      characterCount: 83
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177472
+        _sourceAsset: {fileID: 11400000, guid: 6ed5981b9a651b442b19b34cbc974ea1, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
-      text: "Mission finie, mais bon, tout le monde sera d'accord pour dire que \xE7a
-        manquait d'explosion."
-      characterCount: 91
+    - subtitleLifeTime: 6
+      text: "Mission finie ! Mais bon, tout le monde sera d'accord pour dire que
+        \xE7a manquait d'explosion !"
+      characterCount: 93
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177473
+        _sourceAsset: {fileID: 11400000, guid: 6ed5981b9a651b442b19b34cbc974ea1, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
