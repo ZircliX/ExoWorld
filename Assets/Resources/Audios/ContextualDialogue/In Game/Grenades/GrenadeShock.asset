@@ -14,74 +14,161 @@ MonoBehaviour:
   m_EditorClassIdentifier: OverBang.ExoWorld.Core::OverBang.ExoWorld.Core.Audios.ContextualDialogues.ContextualDialogueData
   <ID>k__BackingField: b5b6865c-1088-4b61-8b9a-6243737f34b7
   <Priority>k__BackingField: 0
-  <Probability>k__BackingField: 1
-  <CanBeHeardByEveryone>k__BackingField: 1
+  <Probability>k__BackingField: 0.5
   <VoiceLifetime>k__BackingField: 0.2
-  <maxSubtitlesTextLenght>k__BackingField: 144
+  <MaxSubtitlesTextLenght>k__BackingField: 144
+  <CanBeHeardByEveryone>k__BackingField: 1
+  <RadioEffect>k__BackingField: 1
   clips:
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: bed7478a90a81034487b01a6fbd270ea, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: 'Grenade Shock, attention !
 
 '
       characterCount: 27
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177564
+        _sourceAsset: {fileID: 11400000, guid: 4984b444485d37e44800c8dbc385ccea, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: 'Je lance une Grenade Shock.
 
 '
       characterCount: 28
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177565
+        _sourceAsset: {fileID: 11400000, guid: 4984b444485d37e44800c8dbc385ccea, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: Grenade Shock, explosion dans 2 secondes.
       characterCount: 41
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177566
+        _sourceAsset: {fileID: 11400000, guid: 4984b444485d37e44800c8dbc385ccea, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: 6907ab4dd1948334eabe022b53c8b49d, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
+      text: Lancer de Grenade Shock !
+      characterCount: 25
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177690
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3
+      text: Lancer de Grenade Shock !
+      characterCount: 25
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177691
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3
+      text: Lancer de Grenade Shock !
+      characterCount: 25
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177692
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3
+      text: Lancer de Grenade Shock !
+      characterCount: 25
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177693
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3
+      text: Lancer de Grenade Shock !
+      characterCount: 25
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177694
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3
       text: 'La Grenade Shock !
 
 '
       characterCount: 19
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177695
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
-      text: 'Vigilence ! Grenade Shock !
-
-'
-      characterCount: 28
+    - subtitleLifeTime: 3
+      text: La Grenade Shock !
+      characterCount: 18
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177696
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
-      text: J'entreprends la Grenade Shock !
-      characterCount: 32
+    - subtitleLifeTime: 3
+      text: La Grenade Shock !
+      characterCount: 18
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177697
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3
+      text: La Grenade Shock !
+      characterCount: 18
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177698
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3
+      text: Vigilence ! Grenade Shock !
+      characterCount: 27
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177699
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3
+      text: Vigilence ! Grenade Shock !
+      characterCount: 27
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177700
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3
+      text: Vigilence ! Grenade Shock !
+      characterCount: 27
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177701
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3
+      text: Vigilence ! Grenade Shock !
+      characterCount: 27
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177702
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3
+      text: Vigilence ! Grenade Shock !
+      characterCount: 27
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177703
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: 8538becf3d7dff243b44f593a4e788a8, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: 'Lancer de Grenade Shock !
 
 '
@@ -91,7 +178,7 @@ MonoBehaviour:
         ID: 1342177325
         _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: 'J''lance une Grenade Shock !
 
 '
@@ -101,7 +188,7 @@ MonoBehaviour:
         ID: 1342177328
         _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: 'J''lance une Grenade Shock !
 
 '
@@ -111,7 +198,7 @@ MonoBehaviour:
         ID: 1342177329
         _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: 'Lancer de Grenade Shock !
 
 '
@@ -121,24 +208,24 @@ MonoBehaviour:
         ID: 1342177326
         _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
-      text: Greande Shock !
+    - subtitleLifeTime: 3
+      text: Grenade Shock !
       characterCount: 15
       delayBetweenLines: 0
       soundID:
         ID: 1342177330
         _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
-      text: Greande Shock !
+    - subtitleLifeTime: 3
+      text: Grenade Shock !
       characterCount: 15
       delayBetweenLines: 0
       soundID:
         ID: 1342177331
         _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
-      text: Greande Shock !
+    - subtitleLifeTime: 3
+      text: Grenade Shock !
       characterCount: 15
       delayBetweenLines: 0
       soundID:
@@ -147,29 +234,21 @@ MonoBehaviour:
         <DebugObject>k__BackingField: {fileID: 0}
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: 464e9e9c5413d1340bd1934a0c4149f5, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: "Attention \xE7a va p\xE9ter, \xE7aaa vaaaa p\xE9ter !!\n"
       characterCount: 43
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177460
+        _sourceAsset: {fileID: 11400000, guid: 6ed5981b9a651b442b19b34cbc974ea1, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: '10 points pour celui qui la rattrape.
 
 '
       characterCount: 38
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
-        <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
-      text: Petit mais puissant, J'A-DORE
-      characterCount: 29
-      delayBetweenLines: 0
-      soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177461
+        _sourceAsset: {fileID: 11400000, guid: 6ed5981b9a651b442b19b34cbc974ea1, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}

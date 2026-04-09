@@ -13,120 +13,153 @@ MonoBehaviour:
   m_Name: Revive
   m_EditorClassIdentifier: OverBang.ExoWorld.Core::OverBang.ExoWorld.Core.Audios.ContextualDialogues.ContextualDialogueData
   <ID>k__BackingField: 2d4ad215-4551-4807-bc2a-b48299eb466c
-  <Priority>k__BackingField: 0
+  <Priority>k__BackingField: 5
   <Probability>k__BackingField: 1
-  <CanBeHeardByEveryone>k__BackingField: 1
   <VoiceLifetime>k__BackingField: 0.2
-  <maxSubtitlesTextLenght>k__BackingField: 144
+  <MaxSubtitlesTextLenght>k__BackingField: 144
+  <CanBeHeardByEveryone>k__BackingField: 1
+  <RadioEffect>k__BackingField: 1
   clips:
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: bed7478a90a81034487b01a6fbd270ea, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: 'Cet incident ne se reproduira plus.
 
 '
       characterCount: 36
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177607
+        _sourceAsset: {fileID: 11400000, guid: 4984b444485d37e44800c8dbc385ccea, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: 'Merci, c''est vrai qu''on est mieux debout.
 
 '
       characterCount: 42
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177608
+        _sourceAsset: {fileID: 11400000, guid: 4984b444485d37e44800c8dbc385ccea, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: Un grand merci camarade.
       characterCount: 24
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177609
+        _sourceAsset: {fileID: 11400000, guid: 4984b444485d37e44800c8dbc385ccea, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: 6907ab4dd1948334eabe022b53c8b49d, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: "Remerciement sinc\xE8re, alli\xE9.\n"
       characterCount: 29
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177747
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 4
       text: "Alli\xE9... Je vous suis \xE9ternellement reconnaissante.\n"
       characterCount: 52
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177748
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3.7
+      text: "Alli\xE9... Je vous suis \xE9ternellement reconnaissante.\n"
+      characterCount: 52
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177749
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3.3
       text: Votre main me guide, et mon coeur vous remercie.
       characterCount: 48
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177750
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: 8538becf3d7dff243b44f593a4e788a8, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: "J'avais m\xEAme pas besoin de toi t'fa\xE7on...\n"
       characterCount: 42
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177391
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
+      text: "J'avais m\xEAme pas besoin de toi t'fa\xE7on...\n"
+      characterCount: 42
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177392
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3.5
       text: "Ah bah c'est pas trop t\xF4t ! Laissez moi crever la prochaine fois
         !\n"
       characterCount: 67
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177393
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3.3
       text: "Ohhh trop dommage, j'\xE9tais vraiment bien par terre !"
       characterCount: 52
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177394
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3.7
+      text: "Ohhh trop dommage, j'\xE9tais vraiment bien par terre !"
+      characterCount: 52
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177395
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: 464e9e9c5413d1340bd1934a0c4149f5, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 4
       text: "Mon h\xE9ro, le seul et l'unique.\n"
       characterCount: 31
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177509
+        _sourceAsset: {fileID: 11400000, guid: 6ed5981b9a651b442b19b34cbc974ea1, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3.3
+      text: "Mon h\xE9ro, le seul et l'unique.\n"
+      characterCount: 31
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177510
+        _sourceAsset: {fileID: 11400000, guid: 6ed5981b9a651b442b19b34cbc974ea1, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 4.3
       text: 'Je peux de nouveau marcher, je peux MARCHHHHER !
 
 '
       characterCount: 49
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177511
+        _sourceAsset: {fileID: 11400000, guid: 6ed5981b9a651b442b19b34cbc974ea1, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: "Merci l'ami, je te revaudrai \xE7a."
       characterCount: 32
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177512
+        _sourceAsset: {fileID: 11400000, guid: 6ed5981b9a651b442b19b34cbc974ea1, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}

@@ -15,117 +15,143 @@ MonoBehaviour:
   <ID>k__BackingField: 629f4e2b-f009-4092-acaa-4940583ea12d
   <Priority>k__BackingField: 0
   <Probability>k__BackingField: 1
-  <CanBeHeardByEveryone>k__BackingField: 1
   <VoiceLifetime>k__BackingField: 0.2
-  <maxSubtitlesTextLenght>k__BackingField: 144
+  <MaxSubtitlesTextLenght>k__BackingField: 144
+  <CanBeHeardByEveryone>k__BackingField: 1
+  <RadioEffect>k__BackingField: 1
   clips:
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: bed7478a90a81034487b01a6fbd270ea, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: 'Un petit coup de pouce pour vous.
 
 '
       characterCount: 34
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177600
+        _sourceAsset: {fileID: 11400000, guid: 4984b444485d37e44800c8dbc385ccea, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: 'Pas besoin de me remercier.
 
 '
       characterCount: 28
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177601
+        _sourceAsset: {fileID: 11400000, guid: 4984b444485d37e44800c8dbc385ccea, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: Et c'est reparti.
       characterCount: 17
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177602
+        _sourceAsset: {fileID: 11400000, guid: 4984b444485d37e44800c8dbc385ccea, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: 6907ab4dd1948334eabe022b53c8b49d, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: "Alli\xE9s ! B\xE9n\xE9ficiez des drogues !\n"
       characterCount: 34
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177736
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 4.5
       text: "ZETA se d\xE9ploie... que vos pas soient plus l\xE9gers et vos frappes
         plus fortes.\n"
       characterCount: 78
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177737
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: Azelith zeta vintra !
       characterCount: 21
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177738
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3
+      text: Azelith zeta vintra !
+      characterCount: 21
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177739
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: 8538becf3d7dff243b44f593a4e788a8, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 4
       text: "Attention \xE0 vos t\xEAtes les bigleux, \xE7a va p\xE9ter !\n"
       characterCount: 49
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177380
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: "Si j'\xE9tais vous je resterai pas l\xE0.\n"
       characterCount: 36
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177381
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
+      text: "Si j'\xE9tais vous je resterai pas l\xE0.\n"
+      characterCount: 36
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177382
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3
       text: "Qu'est ce que vous faites ? Restez pas plantez l\xE0 !"
       characterCount: 51
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177383
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: 464e9e9c5413d1340bd1934a0c4149f5, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
-      text: "Y'a une mine ici, vous voudriez pas venir la faire p\xE9ter ? \xC7a
-        me ferait vraiment plaisir.\n"
-      characterCount: 90
+    - subtitleLifeTime: 6
+      text: "H\xE9, y'a une mine ici, vous voudriez pas venir la faire p\xE9ter ?
+        Oh, \xE7a me ferait super plaisir.\n"
+      characterCount: 95
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177499
+        _sourceAsset: {fileID: 11400000, guid: 6ed5981b9a651b442b19b34cbc974ea1, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: "Faites gaffe o\xF9 vous mettez les pieds les petits gars !\n"
       characterCount: 56
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177500
+        _sourceAsset: {fileID: 11400000, guid: 6ed5981b9a651b442b19b34cbc974ea1, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
-      text: "Le feux d'artifice va \xEAtre grandiose, et c'est Spikey qui te le dit."
-      characterCount: 68
+    - subtitleLifeTime: 3
+      text: "Faites gaffe o\xF9 vous mettez les pieds les petits gars !\n"
+      characterCount: 56
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177501
+        _sourceAsset: {fileID: 11400000, guid: 6ed5981b9a651b442b19b34cbc974ea1, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 4.5
+      text: "Le feux d'artifice va \xEAtre grandiose, et c'est Spikey qui vous le
+        dit."
+      characterCount: 70
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177502
+        _sourceAsset: {fileID: 11400000, guid: 6ed5981b9a651b442b19b34cbc974ea1, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}

@@ -14,109 +14,151 @@ MonoBehaviour:
   m_EditorClassIdentifier: OverBang.ExoWorld.Core::OverBang.ExoWorld.Core.Audios.ContextualDialogues.ContextualDialogueData
   <ID>k__BackingField: 68f1d697-a131-4b5b-8588-e9565dcb2359
   <Priority>k__BackingField: 0
-  <Probability>k__BackingField: 1
-  <CanBeHeardByEveryone>k__BackingField: 1
+  <Probability>k__BackingField: 0.5
   <VoiceLifetime>k__BackingField: 0.2
-  <maxSubtitlesTextLenght>k__BackingField: 144
+  <MaxSubtitlesTextLenght>k__BackingField: 144
+  <CanBeHeardByEveryone>k__BackingField: 1
+  <RadioEffect>k__BackingField: 1
   clips:
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: bed7478a90a81034487b01a6fbd270ea, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3.7
       text: "\xC7a va pour cette fois mais faite attention o\xF9 vous tirez.\n"
       characterCount: 58
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177616
+        _sourceAsset: {fileID: 11400000, guid: 4984b444485d37e44800c8dbc385ccea, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: 'Rien de trop grave mais faite attention.
 
 '
       characterCount: 41
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177617
+        _sourceAsset: {fileID: 11400000, guid: 4984b444485d37e44800c8dbc385ccea, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3.7
+      text: "J'esp\xE8re que cet incident est le dernier."
+      characterCount: 41
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177618
+        _sourceAsset: {fileID: 11400000, guid: 4984b444485d37e44800c8dbc385ccea, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: 6907ab4dd1948334eabe022b53c8b49d, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3.6
       text: "Vigilance ! Je re\xE7ois votre geste...\n"
       characterCount: 37
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177759
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: "La trajectoire de votre geste m'a to\xFBch\xE9 !\n"
       characterCount: 43
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177760
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 4
       text: "Alli\xE9 ! Je re\xE7ois votre impact ! Je me f\xE2che !"
       characterCount: 46
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177761
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: 8538becf3d7dff243b44f593a4e788a8, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: "Fais gaffe o\xF9 tu tires esp\xE8ce de trou d'uc!\n"
       characterCount: 44
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177403
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
+      text: "Fais gaffe o\xF9 tu tires esp\xE8ce de trou d'uc!\n"
+      characterCount: 44
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177404
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3.4
+      text: "Fais gaffe o\xF9 tu tires esp\xE8ce de trou d'uc!\n"
+      characterCount: 44
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177405
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3
       text: "H\xE9 ! Tu sais combien elle coute ma combi ?!\n"
       characterCount: 44
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177406
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: Tu veux que je t'en mette une ou quoi ?!
       characterCount: 40
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177407
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3
+      text: Tu veux que je t'en mette une ou quoi ?!
+      characterCount: 40
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177408
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: 464e9e9c5413d1340bd1934a0c4149f5, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 5.5
       text: "H\xE9 y'a un monstre qui m'a tir\xE9 une balle ? Ah non c'est juste
         ce connard !!\n"
       characterCount: 76
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177520
+        _sourceAsset: {fileID: 11400000, guid: 6ed5981b9a651b442b19b34cbc974ea1, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 5.8
+      text: "H\xE9 y'a un monstre qui m'a tir\xE9 une balle ? Ah non c'est juste
+        ce connard !!\n"
+      characterCount: 76
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177521
+        _sourceAsset: {fileID: 11400000, guid: 6ed5981b9a651b442b19b34cbc974ea1, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3
       text: 'Tu veux que je t''en mette une dans le craaaane ?!
 
 '
       characterCount: 50
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177522
+        _sourceAsset: {fileID: 11400000, guid: 6ed5981b9a651b442b19b34cbc974ea1, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: "Faut pas me faire peur comme \xE7a putain !!!"
       characterCount: 42
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177523
+        _sourceAsset: {fileID: 11400000, guid: 6ed5981b9a651b442b19b34cbc974ea1, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
