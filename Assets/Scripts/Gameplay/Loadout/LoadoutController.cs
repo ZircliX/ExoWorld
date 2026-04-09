@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using KBCore.Refs;
+using OverBang.ExoWorld.Core.GameMode.Players;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Core.Scene;
 using OverBang.ExoWorld.Gameplay.Core.Menus;
+using OverBang.ExoWorld.Gameplay.Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Pool;
 
 namespace OverBang.ExoWorld.Gameplay.Loadout
 {
-    public class LoadoutController : MonoBehaviour, IInputReceiver
+    public class LoadoutController : MonoBehaviour, IInputReceiver, IPlayerComponent
     {
         [SerializeField, Self] private WeaponController weaponController;
         [SerializeField, Self] private GadgetController gadgetController;
@@ -19,10 +21,14 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         [SerializeField] private List<string> cameraInputActionName;
         [SerializeField] private List<string> gameplayInputActionName;
         
+        public PlayerController Controller { get; private set; }
+        
         private Stack<IInputReceiver> receivers;
         private List<InputAction> actions;
         private List<InputAction> gameplayActions;
         private IInputReceiver current;
+        
+        private bool activeInputs = true;
 
         public event Action<bool> OnActiveStateChanged;
         public bool OnlyUI { get; private set; }
@@ -30,6 +36,16 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private void OnValidate()
         {
             this.ValidateRefs();
+        }
+        
+        private void OnDestroy()
+        {
+            Controller.LocalGamePlayer.OnStateChanged -= OnStateChange;
+        }
+
+        private void OnStateChange(PlayerState state)
+        {
+            activeInputs = state is not (PlayerState.Down or PlayerState.Dead);
         }
         
         private void Awake()
@@ -74,30 +90,35 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         #region Inputs
         public void OnLeftInput(InputAction.CallbackContext context)
         {
+            if (!activeInputs) return;
             if (OnlyUI) return;
             current.OnLeftInput(context);
         }
 
         public void OnRightInput(InputAction.CallbackContext context)
         {
+            if (!activeInputs) return;
             if (OnlyUI) return;
             current.OnRightInput(context);
         }
 
         public void OnMiddleDragInput(InputAction.CallbackContext context)
         {
+            if (!activeInputs) return;
             if (OnlyUI) return;
             current.OnMiddleDragInput(context);
         }
 
         public void OnRInput(InputAction.CallbackContext context)
         {
+            if (!activeInputs) return;
             if (OnlyUI) return;
             current.OnRInput(context);
         }
 
         public void OnCInput(InputAction.CallbackContext context)
         {
+            if (!activeInputs) return;
             bool scene = SceneLoader.GetCurrentScene().name != GameMetrics.Global.SceneCollection.HubSceneRef.Name;
             if (!scene)
                 return;
@@ -105,7 +126,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             if (context.performed)
             {
                 SwitchReceiver(gadgetController);
-                HUD.Instance.ChangeGIStateWheelOpen(false, gameplayActions);
+                ChangeGameplayInputsState(false);
                 SwitchCameraInputs(false);
             }
             current.OnCInput(context);
@@ -154,5 +175,11 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         }
 
         #endregion
+        
+        public void OnSync(PlayerRuntimeContext context)
+        {
+            Controller = context.playerController;
+            Controller.LocalGamePlayer.OnStateChanged += OnStateChange;
+        }
     }
 }

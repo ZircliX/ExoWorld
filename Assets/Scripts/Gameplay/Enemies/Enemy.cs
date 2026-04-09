@@ -22,7 +22,6 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
     {
         [Header("References")]
         [SerializeField, Self] private NetworkObject networkObject;
-        [SerializeField, Self] private NetworkAnimator networkAnimator;
         [SerializeField, Self] private HealthComponent healthComponent;
         [SerializeField, Self] private CapsuleCollider capsuleCollider;
         [SerializeField] private Transform modelContainer;
@@ -60,7 +59,6 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
         private void OnValidate()
         {
             this.ValidateRefs();
-            networkAnimator.enabled = false;
         }
 
         private void OnEnable()
@@ -255,6 +253,9 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
         private void OnAttackEnter(Collider col, object target)
         {
             if (!IsOwner) return;
+    
+            // Add targetable check here
+            if (target is ITargetable { IsTargetable: false }) return;
 
             currentDamageableTarget = target as IDamageable;
             const float attackOffset = 1.1f + 0.25f;
@@ -296,11 +297,20 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
                 while (isAttacking && !ct.IsCancellationRequested)
                 {
                     await Awaitable.WaitForSecondsAsync(attackOffset, ct);
+                    if (ct.IsCancellationRequested) return;
+
+                    // Add targetable check here too
+                    if (currentDamageableTarget is ITargetable { IsTargetable: false })
+                    {
+                        StopAttack();
+                        return;
+                    }
 
                     if (currentDamageableTarget != null)
                         Damage(currentDamageableTarget);
 
                     await Awaitable.WaitForSecondsAsync(3.833f - attackOffset, ct);
+                    if (ct.IsCancellationRequested) return;
                 }
             }
             catch (OperationCanceledException) { }
@@ -326,6 +336,7 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
             {
                 EnemyManager.Instance.Unregister(this);
                 EnemyData.LootTable.GetDrop(transform.position, transform.rotation, healthComponent.LastDamageData.itemData);
+                currentDamageableTarget = null;
             }
         }
 
@@ -361,7 +372,9 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
 
         public void Damage(IDamageable damageable)
         {
-            damageable.TakeDamage(DamageData.GetRuntimeDamage());
+            RuntimeDamageData runtimeDamageData = DamageData.GetRuntimeDamage();
+            runtimeDamageData.source = gameObject;
+            damageable.TakeDamage(runtimeDamageData);
         }
 
         public void SetTargetable(bool state)

@@ -140,6 +140,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ReviveSelf",
+                    "type": "Button",
+                    "id": "1402367a-1fde-4526-908a-3a790b3f550c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -558,6 +567,28 @@
                     "processors": "",
                     "groups": ";Keyboard and Mouse",
                     "action": "Scope",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c1d8ffe0-d539-42b0-9807-435fd7a54d87",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard and Mouse",
+                    "action": "ReviveSelf",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9c4496bc-ab1f-4585-8f6a-cbe1d06fcf0f",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Controller",
+                    "action": "ReviveSelf",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

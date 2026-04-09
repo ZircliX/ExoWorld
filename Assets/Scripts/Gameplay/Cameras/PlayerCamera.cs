@@ -1,3 +1,4 @@
+using OverBang.ExoWorld.Core.GameMode.Players;
 using OverBang.ExoWorld.Gameplay.Movement;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -20,6 +21,29 @@ namespace OverBang.ExoWorld.Gameplay.Cameras
 
         [SerializeField] private Transform cameraRoot;
         [SerializeField] private Transform cameraRotations;
+        
+        private bool activeInputs = true;
+        
+        private void OnEnable()
+        {
+            GamePlayerManager.Instance.GetLocalPlayer().OnStateChanged += OnStateChange;
+        }
+
+        private void OnDisable()
+        {
+            GamePlayerManager.Instance.GetLocalPlayer().OnStateChanged -= OnStateChange;
+        }
+
+        private void OnStateChange(PlayerState state)
+        {
+            activeInputs = state is not (PlayerState.Down or PlayerState.Dead);
+
+            if (state == PlayerState.Down)
+            {
+                targetCamVelocity.y = 0;
+                targetCamVelocity.x = 0;
+            }
+        }
         
         private void Update()
         {
@@ -49,11 +73,13 @@ namespace OverBang.ExoWorld.Gameplay.Cameras
 
         public void OnLookX(InputAction.CallbackContext context)
         {
+            if (!activeInputs) return;
             targetCamVelocity.y = context.ReadValue<float>() * xModifier;
         }
 
         public void OnLookY(InputAction.CallbackContext context)
         {
+            if (!activeInputs) return;
             targetCamVelocity.x = context.ReadValue<float>() * yModifier;
         }
         

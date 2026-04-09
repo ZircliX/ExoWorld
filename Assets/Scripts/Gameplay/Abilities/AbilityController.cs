@@ -1,5 +1,6 @@
 using System;
 using OverBang.ExoWorld.Core.Abilities;
+using OverBang.ExoWorld.Core.GameMode.Players;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Core.Scene;
 using OverBang.ExoWorld.Gameplay.Movement;
@@ -18,8 +19,11 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         
         private IAbility primary;
         private IAbility secondary;
+
+        private bool activeInputs = true;
         
         public event Action<IAbility, IAbility> OnAbilitiesChanged;
+        public event Action<IAbility> OnAbilityUsed;
 
         private void Awake()
         {
@@ -27,6 +31,16 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             {
                 CastAnchor = transform.GetChild(1);
             }
+        }
+        
+        private void OnDestroy()
+        {
+            Controller.LocalGamePlayer.OnStateChanged -= OnStateChange;
+        }
+
+        private void OnStateChange(PlayerState state)
+        {
+            activeInputs = state is not (PlayerState.Down or PlayerState.Dead);
         }
 
         private void Update()
@@ -56,8 +70,10 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
 
         private void UseAbility(IAbility ability)
         {
+            if (!activeInputs) return;
             if (!CanUseAbility(ability)) return;
             ability.Begin();
+            OnAbilityUsed?.Invoke(ability);
         }
 
         private bool CanUseAbility(IAbility ability)
@@ -70,6 +86,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         public void OnSync(PlayerRuntimeContext context)
         {
             Controller = context.playerController;
+            Controller.LocalGamePlayer.OnStateChanged += OnStateChange;
 
             //Initialize abilities
             if (context.playerCharacterData.PrimaryAbility != null)
