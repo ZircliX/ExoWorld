@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using Helteix.Tools;
 using OverBang.ExoWorld.Core.Metrics;
 using OverBang.ExoWorld.Core.Utils;
@@ -14,6 +15,7 @@ namespace OverBang.ExoWorld.Core.Menus
     {
         // Public UI
         [SerializeField] private Button joinButton;
+        [SerializeField] private Button refreshButton;
         [SerializeField] private RectTransform contentList;
         [SerializeField] private LobbyListItem lobbyItemPrefab;
         
@@ -42,6 +44,8 @@ namespace OverBang.ExoWorld.Core.Menus
             joinButton.onClick.AddListener(HandleJoinGame);
             joinButton.interactable = false;
             
+            refreshButton.onClick.AddListener(DisplayLobbies);
+            
             passwordInput.onValueChanged.AddListener(HandlePasswordChanged);
             passwordInput.characterLimit = GameMetrics.Global.MaxPasswordLenght;
             
@@ -53,6 +57,7 @@ namespace OverBang.ExoWorld.Core.Menus
         {
             visibilityToggle.OnFilterChanged -= OnFilterChanged;
             joinButton.onClick.RemoveAllListeners();
+            refreshButton.onClick.RemoveAllListeners();
             passwordInput.onValueChanged.RemoveAllListeners();
         }
 
@@ -74,6 +79,8 @@ namespace OverBang.ExoWorld.Core.Menus
         {
             try
             {
+                refreshButton.interactable = false;
+                
                 // Query for available sessions
                 QuerySessionsOptions queryOptions = new QuerySessionsOptions()
                 {
@@ -109,6 +116,10 @@ namespace OverBang.ExoWorld.Core.Menus
                     LobbyListItem item = CreateLobbyItem(lobbyInfo);
                     lobbyItems.Add(item);
                 }
+
+                refreshButton.transform.DORotate(new Vector3(0, 0, 360 * 2), 2f, RotateMode.FastBeyond360).SetEase(Ease.Linear);
+                await Awaitable.WaitForSecondsAsync(2f);
+                refreshButton.interactable = true;
             }
             catch (Exception e)
             {

@@ -111,7 +111,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: OverBang.GameName.Gameplay::OverBang.GameName.Gameplay.Enemy
   ShowTopMostFoldoutHeaderGroup: 1
   networkObject: {fileID: 827771057727792807}
-  networkAnimator: {fileID: 0}
   healthComponent: {fileID: 2641663678897118583}
   capsuleCollider: {fileID: 4209642412550774923}
   modelContainer: {fileID: 7473997488970608723}
@@ -181,10 +180,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.75
+  m_Radius: 1.05
   m_Height: 2.5
   m_Direction: 1
-  m_Center: {x: 0, y: 1.18, z: 0}
+  m_Center: {x: 0, y: 1.25, z: 0}
 --- !u!114 &1753838713554727774
 MonoBehaviour:
   m_ObjectHideFlags: 0

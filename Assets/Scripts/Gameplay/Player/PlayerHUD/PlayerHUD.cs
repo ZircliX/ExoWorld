@@ -16,6 +16,7 @@ namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
     {
         [Header("Player Stats")]
         [SerializeField] private TMP_Text playerNameText;
+        [SerializeField] private Image playerIcon;
         [SerializeField] private Image healthBar;
         [SerializeField] private Image healthBarBg;
         [SerializeField] private TMP_Text trinititeText;
@@ -94,6 +95,8 @@ namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
             {
                 playerNameText.text = $"Player_{Controller.LocalGamePlayer.SessionPlayerID[..6]}";
             }
+            
+            playerIcon.sprite = Controller.LocalGamePlayer.CharacterData.Sprite;
         }
 
         private void RefreshTeammates()
