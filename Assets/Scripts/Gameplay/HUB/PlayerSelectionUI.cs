@@ -128,7 +128,8 @@ namespace OverBang.ExoWorld.Gameplay.HUB
         {
             abilitySelected = primary;
             AbilityData abilityData = primary ? currentCharacterData.PrimaryAbility : currentCharacterData.SecondaryAbility;
-            
+
+            return;
             primaryAbilityButton.image.color = primary ? selectedColor : unselectedColor;
             secondaryAbilityButton.image.color = primary ? unselectedColor : selectedColor;
             

@@ -23,6 +23,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         private bool activeInputs = true;
         
         public event Action<IAbility, IAbility> OnAbilitiesChanged;
+        public event Action<IAbility> OnAbilityUsed;
 
         private void Awake()
         {
@@ -72,6 +73,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             if (!activeInputs) return;
             if (!CanUseAbility(ability)) return;
             ability.Begin();
+            OnAbilityUsed?.Invoke(ability);
         }
 
         private bool CanUseAbility(IAbility ability)

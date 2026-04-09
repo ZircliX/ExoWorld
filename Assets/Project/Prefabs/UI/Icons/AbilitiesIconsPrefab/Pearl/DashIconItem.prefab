@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.95686275, g: 0.6039216, b: 0.07450981, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -433,6 +433,9 @@ MonoBehaviour:
   <AbilityIcon>k__BackingField: {fileID: 5774745425400834684}
   <CooldownText>k__BackingField: {fileID: 5342655280890142902}
   <AbilityHighlight>k__BackingField: {fileID: 5173285596649607731}
+  orange: {r: 0.95686275, g: 0.6039216, b: 0.07450981, a: 1}
+  black: {r: 0, g: 0, b: 0, a: 0}
+  white: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &6916467933954302109
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,7 +494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

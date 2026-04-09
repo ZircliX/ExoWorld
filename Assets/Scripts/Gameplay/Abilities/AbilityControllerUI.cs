@@ -24,11 +24,13 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         private void OnEnable()
         {
             abilityController.OnAbilitiesChanged += OnAbilitiesChanged;
+            abilityController.OnAbilityUsed += OnAbilityUsed;
         }
 
         private void OnDisable()
         {
             abilityController.OnAbilitiesChanged -= OnAbilitiesChanged;
+            abilityController.OnAbilityUsed -= OnAbilityUsed;
         }
 
         private void OnAbilitiesChanged(IAbility primary, IAbility secondary)

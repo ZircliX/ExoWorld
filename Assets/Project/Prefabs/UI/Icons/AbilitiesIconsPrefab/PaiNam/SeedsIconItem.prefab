@@ -53,7 +53,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4523037aa434cb3a4559425353a5e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: OverBang.ExoWorld.Core::OverBang.ExoWorld.Core.Abilities.AbilityIconReference
-  <TargetGraphic>k__BackingField: {fileID: 6464533375530913267}
+  <IconOutline>k__BackingField: {fileID: 6464533375530913267}
+  <CooldownFill>k__BackingField: {fileID: 7277254675231602904}
+  <AbilityIcon>k__BackingField: {fileID: 7863010154926941659}
+  <CooldownText>k__BackingField: {fileID: 5447403313862527394}
+  <AbilityHighlight>k__BackingField: {fileID: 821256676266906801}
+  orange: {r: 0.95686275, g: 0.6039216, b: 0.07450981, a: 1}
+  black: {r: 0, g: 0, b: 0, a: 1}
+  white: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &3810453590826420012
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.95686275, g: 0.6039216, b: 0.07450981, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -120,11 +127,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: f8d56cc24c97f8347b4aaee8c9a59788, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillMethod: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -187,7 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.95686275, g: 0.6039216, b: 0.07450981, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -262,7 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -365,6 +372,7 @@ GameObject:
   - component: {fileID: 5357644792639636064}
   - component: {fileID: 842244395908757949}
   - component: {fileID: 5447403313862527394}
+  - component: {fileID: 5498677370193970772}
   m_Layer: 5
   m_Name: AbilityCooldownText
   m_TagString: Untagged
@@ -491,3 +499,15 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!225 &5498677370193970772
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8389849672350472172}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0

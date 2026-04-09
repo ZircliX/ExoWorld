@@ -126,7 +126,7 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
             if (context.performed)
             {
                 SwitchReceiver(gadgetController);
-                HUD.Instance.ChangeGIStateWheelOpen(false, gameplayActions);
+                ChangeGameplayInputsState(false);
                 SwitchCameraInputs(false);
             }
             current.OnCInput(context);
