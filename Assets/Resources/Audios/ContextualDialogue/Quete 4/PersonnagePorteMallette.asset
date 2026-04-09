@@ -13,9 +13,90 @@ MonoBehaviour:
   m_Name: PersonnagePorteMallette
   m_EditorClassIdentifier: OverBang.ExoWorld.Core::OverBang.ExoWorld.Core.Audios.ContextualDialogues.ContextualDialogueData
   <ID>k__BackingField: e2abf55f-545f-463c-b390-1b3425d4af55
-  <Priority>k__BackingField: 0
-  <Probability>k__BackingField: 1
-  <CanBeHeardByEveryone>k__BackingField: 1
+  <Priority>k__BackingField: 3
+  <Probability>k__BackingField: 0.8
   <VoiceLifetime>k__BackingField: 0.2
-  <maxSubtitlesTextLenght>k__BackingField: 144
-  clips: []
+  <MaxSubtitlesTextLenght>k__BackingField: 144
+  <CanBeHeardByEveryone>k__BackingField: 1
+  <RadioEffect>k__BackingField: 1
+  clips:
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: bed7478a90a81034487b01a6fbd270ea, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 2.6
+      text: Allez, rien qu'un petit effort.
+      characterCount: 31
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177581
+        _sourceAsset: {fileID: 11400000, guid: 4984b444485d37e44800c8dbc385ccea, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 2.6
+      text: "Les derniers m\xE8tres, j'y suis presque."
+      characterCount: 38
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177582
+        _sourceAsset: {fileID: 11400000, guid: 4984b444485d37e44800c8dbc385ccea, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: 6907ab4dd1948334eabe022b53c8b49d, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 2.9
+      text: "La force s'\xE9chappe de moi mais j'y suis presque !"
+      characterCount: 49
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177716
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3.5
+      text: "Alli\xE9s ne me laissez pas \xE0 pr\xE9sent ! J'y suis presque !"
+      characterCount: 55
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177717
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: 8538becf3d7dff243b44f593a4e788a8, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 2.2
+      text: Aaargh !! J'y suis presque !
+      characterCount: 28
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177353
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3.9
+      text: Putain de mallette de CON ! J'y suis presque.
+      characterCount: 45
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177354
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 4.6
+      text: "Pourquoi c'est si lourd ?? Me l\xE2chez pas, j'y suis presque !"
+      characterCount: 60
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177355
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+  - <CharacterData>k__BackingField: {fileID: 11400000, guid: 464e9e9c5413d1340bd1934a0c4149f5, type: 2}
+    <Lines>k__BackingField:
+    - subtitleLifeTime: 3.9
+      text: "J'y suis bient\xF4t, plus qu'un petit effort."
+      characterCount: 42
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177476
+        _sourceAsset: {fileID: 11400000, guid: 6ed5981b9a651b442b19b34cbc974ea1, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 4.7
+      text: Allez Spikey, plus que quelques pas.
+      characterCount: 36
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177477
+        _sourceAsset: {fileID: 11400000, guid: 6ed5981b9a651b442b19b34cbc974ea1, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}

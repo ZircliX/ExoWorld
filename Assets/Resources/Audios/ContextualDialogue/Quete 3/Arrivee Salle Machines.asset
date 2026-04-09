@@ -13,95 +13,98 @@ MonoBehaviour:
   m_Name: Arrivee Salle Machines
   m_EditorClassIdentifier: OverBang.ExoWorld.Core::OverBang.ExoWorld.Core.Audios.ContextualDialogues.ContextualDialogueData
   <ID>k__BackingField: 6b2b8f73-711d-49fd-9f75-0052022f23d1
-  <Priority>k__BackingField: 0
+  <Priority>k__BackingField: 2
   <Probability>k__BackingField: 1
-  <CanBeHeardByEveryone>k__BackingField: 1
   <VoiceLifetime>k__BackingField: 0.2
-  <maxSubtitlesTextLenght>k__BackingField: 144
+  <MaxSubtitlesTextLenght>k__BackingField: 144
+  <CanBeHeardByEveryone>k__BackingField: 1
+  <RadioEffect>k__BackingField: 1
   clips:
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: bed7478a90a81034487b01a6fbd270ea, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: "On devrait se d\xE9barasser du gaz avant de continuer.\n"
       characterCount: 52
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177575
+        _sourceAsset: {fileID: 11400000, guid: 4984b444485d37e44800c8dbc385ccea, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
-      text: "Il ne vaut mieux pas qu'on continue temps que le gaz est l\xE0."
-      characterCount: 60
+    - subtitleLifeTime: 3
+      text: "Il ne vaut mieux pas que l'on continue temps que le gaz est l\xE0."
+      characterCount: 63
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177576
+        _sourceAsset: {fileID: 11400000, guid: 4984b444485d37e44800c8dbc385ccea, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: 6907ab4dd1948334eabe022b53c8b49d, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
-      text: "Je ressens que cette fum\xE9e verd\xE2tre n'est pas sain.\n"
-      characterCount: 52
+    - subtitleLifeTime: 2.8
+      text: "Je ressens que cette fum\xE9e verd\xE2tre n'est pas saine.\n"
+      characterCount: 53
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177711
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3.9
       text: J'ai la connaissance que ce genre de petites germes ne viennent jamais
-        seules...
-      characterCount: 80
+        seules.
+      characterCount: 78
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177712
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: 8538becf3d7dff243b44f593a4e788a8, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
-      text: 'Hm... Les amis, c''est quoi ce truc au sol ?
+    - subtitleLifeTime: 2.7
+      text: 'Euuuh... C''est quoi ce truc au sol ?
+
+'
+      characterCount: 37
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177343
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3.2
+      text: 'Euuh, les amis, c''est quoi ce truc au sol ?
 
 '
       characterCount: 44
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177344
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
-      text: "Ugh.. J'ai mes pieds qui touchent ce truc pourri au sol l\xE0.\n"
-      characterCount: 60
-      delayBetweenLines: 0
-      soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
-        <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
-      text: "Ok \xE7a me d\xE9go\xFBte. J'avance pas tant que ce truc vert ait pas
+    - subtitleLifeTime: 4.5
+      text: "Ok, \xE7a me d\xE9go\xFBte. J'avance pas tant que ce truc vert n'a pas
         disparu."
-      characterCount: 69
+      characterCount: 70
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177346
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: 464e9e9c5413d1340bd1934a0c4149f5, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 4.2
       text: 'Je sais pas ce que c''est comme gaz et je veux pas savoir.
 
 '
       characterCount: 58
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177470
+        _sourceAsset: {fileID: 11400000, guid: 6ed5981b9a651b442b19b34cbc974ea1, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
-      text: "Si je respire \xE7a je vais clamser, ... donc je respire pas \xE7a."
-      characterCount: 61
+    - subtitleLifeTime: 4.1
+      text: "Si je respire \xE7a je vais clamser. Donc, je respire pas."
+      characterCount: 55
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177471
+        _sourceAsset: {fileID: 11400000, guid: 6ed5981b9a651b442b19b34cbc974ea1, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
