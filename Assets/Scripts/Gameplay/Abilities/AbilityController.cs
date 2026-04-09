@@ -23,7 +23,9 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         private bool activeInputs = true;
         
         public event Action<IAbility, IAbility> OnAbilitiesChanged;
-        public event Action<IAbility> OnAbilityUsed;
+        public event Action<IAbility> OnAbilityStarted;
+        public event Action<IAbility> OnAbilityEnded;
+        public event Action<IAbility> OnAbilityCooldownEnded;
 
         private void Awake()
         {
@@ -73,7 +75,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             if (!activeInputs) return;
             if (!CanUseAbility(ability)) return;
             ability.Begin();
-            OnAbilityUsed?.Invoke(ability);
+            OnAbilityStarted?.Invoke(ability);
         }
 
         private bool CanUseAbility(IAbility ability)
@@ -98,6 +100,12 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             {
                 secondary = context.playerCharacterData.SecondaryAbility.CreateAbilityFor(this);
             }
+
+            primary.OnAbilityEnded += OnAbilityEnded;
+            secondary.OnAbilityEnded += OnAbilityEnded;
+            
+            primary.OnAbilityCooldownEnded += OnAbilityCooldownEnded;
+            secondary.OnAbilityCooldownEnded += OnAbilityCooldownEnded;
             
             OnAbilitiesChanged?.Invoke(primary, secondary);
         }

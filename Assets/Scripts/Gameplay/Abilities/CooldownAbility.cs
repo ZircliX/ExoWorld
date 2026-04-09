@@ -13,6 +13,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             private readonly float cooldownTime;
             private float cooldownRemaining;
 
+            public event Action OnAbilityCooldownEnded;
             public float Remaining => Mathf.Max(0, cooldownRemaining);
             public bool IsReady => cooldownRemaining <= 0;
 
@@ -25,7 +26,15 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             public void Tick(float deltaTime)
             {
                 if (cooldownRemaining > 0)
+                {
                     cooldownRemaining -= deltaTime;
+                    if (cooldownRemaining <= 0f)
+                    {
+                        // Clamp to zero and invoke the event only once when the cooldown finishes
+                        cooldownRemaining = 0f;
+                        OnAbilityCooldownEnded?.Invoke();
+                    }
+                }
             }
 
             public void Start()
@@ -36,6 +45,9 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         
         public TData DataT { get; private set; }
         public AbilityData Data => DataT;
+        public float Duration { get; private set; }
+        public Action<IAbility> OnAbilityEnded { get; set; }
+        public Action<IAbility> OnAbilityCooldownEnded { get; set; }
         public ICaster Caster { get; }
         public bool IsActive { get; private set; }
         public bool CanBeUsed => !IsActive && cooldown.IsReady;
@@ -61,6 +73,9 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             Caster = caster;
             DataT = data;
             cooldown = new CooldownComponent(data.Cooldown);
+            Duration = Data.Duration;
+
+            cooldown.OnAbilityCooldownEnded += () => OnAbilityCooldownEnded?.Invoke(this);
 
             MainStrategy = CreateStrategy(DataT.MainData);
             AugmentStrategy1 = CreateStrategy(DataT.AugmentData1);
@@ -111,6 +126,13 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             cooldown.Start();
             
             ActiveStrategy.End(this);
+            OnAbilityEnded?.Invoke(this);
+        }
+        
+        public void SetDuration(float duration)
+        {
+            Debug.Log("Setting duration to " + duration);
+            Duration = duration;
         }
     }
 }

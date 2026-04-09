@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Helteix.Tools;
 using OverBang.ExoWorld.Core.Abilities;
 using UnityEngine;
@@ -24,13 +25,17 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         private void OnEnable()
         {
             abilityController.OnAbilitiesChanged += OnAbilitiesChanged;
-            abilityController.OnAbilityUsed += OnAbilityUsed;
+            abilityController.OnAbilityStarted += OnAbilityStarted;
+            abilityController.OnAbilityEnded += OnAbilityEnded;
+            abilityController.OnAbilityCooldownEnded += OnAbilityCooldownEnded;
         }
 
         private void OnDisable()
         {
             abilityController.OnAbilitiesChanged -= OnAbilitiesChanged;
-            abilityController.OnAbilityUsed -= OnAbilityUsed;
+            abilityController.OnAbilityStarted -= OnAbilityStarted;
+            abilityController.OnAbilityEnded -= OnAbilityEnded;
+            abilityController.OnAbilityCooldownEnded -= OnAbilityCooldownEnded;
         }
 
         private void OnAbilitiesChanged(IAbility primary, IAbility secondary)
@@ -47,16 +52,27 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
             secondaryAbility = secondary;
         }
 
-        private void OnAbilityUsed(IAbility ability)
+        private void OnAbilityStarted(IAbility ability)
         {
-            if (ability == primaryAbility)
-            {
-                //primaryIcon.TargetGraphic.DOColor(col, 1.5f);
-            }
-            else if (ability == secondaryAbility)
-            {
-                //secondaryIcon.TargetGraphic.DOColor(col, 1.5f);
-            }
+            AbilityIconReference icon = ability == primaryAbility ? primaryIcon : secondaryIcon;
+            
+            Debug.Log($"Ability {ability.Data.Name} started, duration: {ability.Duration}");
+            icon.Begin(ability.Duration);
+        }
+        
+        private void OnAbilityEnded(IAbility ability)
+        {
+            AbilityIconReference icon = ability == primaryAbility ? primaryIcon : secondaryIcon;
+            
+            Debug.Log($"Ability {ability.Data.Name} ended, cooldown: {ability.Data.Cooldown}");
+            icon.End(ability.Data.Cooldown);
+        }
+        
+        private void OnAbilityCooldownEnded(IAbility ability)
+        {
+            AbilityIconReference icon = ability == primaryAbility ? primaryIcon : secondaryIcon;
+
+            icon.CooldownEnd();
         }
     }
 }
