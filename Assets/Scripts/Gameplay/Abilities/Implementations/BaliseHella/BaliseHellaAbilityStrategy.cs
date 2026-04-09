@@ -52,7 +52,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
 
         private float currentTime;
 
-        public void Initialize(IAbility<BaliseHellaData> ability, ICaster caster, TData data)
+        public virtual void Initialize(IAbility<BaliseHellaData> ability, ICaster caster, TData data)
         {
             Caster = caster;
             Data = data;
@@ -122,6 +122,12 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
     [CreateStrategyFor(typeof(BaliseHellaStrategyData))]
     public class BaliseHellaAbilityStrategy : BaliseHellaAbilityStrategy<BaliseHellaStrategyData>
     {
+        public override void Begin(IAbility<BaliseHellaData> ability)
+        {
+            base.Begin(ability);
+            ability.SetDuration(Data.Duration);
+        }
+
         protected override void OnEnter(Collider col, object obj)
         {
             base.OnEnter(col, obj);
@@ -138,6 +144,12 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
     [CreateStrategyFor(typeof(BaliseSecondChanceStrategyData))]
     public class BaliseSecondChanceAbilityStrategy : BaliseHellaAbilityStrategy<BaliseSecondChanceStrategyData>
     {
+        public override void Begin(IAbility<BaliseHellaData> ability)
+        {
+            base.Begin(ability);
+            ability.SetDuration(Data.Duration);
+        }
+        
         protected override void OnEnter(Collider col, object obj)
         {
             base.OnEnter(col, obj);
@@ -162,6 +174,12 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
     [CreateStrategyFor(typeof(BaliseInvisibilityStrategyData))]
     public class BaliseInvisibilityAbilityStrategy : BaliseHellaAbilityStrategy<BaliseInvisibilityStrategyData>
     {
+        public override void Begin(IAbility<BaliseHellaData> ability)
+        {
+            base.Begin(ability);
+            ability.SetDuration(Data.Duration);
+        }
+        
         protected override void OnEnter(Collider col, object obj)
         {
             base.OnEnter(col, obj);

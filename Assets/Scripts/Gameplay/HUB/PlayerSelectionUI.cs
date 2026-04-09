@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Helteix.ChanneledProperties.Priorities;
 using Helteix.Tools;
 using OverBang.ExoWorld.Core;
@@ -33,8 +34,6 @@ namespace OverBang.ExoWorld.Gameplay.HUB
         [SerializeField] private Button secondaryAbilityButton;
         [SerializeField] private Transform primaryAbilityTarget;
         [SerializeField] private Transform secondaryAbilityTarget;
-        [SerializeField] private Color selectedColor;
-        [SerializeField] private Color unselectedColor;
         
         [SerializeField] private TMP_Text abilityNameText;
         [SerializeField] private TMP_Text abilityDescriptionText;
@@ -63,6 +62,8 @@ namespace OverBang.ExoWorld.Gameplay.HUB
             
             primaryAbilityButton.transform.ClearChildren();
             secondaryAbilityButton.transform.ClearChildren();
+            
+            SwitchCharacter(1);
         }
 
         private void OnLoaded()
@@ -128,13 +129,11 @@ namespace OverBang.ExoWorld.Gameplay.HUB
         {
             abilitySelected = primary;
             AbilityData abilityData = primary ? currentCharacterData.PrimaryAbility : currentCharacterData.SecondaryAbility;
-
-            return;
-            primaryAbilityButton.image.color = primary ? selectedColor : unselectedColor;
-            secondaryAbilityButton.image.color = primary ? unselectedColor : selectedColor;
-            
             abilityNameText.text = abilityData.Name;
             abilityDescriptionText.text = abilityData.Description;
+
+            primaryAbilityButton.transform.DOScale(primary ? 1.15f : 1f, 0.25f);
+            secondaryAbilityButton.transform.DOScale(primary ? 1f : 1.15f, 0.25f);
         }
 
         private void ConfirmSelection()
