@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: OverBang.ExoWorld.Core::OverBang.ExoWorld.Core.Audios.ContextualDialogues.ContextualDialogueData
   <ID>k__BackingField: b47a06e2-3796-41ad-a352-ba8e19e2f985
   <Priority>k__BackingField: 0
-  <Probability>k__BackingField: 1
+  <Probability>k__BackingField: 0.5
   <VoiceLifetime>k__BackingField: 0.2
   <MaxSubtitlesTextLenght>k__BackingField: 144
   <CanBeHeardByEveryone>k__BackingField: 1
@@ -29,65 +29,123 @@ MonoBehaviour:
       characterCount: 14
       delayBetweenLines: 0
       soundID:
-        ID: 1342177281
-        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
+        ID: 1342177623
+        _sourceAsset: {fileID: 11400000, guid: 4984b444485d37e44800c8dbc385ccea, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 3
+    - subtitleLifeTime: 3.1
       text: "Je ne suis plus derri\xE8re vous, attention.\n"
       characterCount: 42
       delayBetweenLines: 0
       soundID:
-        ID: 1342177295
-        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
+        ID: 1342177624
+        _sourceAsset: {fileID: 11400000, guid: 4984b444485d37e44800c8dbc385ccea, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
     - subtitleLifeTime: 3
       text: "Je RECHARGGGGGGE, attention \xE0 vous."
       characterCount: 35
       delayBetweenLines: 0
       soundID:
-        ID: 1342177368
-        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
+        ID: 1342177625
+        _sourceAsset: {fileID: 11400000, guid: 4984b444485d37e44800c8dbc385ccea, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: 6907ab4dd1948334eabe022b53c8b49d, type: 2}
     <Lines>k__BackingField:
     - subtitleLifeTime: 3
-      text: 'Patience !
-
-'
+      text: Patience !
+      characterCount: 10
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177767
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3
+      text: Patientez !
       characterCount: 11
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177768
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3
+      text: "Patience \xE9quipe !"
+      characterCount: 17
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177769
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3
+      text: "Patience \xE9quipe !"
+      characterCount: 17
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177770
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3
+      text: "Patience \xE9quipe !"
+      characterCount: 17
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177771
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3
+      text: "Patience \xE9quipe !"
+      characterCount: 17
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177772
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
     - subtitleLifeTime: 3
       text: Je recharge... Surveillez-moi !
       characterCount: 31
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177773
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: 8538becf3d7dff243b44f593a4e788a8, type: 2}
     <Lines>k__BackingField:
     - subtitleLifeTime: 3
-      text: 'Je recharge !
-
-'
-      characterCount: 14
+      text: Je recharge !
+      characterCount: 13
       delayBetweenLines: 0
       soundID:
         ID: 1342177412
         _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
     - subtitleLifeTime: 3
-      text: 'Couvrez-moi !
-
-'
-      characterCount: 14
+      text: Je recharge !
+      characterCount: 13
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177413
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3
+      text: Couvrez-moi !
+      characterCount: 13
       delayBetweenLines: 0
       soundID:
         ID: 1342177414
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3
+      text: Couvrez-moi !
+      characterCount: 13
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177415
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3
+      text: A sec !
+      characterCount: 7
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177416
         _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
     - subtitleLifeTime: 3
@@ -106,31 +164,39 @@ MonoBehaviour:
         ID: 1342177418
         _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3
+      text: Merde, j'suis a sec !
+      characterCount: 21
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177419
+        _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: 464e9e9c5413d1340bd1934a0c4149f5, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 3
+    - subtitleLifeTime: 6
       text: "Attteennndddeeezz... Ok c'est bon, j'suis pr\xEAt \xE0 vous r\xE8gler
         votre compte.\n"
       characterCount: 75
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177528
+        _sourceAsset: {fileID: 11400000, guid: 6ed5981b9a651b442b19b34cbc974ea1, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 3
+    - subtitleLifeTime: 4.6
       text: "Pause tactique pour Spikey, de retour tr\xE8s vite ne vous en faites
         pas.\n"
       characterCount: 71
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177529
+        _sourceAsset: {fileID: 11400000, guid: 6ed5981b9a651b442b19b34cbc974ea1, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
     - subtitleLifeTime: 3
       text: "Laisse moi me rapeller dans quel sens \xE7a va et je suis \xE0 toi."
       characterCount: 61
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177530
+        _sourceAsset: {fileID: 11400000, guid: 6ed5981b9a651b442b19b34cbc974ea1, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}

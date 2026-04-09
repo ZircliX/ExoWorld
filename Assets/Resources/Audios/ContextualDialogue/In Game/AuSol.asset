@@ -13,60 +13,69 @@ MonoBehaviour:
   m_Name: AuSol
   m_EditorClassIdentifier: OverBang.ExoWorld.Core::OverBang.ExoWorld.Core.Audios.ContextualDialogues.ContextualDialogueData
   <ID>k__BackingField: 1771761a-e336-4a2a-80cd-8e16e15fc5ac
-  <Priority>k__BackingField: 0
+  <Priority>k__BackingField: 5
   <Probability>k__BackingField: 1
-  <CanBeHeardByEveryone>k__BackingField: 1
   <VoiceLifetime>k__BackingField: 0.2
-  <maxSubtitlesTextLenght>k__BackingField: 144
+  <MaxSubtitlesTextLenght>k__BackingField: 144
+  <CanBeHeardByEveryone>k__BackingField: 1
+  <RadioEffect>k__BackingField: 1
   clips:
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: bed7478a90a81034487b01a6fbd270ea, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 5
       text: Je ne serai pas contre un petit coup de main pour qui aurait le temps,
         merci.
       characterCount: 77
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177605
+        _sourceAsset: {fileID: 11400000, guid: 4984b444485d37e44800c8dbc385ccea, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: J'ai bien peur de devoir vous demander un peu d'aide.
       characterCount: 53
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177606
+        _sourceAsset: {fileID: 11400000, guid: 4984b444485d37e44800c8dbc385ccea, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: 6907ab4dd1948334eabe022b53c8b49d, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
-      text: "Mes forces s'\xE9teignent... j'ai besoin de votre lumi\xE8re."
-      characterCount: 55
+    - subtitleLifeTime: 4
+      text: Secourez ! Il semble qu'ils veulent me manger !
+      characterCount: 47
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177743
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
-      text: Faiblesse approche... je requiers votre assistance.
-      characterCount: 51
+    - subtitleLifeTime: 3.5
+      text: Secourez ! Il semble qu'ils veulent me manger !
+      characterCount: 47
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177744
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
-      text: "J'ai le sentiment que mes m\xE9dicaments n'ont plus d'atteinte."
-      characterCount: 60
+    - subtitleLifeTime: 2
+      text: Secourez je vous prie !
+      characterCount: 23
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177745
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 4
+      text: Secourez ! Le sol ne veut pas me quitter !
+      characterCount: 42
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177746
+        _sourceAsset: {fileID: 11400000, guid: 0ac6141356c332140b15e01263bd6990, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: 8538becf3d7dff243b44f593a4e788a8, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: "All\xF4\xF4\xF4 ? Je suis \xE0 terre l\xE0."
       characterCount: 28
       delayBetweenLines: 0
@@ -74,7 +83,7 @@ MonoBehaviour:
         ID: 1342177386
         _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: "Euuh.. Un petit coup de main s'il vous pla\xEEt ?"
       characterCount: 46
       delayBetweenLines: 0
@@ -82,7 +91,7 @@ MonoBehaviour:
         ID: 1342177387
         _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 4
       text: "Si jamais \xE7a vous int\xE9resse... j'ai besoin d'aide l\xE0 !"
       characterCount: 54
       delayBetweenLines: 0
@@ -90,7 +99,7 @@ MonoBehaviour:
         ID: 1342177389
         _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 3
       text: "Euuh.. Un petit coup de main s'il vous pla\xEEt ?"
       characterCount: 46
       delayBetweenLines: 0
@@ -98,7 +107,7 @@ MonoBehaviour:
         ID: 1342177388
         _sourceAsset: {fileID: 11400000, guid: 3d2a17dd7aa38d841a7e0919dd70839a, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 4
       text: "Si jamais \xE7a vous int\xE9resse... j'ai besoin d'aide l\xE0 !"
       characterCount: 54
       delayBetweenLines: 0
@@ -108,27 +117,36 @@ MonoBehaviour:
         <DebugObject>k__BackingField: {fileID: 0}
   - <CharacterData>k__BackingField: {fileID: 11400000, guid: 464e9e9c5413d1340bd1934a0c4149f5, type: 2}
     <Lines>k__BackingField:
-    - subtitleLifeTime: 0
-      text: "\xC0 l'aide ! \xC0 l'aide ! Jeune demoiselle aurait besoin d'aide !"
-      characterCount: 61
+    - subtitleLifeTime: 5
+      text: "\xC0 l'aide ! \xC0 l'aide ! Une jeune demoiselle aurait besoin d'aide
+        !"
+      characterCount: 65
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177505
+        _sourceAsset: {fileID: 11400000, guid: 6ed5981b9a651b442b19b34cbc974ea1, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 4.5
       text: Faudrait baisser les yeux et venir m'aider s'il vous plait !
       characterCount: 60
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177506
+        _sourceAsset: {fileID: 11400000, guid: 6ed5981b9a651b442b19b34cbc974ea1, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
-    - subtitleLifeTime: 0
+    - subtitleLifeTime: 4
       text: "Hey ! Regarder en bas, je suis l\xE0 !"
       characterCount: 35
       delayBetweenLines: 0
       soundID:
-        ID: 0
-        _sourceAsset: {fileID: 0}
+        ID: 1342177507
+        _sourceAsset: {fileID: 11400000, guid: 6ed5981b9a651b442b19b34cbc974ea1, type: 2}
+        <DebugObject>k__BackingField: {fileID: 0}
+    - subtitleLifeTime: 3
+      text: "Hey ! Regarder en bas, je suis l\xE0 !"
+      characterCount: 35
+      delayBetweenLines: 0
+      soundID:
+        ID: 1342177508
+        _sourceAsset: {fileID: 11400000, guid: 6ed5981b9a651b442b19b34cbc974ea1, type: 2}
         <DebugObject>k__BackingField: {fileID: 0}
