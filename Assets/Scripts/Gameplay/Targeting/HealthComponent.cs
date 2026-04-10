@@ -1,6 +1,7 @@
 ﻿using Ami.BroAudio;
 using OverBang.ExoWorld.Core.Damage;
 using Sirenix.OdinInspector;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace OverBang.ExoWorld.Gameplay.Targeting
@@ -19,7 +20,7 @@ namespace OverBang.ExoWorld.Gameplay.Targeting
         [field: SerializeField, ReadOnly] public float Health { get; private set; }
         public float MaxHealth { get; private set; }
         public float Resistance { get; private set; }
-        public bool IsAlive => Health > MinHealth;
+        public bool IsAlive => Health > 0;
         public void SetMinHealthRpc(float minHealth)
         {
             MinHealth = minHealth;
@@ -38,10 +39,10 @@ namespace OverBang.ExoWorld.Gameplay.Targeting
         {
             float previousHealth = Health;
             Health = health;
-            if (Health <= MinHealth)
+            if (Health <= 0)
             {
                 BroAudio.Play(killedSound, transform.position);
-                Health = MinHealth;
+                Health = 0;
             }
             OnHealthChanged?.Invoke(previousHealth, Health, MaxHealth);
         }
@@ -57,9 +58,15 @@ namespace OverBang.ExoWorld.Gameplay.Targeting
             
             if (damagedSound.IsValid())
                 BroAudio.Play(damagedSound, transform.position);
-            
-            SetHealth(Mathf.Max(Health - damage.finalDamage * (1f - Resistance), 0f));
             LastDamageData = damage;
+            
+            DamageRpc(damage.finalDamage);
+        }
+
+        [Rpc(SendTo.Owner)]
+        private void DamageRpc(float damage)
+        {
+            SetHealth(Mathf.Max(Health - damage * (1f - Resistance), 0f));
         }
     }
 }

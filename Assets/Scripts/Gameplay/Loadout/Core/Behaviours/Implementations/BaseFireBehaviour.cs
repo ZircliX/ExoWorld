@@ -138,6 +138,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private async Awaitable DespawnAfterDelay(NetworkObject networkObject, float delay)
         {
             await Awaitable.WaitForSecondsAsync(delay);
+            if (!networkObject.IsSpawned)
+                return;
             networkObject.Despawn();
         }
     }

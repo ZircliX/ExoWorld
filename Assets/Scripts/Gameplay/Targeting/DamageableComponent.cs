@@ -13,7 +13,7 @@ namespace OverBang.ExoWorld.Gameplay.Targeting
         public float MinHealth { get; private set; }
         public float Health { get; private set; }
         [field: SerializeField] public float MaxHealth { get; private set; }
-        public bool IsAlive => Health > MinHealth;
+        public bool IsAlive => Health > 0;
         
         [Rpc(SendTo.Owner)]
         public void SetMinHealthRpc(float minHealth)

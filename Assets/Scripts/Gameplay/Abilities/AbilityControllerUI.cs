@@ -56,7 +56,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         {
             AbilityIconReference icon = ability == primaryAbility ? primaryIcon : secondaryIcon;
             
-            Debug.Log($"Ability {ability.Data.Name} started, duration: {ability.Duration}");
+            //Debug.Log($"Ability {ability.Data.Name} started, duration: {ability.Duration}");
             icon.Begin(ability.Duration);
         }
         
@@ -64,7 +64,7 @@ namespace OverBang.ExoWorld.Gameplay.Abilities
         {
             AbilityIconReference icon = ability == primaryAbility ? primaryIcon : secondaryIcon;
             
-            Debug.Log($"Ability {ability.Data.Name} ended, cooldown: {ability.Data.Cooldown}");
+            //Debug.Log($"Ability {ability.Data.Name} ended, cooldown: {ability.Data.Cooldown}");
             icon.End(ability.Data.Cooldown);
         }
         

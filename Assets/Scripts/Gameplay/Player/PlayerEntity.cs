@@ -85,7 +85,7 @@ namespace OverBang.ExoWorld.Gameplay.Player
         
         public void TakeDamage(RuntimeDamageData damage)
         {
-            Debug.LogError($"Take damage from {damage.source}", damage.source as GameObject);
+            //Debug.LogError($"Take damage from {damage.source}", damage.source as GameObject);
             
             if (MinHealth > 0)
             {
