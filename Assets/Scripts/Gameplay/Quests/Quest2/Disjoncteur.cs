@@ -75,7 +75,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
 
         private void AddFusible(PlayerInteraction playerInteraction)
         {
-            if (!playerInteraction.IsHoldingItem() || !IsOwner)
+            if (!playerInteraction.IsHoldingItem())
                 return;
 
             if (isHoldingFusible)

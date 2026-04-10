@@ -29,12 +29,19 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         {
             Controller.OnGadgetSelectionBegin += SelectionBegin;
             Controller.OnGadgetSelectionEnd += SelectionEnd;
+            Controller.OnHideGadgetUIRequest += HideUI;
         }
 
         private void OnDisable()
         {
             Controller.OnGadgetSelectionBegin -= SelectionBegin;
             Controller.OnGadgetSelectionEnd -= SelectionEnd;
+            Controller.OnHideGadgetUIRequest -= HideUI;
+        }
+
+        private void HideUI()
+        {
+            ChangeVisibility(false, 0);
         }
 
         private void SelectionBegin(LocalGamePlayer player)

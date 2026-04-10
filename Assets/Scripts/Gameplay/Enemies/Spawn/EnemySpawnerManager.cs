@@ -103,7 +103,7 @@ namespace OverBang.ExoWorld.Gameplay.Enemies
         {
             EnemySpawnScenario enemySpawnScenario = waveModes[waveIndex].scenario;
             int enemyToSpawnInWave = enemySpawnScenario.InitialEnemyAmountInWave
-                                     * SessionManager.Global.ActiveSession.PlayerCount;
+                                     * SessionManager.Global.ActiveSession.PlayerCount / 2;
 
             while (waveModes[waveIndex].currentWave <= enemySpawnScenario.WaveAmount
                    && waveModes[waveIndex].isWaving)

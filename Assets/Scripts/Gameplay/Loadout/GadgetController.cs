@@ -28,7 +28,8 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private DynamicBuffer<IGadget> gadgetBuffer;
         
         public LocalGamePlayer Player { get; private set; }
-
+        
+        public event Action OnHideGadgetUIRequest;
         public event Action<LocalGamePlayer> OnGadgetSelectionBegin; 
         public event Action OnGadgetSelectionEnd; 
         public event Action OnGadgetCasted; 
@@ -81,6 +82,11 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private bool CanCastGadget()
         {
             return currentGadget is { IsEquiped : true,  IsCasting : false };
+        }
+
+        public void HideGadgetUI()
+        {
+            OnHideGadgetUIRequest?.Invoke();
         }
 
         public void SelectCurrentGadget(GadgetData data)

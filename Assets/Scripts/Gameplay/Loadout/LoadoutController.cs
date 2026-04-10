@@ -46,6 +46,13 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private void OnStateChange(PlayerState state)
         {
             activeInputs = state is not (PlayerState.Down or PlayerState.Dead);
+            if (!activeInputs)
+            {
+                ChangeGameplayInputsState(true);
+                RemoveReceiver(gadgetController);
+                gadgetController.HideGadgetUI();
+                SwitchCameraInputs(true);
+            }
         }
         
         private void Awake()
