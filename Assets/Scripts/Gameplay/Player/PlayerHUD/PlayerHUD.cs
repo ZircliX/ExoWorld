@@ -46,12 +46,6 @@ namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
             questsPanel.SetActive(isNeeded);
         }
 
-        private void OnEnable()
-        {
-            RefreshPlayerStats();
-            RefreshTeammates();
-        }
-
         private void OnDestroy()
         {
             Controller.LocalGamePlayer.OnHealthChanged -= OnHealthChanged;
@@ -127,6 +121,9 @@ namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
             Controller.LocalGamePlayer.OnHealthChanged += OnHealthChanged;
             Controller.LocalGamePlayer.Inventory.OnItemQuantityChanged += OnItemQuantityChanged;
             Controller.LocalGamePlayer.OnStateChanged += OnStateChanged;
+            
+            RefreshPlayerStats();
+            RefreshTeammates();
         }
     }
 }

@@ -23,9 +23,12 @@ namespace OverBang.ExoWorld.Gameplay.HUB.Listeners
         {
             if (phase.Settings.selectionType != SelectionPhase.SelectionType.Pick)
                 return;
-            
+
             foreach (CharacterData characterData in phase.AvailableCharacters)
+            {
                 characterDatas.Add(characterData);
+                Debug.Log($"Loaded character data: {characterData.Name}");
+            }
             
             OnCharactersLoaded?.Invoke();
             //Debug.Log("Loading Complete");

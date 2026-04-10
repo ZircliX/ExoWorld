@@ -7,6 +7,7 @@ using OverBang.ExoWorld.Gameplay.Cameras;
 using OverBang.ExoWorld.Gameplay.IK_Animation;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 namespace OverBang.ExoWorld.Gameplay.Player
 {
@@ -29,12 +30,12 @@ namespace OverBang.ExoWorld.Gameplay.Player
         }
         
         [Rpc(SendTo.Everyone)]
-        public void SetDataRpc(string sessionPlayer, string characterDataId)
+        private void SetDataRpc(string sessionPlayer, string characterDataId)
         {
             if (GamePlayerManager.Instance.TryGetPlayerWithSessionId(sessionPlayer, out IGamePlayer player) &&
                 GameDatabase.Global.TryGetAssetByID(characterDataId, out CharacterData data))
             {
-                playerModelContainer.ClearChildren();
+                //playerModelContainer.ClearChildren();
                 GameObject playerModel = Instantiate(data.ModelPrefab, playerModelContainer);
                 
                 if (!playerModel.TryGetComponent(out Animator playerAnimator))
@@ -46,6 +47,8 @@ namespace OverBang.ExoWorld.Gameplay.Player
                 {
                     Debug.LogError("Player Model does not have a PlayerRig !");
                 }
+
+                playerRig.EnableHead(!IsOwner);
                 
                 for (int i = 0; i < playerComponents.Length; i++)
                 {
