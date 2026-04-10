@@ -134,8 +134,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AORemapMax: 1
-    - _AORemapMin: 1
+    - _AORemapMax: 0.99999994
+    - _AORemapMin: 0.99999994
     - _ATDistance: 0.005
     - _AddPrecomputedVelocity: 0
     - _AlbedoAffectEmissive: 0
@@ -186,7 +186,7 @@ Material:
     - _HeightTessAmplitude: 2
     - _HeightTessCenter: 0.5
     - _InvTilingScale: 1
-    - _Ior: 1.01
+    - _Ior: 1.15
     - _IridescenceMask: 0.1
     - _IridescenceThickness: 1
     - _LinkDetailsWithBase: 1
