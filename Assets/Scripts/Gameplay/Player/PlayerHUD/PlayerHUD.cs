@@ -16,6 +16,7 @@ namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
     {
         [Header("Player Stats")]
         [SerializeField] private TMP_Text playerNameText;
+        [SerializeField] private Image playerIcon;
         [SerializeField] private Image healthBar;
         [SerializeField] private Image healthBarBg;
         [SerializeField] private TMP_Text trinititeText;
@@ -43,12 +44,6 @@ namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
             bool isNeeded = SceneManager.GetActiveScene().name == GameMetrics.Global.SceneCollection.GameSceneRef.Name;
             timerPanel.SetActive(isNeeded);
             questsPanel.SetActive(isNeeded);
-        }
-
-        private void OnEnable()
-        {
-            RefreshPlayerStats();
-            RefreshTeammates();
         }
 
         private void OnDestroy()
@@ -94,6 +89,8 @@ namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
             {
                 playerNameText.text = $"Player_{Controller.LocalGamePlayer.SessionPlayerID[..6]}";
             }
+            
+            playerIcon.sprite = Controller.LocalGamePlayer.CharacterData.Sprite;
         }
 
         private void RefreshTeammates()
@@ -124,6 +121,9 @@ namespace OverBang.ExoWorld.Gameplay.Player.PlayerHUD
             Controller.LocalGamePlayer.OnHealthChanged += OnHealthChanged;
             Controller.LocalGamePlayer.Inventory.OnItemQuantityChanged += OnItemQuantityChanged;
             Controller.LocalGamePlayer.OnStateChanged += OnStateChanged;
+            
+            RefreshPlayerStats();
+            RefreshTeammates();
         }
     }
 }

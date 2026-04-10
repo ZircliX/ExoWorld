@@ -6,6 +6,7 @@ namespace OverBang.ExoWorld.Gameplay.IK_Animation
     {
         [SerializeField] private CustomParentConstraint handR;
         [SerializeField] private CustomParentConstraint handL;
+        [SerializeField] private Transform headModel;
 
         private WeaponRig currentWeapon;
 
@@ -15,6 +16,11 @@ namespace OverBang.ExoWorld.Gameplay.IK_Animation
             
             handR.SetTarget(currentWeapon.targetHandR);
             handL.SetTarget(currentWeapon.targetHandL);
+        }
+
+        public void EnableHead(bool state)
+        {
+            headModel.gameObject.SetActive(state);
         }
     }
 }

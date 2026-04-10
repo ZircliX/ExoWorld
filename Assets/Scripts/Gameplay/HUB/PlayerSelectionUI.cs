@@ -62,14 +62,13 @@ namespace OverBang.ExoWorld.Gameplay.HUB
             
             primaryAbilityButton.transform.ClearChildren();
             secondaryAbilityButton.transform.ClearChildren();
-            
-            SwitchCharacter(1);
         }
 
         private void OnLoaded()
         {
             playerSelection.OnCharactersLoaded -= OnLoaded;
             currentCharacterData = playerSelection.characterDatas[currentCharacterIndex];
+            SwitchCharacter(1);
             ChangeEnabledState(true);
             UpdateCharacterUI();
         }

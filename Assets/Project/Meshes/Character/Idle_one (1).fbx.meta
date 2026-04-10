@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4e0ddcd47b0c210488c49581bd69d718
+guid: 62af2e59d3bce094ea9954b36441c21d
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -17,16 +17,7 @@ ModelImporter:
     removeConstantScaleCurves: 0
     motionNodeName: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
-      might lower retargeting quality:\nNote: Activate translation DOF on avatar
-      to improve retargeting quality.\n\t'jnt_pelvis' has translation animation that
-      will be discarded.\n\t'jnt_pelvis' is inbetween humanoid transforms and has
-      rotation animation that will be discarded.\n\t'jnt_right_shoulder' has translation
-      animation that will be discarded.\n\t'jnt_right_elbow' has translation animation
-      that will be discarded.\n\t'jnt_left_shoulder' has translation animation that
-      will be discarded.\n\t'jnt_head' has translation animation that will be discarded.\n\t'jnt_left_foot'
-      has translation animation that will be discarded.\n\t'jnt_right_foot' has translation
-      animation that will be discarded.\n"
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -38,36 +29,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: Take 001
-      takeName: Take 001
-      internalID: 1827226128182048838
-      firstFrame: 0
-      lastFrame: 24
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -467,6 +429,46 @@ ModelImporter:
         modified: 0
     - boneName: jnt_upper_chest
       humanName: UpperChest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Left_pouce
+      humanName: Left Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Left_pouce2
+      humanName: Left Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Left_pouce3
+      humanName: Left Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Left_Index2
+      humanName: Left Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Left_Index3
+      humanName: Left Index Distal
       limit:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
@@ -1132,7 +1134,7 @@ ModelImporter:
     - name: jnt_left_shoulder
       parentName: jnt_upper_chest
       position: {x: -0.23303436, y: 0.008434522, z: -0.081031464}
-      rotation: {x: -0.021036655, y: -0.023309108, z: -0.012535627, w: 0.99942833}
+      rotation: {x: -0.021036657, y: -0.023309108, z: -0.012535628, w: 0.99942833}
       scale: {x: 0.9999776, y: 1.0000315, z: 0.99999136}
     - name: jnt_left_elbow
       parentName: jnt_left_shoulder
@@ -1207,12 +1209,12 @@ ModelImporter:
     - name: Left_pouce
       parentName: jnt_left_wrist
       position: {x: -0.054176852, y: -0.039913416, z: 0.09616655}
-      rotation: {x: -0, y: -0, z: -0, w: 1}
+      rotation: {x: -0.18961908, y: 0.066299126, z: -0.061235122, w: 0.977701}
       scale: {x: 1, y: 0.99999934, z: 0.9999999}
     - name: Left_pouce2
       parentName: Left_pouce
       position: {x: -0.008022857, y: -0.009737808, z: 0.01422673}
-      rotation: {x: -0, y: -0, z: -0, w: 1}
+      rotation: {x: -0.01354295, y: 0.030419655, z: 0.0131981075, w: 0.99935836}
       scale: {x: 0.99999994, y: 1.0000004, z: 0.99999994}
     - name: Left_pouce3
       parentName: Left_pouce2
