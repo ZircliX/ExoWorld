@@ -10,7 +10,12 @@ namespace OverBang.ExoWorld.Gameplay.Quests
     {
         [SerializeField] private CanvasGroup questContainer;
         [SerializeField] private TMP_Text objectiveNameText;
+        [SerializeField] private Transform objectiveNameParent;
         [SerializeField] private TMP_Text objectiveProgressText;
+        [SerializeField] private Image objectiveIcon;
+        [SerializeField] private float lerpTime;
+        [SerializeField] private float stepDelay;
+        [SerializeField] private float slideOffset;
         
         [Space]
         [SerializeField] private CanvasGroup questCompleteContainer;
@@ -20,6 +25,10 @@ namespace OverBang.ExoWorld.Gameplay.Quests
 
         private int previousStep;
         private IObjectiveHandler currentObjectiveHandler;
+
+        private float nameOriginX;
+        private float textOriginX;
+        private float iconOriginX;
 
         private void Start()
         {
@@ -33,10 +42,20 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             currentObjectiveHandler.OnObjectiveStateChanged += OnStateChanged;
             currentObjectiveHandler.OnObjectiveStepChanged += OnStepChanged;
             
-            UpdateObjectiveUI();
+            // Position d'origine
+            nameOriginX = ((RectTransform)objectiveNameParent.transform).anchoredPosition.x;
+            textOriginX = ((RectTransform)objectiveProgressText.transform).anchoredPosition.x;
+            iconOriginX = ((RectTransform)objectiveIcon.transform).anchoredPosition.x;
+            
+            // Décale pour l'animation
+            ((RectTransform)objectiveNameParent.transform).anchoredPosition = new Vector2(nameOriginX + slideOffset, ((RectTransform)objectiveNameText.transform).anchoredPosition.y);
+            ((RectTransform)objectiveProgressText.transform).anchoredPosition = new Vector2(textOriginX + slideOffset, ((RectTransform)objectiveProgressText.transform).anchoredPosition.y);
+            ((RectTransform)objectiveIcon.transform).anchoredPosition = new Vector2(iconOriginX + slideOffset, ((RectTransform)objectiveIcon.transform).anchoredPosition.y);
+            
+            UpdateObjectiveUI(true);
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             if (currentObjectiveHandler != null)
             {
@@ -44,11 +63,6 @@ namespace OverBang.ExoWorld.Gameplay.Quests
                 currentObjectiveHandler.OnObjectiveStateChanged -= OnStateChanged;
                 currentObjectiveHandler.OnObjectiveStepChanged -= OnStepChanged;
             }
-        }
-
-        private void OnObjectiveProgress(ObjectiveProgression progression)
-        {
-            UpdateObjectiveUI();
         }
 
         private void OnStateChanged(IObjectiveHandler objectiveHandler, ObjectiveState state)
@@ -62,23 +76,20 @@ namespace OverBang.ExoWorld.Gameplay.Quests
                 ClearObjective();
             }
         }
+        
+        private void OnObjectiveProgress(ObjectiveProgression progression)
+        {
+            UpdateObjectiveUI(false);
+        }
 
         private void OnStepChanged(int step)
         {
-            UpdateObjectiveUI();
+            UpdateObjectiveUI(false);
         }
 
-        private void UpdateObjectiveUI()
+        private void UpdateObjectiveUI(bool isAnimated)
         {
             objectiveNameText.text = currentObjectiveHandler.ObjectiveData.ObjectiveName;
-            
-            if (currentObjectiveHandler.StepIndex != previousStep)
-            {
-                objectiveProgressText.DOColor(Color.red, 0.2f).OnComplete(() =>
-                {
-                    objectiveProgressText.DOColor(Color.white, 1.5f);
-                });
-            }
             
             float current = currentObjectiveHandler.CurrentProgress.currentProgress;
             float target = currentObjectiveHandler.CurrentProgress.targetProgress;
@@ -89,6 +100,23 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             objectiveProgressText.text = $"{stepText} {progressText}";
 
             previousStep = currentObjectiveHandler.StepIndex;
+
+            if (isAnimated)
+            {
+                float delay = 3.5f;
+                DOVirtual.DelayedCall(delay, () =>
+                {
+                    ((RectTransform)objectiveNameParent.transform).DOAnchorPosX(nameOriginX, lerpTime).SetEase(Ease.OutCubic);
+                });
+                DOVirtual.DelayedCall(stepDelay * 0.5f + delay, () =>
+                {
+                    ((RectTransform)objectiveProgressText.transform).DOAnchorPosX(textOriginX, lerpTime).SetEase(Ease.OutCubic);
+                });
+                DOVirtual.DelayedCall(stepDelay + delay, () =>
+                {
+                    ((RectTransform)objectiveIcon.transform).DOAnchorPosX(iconOriginX, lerpTime).SetEase(Ease.OutCubic);
+                });
+            }
         }
 
         private void ClearObjective()
