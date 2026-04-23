@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace OverBang.ExoWorld.Core.Interactions
 {
@@ -8,7 +9,7 @@ namespace OverBang.ExoWorld.Core.Interactions
     {
         [SerializeField] private PlayerInteraction playerInteraction;
         [SerializeField] private TMP_Text interactionText;
-        [SerializeField] private GameObject inputKey;
+        [SerializeField] private Transform inputKey;
         [SerializeField] private CanvasGroup canvasGroup;
 
         private void OnEnable()
@@ -16,7 +17,6 @@ namespace OverBang.ExoWorld.Core.Interactions
             playerInteraction.OnNewInteractable += UpdateInteractableUI;
             playerInteraction.OnItemDropped += UpdateInteractableUI;
             playerInteraction.OnItemPickup += UpdateInteractableUI;
-            canvasGroup.alpha = 0;
         }
 
         private void OnDisable()
@@ -30,26 +30,26 @@ namespace OverBang.ExoWorld.Core.Interactions
         {
             if (interactable == null)
             {
-                interactionText.text = string.Empty;
+                //interactionText.text = string.Empty;
                 canvasGroup.DOKill();
                 canvasGroup.DOFade(0, .2f);
+                RebuildLayout();
                 return;
             }
 
             canvasGroup.DOKill();
             canvasGroup.DOFade(1, .2f);
 
-            inputKey.SetActive(interactable.Instance.CanInteract);
+            inputKey.gameObject.SetActive(interactable.Instance.CanInteract);
             interactionText.text = interactable.Instance.InteractionText == string.Empty ? "Interagir" : interactable.Instance.InteractionText;
+            RebuildLayout();
         }
 
-        private void LateUpdate()
+        private void RebuildLayout()
         {
-            InteractableData interactable = playerInteraction.CurrentInteractable;
-            if (interactable != null)
+            if (canvasGroup != null)
             {
-                canvasGroup.transform.position = interactable.Instance.UIPosition;
-                canvasGroup.transform.forward = playerInteraction.InteractionCamera.transform.forward;
+                LayoutRebuilder.ForceRebuildLayoutImmediate(canvasGroup.GetComponent<RectTransform>());
             }
         }
     }
