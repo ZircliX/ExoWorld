@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 4045581753
+  GlobalObjectIdHash: 4119350087
   InScenePlacedSourceGlobalObjectIdHash: 4045581753
   DeferredDespawnTick: 0
   Ownership: 1
@@ -199,7 +199,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5933770658477242091}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -5857125182975709675, guid: 7621e54d3c00be44492f7cd8fcf8e61c, type: 3}
 --- !u!23 &932521875208131255
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -220,12 +220,12 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
+  m_ForceMeshLod: 0
   m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6a038615268e8a141b0e297b55d6dc6e, type: 2}
+  - {fileID: -3033667219593020291, guid: 56153a3139008d5469889c691f4e3f75, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
