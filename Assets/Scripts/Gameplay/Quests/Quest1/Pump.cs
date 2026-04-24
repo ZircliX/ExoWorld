@@ -102,6 +102,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             Health = questOneData.TotalRepairHealth;
             IsStarted = true;
             oneHandler.SetStepIndex(2);
+            MissionWaypointRegistry.Get("PumpStart").HideWaypoint();
         }
 
         public void TakeDamage(RuntimeDamageData damage)
@@ -128,6 +129,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             CurrentRepairTime = 0;
             ObjectivesManager.DispatchGameEvent(new QuestOneEvent(0, questOneData.RepairTimeRequired));
             oneHandler?.SetStepIndex(1);
+            MissionWaypointRegistry.Get("PumpStart").ShowWaypoint();
         }
         
         public void SetTargetable(bool state)

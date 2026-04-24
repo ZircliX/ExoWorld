@@ -313,6 +313,41 @@ MonoBehaviour:
   inputs: {fileID: 6016904456671023715}
   Ath: {fileID: 1894891351675891445}
   fadeDuration: 0.5
+--- !u!1 &3466734368181593379
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4282404724109685003}
+  m_Layer: 5
+  m_Name: Waypoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4282404724109685003
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3466734368181593379}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4434545992771747307}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4636754210648019326
 GameObject:
   m_ObjectHideFlags: 0
@@ -931,7 +966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 2994845136
+  GlobalObjectIdHash: 1576227847
   InScenePlacedSourceGlobalObjectIdHash: 1576227847
   DeferredDespawnTick: 0
   Ownership: 1
@@ -2266,6 +2301,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4946462400135717786}
     - target: {fileID: 2744242386847362340, guid: 4f56e56d76eb55849871f002de085f31, type: 3}
+      propertyPath: waypointPrefab
+      value: 
+      objectReference: {fileID: 660044477481463100, guid: 0b6e15a2b094f124b930e6d6e0b29d5e, type: 3}
+    - target: {fileID: 2744242386847362340, guid: 4f56e56d76eb55849871f002de085f31, type: 3}
+      propertyPath: waypointsParent
+      value: 
+      objectReference: {fileID: 4282404724109685003}
+    - target: {fileID: 2744242386847362340, guid: 4f56e56d76eb55849871f002de085f31, type: 3}
       propertyPath: objectiveNameParent
       value: 
       objectReference: {fileID: 7337218268600780079}
@@ -2918,8 +2961,13 @@ PrefabInstance:
       value: HUD
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8399918528849507189, guid: 4f56e56d76eb55849871f002de085f31, type: 3}
+    - {fileID: 7628865534178605666, guid: 4f56e56d76eb55849871f002de085f31, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6871220726673636027, guid: 4f56e56d76eb55849871f002de085f31, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4282404724109685003}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f56e56d76eb55849871f002de085f31, type: 3}
 --- !u!224 &4434545992771747307 stripped

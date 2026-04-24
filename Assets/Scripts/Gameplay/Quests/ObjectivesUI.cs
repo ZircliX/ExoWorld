@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -23,8 +24,13 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         [SerializeField] private Image questCompleteRewardImage;
         [SerializeField] private TMP_Text questCompleteRewardText;
 
+        [Space]
+        [SerializeField] private GameObject waypointPrefab;
+        [SerializeField] private Transform waypointsParent;
+
         private int previousStep;
         private IObjectiveHandler currentObjectiveHandler;
+        private readonly List<GameObject> currentWaypoints = new List<GameObject>();
 
         private float nameOriginX;
         private float textOriginX;
@@ -52,7 +58,27 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             ((RectTransform)objectiveProgressText.transform).anchoredPosition = new Vector2(textOriginX + slideOffset, ((RectTransform)objectiveProgressText.transform).anchoredPosition.y);
             ((RectTransform)objectiveIcon.transform).anchoredPosition = new Vector2(iconOriginX + slideOffset, ((RectTransform)objectiveIcon.transform).anchoredPosition.y);
             
-            UpdateObjectiveUI(true);
+            UpdateObjectiveUI();
+            Animate();
+
+            // Instantiate waypoints if objective has targets
+            if (currentObjectiveHandler.ObjectiveData is ObjectiveDataQuest { TargetNames: { Length: > 0 } } questData && waypointPrefab != null)
+            {
+                foreach (string targetName in questData.TargetNames)
+                {
+                    if (!string.IsNullOrEmpty(targetName))
+                    {
+                        GameObject targetGO = GameObject.Find(targetName);
+                        if (targetGO != null)
+                        {
+                            GameObject waypointGO = Instantiate(waypointPrefab, waypointsParent);
+                            MissionWaypoint waypoint = waypointGO.GetComponent<MissionWaypoint>();
+                            waypoint.SetTarget(targetGO.transform);
+                            currentWaypoints.Add(waypointGO);
+                        }
+                    }
+                }
+            }
         }
 
         private void OnDestroy()
@@ -79,15 +105,17 @@ namespace OverBang.ExoWorld.Gameplay.Quests
         
         private void OnObjectiveProgress(ObjectiveProgression progression)
         {
-            UpdateObjectiveUI(false);
+            UpdateObjectiveUI();
         }
 
         private void OnStepChanged(int step)
         {
-            UpdateObjectiveUI(false);
+            UpdateObjectiveUI();
+            ((RectTransform)objectiveProgressText.transform).anchoredPosition = new Vector2(textOriginX + slideOffset, ((RectTransform)objectiveProgressText.transform).anchoredPosition.y);
+            ((RectTransform)objectiveProgressText.transform).DOAnchorPosX(textOriginX, lerpTime).SetEase(Ease.OutCubic);
         }
 
-        private void UpdateObjectiveUI(bool isAnimated)
+        private void UpdateObjectiveUI()
         {
             objectiveNameText.text = currentObjectiveHandler.ObjectiveData.ObjectiveName;
             
@@ -100,23 +128,22 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             objectiveProgressText.text = $"{stepText} {progressText}";
 
             previousStep = currentObjectiveHandler.StepIndex;
+        }
 
-            if (isAnimated)
+        private void Animate(float delay = 3.5f)
+        {
+            DOVirtual.DelayedCall(delay, () =>
             {
-                float delay = 3.5f;
-                DOVirtual.DelayedCall(delay, () =>
-                {
-                    ((RectTransform)objectiveNameParent.transform).DOAnchorPosX(nameOriginX, lerpTime).SetEase(Ease.OutCubic);
-                });
-                DOVirtual.DelayedCall(stepDelay * 0.5f + delay, () =>
-                {
-                    ((RectTransform)objectiveProgressText.transform).DOAnchorPosX(textOriginX, lerpTime).SetEase(Ease.OutCubic);
-                });
-                DOVirtual.DelayedCall(stepDelay + delay, () =>
-                {
-                    ((RectTransform)objectiveIcon.transform).DOAnchorPosX(iconOriginX, lerpTime).SetEase(Ease.OutCubic);
-                });
-            }
+                ((RectTransform)objectiveNameParent.transform).DOAnchorPosX(nameOriginX, lerpTime).SetEase(Ease.OutCubic);
+            });
+            DOVirtual.DelayedCall(stepDelay * 0.5f + delay, () =>
+            {
+                ((RectTransform)objectiveProgressText.transform).DOAnchorPosX(textOriginX, lerpTime).SetEase(Ease.OutCubic);
+            });
+            DOVirtual.DelayedCall(stepDelay + delay, () =>
+            {
+                ((RectTransform)objectiveIcon.transform).DOAnchorPosX(iconOriginX, lerpTime).SetEase(Ease.OutCubic);
+            });
         }
 
         private void ClearObjective()
@@ -162,8 +189,19 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             //Play
             uiSequence.Play();
 
+            foreach (GameObject waypoint in currentWaypoints)
+            {
+                Destroy(waypoint);
+            }
+            currentWaypoints.Clear();
+
             currentObjectiveHandler = null;
             previousStep = 0;
+
+            foreach (GameObject waypoint in currentWaypoints)
+            {
+                Destroy(waypoint);
+            }
         }
     }
 }
