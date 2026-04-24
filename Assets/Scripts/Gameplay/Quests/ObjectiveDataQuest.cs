@@ -7,5 +7,6 @@ namespace OverBang.ExoWorld.Gameplay.Quests
     public abstract class ObjectiveDataQuest : ObjectiveData
     {
         [field: SerializeField] public RewardData Reward { get; private set; }
+        [field: SerializeField] public string[] TargetNames { get; private set; }
     }
 }

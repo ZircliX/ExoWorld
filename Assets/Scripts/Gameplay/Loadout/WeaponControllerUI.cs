@@ -17,8 +17,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         [SerializeField] private Image weaponIcon;
         [SerializeField] private TMP_Text ammoText;
         [SerializeField] private TMP_Text totalAmmoText;
-        [SerializeField] private Image weaponPoint1;
-        [SerializeField] private Image weaponPoint2;
         private bool IsFirstSelected = true;
         
         private Weapon currentWeapon;
@@ -78,10 +76,6 @@ namespace OverBang.ExoWorld.Gameplay.Loadout
         private void SwitchWeaponPoint()
         {
             IsFirstSelected = !IsFirstSelected;
-            weaponPoint1.DOKill();
-            weaponPoint2.DOKill();
-            weaponPoint1.DOFade(IsFirstSelected ? 1 : 0.5f, 0.2f);
-            weaponPoint2.DOFade(IsFirstSelected ? 0.5f : 1f, 0.2f);
         }
 
         private void UnsubscribeCurrentWeapon()

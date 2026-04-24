@@ -97,6 +97,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
                 if (fusiblesInserted >= questData.TotalPieces)
                 {
                     OnAllFusiblesInserted();
+                    MissionWaypointRegistry.Get(name).HideWaypoint();
                 }
             }
         }

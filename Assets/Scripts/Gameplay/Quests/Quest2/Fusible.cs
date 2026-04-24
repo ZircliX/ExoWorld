@@ -80,6 +80,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             
             SetPriority(-1);
             gameObject.SetActive(false); // Hide or trigger pickup animation
+            MissionWaypointRegistry.Get(name).HideWaypoint();
         }
 
         [Rpc(SendTo.Everyone)]
@@ -96,6 +97,7 @@ namespace OverBang.ExoWorld.Gameplay.Quests
             CanInteract = true;
             SetPriority((int)TargetPriority.Medium);
             gameObject.SetActive(true);
+            MissionWaypointRegistry.Get(name).ShowWaypoint();
         }
 
         [Rpc(SendTo.Everyone)]
